@@ -2,7 +2,6 @@
 	
     'use strict';
     var wp = document.getElementById('wp');
-    var needRaf = true;
     var scrollHandler = function (event) {
         var getRect = wp.getBoundingClientRect();
         if(getRect.top < 200){ 
