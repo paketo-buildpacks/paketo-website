@@ -1,0 +1,131 @@
+/* CSS reset.  Why?  Because browser makers make the www difficult to style. Enough with that. */
+@charset "utf-8";
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video { margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align:baseline; background:transparent; }
+body { line-height:1; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display:block; }
+ol, ul { list-style:none; }
+blockquote, q { quotes:none; }
+blockquote:before, blockquote:after, q:before, q:after { content:''; content:none; }
+a { margin:0; padding:0; font-size:100%; vertical-align:baseline; background:transparent; }
+ins { background-color:#ff9; color:#000; text-decoration:none; }
+mark { background-color:#ff9; color:#000; font-style:italic; font-weight:bold; }
+del { text-decoration:line-through; }
+abbr[title], dfn[title] { border-bottom:1px dotted; cursor:help; }
+table { border-collapse:collapse; border-spacing:0; }
+input, select { vertical-align:middle; }
+/* End the Reset.  Let the games begin. */
+
+*, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+body { background: #f2f2f2; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; font-size: 16px; line-height: 1.5em;  }
+a, a:before { text-decoration: none; color: #384a9a; outline: none; transition: all 0.3s ease; }
+a:hover { color: #469cb9}
+img { height: auto; max-width: 100%;}
+p { font-size: 1.2rem; line-height: 1.5em; margin-bottom: 2em; color: #777; }
+h1,h2,h3,h4,h5,h6 { font-weight: 300; line-height: 1.2em; color: #343433; margin-bottom: 0.8em; -webkit-font-smoothing: subpixel-antialiased; letter-spacing: -0.025em;}
+h1 { font-size: 4vw; font-weight: 600; }
+h2 { font-size: 2.8vw; margin-bottom: 1.5em;}
+h3 { font-size: 2rem; font-weight: 600; }
+h4 { font-size: 1.6rem; font-weight: 600; }
+
+/* easy rwd by www.traverstodd.com */
+
+.hidden { display: none; }
+.invisible {visibility: hidden; }
+.no-overflow { overflow: hidden;}
+.transparent { opacity: 0.0;}
+.opaque { opacity: 1.0;}
+
+/* micro clearfix below. contains floats like .clearfix. */
+.cf:before, .cf:after { content: " "; display: table; }
+.cf:after { clear: both; }
+
+/* need to clear floats instead of contain them? use this below. */
+.clear, .clear-both { clear: both; }
+
+/* need to float things? we got you covered. */
+.left, .floatleft { float: left !important; }
+.right, .floatright { float: right !important; }
+
+/* these are for images, below. gives a nice margin. sweet. */
+.alignright { float: right; margin: 0 0 15px 15px;}
+.alignleft { float: left; margin: 0 15px 15px 0;}
+.floatnone { float: none; }
+
+/* need a middle-aligned header. don't write another CSS rule. just use these! */
+.text-left {text-align: left;}
+.text-right {text-align: right;}
+.text-center {text-align: center;}
+
+/* need to add z-index?  Us these class? */
+.z0 {z-index: 0;}
+.z1 {z-index: 1;}
+.z2 {z-index: 2;}
+.z3 {z-index: 3;}
+.z4 {z-index: 4;}
+.z5 {z-index: 5;}
+/* For a little extra reassurance */
+.z99{z-index: 99;}
+
+/* magic. many combinations exists with simplicity. */
+.float20 { float: left; width: 20%; }
+.float25 { float: left; width: 25%; }
+.float33 { float: left; width: 33%; }
+.float50 { float: left; width: 50%; }
+.float66 { float: left; width: 66%; }
+.float75 { float: left; width: 75%; }
+.float80 { float: left; width: 80%; }
+
+.inline-block { display: inline-block; }
+.inline25 { display: inline-block; width: 25%; margin-right: -4px; } 
+.inline33 { display: inline-block; width: 33.3333%; margin-right: -4px; } 
+.inline50 { display: inline-block; width: 50%; margin-right: -4px; } 
+.inline66 { display: inline-block; width: 66.6666%; margin-right: -4px; } 
+
+/* structure  */
+.relative { position: relative;}
+.absolute { position: absolute;}
+.fixed { position: fixed;}
+.pad50 { padding: 50px;}
+.pad-right { padding-right: 4em;}
+.pad-top-100 { padding-top: 100px;}
+.pad-btm-100 { padding-bottom: 100px;}
+.text-col { max-width: 1000px;}
+
+/* decorators */
+.bg-white { background: white;}
+
+/* header */
+header { padding: 20px 50px; }
+.logo img { max-width: 260px;}
+nav { padding-top: 30px;}
+nav a, .cta { font-size: 1.2rem; position: relative; font-weight: 600; padding: 0 4px; z-index: 1;}
+nav a { margin-left: 30px;}
+nav a:before, .cta:before { content: ""; position: absolute; bottom: 2px; height: 6px; left: 0; width: 100%; background: #F8D15C; z-index: -1;}
+nav a:hover:before, .cta:hover:before { height: 100%; bottom: 0;}
+
+/* hero */
+.hero .cta { font-size: 2rem;}
+.hero .text-col { max-width: 66.666vw;}
+
+/* why-paketo-blocks */
+.paketo-merits { column-count: 2;}
+.paketo-blocks { min-height: 400px;}
+.paketo-block { max-width: 300px; opacity: 0.0; transition: all .7s ease; }
+.joined .paketo-block { transform: translateY(0) !important; opacity: 1.0;}
+.paketo-block.top { transform: translateY(-100px); transition-delay: 0.4s;}
+.paketo-block.mid { top: 175px; transform: translateY(-50px); transition-delay: 0.2s;}
+.paketo-block.btm { width: 170px; top: 350px; }
+
+/* faq */
+.faq h4 { cursor: pointer; color: #384a9a; transition: color 0.3s ease}
+.faq h4:hover, .faq h4.shown { color: #469cb9}
+.faq h4:before { content: "+"; float: right; font-size: 3rem; padding-left: 20px; }
+.faq h4.shown:before { content: "-";}
+
+/* get-started */
+.icon { width: 120px; margin: 0 10px; }
+.get-started a { display: inline-block; }
+.get-started a:before { bottom: 4px;}
+
+/* footer */
+footer { background: #384a9a; padding: 20px 50px; color: #ccc}

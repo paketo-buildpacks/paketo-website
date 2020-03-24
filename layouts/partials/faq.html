@@ -1,0 +1,23 @@
+<div class="faqs pad50 pad-top-100 pad-btm-100">
+    <div class="cf">
+        <div class="text-col pad-right">
+            <h2>{{ .Site.Params.faq.headline }}</h2>
+            <div class="pad-right cf">
+                {{ with .Site.Params.faq }}
+
+                    {{ range .item }}
+
+                        <div class="faq">
+
+                            <h4 class="faq-header">{{ .q  }}</h4>
+                            <p class="faq-content hidden">{{ .a | safeHTML }}</p>
+
+                        </div>
+
+                    {{ end }}
+                
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
