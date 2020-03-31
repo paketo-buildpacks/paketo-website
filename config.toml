@@ -1,6 +1,8 @@
 baseURL = "https://www.paketo.io/"
 title = "Paketo Buildpacks: Framework and runtime support for apps"
 
+pygmentsUseClasses = true
+pygmentsCodefences = true
 
 [params.hero]
   headline = "Paketo Buildpacks: Framework and runtime support for apps"
