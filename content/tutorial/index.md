@@ -112,9 +112,9 @@ pack build test-drive -p <path-to-application-root> --builder paketobuildpacks/b
 
 Currently the Paketo-Buildpacks project releases the following builders:
 
-- paketobuildpacks/builder:cflinuxfs3
-- paketobuildpacks/builder:bionic
-- paketobuildpacks/builder:tiny
+* paketobuildpacks/builder:cflinuxfs3
+* paketobuildpacks/builder:bionic
+* paketobuildpacks/builder:tiny
 
 
 ## Learn Paketo Buildpacks
