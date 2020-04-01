@@ -1,7 +1,7 @@
 ---
-title: "Tutorial"
+title: "Using Paketo Buildpacks"
 date: 2020-03-31T12:50:55-04:00
-type: tutorial
+type: using-paketo-buildpacks
 ---
 # Getting Started
 
@@ -111,9 +111,9 @@ pack build test-drive -p <path-to-application-root> --builder paketobuildpacks/b
 
 Currently the Paketo-Buildpacks project releases the following builders:
 
-* paketobuildpacks/builder:cflinuxfs3
-* paketobuildpacks/builder:bionic
-* paketobuildpacks/builder:tiny
+* gcr.io/paketo-buildpacks/builder:cflinuxfs3
+* gcr.io/paketo-buildpacks/builder:bionic
+* gcr.io/paketo-buildpacks/builder:tiny
 
 
 ## Learn Paketo Buildpacks
