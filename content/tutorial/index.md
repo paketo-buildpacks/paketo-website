@@ -1,7 +1,6 @@
 ---
 title: "Tutorial"
 date: 2020-03-31T12:50:55-04:00
-draft: true
 type: tutorial
 ---
 # Getting Started
