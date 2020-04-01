@@ -16,14 +16,14 @@ input, select { vertical-align:middle; }
 /* End the Reset.  Let the games begin. */
 
 *, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
-body { background: #f2f2f2; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; font-size: 16px; line-height: 1.5em;  }
+body { background: #D3D3D3; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; font-size: 16px; line-height: 1.5em;  }
 a, a:before { text-decoration: none; color: #384a9a; outline: none; transition: all 0.3s ease; }
 a:hover { color: #469cb9}
 img { height: auto; max-width: 100%;}
-p { font-size: 1.2rem; line-height: 1.5em; margin-bottom: 2em; color: #777; }
+p { font-size: 1.2rem; line-height: 1.5em; margin-bottom: 2em; color: #585858; }
 h1,h2,h3,h4,h5,h6 { font-weight: 300; line-height: 1.2em; color: #343433; margin-bottom: 0.8em; -webkit-font-smoothing: subpixel-antialiased; letter-spacing: -0.025em;}
 h1 { font-size: 4vw; font-weight: 600; }
-h2 { font-size: 2.8vw; margin-bottom: 1.5em;}
+h2 { font-size: 2.8vw; margin-bottom: 2em;}
 h3 { font-size: 2rem; font-weight: 600; }
 h4 { font-size: 1.6rem; font-weight: 600; }
 
@@ -106,7 +106,7 @@ nav a:hover:before, .cta:hover:before { height: 100%; bottom: 0;}
 /* hero */
 .hero .cta { font-size: 2rem;}
 .hero .text-col { max-width: 66.666vw;}
-
+.hero h2 { font-size: 2.8vw; margin-bottom: 1.5em;}
 /* why-paketo-blocks */
 .paketo-merits { column-count: 2;}
 .paketo-blocks { min-height: 400px;}
@@ -127,7 +127,7 @@ nav a:hover:before, .cta:hover:before { height: 100%; bottom: 0;}
 .get-started a { display: inline-block; }
 .get-started a:before { bottom: 4px;}
 
-.tutorial {margin-left: 2%; margin-right: 2%; background: #f2f2f2; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; font-size: 16px;}
+.tutorial {padding-left: 2%; padding-right: 2%; padding-bottom: 2%; background: #F8F8F8; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; font-size: 16px;}
 .tutorial p { font-size: 1em; line-height: 1.5em; margin-bottom: 0.5em; color: #000; }
 .tutorial h1,h2,h3,h4,h5,h6 { font-weight: 600; line-height: 1.2em; color: #343433; margin-bottom: 0; -webkit-font-smoothing: subpixel-antialiased; letter-spacing: -0.025em;}
 .tutorial h1 { font-size: 5em; margin-bottom: 0.5em; }
@@ -171,7 +171,6 @@ nav a:hover:before, .cta:hover:before { height: 100%; bottom: 0;}
 .tutorial pre code {
   color: #606060;
 }
-
 
 /* footer */
 footer { background: #384a9a; padding: 20px 50px; color: #ccc}
