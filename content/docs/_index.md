@@ -5,4 +5,4 @@ type: docs
 ---
 
 
-### [Getting Started](/docs/using-paketo-buildpacks)
+### [Getting Started](/docs/getting-started)
