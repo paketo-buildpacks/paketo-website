@@ -83,8 +83,8 @@ pack build test-drive -p <path/to/test-drive/app> --builder gcr.io/paketo-buildp
 Verify that your build was successful by running `docker images` you should expect to see something similar to the following output
 ```
 REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
-gcr.io/paketo-buildpacks/run       full-cnb-cf         88e2c125e701        6 days ago          1.05GB
-gcr.io/paketo-buildpacks/builder   cflinuxfs3          7264ff2c18c3        40 years ago        1.5GB
+gcr.io/paketo-buildpacks/run       base-cnb            88e2c125e701        6 days ago          1.05GB
+gcr.io/paketo-buildpacks/builder   bionic              7264ff2c18c3        40 years ago        1.5GB
 test-drive                         latest              fcaa3645e775        40 years ago        1.13GB
 ```
 
@@ -94,7 +94,7 @@ Run the image locally on port 8080 using the following command
 docker run -p 8080:8080 test-drive
 ```
 
-###### Congratulations! Your app is now running on `localhost:8080`. It is that simple to use Paketo Buildpacks.
+**Congratulations! Your app is now running on `localhost:8080`. It is that simple to use Paketo Buildpacks.**
 
 ### Where Do Buildpacks Factor In
 
