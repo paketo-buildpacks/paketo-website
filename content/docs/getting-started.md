@@ -4,10 +4,6 @@ date: 2020-03-31T12:50:55-04:00
 ---
 # Getting Started
 
-## What are Paketo Buildpacks?
-
-**Paketo Buildpacks** are an implementation of [Cloud Native Buildpacks](https://buildpacks.io/). They provide the dependencies your application needs so you spend less time building images and more time developing applications.
-
 ## Prerequisites
 Before using a paketo buildpacks to build an application image we need the following tools.
 
@@ -23,9 +19,10 @@ A suite of tooling around building and managing images.
 First lets create a simple Node.js application to build.
 It should have the following structure:
 
-### Application Structure
+### Write a Simple App
 The GitHub repository for the following application can be found [here](https://github.com/ForestEckhardt/simple-paketo-node-app).
 
+#### Application Structure
 ```
 .
 └── test-drive
@@ -80,13 +77,13 @@ The `package.json` file should contain the following:
 Build an image using `pack` with the following command
 
 ```
-pack build test-drive -p <path/to/application/root> --builder gcr.io/paketo-buildpacks/builder:cflinuxfs3
+pack build test-drive -p <path/to/test-drive/app> --builder gcr.io/paketo-buildpacks/builder:bionic
 ```
 
 Verify that your build was successful by running `docker images` you should expect to see something similar to the following output
 ```
 REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
-grc.io/paket-buildpacks/run        full-cnb-cf         88e2c125e701        6 days ago          1.05GB
+gcr.io/paketo-buildpacks/run       full-cnb-cf         88e2c125e701        6 days ago          1.05GB
 gcr.io/paketo-buildpacks/builder   cflinuxfs3          7264ff2c18c3        40 years ago        1.5GB
 test-drive                         latest              fcaa3645e775        40 years ago        1.13GB
 ```
@@ -97,6 +94,7 @@ Run the image locally on port 8080 using the following command
 docker run -p 8080:8080 test-drive
 ```
 
+###### Congratulations! Your app is now running on `localhost:8080`. It is that simple to use Paketo Buildpacks.
 
 ### Where Do Buildpacks Factor In
 
@@ -110,7 +108,7 @@ All buildpacks in the builder can be overridden by the user.
 If say you wanted to use a new version of the Paketo `node-engine-cnb`, you could simply download the latest release from [github](https://github.com/cloudfoundry/node-engine-cnb/releases) and override a buildpack used in the builder
 
 ```
-pack build test-drive -p <path/to/application/root> --builder gcr.io/paketo-buildpacks/builders:cflinuxfs3 --buildpack <path/to/new/buildpack.tgz>
+pack build test-drive -p <path/to/application/root> --builder gcr.io/paketo-buildpacks/builder:bionic --buildpack <path/to/new/buildpack.tgz>
 ```
 
 Currently the Paketo-Buildpacks project releases the following builders
