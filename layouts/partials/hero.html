@@ -4,6 +4,7 @@
     <div class="text-col">
         {{ with .Site.Params.hero}}
             <h1>{{ .headline }} </h1>
+            <h2>{{ .subheadline }} </h2>
             <h2>{{ .subhead }} </h2>
             <p><a class="cta" href="{{ .cta_link}}" title="{{ .cta_text }}">{{ .cta_text }}</a></p>
         {{ end }}

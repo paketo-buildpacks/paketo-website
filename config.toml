@@ -5,26 +5,129 @@ pygmentsUseClasses = true
 pygmentsCodefences = true
 
 [params.hero]
-  headline = "Paketo Buildpacks: Framework and runtime support for apps"
-  subhead = "Paketo is a collection of Cloud Native Buildpack compliant buildpacks for the most common enterprise development languages and frameworks."
-  cta_text = "Paketo Docs"
-  cta_link = "https://www.paketo.io"
+  headline = "Paketo Buildpacks"
+  subheadline = "Less time building, more time developing"
+  subhead = "Java, Node.js, Go, .NET Core, PHP, NGINX"
+
+  cta_text = "Read the announcement"
+  cta_link = "https://medium.com/paketo-buildpacks"
+
+[params.what_are_buildpacks]
+  headline = "What are Buildpacks?"
+  description = "Buildpacks are a CNCF project that provide a high-level, performant abstraction for building OCI app images."
+  cta_text = "More about the Buildpacks Project"
+  cta_link = "https://buildpacks.io"
+
+[params.what_are_paketo_buildpacks]
+  headline = "What are Paketo Buildpacks?"
+  description = "Paketo Buildpacks provide modular language runtime support for applications while leveraging standards in the Cloud Native Buildpacks specification to make image builds performant and secure."
+
+  [[params.what_are_paketo_buildpacks.item]]
+    name = "Node.js"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "npm"
+    elem_link = "github.com/paketo-buildpacks/npm"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "yarn"
+    elem_link = "github.com/paketo-buildpacks/yarn"
+
+  [[params.what_are_paketo_buildpacks.item]]
+    name = "Java"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "jmx"
+    elem_link = "github.com/paketo-buildpacks/jmx"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "google-stackdriver"
+    elem_link = "github.com/paketo-buildpacks/google-stackdriver"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "eclipse-openj9"
+    elem_link = "github.com/paketo-buildpacks/eclipse-openj9"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "build-system"
+    elem_link = "github.com/paketo-buildpacks/build-system"
+
+  [[params.what_are_paketo_buildpacks.item]]
+    name = "Go"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "go-compiler"
+    elem_link = "github.com/paketo-buildpacks/go-compiler"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "dep"
+    elem_link = "github.com/paketo-buildpacks/dep"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "go-mod"
+    elem_link = "github.com/paketo-buildpacks/go-mod"
+
+  [[params.what_are_paketo_buildpacks.item]]
+    name = ".NET Core"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "dotnet-core-runtime"
+    elem_link = "github.com/paketo-buildpacks/dotnet-core-runtime"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "dotnet-core-aspnet"
+    elem_link = "github.com/paketo-buildpacks/dotnet-core-aspnet"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "dotnet-core-sdk"
+    elem_link = "github.com/paketo-buildpacks/dotnet-core-sdk"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "dotnet-core-build"
+    elem_link = "github.com/paketo-buildpacks/dotnet-core-build"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "dotnet-core-conf"
+    elem_link = "github.com/paketo-buildpacks/dotnet-core-conf"
+
+  [[params.what_are_paketo_buildpacks.item]]
+    name = "PHP"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "php-dist"
+    elem_link = "github.com/paketo-buildpacks/php-dist"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "php-web"
+    elem_link = "github.com/paketo-buildpacks/php-web"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "php-composer"
+    elem_link = "github.com/paketo-buildpacks/php-composer"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "httpd"
+    elem_link = "github.com/paketo-buildpacks/httpd"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "nginx"
+    elem_link = "github.com/paketo-buildpacks/nginx"
 
 [params.why_paketo]
     headline = "Why Paketo Buildpacks?"
-    copy = "Paketo Buildpacks are for developers and operators that build and deploy applications to cloud native platforms and build systems that support the Cloud Native Buildpack specification, working within any Cloud Native Platform (Kubernetes, Cloud Foundry, etc.)."
+    copy = ""
 
   [[params.why_paketo.item]]
     title = "Quality"
-    description = "The Paketo project team has been authoring buildpacks for over five years, and has incorporated feedback from hundreds of thousands of developers."
-    
-  [[params.why_paketo.item]]
-    title = "Security"
-    description = "The Paketo project team works hard to ensure swift roll-out of security patches in response to the vulnerabilities in upstream language runtimes and frameworks."
+    description = "The Paketo project is built on over five years of feeback from hundreds of thousands of developer."
 
   [[params.why_paketo.item]]
-    title = "Continued Innovation"
-    description = "The Paketo project team incorporates feedback from developers around the world in order to keep the buildpack collection up to date with best industry practices."
+    title = "Security"
+    description = "The Paketo project ensures that upstream languages, runtimes and frameworks are continuiously patched in response to vulnerabilities and updates."
+
+  [[params.why_paketo.item]]
+    title = "Community"
+    description = "The Paketo project is a open source project, all major decisions are made by the RFC process"
 
   [[params.why_paketo.item]]
     title = "Industry standard"
@@ -67,12 +170,3 @@ pygmentsCodefences = true
     text = "Tutorial"
     link = "#"
 
-  [[params.get_started.item]]
-    icon = "paketo-slack.svg"
-    text = "Paketo Slack"
-    link = "https://www.paketo.io"
-
-  [[params.get_started.item]]
-    icon = "paketo-blog.svg"
-    text = "Paketo Blog"
-    link = "#"
