@@ -1,5 +1,5 @@
 baseURL = "https://www.paketo.io/"
-title = "Paketo Buildpacks: Framework and runtime support for apps"
+title = "Paketo Buildpacks"
 
 pygmentsUseClasses = true
 pygmentsCodefences = true
