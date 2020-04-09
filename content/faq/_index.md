@@ -4,8 +4,14 @@ title="FAQ"
 
 ## Frequently Asked Questions
 
-#### What languages and frameworks are supported?
-We currently support Java, Node.js, Golang, .NET Core, PHP, and NGINX apps 
+#### What do Paketo Buildpacks build and where can I run software packaged with Paketo Buildpacks?
+Paketo Buildpacks build images that run on Kubernetes and any other Cloud Native platform.
+
+#### How are images built with Paketo Buildpacks different from Docker images?
+Unlike Docker images, images built from Paketo Buildpacks are OCI compliant.
+
+#### What languages and frameworks are available?
+We currently offer Java, Node.js, Golang, .NET Core, PHP, and NGINX Paketo Buildpacks
 
 #### I have a Java, Node.js, Golang, .NET Core, PHP, or NGINX app. How can I start using Paketo Buildpacks to build my apps?
 Check out [our getting started tutorial](/docs/getting-started) to see how. It's that simple!
