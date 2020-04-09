@@ -26,92 +26,96 @@ pygmentsCodefences = true
     name = "Node.js"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "npm"
-    elem_link = "github.com/paketo-buildpacks/npm"
+    elem_name = "node-engine"
+    elem_link = "https://github.com/paketo-buildpacks/node-engine"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "yarn"
-    elem_link = "github.com/paketo-buildpacks/yarn"
+    elem_name = "npm"
+    elem_link = "https://github.com/paketo-buildpacks/npm"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "yarn-install"
+    elem_link = "https://github.com/paketo-buildpacks/yarn-install"
 
   [[params.what_are_paketo_buildpacks.item]]
     name = "Java"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "jmx"
-    elem_link = "github.com/paketo-buildpacks/jmx"
+    elem_link = "https://github.com/paketo-buildpacks/jmx"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "google-stackdriver"
-    elem_link = "github.com/paketo-buildpacks/google-stackdriver"
+    elem_link = "https://github.com/paketo-buildpacks/google-stackdriver"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "eclipse-openj9"
-    elem_link = "github.com/paketo-buildpacks/eclipse-openj9"
+    elem_link = "https://github.com/paketo-buildpacks/eclipse-openj9"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "build-system"
-    elem_link = "github.com/paketo-buildpacks/build-system"
+    elem_link = "https://github.com/paketo-buildpacks/build-system"
 
   [[params.what_are_paketo_buildpacks.item]]
     name = "Go"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "go-compiler"
-    elem_link = "github.com/paketo-buildpacks/go-compiler"
+    elem_link = "https://github.com/paketo-buildpacks/go-compiler"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "dep"
-    elem_link = "github.com/paketo-buildpacks/dep"
+    elem_link = "https://github.com/paketo-buildpacks/dep"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "go-mod"
-    elem_link = "github.com/paketo-buildpacks/go-mod"
+    elem_link = "https://github.com/paketo-buildpacks/go-mod"
 
   [[params.what_are_paketo_buildpacks.item]]
     name = ".NET Core"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "dotnet-core-runtime"
-    elem_link = "github.com/paketo-buildpacks/dotnet-core-runtime"
+    elem_link = "https://github.com/paketo-buildpacks/dotnet-core-runtime"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "dotnet-core-aspnet"
-    elem_link = "github.com/paketo-buildpacks/dotnet-core-aspnet"
+    elem_link = "https://github.com/paketo-buildpacks/dotnet-core-aspnet"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "dotnet-core-sdk"
-    elem_link = "github.com/paketo-buildpacks/dotnet-core-sdk"
+    elem_link = "https://github.com/paketo-buildpacks/dotnet-core-sdk"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "dotnet-core-build"
-    elem_link = "github.com/paketo-buildpacks/dotnet-core-build"
+    elem_link = "https://github.com/paketo-buildpacks/dotnet-core-build"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "dotnet-core-conf"
-    elem_link = "github.com/paketo-buildpacks/dotnet-core-conf"
+    elem_link = "https://github.com/paketo-buildpacks/dotnet-core-conf"
 
   [[params.what_are_paketo_buildpacks.item]]
     name = "PHP"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "php-dist"
-    elem_link = "github.com/paketo-buildpacks/php-dist"
+    elem_link = "https://github.com/paketo-buildpacks/php-dist"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "php-web"
-    elem_link = "github.com/paketo-buildpacks/php-web"
+    elem_link = "https://github.com/paketo-buildpacks/php-web"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "php-composer"
-    elem_link = "github.com/paketo-buildpacks/php-composer"
+    elem_link = "https://github.com/paketo-buildpacks/php-composer"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "httpd"
-    elem_link = "github.com/paketo-buildpacks/httpd"
+    elem_link = "https://github.com/paketo-buildpacks/httpd"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
     elem_name = "nginx"
-    elem_link = "github.com/paketo-buildpacks/nginx"
+    elem_link = "https://github.com/paketo-buildpacks/nginx"
 
 [params.why_paketo]
     headline = "Why Paketo Buildpacks?"
@@ -119,15 +123,15 @@ pygmentsCodefences = true
 
   [[params.why_paketo.item]]
     title = "Quality"
-    description = "The Paketo project is built on over five years of feeback from hundreds of thousands of developer."
+    description = "The Paketo project is built on over five years of feedback from hundreds of thousands of developer."
 
   [[params.why_paketo.item]]
     title = "Security"
-    description = "The Paketo project ensures that upstream languages, runtimes and frameworks are continuiously patched in response to vulnerabilities and updates."
+    description = "The Paketo project ensures that upstream languages, runtimes, and frameworks are continuously patched in response to vulnerabilities and updates."
 
   [[params.why_paketo.item]]
     title = "Community"
-    description = "The Paketo project is a open source project, all major decisions are made by the RFC process"
+    description = "The Paketo Buildpacks project lives within the Cloud Foundry Foundation and is dedicated to maintaining a vendor-neutral governance process."
 
   [[params.why_paketo.item]]
     title = "Industry standard"
@@ -158,15 +162,15 @@ pygmentsCodefences = true
     a = "Join the Paketo Buildpacks working group meetings to introduce yourself and hear about what’s in flight."
   
 [params.get_started]
-  headline = "Get Started with Paketo Buildpacks"
-
-  [[params.get_started.item]]
-    icon = "paketo-documentation.svg"
-    text = "Documentation"
-    link = "#"
+  headline = "Getting Started"
 
   [[params.get_started.item]]
     icon = "paketo-tutorial.svg"
     text = "Tutorial"
-    link = "#"
+    link = "/docs/getting-started"
+
+  [[params.get_started.item]]
+    icon = "paketo-documentation.svg"
+    text = "Docs"
+    link = "/docs/"
 
