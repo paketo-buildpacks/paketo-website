@@ -9,11 +9,7 @@
 
     {{ partial "header.html" . }}
 
-    <div class="pad50 list">
-        <div class="text-col">
-            {{ .Content }}
-        </div>
-    </div>
+    {{ partial "docs-body.html" . }}
 
     {{ partial "footer.html" .}}
 

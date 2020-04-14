@@ -1,13 +1,29 @@
 
-<div class="hero pad50 pad-top-100 pad-btm-100">
+<div class="hero pad50 pad-top-100 cf pad-btm-100">
 
-    <div class="text-col">
         {{ with .Site.Params.hero}}
-            <h1>{{ .headline }} </h1>
-            <h2>{{ .subheadline }} </h2>
-            <h2>{{ .subhead }} </h2>
-            <p><a class="cta" href="{{ .cta_link}}" title="{{ .cta_text }}">{{ .cta_text }}</a></p>
+
+            <div class="float50">
+                <div class="text-col">
+                    <h1>{{ .headline }} </h1>
+                    <h2>{{ .subheadline }} </h2>
+                    <p><a class="cta" href="{{ .cta_link}}" title="{{ .cta_text }}">{{ .cta_text }}</a></p>
+                </div>
+            </div>
+            <div class="float50 cf">
+                {{ range .logos }}
+                    <div>
+                        {{ range .item }}
+                            <div class="inline50 hero-logo text-center">
+                                <img src="/images/{{ .img  }}" alt="{{ .alt }}">
+                            </div>
+                        {{ end }}
+                    </div>
+                {{ end }}
+            </div>
+            
         {{ end }}
+    
     </div>
 
 </div>

@@ -1,0 +1,13 @@
+
+{{ $child_pages := union .Sections .Sections }}
+<script>console.info({{ .Sections.ByTitle }});</script>
+
+<ul class="sub-menu">
+    {{ range $child_pages.ByTitle }}
+    <script>console.info('childs', {{ .Title }});</script>
+        <li class="nested-level">
+            <a href="{{.Permalink}}">{{ .Title }}</a>
+            {{ partial "menu-recursive.html" . }}
+        </li>
+    {{ end }}
+</ul>

@@ -1,16 +1,45 @@
-baseURL = "https://www.paketo.io/"
+baseURL = "http://paketo.traverstodd.com/"
 title = "Paketo Buildpacks"
 
 pygmentsUseClasses = true
 pygmentsCodefences = true
 
-[params.hero]
-  headline = "Paketo Buildpacks"
-  subheadline = "Less time building, more time developing"
-  subhead = "Java, Node.js, Go, .NET Core, PHP, NGINX"
+# path name excluded from documentation menu
+menu_exclusion = [
+    "faq"
+]
 
-  cta_text = "Read the announcement"
-  cta_link = "https://medium.com/paketo-buildpacks"
+[params.hero]
+    headline = "Paketo Buildpacks"
+    subheadline = "Less time building, more time developing"
+
+    cta_text = "Read the announcement"
+    cta_link = "https://medium.com/paketo-buildpacks"
+
+    [[params.hero.logos]]
+        [[params.hero.logos.item]]
+            img = "java-logo.png"
+            alt = "java logo"
+
+        [[params.hero.logos.item]]
+            img = "go-logo.png"
+            alt = "go logo"
+
+        [[params.hero.logos.item]]
+            img = "net-core-logo.png"
+            alt = ".net core logo"
+
+        [[params.hero.logos.item]]
+            img = "nginx-logo.png"
+            alt = "nginx logo"
+
+        [[params.hero.logos.item]]
+            img = "node-logo.png"
+            alt = "node logo"
+
+        [[params.hero.logos.item]]
+            img = "php-logo.png"
+            alt = "php logo"
 
 [params.what_are_buildpacks]
   headline = "What are Buildpacks?"
@@ -133,29 +162,6 @@ pygmentsCodefences = true
     title = "Industry standard"
     description = "Paketo buildpacks are compliant with the latest version of the CNB specification."
 
-
-[params.faq]
-  headline = "FAQ"
-
-  [[params.faq.item]]
-    q = "How are Paketo Buildpacks different from Cloud Foundry Buildpacks?"
-    a = "Cloud Foundry Buildpacks have been restructured so they can be used in any cloud native environment. As such, they are now called Paketo Buildpacks. Paketo Buildpacks are CNB compliant -- the legacy Cloud Foundry Buildpacks are not."
-
-  [[params.faq.item]]
-    q = "How are Paketo Buildpacks different from the Cloud Native Buildpack project?"
-    a = "Cloud Native Buildpacks (CNB) is a specification and set of tools for how buildpacks are structured. Paketo buildpacks implement that specification into a collection of usable buildpacks. Learn more at <a class='cta' href='buildpacks.io'>buildpacks.io</a>."
-
-  [[params.faq.item]]
-    q = "What if I’m using Cloud Foundry Buildpacks? How do I make the change to Paketo Buildpacks?"
-    a = "The Cloud Foundry Buildpacks team is already working on Paketo Buildpacks and will ensure a smooth transition for developers using Cloud Foundry Buildpacks."
-
-  [[params.faq.item]]
-    q = "What languages and frameworks can I use with Paketo Buildpacks?"
-    a = "At launch, Paketo Buildpacks will officially support the Java and NodeJS Paketo Buildpacks as well as tools/libraries that allow you to build and test your own Paketo Buildpacks. The team is also actively developing .Net, PHP, Golang, and Python Paketo Buildpacks."
-
-  [[params.faq.item]]
-    q = "How do I contribute to Paketo Buildpacks?"
-    a = "Join the Paketo Buildpacks working group meetings to introduce yourself and hear about what’s in flight."
   
 [params.get_started]
   headline = "Get Started with Paketo Buildpacks"

@@ -1,0 +1,39 @@
+{{$currentNode := .}}
+<div class="docs-menu">
+    <h4>{{ .Section | humanize }}</h4>
+    <ul>
+        {{- range .Site.Home.Sections.ByWeight -}}
+            {{template "docs-menu" dict "sect" . "currentnode" $currentNode}}
+        {{- end -}}
+    </ul>
+</div>
+
+{{define "docs-menu"}}
+    {{- $currentNode := .currentnode -}}
+    {{ with .sect }}
+
+        {{ if and (.IsSection) (eq .Section "docs") }}
+            
+            {{- $numberOfPages := (add (len .Pages) (len .Sections)) -}}
+            <li class="section-{{ .Section }} {{ if .IsAncestor $currentNode }}parent{{ end }}">
+                <a href="{{ .Permalink }}" class="{{ if eq .Path $currentNode.Path }} active{{ end }}">{{ .Title }}</a>
+                {{ if ne $numberOfPages 0 }}
+                <ul class="sub-menu">
+                    {{- .Scratch.Set "pages" .Pages -}}
+                    {{- $pages := (.Scratch.Get "pages") -}}
+                    {{- range $pages.ByWeight -}}
+                        {{template "docs-menu" dict "sect" . "currentnode" $currentNode}}
+                    {{- end -}}
+                </ul>
+                {{end}}
+            </li>
+
+        {{- else -}}
+
+            {{- if and (not .Params.Hidden) (eq .Section "docs") -}}
+                <li class="page"><a href="{{ .Permalink }}" class="{{ if eq .Path $currentNode.Path }}active{{ end }}">{{ .Title }}</a></li>
+            {{- end -}} 
+
+        {{ end -}}
+    {{ end -}}
+{{ end }}

@@ -1,36 +1,43 @@
-<div id="wp" class="what-are pad50 pad-top-100 pad-btm-100 bg-white">
+<div class="what-are pad50 pad-top-100 pad-btm-100 bg-white">
     <div class="cf">
-        <div class="float66 pad-right">
+        <div class="float50 pad-right">
             <div class="text-col">
                 <h2>{{ .Site.Params.what_are_buildpacks.headline }}</h2>
                 <p>{{ .Site.Params.what_are_buildpacks.description }}</p>
-                <a href={{ .Site.Params.what_are_buildpacks.cta_link}}> {{ .Site.Params.what_are_buildpacks.cta_text}} </a>
+                <a class="cta" href={{ .Site.Params.what_are_buildpacks.cta_link}}>{{ .Site.Params.what_are_buildpacks.cta_text}}</a>
             </div>
         </div>
-    </div>
-    <div class="verticalcontainer">
-        <div class="float66 pad-right">
+        <div class="float50 pad-right">
             <div class="text-col">
                 <h2>{{ .Site.Params.what_are_paketo_buildpacks.headline }}</h2>
                 <p>{{ .Site.Params.what_are_paketo_buildpacks.description }}</p>
             </div>
         </div>
+
         {{ with .Site.Params.what_are_paketo_buildpacks }}
-            <div class="horizontalcontainer">
+
+        <div class="clear buildpack-langs cf">
+            <div class="pad-top-100">
+                <h3>Language Packages</h3>
                 {{ range .item }}
-                <div class="float66 pad-right">
-                    <h3>{{ .name  }}</h3>
-                    <ul>
-                    {{ range .subitem }}
-                    <li>
-                        <a href={{ .elem_link}}> {{ .elem_name}} </a>
-                    </li>
-                    {{ end }}
-                    </ul>
-                </div>
-            {{ end }}
+                    <div class="float20">
+                        <div class="faq bordered-container">
+                            <h4 class="faq-header">{{ .name  }}</h4>
+                            <div class="faq-content hidden">
+                                <ul>
+                                    {{ range .subitem }}
+                                        <li>
+                                            <a href={{ .elem_link}}> {{ .elem_name}} </a>
+                                        </li>
+                                    {{ end }}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {{ end }}
             </div>
-        {{ end }}
         </div>
+
+        {{ end }}
     </div>
 </div>
