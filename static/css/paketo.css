@@ -138,8 +138,9 @@ nav a:hover:before, .cta:hover:before { height: 100%; bottom: 0;}
 .get-started a { display: inline-block; }
 
 /* footer */
-footer nav a { color: white; }
+footer a { color: white; }
 footer nav a svg path { fill: white; }
+footer p { color: rgba(255,255,255,0.5); margin: 10px 0; font-size: 14px;}
 
 /* docs */
 .docs, .next-up { border-top: 1px solid #ccc;}
