@@ -10,14 +10,14 @@ weight: 4
 Build an image using `pack` with the following command
 
 ```
-pack build test-drive -p <path/to/test-drive/app> --builder gcr.io/paketo-buildpacks/builder:bionic
+pack build test-drive -p <path/to/test-drive/app> --builder gcr.io/paketo-buildpacks/builder:base
 ```
 
 Verify that your build was successful by running `docker images` you should expect to see something similar to the following output
 ```
 REPOSITORY                         TAG                 IMAGE ID            CREATED             SIZE
 gcr.io/paketo-buildpacks/run       base-cnb            88e2c125e701        6 days ago          1.05GB
-gcr.io/paketo-buildpacks/builder   bionic              7264ff2c18c3        40 years ago        1.5GB
+gcr.io/paketo-buildpacks/builder   base                7264ff2c18c3        40 years ago        1.5GB
 test-drive                         latest              fcaa3645e775        40 years ago        1.13GB
 ```
 

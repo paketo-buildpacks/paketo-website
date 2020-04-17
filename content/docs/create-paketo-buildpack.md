@@ -88,7 +88,7 @@ GOOS=linux go build -ldflags="-s -w" -o ./bin/detect ./cmd/detect/main.go
 ```
 Once you've done that you should be able to use the `pack` cli to try and build a container for a `nodejs` app. For the purposes of this demonstration I will be using the following [simple app](https://github.com/paketo-buildpacks/node-engine/tree/master/integration/testdata/simple_app) from the `node-engine` repo linked above. The following command will allow you to build the app:
 ```shell
-pack build <app-name> -p <path/to/app> --buildpack <path/to/project> --builder "gcr.io/paketo-buildpacks/builder:bionic" -v  
+pack build <app-name> -p <path/to/app> --buildpack <path/to/project> --builder "gcr.io/paketo-buildpacks/builder:base" -v  
 ```
 
 You should see some output similar to this:
