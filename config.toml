@@ -1,4 +1,4 @@
-baseURL = "http://paketo.traverstodd.com/"
+baseURL = "https://paketo.io/"
 title = "Paketo Buildpacks"
 
 pygmentsUseClasses = true
@@ -6,7 +6,8 @@ pygmentsCodefences = true
 
 # path name excluded from documentation menu
 menu_exclusion = [
-    "faq"
+    "faq",
+    "docs"
 ]
 
 [params.hero]

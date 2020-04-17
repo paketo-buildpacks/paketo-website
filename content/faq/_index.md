@@ -14,7 +14,7 @@ Unlike Docker images, images built from Paketo Buildpacks are OCI compliant.
 We currently offer Java, Node.js, Golang, .NET Core, PHP, and NGINX Paketo Buildpacks
 
 #### I have a Java, Node.js, Golang, .NET Core, PHP, or NGINX app. How can I start using Paketo Buildpacks to build my apps?
-Check out [our getting started tutorial](/docs/getting-started) to see how. It's that simple!
+Check out [our getting started tutorial](/docs) to see how. It's that simple!
 
 #### What languages will be supported in the future?
 We will developing Ruby and Python Paketo Buildpacks with more languages to follow. Stay tuned for our first roadmap!

@@ -3,13 +3,13 @@
     <div class="docs-sidebar relative z2 bg-white">
         {{ partial "docs-sidebar.html" . }}
     </div>
-    <div class="docs-body">
-        <div class="text-col pad50">
+    <div class="docs-body relative">
+        <div class="text-col docs-text pad50">
             {{ .Content }}
         </div>
 
         {{with .Site.Pages.Prev . }}
-            <div class="next-up pad50">
+            <div class="next-up absolute pad50">
                 <h3>Next up</h3>
                 <p><a class="cta" href="{{.RelPermalink}}">{{ .Title }}</a></p>
             </div>

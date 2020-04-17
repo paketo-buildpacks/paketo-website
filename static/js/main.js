@@ -1,6 +1,15 @@
 ;(function () {
 	
     'use strict';
+
+    // simple script to open external links in new tab 
+    var links = document.getElementsByTagName("a");
+    for (var i = 0, linksLength = links.length; i < linksLength; i++) {
+        if (links[i].hostname != window.location.hostname) {
+            links[i].target = '_blank';
+        } 
+    }
+
     var wp = document.getElementById('wp');
     if(wp){ // don't bother if we're not on the homepage. 
         var scrollHandler = function (event) {

@@ -1,6 +1,7 @@
 ---
 title: "Create Paketo Buildpack"
 date: 2020-04-13T15:45:49-04:00
+weight: 6
 ---
 
 # How to Write a Cloud Native Buildpack Using Packit

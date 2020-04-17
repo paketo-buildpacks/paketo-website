@@ -11,8 +11,7 @@
 {{define "docs-menu"}}
     {{- $currentNode := .currentnode -}}
     {{ with .sect }}
-
-        {{ if and (.IsSection) (eq .Section "docs") }}
+        {{ if and (.IsSection) (eq .Section "docs") (not .Params.Hidden) }}
             
             {{- $numberOfPages := (add (len .Pages) (len .Sections)) -}}
             <li class="section-{{ .Section }} {{ if .IsAncestor $currentNode }}parent{{ end }}">
