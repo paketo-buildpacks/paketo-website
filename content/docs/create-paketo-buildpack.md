@@ -5,12 +5,14 @@ date: 2020-04-13T15:45:49-04:00
 
 # How to Write a Cloud Native Buildpack Using Packit
 
-If the entire Cloud Native Buildpack experience is new to you, you may want to stop and take some time to read the about [authoring a a Cloud Native Buildpack](https://buildpacks.io/docs/buildpack-author-guide/create-buildpack/) (CNB). Packit is a Go library that is an abstraction that conforms to the [CNB specification](https://github.com/buildpacks/spec) that takes a minimal approach in terms of the features that are implemented giving a lot of fine control to the buildpack author. But, that isn't what this tutorial is about, this tutorial's goal is to take you from nothing to a buildpack that puts a dependency on the filesystem as fast as possible, so with that let's get into it.
+If the entire Cloud Native Buildpack experience is new to you, you may want to stop and take some time to read about [authoring a a Cloud Native Buildpack](https://buildpacks.io/docs/buildpack-author-guide/create-buildpack/) (CNB). Packit is a Go library that is an abstraction that conforms to the [CNB specification](https://github.com/buildpacks/spec) that takes a minimal approach in terms of the features that are implemented giving a lot of fine control to the buildpack author.
 
-## Packit
+This tutorial's goal is to take you from nothing to a buildpack that puts a dependency on the filesystem as fast as possible, so with that let's get started!
+
+### Packit
 [![GoDoc](https://godoc.org/github.com/cloudfoudry/packit?status.svg)](https://godoc.org/github.com/cloudfoundry/packit)
 
-For the full documentation of the Packit library, you can peruse the godocs linked above, but in the interest of saving you time let's talk about the three artifacts that will need to be present in our final built buildpack. In the end we will need a `buildpack.toml` file, a `bin/detect` binary, and a `bin/build` binary for this buildpack to be CNB compliant so with that let's get started.
+For complete documentation of the Packit library, you can browse the godocs linked above. In the interest of saving you time, let's talk about the three artifacts that will need to be present in our final built buildpack. In the end we will need a `buildpack.toml` file, a `bin/detect` binary, and a `bin/build` binary for this buildpack to be CNB compliant.
 
 ## Prerequisites
 You will need the following tools installed on your machine to aid you in building and testing your buildpack.
@@ -19,60 +21,46 @@ You will need the following tools installed on your machine to aid you in buildi
 - [Go](https://golang.org/doc/install)
 
 ## Let's Get Started
-For demonstration purposes we are going to build a buildpack that installs a the `nodejs` engine, which is based off the Paketo [node-engine-cnb](https://github.com/cloudfoundry/node-engine-cnb). 
+For demonstration purposes we are going to build a buildpack that installs a `nodejs` engine, which is based off the Paketo [node-engine](https://github.com/paketo-buildpacks/node-engine). 
 
 A sample repository containing all of the code is [here](https://github.com/ForestEckhardt/tutorial-cnb). To start a brand new Go project all you need to do is create a new directory to contain you project run the following command:
 ```shell
-go mod init <path/to/project or github.com/<some-org or some-user>/<some-repo>>
+go mod init </path/to/project>
 ```
 
 ### `buildpack.toml`
+The `buildpack.toml` file should contain the following: 
 ``` toml
+# Indicates compatibility version with lifecycle
 api = "0.2"
 
-[buildpack]
-  id = "com.example.node-engine"
-  name = "Node Engine Buildpack"
-  version = "0.0.1"
-
-[[stacks]]
-  id = "org.cloudfoundry.stacks.cflinuxfs3"
-```
-
-Let's talk about some of the fields that are in `buildpack.toml` above.
-```toml 
-# Indicates compatibility version with lifecycle
-api = "0.2" 
-```
-
-```toml
 # General metadata about the buildpack that is used be the lifecycle
 [buildpack]
   id = "com.example.node-engine"
   name = "Node Engine Buildpack"
   version = "0.0.1"
- ```
 
- ```toml
- # The list of stacks that the buildpack itself is compatible with
- [[stacks]]
-  id = "org.cloudfoundry.stacks.cflinuxfs3"
- ```
+# The list of stacks that the buildpack itself is compatible with
+[[stacks]]
+  id = "io.buildpacks.stacks.bionic"
+```
  
  ### `bin/detect`
- For a complete rundown on how the Detect Phase works you can read the `Detect Phase` section in the [packit godocs](https://godoc.org/github.com/cloudfoundry/packit), but for now I will give you a quick run down. In the Packit library, there is a [`packit.Detect()`](https://godoc.org/github.com/cloudfoundry/packit#Detect) function that consumes a [`packit.DetectFunc`](https://godoc.org/github.com/cloudfoundry/packit#DetectFunc). The `packit.DetectFunc` is created by us (the buildpack author) and contains all of the buildpack specific detection logic. So with that let's laydown some code and talk about it.
+ **Note**: For a complete rundown on how the Detect Phase works you can read the `Detect Phase` section in the [packit godocs](https://godoc.org/github.com/cloudfoundry/packit). 
+
+ In the Packit library, there is a [`packit.Detect()`](https://godoc.org/github.com/cloudfoundry/packit#Detect) function that consumes a [`packit.DetectFunc`](https://godoc.org/github.com/cloudfoundry/packit#DetectFunc). The `packit.DetectFunc` is created by buildpack authors and contains all of the buildpack specific detection logic. So with that let's write some code and talk about it.
  
  `cmd/detect/main.go`
 ```go
 package main
 
 import (
-    "<path/to/project or github.com/<some-org or some-user>/<some-repo>>/node"
-	"github.com/cloudfoundry/packit"
+    "<path/to/project>"  
+    "github.com/cloudfoundry/packit"
 )
 
-func main() {
-	packit.Detect(node.Detect())
+func main() {  
+    packit.Detect(node.Detect())
 }
 ```
  
@@ -81,9 +69,8 @@ func main() {
 package node
 
 import (
-    "fmt"
-
-	"github.com/cloudfoundry/packit"
+    "fmt"  
+    "github.com/cloudfoundry/packit"
 )
 
 func Detect() packit.DetectFunc {
@@ -93,17 +80,16 @@ func Detect() packit.DetectFunc {
 }
 ```
 
-Alright let's talk about this for a minute. With these pieces of code, we have written a buildpack that will alway detect false. The reason that we have split out definition for the `packit.DetectFunc` in to its own package is that we make a clear separation in terms of what Packit needs to function and what the business logic for our buildpack, all buildpack specific business logic will go into the `node` package from now on. This may seem small but if you plan on potentially expanding this buildpack we highly recommend that you follow this structure.
+Alright let's talk about this for a minute. With these pieces of code, we have written a buildpack that will always detect false. The reason that we've split out the definition of the `packit.DetectFunc` into its own package is that this allows us to separate Packit related code from any actual business specific logic of the buildpack. All buildpack specific business logic will go into the `node` package from now on. This may seem small but if you plan on potentially expanding this buildpack we highly recommend that you follow this structure.
 
 To test out progress so far we can build the detect binary ourselves with the following command:
 ```shell
 GOOS=linux go build -ldflags="-s -w" -o ./bin/detect ./cmd/detect/main.go
 ```
-Once you've done that you should be able to use the `pack` cli to try and build a container for a `nodejs` app. For the purposes of this demonstration I will be using the following [simple app](https://github.com/cloudfoundry/node-engine-cnb/tree/master/integration/testdata/simple_app) from the `node-engine-cnb` linked above. The following command will allow you to build the app:
+Once you've done that you should be able to use the `pack` cli to try and build a container for a `nodejs` app. For the purposes of this demonstration I will be using the following [simple app](https://github.com/paketo-buildpacks/node-engine/tree/master/integration/testdata/simple_app) from the `node-engine` repo linked above. The following command will allow you to build the app:
 ```shell
-pack build <app-name> -p path/to/app -b path/to/buildpack-project -v  
+pack build <app-name> -p <path/to/app> --buildpack <path/to/project> --builder "gcr.io/paketo-buildpacks/builder:bionic" -v  
 ```
-As a quick note if it is the first time that you have run this command on your machine it may take a while as it pulls down the base images for the app, subsequent runs should be much faster.
 
 You should see some output similar to this:
 ```shell
@@ -119,9 +105,13 @@ You should see some output similar to this:
 ERROR: failed with status code: 6
 ```
 
-Alright now that we have a skeleton laid out let's make it do something more useful than just fail all of the time. To do that we need to dive into the concept of provides and requires. If you want to read the buildpacks specification for provides and requires you can look [here](https://github.com/buildpacks/spec/blob/master/buildpack.md#phase-1-detection), but I will try and give you the abridged version here. A buildpack's detect binary has as part of it [`packit.DetectResult`](https://godoc.org/github.com/cloudfoundry/packit#DetectResult) pass out a [`packit.BuildPlan`](https://godoc.org/github.com/cloudfoundry/packit#BuildPlan) in which there is a list of provisions and requirements. A buildpack can state that it provides dependencies or that it requires dependencies or it can both require and provide dependencies. A buildpack can only detect true if all of its provides match up with requires from itself or a subsequent buildpacks in a buildpack sequence and that all of is requires match up with provides from itself or previous buildpacks in a sequence of buildpacks.
+Now that we have a skeleton laid out let's make it do something more useful than just fail all of the time.  
 
-That is a lot of words so let's talk about our situation. For us our buildpack is the only one running in the sequence so in order for us to pass detection we have to both provide `node` as a dependency but we also need to require `node` as well. So let's go implement that provide and require relationship in our detect code.
+To do that we need to dive into the concept of provides and requires. If you want to read the buildpacks specification for provides and requires you can look [here](https://github.com/buildpacks/spec/blob/master/buildpack.md#phase-1-detection). 
+
+**Quick summary**: A buildpack's detect binary has as part of it [`packit.DetectResult`](https://godoc.org/github.com/cloudfoundry/packit#DetectResult) pass out a [`packit.BuildPlan`](https://godoc.org/github.com/cloudfoundry/packit#BuildPlan) in which there is a list of provisions and requirements. A buildpack can state that it provides dependencies or that it requires dependencies or it can both require and provide dependencies. A buildpack can only detect true if all of its provides match up with requires from itself or a subsequent buildpacks in a buildpack sequence and that all of is requires match up with provides from itself or previous buildpacks in a sequence of buildpacks.
+
+In our situation, our buildpack is the only one running in the sequence so in order for us to pass detection we have to both provide `node` as a dependency but we also need to require `node` as well. So let's go implement that provide and require relationship in our detect code.
 
 `node/detect.go`
 ```go
