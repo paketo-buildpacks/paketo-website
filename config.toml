@@ -15,7 +15,7 @@ menu_exclusion = [
     subheadline = "Less time building, more time developing"
 
     cta_text = "Read the announcement"
-    cta_link = "https://medium.com/paketo-buildpacks"
+    cta_link = "https://medium.com/paketo-buildpacks/building-apps-for-kubernetes-get-to-know-paketo-buildpacks-6dc29b0f3cf3"
 
     [[params.hero.logos]]
         [[params.hero.logos.item]]
@@ -44,107 +44,179 @@ menu_exclusion = [
 
 [params.what_are_buildpacks]
   headline = "What are Buildpacks?"
-  description = "Buildpacks are a CNCF project that provide a high-level, performant abstraction for building OCI app images."
-  cta_text = "More about the Buildpacks Project"
+  description = "Cloud Native Buildpacks is a Sandbox project in the Cloud Native Computing Foundation (CNCF) that provides a high-level, performant abstraction for building container images. Cloud Native Buildpacks is an evolution of the buildpacks concept that originated with PaaS like Cloud Foundry."
+  cta_text = "More about the Cloud Native Buildpacks project"
   cta_link = "https://buildpacks.io"
 
 [params.what_are_paketo_buildpacks]
   headline = "What are Paketo Buildpacks?"
-  description = "Paketo Buildpacks provide modular language runtime support for applications while leveraging standards in the Cloud Native Buildpacks specification to make image builds performant and secure."
+  description = "Paketo Buildpacks provide language runtime support for applications. They leverage the Cloud Native Buildpacks framework to make image builds easy, performant, and secure."
 
   [[params.what_are_paketo_buildpacks.item]]
     name = "Node.js"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "node-engine"
+    elem_name = "Node.js"
+    elem_link = "https://github.com/paketo-buildpacks/nodejs"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "↳ Node Engine"
     elem_link = "https://github.com/paketo-buildpacks/node-engine"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "npm"
+    elem_name = "↳ NPM"
     elem_link = "https://github.com/paketo-buildpacks/npm"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "yarn-install"
+    elem_name = "↳ Yarn"
     elem_link = "https://github.com/paketo-buildpacks/yarn-install"
 
   [[params.what_are_paketo_buildpacks.item]]
     name = "Java"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "jmx"
-    elem_link = "https://github.com/paketo-buildpacks/jmx"
+      elem_name = "↳ Adopt-openjdk"
+      elem_link = "https://github.com/paketo-buildpacks/adopt-openjdk"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "google-stackdriver"
-    elem_link = "https://github.com/paketo-buildpacks/google-stackdriver"
+      elem_name = "↳ Build-system"
+      elem_link = "https://github.com/paketo-buildpacks/build-system"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "eclipse-openj9"
-    elem_link = "https://github.com/paketo-buildpacks/eclipse-openj9"
+      elem_name = "↳ Apache-tomcat"
+      elem_link = "https://github.com/paketo-buildpacks/apache-tomcat"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "build-system"
-    elem_link = "https://github.com/paketo-buildpacks/build-system"
+      elem_name = "↳ Spring-boot"
+      elem_link = "https://github.com/paketo-buildpacks/spring-boot"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Dist-zip"
+      elem_link = "https://github.com/paketo-buildpacks/dist-zip"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Procfile"
+      elem_link = "https://github.com/paketo-buildpacks/procfile"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Azure-application-insights"
+      elem_link = "https://github.com/paketo-buildpacks/azure-application-insights"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Debug"
+      elem_link = "https://github.com/paketo-buildpacks/debug"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Googlestackdriver"
+      elem_link = "https://github.com/paketo-buildpacks/google-stackdriver"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ JMX"
+      elem_link = "https://github.com/paketo-buildpacks/jmx"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Executable-jar"
+      elem_link = "https://github.com/paketo-buildpacks/executable-jar"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Eclipse-open9"
+      elem_link = "https://github.com/paketo-buildpacks/eclipse-openj9"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Sap-machine"
+      elem_link = "https://github.com/paketo-buildpacks/sap-machine"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Adopt-openjdk"
+      elem_link = "https://github.com/paketo-buildpacks/adopt-openjdk"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Bellsoft-liberica"
+      elem_link = "https://github.com/paketo-buildpacks/bellsoft-liberica"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Encrypt-at-rest"
+      elem_link = "https://github.com/paketo-buildpacks/encrypt-at-rest"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Azul-zulu"
+      elem_link = "https://github.com/paketo-buildpacks/azul-zulu"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Amazon-corretto"
+      elem_link = "https://github.com/paketo-buildpacks/amazon-corretto"
 
   [[params.what_are_paketo_buildpacks.item]]
     name = "Go"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "go-compiler"
+    elem_name = "Go"
+    elem_link = "https://github.com/paketo-buildpacks/go"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "↳ Compiler"
     elem_link = "https://github.com/paketo-buildpacks/go-compiler"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "dep"
+    elem_name = "↳ Dep"
     elem_link = "https://github.com/paketo-buildpacks/dep"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "go-mod"
+    elem_name = "↳ Modules"
     elem_link = "https://github.com/paketo-buildpacks/go-mod"
 
   [[params.what_are_paketo_buildpacks.item]]
     name = ".NET Core"
-
+    
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "dotnet-core-runtime"
+    elem_name = ".NET Core"
+    elem_link = "https://github.com/paketo-buildpacks/dotnet-core"
+    
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "↳ Runtime"
     elem_link = "https://github.com/paketo-buildpacks/dotnet-core-runtime"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "dotnet-core-aspnet"
+    elem_name = "↳ ASP.NET Core"
     elem_link = "https://github.com/paketo-buildpacks/dotnet-core-aspnet"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "dotnet-core-sdk"
+    elem_name = "↳ SDK"
     elem_link = "https://github.com/paketo-buildpacks/dotnet-core-sdk"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "dotnet-core-build"
+    elem_name = "↳ Source Build"
     elem_link = "https://github.com/paketo-buildpacks/dotnet-core-build"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "dotnet-core-conf"
+    elem_name = "↳ Configuration"
     elem_link = "https://github.com/paketo-buildpacks/dotnet-core-conf"
 
   [[params.what_are_paketo_buildpacks.item]]
     name = "PHP"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "php-dist"
+    elem_name = "PHP"
+    elem_link = "https://github.com/paketo-buildpacks/php"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "↳ Distribution"
     elem_link = "https://github.com/paketo-buildpacks/php-dist"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "php-web"
+    elem_name = "↳ Web"
     elem_link = "https://github.com/paketo-buildpacks/php-web"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "php-composer"
+    elem_name = "↳ Composer"
     elem_link = "https://github.com/paketo-buildpacks/php-composer"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "httpd"
+    elem_name = "↳ HTTPD"
     elem_link = "https://github.com/paketo-buildpacks/httpd"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "nginx"
+    elem_name = "↳ NGINX"
     elem_link = "https://github.com/paketo-buildpacks/nginx"
 
 [params.why_paketo]
@@ -153,7 +225,7 @@ menu_exclusion = [
 
   [[params.why_paketo.item]]
     title = "Quality"
-    description = "The Paketo project is built on over five years of feedback from hundreds of thousands of developer."
+    description = "The Paketo project is built on over five years of feedback from hundreds of thousands of developers using Cloud Foundry Buildpacks."
 
   [[params.why_paketo.item]]
     title = "Security"
@@ -164,19 +236,20 @@ menu_exclusion = [
     description = "The Paketo Buildpacks project lives within the Cloud Foundry Foundation and is dedicated to maintaining a vendor-neutral governance process."
 
   [[params.why_paketo.item]]
-    title = "Industry standard"
-    description = "Paketo buildpacks are compliant with the latest version of the CNB specification."
+    title = "Standard"
+    description = "Paketo buildpacks are compliant with the latest version of the Cloud Native Buildpacks specification."
 
   
 [params.get_started]
   headline = "Getting Started"
 
   [[params.get_started.item]]
+    icon = "paketo-tutorial.svg"
+    text = "Tutorial"
+    link = "https://medium.com/paketo-buildpacks/building-apps-for-kubernetes-get-to-know-paketo-buildpacks-6dc29b0f3cf3"
+
+  [[params.get_started.item]]
     icon = "paketo-documentation.svg"
     text = "Docs"
     link = "/docs/"
 
-  [[params.get_started.item]]
-    icon = "paketo-tutorial.svg"
-    text = "Quick Guide"
-    link = "https://medium.com/paketo-buildpacks/building-apps-for-kubernetes-get-to-know-paketo-buildpacks-6dc29b0f3cf3"

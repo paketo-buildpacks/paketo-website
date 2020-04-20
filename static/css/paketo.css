@@ -141,6 +141,9 @@ nav a:hover:before, .cta:hover:before, .docs-body a:hover:before { height: 100%;
 .faq h4.shown:before { content: "-";}
 .bordered-container { border: 1px solid #ccc; margin-right: 20px; padding: 20px; }
 
+.faq-content ul {padding-top: 1em;}
+.faq-content li {list-style: none;}
+
 /* get-started */
 .icon { width: 120px; margin: 0 10px; }
 .get-started a { display: inline-block; }
