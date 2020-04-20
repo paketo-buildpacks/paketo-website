@@ -75,16 +75,12 @@ menu_exclusion = [
     name = "Java"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-      elem_name = "↳ Openjdk"
-      elem_link = "https://github.com/paketo-buildpacks/openjdk"
+      elem_name = "↳ Adopt-openjdk"
+      elem_link = "https://github.com/paketo-buildpacks/adopt-openjdk"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
       elem_name = "↳ Build-system"
       elem_link = "https://github.com/paketo-buildpacks/build-system"
-
-    [[params.what_are_paketo_buildpacks.item.subitem]]
-      elem_name = "↳ Jvmapplication"
-      elem_link = "https://github.com/paketo-buildpacks/jvmapplication"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
       elem_name = "↳ Apache-tomcat"
@@ -112,19 +108,11 @@ menu_exclusion = [
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
       elem_name = "↳ Googlestackdriver"
-      elem_link = "https://github.com/paketo-buildpacks/googlestackdriver"
-
-    [[params.what_are_paketo_buildpacks.item.subitem]]
-      elem_name = "↳ JDBC"
-      elem_link = "https://github.com/paketo-buildpacks/jdbc"
+      elem_link = "https://github.com/paketo-buildpacks/google-stackdriver"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
       elem_name = "↳ JMX"
       elem_link = "https://github.com/paketo-buildpacks/jmx"
-
-    [[params.what_are_paketo_buildpacks.item.subitem]]
-      elem_name = "↳ Springautoreconfiguration"
-      elem_link = "https://github.com/paketo-buildpacks/springautoreconfiguration"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
       elem_name = "↳ Executable-jar"
