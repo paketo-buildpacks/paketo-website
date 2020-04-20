@@ -38,6 +38,14 @@
                 el.addClass('shown');
                 el.next().slideDown({duration: 500, easing: 'easeInOutQuart'});
             }
+        })
+        .on('click', '.nav-opener', function(){
+            var el = $(this);
+            if(el.hasClass('opened')){
+                el.removeClass('opened').next('nav').removeClass('showing');
+            } else {
+                el.addClass('opened').next('nav').addClass('showing');
+            }
         });
     });
 

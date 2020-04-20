@@ -172,12 +172,11 @@ menu_exclusion = [
   headline = "Getting Started"
 
   [[params.get_started.item]]
-    icon = "paketo-tutorial.svg"
-    text = "Tutorial"
-    link = "/docs/getting-started"
-
-  [[params.get_started.item]]
     icon = "paketo-documentation.svg"
     text = "Docs"
     link = "/docs/"
 
+  [[params.get_started.item]]
+    icon = "paketo-tutorial.svg"
+    text = "Quick Guide"
+    link = "https://medium.com/paketo-buildpacks/building-apps-for-kubernetes-get-to-know-paketo-buildpacks-6dc29b0f3cf3"

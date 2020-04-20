@@ -3,14 +3,14 @@
 
         {{ with .Site.Params.hero}}
 
-            <div class="float50">
+            <div class="float50 full-800">
                 <div class="text-col">
                     <h1>{{ .headline }} </h1>
                     <h2>{{ .subheadline }} </h2>
                     <p><a class="cta" href="{{ .cta_link}}" title="{{ .cta_text }}">{{ .cta_text }}</a></p>
                 </div>
             </div>
-            <div class="float50 cf">
+            <div class="float50 full-800 cf">
                 {{ range .logos }}
                     <div>
                         {{ range .item }}

@@ -1,13 +1,13 @@
 <div class="what-are pad50 pad-top-100 pad-btm-100 bg-white">
     <div class="cf">
-        <div class="float50 pad-right">
+        <div class="float50 full-800 pad-right">
             <div class="text-col">
                 <h2>{{ .Site.Params.what_are_buildpacks.headline }}</h2>
                 <p>{{ .Site.Params.what_are_buildpacks.description }}</p>
                 <a class="cta" href={{ .Site.Params.what_are_buildpacks.cta_link}}>{{ .Site.Params.what_are_buildpacks.cta_text}}</a>
             </div>
         </div>
-        <div class="float50 pad-right">
+        <div class="float50 full-800 pad-right">
             <div class="text-col">
                 <h2>{{ .Site.Params.what_are_paketo_buildpacks.headline }}</h2>
                 <p>{{ .Site.Params.what_are_paketo_buildpacks.description }}</p>
@@ -20,7 +20,7 @@
             <div class="pad-top-100">
                 <h3>Language Packages</h3>
                 {{ range .item }}
-                    <div class="float20">
+                    <div class="float20 half-1000 full-800">
                         <div class="faq bordered-container">
                             <h4 class="faq-header">{{ .name  }}</h4>
                             <div class="faq-content hidden">
