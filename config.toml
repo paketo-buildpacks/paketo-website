@@ -15,7 +15,7 @@ menu_exclusion = [
     subheadline = "Less time building, more time developing"
 
     cta_text = "Read the announcement"
-    cta_link = "https://medium.com/paketo-buildpacks"
+    cta_link = "https://medium.com/paketo-buildpacks/building-apps-for-kubernetes-get-to-know-paketo-buildpacks-6dc29b0f3cf3"
 
     [[params.hero.logos]]
         [[params.hero.logos.item]]
@@ -75,80 +75,92 @@ menu_exclusion = [
     name = "Java"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "jmx"
+    elem_name = "↳ JMX"
     elem_link = "https://github.com/paketo-buildpacks/jmx"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "google-stackdriver"
+    elem_name = "↳ Stackdriver"
     elem_link = "https://github.com/paketo-buildpacks/google-stackdriver"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "eclipse-openj9"
+    elem_name = "↳ OpenJ9"
     elem_link = "https://github.com/paketo-buildpacks/eclipse-openj9"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "build-system"
+    elem_name = "↳ Source Builds"
     elem_link = "https://github.com/paketo-buildpacks/build-system"
 
   [[params.what_are_paketo_buildpacks.item]]
     name = "Go"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "go-compiler"
+    elem_name = "Go"
+    elem_link = "https://github.com/paketo-buildpacks/go"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "↳ Compiler"
     elem_link = "https://github.com/paketo-buildpacks/go-compiler"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "dep"
+    elem_name = "↳ Dep"
     elem_link = "https://github.com/paketo-buildpacks/dep"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "go-mod"
+    elem_name = "↳ Modules"
     elem_link = "https://github.com/paketo-buildpacks/go-mod"
 
   [[params.what_are_paketo_buildpacks.item]]
     name = ".NET Core"
-
+    
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "dotnet-core-runtime"
+    elem_name = ".NET Core"
+    elem_link = "https://github.com/paketo-buildpacks/dotnet-core"
+    
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "↳ Runtime"
     elem_link = "https://github.com/paketo-buildpacks/dotnet-core-runtime"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "dotnet-core-aspnet"
+    elem_name = "↳ ASP.NET Core"
     elem_link = "https://github.com/paketo-buildpacks/dotnet-core-aspnet"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "dotnet-core-sdk"
+    elem_name = "↳ SDK"
     elem_link = "https://github.com/paketo-buildpacks/dotnet-core-sdk"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "dotnet-core-build"
+    elem_name = "↳ Source Build"
     elem_link = "https://github.com/paketo-buildpacks/dotnet-core-build"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "dotnet-core-conf"
+    elem_name = "↳ Configuration"
     elem_link = "https://github.com/paketo-buildpacks/dotnet-core-conf"
 
   [[params.what_are_paketo_buildpacks.item]]
     name = "PHP"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "php-dist"
+    elem_name = "PHP
+    elem_link = "https://github.com/paketo-buildpacks/php"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+    elem_name = "↳ Distribution"
     elem_link = "https://github.com/paketo-buildpacks/php-dist"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "php-web"
+    elem_name = "↳ Web"
     elem_link = "https://github.com/paketo-buildpacks/php-web"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "php-composer"
+    elem_name = "↳ Composer"
     elem_link = "https://github.com/paketo-buildpacks/php-composer"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "httpd"
+    elem_name = "↳ HTTPD"
     elem_link = "https://github.com/paketo-buildpacks/httpd"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "nginx"
+    elem_name = "↳ NGINX"
     elem_link = "https://github.com/paketo-buildpacks/nginx"
 
 [params.why_paketo]
