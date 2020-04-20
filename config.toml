@@ -140,7 +140,7 @@ menu_exclusion = [
     name = "PHP"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "PHP
+    elem_name = "PHP"
     elem_link = "https://github.com/paketo-buildpacks/php"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
