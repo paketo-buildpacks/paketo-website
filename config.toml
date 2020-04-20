@@ -44,13 +44,13 @@ menu_exclusion = [
 
 [params.what_are_buildpacks]
   headline = "What are Buildpacks?"
-  description = "Cloud Native Buildpacks is a CNCF project that provides a high-level, performant abstraction for building container images."
+  description = "Cloud Native Buildpacks is a CNCF Sandbox project that provides a high-level, performant abstraction for building container images. Cloud Native Buildpacks is an evolution of the buildpacks concept that originated with PaaS like Cloud Fonudry."
   cta_text = "More about the Cloud Native Buildpacks project"
   cta_link = "https://buildpacks.io"
 
 [params.what_are_paketo_buildpacks]
   headline = "What are Paketo Buildpacks?"
-  description = "Paketo Buildpacks provide modular language runtime support for applications. They leverage the Cloud Native Buildpacks framework to make builds performant and secure."
+  description = "Paketo Buildpacks provide modular language runtime support for applications. They leverage the Cloud Native Buildpacks framework to make image builds easy, performant, and secure."
 
   [[params.what_are_paketo_buildpacks.item]]
     name = "Node.js"
