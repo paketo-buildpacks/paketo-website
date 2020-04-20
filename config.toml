@@ -75,20 +75,88 @@ menu_exclusion = [
     name = "Java"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "↳ JMX"
-    elem_link = "https://github.com/paketo-buildpacks/jmx"
+      elem_name = "↳ Openjdk"
+      elem_link = "https://github.com/paketo-buildpacks/openjdk"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "↳ Stackdriver"
-    elem_link = "https://github.com/paketo-buildpacks/google-stackdriver"
+      elem_name = "↳ Build-system"
+      elem_link = "https://github.com/paketo-buildpacks/build-system"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "↳ OpenJ9"
-    elem_link = "https://github.com/paketo-buildpacks/eclipse-openj9"
+      elem_name = "↳ Jvmapplication"
+      elem_link = "https://github.com/paketo-buildpacks/jvmapplication"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "↳ Source Builds"
-    elem_link = "https://github.com/paketo-buildpacks/build-system"
+      elem_name = "↳ Apache-tomcat"
+      elem_link = "https://github.com/paketo-buildpacks/apache-tomcat"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Spring-boot"
+      elem_link = "https://github.com/paketo-buildpacks/spring-boot"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Dist-zip"
+      elem_link = "https://github.com/paketo-buildpacks/dist-zip"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Procfile"
+      elem_link = "https://github.com/paketo-buildpacks/procfile"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Azure-application-insights"
+      elem_link = "https://github.com/paketo-buildpacks/azure-application-insights"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Debug"
+      elem_link = "https://github.com/paketo-buildpacks/debug"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Googlestackdriver"
+      elem_link = "https://github.com/paketo-buildpacks/googlestackdriver"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ JDBC"
+      elem_link = "https://github.com/paketo-buildpacks/jdbc"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ JMX"
+      elem_link = "https://github.com/paketo-buildpacks/jmx"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Springautoreconfiguration"
+      elem_link = "https://github.com/paketo-buildpacks/springautoreconfiguration"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Executable-jar"
+      elem_link = "https://github.com/paketo-buildpacks/executable-jar"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Eclipse-open9"
+      elem_link = "https://github.com/paketo-buildpacks/eclipse-openj9"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Sap-machine"
+      elem_link = "https://github.com/paketo-buildpacks/sap-machine"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Adopt-openjdk"
+      elem_link = "https://github.com/paketo-buildpacks/adopt-openjdk"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Bellsoft-liberica"
+      elem_link = "https://github.com/paketo-buildpacks/bellsoft-liberica"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Encrypt-at-rest"
+      elem_link = "https://github.com/paketo-buildpacks/encrypt-at-rest"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Azul-zulu"
+      elem_link = "https://github.com/paketo-buildpacks/azul-zulu"
+
+    [[params.what_are_paketo_buildpacks.item.subitem]]
+      elem_name = "↳ Amazon-corretto"
+      elem_link = "https://github.com/paketo-buildpacks/amazon-corretto"
 
   [[params.what_are_paketo_buildpacks.item]]
     name = "Go"
