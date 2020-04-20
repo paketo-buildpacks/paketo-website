@@ -60,15 +60,15 @@ menu_exclusion = [
     elem_link = "https://github.com/paketo-buildpacks/nodejs"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "  Node Engine"
+    elem_name = "↳ Node Engine"
     elem_link = "https://github.com/paketo-buildpacks/node-engine"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "  NPM"
+    elem_name = "↳ NPM"
     elem_link = "https://github.com/paketo-buildpacks/npm"
 
     [[params.what_are_paketo_buildpacks.item.subitem]]
-    elem_name = "  Yarn"
+    elem_name = "↳ Yarn"
     elem_link = "https://github.com/paketo-buildpacks/yarn-install"
 
   [[params.what_are_paketo_buildpacks.item]]
