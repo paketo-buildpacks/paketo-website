@@ -153,7 +153,7 @@ menu_exclusion = [
 
   [[params.why_paketo.item]]
     title = "Quality"
-    description = "The Paketo project is built on over five years of feedback from hundreds of thousands of developer."
+    description = "The Paketo project is built on over five years of feedback from hundreds of thousands of developers using Cloud Foundry Buildpacks."
 
   [[params.why_paketo.item]]
     title = "Security"
@@ -164,8 +164,8 @@ menu_exclusion = [
     description = "The Paketo Buildpacks project lives within the Cloud Foundry Foundation and is dedicated to maintaining a vendor-neutral governance process."
 
   [[params.why_paketo.item]]
-    title = "Industry standard"
-    description = "Paketo buildpacks are compliant with the latest version of the CNB specification."
+    title = "Standard"
+    description = "Paketo buildpacks are compliant with the latest version of the Cloud Native Buildpacks specification."
 
   
 [params.get_started]
