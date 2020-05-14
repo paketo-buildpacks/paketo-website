@@ -225,7 +225,7 @@ menu_exclusion = [
 
   [[params.why_paketo.item]]
     title = "Quality"
-    description = "The Paketo project is built on over five years of feedback from hundreds of thousands of developers using Cloud Foundry Buildpacks. Unlike past generations of buildpacks, Paketo Buildpacks are modular, tranparent, and written in Go."
+    description = "The Paketo project is built on over five years of feedback from hundreds of thousands of developers using Cloud Foundry Buildpacks. Unlike past generations of buildpacks, Paketo Buildpacks are modular, transparent, and written in Go."
 
   [[params.why_paketo.item]]
     title = "Security"
