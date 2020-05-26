@@ -10,6 +10,13 @@
             <span class="middle transition-03"></span>
             <span class="bottom transition-03"></span>
         </div>
-        {{ partial "nav.html" . }}
+        <nav class="cf">
+            <div class="upper-nav right">
+                <a href="/">Home</a>
+                <a href="/docs/">Docs</a>
+                <a href="/faq/">FAQ</a>
+                {{ partial "shared-nav.html" . }}
+            </div>
+        </nav>
     </div>
 </header>
