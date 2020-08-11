@@ -12,10 +12,10 @@ menu_exclusion = [
 
 [params.hero]
     headline = "Paketo Buildpacks"
-    subheadline = "Less time building, more time developing"
+    subheadline = "build your apps into container images for the most popular languages"
 
-    cta_text = "Read the announcement"
-    cta_link = "https://medium.com/paketo-buildpacks/building-apps-for-kubernetes-get-to-know-paketo-buildpacks-6dc29b0f3cf3"
+    cta_text = "Get Started"
+    cta_link = "/docs/"
 
     [[params.hero.logos]]
         [[params.hero.logos.item]]
