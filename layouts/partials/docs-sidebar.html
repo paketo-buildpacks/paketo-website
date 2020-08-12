@@ -12,10 +12,9 @@
     {{- $currentNode := .currentnode -}}
     {{ with .sect }}
         {{ if and (.IsSection) (eq .Section "docs") (not .Params.Hidden) }}
-            
             {{- $numberOfPages := (add (len .Pages) (len .Sections)) -}}
             <li class="section-{{ .Section }} {{ if .IsAncestor $currentNode }}parent{{ end }}">
-                <a href="{{ .Permalink }}" class="{{ if eq .Path $currentNode.Path }} active{{ end }}">{{ .Title }}</a>
+                <a href="{{ .RelPermalink }}" class="{{ if eq .Path $currentNode.Path }} active{{ end }}">{{ .Title }}</a>
                 {{ if ne $numberOfPages 0 }}
                 <ul class="sub-menu">
                     {{- .Scratch.Set "pages" .Pages -}}
@@ -30,8 +29,8 @@
         {{- else -}}
 
             {{- if and (not .Params.Hidden) (eq .Section "docs") -}}
-                <li class="page"><a href="{{ .Permalink }}" class="{{ if eq .Path $currentNode.Path }}active{{ end }}">{{ .Title }}</a></li>
-            {{- end -}} 
+                <li class="page"><a href="{{ .RelPermalink }}" class="{{ if eq .Path $currentNode.Path }}active{{ end }}">{{ .Title }}</a></li>
+            {{- end -}}
 
         {{ end -}}
     {{ end -}}

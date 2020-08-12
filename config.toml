@@ -12,7 +12,7 @@ menu_exclusion = [
 
 [params.hero]
     headline = "Paketo Buildpacks"
-    subheadline = "build your apps into container images for the most popular languages"
+    subheadline = "your app, in your favorite language, ready to run in the cloud"
 
     cta_text = "Get Started"
     cta_link = "/docs/"
