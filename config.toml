@@ -10,6 +10,9 @@ menu_exclusion = [
     "docs"
 ]
 
+[frontmatter]
+lastmod = ["lastmod", ":fileModTime", ":default"]
+
 [params.hero]
     headline = "Paketo Buildpacks"
     subheadline = "your app, in your favorite language, ready to run in the cloud"

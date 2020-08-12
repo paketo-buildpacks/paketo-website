@@ -1,6 +1,5 @@
 ---
 title: "Where Do Buildpacks Factor In"
-date: 2020-03-31T12:50:55-04:00
 weight: 5
 ---
 

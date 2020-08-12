@@ -1,6 +1,5 @@
 ---
 title: "Create Paketo Buildpack"
-date: 2020-04-13T15:45:49-04:00
 weight: 6
 ---
 
