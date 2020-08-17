@@ -169,7 +169,7 @@ footer p { color: rgba(255,255,255,0.5); margin: 10px 0; font-size: 14px;}
 .docs { min-height: 70vh;}
 .docs-sidebar { width: 380px; border-right: 1px solid #ccc; }
 .docs-body { width: calc( 100% - 380px); }
-.docs-lastmod { margin: 0 0 240px 0; padding-left: 50px; font-style: italic; }
+.docs-lastmod { padding-left: 50px; font-style: italic; }
 .docs-text {  }
 .docs h2 { font-size: 2rem;}
 .docs p { font-size: 1rem;}

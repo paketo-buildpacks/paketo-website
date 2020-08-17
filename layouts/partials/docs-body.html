@@ -6,13 +6,7 @@
         <div class="text-col docs-text pad50">
             {{ .Content }}
         </div>
-        <p class="docs-lastmod"><strong>Last modified:</strong> {{ .Lastmod.Format "Mon, 02 January 2006 @ 15:04 MST" }}</p>
 
-        {{with .Site.Pages.Prev . }}
-            <div class="next-up absolute pad50">
-                <h3>Next up</h3>
-                <p><a class="cta" href="{{.RelPermalink}}">{{ .Title }}</a></p>
-            </div>
-        {{end}}
+        <p class="docs-lastmod"><strong>Last modified:</strong> {{ .Lastmod.Format "Mon, 02 January 2006 @ 15:04 MST" }}</p>
     </div>
 </div>

@@ -1,6 +1,9 @@
 ---
-title: "Create Paketo Buildpack"
-weight: 6
+title: "Creating a Paketo Buildpack"
+weight: 210
+menu:
+  main:
+    parent: "tutorials"
 ---
 
 # How to Write a Cloud Native Buildpack Using Packit
