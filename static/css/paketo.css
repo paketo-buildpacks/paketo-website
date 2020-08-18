@@ -29,6 +29,14 @@ h4 { font-size: 1.6rem; font-weight: 600; }
 ul { padding: 0 2em 0.5em;}
 li { list-style: disc; padding: 5px 0;}
 
+code {
+  font-family: monospace;
+  color: #378BAF;
+  word-break: break-word;
+  font-size: 1rem;
+  padding: 2px 6px
+}
+
 /* easy rwd by www.traverstodd.com */
 
 .hidden { display: none; }
@@ -122,10 +130,30 @@ nav a:hover:before, .cta:hover:before, .docs-body a:hover:before { height: 100%;
 .nav-opener.opened .middle { width: 0; left: 8px; }
 
 /* hero */
+.hero { padding: 50px 50px 30px 50px; }
+
 .hero .cta { font-size: 2rem;}
 .hero .text-col { max-width: 66.666vw;}
-.hero-logos { display: flex; flex-flow: row; justify-content: space-evenly; align-items: center; }
-.hero-logo img {max-height: 90px;margin: 0 auto 20px;max-width: 140px;}
+
+.hero .builders .logos { display: flex; flex-flow: row; justify-content: space-evenly; align-items: center; }
+.hero .builders .logos img {max-height: 90px;margin: 0 auto;max-width: 140px; opacity: 0.2;}
+.hero .builders.full .logos img.full { opacity: 1;}
+.hero .builders.base .logos img.base { opacity: 1;}
+.hero .builders.tiny .logos img.tiny { opacity: 1;}
+
+.hero .builders .tabs { border-bottom: 1px solid #DDD; margin-bottom: 20px; }
+.hero .builders .tabs .tab { position: relative; bottom: -1px; background: #EAEAEA; float: left; margin-right: 10px; padding: 10px 30px 10px 30px; border-top: 1px solid #DDD; border-left: 1px solid #DDD; border-right: 1px solid #DDD; border-radius: 7px 7px 0 0;}
+.hero .builders.full .tabs .tab.full { border-bottom: 1px solid #F2F2F2; background: transparent; }
+.hero .builders.base .tabs .tab.base { border-bottom: 1px solid #F2F2F2; background: transparent; }
+.hero .builders.tiny .tabs .tab.tiny { border-bottom: 1px solid #F2F2F2; background: transparent; }
+
+.hero .builders .commands { display: flex; flex-flow: row; justify-content: center; margin-top: 20px; padding-top: 20px; border-top: 1px solid #DDD; }
+.hero .builders .commands .command { display: flex; flex-flow: row; justify-content: center; align-items: center; background: #EAEAEA; border: 1px solid #DDD; }
+.hero .builders .commands .command img.clipboard { padding: 5px; cursor: pointer; }
+.hero .builders .commands .command code { padding: 5px 10px; border-left: 1px solid #DDD; display: none; }
+.hero .builders.full .commands .command code.full { display: block; }
+.hero .builders.base .commands .command code.base { display: block; }
+.hero .builders.tiny .commands .command code.tiny { display: block; }
 
 /* why-paketo-blocks */
 .paketo-merits { display: flex; flex-direction: column; }
@@ -182,14 +210,7 @@ footer p { color: rgba(255,255,255,0.5); margin: 10px 0; font-size: 14px;}
 .docs-menu a:before { content: ""; transition: all 0.3s cubic-bezier(.17,.84,.44,1); position: absolute; background: #f2f2f2; border-left: 1px solid #ccc; border-top: 1px solid #ccc; border-bottom: 1px solid #ccc; width: 1px; top:0; right: -1px; height: 100%; z-index: -1;}
 .docs-menu a.active:before, .docs-menu a:hover:before { width: 100%; }
 
-.docs code {
-  font-family: monospace;
-  color: #378BAF;
-  word-break: break-word;
-  font-size: 1rem;
-  background: #fff;
-  padding: 2px 6px
-}
+.docs code { background: #fff; }
 
 .docs pre {
   display: block;

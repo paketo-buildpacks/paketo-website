@@ -24,26 +24,32 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
         [[params.hero.logos.item]]
             img = "java-logo.png"
             alt = "java logo"
+            builders = "full base tiny"
 
         [[params.hero.logos.item]]
             img = "go-logo.png"
             alt = "go logo"
+            builders = "full base tiny"
 
         [[params.hero.logos.item]]
             img = "net-core-logo.png"
             alt = ".net core logo"
+            builders = "full base"
 
         [[params.hero.logos.item]]
             img = "nginx-logo.png"
             alt = "nginx logo"
+            builders = "full base"
 
         [[params.hero.logos.item]]
             img = "node-logo.png"
             alt = "node logo"
+            builders = "full base"
 
         [[params.hero.logos.item]]
             img = "php-logo.png"
             alt = "php logo"
+            builders = "full"
 
 [params.what_are_buildpacks]
   headline = "What are Buildpacks?"

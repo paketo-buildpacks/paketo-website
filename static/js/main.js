@@ -16,8 +16,7 @@
             var getRect = wp.getBoundingClientRect();
             if(getRect.top < 200){ 
                 if(!wp.classList.contains('joined')){
-                    wp.classList.add('joined');
-                }
+                    wp.classList.add('joined'); }
             } else {
                 if(wp.classList.contains('joined')){
                     wp.classList.remove('joined');
@@ -49,4 +48,33 @@
         });
     });
 
+    $(function(){
+        $(document)
+        .on('click', '.hero .tabs .tab', function(){
+            var tab = $(this);
+            var builders = tab.parents('.builders')
+
+            builders.removeClass('full base tiny');
+
+            for (let builder of ['full', 'base', 'tiny']) {
+              if (tab.hasClass(builder)) {
+                builders.addClass(builder);
+              }
+            }
+        });
+
+        new ClipboardJS('.hero .commands .command .clipboard', {
+            text: function(el) {
+                var builders = el.closest('.builders')
+
+                for (let builder of ['full', 'base', 'tiny']) {
+                  if (builders.classList.contains(builder)) {
+                    return builders.querySelector('code.' + builder).innerText;
+                  }
+                }
+
+                return null;
+            }
+        });
+    });
 }());
