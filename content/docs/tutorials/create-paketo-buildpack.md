@@ -1,6 +1,6 @@
 ---
 title: "Creating a Paketo Buildpack"
-weight: 210
+weight: 410
 menu:
   main:
     parent: "tutorials"

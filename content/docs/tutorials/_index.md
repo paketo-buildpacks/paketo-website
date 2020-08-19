@@ -1,6 +1,6 @@
 ---
 title: "Tutorials"
-weight: 200
+weight: 400
 menu:
   main:
     identifier: "tutorials"
