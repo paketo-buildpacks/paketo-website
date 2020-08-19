@@ -9,8 +9,8 @@ In the Getting Started tutorial, you used the `pack` CLI and the base `builder` 
 
 ## What is a builder?
 A `builder` is an image that contains three components:
-* a set of `buildpacks`, which provide your app's dependencies,
-* a `stack`, which provides the OS layer for your app image, and
+* a set of `buildpacks`, which provide your app's dependencies
+* a `stack`, which provides the OS layer for your app image
 * the [CNB lifecycle](https://buildpacks.io/docs/concepts/components/lifecycle/), which puts everything together to produce your final app image
 
 
