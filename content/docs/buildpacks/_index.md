@@ -1,7 +1,9 @@
 ---
 title: "Buildpacks"
-weight: 102
-menu: main
+weight: 300
+menu:
+  main:
+    identifier: "buildpacks"
 ---
 
 # Buildpacks
@@ -30,15 +32,14 @@ Each buildpack is a modular unit, responsible for providing a single dependency.
 
 A buildpack operates on your source code in two phases: **detect** and **build**.
 
-#### Detect Phase
+### Detect Phase
 In the `detect` phase, the buildpack looks for indicators in your source code to determine whether or not it's needed to build your app.
 
 In the Getting Started guide, you can see in the output that `paketo-buildpacks/npm` is used. This is because the npm buildpack's detection criteria looks for a `package.json` file in the app source code. Since it's present in the sample app we used, detection passes.
 
 Different buildpacks have different detection criteria according to the dependencies they are responsible for. Once detection has passed for a buildpack, the buildpack returns a contract of what it requires, and what it will provide to the subsequent `build` phase.
 
-#### Build Phase
-
+### Build Phase
 In the `build` phase, the buildpack contributes to the final app image, fulfilling the contract given by the `detect` phase. These contributions could be adding an image layer containing a dependency binary (like the Node.js engine) or could be as simple as a running a command (like `npm install`).
 
 In the Getting Started guide, the `pack build` output contains a section in the build phase for the npm buildpack under a "BUILDING" header. You can see that the buildpack runs `npm install` to install the app's dependencies and sets the start command to `npm start`.
