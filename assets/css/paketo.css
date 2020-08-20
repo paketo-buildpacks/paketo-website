@@ -75,6 +75,7 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	font-size: 16px;
 	line-height: 1.5em;
+	color: #585858;
 }
 a, a:before {
 	text-decoration: none;
@@ -94,7 +95,6 @@ p {
 	font-size: 1.2rem;
 	line-height: 1.5em;
 	padding: 0.7em 0;
-	color: #585858;
 }
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 300;
@@ -121,11 +121,17 @@ h4 {
 	padding-top: 20px;
 }
 ul {
+	list-style: disc;
+	padding: 0 2em;
+}
+ol {
 	padding: 0 2em;
 }
 li {
-	list-style: disc;
 	padding: 5px 0;
+}
+ol li {
+	list-style: decimal;
 }
 hr {
 	border: 0;
@@ -136,6 +142,24 @@ code {
 	font-family: monospace;
 	color: #378BAF;
 	word-break: break-word;
+}
+td {
+		border:  1px solid #DDD;
+		background: white;
+		padding: 10px;
+}
+th {
+		border:  1px solid #DDD;
+		background: white;
+		padding: 10px;
+		word-break: break-word;
+}
+tr {
+	text-align: center;
+}
+table {
+	table-layout: fixed;
+	width: 100%;
 }
 /* easy rwd by www.traverstodd.com */
 

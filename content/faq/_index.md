@@ -10,7 +10,7 @@ Paketo Buildpacks build images that run on Kubernetes and any other Cloud Native
 ---
 
 ### What languages and frameworks are available?
-We currently offer Java, Node.js, Golang, .NET Core, PHP, and NGINX Paketo Buildpacks
+We currently offer Java, Node.js, Golang, .NET Core, PHP, and NGINX Paketo Buildpacks.
 
 ---
 
