@@ -232,18 +232,18 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
   [[params.why_paketo.item]]
     title = "Secure"
     description = "The Paketo project ensures that upstream languages, runtimes, and frameworks are continuously patched in response to vulnerabilities and updates."
-    image = "images/REPLACE_ME.png"
+    image = "images/secure.svg"
 
   [[params.why_paketo.item]]
     title = "Standardized"
     description = "Paketo Buildpacks implement the Cloud Native Buildpacks specification, an emerging standard for building app container images. You can use Paketo Buildpacks with tools such as the CNB pack CLI, kpack, Tekton, and Skaffold, in addition to a number of cloud platforms. The Paketo project is built on over five years of feedback from hundreds of thousands of developers using Cloud Foundry Buildpacks. Unlike past generations of buildpacks, Paketo Buildpacks are modular, transparent, and written in Go."
-    image = "images/REPLACE_ME.png"
+    image = "images/standardized.svg"
     reverse_class = "reverse"
 
   [[params.why_paketo.item]]
     title = "Community-Driven"
     description = "The Paketo Buildpacks project lives within the Cloud Foundry Foundation and is dedicated to maintaining a vendor-neutral governance process."
-    image = "images/REPLACE_ME.png"
+    image = "images/community.svg"
 
 [params.get_started]
   headline = "Getting Started"

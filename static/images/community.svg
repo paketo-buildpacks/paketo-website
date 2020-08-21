@@ -1,0 +1,22 @@
+<svg width="240" height="240" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M120 215C172.467 215 215 172.467 215 120C215 67.5329 172.467 25 120 25C67.5329 25 25 67.5329 25 120C25 172.467 67.5329 215 120 215ZM120 191.25C159.35 191.25 191.25 159.35 191.25 120C191.25 80.6497 159.35 48.75 120 48.75C80.6497 48.75 48.75 80.6497 48.75 120C48.75 159.35 80.6497 191.25 120 191.25Z" fill="#DEB63B"/>
+<circle cx="200" cy="120" r="40" fill="#344389"/>
+<circle cx="40" cy="120" r="40" fill="#344389"/>
+<circle cx="120" cy="200" r="40" fill="#344389"/>
+<circle cx="120" cy="40" r="40" fill="#344389"/>
+<circle cx="40" cy="109" r="9" stroke="#DEB63B" stroke-width="4"/>
+<circle cx="200" cy="109" r="9" stroke="#DEB63B" stroke-width="4"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M200 126C213.807 126 225 137.193 225 151H221C221 139.402 211.598 130 200 130C188.402 130 179 139.402 179 151H175C175 137.193 186.193 126 200 126Z" fill="#DEB63B"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M40 126C53.8071 126 65 137.193 65 151H61C61 139.402 51.598 130 40 130C28.402 130 19 139.402 19 151H15C15 137.193 26.1929 126 40 126Z" fill="#DEB63B"/>
+<line x1="106" y1="26" x2="106" y2="51" stroke="#DEB63B" stroke-width="4"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M117.375 21.0286L121.375 16V19.5H127.172C129.513 19.5 131.759 20.4301 133.414 22.0858C135.07 23.7414 136 25.987 136 28.3284V51H132V28.3284C132 27.0478 131.491 25.8197 130.586 24.9142C129.68 24.0087 128.452 23.5 127.172 23.5H121.375V27L117.375 21.9714L117 21.5L117.375 21.0286Z" fill="#DEB63B"/>
+<line x1="113" y1="187" x2="113" y2="212" stroke="#DEB63B" stroke-width="4"/>
+<path d="M112.6 185.8L118.4 196.593C119.783 199.167 121.713 201.406 124.053 203.153L127.6 205.8" stroke="#DEB63B" stroke-width="4"/>
+<circle cx="106" cy="21" r="6" stroke="#DEB63B" stroke-width="4"/>
+<circle cx="113" cy="179" r="6" stroke="#DEB63B" stroke-width="4"/>
+<circle cx="106" cy="58" r="6" stroke="#DEB63B" stroke-width="4"/>
+<circle cx="113" cy="219" r="6" stroke="#DEB63B" stroke-width="4"/>
+<circle cx="134.4" cy="58.2" r="6" stroke="#DEB63B" stroke-width="4"/>
+<circle cx="133" cy="208" r="6" stroke="#DEB63B" stroke-width="4"/>
+<circle cx="119" cy="120" r="20" fill="#344389"/>
+</svg>
