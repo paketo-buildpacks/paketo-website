@@ -22,4 +22,4 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 {{ end }}
 
 {{- $css := resources.Get "css/paketo.css" | resources.Minify -}}
-<link rel="stylesheet" href="{{ $css.Permalink }}">
+<link rel="stylesheet" href="{{ $css.RelPermalink }}">
