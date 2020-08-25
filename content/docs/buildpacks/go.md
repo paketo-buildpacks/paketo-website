@@ -52,7 +52,6 @@ To set custom values for your build flags or override the defaults, add the valu
 ```
 ---
 go:
-  ...
   build:
     # The go.build.flags property allows you to override the default build
     # flags when compiling your program.
@@ -70,13 +69,11 @@ The Go CNB allows users to specify multiple targets for `go build`. Targets may 
 ```
 ---
 go:
-  ...
   targets:
   # The go.targets property allows you to specify multiple programs to be
   # compiled. The first target will be used as the start command for the image.
   - ./some-target
   - ./other-target
-  ...
 ```
 
 Targets must be a list of paths relative to the root directory of the source code.
@@ -88,11 +85,9 @@ If you are building a $GOPATH application that imports its own sub-packages, you
 ```
 ---
 go:
-  ...
   # The go.build.import-path property allows you to specify an import path
   # for your application.
   import-path: example.com/some-app
-  ...
 ```
 
 
