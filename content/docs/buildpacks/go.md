@@ -11,11 +11,21 @@ menu:
 The [Go CNB](https://github.com/paketo-buildpacks/go) supports several popular
 configurations for Go apps.
 
-To build your app locally with this CNB using the `pack` CLI, run:
+To build a sample app locally with this CNB using the `pack` CLI, run
 
 ```
-pack build my-app --buildpack gcr.io/paketo-buildpacks/go
+$ git clone https://github.com/paketo-buildpacks/samples
+$ cd samples/go/mod
+$ pack build my-app --buildpack gcr.io/paketo-buildpacks/go
 ```
+
+See [samples](https://github.com/paketo-buildpacks/samples/tree/main/go/mod)
+for how to run the app.
+
+## <a id="supported-dependencies"></a> Supported dependencies
+
+See [Go Buildpack releases](https://github.com/paketo-buildpacks/go/releases)
+for a full list of dependencies that are used by the buildpack.
 
 ## <a id="specifying-go-version"></a> Specifying a Go Version
 

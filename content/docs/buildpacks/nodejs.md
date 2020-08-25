@@ -10,10 +10,21 @@ menu:
 
 The Node.js CNB supports several popular configurations for Node.js apps.
 
-To build your app locally with this CNB using the `pack` CLI, run
+To build a sample app locally with this CNB using the `pack` CLI, run
+
 ```
-pack build my-app --buildpack gcr.io/paketo-buildpacks/nodejs
+$ git clone https://github.com/paketo-buildpacks/samples
+$ cd samples/nodejs/npm
+$ pack build my-app --buildpack gcr.io/paketo-buildpacks/nodejs
 ```
+
+See [samples](https://github.com/paketo-buildpacks/samples/tree/main/nodejs/npm)
+for how to run the app.
+
+## <a id="supported-dependencies"></a> Supported dependencies
+
+See [Node.js Buildpack releases](https://github.com/paketo-buildpacks/nodejs/releases)
+for a full list of dependencies that are used by the buildpack.
 
 ## <a id="specifying-node-engine-version"></a> Specifying a Node Engine Version
 

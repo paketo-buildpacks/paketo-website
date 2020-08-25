@@ -16,12 +16,10 @@ To build a sample app locally with this CNB using the `pack` CLI, run
 ```bash
 $ git clone https://github.com/paketo-buildpacks/samples
 $ cd samples/php/webserver
-$ pack set-default-builder gcr.io/paketo-buildpacks/builder:full-cf
-$ pack build my-app --buildpack gcr.io/paketo-buildpacks/php
+$ pack build my-app --buildpack gcr.io/paketo-buildpacks/php --builder gcr.io/paketo-buildpacks/builder:full
 ```
 
-See
-[samples](https://github.com/paketo-buildpacks/samples/tree/main/php/webserver)
+See [samples](https://github.com/paketo-buildpacks/samples/tree/main/php/webserver)
 for how to run the app.
 
 ## <a id="supported-dependencies"></a> Supported dependencies
