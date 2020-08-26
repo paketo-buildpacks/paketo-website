@@ -18,7 +18,7 @@ $ git clone https://github.com/paketo-buildpacks/samples
 $ cd samples/nginx
 $ pack build my-app --buildpack gcr.io/paketo-buildpacks/nginx:latest
 ```
-See [samples](https://github.com/paketo-buildpacks/samples/tree/nginx/nginx)
+See [samples](https://github.com/paketo-buildpacks/samples/tree/main/nginx)
 for how to run the app.
 
 ## <a id="supported-dependencies"></a> Supported dependencies
@@ -70,4 +70,3 @@ variables like `{{port}}`, `{{env "FOO"}}` and `{{module "ngx_stream_module"}}`.
 See the [NGINX
 docs](https://nginx.org/en/docs/beginners_guide.html#conf_structure) for more
 information about how to set up an `nginx.conf` file.
-
