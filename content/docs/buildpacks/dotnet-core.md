@@ -13,8 +13,14 @@ applications.
 
 To build your app locally with the buildpack using the `pack` CLI, run
 ```
-pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core
+$ git clone https://github.com/paketo-buildpacks/samples
+$ cd samples/dotnet-core/aspnet
+$ pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core
 ```
+
+See
+[samples](https://github.com/paketo-buildpacks/samples/tree/main/dotnet-core/aspnet)
+for how to run the app.
 
 ## Supported .Net Framework Versions
 
