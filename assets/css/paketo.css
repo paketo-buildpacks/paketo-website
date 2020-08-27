@@ -141,7 +141,6 @@ hr {
 code {
 	font-family: monospace;
 	color: #378BAF;
-	word-break: break-word;
 }
 td {
 		border:  1px solid #DDD;
@@ -342,9 +341,6 @@ table {
 }
 .external-link:before {
 	display: none;
-}
-.next-up a {
-	font-size: 120%;
 }
 /* header */
 
@@ -652,18 +648,15 @@ footer p {
 .footer-logo {
 	max-width: 200px;
 }
-/* docs */
 
-.docs, .next-up {
-	border-top: 1px solid #ccc;
-}
-.next-up {
-	background: #e8e8e8;
-	width: 100%;
-	bottom: 0;
-}
+/* docs */
 .docs {
 	min-height: 70vh;
+}
+.docs img {
+  display: block;
+  margin: 0 auto;
+	border: 1px solid #E4E4E4;
 }
 .docs-sidebar {
 	width: 380px;
@@ -720,18 +713,66 @@ footer p {
 	width: 100%;
 }
 .docs pre {
+  position: relative;
 	display: block;
-	background-color: #fff;
-	border-radius: 0.3em;
+	background-color: #FFF;
 	font-family: monospace;
 	padding: 0.35em 0.6em;
-	border: 1px solid #ccc;
-	margin-bottom: 1em;
+	border: 1px solid #E4E4E4;
 	overflow: auto;
+  overflow-wrap: break-word;
 	line-height: 1.2em;
 }
-/* footer */
+.docs pre img {
+  display: none;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #FFF;
+  cursor: pointer;
+  border: none;
+}
+.docs pre:hover img {
+  display: block;
+}
+.docs pre.copied img {
+  display: none;
+}
+.docs pre .copied {
+  visibility: hidden;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  opacity: 1;
+}
+.docs pre.copied .copied {
+  visibility: visible;
+  opacity: 0;
+  transition: visibility 0s, opacity 1s ease-in-out 1s;
+}
+.docs .code-output pre {
+  display: none;
+  background: #E4E4E4;
+  margin-top: 4px;
+}
+.docs .code-output.visible pre {
+  display: block;
+}
+.docs .code-output pre code {
+  color: #585858;
+}
+.docs .code-output .btn {
+  background: #E4E4E4;
+  font-weight: 600;
+  padding: 3px 5px;
+  text-transform: uppercase;
+  font-size: 0.7em;
+}
+.docs .code-output.visible .btn {
+  display: none;
+}
 
+/* footer */
 footer {
 	background: #384a9a;
 	padding: 20px 50px;
@@ -905,6 +946,9 @@ footer {
 	.hero-logo img {
 		max-width: 25vw;
 	}
+  .docs pre:hover img {
+    display: none;
+  }
 }
 @media (max-width: 400px) {
 	.half-400 {

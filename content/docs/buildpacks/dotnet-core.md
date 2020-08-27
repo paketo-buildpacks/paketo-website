@@ -12,11 +12,12 @@ The .Net Core Buildpack supports building several configurations of .Net Core
 applications.
 
 To build your app locally with the buildpack using the `pack` CLI, run
-```
-$ git clone https://github.com/paketo-buildpacks/samples
-$ cd samples/dotnet-core/aspnet
-$ pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core
-```
+
+{{< code/copyable >}}
+git clone https://github.com/paketo-buildpacks/samples
+cd samples/dotnet-core/aspnet
+pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core
+{{< /code/copyable >}}
 
 See
 [samples](https://github.com/paketo-buildpacks/samples/tree/main/dotnet-core/aspnet)
@@ -84,11 +85,11 @@ or `Microsoft.AspNetCore.All`.
 To configure the buildpack to use .Net Core Runtime and ASP.Net v2.1.14 when
 deploying your app, include the values below in your `buildpack.yml` file:
 
-```
+{{< code/copyable >}}
 ---
 dotnet-framework:
   version: "2.1.14"
-```
+{{< /code/copyable >}}
 
 ### Using runtimeconfig.json
 
@@ -98,7 +99,7 @@ file, you can specify the .Net Core Runtime version within that file. To
 configure the buildpack to use .Net Core Runtime v2.1.14 when deploying your
 app, include the values below in your `runtimeconfig.json` file:
 
-```
+{{< code/copyable >}}
 {
   "runtimeOptions": {
     "framework": {
@@ -106,7 +107,7 @@ app, include the values below in your `runtimeconfig.json` file:
     }
   }
 }
-```
+{{< /code/copyable >}}
 
 ### Using a Project file
 
@@ -115,13 +116,13 @@ the .Net Core Runtime version within that file. To configure the buildpack to
 use .Net Core Runtime v2.1.14 when deploying your app, include the values below
 in your Project file:
 
-```
+{{< code/copyable >}}
 <Project>
   <PropertyGroup>
     <RuntimeFrameworkVersion>2.1.14</RuntimeFrameworkVersion>
   </PropertyGroup>
 </Project>
-```
+{{< /code/copyable >}}
 
 Alternatively, for applications that do not rely upon a specific .Net Core
 Runtime patch version, you can specify the Target Framework and the buildpack
@@ -129,13 +130,13 @@ will choose the appropriate .Net Core Runtime version. To configure the
 buildpack to use a .Net Core Runtime version in the 2.1 .Net Core Target Framework
 when deploying your app, include the values below in your Project file:
 
-```
+{{< code/copyable >}}
 <Project>
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 </Project>
-```
+{{< /code/copyable >}}
 
 For more details about specifying a .Net Core version using a Project file,
 please review the [Microsoft
@@ -168,11 +169,11 @@ version in either a `buildpack.yml` or `global.json` file.
 To configure the buildpack to use .Net Core SDK v2.1.804 when deploying your
 app, include the values below in your `buildpack.yml` file:
 
-```
+{{< code/copyable >}}
 ---
 dotnet-sdk:
   version: "2.1.804"
-```
+{{< /code/copyable >}}
 
 ### Using global.json
 
@@ -182,13 +183,13 @@ file, you can specify the .Net Core SDK version within that file. To configure
 the buildpack to use .Net Core SDK v2.1.804 when deploying your app, include
 the values below in your `global.json` file:
 
-```
+{{< code/copyable >}}
 {
   "sdk": {
     "version": "2.1.804"
   }
 }
-```
+{{< /code/copyable >}}
 
 ## Specifying a Custom Project Path
 
@@ -198,11 +199,11 @@ F#, or Visual Basic Project file. If your project directory is not located at
 the root of your source code, you can override the project directory by
 including the following values in your `buildpack.yml` file:
 
-```
+{{< code/copyable >}}
 ---
 dotnet-build:
   project-path: "src/asp_web_app"
-```
+{{< /code/copyable >}}
 
 ## Buildpack-Set Environment Variables
 
@@ -254,9 +255,9 @@ start your application. The application will be given configuration to help it
 bind to a port inside the container. By default the given port is 8080, but can
 be overridden using the `$PORT` environment variable.
 
-```
+{{< code/copyable >}}
 dotnet myapp.dll --urls http://0.0.0.0:${PORT:-8080}
-```
+{{< /code/copyable >}}
 
 ### Self-Contained Deployment and Framework-Dependent Executables
 
@@ -266,6 +267,6 @@ will be given configuration to help it bind to a port inside the container. By
 default the given port is 8080, but can be overridden using the `$PORT`
 environment variable.
 
-```
+{{< code/copyable >}}
 ./myapp --urls http://0.0.0.0:${PORT:-8080}
-```
+{{< /code/copyable >}}

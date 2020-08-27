@@ -13,21 +13,21 @@ configurations for Go apps.
 
 To build a sample app locally with this CNB using the `pack` CLI, run
 
-```
-$ git clone https://github.com/paketo-buildpacks/samples
-$ cd samples/go/mod
-$ pack build my-app --buildpack gcr.io/paketo-buildpacks/go
-```
+{{< code/copyable >}}
+git clone https://github.com/paketo-buildpacks/samples
+cd samples/go/mod
+pack build my-app --buildpack gcr.io/paketo-buildpacks/go
+{{< /code/copyable >}}
 
 See [samples](https://github.com/paketo-buildpacks/samples/tree/main/go/mod)
 for how to run the app.
 
-## <a id="supported-dependencies"></a> Supported dependencies
+## Supported dependencies
 
 See [Go Buildpack releases](https://github.com/paketo-buildpacks/go/releases)
 for a full list of dependencies that are used by the buildpack.
 
-## <a id="specifying-go-version"></a> Specifying a Go Version
+## Specifying a Go Version
 
 The Go CNB allows you to specify a version of Go to use during deployment. This
 version can be specified via `buildpack.yml`. When specifying a version of Go,
@@ -39,18 +39,18 @@ Specifying a version of Go is not required. In the case that is not specified,
 the buildpack will provide the default version, which can be seen in the
 buildpack.toml file.
 
-### <a id='buildpack-yml'></a> Using buildpack.yml
+### Using buildpack.yml
 
 To configure the buildpack to use Go v1.14.6 when deploying your app, include
 the values below in your `buildpack.yml` file:
 
-```
+{{< code/copyable >}}
 ---
 go:
   version: 1.14.6
-```
+{{< /code/copyable >}}
 
-## <a id="specifying-build-flags"></a> Configuring Build Flags
+## Configuring Build Flags
 
 The `go build` command supports a number of flags that allow users to override defaults for more control over build configurations. By default, the buildpack sets the following build flags:
 
@@ -59,7 +59,7 @@ The `go build` command supports a number of flags that allow users to override d
 
 To set custom values for your build flags or override the defaults, add the values below to your `buildpack.yml` file:
 
-```
+{{< code/copyable >}}
 ---
 go:
   build:
@@ -70,13 +70,13 @@ go:
     - -tags=paketo,production
     - -ldflags="-X main.variable=some-value"
     - -race
-```
+{{< /code/copyable >}}
 
-## <a id="specifying-targets"></a> Configuring Targets
+## Configuring Targets
 
 The Go CNB allows users to specify multiple targets for `go build`. Targets may be set via the following `buildpack.yml` field:
 
-```
+{{< code/copyable >}}
 ---
 go:
   targets:
@@ -84,11 +84,11 @@ go:
   # compiled. The first target will be used as the start command for the image.
   - ./some-target
   - ./other-target
-```
+{{< /code/copyable >}}
 
 Targets must be a list of paths relative to the root directory of the source code.
 
-## <a id="specifying-import-path"></a> Configuring Import Paths
+## Configuring Import Paths
 
 If you are building a $GOPATH application that imports its own sub-packages, you will need to specify the import paths for those sub-packages. The Go CNB supports setting these import paths via the `buildpack.yml` file:
 
@@ -101,7 +101,7 @@ go:
 ```
 
 
-## <a id="package-management-options"></a> Package Management Options
+## Package Management Options
 
 With the Go CNB, there are three options for package management depending on
 your application:
@@ -112,7 +112,7 @@ your application:
 Support for each of these package managers is mutually-exclusive. You can find
 specific information for each option below.
 
-### <a id="package-management-with-go-modules"></a> Package Management with Go Modules
+### Package Management with Go Modules
 
 Many Go apps require third-party libraries to perform common tasks and
 behaviors. Go modules are a built-in option for managing these third-party
@@ -125,7 +125,7 @@ exist in the app's root directory and will contain all the packages needed to
 build your Go app.
 
 
-### <a id="package-management-with-dep"></a> Package Management with Dep
+### Package Management with Dep
 
 Dep is an alternative option to Go Modules for package management in Go apps.
 Including a `Gopkg.toml` file (more information about this
@@ -139,19 +139,19 @@ ensure` command for your app. The resulting `vendor` directory will exist in
 the app's root directory and will contain all the packages needed to build your
 Go app.
 
-### <a id="no-package-manager"></a> No Package Management
+### No Package Management
 
 The Go CNB also supports both self-vendored apps and simpler apps that do not
 require third-party packages. In this case there is no vendoring step, and the
 `go build` command is run on the app source code as it is provided.
 
-## <a id="environment-variables"></a> Buildpack-Set Environment Variables
+## Buildpack-Set Environment Variables
 
 The Go CNB sets a few environment variables during the `build` and `launch`
 phases of the app lifecycle. The sections below describe each environment
 variable and its impact on your app.
 
-### <a id="environment-variable-gopath"></a> `GOPATH`
+### `GOPATH`
 
 The `GOPATH` environment variable tells Go where to look for artifacts such as
 source code and binaries. The Go CNB takes care of setting the `GOPATH` for
@@ -183,7 +183,7 @@ to run `dep ensure`, but does not persist beyond that step.
 
 The `go-build` buildpack participates in the Go CNB in every case, regardless of which package management option is used. The `GOPATH` is set to a temporary directory which includes the app source code and local sub-packages. The `GOPATH` is utilized in running `go build` to compile your app.
 
-### <a id="environment-variable-gopath"></a> `GOCACHE`
+### `GOCACHE`
 
 The `GOCACHE` variable specifies where build outputs are stored for reuse in subsequent builds. It gets set to a cached layer in  the image by the `go-build` buildpack, so that it is persisted between builds.
 
@@ -191,7 +191,7 @@ The `GOCACHE` variable specifies where build outputs are stored for reuse in sub
 * Phases: `build`
 * Value: Go Cache layer path
 
-### <a id="environment-variable-gopath"></a> `DEPCACHEDIR`
+### `DEPCACHEDIR`
 
 `DEPCACHEDIR` specifies where upstream dependency source code is stored for use by the Dep tool. The `dep-ensure` buildpack sets this variable to the path of a cache layer in the app image.
 

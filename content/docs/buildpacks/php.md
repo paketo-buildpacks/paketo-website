@@ -13,21 +13,21 @@ PHP-based applications.
 
 To build a sample app locally with this CNB using the `pack` CLI, run
 
-```bash
-$ git clone https://github.com/paketo-buildpacks/samples
-$ cd samples/php/webserver
-$ pack build my-app --buildpack gcr.io/paketo-buildpacks/php --builder gcr.io/paketo-buildpacks/builder:full
-```
+{{< code/copyable >}}
+git clone https://github.com/paketo-buildpacks/samples
+cd samples/php/webserver
+pack build my-app --buildpack gcr.io/paketo-buildpacks/php --builder gcr.io/paketo-buildpacks/builder:full
+{{< /code/copyable >}}
 
 See [samples](https://github.com/paketo-buildpacks/samples/tree/main/php/webserver)
 for how to run the app.
 
-## <a id="supported-dependencies"></a> Supported dependencies
+## Supported dependencies
 
 See [PHP Buildpack releases](https://github.com/paketo-buildpacks/php/releases)
 for a full list of dependencies that are used by the buildpack.
 
-## <a id="specifying-php-version"></a> Specifying a PHP Version
+## Specifying a PHP Version
 
 The PHP Dist CNB allows you to specify a version of PHP to use during
 deployment. This version can be specified in a number of ways, including
@@ -39,41 +39,41 @@ The buildpack prioritizes the versions specified in
 each possible configuration location with the following precedence, from
 highest to lowest: `buildpack.yml`, `composer.json`.
 
-### <a id='buildpack-yml'></a> Using buildpack.yml
+### Using buildpack.yml
 
 To configure the buildpack to use PHP version when deploying your app,
 include the values like below in your `buildpack.yml` file. Any valid semver
 constraints are acceptable.
 
-```
+{{< code/copyable >}}
 ---
 php:
   version: 7.2.*
-```
+{{< /code/copyable >}}
 
-### <a id=''></a> Using composer.json
+### Using composer.json
 
 If your apps use `composer`, you can specify the PHP version your apps use
 during deployment by configuring the `require` field in the `composer.json`
 file. To configure the buildpack to use PHP v7.1 or greater when deploying your
 app, include the values below in your `composer.json` file:
 
-```
+{{< code/copyable >}}
 {
   "require": {
     "php": ">=7.1"
   }
 }
-```
+{{< /code/copyable >}}
 
 If your app has a `composer.lock` file, the buildpack will use
 the php version defined there.
 
-## <a id="composer-configuration"></a> Composer Configuration
+## Composer Configuration
 
 The following options are configurable in the app's `buildpack.yml`
 
-```yaml
+{{< code/copyable >}}
 composer:
   # this allows you to specify a version constaint for composer
   # any valid semver constaints (e.g. 1.* and 1.10.*) are also acceptable
@@ -92,8 +92,9 @@ composer:
 
   # if included, will run `composer global` with with specified arguments
   install_global: ["list", "of", "install", "options"]
- ```
-## <a id="web-server"></a> Web Server Configuration
+{{< /code/copyable >}}
+
+## Web Server Configuration
 
 The PHP buildpack supports the use of 3 different web servers:
 
@@ -103,21 +104,19 @@ The PHP buildpack supports the use of 3 different web servers:
 
 You can configure the webserver using `buildpack.yml` as follows:
 
- ```yaml
- php:
-
+{{< code/copyable >}}
+php:
   # options are: php-server, httpd, nginx. default: php-server
   webserver: php-server
- ```
+{{< /code/copyable >}}
 
  If you're using `httpd` or `nginx`, a suitable `httpd.conf` or `nginx.conf`
  will be generated for you by the buildpack.
 
  You can also provide additional configurations like follows:
 
- ```yaml
- php:
-
+{{< code/copyable >}}
+php:
   # directory where web app code is stored
   # default: htdocs
   webdirectory: htdocs
@@ -132,57 +131,57 @@ You can configure the webserver using `buildpack.yml` as follows:
 
   # default: admin@localhost
   serveradmin: admin@localhost
-```
+{{< /code/copyable >}}
 
-## <a id="vendoring-composer-packages"></a> Vendoring composer packages
+## Vendoring composer packages
 
 If your php app that uses `composer` has a valid `vendor` directory, then
 the buildpack will not download those packages. It will instead use the the
 packages location in the `vendor` directory.
 
-## <a id="environment-variables"></a> Buildpack-Set Environment Variables
+## Buildpack-Set Environment Variables
 
 The PHP CNB sets a number of environment variables during the `build` and
 `launch` phases of the app lifecycle. The sections below describe each
 environment variable and its impact on your app. 
 
-### <a id="env-var-app-root"></a> APP_ROOT
+### APP_ROOT
 
 * Set by: `httpd` buildpack
 * Phases: `launch`
 * Value: path of app source
 
-### <a id="env-var-server-root"></a> SERVER_ROOT
+### SERVER_ROOT
 
 * Set by: `httpd` buildpack
 * Phases: `launch`
 * Value: path of the httpd installation
 
-### <a id="env-var-mibsdir"></a> MIBDIRS
+### MIBDIRS
 
 * Set by: `php-dist` buildpack
 * Phases: `build` and `launch`
 * Value: See [php documentation](https://www.php.net/manual/en/snmp.installation.php)
 
-### <a id="env-var-path"></a> PATH
+### PATH
 
 * Set by: `php-dist` buildpack
 * Phases: `build` and `launch`
 * Value: path to the php executable
 
-### <a id="env-var-phpapi"></a> PHP_API
+### PHP_API
 
 * Set by: `php-dist` buildpack
 * Phases: `build` and `launch`
 * Value: internl api version (YYYYMMDD)
 
-### <a id="env-var-phpextensiondir"></a> PHP_EXTENSION_DIR
+### PHP_EXTENSION_DIR
 
 * Set by: `php-dist` buildpack
 * Phases: `build` and `launch`
 * Value: location of directory with dynamic libraries for extensions
 
-### <a id="env-var-phphome"></a> PHP_HOME
+### PHP_HOME
 
 * Set by: `php-dist` buildpack
 * Phases: `build` and `launch`

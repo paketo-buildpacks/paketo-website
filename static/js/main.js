@@ -45,9 +45,7 @@
                 el.addClass('opened').next('nav').addClass('showing');
             }
         });
-    });
 
-    $(function(){
         $(document)
         .on('click', '.hero .tabs .tab', function(){
             var tab = $(this);
@@ -62,7 +60,13 @@
             }
         });
 
-        new ClipboardJS('.hero .commands .command .clipboard', {
+        $(document)
+        .on('click', '.docs .code-output .btn', function(){
+            var output = $(this).parents('.code-output')
+            output.addClass('visible');
+        });
+
+        var heroClipboard = new ClipboardJS('.hero .commands .command .clipboard', {
             text: function(el) {
                 var builders = el.closest('.builders')
 
@@ -74,6 +78,16 @@
 
                 return null;
             }
+        });
+
+        var docsClipboard = new ClipboardJS('.docs pre.copyable img', {
+            text: function(el) {
+                return el.previousElementSibling.innerText;
+            }
+        });
+        docsClipboard.on('success', function(el) {
+          var parent = el.trigger.parentElement;
+          parent.classList.add('copied');
         });
     });
 }());

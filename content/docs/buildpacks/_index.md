@@ -45,8 +45,8 @@ In the `build` phase, the buildpack contributes to the final app image, fulfilli
 In the Getting Started guide, the `pack build` output contains a section in the build phase for the npm buildpack under a "BUILDING" header. You can see that the buildpack runs `npm install` to install the app's dependencies and sets the start command to `npm start`.
 
 The image below illustrates how buildpacks contribute layers to the final runnable app image:
-![Final app image](/images/docs-buildpacks-app-image.png)
 
+![Final app image](/images/docs-buildpacks-app-image.png)
 
 For more information about buildpacks, visit [buildpacks.io](https://buildpacks.io/docs/concepts/components/buildpack/)
 
