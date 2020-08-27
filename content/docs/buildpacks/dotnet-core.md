@@ -1,6 +1,6 @@
 ---
 title: ".Net Core Buildpack"
-weight: 320
+weight: 301
 menu:
   main:
     parent: "buildpacks"
@@ -22,7 +22,7 @@ See
 [samples](https://github.com/paketo-buildpacks/samples/tree/main/dotnet-core/aspnet)
 for how to run the app.
 
-## Supported .Net Framework Versions
+## Supported .Net Core Framework Versions
 
 The .Net Core Buildpack supports several versions of the .Net Core Framework.
 For more details on the specific versions supported in a given buildpack
@@ -141,7 +141,13 @@ For more details about specifying a .Net Core version using a Project file,
 please review the [Microsoft
 documentation](https://docs.microsoft.com/en-us/dotnet/core/versions/selection).
 
-### << SOMETHING ABOUT FRAMEWORK ROLL-FORWARD LOGIC >>
+### .Net Core Framework Version Selection
+
+The .Net Core Buildpack uses the same version selection policy that Microsoft
+has put together for .Net Core Framework. If you would like to know more about
+the policy please refer to this
+[documentation](https://docs.microsoft.com/en-us/dotnet/core/versions/selection)
+provided by Microsoft.
 
 ## Specifying an SDK Version
 

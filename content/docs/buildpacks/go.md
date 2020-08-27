@@ -1,6 +1,6 @@
 ---
 title: "Go Buildpack"
-weight: 320
+weight: 302
 menu:
   main:
     parent: "buildpacks"
