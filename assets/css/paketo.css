@@ -753,7 +753,6 @@ footer p {
 .docs .code-output pre {
   display: none;
   background: #E4E4E4;
-  margin-top: 4px;
 }
 .docs .code-output.visible pre {
   display: block;
@@ -764,12 +763,21 @@ footer p {
 .docs .code-output .btn {
   background: #E4E4E4;
   font-weight: 600;
-  padding: 3px 5px;
   text-transform: uppercase;
   font-size: 0.7em;
+  display: block;
+  margin-top: 3px;
+  padding: 0 5px;
+  float: left;
+  text-align: center;
 }
-.docs .code-output.visible .btn {
-  display: none;
+.docs .code-output .btn:before {
+  display: inline-block;
+  width: 35px;
+  content: 'View ';
+}
+.docs .code-output.visible .btn:before {
+  content: 'Hide ';
 }
 
 /* footer */

@@ -63,7 +63,11 @@
         $(document)
         .on('click', '.docs .code-output .btn', function(){
             var output = $(this).parents('.code-output')
-            output.addClass('visible');
+            if (output.hasClass('visible')) {
+              output.removeClass('visible');
+            } else {
+              output.addClass('visible');
+            }
         });
 
         var heroClipboard = new ClipboardJS('.hero .commands .command .clipboard', {
