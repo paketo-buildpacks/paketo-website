@@ -1,35 +1,30 @@
-<div class="hero">
-    {{ with .Site.Params.hero}}
-        <div class="cf">
+<div class="hero pad50 pad-top-100 cf pad-btm-100">
+
+        {{ with .Site.Params.hero}}
+
             <div class="float50 full-800">
                 <div class="text-col">
                     <h1>{{ .headline }} </h1>
                     <h2>{{ .subheadline }} </h2>
-                    <p><a class="cta" href="{{ .cta_link }}" title="{{ .cta_text }}">{{ .cta_text }}</a></p>
+                    <p><a class="cta" href="{{ .cta_link}}" title="{{ .cta_text }}">{{ .cta_text }}</a></p>
                 </div>
             </div>
-        </div>
-        <div class="cf builders full">
-            <div class="full-800 cf tabs">
-              <div class="tab full">Full</div>
-              <div class="tab base">Base</div>
-              <div class="tab tiny">Tiny</div>
-            </div>
-            <div class="full-800 cf logos">
+            <div class="float50 full-800 cf">
                 {{ range .logos }}
-                    {{ range .item }}
-                    <img class="{{ .builders }}" src="/images/{{ .img  }}" alt="{{ .alt }}">
-                    {{ end }}
+                    <div>
+                        {{ range .item }}
+                            <div class="inline50 hero-logo text-center">
+                              <a href="docs/buildpacks/{{ .docs }}">
+                                <img src="/images/{{ .img  }}" alt="{{ .alt }}">
+                              </a>
+                            </div>
+                        {{ end }}
+                    </div>
                 {{ end }}
             </div>
-            <div class="full-800 cf commands">
-              <div class="command">
-                <code class="full">pack build my-app --builder gcr.io/paketo-buildpacks/builder:full</code>
-                <code class="base">pack build my-app --builder gcr.io/paketo-buildpacks/builder:base</code>
-                <code class="tiny">pack build my-app --builder gcr.io/paketo-buildpacks/builder:tiny</code>
-                <img class="clipboard" src="/images/clipboard.svg" alt="copy to clipboard">
-              </div>
-            </div>
-        </div>
-    {{ end }}
+            
+        {{ end }}
+    
+    </div>
+
 </div>

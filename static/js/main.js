@@ -47,20 +47,6 @@
         });
 
         $(document)
-        .on('click', '.hero .tabs .tab', function(){
-            var tab = $(this);
-            var builders = tab.parents('.builders')
-
-            builders.removeClass('full base tiny');
-
-            for (let builder of ['full', 'base', 'tiny']) {
-              if (tab.hasClass(builder)) {
-                builders.addClass(builder);
-              }
-            }
-        });
-
-        $(document)
         .on('click', '.docs .code-output .btn', function(){
             var output = $(this).parents('.code-output')
             output.addClass('visible');
