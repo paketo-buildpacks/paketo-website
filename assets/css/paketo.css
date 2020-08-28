@@ -531,6 +531,9 @@ nav a:hover:before, .cta:hover:before, .docs-body a:hover:before {
 .hero .builders.tiny .commands .command code.tiny {
 	display: block;
 }
+
+.hero-logo img {max-height: 90px;margin: 0 auto 20px;max-width: 140px;}
+
 /* why-paketo-blocks */
 
 .paketo-merits {
