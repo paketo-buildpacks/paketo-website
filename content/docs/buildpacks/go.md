@@ -92,13 +92,13 @@ Targets must be a list of paths relative to the root directory of the source cod
 
 If you are building a $GOPATH application that imports its own sub-packages, you will need to specify the import paths for those sub-packages. The Go CNB supports setting these import paths via the `buildpack.yml` file:
 
-```
+{{< code/copyable >}}
 ---
 go:
   # The go.build.import-path property allows you to specify an import path
   # for your application.
   import-path: example.com/some-app
-```
+{{< /code/copyable >}}
 
 
 ## Package Management Options
