@@ -19,7 +19,7 @@ And we're good to go! Let's build our app into a container image using the `pack
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/demo-apps/app-source
-pack build paketo-demo-app --builder gcr.io/paketo-buildpacks/builder:base
+pack build paketo-demo-app --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
 {{< code/output >}}

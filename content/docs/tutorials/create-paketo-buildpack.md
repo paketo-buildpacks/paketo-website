@@ -140,7 +140,7 @@ to build the app:
 pack build <app-name> \
   --path <path/to/app> \
   --buildpack <path/to/project> \
-  --builder gcr.io/paketo-buildpacks/builder:base \
+  --builder paketobuildpacks/builder:base \
   --verbose
 {{< /code/copyable >}}
 
@@ -217,7 +217,7 @@ GOOS=linux go build -ldflags="-s -w" -o ./bin/detect ./cmd/detect/main.go
 pack build <app-name> \
   --path <path/to/app> \
   --buildpack <path/to/project> \
-  --builder gcr.io/paketo-buildpacks/builder:base \
+  --builder paketobuildpacks/builder:base \
   --verbose
 {{< /code/copyable >}}
 
@@ -293,7 +293,7 @@ GOOS=linux go build -ldflags="-s -w" -o ./bin/build ./cmd/build/main.go
 pack build <app-name> \
   --path <path/to/app> \
   --buildpack <path/to/project> \
-  --builder gcr.io/paketo-buildpacks/builder:base \
+  --builder paketobuildpacks/builder:base \
   --verbose
 {{< /code/copyable >}}
 
@@ -386,7 +386,7 @@ GOOS=linux go build -ldflags="-s -w" -o ./bin/build ./cmd/build/main.go
 pack build <app-name> \
   --path <path/to/app> \
   --buildpack <path/to/project> \
-  --builder gcr.io/paketo-buildpacks/builder:base \
+  --builder paketobuildpacks/builder:base \
   --verbose
 {{< /code/copyable >}}
 
@@ -568,7 +568,7 @@ GOOS=linux go build -ldflags="-s -w" -o ./bin/build ./cmd/build/main.go
 pack build <app-name> \
   --path <path/to/app> \
   --buildpack <path/to/project> \
-  --builder gcr.io/paketo-buildpacks/builder:base \
+  --builder paketobuildpacks/builder:base \
   --verbose
 {{< /code/copyable >}}
 

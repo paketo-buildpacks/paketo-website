@@ -8,7 +8,7 @@ menu:
 
 # Node.js Buildpack
 
-The Node.js CNB supports several popular configurations for Node.js apps.
+The [Node.js CNB](//github.com/paketo-buildpacks/nodejs) supports several popular configurations for Node.js apps.
 
 To build a sample app locally with this CNB using the `pack` CLI, run
 

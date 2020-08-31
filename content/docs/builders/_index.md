@@ -20,25 +20,27 @@ For more information about `builders`, see [buildpacks.io](https://buildpacks.io
 ## What Paketo builders are available?
 The Paketo project releases several builder images to choose from depending on your application needs. These are:
 
-### Tiny
-Builder based off of a Distroless `ubuntu:bionic` stack. Consists of buildpacks to build most **Go** and **Java** [GraalVM Native Image](https://www.graalvm.org/docs/reference-manual/native-image/) apps. To build your app with it locally using `pack`, run: 
+### Full
+Builder based off of the `ubuntu:bionic` stack. Consists of buildpacks to build most **PHP, Java, Node.js, Go, .NET Core, Ruby,** and **NGINX** apps _**with**_ common C libraries. To build your app with it locally using `pack`, run:
 
 {{< code/copyable >}}
-pack build my-app-image --builder gcr.io/paketo-buildpacks/builder:tiny
+pack build my-app-image --builder paketobuildpacks/builder:full
 {{< /code/copyable >}}
 
 ### Base
 Builder based off of the `ubuntu:bionic` stack. Consists of buildpacks to build most **Java, Node.js, Go, .NET Core, Ruby,** and **NGINX** apps _**without**_ common C libraries. To build your app with it locally using `pack`, run:
 
 {{< code/copyable >}}
-pack build my-app-image --builder gcr.io/paketo-buildpacks/builder:base
+pack build my-app-image --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
-### Full
-Builder based off of the `ubuntu:bionic` stack. Consists of buildpacks to build most **PHP, Java, Node.js, Go, .NET Core, Ruby,** and **NGINX** apps _**with**_ common C libraries. To build your app with it locally using `pack`, run:
+### Tiny
+Builder based off of a Distroless `ubuntu:bionic` stack. Consists of buildpacks to build most **Go** and **Java** [GraalVM Native Image](https://www.graalvm.org/docs/reference-manual/native-image/) apps. To build your app with it locally using `pack`, run: 
 
 {{< code/copyable >}}
-pack build my-app-image --builder gcr.io/paketo-buildpacks/builder:full
+pack build my-app-image --builder paketobuildpacks/builder:tiny
 {{< /code/copyable >}}
 
-[Github Repo](https://github.com/paketo-buildpacks/builder)
+####
+####
+#### Paketo Builders [Github Repo](https://github.com/paketo-buildpacks/builder)

@@ -8,7 +8,7 @@ menu:
 
 # NGINX Buildpack
 
-The NGINX CNB supports the installation of the NGINX binary distribution onto
+The [NGINX CNB](//github.com/paketo-buildpacks/nginx) supports the installation of the NGINX binary distribution onto
 the `$PATH` inside a container. This makes it available to subsequent
 buildpacks.
 
