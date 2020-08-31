@@ -584,38 +584,6 @@ nav a:hover:before, .cta:hover:before, .docs-body a:hover:before {
 	width: 170px;
 	top: 350px;
 }
-/* faq */
-
-.faq h4 {
-	cursor: pointer;
-	color: #384a9a;
-	transition: color 0.3s ease;
-	margin: 0;
-}
-.faq h4:hover, .faq h4.shown {
-	color: #469cb9
-}
-.faq h4:before {
-	content: "+";
-	float: right;
-	font-size: 2.5rem;
-	font-weight: 300;
-	padding-left: 20px;
-}
-.faq h4.shown:before {
-	content: "-";
-}
-.bordered-container {
-	border: 1px solid #ccc;
-	margin: 20px 20px 0 0;
-	padding: 20px;
-}
-.faq-content ul {
-	padding-top: 1em;
-}
-.faq-content li {
-	list-style: none;
-}
 /* get-started */
 
 .icon {

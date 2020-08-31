@@ -6,7 +6,6 @@ pygmentsCodefences = true
 
 # path name excluded from documentation menu
 menu_exclusion = [
-    "faq",
     "docs"
 ]
 
