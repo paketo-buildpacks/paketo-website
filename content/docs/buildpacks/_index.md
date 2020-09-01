@@ -27,8 +27,9 @@ In this section, we will make sense of this output and explain how the
 buildpacks detect your app's dependencies and build them into the final
 runnable app image.
 
-## What are Buildpacks?  Buildpacks examine your app source code, identify and
-gather dependencies, and output OCI compliant app and dependency layers.
+## What are Buildpacks?  
+Buildpacks examine your app source code, identify and gather dependencies, and output OCI compliant app and dependency layers.
+
 **Paketo buildpacks provide language runtime support for your favorite
 languages.**
 
@@ -71,11 +72,8 @@ runnable app image:
 For more information about buildpacks, visit
 [buildpacks.io](https://buildpacks.io/docs/concepts/components/buildpack/)
 
-## How do Paketo buildpacks work together?  The Paketo project provides
-language family buildpacks, which combine multiple buildpacks into ordered
-groupings. The groupings satisfy each buildpack's requirements (mentioned in
-the  `detect` section). The language family buildpacks provide language runtime
-support for the most popular languages and app configurations.
+## How do Paketo buildpacks work together?  
+The Paketo project provides language family buildpacks, which combine multiple buildpacks into ordered groupings. The groupings satisfy each buildpack's requirements (mentioned in the  `detect` section). The language family buildpacks provide language runtime support for the most popular languages and app configurations.
 
 Keep reading to learn more about the specifics for each language family Paketo
 Buildpack.
@@ -87,7 +85,7 @@ Specification](https://github.com/buildpacks/spec). The `build` and `detect`
 phases of Paketo Buildpacks are designed to be run by the [CNB
 lifecycle](https://buildpacks.io/docs/concepts/components/lifecycle/).
 
-## How are Paketo Buildpacks different from Cloud Foundry (CF) Buildpacks?
+## How are Paketo Buildpacks different from Cloud Foundry Buildpacks?
 
 | Paketo Buildpacks | CF Buildpacks |
 | ------------------- | -------------- |
