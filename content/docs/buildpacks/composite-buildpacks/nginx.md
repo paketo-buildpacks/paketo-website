@@ -3,7 +3,7 @@ title: "NGINX Buildpack"
 weight: 303
 menu:
   main:
-    parent: "buildpacks"
+    parent: "composite-buildpacks"
 ---
 
 # NGINX Buildpack
