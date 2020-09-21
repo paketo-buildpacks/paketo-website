@@ -3,7 +3,7 @@ title: ".Net Core Buildpack"
 weight: 302
 menu:
   main:
-    parent: "composite-buildpacks"
+    parent: "language-family-buildpacks"
 ---
 
 # .Net Core Buildpack
