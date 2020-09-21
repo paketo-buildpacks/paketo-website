@@ -18,6 +18,9 @@ menu:
       - [What is a binding?](#what-is-a-binding)
       - [How to use bindings?](#how-to-use-bindings)
     - [Procfiles](#procfiles)
+  - [Building Behind a Firewall](#building-behind-a-firewall)
+    - [Proxy Configuration](#proxy-configuration)
+    - [Dependency Mappings](#dependency-mappings)
   - [Running the App Image](#running-the-app-image)
     - [Providing Additional Arguments](#providing-additional-arguments)
     - [Executing a Custom Command](#executing-a-custom-command)
@@ -82,7 +85,7 @@ pack build example/nodejs --buildpack gcr.io/paketo-buildpacks/nodejs
 #### Why bindings?
 Some Paketo Buildpacks and components installed by the Paketo Buildpacks accept credentials and other secrets using bindings at build and runtime. Commonly, bindings provide the location and credentials needed to connect to an external services.
 
-In addition, some components installed by the Paketo Buildpacks use bindings to accept typed secrets at runtime. For example, the Spring Boot Buildpack will install [Spring Cloud Bindings](https://github.com/spring-cloud/spring-cloud-bindings) which is capable of auto-configuring Spring Boot application configuration properties to connect the applicaiton to a variety of external services.  
+In addition, some components installed by the Paketo Buildpacks use bindings to accept typed secrets at runtime. For example, the Spring Boot Buildpack will install [Spring Cloud Bindings](https://github.com/spring-cloud/spring-cloud-bindings) which is capable of auto-configuring Spring Boot application configuration properties to connect the applicaiton to a variety of external services.
 
  Some examples of external services one might bind at build-time include:
  * Private artifact repositories.
@@ -169,6 +172,30 @@ docker run examples/maven # should print "hello world"
 ```
 
 **Note**: A `Procfile` cannot currently define `direct=true` process.
+
+## Building Behind a Firewall
+
+### Proxy Configuration
+Paketo Buildpacks can be configured to route traffic through a proxy using the `http_proxy`, `https_proxy`, and `no_proxy` environment variables. `pack` will set these environment variables in the build container if they are set in the host environment.
+
+### Dependency Mappings
+Paketo Buildpacks may download dependencies from the internet. For example, the Java Buildpack with download the BellSoft Liberica JRE will from the Liberica [github releases](https://github.com/bell-sw/Liberica/releases) by default.
+
+If a dependency URI is inaccessible from the build environment, a [binding](#bindings) can be used to map a new URI to a given dependency. This allows organizations to upload a copies of vetted dependencies to an accessible location and provide developers and CI/CD pipelines with configuration pointing the buildpack at the accessible dependencies.
+
+The URI mappings can be configured with one or more bindings of `type` `dependency-mapping`. Each key value pair in the binding should map the `sha256` of a dependency to a URI. Information about the dependencies a buildpack may download (including the `sha256` and the current default `uri`) can be found in the `buildpack.toml` of each component buildpack.
+
+**Example** Mapping the JRE to an internal URI
+
+For example, to make the Bellsoft Liberica JRE dependency accessible available to builds in an environment where Github is inaccessible, an operator should:
+1. Find the `sha256` and default `uri` for the desired dependency in [buildpack.toml](https://github.com/paketo-buildpacks/bellsoft-liberica/blob/main/buildpack.toml) of the `paketo-buildpacks/bellsoft-liberica` buildpack. Example values:
+    * `sha256`: `b4cb31162ff6d7926dd09e21551fa745fa3ae1758c25148b48dadcf78ab0c24c`
+    * `uri`: `https://github.com/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`
+2. Download the dependency from the `uri` and upload it to a location on the internal network that is accessible during the build.
+3. Create a binding with:
+   * `type` equal to `dependency-mapping`
+   * A key/value pair where the key is equal to the `sha256` of the dependency and the value is equal to the new URI.
+4. Configure all builds with this binding.
 
 ## Running the App Image
 
