@@ -28,9 +28,6 @@ index.docker.io/paketobuildpacks/build:tiny-cnb
 {{< code/copyable >}}
 index.docker.io/paketobuildpacks/run:tiny-cnb
 {{< /code/copyable >}}
-{{< code/copyable >}}
-gcr.io/paketo-buildpacks/run:tiny-cnb
-{{< /code/copyable >}}
 
 #### Contains:
 * Build: ubuntu:bionic + openssl + CA certs + compilers + shell utilities
@@ -46,9 +43,6 @@ index.docker.io/paketobuildpacks/build:base-cnb
 {{< code/copyable >}}
 index.docker.io/paketobuildpacks/run:base-cnb
 {{< /code/copyable >}}
-{{< code/copyable >}}
-gcr.io/paketo-buildpacks/run:base-cnb
-{{< /code/copyable >}}
 
 #### Contains:
 * Build: ubuntu:bionic + openssl + CA certs + compilers + shell utilities
@@ -63,9 +57,6 @@ index.docker.io/paketobuildpacks/build:full-cnb
 #### Run Images
 {{< code/copyable >}}
 index.docker.io/paketobuildpacks/run:full-cnb
-{{< /code/copyable >}}
-{{< code/copyable >}}
-gcr.io/paketo-buildpacks/run:full-cnb
 {{< /code/copyable >}}
 
 #### Contains:
