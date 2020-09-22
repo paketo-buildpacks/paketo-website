@@ -8,7 +8,7 @@ menu:
 
 # PHP Buildpack
 
-The [PHP CNB](//github.com/paketo-buildpacks/php) enables developers to build
+The [PHP Paketo Buildpack](//github.com/paketo-buildpacks/php) enables developers to build
 PHP-based applications.
 
 To build a sample app locally with this CNB using the `pack` CLI, run
@@ -24,8 +24,10 @@ for how to run the app.
 
 ## Supported dependencies
 
-See [PHP Buildpack releases](https://github.com/paketo-buildpacks/php/releases)
-for a full list of dependencies that are used by the buildpack.
+The PHP Paketo Buildpack supports several versions of PHP.
+For more details on the specific versions supported in a given buildpack
+version, see the [release
+notes](https://github.com/paketo-buildpacks/php/releases).
 
 ## Specifying a PHP Version
 

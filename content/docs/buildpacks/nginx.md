@@ -8,7 +8,7 @@ menu:
 
 # NGINX Buildpack
 
-The [NGINX CNB](//github.com/paketo-buildpacks/nginx) supports the installation of the NGINX binary distribution onto
+The [NGINX Paketo Buildpack](//github.com/paketo-buildpacks/nginx) supports the installation of the NGINX binary distribution onto
 the `$PATH` inside a container. This makes it available to subsequent
 buildpacks.
 
@@ -23,14 +23,17 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/nginx:latest
 See [samples](https://github.com/paketo-buildpacks/samples/tree/main/nginx)
 for how to run the app.
 
-## Supported dependencies
+## Supported Dependencies
 
-See [NGINX Buildpack releases](https://github.com/paketo-buildpacks/nginx/releases)
-for a full list of dependencies that are used by the buildpack.
+
+The NGINX Paketo Buildpack supports several versions of NGINX.
+For more details on the specific versions supported in a given buildpack
+version, see the [release
+notes](https://github.com/paketo-buildpacks/nginx/releases).
 
 ## Specifying an NGINX Version
 
-The NGINX CNB allows you to specify a version of NGINX to use during
+The NGINX CNB (Cloud Native Buildpack) allows you to specify a version of NGINX to use during
 deployment. This version can be specified in a number of ways, including
 through `buildpack.yml`. When specifying a
 version of the NGINX engine, you must choose a version that is available

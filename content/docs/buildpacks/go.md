@@ -1,6 +1,6 @@
 ---
 title: "Go Buildpack"
-weight: 302
+weight: 301
 menu:
   main:
     parent: "buildpacks"
@@ -8,10 +8,10 @@ menu:
 
 # Go Buildpack
 
-The [Go CNB](https://github.com/paketo-buildpacks/go) supports several popular
+The [Go Paketo Buildpack](https://github.com/paketo-buildpacks/go) supports several popular
 configurations for Go apps.
 
-To build a sample app locally with this CNB using the `pack` CLI, run
+To build a sample app locally with this buildpack using the `pack` CLI, run
 
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
@@ -22,14 +22,16 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/go
 See [samples](https://github.com/paketo-buildpacks/samples/tree/main/go/mod)
 for how to run the app.
 
-## Supported dependencies
+## Supported Dependencies
 
-See [Go Buildpack releases](https://github.com/paketo-buildpacks/go/releases)
-for a full list of dependencies that are used by the buildpack.
+The Go Paketo Buildpack supports several versions of Go.
+For more details on the specific versions supported in a given buildpack
+version, see the [release
+notes](https://github.com/paketo-buildpacks/go/releases).
 
 ## Specifying a Go Version
 
-The Go CNB allows you to specify a version of Go to use during deployment. This
+The Go CNB (Cloud Native Buildpack) allows you to specify a version of Go to use during deployment. This
 version can be specified via `buildpack.yml`. When specifying a version of Go,
 you must choose a version that is available within the buildpack. The supported
 versions can be found

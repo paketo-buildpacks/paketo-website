@@ -58,7 +58,7 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
 
 [params.what_are_buildpacks]
   headline = "What are Buildpacks?"
-  description = "Buildpacks transform your application source code to image that can run on any cloud. Paketo Buildpacks provide language runtime support for applications. They leverage the Cloud Native Buildpacks framework to make image builds easy, performant, and secure."
+  description = "Buildpacks transform your application source code to images that can run on any cloud. Paketo Buildpacks provide language runtime support for applications. They leverage the Cloud Native Buildpacks framework to make image builds easy, performant, and secure."
   cta_text = "More about the Cloud Native Buildpacks project"
   cta_link = "https://buildpacks.io"
 
