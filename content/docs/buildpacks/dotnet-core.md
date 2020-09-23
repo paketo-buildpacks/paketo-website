@@ -1,6 +1,6 @@
 ---
 title: ".Net Core Buildpack"
-weight: 301
+weight: 302
 menu:
   main:
     parent: "buildpacks"
@@ -8,7 +8,7 @@ menu:
 
 # .Net Core Buildpack
 
-The [.Net Core CNB](//github.com/paketo-buildpacks/dotnet-core) supports building several configurations of .Net Core
+The [.Net Core Paketo Buildpack](//github.com/paketo-buildpacks/dotnet-core) supports building several configurations of .Net Core
 applications.
 
 To build your app locally with the buildpack using the `pack` CLI, run
@@ -23,11 +23,11 @@ See
 [samples](https://github.com/paketo-buildpacks/samples/tree/main/dotnet-core/aspnet)
 for how to run the app.
 
-## Supported .Net Core Framework Versions
+## Supported Dependencies
 
-The .Net Core Buildpack supports several versions of the .Net Core Framework.
+The .Net Core Paketo Buildpack supports several versions of the .Net Core Framework.
 For more details on the specific versions supported in a given buildpack
-version, please consult the [release
+version, see the [release
 notes](https://github.com/paketo-buildpacks/dotnet-core/releases).
 
 ## Application Types

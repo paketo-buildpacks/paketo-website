@@ -5,7 +5,7 @@ menu: "main"
 ---
 
 # Stacks
-In the getting started tutorial, you used the Paketo builder to build a Node.js app. One of the core pieces to Buildpacks and Builders are Stack Images. Stacks provide the buildpack lifecycle with build-time and run-time environments in the form of images.
+In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. One of the core pieces to Buildpacks and Builders are Stack Images. Stacks provide the buildpack lifecycle with build-time and run-time environments in the form of images.
 
 ## What is a stack?
 A `stack` consists of two images:
@@ -28,9 +28,6 @@ index.docker.io/paketobuildpacks/build:tiny-cnb
 {{< code/copyable >}}
 index.docker.io/paketobuildpacks/run:tiny-cnb
 {{< /code/copyable >}}
-{{< code/copyable >}}
-gcr.io/paketo-buildpacks/run:tiny-cnb
-{{< /code/copyable >}}
 
 #### Contains:
 * Build: ubuntu:bionic + openssl + CA certs + compilers + shell utilities
@@ -46,9 +43,6 @@ index.docker.io/paketobuildpacks/build:base-cnb
 {{< code/copyable >}}
 index.docker.io/paketobuildpacks/run:base-cnb
 {{< /code/copyable >}}
-{{< code/copyable >}}
-gcr.io/paketo-buildpacks/run:base-cnb
-{{< /code/copyable >}}
 
 #### Contains:
 * Build: ubuntu:bionic + openssl + CA certs + compilers + shell utilities
@@ -63,9 +57,6 @@ index.docker.io/paketobuildpacks/build:full-cnb
 #### Run Images
 {{< code/copyable >}}
 index.docker.io/paketobuildpacks/run:full-cnb
-{{< /code/copyable >}}
-{{< code/copyable >}}
-gcr.io/paketo-buildpacks/run:full-cnb
 {{< /code/copyable >}}
 
 #### Contains:

@@ -8,7 +8,7 @@ menu:
 
 # Node.js Buildpack
 
-The [Node.js CNB](//github.com/paketo-buildpacks/nodejs) supports several popular configurations for Node.js apps.
+The [Node.js Paketo Buildpack](//github.com/paketo-buildpacks/nodejs) supports several popular configurations for Node.js apps.
 
 To build a sample app locally with this CNB using the `pack` CLI, run
 
@@ -23,12 +23,14 @@ for how to run the app.
 
 ## Supported dependencies
 
-See [Node.js Buildpack releases](https://github.com/paketo-buildpacks/nodejs/releases)
-for a full list of dependencies that are used by the buildpack.
+The Node.js Paketo Buildpack supports several versions of Node.js.
+For more details on the specific versions supported in a given buildpack
+version, see the [release
+notes](https://github.com/paketo-buildpacks/nodejs/releases).
 
 ## Specifying a Node Engine Version
 
-The Node Engine CNB allows you to specify a version of Node.js to use during
+The Node Engine CNB (Cloud Native Buildpack) allows you to specify a version of Node.js to use during
 deployment. This version can be specified in a number of ways, including
 through `.nvmrc`, `buildpack.yml`, or `package.json` files. When specifying a
 version of the Node.js engine, you must choose a version that is available
@@ -305,11 +307,3 @@ The Node.js CNB also supports simple apps that do not require third-party packag
 
 If no package manager is detected, the Node.js CNB will set the start command
 `node server.js`. The app name is ___not___ currently configurable.
-
-
-## A Note About Tini
-
-The Node.js CNB uses [Tini](https://github.com/krallin/tini), a process
-manager, to ensure that app processes exit cleanly when the app container is
-shut down. Without it, `npm start` and `yarn start` can spawn processes that
-they do not reap on container shutdown.
