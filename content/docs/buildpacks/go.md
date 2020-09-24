@@ -32,10 +32,14 @@ notes](https://github.com/paketo-buildpacks/go/releases).
 ## Specifying a Go Version
 
 The Go CNB (Cloud Native Buildpack) allows you to specify a version of Go to use during deployment. This
-version can be specified via `buildpack.yml`. When specifying a version of Go,
+version can be specified via `buildpack.yml` or `go.mod`. When specifying a version of Go,
 you must choose a version that is available within the buildpack. The supported
 versions can be found
 [here](https://github.com/paketo-buildpacks/go-dist/releases/latest).
+
+The buildpack prioritizes the versions specified in
+each possible configuration location with the following precedence, from
+highest to lowest: `buildpack.yml`, `go.mod`.
 
 Specifying a version of Go is not required. In the case that is not specified,
 the buildpack will provide the default version, which can be seen in the
