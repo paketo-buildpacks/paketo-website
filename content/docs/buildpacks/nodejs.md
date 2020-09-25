@@ -309,7 +309,7 @@ If no package manager is detected, the Node.js CNB will set the start command
 `node server.js`. The app name is ___not___ currently configurable.
 
 ## Stack support
-For most apps, the Node.js Buildpack runs fine on the Base builder. But when the app
+The Node.js Buildpack runs fine on the Base builder for most apps. If your app
 requires compilation of native extensions using `node-gyp`, the buildpack requires that
 you use the Full builder. This is because `node-gyp` requires `python` that's absent on
 the Base builder, and the module may require other shared objects.
