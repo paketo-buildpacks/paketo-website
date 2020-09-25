@@ -311,5 +311,5 @@ If no package manager is detected, the Node.js CNB will set the start command
 ## Stack support
 The Node.js Buildpack runs fine on the Base builder for most apps. If your app
 requires compilation of native extensions using `node-gyp`, the buildpack requires that
-you use the Full builder. This is because `node-gyp` requires `python` that's absent on
+you use the Full builder. This is because `node-gyp` requires `python` which is excluded from the
 the Base builder, and the module may require other shared objects.
