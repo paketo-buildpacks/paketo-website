@@ -10,7 +10,7 @@ menu:
 # Java Buildpack
 The [Paketo Java Buildpack][java] allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
 
-The Java Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of it's [components](#components). The following docs describe common build configurations. For a full set of configuration options and capabilities see the docs for the component buildpacks.
+The Java Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of it's [components](#components). The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages for the component buildpacks.
 
 ## Table of Contents
 <!-- Using https://github.com/yzhang-gh/vscode-markdown to manage toc -->
@@ -86,7 +86,7 @@ pack build samples/java \
 {{< /code/copyable >}}
 
 ### Configuring the Build Tool
-**Note**: The following set of configuration options are not comprehensive, see the reference docs for the relevant [component buildpacks](#components) for a full-set of configuration options.
+**Note**: The following set of configuration options are not comprehensive, see the homepage for the relevant component buildpacks for a full-set of configuration options.
 
 #### Selecting a Module or Artifact
 
@@ -96,7 +96,7 @@ For a given build `<TOOL>`, where `<TOOL>` is one of `MAVEN`, `GRADLE`, `LEIN` o
     * Configures the module in a multi-module build from which the buildpack will select the application artifact.
     * *Example*: Given `BP_MAVEN_BUILT_MODULE=api`, Paketo Maven Buildpack will look for the application artifact with the file pattern `target/api/*.[jw]ar`.
 * `BP_<TOOL>_BUILT_ARTIFACT`
-    * Defaults to a tool-specific pattern (e.g. `target/*.[jw]ar` for Maven, `build/libs/*.[jw]ar` for gradle). See component buildpack docs for details.
+    * Defaults to a tool-specific pattern (e.g. `target/*.[jw]ar` for Maven, `build/libs/*.[jw]ar` for gradle). See component buildpack homepage for details.
     * Configures the built application artifact path, using [Bash Pattern Matching][bash pattern matching].
     * Supercedes `BP_<TOOL>_BUILT_MODULE` if set to a non-default value.
     * *Example*: Given`BP_MAVEN_BUILT_ARTIFACT=out/api-*.jar`, the Paketo Maven Buildpack will select a file with name `out/api-1.0.0.jar`.
@@ -105,7 +105,7 @@ For a given build `<TOOL>`, where `<TOOL>` is one of `MAVEN`, `GRADLE`, `LEIN` o
 
 For a given build `<TOOL>`, where `<TOOL>` is one of `MAVEN`, `GRADLE`, `LEIN` or `SBT`, the build command can be configured with the following environment variable at build-time:
 * `BP_<TOOL>_BUILD_ARGUMENTS`
-    * *Defaults* to a tool-specific value (e.g. `-Dmaven.test.skip=true package` for Maven, `--no-daemon -x test build` for Gradle). See component buildpack docs for details.
+    * *Defaults* to a tool-specific value (e.g. `-Dmaven.test.skip=true package` for Maven, `--no-daemon -x test build` for Gradle). See component buildpack homepage for details.
     * Configures the arguments to pass to the build tool.
     * *Example*: Given `BP_GRADLE_BUILD_ARGUMENTS=war`, the Paketo Gradle Buildpack will execute `./gradlew war` or `gradle war` (depending on the presence of the gradle wrapper).
 

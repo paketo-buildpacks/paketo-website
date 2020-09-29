@@ -9,7 +9,7 @@ menu:
 # Java Native Image Buildpack
 The [Paketo Java Native Image Buildpack][bp/java-native-image] allows users to create an image containing a [GraalVM][graalvm] [native image][graalvm native image] application.
 
-The Java Native Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of it's [components](#components). The following docs describe common build configurations. For a full set of configuration options and capabilities see the docs for the component buildpacks.
+The Java Native Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of it's [components](#components). The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages of the component buildpacks.
   
 ## Table of Contents
 - [Java Native Image Buildpack](#java-native-image-buildpack)
