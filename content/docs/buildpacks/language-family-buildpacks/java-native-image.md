@@ -35,7 +35,7 @@ git clone https://github.com/paketo-buildpacks/samples
 cd samples
 {{< /code/copyable >}}
 
-The [pack CLI][pack] is used throughout the examples. `pack` is just one of several Cloud Native Buildpacks [platforms][platforrms] than can execute builds with the Java Native Image Buildpacks. For example, Spring Boot developers may want to explore the [Spring Boot Maven Plugin][spring boot maven plugin] or [Spring Boot Gradle Plugin][spring boot gradle plugin].
+The [pack CLI][pack] is used throughout the examples. `pack` is just one of several Cloud Native Buildpack [platforms][platforms] than can execute builds with the Java Native Image Buildpacks. For example, Spring Boot developers may want to explore the [Spring Boot Maven Plugin][spring boot maven plugin] or [Spring Boot Gradle Plugin][spring boot gradle plugin].
 
 Examples assume that either the [Paketo Tiny][tiny builder] or [Paketo Base builder][base builder] is the default builder:
 {{< code/copyable >}}
@@ -53,7 +53,7 @@ The Java Native Image Buildpack currently only supports Spring Boot applications
 
 The version of [Spring GraalVM Native][spring graalvm native] declared by the application or added by the buildpack may restrict support to particular versions of Spring Boot. The Spring GraalVM Native [release notes][spring graalvm native releases] for supported Spring Boot versions.
 
-For all native image builds, it is required that the `BP_BOOT_NATIVE_IMAGE` is set at build-time.
+For all native image builds, it is a requirement that `BP_BOOT_NATIVE_IMAGE` is set at build-time.
 
 ## Building From Source
 The Java Native Image Buildpack supports the same [build tools and configuration options][java/building from source] as the [Java Buildpack][bp/java]. The build must produce an [executable jar][executable jar].
@@ -89,14 +89,14 @@ The resulting application image will be identical to that built in the "Building
 
 ## About the Native Image
 
-The [GraalVM Builpack][bp/graalvm] will provide the [GraalVM][graalvm] JDK, including the `native-image` utility (the [Native image builder][graalvm native image]), and the [Substrate VM][graalvm substrate vm].
+The [GraalVM Buildpack][bp/graalvm] will provide the [GraalVM][graalvm] JDK, including the `native-image` utility (the [Native image builder][graalvm native image]), and the [Substrate VM][graalvm substrate vm].
 
 The [Spring Boot Native Image Buildpack][bp/spring-boot-native-image] uses `native-image` to compile the Java bytecode into a standalone executable. The Spring Boot Native Image Buildpack relies on the [Spring GraalVM Native][spring graalvm native], a [GraalVM Feature][graalvm feature], to configure the native image build. If the application does not already include Spring GraalVM Native as a dependency, the buildpack will add it.
 
 **Note**: The `native-image` build is a memory intensive process and may be slow if insufficient memory is provided. From the [prerequisites][spring graalvm native prerequisites] in the Spring GraalVM Native reference docs:
 
 
-> "On Mac and Windows, it is recommended to increase the memory allocated to Docker to at least 8G (and potentially to add more CPUs as well) since native-image compiler is a heavy process. See this Stackoverflow answer for more details. On Linux, Docker uses by default the resources available on the host so no configuration is needed."
+> "On Mac and Windows, it is recommended to increase the memory allocated to Docker to at least 8G (and potentially to add more CPUs as well) since native-image compiler is a heavy process. See this [Stackoverflow answer](https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437) for more details. On Linux, Docker uses by default the resources available on the host so no configuration is needed."
 
 #### Inspecting the JVM Version
 The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.
@@ -123,7 +123,7 @@ The Java Native Image Buildpack contains the [Spring Boot Buildpack][bp/spring-b
 
 The Java Native Image Buildpack will contribute a default process type that starts the application.
 
-**Example**: Running the default process
+**Example**: Running the Default Process
 
 Execute the following commands to start the default process type using a `samples/java-native` image built from any previous example command.
 {{< code/copyable >}}
@@ -144,7 +144,7 @@ curl -s http://localhost:8081/actuator/health
 {{< /code/copyable >}}
 
 ## Components
-The following component buildpacks compose the Paketo Java Native Image Buidpack.
+The following component buildpacks compose the Paketo Java Native Image Buildpack.
 
 | Buildpack | Required/Optional | Responsibility
 |-----------|----------|---------------
@@ -185,7 +185,7 @@ The following component buildpacks compose the Paketo Java Native Image Buidpack
 [base builder]:{{< ref "/docs/builders#base" >}}
 [tiny builder]:{{< ref "/docs/builders#tiny" >}}
 [bindings]:{{< ref "/docs/buildpacks/configuration#bindings" >}}
-[composite buildpack]:{{< ref "/docs/buildpacks/language-family-buildpacks#compposite-buildapcks" >}}
+[composite buildpack]:{{< ref "/docs/buildpacks/language-family-buildpacks#composite-buildpacks" >}}
 [procfiles]:{{< ref "/docs/buildpacks/configuration#procfiles" >}}
 [java/building from source]:{{< ref "/docs/buildpacks/language-family-buildpacks/java#building-from-source" >}}
 [java/spring boot applications]:{{< ref "/docs/buildpacks/language-family-buildpacks/java#spring-boot-applications" >}}

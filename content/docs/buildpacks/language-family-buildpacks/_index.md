@@ -8,7 +8,7 @@ menu:
 ---
 
 # Language Family Buildpacks
-The Paketo language family buildpacks are [composite buildpacks](#component-buildpacks) that provide easy out-of-the-box support the most popular language runtimes and app configurations.
+The Paketo language family buildpacks are [composite buildpacks](#composite-buildpacks) that provide easy out-of-the-box support the most popular language runtimes and app configurations.
 
 ## Component Buildpacks
 Paketo provides many component buildpacks, each with a well-defined responsibility. Component buildpacks may require contributions from upstream buildpacks and/or provide required components to downstream buildpacks.

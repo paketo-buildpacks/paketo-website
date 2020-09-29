@@ -350,7 +350,7 @@ Every buildpack-generated image contains an executable called the `launcher` whi
 
 To run a custom start command in the buildpack-provided environment set the `ENTRYPOINT` to `launcher` and provide the command using the container `CMD`.
 
-**Example**: Insepcting the Buildpack-provided `JAVA_TOOL_OPTIONS`
+**Example**: Inspecting the Buildpack-Provided `JAVA_TOOL_OPTIONS`
 The following command will print value of `$JAVA_TOOL_OPTIONS` set by the buildpack:
 {{< code/copyable >}}
 docker run --rm --entrypoint launcher samples/java echo 'JAVA_TOOL_OPTIONS: $JAVA_TOOL_OPTIONS'

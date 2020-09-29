@@ -176,11 +176,11 @@ If a given [language family buildpack][language family buildpacks] does not cont
 
 The following adds a process with `type` equal to `hello` and makes it the default process.
 {{< code/copyable >}}
-echo "hello: echo hello world" > nodejs/yarn
+echo "hello: echo hello world" > nodejs/yarn/Procfile
 pack build samples/nodejs \
   --path nodejs/yarn \
-  --buildpack paketo-buildpacks/nodejs \
-  --buildpack paketo-buildpacks/procfile \
+  --buildpack gcr.io/paketo-buildpacks/nodejs \
+  --buildpack gcr.io/paketo-buildpacks/procfile \
   --default-process hello
 docker run samples/nodejs # should print "hello world"
 {{< /code/copyable >}}
