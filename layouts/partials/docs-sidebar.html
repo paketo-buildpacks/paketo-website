@@ -1,38 +1,36 @@
-{{$currentNode := .}}
+<!-- sidebar start -->
 <div class="docs-menu">
     <h4>{{ .Section | humanize }}</h4>
     <ul>
-        {{- range .Site.Home.Sections.ByWeight -}}
-            {{template "docs-menu" dict "sect" . "currentnode" $currentNode}}
-        {{- end -}}
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+            {{ template "docs-menu-entry" dict "currentPage" $currentPage "entry" .}}
+        {{ end }}
     </ul>
 </div>
 
-{{define "docs-menu"}}
-    {{- $currentNode := .currentnode -}}
-    {{ with .sect }}
-        {{ if and (.IsSection) (eq .Section "docs") (not .Params.Hidden) }}
-            
-            {{- $numberOfPages := (add (len .Pages) (len .Sections)) -}}
-            <li class="section-{{ .Section }} {{ if .IsAncestor $currentNode }}parent{{ end }}">
-                <a href="{{ .Permalink }}" class="{{ if eq .Path $currentNode.Path }} active{{ end }}">{{ .Title }}</a>
-                {{ if ne $numberOfPages 0 }}
-                <ul class="sub-menu">
-                    {{- .Scratch.Set "pages" .Pages -}}
-                    {{- $pages := (.Scratch.Get "pages") -}}
-                    {{- range $pages.ByWeight -}}
-                        {{template "docs-menu" dict "sect" . "currentnode" $currentNode}}
-                    {{- end -}}
-                </ul>
-                {{end}}
-            </li>
-
-        {{- else -}}
-
-            {{- if and (not .Params.Hidden) (eq .Section "docs") -}}
-                <li class="page"><a href="{{ .Permalink }}" class="{{ if eq .Path $currentNode.Path }}active{{ end }}">{{ .Title }}</a></li>
-            {{- end -}} 
-
-        {{ end -}}
-    {{ end -}}
-{{ end }}
+<!-- templates -->
+{{- define "docs-menu-entry" }}
+    {{- $currentPage := .currentPage }}
+    {{- $entry := .entry }}
+    {{ if $entry.HasChildren }}
+        <li>
+            <a href="{{ $entry.URL }}"  class="{{ if $currentPage.IsMenuCurrent "main" $entry }}active{{ end }}">
+                {{ $entry.Pre }}
+                <span>{{ $entry.Name }}</span>
+            </a>
+            <ul class="sub-menu">
+                {{ range $entry.Children }}
+                    {{ template "docs-menu-entry"  dict "currentPage" $currentPage "entry" . }}
+                {{ end }}
+            </ul>
+        </li>
+    {{ else }}
+        <li>
+            <a href="{{ $entry.URL }}" class="{{ if $currentPage.IsMenuCurrent "main" $entry }}active{{ end }}">
+                {{ $entry.Pre }}
+                <span>{{ $entry.Name }}</span>
+            </a>
+        </li>
+    {{ end }}
+{{- end}}

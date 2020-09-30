@@ -8,36 +8,8 @@
             </div>
         </div>
         <div class="float50 full-800 pad-right">
-            <div class="text-col">
-                <h2>{{ .Site.Params.what_are_paketo_buildpacks.headline }}</h2>
-                <p>{{ .Site.Params.what_are_paketo_buildpacks.description }}</p>
-            </div>
+            <img src="/images/paketo-demo.gif"/>
         </div>
 
-        {{ with .Site.Params.what_are_paketo_buildpacks }}
-
-        <div class="clear buildpack-langs cf">
-            <div class="pad-top-100">
-                <h3>Language Packages</h3>
-                {{ range .item }}
-                    <div class="float20 half-1000 full-800">
-                        <div class="faq bordered-container">
-                            <h4 class="faq-header">{{ .name  }}</h4>
-                            <div class="faq-content hidden">
-                                <ul>
-                                    {{ range .subitem }}
-                                        <li>
-                                            <a href={{ .elem_link}}> {{ .elem_name}} </a>
-                                        </li>
-                                    {{ end }}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                {{ end }}
-            </div>
-        </div>
-
-        {{ end }}
     </div>
 </div>

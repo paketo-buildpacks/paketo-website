@@ -1,4 +1,3 @@
-
 <div class="hero pad50 pad-top-100 cf pad-btm-100">
 
         {{ with .Site.Params.hero}}
@@ -15,7 +14,9 @@
                     <div>
                         {{ range .item }}
                             <div class="inline50 hero-logo text-center">
+                              <a href="docs/buildpacks/language-family-buildpacks/{{ .docs }}">
                                 <img src="/images/{{ .img  }}" alt="{{ .alt }}">
+                              </a>
                             </div>
                         {{ end }}
                     </div>
