@@ -252,8 +252,8 @@ Application, see [this section]({{< relref "docs/buildpacks/dotnet-core.md#appli
 
 For Framework-Dependent Deployments (FDD), the `dotnet` CLI will be invoked to
 start your application. The application will be given configuration to help it
-bind to a port inside the container. By default the given port is 8080, but can
-be overridden using the `$PORT` environment variable.
+bind to a port inside the container. The default port is 8080, but can be
+overridden using the `$PORT` environment variable.
 
 {{< code/copyable >}}
 dotnet myapp.dll --urls http://0.0.0.0:${PORT:-8080}
@@ -263,9 +263,9 @@ dotnet myapp.dll --urls http://0.0.0.0:${PORT:-8080}
 
 For Self-Contained Deployments and Framework-Dependent Executables, the
 executable will be invoked directly to start your application. The application
-will be given configuration to help it bind to a port inside the container. By
-default the given port is 8080, but can be overridden using the `$PORT`
-environment variable.
+will be given configuration to help it bind to a port inside the container. The
+default port is 8080, but can be overridden using the `$PORT` environment
+variable.
 
 {{< code/copyable >}}
 ./myapp --urls http://0.0.0.0:${PORT:-8080}

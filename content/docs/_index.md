@@ -9,7 +9,7 @@ This section gets you started with Paketo Buildpacks using Paketo **Builders**, 
 
 Let's use the `base` Paketo Builder and the **Pack** CLI to build a Node.js app
 as a runnable container image. App source code is available
-[here](https://github.com/paketo-buildpacks/samples/tree/master/demo-apps/app-source).
+[here](https://github.com/paketo-buildpacks/samples/tree/main/demo-apps/app-source).
 
 **Prerequisites** - Install Pack and Docker  
 Follow [these instructions](https://buildpacks.io/docs/install-pack/) to get all set up.
@@ -60,6 +60,7 @@ Paketo NPM Install Buildpack 0.2.0
     NPM_CONFIG_LOGLEVEL   -> "error"
     NPM_CONFIG_PRODUCTION -> "true"
     PATH                  -> "$PATH:/layers/paketo-buildpacks_npm-install/modules/node_modules/.bin"
+
 Paketo NPM Start Buildpack 0.0.2
   Assigning launch processes
     web: node server.js
@@ -82,7 +83,7 @@ Successfully built image paketo-demo-app
 We've successfully created an image called **paketo-demo-app**. Now let's run our app image and validate that everything is working.
 
 {{< code/copyable >}}
-docker run -p 8080:8080 -e PORT=8080 -d -it paketo-demo-app
+docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
 {{< /code/copyable >}}
 
 Wait a few seconds for your app to start.

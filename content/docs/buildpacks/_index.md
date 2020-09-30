@@ -63,9 +63,9 @@ contributions could be adding an image layer containing a dependency binary
 `npm install`).
 
 In the Getting Started tutorial, the `pack build` output contains a section in the
-build phase for the npm buildpack under a "BUILDING" header. You can see that
-the buildpack runs `npm install` to install the app's dependencies and sets the
-start command to `npm start`.
+build phase for the NPM Install Buildpack under a "BUILDING" header. You can
+see that the buildpack runs `npm install` to install the app's dependencies.
+Subsequently, the NPM Start Buildpack sets the start command to `node server.js`.
 
 The image below illustrates how buildpacks contribute layers to the final
 runnable app image:

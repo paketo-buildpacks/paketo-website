@@ -89,8 +89,8 @@ environment variable and its impact on your app.
 ### MEMORY_AVAILABLE
 
 The `MEMORY_AVAILABLE` environment variable reports the total amount of memory
-available to the app. The Node.js CNB calculates this value from the
-`$VCAP_APPLICATION` settings or the limits specified by the operating system in
+available to the app. The Node.js CNB calculates this value from the limits
+specified by the operating system in
 `/sys/fs/cgroup/memory/memory.limit_in_bytes`.
 
 * Set by: `profile.d`
@@ -274,8 +274,9 @@ changed since the prior build.
 ### NPM Start Command
 As part of the build process, the Node.js CNB determines a start command for
 your app. The start command differs depending on which package management
-tooling the Node.js CNB uses. If the Node.js CNB uses `npm` to install
-packages, the start command is `npm start`.
+tooling the Node.js CNB uses. If the Node.js CNB uses `npm` or `yarn` to
+install packages, the start command is generated from the contents of
+`package.json`.
 
 
 ## Package Management with Yarn

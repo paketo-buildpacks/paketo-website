@@ -20,7 +20,7 @@ This tutorial's goal is to take you from nothing to a buildpack that puts a
 dependency on the filesystem as fast as possible, so with that let's get
 started!
 
-### Packit
+### [Packit](https://github.com/paketo-buildpacks/packit)
 [![GoDoc](https://godoc.org/github.com/cloudfoudry/packit?status.svg)](https://godoc.org/github.com/cloudfoundry/packit)
 
 For complete documentation of the Packit library, you can browse the godocs
@@ -132,7 +132,7 @@ GOOS=linux go build -ldflags="-s -w" -o ./bin/detect ./cmd/detect/main.go
 Once you've done that you should be able to use the `pack` cli to try and build
 a container for a `nodejs` app. For the purposes of this demonstration I will
 be using the following [simple
-app](https://github.com/paketo-buildpacks/node-engine/tree/master/integration/testdata/simple_app)
+app](https://github.com/paketo-buildpacks/node-engine/tree/main/integration/testdata/simple_app)
 from the `node-engine` repo linked above. The following command will allow you
 to build the app:
 

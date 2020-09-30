@@ -43,7 +43,7 @@ highest to lowest: `buildpack.yml`, `go.mod`.
 
 Specifying a version of Go is not required. In the case that is not specified,
 the buildpack will provide the default version, which can be seen in the
-buildpack.toml file.
+`buildpack.toml` file.
 
 ### Using buildpack.yml
 
@@ -125,10 +125,11 @@ behaviors. Go modules are a built-in option for managing these third-party
 dependencies that the Go CNB fully supports. Including a `go.mod` file in your
 app source code instructs the buildpack to vendor your dependencies using Go
 modules. During the build phase, the `go-mod-vendor`
-[buildpack](https://github.com/paketo-buildpacks/go-mod-vendor) simply runs the
-`go mod vendor` command for your app. The resulting `vendor` directory will
-exist in the app's root directory and will contain all the packages needed to
-build your Go app.
+[buildpack](https://github.com/paketo-buildpacks/go-mod-vendor) checks to see
+if the application requires any external modules and if it does, runs the `go
+mod vendor` command for your app. The resulting `vendor` directory will exist
+in the app's root directory and will contain all the packages needed to build
+your Go app.
 
 
 ### Package Management with Dep
@@ -170,7 +171,7 @@ you, depending on your app and which package management option your app uses.
 #### Go Modules
 
 When using Go modules, the Go CNB sets the `GOPATH` to a cached module layer in
-the image so that between builds of the app, thedependencies don't have to be
+the image so that between builds of the app, the dependencies don't have to be
 redownloaded. Essentially, the `GOPATH` is being used to tell the `go mod
 vendor` command where to look for dependencies. It's worth noting that in this
 case, the `GOPATH` isn't persisted beyond vendoring the dependencies and gets
@@ -187,11 +188,16 @@ to run `dep ensure`, but does not persist beyond that step.
 
 #### Build
 
-The `go-build` buildpack participates in the Go CNB in every case, regardless of which package management option is used. The `GOPATH` is set to a temporary directory which includes the app source code and local sub-packages. The `GOPATH` is utilized in running `go build` to compile your app.
+The `go-build` buildpack participates in the Go CNB in every case, regardless
+of which package management option is used. The `GOPATH` is set to a temporary
+directory which includes the app source code and local sub-packages. The
+`GOPATH` is utilized in running `go build` to compile your app.
 
 ### `GOCACHE`
 
-The `GOCACHE` variable specifies where build outputs are stored for reuse in subsequent builds. It gets set to a cached layer in  the image by the `go-build` buildpack, so that it is persisted between builds.
+The `GOCACHE` variable specifies where build outputs are stored for reuse in
+subsequent builds. It gets set to a cached layer in  the image by the
+`go-build` buildpack, so that it is persisted between builds.
 
 * Set by: `go-build`
 * Phases: `build`
@@ -199,7 +205,9 @@ The `GOCACHE` variable specifies where build outputs are stored for reuse in sub
 
 ### `DEPCACHEDIR`
 
-`DEPCACHEDIR` specifies where upstream dependency source code is stored for use by the Dep tool. The `dep-ensure` buildpack sets this variable to the path of a cache layer in the app image.
+`DEPCACHEDIR` specifies where upstream dependency source code is stored for use
+by the Dep tool. The `dep-ensure` buildpack sets this variable to the path of a
+cache layer in the app image.
 
 * Set by: `dep-ensure`
 * Phases: `build`
