@@ -3,7 +3,7 @@ title: "PHP Buildpack"
 weight: 305
 menu:
   main:
-    parent: "buildpacks"
+    parent: "language-family-buildpacks"
 ---
 
 # PHP Buildpack

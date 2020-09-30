@@ -23,7 +23,7 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
         [[params.hero.logos.item]]
             img = "java-logo.png"
             alt = "java logo"
-            docs= ""
+            docs= "java"
             builders = "full base tiny"
 
         [[params.hero.logos.item]]

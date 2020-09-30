@@ -3,7 +3,7 @@ title: ".Net Core Buildpack"
 weight: 302
 menu:
   main:
-    parent: "buildpacks"
+    parent: "language-family-buildpacks"
 ---
 
 # .Net Core Buildpack
@@ -246,7 +246,7 @@ with a valid launch process command. These commands differ slightly depending
 upon the type of built artifact produced during the build process.
 
 For more information about which built artifact is produced for a Source
-Application, see [this section]({{< relref "docs/buildpacks/dotnet-core.md#application-types" >}}).
+Application, see [this section]({{< relref "#application-types" >}}).
 
 ### Framework-Dependent Deployments and Source Applications
 

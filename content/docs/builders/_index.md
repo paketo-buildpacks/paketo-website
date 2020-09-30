@@ -1,7 +1,9 @@
 ---
 title: "Builders"
 weight: 200
-menu: "main"
+menu:
+  main:
+    identifier: builders
 ---
 
 # Builders
