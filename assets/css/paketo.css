@@ -349,7 +349,7 @@ header {
 	position: relative;
 	z-index: 4;
 }
-.logo img {
+header .logo img {
 	max-width: 260px;
 }
 nav a, .cta, .docs-body a {
@@ -445,6 +445,21 @@ nav a:hover:before, .cta:hover:before, .docs-body a:hover:before {
 .hero .cta {
 	font-size: 2rem;
 }
+.hero .logos {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.hero .logos .logo {
+  flex-basis: 33.33%;
+  text-align: center;
+}
+.hero .logos .logo img {
+  margin: 20px;
+  max-height: 90px;
+  max-width: 140px;
+}
 .hero .text-col {
 	max-width: 66.666vw;
 }
@@ -531,8 +546,6 @@ nav a:hover:before, .cta:hover:before, .docs-body a:hover:before {
 .hero .builders.tiny .commands .command code.tiny {
 	display: block;
 }
-
-.hero-logo img {max-height: 90px;margin: 0 auto 20px;max-width: 140px;}
 
 /* why-paketo-blocks */
 
@@ -838,9 +851,6 @@ footer {
 	.paketo-blocks {
 		height: 65vw;
 	}
-	.logo img {
-		width: 50vw;
-	}
 	.pad-right {
 		padding-right: 1em;
 	}
@@ -922,8 +932,9 @@ footer {
 	.no-flex-500 {
 		display: inherit;
 	}
-	.hero-logo img {
-		max-width: 25vw;
+	.hero .logos .logo img {
+		max-height: 16vmin;
+		max-width: 25vmin;
 	}
   .docs pre:hover img {
     display: none;
