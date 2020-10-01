@@ -70,7 +70,7 @@ ruby '~> 2.7.1'
 
 ## Package Management
 
-The Ruby CNB uses [Bundler](link-to-bundler-homepage) to install and manage
+The Ruby CNB uses [Bundler](https://bundler.io/) to install and manage
 the gems needed to run your application.Including a `Gemfile` in your app
 source code instructs the buildpack to vendor your dependencies using `bundle
 install`. During the build phase, the `bundle-install`
@@ -97,29 +97,51 @@ buildpack.toml file.
 The Ruby CNB supports a number of frameworks for running Ruby applications.
 Each framework buildpack sets the required start command for that framework.
 
+The start commands set by the respective buildpacks are as follows:
+
 ### Passenger
-Start command:`bundle exec passenger start --port ${PORT:-3000}`
+```
+bundle exec passenger start --port ${PORT:-3000}
+```
 
 ### Puma
-Start command: `bundle exec puma`
+```
+bundle exec puma
+```
 
 ### Rackup
-Start command: `bundle exec rackup -p "${PORT:-9292}"`
+```
+bundle exec rackup -p "${PORT:-9292}"
+```
 
 ### Rake
-Start command: `bundle exec rake`
+```
+bundle exec rake
+```
 
 ### Thin
-Start command: `bundle exec thin -p "${PORT:-3000}" start`
+```
+bundle exec thin -p "${PORT:-3000}" start
+```
 
 ### Unicorn
-Start command: `bundle exec unicorn --listen "${PORT:-8080}"`
+```
+bundle exec unicorn --listen "${PORT:-8080}"
+```
 
 ## Buildpack-Set Environment Variables
 
-The Go CNB sets a few environment variables during the `build` and `launch`
+The Ruby CNB sets a few environment variables during the `build` and `launch`
 phases of the app lifecycle. The sections below describe each environment
 variable and its impact on your app.
 
-- GEM_PATH (mri & bundler, why?)
-- BUNDLE_PATH (bundle-install, why?)
+### `GEM_PATH`
+The `GEM_PATH` variable 
+* Set by: `mri`, `bundler`
+* Phases: 
+* Value: 
+### `BUNDLE_PATH`
+The `BUNDLE_PATH` variable 
+* Set by: `bundle-install` 
+* Phases: 
+* Value: 
