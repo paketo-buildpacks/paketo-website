@@ -129,6 +129,10 @@ bundle exec thin -p "${PORT:-3000}" start
 bundle exec unicorn --listen "${PORT:-8080}"
 ```
 
+## Vendored Dependencies
+
+In order to build apps in an offline environment, the app will need to have the `.gem` files
+
 ## Buildpack-Set Environment Variables
 
 The Ruby CNB sets a few environment variables during the `build` and `launch`
@@ -136,12 +140,13 @@ phases of the app lifecycle. The sections below describe each environment
 variable and its impact on your app.
 
 ### `GEM_PATH`
-The `GEM_PATH` variable 
+
 * Set by: `mri`, `bundler`
-* Phases: 
-* Value: 
+* Phases: `build` and `launch`
+* Value: location of the directory gems will be installed for each respective dependency
+
 ### `BUNDLE_PATH`
-The `BUNDLE_PATH` variable 
-* Set by: `bundle-install` 
-* Phases: 
-* Value: 
+
+* Set by: `bundle-install`
+* Phases: `build` and `launch`
+* Value: location where all gems in your bundle will be located
