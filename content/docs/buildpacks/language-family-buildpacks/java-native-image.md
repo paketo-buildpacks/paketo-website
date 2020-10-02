@@ -1,6 +1,6 @@
 ---
 title: "Java Native Image Buildpack"
-weight: 303
+weight: 304
 menu:
   main:
     parent: "language-family-buildpacks"

@@ -1,6 +1,6 @@
 ---
 title: ".Net Core Buildpack"
-weight: 302
+weight: 301
 menu:
   main:
     parent: "language-family-buildpacks"
