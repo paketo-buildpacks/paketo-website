@@ -21,7 +21,7 @@ dependency on the filesystem as fast as possible, so with that let's get
 started!
 
 ### [Packit](https://github.com/paketo-buildpacks/packit)
-[![GoDoc](https://godoc.org/github.com/cloudfoudry/packit?status.svg)](https://godoc.org/github.com/cloudfoundry/packit)
+[![GoDoc](https://img.shields.io/badge/pkg.go.dev-doc-blue)](https://pkg.go.dev/github.com/paketo-buildpacks/packit)
 
 For complete documentation of the Packit library, you can browse the godocs
 linked above. In the interest of saving you time, let's talk about the three
@@ -72,12 +72,12 @@ api = "0.2"
 ### `bin/detect`
 **Note**: For a complete rundown on how the Detect Phase works you can read the
 `Detect Phase` section in the [packit
-godocs](https://godoc.org/github.com/cloudfoundry/packit).
+godocs](https://pkg.go.dev/github.com/paketo-buildpacks/packit).
 
 In the Packit library, there is a
-[`packit.Detect()`](https://godoc.org/github.com/cloudfoundry/packit#Detect)
+[`packit.Detect()`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#Detect)
 function that consumes a
-[`packit.DetectFunc`](https://godoc.org/github.com/cloudfoundry/packit#DetectFunc).
+[`packit.DetectFunc`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#DetectFunc).
 The `packit.DetectFunc` is created by buildpack authors and contains all of the
 buildpack specific detection logic. So with that let's write some code and talk
 about it.
@@ -89,7 +89,7 @@ package main
 
 import (
     "<path/to/project>"
-    "github.com/cloudfoundry/packit"
+    "github.com/paketo-buildpacks/packit"
 )
 
 func main() {
@@ -104,7 +104,7 @@ package node
 
 import (
     "fmt"
-    "github.com/cloudfoundry/packit"
+    "github.com/paketo-buildpacks/packit"
 )
 
 func Detect() packit.DetectFunc {
@@ -166,9 +166,9 @@ look
 [here](https://github.com/buildpacks/spec/blob/master/buildpack.md#phase-1-detection).
 
 **Quick summary**: A buildpack's detect binary has as part of it
-[`packit.DetectResult`](https://godoc.org/github.com/cloudfoundry/packit#DetectResult)
+[`packit.DetectResult`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#DetectResult)
 pass out a
-[`packit.BuildPlan`](https://godoc.org/github.com/cloudfoundry/packit#BuildPlan)
+[`packit.BuildPlan`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#BuildPlan)
 in which there is a list of provisions and requirements. A buildpack can state
 that it provides dependencies or that it requires dependencies or it can both
 require and provide dependencies. A buildpack can only detect true if all of
@@ -187,7 +187,7 @@ and require relationship in our detect code.
 package node
 
 import (
-	"github.com/cloudfoundry/packit"
+	"github.com/paketo-buildpacks/packit"
 )
 
 func Detect() packit.DetectFunc {
@@ -242,11 +242,11 @@ have no `build` binary yet, so let's fix that.
 
 For a complete on how the Build Phase works you can read the `Build Phase`
 section in the [packit
-godocs](https://godoc.org/github.com/cloudfoundry/packit), but once again I
+godocs](https://pkg.go.dev/github.com/paketo-buildpacks/packit), but once again I
 will give you a quick overview. The Packit library has a
-[`packit.Build()`](https://godoc.org/github.com/cloudfoundry/packit#Build)
+[`packit.Build()`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#Build)
 function which consumes a
-[`packit.BuildFunc`](https://godoc.org/github.com/cloudfoundry/packit#BuildFunc)
+[`packit.BuildFunc`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#BuildFunc)
 which contains all of the buildpack specific build logic and is written by us.
 So lets put down some skeleton code.
 
@@ -257,7 +257,7 @@ package main
 
 import (
 	"<path/to/project or github.com/<some-org or some-user>/<some-repo>>/node"
-	"github.com/cloudfoundry/packit"
+	"github.com/paketo-buildpacks/packit"
 )
 
 func main() {
@@ -273,7 +273,7 @@ package node
 import (
 	"fmt"
 
-	"github.com/cloudfoundry/packit"
+	"github.com/paketo-buildpacks/packit"
 )
 
 func Build() packit.BuildFunc {
@@ -315,7 +315,7 @@ ERROR: failed with status code: 7
 
 Now that we have a build process set up let's talk about how we are going to
 add our dependency to our final image. To pass dependency metadata into the
-build process we use the `buildpack.toml` and add the following fields: 
+build process we use the `buildpack.toml` and add the following fields:
 
 {{< code/copyable >}}
 [metadata]
@@ -349,7 +349,7 @@ import (
 	"path/filepath"
 
 	"github.com/BurntSushi/toml"
-	"github.com/cloudfoundry/packit"
+	"github.com/paketo-buildpacks/packit"
 )
 
 func Build() packit.BuildFunc {
@@ -419,7 +419,7 @@ import (
 	"path/filepath"
 
 	"github.com/BurntSushi/toml"
-	"github.com/cloudfoundry/packit"
+	"github.com/paketo-buildpacks/packit"
 )
 
 func Build() packit.BuildFunc {
@@ -461,19 +461,19 @@ func Build() packit.BuildFunc {
 
 Let's talk about the `context.Layers.Get()` function and the
 `nodeLayer.Reset()` function individually. On the
-[`packit.BuildContext`](https://godoc.org/github.com/cloudfoundry/packit#BuildContext)
+[`packit.BuildContext`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#BuildContext)
 object there is a field `Layers` which is a
-[`packit.Layers`](https://godoc.org/github.com/cloudfoundry/packit#Layers)
+[`packit.Layers`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layers)
 type. The
-[`packit.Layers.Get()`](https://godoc.org/github.com/cloudfoundry/packit#Layers.Get)
+[`packit.Layers.Get()`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layers.Get)
 function takes in the name of a layer and
-[`packit.LayerTypes`](https://godoc.org/github.com/cloudfoundry/packit#LayerType)
+[`packit.LayerTypes`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#LayerType)
 and returns a
-[`packit.Layer`](https://godoc.org/github.com/cloudfoundry/packit#Layer) object
+[`packit.Layer`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layer) object
 that has been populated with any metadata that exists from previous builds of
 your app. This metadata can be useful in determining whether or not a layer can
 be reused from cache but we don't need to worry about that for now. The
-[`packit.Layer.Reset()`](https://godoc.org/github.com/cloudfoundry/packit#Layer.Reset)
+[`packit.Layer.Reset()`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layer.Reset)
 function  clears all of the metadata and existing files restored from cache for
 the given layer, giving a clean slate to work with. Now that we have our layers
 set up, let's download our dependency and untar it on the layer.
@@ -489,7 +489,7 @@ import (
 	"path/filepath"
 
 	"github.com/BurntSushi/toml"
-	"github.com/cloudfoundry/packit"
+	"github.com/paketo-buildpacks/packit"
 )
 
 func Build() packit.BuildFunc {
