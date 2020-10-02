@@ -3,7 +3,7 @@ title: "Ruby Buildpack"
 weight: 306
 menu:
   main:
-    parent: "buildpacks"
+    parent: "language-family-buildpacks"
 ---
 
 # Ruby Buildpack
