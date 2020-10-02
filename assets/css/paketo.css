@@ -71,11 +71,12 @@ input, select {
 	box-sizing: border-box;
 }
 body {
-	background: #f2f2f2;
+	background: #F0F2F9;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	font-size: 16px;
-	line-height: 1.5em;
-	color: #585858;
+	font-weight: 500;
+	font-size: 22px;
+	line-height: 33px;
+	color: #4A516D;
 }
 a, a:before {
 	text-decoration: none;
@@ -85,7 +86,7 @@ a, a:before {
 	font-weight: 600;
 }
 a:hover {
-	color: #222
+	color: #F7CA44;
 }
 img {
 	height: auto;
@@ -97,7 +98,6 @@ p {
 	padding: 0.7em 0;
 }
 h1, h2, h3, h4, h5, h6 {
-	font-weight: 300;
 	line-height: 1.2em;
 	color: #343433;
 	-webkit-font-smoothing: subpixel-antialiased;
@@ -105,11 +105,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
 	font-size: 3.2rem;
-	font-weight: 600;
+	font-weight: 700;
 }
 h2 {
 	font-size: 2.5rem;
-	font-weight: 400;
+	font-weight: 600;
 	padding-top: 20px;
 }
 h3 {
@@ -141,17 +141,19 @@ hr {
 code {
 	font-family: monospace;
 	color: #378BAF;
+	font-size: 1.2rem;
+	line-height: 1.5em;
 }
 td {
-		border:  1px solid #DDD;
-		background: white;
-		padding: 10px;
+	border:  1px solid #DDD;
+	background: white;
+	padding: 10px;
 }
 th {
-		border:  1px solid #DDD;
-		background: white;
-		padding: 10px;
-		word-break: break-word;
+	border:  1px solid #DDD;
+	background: white;
+	padding: 10px;
+	word-break: break-word;
 }
 tr {
 	text-align: center;
@@ -337,7 +339,7 @@ table {
 /* decorators */
 
 .bg-white {
-	background: white;
+	background: #FEFEFE;
 }
 .external-link:before {
 	display: none;
@@ -670,7 +672,7 @@ footer p {
 	content: "";
 	transition: all 0.3s cubic-bezier(.17, .84, .44, 1);
 	position: absolute;
-	background: #f2f2f2;
+	background: #F0F2F9;
 	border-left: 1px solid #ccc;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
@@ -684,15 +686,14 @@ footer p {
 	width: 100%;
 }
 .docs pre {
-  position: relative;
+	position: relative;
 	display: block;
-	background-color: #FFF;
+	background-color: #FEFEFE;
 	font-family: monospace;
 	padding: 0.35em 0.6em;
 	border: 1px solid #E4E4E4;
 	overflow: auto;
-  overflow-wrap: break-word;
-	line-height: 1.2em;
+	overflow-wrap: break-word;
 }
 .docs pre img {
   display: none;
@@ -733,9 +734,8 @@ footer p {
 }
 .docs .code-output .btn {
   background: #E4E4E4;
-  font-weight: 600;
   text-transform: uppercase;
-  font-size: 0.7em;
+  font-size: 0.6em;
   display: block;
   margin-top: 3px;
   padding: 0 5px;
@@ -858,7 +858,7 @@ footer {
 		display: none;
 	}
 	.docs-menu a.active {
-		background: #f2f2f2;
+		background: #F0F2F9;
 		border: 1px solid #ccc;
 		padding-right: 15px;
 	}
