@@ -635,6 +635,7 @@ footer p {
 /* docs */
 .docs {
 	min-height: 70vh;
+	background: #FEFEFE;
 }
 .docs img {
   display: block;
@@ -644,6 +645,7 @@ footer p {
 .docs-sidebar {
 	width: 380px;
 	border-right: 1px solid #ccc;
+	background:: #EFF2F8;
 }
 .docs-body {
 	width: calc(100% - 380px);
@@ -675,7 +677,7 @@ footer p {
 	padding: 5px;
 }
 .docs-menu a.active {
-	color: black;
+	color: #5DBCD2;
 	padding-left: 15px;
 }
 .docs-menu a:before {
@@ -694,6 +696,8 @@ footer p {
 }
 .docs-menu a.active:before, .docs-menu a:hover:before {
 	width: 100%;
+	color: #5DBCD2;
+	background: #FEFEFE;
 }
 .docs pre {
 	position: relative;
