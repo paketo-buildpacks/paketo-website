@@ -645,7 +645,7 @@ footer p {
 .docs-sidebar {
 	width: 380px;
 	border-right: 1px solid #ccc;
-	background:: #EFF2F8;
+	background: #F0F2F9;
 }
 .docs-body {
 	width: calc(100% - 380px);
@@ -696,8 +696,10 @@ footer p {
 }
 .docs-menu a.active:before, .docs-menu a:hover:before {
 	width: 100%;
-	color: #5DBCD2;
 	background: #FEFEFE;
+}
+.docs-menu a:hover {
+	color: #5DBCD2;
 }
 .docs pre {
 	position: relative;
