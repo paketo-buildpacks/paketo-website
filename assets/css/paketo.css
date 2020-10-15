@@ -685,7 +685,9 @@ footer p {
 .docs-menu ul.sub-menu {
 	padding-left: 20px;
 	position: relative;
-  font-weight: lighter;
+}
+.docs-menu ul.sub-menu li a{
+  font-weight: normal;
 }
 .docs-menu a {
 	display: block;
