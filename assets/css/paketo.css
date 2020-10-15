@@ -445,7 +445,20 @@ nav a:hover:before, .cta:hover:before, .docs-body a:hover:before {
 	padding: 50px 50px 30px 50px;
 }
 .hero .cta {
-	font-size: 2rem;
+  font-size: 2rem;
+}
+.hero .cta:before {
+  background: none;
+}
+.hero a.btn {
+  background: #2A3878;
+  border: none;
+  color: #FEFEFE;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 0 5px grey;
 }
 .hero .logos {
   display: flex;

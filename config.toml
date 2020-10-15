@@ -16,7 +16,7 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
     headline = "Paketo Buildpacks"
     subheadline = "Your app, in your favorite language, ready to run in the cloud"
 
-    cta_text = "Get Started"
+    cta_text = "GET STARTED"
     cta_link = "/docs/"
 
     [[params.hero.logos]]
