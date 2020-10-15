@@ -73,7 +73,7 @@ input, select {
 body {
 	background: #F0F2F9;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	font-weight: 500;
+	font-weight: 400;
 	font-size: 22px;
 	line-height: 33px;
 	color: #4A516D;
@@ -102,11 +102,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 h1 {
 	font-size: 3.2rem;
-	font-weight: 700;
+	font-weight: 600;
 }
 h2 {
 	font-size: 2.5rem;
-	font-weight: 600;
+	font-weight: 400;
 	padding-top: 20px;
 }
 h3 {
@@ -114,8 +114,11 @@ h3 {
 	padding-top: 20px;
 }
 h4 {
-	font-size: 1.2rem;
-	padding-top: 20px;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 23px;
+  letter-spacing: 0.05em;
+  color: #4A516D;
 }
 ul {
 	list-style: disc;
@@ -669,6 +672,7 @@ footer p {
 .docs-menu ul.sub-menu {
 	padding-left: 20px;
 	position: relative;
+  font-weight: lighter;
 }
 .docs-menu a {
 	display: block;
@@ -762,6 +766,9 @@ footer p {
   display: inline-block;
   width: 35px;
   content: 'View ';
+}
+.docs .code-output .btn:hover {
+  cursor: pointer;
 }
 .docs .code-output.visible .btn:before {
   content: 'Hide ';
