@@ -942,6 +942,32 @@ footer {
 	}
 }
 @media (max-width: 500px) {
+	.mobile-only {
+		display: none;
+	}
+	.pad-mobile {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+	.paketo-merit {
+		display: block;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 50px;
+	}
+	.paketo-merit .image {
+		display: flex;
+		justify-content: space-evenly;
+		width: 100%;
+	}
+	.paketo-merit .text {
+		width: 100%;
+		padding-left: 20px;
+	}
+	.paketo-merit .image img {
+		max-width: 80%;
+	}
 	.hero .builders .tabs .tab {
 		padding: 5px 15px 5px 15px;
 		margin-right: 5px;
