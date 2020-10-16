@@ -95,3 +95,5 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
     text = "Get Started"
     link = "/docs/"
 
+[params.docs_menu]
+  title = "PAKETO DOCS"

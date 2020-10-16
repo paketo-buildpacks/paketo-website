@@ -446,6 +446,7 @@ nav a:hover:before, .cta:hover:before, .docs-body a:hover:before {
 }
 .hero h2 {
   color: #4A516D;
+  font-weight: 300;
 }
 .hero .cta {
   font-size: 2rem;
@@ -457,7 +458,7 @@ nav a:hover:before, .cta:hover:before, .docs-body a:hover:before {
   background: #2A3878;
   border: none;
   color: #FEFEFE;
-  padding: 15px 32px;
+  padding: 22px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
