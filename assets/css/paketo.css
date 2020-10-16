@@ -71,11 +71,12 @@ input, select {
 	box-sizing: border-box;
 }
 body {
-	background: #f2f2f2;
+	background: #F0F2F9;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-	font-size: 16px;
-	line-height: 1.5em;
-	color: #585858;
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 33px;
+	color: #4A516D;
 }
 a, a:before {
 	text-decoration: none;
@@ -83,9 +84,6 @@ a, a:before {
 	outline: none;
 	transition: all 0.3s ease;
 	font-weight: 600;
-}
-a:hover {
-	color: #222
 }
 img {
 	height: auto;
@@ -97,7 +95,6 @@ p {
 	padding: 0.7em 0;
 }
 h1, h2, h3, h4, h5, h6 {
-	font-weight: 300;
 	line-height: 1.2em;
 	color: #343433;
 	-webkit-font-smoothing: subpixel-antialiased;
@@ -117,8 +114,11 @@ h3 {
 	padding-top: 20px;
 }
 h4 {
-	font-size: 1.2rem;
-	padding-top: 20px;
+  font-weight: bold;
+  font-size: 19px;
+  line-height: 23px;
+  letter-spacing: 0.05em;
+  color: #4A516D;
 }
 ul {
 	list-style: disc;
@@ -141,17 +141,19 @@ hr {
 code {
 	font-family: monospace;
 	color: #378BAF;
+	font-size: 1.2rem;
+	line-height: 1.5em;
 }
 td {
-		border:  1px solid #DDD;
-		background: white;
-		padding: 10px;
+	border:  1px solid #DDD;
+	background: white;
+	padding: 10px;
 }
 th {
-		border:  1px solid #DDD;
-		background: white;
-		padding: 10px;
-		word-break: break-word;
+	border:  1px solid #DDD;
+	background: white;
+	padding: 10px;
+	word-break: break-word;
 }
 tr {
 	text-align: center;
@@ -337,7 +339,7 @@ table {
 /* decorators */
 
 .bg-white {
-	background: white;
+	background: #FEFEFE;
 }
 .external-link:before {
 	display: none;
@@ -378,7 +380,7 @@ nav a:before, .cta:before, .docs-body a:before {
 	height: 0.1em;
 	left: 0;
 	width: 100%;
-	background: #F8D15C;
+	background: #F7CA44;
 	z-index: -1;
 }
 nav a:hover:before, .cta:hover:before, .docs-body a:hover:before {
@@ -442,8 +444,25 @@ nav a:hover:before, .cta:hover:before, .docs-body a:hover:before {
 .hero {
 	padding: 50px 50px 30px 50px;
 }
+.hero h2 {
+  color: #4A516D;
+  font-weight: 300;
+}
 .hero .cta {
-	font-size: 2rem;
+  font-size: 2rem;
+}
+.hero .cta:before {
+  background: none;
+}
+.hero a.btn {
+  background: #2A3878;
+  border: none;
+  color: #FEFEFE;
+  padding: 22px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 0 5px grey;
 }
 .hero .logos {
   display: flex;
@@ -636,6 +655,7 @@ footer p {
 /* docs */
 .docs {
 	min-height: 70vh;
+	background: #FEFEFE;
 }
 .docs img {
   display: block;
@@ -645,6 +665,7 @@ footer p {
 .docs-sidebar {
 	width: 380px;
 	border-right: 1px solid #ccc;
+	background: #F0F2F9;
 }
 .docs-body {
 	width: calc(100% - 380px);
@@ -669,6 +690,9 @@ footer p {
 	padding-left: 20px;
 	position: relative;
 }
+.docs-menu ul.sub-menu li a{
+  font-weight: normal;
+}
 .docs-menu a {
 	display: block;
 	position: relative;
@@ -676,14 +700,14 @@ footer p {
 	padding: 5px;
 }
 .docs-menu a.active {
-	color: black;
+	color: #5DBCD2;
 	padding-left: 15px;
 }
 .docs-menu a:before {
 	content: "";
 	transition: all 0.3s cubic-bezier(.17, .84, .44, 1);
 	position: absolute;
-	background: #f2f2f2;
+	background: #F0F2F9;
 	border-left: 1px solid #ccc;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
@@ -695,17 +719,20 @@ footer p {
 }
 .docs-menu a.active:before, .docs-menu a:hover:before {
 	width: 100%;
+	background: #FEFEFE;
+}
+.docs-menu a:hover {
+	color: #5DBCD2;
 }
 .docs pre {
-  position: relative;
+	position: relative;
 	display: block;
-	background-color: #FFF;
+	background-color: #FEFEFE;
 	font-family: monospace;
 	padding: 0.35em 0.6em;
 	border: 1px solid #E4E4E4;
 	overflow: auto;
-  overflow-wrap: break-word;
-	line-height: 1.2em;
+	overflow-wrap: break-word;
 }
 .docs pre img {
   display: none;
@@ -746,9 +773,8 @@ footer p {
 }
 .docs .code-output .btn {
   background: #E4E4E4;
-  font-weight: 600;
   text-transform: uppercase;
-  font-size: 0.7em;
+  font-size: 0.6em;
   display: block;
   margin-top: 3px;
   padding: 0 5px;
@@ -759,6 +785,9 @@ footer p {
   display: inline-block;
   width: 35px;
   content: 'View ';
+}
+.docs .code-output .btn:hover {
+  cursor: pointer;
 }
 .docs .code-output.visible .btn:before {
   content: 'Hide ';
@@ -868,7 +897,7 @@ footer {
 		display: none;
 	}
 	.docs-menu a.active {
-		background: #f2f2f2;
+		background: #F0F2F9;
 		border: 1px solid #ccc;
 		padding-right: 15px;
 	}

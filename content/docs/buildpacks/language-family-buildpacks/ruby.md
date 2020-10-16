@@ -1,6 +1,6 @@
 ---
 title: "Ruby Buildpack"
-weight: 306
+weight: 308
 menu:
   main:
     parent: "language-family-buildpacks"

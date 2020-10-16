@@ -1,6 +1,6 @@
 ---
 title: "Node.js Buildpack"
-weight: 304
+weight: 306
 menu:
   main:
     parent: "language-family-buildpacks"

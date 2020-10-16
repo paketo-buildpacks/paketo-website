@@ -1,6 +1,6 @@
 <!-- sidebar start -->
 <div class="docs-menu">
-    <h4>{{ .Section | humanize }}</h4>
+    <h4>{{ .Site.Params.docs_menu.title }}</h4>
     <ul>
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
