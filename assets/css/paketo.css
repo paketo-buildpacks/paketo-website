@@ -444,6 +444,9 @@ nav a:hover:before, .cta:hover:before, .docs-body a:hover:before {
 .hero {
 	padding: 50px 50px 30px 50px;
 }
+.hero h2 {
+  color: #4A516D;
+}
 .hero .cta {
   font-size: 2rem;
 }
