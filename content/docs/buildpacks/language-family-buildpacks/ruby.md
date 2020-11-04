@@ -14,9 +14,10 @@ several popular configurations for Ruby apps.
 To build a sample app locally with this buildpack using the `pack` CLI, run
 
 {{< code/copyable >}}
-git clone https://github.com/paketo-buildpacks/samples
-cd samples/ruby/thin
-pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby
+git clone <https://github.com/paketo-buildpacks/samples>
+cd samples/ruby/puma
+pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
+  --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
 See [samples](https://github.com/paketo-buildpacks/samples/tree/main/ruby/thin)
@@ -54,6 +55,7 @@ the values below in your `buildpack.yml` file:
 
 {{< code/copyable >}}
 ---
+
 mri:
   version: 2.7.1
 {{< /code/copyable >}}
@@ -102,6 +104,7 @@ the values below in your `buildpack.yml` file:
 
 {{< code/copyable >}}
 ---
+
 bundler:
   version: 2.1.4
 {{< /code/copyable >}}
@@ -127,12 +130,14 @@ Bundler to prefer gems in this cache over those on the RubyGems index by
 running `bundle install --local`.
 
 ## Webservers & Task Runners
+
 The Ruby Buildpack supports a number of webservers and task runners that are
 useful for running Ruby applications. If your application uses one of these
 tools, it will be automatically detected and a start command for your
 applicatin will be assigned when building your application container.
 
 ### Webservers
+
 * [Passenger](http://github.com/paketo-buildpacks/passenger)
 * [Puma](http://github.com/paketo-buildpacks/puma)
 * [Rackup](http://github.com/paketo-buildpacks/rackup)
@@ -140,6 +145,7 @@ applicatin will be assigned when building your application container.
 * [Unicorn](http://github.com/paketo-buildpacks/unicorn)
 
 ### Task Runners
+
 * [Rake](http://github.com/paketo-buildpacks/rake)
 
 ## Buildpack-Set Environment Variables
