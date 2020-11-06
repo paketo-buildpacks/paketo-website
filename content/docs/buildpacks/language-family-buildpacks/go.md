@@ -82,7 +82,7 @@ go:
 
 The Go CNB allows users to specify multiple targets for `go build`. Targets may be set via the `$BP_GO_TARGETS` environement variable, which can be passed to `pack build`
 {{< code/copyable >}}
-  BP_GO_TARGETS=./some-target ./other-target
+  BP_GO_TARGETS=./some-target:./other-target
 {{< /code/copyable >}}
 
 May also be set via the following `buildpack.yml` field:
