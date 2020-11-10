@@ -363,6 +363,7 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 
 | Buildpack | Required/Optional | Responsibility
 |-----------|----------|---------------
+|[Paketo CA Certificates Buildpack][bp/ca-certificates] | Optional | Adds CA certificates to the system truststore at build and runtime.
 |[Paketo BellSoft Liberica Buildpack][bp/bellsoft-liberica] | **Required**| Provides the JDK and/or JRE.
 |[Paketo Gradle Buildpack][bp/gradle] | Optional | Builds Gradle-based applications from source.
 |[Paketo Leiningen Buildpack][bp/leiningen] | Optional | Builds Leiningen-based applications from source.
@@ -386,6 +387,7 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 [bp/apache-tomcat]:https://github.com/paketo-buildpacks/apache-tomcat
 [bp/azure-application-insights]:https://github.com/paketo-buildpacks/azure-application-insights
 [bp/bellsoft-liberica]:https://github.com/paketo-buildpacks/bellsoft-liberica
+[bp/ca-certificates]:https://github.com/paketo-buildpacks/ca-certificates
 [bp/debug]:https://github.com/paketo-buildpacks/debug
 [bp/dist-zip]:https://github.com/paketo-buildpacks/dist-zip
 [bp/encrypt-at-rest]:https://github.com/paketo-buildpacks/encrypt-at-rest
