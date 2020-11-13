@@ -162,7 +162,7 @@ pack build --volume <absolute-path-to-binding>:/platform/bindings/<binding-name>
 
 Given a directory containing a runtime binding, `docker` users can provide the binding to the app image using the `--volume` and `--env` flags
 {{< code/copyable >}}
-pack build --env SERVICE_BINDING_ROOT=/bindings --volume <absolute-path-to-binding>:/bindings/<binding-name> <image-name>
+docker run --env SERVICE_BINDING_ROOT=/bindings --volume <absolute-path-to-binding>:/bindings/<binding-name> <image-name>
 {{< /code/copyable >}}
 
 ### Procfiles
