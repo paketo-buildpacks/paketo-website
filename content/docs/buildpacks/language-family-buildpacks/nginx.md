@@ -17,14 +17,17 @@ To build a sample app locally with this CNB using the `pack` CLI, run
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/nginx
-pack build my-app --buildpack gcr.io/paketo-buildpacks/nginx:latest
+pack build my-app --buildpack gcr.io/paketo-buildpacks/nginx \
+  --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
 See [samples](https://github.com/paketo-buildpacks/samples/tree/main/nginx)
 for how to run the app.
 
-## Supported Dependencies
+**NOTE: Though the example above uses the Paketo Base builder, this buildpack is
+also compatible with the Paketo Full builder.**
 
+## Supported Dependencies
 
 The NGINX Paketo Buildpack supports several versions of NGINX.
 For more details on the specific versions supported in a given buildpack

@@ -8,20 +8,24 @@ menu:
 
 # .Net Core Buildpack
 
-The [.Net Core Paketo Buildpack](//github.com/paketo-buildpacks/dotnet-core) supports building several configurations of .Net Core
-applications.
+The [.Net Core Paketo Buildpack](//github.com/paketo-buildpacks/dotnet-core)
+supports building several configurations of .Net Core applications.
 
 To build your app locally with the buildpack using the `pack` CLI, run
 
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/dotnet-core/aspnet
-pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core
+pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core \
+  --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
 See
 [samples](https://github.com/paketo-buildpacks/samples/tree/main/dotnet-core/aspnet)
 for how to run the app.
+
+**NOTE: Though the example above uses the Paketo Base builder, this buildpack is
+also compatible with the Paketo Full builder.**
 
 ## Supported Dependencies
 

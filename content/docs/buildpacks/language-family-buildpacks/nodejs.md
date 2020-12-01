@@ -15,13 +15,18 @@ To build a sample app locally with this CNB using the `pack` CLI, run
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/nodejs/npm
-pack build my-app --buildpack gcr.io/paketo-buildpacks/nodejs
+pack build my-app --buildpack gcr.io/paketo-buildpacks/nodejs \
+  --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
 See [samples](https://github.com/paketo-buildpacks/samples/tree/main/nodejs/npm)
 for how to run the app.
 
-## Supported dependencies
+**NOTE: Though the example above uses the Paketo Base builder, this buildpack is
+also compatible with the Paketo Full builder. The Paketo Full builder is
+required if your app utilizes common C libraries.**
+
+## Supported Dependencies
 
 The Node.js Paketo Buildpack supports several versions of Node.js.
 For more details on the specific versions supported in a given buildpack
