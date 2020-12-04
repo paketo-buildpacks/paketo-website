@@ -84,9 +84,11 @@ go:
 
 ## Configuring Targets
 
-The Go CNB allows users to specify multiple targets for `go build`. Targets may be set via the `$BP_GO_TARGETS` environment variable, which can be passed to `pack build`
+The Go CNB allows users to specify multiple targets for `go build`. Targets may
+be set via the `$BP_GO_TARGETS` environment variable, which can be passed to
+`pack build`
 {{< code/copyable >}}
-  BP_GO_TARGETS=./some-target:./other-target
+BP_GO_TARGETS=./some-target:./other-target
 {{< /code/copyable >}}
 
 May also be set via the following `buildpack.yml` field:
@@ -105,7 +107,9 @@ Targets must be a list of paths relative to the root directory of the source cod
 
 ## Configuring Import Paths
 
-If you are building a $GOPATH application that imports its own sub-packages, you will need to specify the import paths for those sub-packages. The Go CNB supports setting these import paths via the `buildpack.yml` file:
+If you are building a $GOPATH application that imports its own sub-packages,
+you will need to specify the import paths for those sub-packages. The Go CNB
+supports setting these import paths via the `buildpack.yml` file:
 
 {{< code/copyable >}}
 ---
@@ -115,6 +119,16 @@ go:
   import-path: example.com/some-app
 {{< /code/copyable >}}
 
+## Configuring File Removal
+
+The Go CNB by defaults deletes the contents of your app root once it has
+compiled your app in an effort to optimize the size the final image. However
+sometimes there are static assets that you would like to appear in the final
+image. To have these files or directories persist set the `BP_KEEP_FILES`
+environment variable, which can be passed to `pack build`:
+{{< code/copyable >}}
+BP_KEEP_FILES=assets/*:public/*
+{{< /code/copyable >}}
 
 ## Package Management Options
 
