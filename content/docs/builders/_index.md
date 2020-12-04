@@ -29,12 +29,16 @@ Builder based off of the `ubuntu:bionic` stack. Consists of buildpacks to build 
 pack build my-app-image --builder paketobuildpacks/builder:full
 {{< /code/copyable >}}
 
+Paketo Full Builder [Github Repo](https://github.com/paketo-buildpacks/full-builder)
+
 ### Base
 Builder based off of the `ubuntu:bionic` stack. Consists of buildpacks to build most **Java, Node.js, Go, .NET Core, Ruby,** and **NGINX** apps _**without**_ common C libraries. To build your app with it locally using `pack`, run:
 
 {{< code/copyable >}}
 pack build my-app-image --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
+
+Paketo Base Builder [Github Repo](https://github.com/paketo-buildpacks/base-builder)
 
 ### Tiny
 Builder based off of a Distroless `ubuntu:bionic` stack. Consists of buildpacks to build most **Go** and **Java** [GraalVM Native Image](https://www.graalvm.org/docs/reference-manual/native-image/) apps. To build your app with it locally using `pack`, run: 
@@ -43,6 +47,4 @@ Builder based off of a Distroless `ubuntu:bionic` stack. Consists of buildpacks 
 pack build my-app-image --builder paketobuildpacks/builder:tiny
 {{< /code/copyable >}}
 
-####
-####
-#### Paketo Builders [Github Repo](https://github.com/paketo-buildpacks/builder)
+Paketo Tiny Builder [Github Repo](https://github.com/paketo-buildpacks/tiny-builder)
