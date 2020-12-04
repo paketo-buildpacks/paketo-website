@@ -186,6 +186,21 @@ pack build my-app \
   --env OPTIMIZE_MEMORY=true
 {{< /code/copyable >}}
 
+## Node Start Command
+The Node.js CNB allows you to build a Node.js app that does not relay on any
+external packages. To detect whether for not the app is a Node.js app the
+Node.js app looks for one of the following files in your apps root directory:
+- `server.js`
+- `app.js`
+- `main.js`
+- `index.js`
+
+The Node.js CNB will then set the start command to be `node <detected file>`.
+If you have multiples of these files in your apps root directory then the one
+will be chosen based on a priority list which reflects the order of the list
+above with `server.js` being the highest priority and  `index.js` being the
+lowest.
+
 ## Package Management with NPM
 
 Many Node.js apps require a number of third-party libraries to perform common
@@ -275,14 +290,12 @@ For `npm ci`, the CNB can reuse a `node_modules` directory from a previous
 build if the `package-lock.json` file included in the app source code has not
 changed since the prior build.
 
-
 ### NPM Start Command
 As part of the build process, the Node.js CNB determines a start command for
 your app. The start command differs depending on which package management
 tooling the Node.js CNB uses. If the Node.js CNB uses `npm` or `yarn` to
 install packages, the start command is generated from the contents of
 `package.json`.
-
 
 ## Package Management with Yarn
 
