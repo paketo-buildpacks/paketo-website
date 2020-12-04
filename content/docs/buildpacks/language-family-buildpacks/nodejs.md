@@ -187,7 +187,7 @@ pack build my-app \
 {{< /code/copyable >}}
 
 ## Node Start Command
-The Node.js CNB allows you to build a Node.js app that does not relay on any
+The Node.js CNB allows you to build a Node.js app that does not rely on any
 external packages. To detect whether for not the app is a Node.js app the
 Node.js app looks for one of the following files in your apps root directory:
 - `server.js`
