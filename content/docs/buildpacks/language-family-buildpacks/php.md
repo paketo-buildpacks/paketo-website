@@ -1,6 +1,6 @@
 ---
 title: "PHP Buildpack"
-weight: 307
+weight: 308
 menu:
   main:
     parent: "language-family-buildpacks"
@@ -8,7 +8,7 @@ menu:
 
 # PHP Buildpack
 
-The [PHP Paketo Buildpack](//github.com/paketo-buildpacks/php) enables developers to build
+The [PHP Paketo Buildpack](https://github.com/paketo-buildpacks/php) enables developers to build
 PHP-based applications.
 
 To build a sample app locally with this CNB using the `pack` CLI, run

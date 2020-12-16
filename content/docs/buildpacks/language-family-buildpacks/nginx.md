@@ -1,6 +1,6 @@
 ---
 title: "NGINX Buildpack"
-weight: 305
+weight: 306
 menu:
   main:
     parent: "language-family-buildpacks"
@@ -8,7 +8,7 @@ menu:
 
 # NGINX Buildpack
 
-The [NGINX Paketo Buildpack](//github.com/paketo-buildpacks/nginx) supports the installation of the NGINX binary distribution onto
+The [NGINX Paketo Buildpack](https://github.com/paketo-buildpacks/nginx) supports the installation of the NGINX binary distribution onto
 the `$PATH` inside a container. This makes it available to subsequent
 buildpacks.
 
@@ -53,7 +53,7 @@ include the values below in your `buildpack.yml` file:
 
 {{< code/copyable >}}
 nginx:
-  # this allows you to specify a version constaint for the `NGINX` dependency
+  # this allows you to specify a version constraint for the `NGINX` dependency
   # any valid semver constaints (e.g. 1.* and 1.17.*) are also acceptable
   #
   # you can also specify "mainline" or "stable"
