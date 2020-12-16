@@ -29,7 +29,7 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
             img = "GraalVM-logo.png"
             alt = "GraalVM logo"
             docs= "java-native-image"
-            
+
         [[params.hero.logos.item]]
             img = "go-logo.png"
             alt = "go logo"
@@ -54,6 +54,11 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
             img = "php-logo.png"
             alt = "php logo"
             docs= "php"
+
+        [[params.hero.logos.item]]
+            img = "httpd-logo.png"
+            alt = "httpd logo"
+            docs= "httpd"
 
         [[params.hero.logos.item]]
             img = "ruby-logo.png"

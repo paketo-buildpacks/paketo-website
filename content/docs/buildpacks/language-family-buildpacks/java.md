@@ -1,6 +1,6 @@
 ---
 title: "Java Buildpack"
-weight: 303
+weight: 304
 menu:
   main:
     identifier: "java"

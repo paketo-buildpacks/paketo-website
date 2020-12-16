@@ -7,7 +7,7 @@ menu:
 ---
 
 # Builders
-In the Getting Started tutorial, you used the `pack` CLI and the base `builder` to create a runnable image with your application. This section explains what `builders` are and what builders are released by the Paketo project. 
+In the Getting Started tutorial, you used the `pack` CLI and the base `builder` to create a runnable image with your application. This section explains what `builders` are and what builders are released by the Paketo project.
 
 ## What is a builder?
 A `builder` is an image that contains three components:
@@ -23,7 +23,7 @@ For more information about `builders`, see [buildpacks.io](https://buildpacks.io
 The Paketo project releases several builder images to choose from depending on your application needs. These are:
 
 ### Full
-Builder based off of the `ubuntu:bionic` stack. Consists of buildpacks to build most **PHP, Java, Node.js, Go, .NET Core, Ruby,** and **NGINX** apps _**with**_ common C libraries. To build your app with it locally using `pack`, run:
+Builder based off of the `ubuntu:bionic` stack. Consists of buildpacks to build most **PHP, Java, Node.js, Go, .NET Core, Ruby, NGINX,** and **HTTPD** apps _**with**_ common C libraries. To build your app with it locally using `pack`, run:
 
 {{< code/copyable >}}
 pack build my-app-image --builder paketobuildpacks/builder:full

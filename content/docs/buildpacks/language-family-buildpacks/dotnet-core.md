@@ -8,7 +8,7 @@ menu:
 
 # .Net Core Buildpack
 
-The [.Net Core Paketo Buildpack](//github.com/paketo-buildpacks/dotnet-core)
+The [.Net Core Paketo Buildpack](https://github.com/paketo-buildpacks/dotnet-core)
 supports building several configurations of .Net Core applications.
 
 To build your app locally with the buildpack using the `pack` CLI, run
