@@ -58,7 +58,6 @@ the values below in your `buildpack.yml` file:
 
 {{< code/copyable >}}
 ---
-
 mri:
   version: 2.7.1
 {{< /code/copyable >}}
@@ -107,7 +106,6 @@ the values below in your `buildpack.yml` file:
 
 {{< code/copyable >}}
 ---
-
 bundler:
   version: 2.1.4
 {{< /code/copyable >}}
