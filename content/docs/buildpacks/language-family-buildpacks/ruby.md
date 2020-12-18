@@ -37,29 +37,34 @@ notes](https://github.com/paketo-buildpacks/ruby/releases/latest).
 ## Specifying a Ruby Version
 
 The Ruby Buildpack allows you to specify a version of Ruby to use during
-deployment. This version can be specified via `buildpack.yml` or a `Gemfile`.
-When specifying a version of Ruby, you must choose a version that is available
+deployment. This version can be specified via the `BP_MRI_VERSION` environment
+variable or a `Gemfile`. When specifying a version of Ruby, you must choose a version that is available
 within the buildpack. The supported versions can be found
 [here](https://github.com/paketo-buildpacks/mri/releases/latest).
 
+Please note that setting the Ruby version through a `buildpack.yml` file will
+be deprecated in MRI Buildpack v1.0.0.
+
+will be deprecated in Bundler v1.0.0.
 The buildpack prioritizes the versions specified in
 each possible configuration location with the following precedence, from
-highest to lowest: `buildpack.yml`, `Gemfile`.
+highest to lowest: `BP_MRI_VERSION`, `Gemfile`.
 
 Specifying a version of Ruby is not required. In the case that is not
 specified, the buildpack will provide the default version, which can be seen in
 the [`buildpack.toml`
 ](https://github.com/paketo-buildpacks/mri/blob/main/buildpack.toml) file.
 
-### Using buildpack.yml
+### Using BP_MRI_VERSION
 
-To configure the buildpack to use Ruby v2.7.1 when deploying your app, include
-the values below in your `buildpack.yml` file:
+To configure the buildpack to use Ruby v2.7.1 when deploying your app, set the
+following environment variable at build time, either directly (ex. `pack build
+my-app --env BP_MRI_VERSION=2.7.1`) or through a
+[project.toml](https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md)
+file:
 
 {{< code/copyable >}}
----
-mri:
-  version: 2.7.1
+BP_MRI_VERSION="2.7.1"
 {{< /code/copyable >}}
 
 ### Using a Gemfile
@@ -73,6 +78,11 @@ source 'https://rubygems.org'
 ruby '~> 2.7.1'
 {{< /code/copyable >}}
 
+### Deprecated: Using buildpack.yml
+
+Specifying the Ruby version through `buildpack.yml` configuration will be deprecated in MRI Buildpack v1.0.0.
+To migrate from using `buildpack.yml` please set the `$BP_MRI_VERSION` environment variable.
+
 ## Package Management
 
 The Ruby Buildpack uses [Bundler](https://bundler.io/) to install and manage
@@ -81,36 +91,40 @@ source code instructs the [`bundle-install`
 buildpack](https://github.com/paketo-buildpacks/bundle-install) to vendor your
 dependencies using `bundle install`.
 
-### Specifying a Bundler Version
+## Specifying a Bundler Version
 
 The Ruby Buildpack allows you to specify a version of Bundler to use during
-deployment. This version can be specified via `buildpack.yml` or a
-`Gemfile.lock` created during dependency vendoring. When specifying a version
-of Bundler, you must choose a version that is available within the buildpack.
-The supported versions can be found
+deployment. This version can be specified via the `BP_BUNDLER_VERSION`
+environment variable or a `Gemfile.lock` created during dependency vendoring.
+When specifying a version of Bundler, you must choose a version that is
+available within the buildpack.  The supported versions can be found
 [here](https://github.com/paketo-buildpacks/bundler/releases/latest).
 
-The buildpack prioritizes the versions specified in
-each possible configuration location with the following precedence, from
-highest to lowest: `buildpack.yml`, `Gemfile.lock`.
+Please note that setting the Bundler version through a `buildpack.yml` file
+will be deprecated in Bundler Buildpack v1.0.0.
+
+The buildpack prioritizes the versions specified in each possible configuration
+location with the following precedence, from
+highest to lowest: `BP_BUNDLER_VERSION`, `Gemfile.lock`.
 
 Specifying a version of Bundler is not required. In the case that is not
 specified, the buildpack will provide the default version, which can be seen in
 the [`buildpack.toml`
 ](https://github.com/paketo-buildpacks/bundler/blob/main/buildpack.toml) file.
 
-#### Using buildpack.yml
+### Using BP_BUNDLER_VERSION
 
-To configure the buildpack to use Bundler v2.1.4 when deploying your app, include
-the values below in your `buildpack.yml` file:
+To configure the buildpack to use Bundler v2.1.4 when deploying your app, set
+the following environment variable at build time, either directly (ex. `pack
+build my-app --env BP_BUNDLER_VERSION=2.1.4`) or through a
+[project.toml](https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md)
+file:
 
 {{< code/copyable >}}
----
-bundler:
-  version: 2.1.4
+BP_BUNDLER_VERSION="2.1.4"
 {{< /code/copyable >}}
 
-#### Using a Gemfile.lock
+### Using a Gemfile.lock
 
 To configure the buildpack to use Bundler v2.1.4 when deploying your app, run
 `bundle install` on your application source code using v2.1.4 of Bundler. This
@@ -121,7 +135,12 @@ BUNDLED WITH
    2.1.4
 {{< /code/copyable >}}
 
-### Vendored Packages
+### Deprecated: Using buildpack.yml
+
+Specifying the Bundler version through `buildpack.yml` configuration will be deprecated in Bundler Buildpack v1.0.0.
+To migrate from using `buildpack.yml` please set the `$BP_BUNDLER_VERSION` environment variable.
+
+## Vendored Packages
 
 In order to build apps in an offline environment, the app will need to have the
 `.gem` files located in the `cache_path`. Bundler will copy the required gems
