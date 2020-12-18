@@ -167,6 +167,16 @@ applicatin will be assigned when building your application container.
 
 * [Rake](http://github.com/paketo-buildpacks/rake)
 
+## Rails Asset Pipeline
+
+The [Rails Assets buildpack](http://github.com/paketo-buildpacks/rails-assets)
+supports Rails apps (Rails version >= 5.0) that need asset precompilation.
+
+To use this buildpack, your app must contain an `app/assets` directory, and your
+app's `Gemfile` must specify the `rails` gem. The buildpack runs `bundle exec rails
+assets:precompile` for the app, and works with any of the supported Ruby
+webservers listed above.
+
 ## Buildpack-Set Environment Variables
 
 The Ruby CNB sets a few environment variables during the `build` and `launch`
