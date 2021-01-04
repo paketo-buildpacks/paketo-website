@@ -45,7 +45,6 @@ within the buildpack. The supported versions can be found
 Please note that setting the Ruby version through a `buildpack.yml` file will
 be deprecated in MRI Buildpack v1.0.0.
 
-will be deprecated in Bundler v1.0.0.
 The buildpack prioritizes the versions specified in
 each possible configuration location with the following precedence, from
 highest to lowest: `BP_MRI_VERSION`, `Gemfile`.
