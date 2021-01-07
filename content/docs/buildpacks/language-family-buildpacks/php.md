@@ -192,3 +192,9 @@ environment variable and its impact on your app.
 * Set by: `php-dist` buildpack
 * Phases: `build` and `launch`
 * Value: location of php installation
+
+### PHP_INI_SCAN_DIR
+
+* Set by: `php-web` buildpack
+* Phases: `build` and `launch`
+* Value: `<APP-ROOT>/.php.ini.d`
