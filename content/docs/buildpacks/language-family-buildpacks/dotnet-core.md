@@ -95,6 +95,11 @@ dotnet-framework:
   version: "2.1.14"
 {{< /code/copyable >}}
 
+**Note**: If you include any `dotnet-framework.version` entry in your
+`buildpack.yml`, the buildpack **will not** run runtime version roll-forward
+logic. To learn more about roll-forward logic, see the [Microsoft .Net Runtime
+documentation](https://docs.microsoft.com/en-us/dotnet/core/versions/selection#framework-dependent-apps-roll-forward).
+
 ### Using runtimeconfig.json
 
 If you are using a
