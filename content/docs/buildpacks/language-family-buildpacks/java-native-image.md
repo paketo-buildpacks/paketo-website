@@ -51,9 +51,12 @@ curl -s http://localhost:8080/actuator/health | jq .
 ## Supported Applications
 The Java Native Image Buildpack currently only supports Spring Boot applications.
 
-The version of [Spring GraalVM Native][spring graalvm native] declared by the application or added by the buildpack may restrict support to particular versions of Spring Boot. The Spring GraalVM Native [release notes][spring graalvm native releases] for supported Spring Boot versions.
+For all native image builds, it is required that:
+* `BP_BOOT_NATIVE_IMAGE` is set at build time.
+* The application declares a dependency on [Spring Native][spring native].
 
-For all native image builds, it is a requirement that `BP_BOOT_NATIVE_IMAGE` is set at build-time.
+
+The version of [Spring Native][spring native] declared by the application may require a specific version of Spring Boot. See the Spring Native [release notes][spring native releases] for supported Spring Boot versions.
 
 ## Building From Source
 The Java Native Image Buildpack supports the same [build tools and configuration options][java/building from source] as the [Java Buildpack][bp/java]. The build must produce an [executable jar][executable jar].
@@ -91,9 +94,9 @@ The resulting application image will be identical to that built in the "Building
 
 The [GraalVM Buildpack][bp/graalvm] will provide the [GraalVM][graalvm] JDK, including the `native-image` utility (the [Native image builder][graalvm native image]), and the [Substrate VM][graalvm substrate vm].
 
-The [Spring Boot Native Image Buildpack][bp/spring-boot-native-image] uses `native-image` to compile the Java bytecode into a standalone executable. The Spring Boot Native Image Buildpack relies on the [Spring GraalVM Native][spring graalvm native], a [GraalVM Feature][graalvm feature], to configure the native image build. If the application does not already include Spring GraalVM Native as a dependency, the buildpack will add it.
+The [Spring Boot Native Image Buildpack][bp/spring-boot-native-image] uses `native-image` to compile the Java bytecode into a standalone executable. The Spring Boot Native Image Buildpack relies on [Spring Native][spring native], a [GraalVM Feature][graalvm feature], to configure the native image build. The application must include Spring Native as a dependency; if it does not the build will fail.
 
-**Note**: The `native-image` build is a memory intensive process and may be slow if insufficient memory is provided. From the [prerequisites][spring graalvm native prerequisites] in the Spring GraalVM Native reference docs:
+**Note**: The `native-image` build is a memory intensive process and may be slow if insufficient memory is provided. From the [prerequisites][spring native prerequisites] in the Spring Native reference docs:
 
 
 > "On Mac and Windows, it is recommended to increase the memory allocated to Docker to at least 8G (and potentially to add more CPUs as well) since native-image compiler is a heavy process. See this [Stackoverflow answer](https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437) for more details. On Linux, Docker uses by default the resources available on the host so no configuration is needed."
@@ -198,6 +201,6 @@ The following component buildpacks compose the Paketo Java Native Image Buildpac
 [executable jar]:https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files
 [spring boot gradle plugin]:https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#build-image
 [spring boot maven plugin]:https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#build-image
-[spring graalvm native]:https://github.com/spring-projects-experimental/spring-graalvm-native
-[spring graalvm native releases]:https://github.com/spring-projects-experimental/spring-graalvm-native/releases
-[spring graalvm native prerequisites]:https://repo.spring.io/milestone/org/springframework/experimental/spring-graalvm-native-docs/0.8.1/spring-graalvm-native-docs-0.8.1.zip!/reference/index.html#_prerequisites
+[spring native]:https://github.com/spring-projects-experimental/spring-native
+[spring native releases]:https://github.com/spring-projects-experimental/spring-native/releases
+[spring native prerequisites]:https://repo.spring.io/milestone/org/springframework/experimental/spring-graalvm-native-docs/0.8.5/spring-graalvm-native-docs-0.8.5.zip!/reference/index.html#_prerequisites
