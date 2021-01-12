@@ -62,62 +62,58 @@ go:
 
 ## Configuring Build Flags
 
-The `go build` command supports a number of flags that allow users to override defaults for more control over build configurations. By default, the buildpack sets the following build flags:
+The `go build` command supports a number of flags that allow users to override
+defaults for more control over build configurations. By default, the buildpack
+sets the following build flags:
 
 * `-buildmode=pie`
 * `-mod=vendor` (if there is a go.mod file in the app source code)
 
-To set custom values for your build flags or override the defaults, add the values below to your `buildpack.yml` file:
+To set custom values for your build flags or override the defaults, assign a
+list of flags to the `BP_GO_BUILD_FLAGS` environment variable as shown below:
 
 {{< code/copyable >}}
----
-go:
-  build:
-    # The go.build.flags property allows you to override the default build
-    # flags when compiling your program.
-    flags:
-    - -buildmode=some-build-mode
-    - -tags=paketo,production
-    - -ldflags="-X main.variable=some-value"
-    - -race
+BP_GO_BUILD_FLAGS=-buildmode=some-build-mode -tags=paketo,production -ldflags="-X main.variable=some-value" -race
 {{< /code/copyable >}}
+
+### Deprecated: Using buildpack.yml
+Specifying the Go Build flags through buildpack.yml configuration will be
+deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
+please set the $BP_GO_BUILD_FLAGS environment variable.
 
 ## Configuring Targets
 
-The Go CNB allows users to specify multiple targets for `go build`. Targets may
-be set via the `$BP_GO_TARGETS` environment variable, which can be passed to
-`pack build`
+The Go CNB allows users to specify multiple targets for `go build`. This will
+result in multiples binaries being built.Targets must be a list of paths
+relative to the root directory of the source code.
+
+To set custom targets for your build assign a list of targets to the
+`$BP_GO_TARGETS` environment variable as shown below:
+
 {{< code/copyable >}}
 BP_GO_TARGETS=./some-target:./other-target
 {{< /code/copyable >}}
 
-May also be set via the following `buildpack.yml` field:
-
-{{< code/copyable >}}
----
-go:
-  targets:
-  # The go.targets property allows you to specify multiple programs to be
-  # compiled. The first target will be used as the start command for the image.
-  - ./some-target
-  - ./other-target
-{{< /code/copyable >}}
-
-Targets must be a list of paths relative to the root directory of the source code.
+### Deprecated: Using buildpack.yml
+Specifying the Go Build targets through buildpack.yml configuration will be
+deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
+please set the $BP_GO_TARGETS environment variable.
 
 ## Configuring Import Paths
 
 If you are building a $GOPATH application that imports its own sub-packages,
 you will need to specify the import paths for those sub-packages. The Go CNB
-supports setting these import paths via the `buildpack.yml` file:
+supports setting these import paths via the `$BP_GO_BUILD_IMPORT_PATH`
+environment variable:
 
 {{< code/copyable >}}
----
-go:
-  # The go.build.import-path property allows you to specify an import path
-  # for your application.
-  import-path: example.com/some-app
+BP_GO_BUILD_IMPORT_PATH=example.com/some-app
 {{< /code/copyable >}}
+
+### Deprecated: Using buildpack.yml
+Specifying the Go Build import path through buildpack.yml configuration will be
+deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
+please set the $BP_GO_BUILD_IMPORT_PATH environment variable.
 
 ## Configuring File Removal
 
