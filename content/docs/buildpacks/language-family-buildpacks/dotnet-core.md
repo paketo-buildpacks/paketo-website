@@ -120,7 +120,7 @@ app, include the values below in your `runtimeconfig.json` file:
 
 ### Using a Project file
 
-If you are using a Project file (eg. `*.csproj` or `*.fsproj`), you can specify
+If you are using a Project file (eg. `*.csproj`, `*.fsproj`, or `*.vbproj`), you can specify
 the .Net Core Runtime version within that file. To configure the buildpack to
 use .Net Core Runtime v2.1.14 when deploying your app, include the values below
 in your Project file:
