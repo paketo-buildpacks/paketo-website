@@ -1,0 +1,475 @@
+<!doctype html>
+<html>
+
+<head>
+    
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PN39N8V');</script>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Java Native Image Buildpack - Paketo Buildpacks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<meta name="og:site_name" content="Paketo Buildpacks">
+<meta name="og:title" content="Java Native Image Buildpack">
+<meta name="og:url" content="https://paketo.io/docs/buildpacks/language-family-buildpacks/java-native-image/">
+<meta name="twitter:title" content="Paketo Buildpacks" />
+<meta name="twitter:url" content="https://paketo.io/docs/buildpacks/language-family-buildpacks/java-native-image/" />
+<meta name="twitter:card" content="" />
+<link rel="stylesheet" href="/css/paketo.min.css">
+
+</head>
+
+<body>
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+
+    <header class="cf">
+    <div class="logo left">
+        <a href="/">
+            <img src="/images/paketo-logo-full-color.png">
+        </a>
+    </div>
+    <div class="right">
+        <div class="nav-opener hidden">
+            <span class="top transition-03"></span>
+            <span class="middle transition-03"></span>
+            <span class="bottom transition-03"></span>
+        </div>
+        <nav class="cf">
+            <div class="upper-nav right">
+                <a href="/docs/">Docs</a>
+                <a target="_blank" href="https://medium.com/paketo-buildpacks/">Blog</a>
+                <a target="_blank" href="https://github.com/paketo-buildpacks">GitHub</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+    <div class="flex docs no-flex-800 cf">
+    <div class="docs-sidebar relative z2 bg-white">
+        
+<div class="docs-menu">
+    <h4>PAKETO DOCS</h4>
+    <ul>
+        
+        
+            
+    
+        <li>
+            <a href="/docs/" class="">
+                
+                <span>Getting Started</span>
+            </a>
+        </li>
+    
+        
+            
+    
+        <li>
+            <a href="/docs/builders/" class="">
+                
+                <span>Builders</span>
+            </a>
+        </li>
+    
+        
+            
+    
+        <li>
+            <a href="/docs/buildpacks/"  class="">
+                
+                <span>Buildpacks</span>
+            </a>
+            <ul class="sub-menu">
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/configuration/" class="">
+                
+                <span>Configuring Paketo Buildpacks</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/"  class="">
+                
+                <span>Language Family Buildpacks</span>
+            </a>
+            <ul class="sub-menu">
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/dotnet-core/" class="">
+                
+                <span>.Net Core Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/go/" class="">
+                
+                <span>Go Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/httpd/" class="">
+                
+                <span>HTTPD Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/java/" class="">
+                
+                <span>Java Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/java-native-image/" class="active">
+                
+                <span>Java Native Image Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/nginx/" class="">
+                
+                <span>NGINX Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/nodejs/" class="">
+                
+                <span>Node.js Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/php/" class="">
+                
+                <span>PHP Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/ruby/" class="">
+                
+                <span>Ruby Buildpack</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+            
+    
+        <li>
+            <a href="/docs/stacks/" class="">
+                
+                <span>Stacks</span>
+            </a>
+        </li>
+    
+        
+            
+    
+        <li>
+            <a href="/docs/tutorials/"  class="">
+                
+                <span>Tutorials</span>
+            </a>
+            <ul class="sub-menu">
+                
+                    
+    
+        <li>
+            <a href="/docs/tutorials/create-paketo-buildpack/" class="">
+                
+                <span>Creating a Paketo Buildpack</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+    </ul>
+</div>
+
+
+
+    </div>
+    <div class="docs-body relative">
+        <div class="text-col docs-text pad50">
+            <h1 id="java-native-image-buildpack">Java Native Image Buildpack</h1>
+<p>The <a href="https://github.com/paketo-buildpacks/java-native-image%5D">Paketo Java Native Image Buildpack</a> allows users to create an image containing a <a href="https://www.graalvm.org/docs/introduction/">GraalVM</a> <a href="https://www.graalvm.org/reference-manual/native-image/">native image</a> application.</p>
+<p>The Java Native Buildpack is a <a href="https://paketo.io/docs/buildpacks/language-family-buildpacks/#composite-buildpacks">composite buildpack</a> and each step in a build is handled by one of it&rsquo;s <a href="#components">components</a>. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages of the component buildpacks.</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#java-native-image-buildpack">Java Native Image Buildpack</a>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#about-the-examples">About the Examples</a></li>
+<li><a href="#supported-applications">Supported Applications</a></li>
+<li><a href="#building-from-source">Building From Source</a></li>
+<li><a href="#building-from-an-executable-jar">Building from an Executable JAR</a></li>
+<li><a href="#about-the-native-image">About the Native Image</a>
+<ul>
+<li><a href="#inspecting-the-jvm-version">Inspecting the JVM Version</a></li>
+<li><a href="#configuring-the-jvm-version">Configuring the JVM Version</a></li>
+</ul>
+</li>
+<li><a href="#spring-boot-applications">Spring Boot Applications</a></li>
+<li><a href="#selecting-a-process">Selecting a Process</a>
+<ul>
+<li><a href="#providing-additional-arguments">Providing Additional Arguments</a></li>
+</ul>
+</li>
+<li><a href="#components">Components</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="about-the-examples">About the Examples</h2>
+<p>All Java Native Image Buildpack examples will use the Paketo <a href="https://github.com/paketo-buildpacks/samples">sample applications</a>.</p>
+<p>Examples assume that the root of this repository is the working directory:
+<pre class="copyable"><code>git clone https://github.com/paketo-buildpacks/samples
+cd samples
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+</p>
+<p>The <a href="https://github.com/buildpacks/pack">pack CLI</a> is used throughout the examples. <code>pack</code> is just one of several Cloud Native Buildpack <a href="https://buildpacks.io/docs/concepts/components/platform/">platforms</a> than can execute builds with the Java Native Image Buildpacks. For example, Spring Boot developers may want to explore the <a href="https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#build-image">Spring Boot Maven Plugin</a> or <a href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#build-image">Spring Boot Gradle Plugin</a>.</p>
+<p>Examples assume that either the <a href="https://paketo.io/docs/builders/#tiny">Paketo Tiny</a> or <a href="https://paketo.io/docs/builders/#base">Paketo Base builder</a> is the default builder:
+<pre class="copyable"><code>pack set-default-builder paketobuildpacks/builder:tiny
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+</p>
+<p>All java native image example images should return <code>{&quot;status&quot;:&quot;UP&quot;}</code> from the [actuator health endpoint][spring boot actuator endpoints].
+<pre class="copyable"><code>docker run --rm --tty --publish 8080:8080 samples/java-native
+curl -s http://localhost:8080/actuator/health | jq .
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+</p>
+<h2 id="supported-applications">Supported Applications</h2>
+<p>The Java Native Image Buildpack currently only supports Spring Boot applications.</p>
+<p>For all native image builds, it is required that:</p>
+<ul>
+<li><code>BP_BOOT_NATIVE_IMAGE</code> is set at build time.</li>
+<li>The application declares a dependency on <a href="https://github.com/spring-projects-experimental/spring-native">Spring Native</a>.</li>
+</ul>
+<p>The version of <a href="https://github.com/spring-projects-experimental/spring-native">Spring Native</a> declared by the application may require a specific version of Spring Boot. See the Spring Native <a href="https://github.com/spring-projects-experimental/spring-native/releases">release notes</a> for supported Spring Boot versions.</p>
+<h2 id="building-from-source">Building From Source</h2>
+<p>The Java Native Image Buildpack supports the same <a href="https://paketo.io/docs/buildpacks/language-family-buildpacks/java/#building-from-source">build tools and configuration options</a> as the <a href="https://github.com/paketo-buildpacks/java%5D">Java Buildpack</a>. The build must produce an <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable jar</a>.</p>
+<p>After compiling and packaging, the buildpack will replace provided application source code with the exploded JAR and proceed as described in <a href="#building-from-an-executable-jar">Building from an Executable Jar</a>.</p>
+<p><strong>Example</strong>: Building a Native image with Maven</p>
+<p>The following command creates an image from source with <code>maven</code>.</p>
+<pre class="copyable"><code>pack build samples/java-native \
+  --env BP_BOOT_NATIVE_IMAGE=true
+  --path java/native-image
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<h2 id="building-from-an-executable-jar">Building from an Executable JAR</h2>
+<p>An application developer may build an image from an exploded <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable JAR</a>. Most platforms will automatically extract provided archives.</p>
+<p><strong>Example</strong>: Building a Native image from an Executable JAR</p>
+<p>The following command uses Maven directly to compile an executable JAR and then uses the <code>pack</code> CLI to build an image from the JAR.</p>
+<pre class="copyable"><code>cd samples/java/native-image
+./mvnw package
+pack build samples/java-native \
+  --env BP_BOOT_NATIVE_IMAGE=true
+  --path java/native-image/target/demo-0.0.1-SNAPSHOT.jar
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>The resulting application image will be identical to that built in the &ldquo;Building a Native image with Maven&rdquo; example.</p>
+<h2 id="about-the-native-image">About the Native Image</h2>
+<p>The <a href="https://github.com/paketo-buildpacks/graalvm">GraalVM Buildpack</a> will provide the <a href="https://www.graalvm.org/docs/introduction/">GraalVM</a> JDK, including the <code>native-image</code> utility (the <a href="https://www.graalvm.org/reference-manual/native-image/">Native image builder</a>), and the <a href="https://www.graalvm.org/reference-manual/native-image/SubstrateVM/">Substrate VM</a>.</p>
+<p>The <a href="https://github.com/paketo-buildpacks/spring-boot-native-image">Spring Boot Native Image Buildpack</a> uses <code>native-image</code> to compile the Java bytecode into a standalone executable. The Spring Boot Native Image Buildpack relies on <a href="https://github.com/spring-projects-experimental/spring-native">Spring Native</a>, a <a href="https://www.graalvm.org/sdk/javadoc/org/graalvm/nativeimage/hosted/Feature.html">GraalVM Feature</a>, to configure the native image build. The application must include Spring Native as a dependency; if it does not the build will fail.</p>
+<p><strong>Note</strong>: The <code>native-image</code> build is a memory intensive process and may be slow if insufficient memory is provided. From the <a href="https://repo.spring.io/milestone/org/springframework/experimental/spring-graalvm-native-docs/0.8.5/spring-graalvm-native-docs-0.8.5.zip!/reference/index.html#_prerequisites">prerequisites</a> in the Spring Native reference docs:</p>
+<blockquote>
+<p>&ldquo;On Mac and Windows, it is recommended to increase the memory allocated to Docker to at least 8G (and potentially to add more CPUs as well) since native-image compiler is a heavy process. See this <a href="https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437">Stackoverflow answer</a> for more details. On Linux, Docker uses by default the resources available on the host so no configuration is needed.&rdquo;</p>
+</blockquote>
+<h4 id="inspecting-the-jvm-version">Inspecting the JVM Version</h4>
+<p>The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.</p>
+<p><strong>Example</strong> Inspecting the JRE Version</p>
+<p>Given an image named <code>samples/java-native</code> built from one of examples above, the following command will print the exact version of the installed substrate VM.
+<pre class="copyable"><code>pack inspect-image samples/java-native --bom | jq &#39;.local[] | select(.name==&#34;native-image-svm&#34;) | .metadata.version&#39;
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+</p>
+<h4 id="configuring-the-jvm-version">Configuring the JVM Version</h4>
+<p>The following environment variable configures the JVM version at build-time.</p>
+<ul>
+<li><code>BP_JVM_VERSION</code>
+<ul>
+<li>Defaults to the latest LTS version at the time of release.</li>
+<li>Configures a specific JVM version.</li>
+<li><em>Example</em>: Given <code>BP_JVM_VERSION=8</code> or <code>BP_JVM_VERSION=8.*</code> the buildpack will install the latest patch releases of the Java 8 JDK and JRE.</li>
+</ul>
+</li>
+</ul>
+<h2 id="spring-boot-applications">Spring Boot Applications</h2>
+<p>The Java Native Image Buildpack contains the <a href="https://github.com/paketo-buildpacks/spring-boot">Spring Boot Buildpack</a> and provides the same Spring Boot <a href="https://paketo.io/docs/buildpacks/language-family-buildpacks/java/#spring-boot-applications">features</a> as the Java Buildpack.</p>
+<h2 id="selecting-a-process">Selecting a Process</h2>
+<p>The Java Native Image Buildpack will contribute a default process type that starts the application.</p>
+<p><strong>Example</strong>: Running the Default Process</p>
+<p>Execute the following commands to start the default process type using a <code>samples/java-native</code> image built from any previous example command.
+<pre class="copyable"><code>docker run  --rm --publish 8080:8080 samples/java-native
+curl -s http://localhost:8080/actuator/health
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+</p>
+<h3 id="providing-additional-arguments">Providing Additional Arguments</h3>
+<p>Additional arguments can be provided to the application using the container [<code>CMD</code>][oci config]. In Kubernetes set <code>CMD</code> using the <code>args</code> field on the [container][kubernetes container resource] resource.</p>
+<p><strong>Example</strong>: Setting the Server Port</p>
+<p>Execute the following command passes an additional argument to application start command, setting the port to <code>8081</code>.
+<pre class="copyable"><code>docker run --rm --publish 8081:8081 samples/java-native --server.port=8081
+curl -s http://localhost:8081/actuator/health
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+</p>
+<h2 id="components">Components</h2>
+<p>The following component buildpacks compose the Paketo Java Native Image Buildpack.</p>
+<table>
+<thead>
+<tr>
+<th>Buildpack</th>
+<th>Required/Optional</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/graalvm">Paketo GraalVM Buildpack</a></td>
+<td><strong>Required</strong></td>
+<td>Provides the GraalVM JDK and Native Image <a href="https://www.graalvm.org/reference-manual/native-image/SubstrateVM/">Substrate VM</a>.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/gradle">Paketo Gradle Buildpack</a></td>
+<td>Optional</td>
+<td>Builds Gradle-based applications from source.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/leiningen">Paketo Leiningen Buildpack</a></td>
+<td>Optional</td>
+<td>Builds Leiningen-based applications from source.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/maven">Paketo Maven Buildpack</a></td>
+<td>Optional</td>
+<td>Builds Maven-based applications from source.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/sbt">Paketo SBT Buildpack</a></td>
+<td>Optional</td>
+<td>Builds SBT-based applications from source.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/executable-jar">Paketo Executable JAR Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes a process Type that launches an executable JAR.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/spring-boot">Paketo Spring Boot Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes configuration and metadata to Spring Boot applications.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/spring-boot-native-image">Paketo Spring Boot Native Image Buildpack</a></td>
+<td><strong>Required</strong></td>
+<td>Creates a native image from a Spring Boot application.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a></td>
+<td>Optional</td>
+<td>Allows the application to define or redefine process types with a <a href="https://paketo.io/docs/buildpacks/configuration/#procfiles">Procfile</a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/environment-variables">Paketo Environment Variables Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes arbitrary user-provided environment variables to the image.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/image-labels">Paketo Image Labels Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes OCI-specific and arbitrary user-provided labels to the image.</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+
+        </div>
+
+        <p class="docs-lastmod"><strong>Last modified:</strong> January 29, 2021</p>
+    </div>
+</div>
+
+
+    <div class="pre-footer pad50">
+    <div class="cf text-right">
+        <img class="footer-logo left" src="https://www.cloudfoundry.org/wp-content/uploads/2017/01/CFF_Logo_rgb.png" alt="Paketo Buildpacks is a Cloud Foundry Project">
+        <p class="right">Paketo Buildpacks is a <a href="https://www.cloudfoundry.org/">Cloud Foundry Project</a></p>
+    </div>
+</div>
+<footer class="cf">
+    <nav class="cf">
+        <div class="upper-nav right">
+            <a class="external-link" target="_blank" href="https://twitter.com/Paketo_io">Twitter <svg viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M 32,6.076c-1.177,0.522-2.443,0.875-3.771,1.034c 1.355-0.813, 2.396-2.099, 2.887-3.632 c-1.269,0.752-2.674,1.299-4.169,1.593c-1.198-1.276-2.904-2.073-4.792-2.073c-3.626,0-6.565,2.939-6.565,6.565 c0,0.515, 0.058,1.016, 0.17,1.496c-5.456-0.274-10.294-2.888-13.532-6.86c-0.565,0.97-0.889,2.097-0.889,3.301 c0,2.278, 1.159,4.287, 2.921,5.465c-1.076-0.034-2.088-0.329-2.974-0.821c-0.001,0.027-0.001,0.055-0.001,0.083 c0,3.181, 2.263,5.834, 5.266,6.438c-0.551,0.15-1.131,0.23-1.73,0.23c-0.423,0-0.834-0.041-1.235-0.118 c 0.836,2.608, 3.26,4.506, 6.133,4.559c-2.247,1.761-5.078,2.81-8.154,2.81c-0.53,0-1.052-0.031-1.566-0.092 c 2.905,1.863, 6.356,2.95, 10.064,2.95c 12.076,0, 18.679-10.004, 18.679-18.68c0-0.285-0.006-0.568-0.019-0.849 C 30.007,8.548, 31.12,7.392, 32,6.076z"></path></g></svg></a>
+            <a class="external-link" target="_blank" href="https://medium.com/paketo-buildpacks/">Blog <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 32v448h448V32H0zm372.2 106.1l-24 23c-2.1 1.6-3.1 4.2-2.7 6.7v169.3c-.4 2.6.6 5.2 2.7 6.7l23.5 23v5.1h-118V367l24.3-23.6c2.4-2.4 2.4-3.1 2.4-6.7V199.8l-67.6 171.6h-9.1L125 199.8v115c-.7 4.8 1 9.7 4.4 13.2l31.6 38.3v5.1H71.2v-5.1l31.6-38.3c3.4-3.5 4.9-8.4 4.1-13.2v-133c.4-3.7-1-7.3-3.8-9.8L75 138.1V133h87.3l67.4 148L289 133.1h83.2v5z"/></svg></a>
+            <a class="external-link" target="_blank" href="https://slack.paketo.io">Slack <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M94.12 315.1c0 25.9-21.16 47.06-47.06 47.06S0 341 0 315.1c0-25.9 21.16-47.06 47.06-47.06h47.06v47.06zm23.72 0c0-25.9 21.16-47.06 47.06-47.06s47.06 21.16 47.06 47.06v117.84c0 25.9-21.16 47.06-47.06 47.06s-47.06-21.16-47.06-47.06V315.1zm47.06-188.98c-25.9 0-47.06-21.16-47.06-47.06S139 32 164.9 32s47.06 21.16 47.06 47.06v47.06H164.9zm0 23.72c25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06H47.06C21.16 243.96 0 222.8 0 196.9s21.16-47.06 47.06-47.06H164.9zm188.98 47.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06h-47.06V196.9zm-23.72 0c0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06V79.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06V196.9zM283.1 385.88c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06v-47.06h47.06zm0-23.72c-25.9 0-47.06-21.16-47.06-47.06 0-25.9 21.16-47.06 47.06-47.06h117.84c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06H283.1z"/></svg></a>
+            <a class="external-link" target="_blank" href="https://github.com/paketo-buildpacks">GitHub <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></a>
+        </div>
+    </nav>
+</footer>
+<script src="/js/plugins.js"></script>
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

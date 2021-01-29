@@ -1,0 +1,601 @@
+<!doctype html>
+<html>
+
+<head>
+    
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PN39N8V');</script>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Node.js Buildpack - Paketo Buildpacks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<meta name="og:site_name" content="Paketo Buildpacks">
+<meta name="og:title" content="Node.js Buildpack">
+<meta name="og:url" content="https://paketo.io/docs/buildpacks/language-family-buildpacks/nodejs/">
+<meta name="twitter:title" content="Paketo Buildpacks" />
+<meta name="twitter:url" content="https://paketo.io/docs/buildpacks/language-family-buildpacks/nodejs/" />
+<meta name="twitter:card" content="" />
+<link rel="stylesheet" href="/css/paketo.min.css">
+
+</head>
+
+<body>
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+
+    <header class="cf">
+    <div class="logo left">
+        <a href="/">
+            <img src="/images/paketo-logo-full-color.png">
+        </a>
+    </div>
+    <div class="right">
+        <div class="nav-opener hidden">
+            <span class="top transition-03"></span>
+            <span class="middle transition-03"></span>
+            <span class="bottom transition-03"></span>
+        </div>
+        <nav class="cf">
+            <div class="upper-nav right">
+                <a href="/docs/">Docs</a>
+                <a target="_blank" href="https://medium.com/paketo-buildpacks/">Blog</a>
+                <a target="_blank" href="https://github.com/paketo-buildpacks">GitHub</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+    <div class="flex docs no-flex-800 cf">
+    <div class="docs-sidebar relative z2 bg-white">
+        
+<div class="docs-menu">
+    <h4>PAKETO DOCS</h4>
+    <ul>
+        
+        
+            
+    
+        <li>
+            <a href="/docs/" class="">
+                
+                <span>Getting Started</span>
+            </a>
+        </li>
+    
+        
+            
+    
+        <li>
+            <a href="/docs/builders/" class="">
+                
+                <span>Builders</span>
+            </a>
+        </li>
+    
+        
+            
+    
+        <li>
+            <a href="/docs/buildpacks/"  class="">
+                
+                <span>Buildpacks</span>
+            </a>
+            <ul class="sub-menu">
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/configuration/" class="">
+                
+                <span>Configuring Paketo Buildpacks</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/"  class="">
+                
+                <span>Language Family Buildpacks</span>
+            </a>
+            <ul class="sub-menu">
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/dotnet-core/" class="">
+                
+                <span>.Net Core Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/go/" class="">
+                
+                <span>Go Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/httpd/" class="">
+                
+                <span>HTTPD Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/java/" class="">
+                
+                <span>Java Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/java-native-image/" class="">
+                
+                <span>Java Native Image Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/nginx/" class="">
+                
+                <span>NGINX Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/nodejs/" class="active">
+                
+                <span>Node.js Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/php/" class="">
+                
+                <span>PHP Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/ruby/" class="">
+                
+                <span>Ruby Buildpack</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+            
+    
+        <li>
+            <a href="/docs/stacks/" class="">
+                
+                <span>Stacks</span>
+            </a>
+        </li>
+    
+        
+            
+    
+        <li>
+            <a href="/docs/tutorials/"  class="">
+                
+                <span>Tutorials</span>
+            </a>
+            <ul class="sub-menu">
+                
+                    
+    
+        <li>
+            <a href="/docs/tutorials/create-paketo-buildpack/" class="">
+                
+                <span>Creating a Paketo Buildpack</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+    </ul>
+</div>
+
+
+
+    </div>
+    <div class="docs-body relative">
+        <div class="text-col docs-text pad50">
+            <h1 id="nodejs-buildpack">Node.js Buildpack</h1>
+<p>The <a href="https://github.com/paketo-buildpacks/nodejs">Node.js Paketo Buildpack</a> supports several popular configurations for Node.js apps.</p>
+<p>To build a sample app locally with this CNB using the <code>pack</code> CLI, run</p>
+<pre class="copyable"><code>git clone https://github.com/paketo-buildpacks/samples
+cd samples/nodejs/npm
+pack build my-app --buildpack gcr.io/paketo-buildpacks/nodejs \
+  --builder paketobuildpacks/builder:base
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/nodejs/npm">samples</a>
+for how to run the app.</p>
+<p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
+also compatible with the Paketo Full builder. The Paketo Full builder is
+required if your app utilizes common C libraries.</strong></p>
+<h2 id="supported-dependencies">Supported Dependencies</h2>
+<p>The Node.js Paketo Buildpack supports several versions of Node.js.
+For more details on the specific versions supported in a given buildpack
+version, see the <a href="https://github.com/paketo-buildpacks/nodejs/releases">release
+notes</a>.</p>
+<h2 id="specifying-a-node-engine-version">Specifying a Node Engine Version</h2>
+<p>The Node Engine CNB (Cloud Native Buildpack) allows you to specify a version of Node.js to use during
+deployment. This version can be specified in a number of ways, including
+through <code>.nvmrc</code>, <code>buildpack.yml</code>, or <code>package.json</code> files. When specifying a
+version of the Node.js engine, you must choose a version that is available
+within the buildpack.</p>
+<p>The buildpack prioritizes the versions specified in
+each possible configuration location with the following precedence, from
+highest to lowest: <code>buildpack.yml</code>, <code>package.json</code>, <code>.nvmrc</code>.</p>
+<h3 id="using-buildpackyml">Using buildpack.yml</h3>
+<p>To configure the buildpack to use Node.js v12.12.0 when deploying your app,
+include the values below in your <code>buildpack.yml</code> file:</p>
+<pre class="copyable"><code>---
+nodejs:
+  version: 12.12.0
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<h3 id="using-packagejson">Using package.json</h3>
+<p>If your apps use <code>npm</code> or <code>yarn</code>, you can specify the Node.js version your apps use
+during deployment by configuring the <code>engines</code> field in the <code>package.json</code>
+file. To configure the buildpack to use Node.js v12.12.0 when deploying your
+app, include the values below in your <code>package.json</code> file:</p>
+<pre class="copyable"><code>{
+  &#34;engines&#34;: {
+    &#34;node&#34;: &#34;12.12.0&#34;
+  }
+}
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>For more information about the <code>engines</code> configuration option in the
+<code>package.json</code> file, see the
+<a href="https://docs.npmjs.com/files/package.json#engines">engines</a> section of the
+<em>npm-package.json</em> topic in the NPM documentation.</p>
+<h3 id="using-nvmrc">Using .nvmrc</h3>
+<p>Node Version Manager is a common option for managing the Node.js version an app
+uses. To specify the Node.js version your apps use during deployment, include a
+<code>.nvmrc</code> file with the version number. For more information about the contents
+of a <code>.nvmrc</code> file, see <a href="https://github.com/nvm-sh/nvm#nvmrc">.nvmrc</a> in the
+Node Version Manager repository on GitHub.</p>
+<h2 id="buildpack-set-environment-variables">Buildpack-Set Environment Variables</h2>
+<p>The Node.js CNB sets a number of environment variables during the <code>build</code> and
+<code>launch</code> phases of the app lifecycle. The sections below describe each
+environment variable and its impact on your app.</p>
+<h3 id="memory_available">MEMORY_AVAILABLE</h3>
+<p>The <code>MEMORY_AVAILABLE</code> environment variable reports the total amount of memory
+available to the app. The Node.js CNB calculates this value from the limits
+specified by the operating system in
+<code>/sys/fs/cgroup/memory/memory.limit_in_bytes</code>.</p>
+<ul>
+<li>Set by: <code>profile.d</code></li>
+<li>Phases: <code>launch</code></li>
+<li>Value: non-negative integer</li>
+</ul>
+<h3 id="node_env">NODE_ENV</h3>
+<p>The <code>NODE_ENV</code> environment variable specifies the environment in which the app
+runs.</p>
+<ul>
+<li>Set by: <code>node-engine</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: production</li>
+</ul>
+<h3 id="node_home">NODE_HOME</h3>
+<p>The <code>NODE_HOME</code> environment variable sets the path to the <code>node</code> installation.</p>
+<ul>
+<li>Set by: <code>node-engine</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: path to the <code>node</code> installation</li>
+</ul>
+<h3 id="node_verbose">NODE_VERBOSE</h3>
+<p>The <code>NODE_VERBOSE</code> environment variable adjusts the amount of logging output
+from NPM during installs.</p>
+<ul>
+<li>Set by: <code>node-engine</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: false</li>
+</ul>
+<h3 id="npm_config_loglevel">NPM_CONFIG_LOGLEVEL</h3>
+<p>The <code>NPM_CONFIG_LOGLEVEL</code> environment variable adjusts the level of logging NPM
+uses.</p>
+<ul>
+<li>Set by: <code>npm-install</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: &ldquo;error&rdquo;</li>
+</ul>
+<h3 id="npm_config_production">NPM_CONFIG_PRODUCTION</h3>
+<p>The <code>NPM_CONFIG_PRODUCTION</code> environment variable installs only production
+dependencies if NPM install is used.</p>
+<ul>
+<li>Set by: <code>npm-install</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: false</li>
+</ul>
+<h3 id="path">PATH</h3>
+<p>The <code>node_modules/.bin</code> directory is appended onto the <code>PATH</code> environment variable</p>
+<ul>
+<li>Set by: <code>yarn-install</code> or <code>npm-install</code> buildpacks</li>
+<li>Phases: <code>build</code></li>
+<li>Value: path to the <code>node_modules/.bin</code> directory</li>
+</ul>
+<h2 id="enabling-heap-memory-optimization">Enabling Heap Memory Optimization</h2>
+<p>Node.js limits the total size of all objects on the heap. Enabling the
+<code>optimize-memory</code> feature sets this value to three-quarters of the total memory
+available in the container. For example, if your app is limited to 1 GB
+when pushed, the heap of your Node.js app is limited to 768 MB.</p>
+<p>There are two ways to enable memory optimization: through your <code>buildpack.yml</code>
+file, and by using the <code>OPTIMIZE_MEMORY</code> environment variable.</p>
+<h3 id="use-the-buildpackyml">Use the buildpack.yml</h3>
+<p>To enable memory optimization through your <code>buildpack.yml</code> file, add the values
+below to your <code>buildpack.yml</code> file:</p>
+<pre class="copyable"><code>---
+nodejs:
+  optimize-memory: true
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<h3 id="use-the-optimize_memory-environment-variable">Use the OPTIMIZE_MEMORY Environment Variable</h3>
+<p>To enable memory optimization through the <code>OPTIMIZE_MEMORY</code> environment
+variable, set it to <code>true</code>.</p>
+<pre class="copyable"><code>pack build my-app \
+  --buildpack gcr.io/paketo-buildpacks/nodejs \
+  --env OPTIMIZE_MEMORY=true
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<h2 id="node-start-command">Node Start Command</h2>
+<p>The Node.js CNB allows you to build a Node.js app that does not rely on any
+external packages. To detect whether for not the app is a Node.js app the
+Node.js app looks for one of the following files in your apps root directory:</p>
+<ul>
+<li><code>server.js</code></li>
+<li><code>app.js</code></li>
+<li><code>main.js</code></li>
+<li><code>index.js</code></li>
+</ul>
+<p>The Node.js CNB will then set the start command to be <code>node &lt;detected file&gt;</code>.
+If you have multiples of these files in your apps root directory then the one
+will be chosen based on a priority list which reflects the order of the list
+above with <code>server.js</code> being the highest priority and  <code>index.js</code> being the
+lowest.</p>
+<h2 id="package-management-with-npm">Package Management with NPM</h2>
+<p>Many Node.js apps require a number of third-party libraries to perform common
+tasks and behaviors. NPM is an option for managing these third-party
+dependencies that the Node.js CNB fully supports. Including a <code>package.json</code>
+file in your app source code triggers the NPM installation process. The sections
+below describe the NPM installation process run by the buildpack.</p>
+<h3 id="npm-installation-process">NPM Installation Process</h3>
+<p>NPM supports several distinct methods for installing your package dependencies.
+Specifically, the Node.js CNB runs either the <a href="https://docs.npmjs.com/cli-commands/install"><code>npm install</code></a>, <a href="https://docs.npmjs.com/cli-commands/rebuild.html"><code>npm rebuild</code></a>, or <a href="https://docs.npmjs.com/cli-commands/ci.html"><code>npm ci</code></a> commands to build your app
+with the right set of dependencies. When deciding which installation process to
+use, the Node.js CNB consults your app source code, looking for the presence of
+specific files or directories. The installation process used also determines
+how the Node.js CNB will reuse layers when rebuilding your app.</p>
+<p>The table below shows the process the Node.js CNB uses to determine an
+installation process for NPM packages. When a combination of the files and
+directories listed in the table below are present in your app source code,
+the Node.js CNB uses an installation process that ensures the
+correct third-party dependencies are installed during the build process.</p>
+<table>
+<thead>
+<tr>
+<th><code>package-lock.json</code></th>
+<th><code>node_modules</code></th>
+<th><code>npm-cache</code></th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td><code>npm install</code></td>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>✓</td>
+<td><code>npm install</code></td>
+</tr>
+<tr>
+<td>X</td>
+<td>✓</td>
+<td>X</td>
+<td><code>npm rebuild</code></td>
+</tr>
+<tr>
+<td>X</td>
+<td>✓</td>
+<td>✓</td>
+<td><code>npm rebuild</code></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>X</td>
+<td>X</td>
+<td><code>npm ci</code></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>X</td>
+<td>✓</td>
+<td><code>npm ci</code></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>✓</td>
+<td>X</td>
+<td><code>npm rebuild</code></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td><code>npm ci</code></td>
+</tr>
+</tbody>
+</table>
+<p>The following sections give more information about the files listed in the
+table above, including how to generate them, if desired.</p>
+<h4 id="package-lockjson">package-lock.json</h4>
+<p>The <code>package-lock.json</code> file is generated by running <code>npm install</code>.  For
+more information, see
+<a href="https://docs.npmjs.com/files/package-lock.json">npm-package-lock.json</a> in the
+NPM documentation.</p>
+<h4 id="node_modules">node_modules</h4>
+<p>The <code>node_modules</code> directory contains vendored copies of all the packages
+installed by the <code>npm install</code> process. For more information, see the <a href="https://docs.npmjs.com/files/folders.html#node-modules">Node
+Modules</a> section of the
+<em>npm-folders</em> topic in the NPM documentation.</p>
+<h4 id="npm-cache">npm-cache</h4>
+<p>The <code>npm-cache</code> directory contains a content-addressable cache that stores all
+HTTP-request- and package-related data. Additionally, including a cache ensures
+that the app can be built entirely offline.</p>
+<p>To populate an <code>npm-cache</code> directory:</p>
+<ol>
+<li>Navigate to your source code directory.</li>
+<li>Run:
+<pre class="copyable"><code>npm ci --cache npm-cache
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+</li>
+</ol>
+<p>For more information about the NPM cache, see
+<a href="https://docs.npmjs.com/cli/cache">npm-cache</a> in the NPM documentation.</p>
+<h3 id="determining-node-modules-layer-reuse">Determining Node Modules Layer Reuse</h3>
+<p>To improve build times for apps, the Node.js CNB has a method for reusing the build
+results from previous builds. When the CNB determines that a portion of the
+build process can be reused from a previous build, the CNB uses the previous
+result. Each installation process uses a different method for determining
+whether the CNB can reuse a previous build result.</p>
+<p>For <code>npm install</code>, the CNB never reuses a <code>node_modules</code> directory from previous builds.</p>
+<p>For <code>npm rebuild</code>, the CNB can reuse a <code>node_modules</code> directory from a previous
+build if the included <code>node_modules</code> directory in the app source code has not
+changed since the prior build.</p>
+<p>For <code>npm ci</code>, the CNB can reuse a <code>node_modules</code> directory from a previous
+build if the <code>package-lock.json</code> file included in the app source code has not
+changed since the prior build.</p>
+<h3 id="npm-configuration">NPM Configuration</h3>
+<p>The Node.js CNB respects native configuration options for NPM. If you would
+like to learn more about NPM native configuration please check the NPM
+Configuration <a href="https://docs.npmjs.com/cli/v6/using-npm/config">documentation</a>
+and the <code>.npmrc</code>
+<a href="https://docs.npmjs.com/cli/v6/configuring-npm/npmrc">documentation</a>.</p>
+<h3 id="npm-start-command">NPM Start Command</h3>
+<p>As part of the build process, the Node.js CNB determines a start command for
+your app. The start command differs depending on which package management
+tooling the Node.js CNB uses. If the Node.js CNB uses <code>npm</code> or <code>yarn</code> to
+install packages, the start command is generated from the contents of
+<code>package.json</code>.</p>
+<h2 id="package-management-with-yarn">Package Management with Yarn</h2>
+<p>Many Node.js apps require a number of third-party libraries to perform common
+tasks and behaviors. Yarn is an alternative option to NPM for managing these
+third-party dependencies. Including <code>package.json</code> and <code>yarn.lock</code> files in
+your app source code triggers the Yarn installation process.</p>
+<h3 id="yarn-installation-process">Yarn Installation Process</h3>
+<p>The Node.js CNB runs <code>yarn install</code> and <code>yarn check</code> to ensure that third-party
+dependencies are properly installed.
+The <code>yarn.lock</code> file contains a fully resolved set of package dependencies that
+Yarn manages. For more information, see
+<a href="https://yarnpkg.com/lang/en/docs/yarn-lock/">yarn.lock</a> in the Yarn
+documentation.</p>
+<h3 id="yarn-configuration">Yarn Configuration</h3>
+<p>The Node.js CNB respects native configuration options for Yarn. If you would
+like to learn more about Yarn configuration using <code>.yarnrc</code> please visit <a href="https://classic.yarnpkg.com/en/docs/yarnrc">the
+Yarn documentation</a>.</p>
+<h3 id="yarn-start-command">Yarn Start Command</h3>
+<p>As part of the build process, the Node.js CNB determines a start command for
+your app. The start command differs depending on which package management
+tooling the Node.js CNB uses. If the Node.js CNB uses <code>yarn</code> to install
+packages, the start command is <code>yarn start</code>.</p>
+<h2 id="projects-without-package-management">Projects Without Package Management</h2>
+<p>The Node.js CNB also supports simple apps that do not require third-party packages.</p>
+<h3 id="start-command">Start Command</h3>
+<p>If no package manager is detected, the Node.js CNB will set the start command
+<code>node server.js</code>. The app name is <em><strong>not</strong></em> currently configurable.</p>
+<h2 id="stack-support">Stack support</h2>
+<p>The Node.js Buildpack runs fine on the Base builder for most apps. If your app
+requires compilation of native extensions using <code>node-gyp</code>, the buildpack requires that
+you use the Full builder. This is because <code>node-gyp</code> requires <code>python</code> which is excluded from the
+the Base builder, and the module may require other shared objects.</p>
+
+        </div>
+
+        <p class="docs-lastmod"><strong>Last modified:</strong> January 29, 2021</p>
+    </div>
+</div>
+
+
+    <div class="pre-footer pad50">
+    <div class="cf text-right">
+        <img class="footer-logo left" src="https://www.cloudfoundry.org/wp-content/uploads/2017/01/CFF_Logo_rgb.png" alt="Paketo Buildpacks is a Cloud Foundry Project">
+        <p class="right">Paketo Buildpacks is a <a href="https://www.cloudfoundry.org/">Cloud Foundry Project</a></p>
+    </div>
+</div>
+<footer class="cf">
+    <nav class="cf">
+        <div class="upper-nav right">
+            <a class="external-link" target="_blank" href="https://twitter.com/Paketo_io">Twitter <svg viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M 32,6.076c-1.177,0.522-2.443,0.875-3.771,1.034c 1.355-0.813, 2.396-2.099, 2.887-3.632 c-1.269,0.752-2.674,1.299-4.169,1.593c-1.198-1.276-2.904-2.073-4.792-2.073c-3.626,0-6.565,2.939-6.565,6.565 c0,0.515, 0.058,1.016, 0.17,1.496c-5.456-0.274-10.294-2.888-13.532-6.86c-0.565,0.97-0.889,2.097-0.889,3.301 c0,2.278, 1.159,4.287, 2.921,5.465c-1.076-0.034-2.088-0.329-2.974-0.821c-0.001,0.027-0.001,0.055-0.001,0.083 c0,3.181, 2.263,5.834, 5.266,6.438c-0.551,0.15-1.131,0.23-1.73,0.23c-0.423,0-0.834-0.041-1.235-0.118 c 0.836,2.608, 3.26,4.506, 6.133,4.559c-2.247,1.761-5.078,2.81-8.154,2.81c-0.53,0-1.052-0.031-1.566-0.092 c 2.905,1.863, 6.356,2.95, 10.064,2.95c 12.076,0, 18.679-10.004, 18.679-18.68c0-0.285-0.006-0.568-0.019-0.849 C 30.007,8.548, 31.12,7.392, 32,6.076z"></path></g></svg></a>
+            <a class="external-link" target="_blank" href="https://medium.com/paketo-buildpacks/">Blog <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 32v448h448V32H0zm372.2 106.1l-24 23c-2.1 1.6-3.1 4.2-2.7 6.7v169.3c-.4 2.6.6 5.2 2.7 6.7l23.5 23v5.1h-118V367l24.3-23.6c2.4-2.4 2.4-3.1 2.4-6.7V199.8l-67.6 171.6h-9.1L125 199.8v115c-.7 4.8 1 9.7 4.4 13.2l31.6 38.3v5.1H71.2v-5.1l31.6-38.3c3.4-3.5 4.9-8.4 4.1-13.2v-133c.4-3.7-1-7.3-3.8-9.8L75 138.1V133h87.3l67.4 148L289 133.1h83.2v5z"/></svg></a>
+            <a class="external-link" target="_blank" href="https://slack.paketo.io">Slack <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M94.12 315.1c0 25.9-21.16 47.06-47.06 47.06S0 341 0 315.1c0-25.9 21.16-47.06 47.06-47.06h47.06v47.06zm23.72 0c0-25.9 21.16-47.06 47.06-47.06s47.06 21.16 47.06 47.06v117.84c0 25.9-21.16 47.06-47.06 47.06s-47.06-21.16-47.06-47.06V315.1zm47.06-188.98c-25.9 0-47.06-21.16-47.06-47.06S139 32 164.9 32s47.06 21.16 47.06 47.06v47.06H164.9zm0 23.72c25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06H47.06C21.16 243.96 0 222.8 0 196.9s21.16-47.06 47.06-47.06H164.9zm188.98 47.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06h-47.06V196.9zm-23.72 0c0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06V79.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06V196.9zM283.1 385.88c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06v-47.06h47.06zm0-23.72c-25.9 0-47.06-21.16-47.06-47.06 0-25.9 21.16-47.06 47.06-47.06h117.84c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06H283.1z"/></svg></a>
+            <a class="external-link" target="_blank" href="https://github.com/paketo-buildpacks">GitHub <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></a>
+        </div>
+    </nav>
+</footer>
+<script src="/js/plugins.js"></script>
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>

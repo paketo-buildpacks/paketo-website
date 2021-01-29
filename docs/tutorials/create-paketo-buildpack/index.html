@@ -1,0 +1,821 @@
+<!doctype html>
+<html>
+
+<head>
+    
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PN39N8V');</script>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Creating a Paketo Buildpack - Paketo Buildpacks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<meta name="og:site_name" content="Paketo Buildpacks">
+<meta name="og:title" content="Creating a Paketo Buildpack">
+<meta name="og:url" content="https://paketo.io/docs/tutorials/create-paketo-buildpack/">
+<meta name="twitter:title" content="Paketo Buildpacks" />
+<meta name="twitter:url" content="https://paketo.io/docs/tutorials/create-paketo-buildpack/" />
+<meta name="twitter:card" content="" />
+<link rel="stylesheet" href="/css/paketo.min.css">
+
+</head>
+
+<body>
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+
+    <header class="cf">
+    <div class="logo left">
+        <a href="/">
+            <img src="/images/paketo-logo-full-color.png">
+        </a>
+    </div>
+    <div class="right">
+        <div class="nav-opener hidden">
+            <span class="top transition-03"></span>
+            <span class="middle transition-03"></span>
+            <span class="bottom transition-03"></span>
+        </div>
+        <nav class="cf">
+            <div class="upper-nav right">
+                <a href="/docs/">Docs</a>
+                <a target="_blank" href="https://medium.com/paketo-buildpacks/">Blog</a>
+                <a target="_blank" href="https://github.com/paketo-buildpacks">GitHub</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+
+    <div class="flex docs no-flex-800 cf">
+    <div class="docs-sidebar relative z2 bg-white">
+        
+<div class="docs-menu">
+    <h4>PAKETO DOCS</h4>
+    <ul>
+        
+        
+            
+    
+        <li>
+            <a href="/docs/" class="">
+                
+                <span>Getting Started</span>
+            </a>
+        </li>
+    
+        
+            
+    
+        <li>
+            <a href="/docs/builders/" class="">
+                
+                <span>Builders</span>
+            </a>
+        </li>
+    
+        
+            
+    
+        <li>
+            <a href="/docs/buildpacks/"  class="">
+                
+                <span>Buildpacks</span>
+            </a>
+            <ul class="sub-menu">
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/configuration/" class="">
+                
+                <span>Configuring Paketo Buildpacks</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/"  class="">
+                
+                <span>Language Family Buildpacks</span>
+            </a>
+            <ul class="sub-menu">
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/dotnet-core/" class="">
+                
+                <span>.Net Core Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/go/" class="">
+                
+                <span>Go Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/httpd/" class="">
+                
+                <span>HTTPD Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/java/" class="">
+                
+                <span>Java Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/java-native-image/" class="">
+                
+                <span>Java Native Image Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/nginx/" class="">
+                
+                <span>NGINX Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/nodejs/" class="">
+                
+                <span>Node.js Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/php/" class="">
+                
+                <span>PHP Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li>
+            <a href="/docs/buildpacks/language-family-buildpacks/ruby/" class="">
+                
+                <span>Ruby Buildpack</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+            
+    
+        <li>
+            <a href="/docs/stacks/" class="">
+                
+                <span>Stacks</span>
+            </a>
+        </li>
+    
+        
+            
+    
+        <li>
+            <a href="/docs/tutorials/"  class="">
+                
+                <span>Tutorials</span>
+            </a>
+            <ul class="sub-menu">
+                
+                    
+    
+        <li>
+            <a href="/docs/tutorials/create-paketo-buildpack/" class="active">
+                
+                <span>Creating a Paketo Buildpack</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+    </ul>
+</div>
+
+
+
+    </div>
+    <div class="docs-body relative">
+        <div class="text-col docs-text pad50">
+            <h1 id="how-to-write-a-cloud-native-buildpack-using-packit">How to Write a Cloud Native Buildpack Using Packit</h1>
+<p>If the entire Cloud Native Buildpack experience is new to you, you may want to
+stop and take some time to read about <a href="https://buildpacks.io/docs/buildpack-author-guide/create-buildpack/">authoring a a Cloud Native
+Buildpack</a>
+(CNB). Packit is a Go library that is an abstraction that conforms to the <a href="https://github.com/buildpacks/spec">CNB
+specification</a> that takes a minimal
+approach in terms of the features that are implemented giving a lot of fine
+control to the buildpack author.</p>
+<p>This tutorial&rsquo;s goal is to take you from nothing to a buildpack that puts a
+dependency on the filesystem as fast as possible, so with that let&rsquo;s get
+started!</p>
+<h3 id="packithttpsgithubcompaketo-buildpackspackit"><a href="https://github.com/paketo-buildpacks/packit">Packit</a></h3>
+<p><a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit"><img src="https://img.shields.io/badge/pkg.go.dev-doc-blue" alt="GoDoc"></a></p>
+<p>For complete documentation of the Packit library, you can browse the godocs
+linked above. In the interest of saving you time, let&rsquo;s talk about the three
+artifacts that will need to be present in our final built buildpack. In the end
+we will need a <code>buildpack.toml</code> file, a <code>bin/detect</code> binary, and a <code>bin/build</code>
+binary for this buildpack to be CNB compliant.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>You will need the following tools installed on your machine to aid you in
+building and testing your buildpack.</p>
+<ul>
+<li><a href="https://docs.docker.com/install/">Docker</a></li>
+<li><a href="https://buildpacks.io/docs/install-pack/">Pack</a></li>
+<li><a href="https://golang.org/doc/install">Go</a></li>
+</ul>
+<h2 id="lets-get-started">Let&rsquo;s Get Started</h2>
+<p>For demonstration purposes we are going to build a buildpack that installs a
+<code>nodejs</code> engine, which is based off the Paketo
+<a href="https://github.com/paketo-buildpacks/node-engine">node-engine</a>.</p>
+<p>A sample repository containing all of the code is
+<a href="https://github.com/ForestEckhardt/tutorial-cnb">here</a>. To start a brand new Go
+project all you need to do is create a new directory to contain you project run
+the following command:</p>
+<pre class="copyable"><code>go mod init &lt;/path/to/project&gt;
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<h3 id="buildpacktoml"><code>buildpack.toml</code></h3>
+<p>The <code>buildpack.toml</code> file should contain the following:</p>
+<pre class="copyable"><code># Indicates compatibility version with lifecycle
+api = &#34;0.2&#34;
+
+# General metadata about the buildpack that is used be the lifecycle
+[buildpack]
+  id = &#34;com.example.node-engine&#34;
+  name = &#34;Node Engine Buildpack&#34;
+  version = &#34;0.0.1&#34;
+
+# The list of stacks that the buildpack itself is compatible with
+[[stacks]]
+  id = &#34;io.buildpacks.stacks.bionic&#34;
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<h3 id="bindetect"><code>bin/detect</code></h3>
+<p><strong>Note</strong>: For a complete rundown on how the Detect Phase works you can read the
+<code>Detect Phase</code> section in the <a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit">packit
+godocs</a>.</p>
+<p>In the Packit library, there is a
+<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#Detect"><code>packit.Detect()</code></a>
+function that consumes a
+<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#DetectFunc"><code>packit.DetectFunc</code></a>.
+The <code>packit.DetectFunc</code> is created by buildpack authors and contains all of the
+buildpack specific detection logic. So with that let&rsquo;s write some code and talk
+about it.</p>
+<p><code>cmd/detect/main.go</code></p>
+<pre class="copyable"><code>package main
+
+import (
+    &#34;&lt;path/to/project&gt;&#34;
+    &#34;github.com/paketo-buildpacks/packit&#34;
+)
+
+func main() {
+    packit.Detect(node.Detect())
+}
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p><code>node/detect.go</code></p>
+<pre class="copyable"><code>package node
+
+import (
+    &#34;fmt&#34;
+    &#34;github.com/paketo-buildpacks/packit&#34;
+)
+
+func Detect() packit.DetectFunc {
+	return func(context packit.DetectContext) (packit.DetectResult, error) {
+		return packit.DetectResult{}, fmt.Errorf(&#34;always fail&#34;)
+	}
+}
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>Alright let&rsquo;s talk about this for a minute. With these pieces of code, we have
+written a buildpack that will always detect false. The reason that we&rsquo;ve split
+out the definition of the <code>packit.DetectFunc</code> into its own package is that this
+allows us to separate Packit related code from any actual business specific
+logic of the buildpack. All buildpack specific business logic will go into the
+<code>node</code> package from now on. This may seem small but if you plan on potentially
+expanding this buildpack we highly recommend that you follow this structure.</p>
+<p>To test out progress so far we can build the detect binary ourselves with the
+following command:</p>
+<pre class="copyable"><code>GOOS=linux go build -ldflags=&#34;-s -w&#34; -o ./bin/detect ./cmd/detect/main.go
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>Once you&rsquo;ve done that you should be able to use the <code>pack</code> cli to try and build
+a container for a <code>nodejs</code> app. For the purposes of this demonstration I will
+be using the following <a href="https://github.com/paketo-buildpacks/node-engine/tree/main/integration/testdata/simple_app">simple
+app</a>
+from the <code>node-engine</code> repo linked above. The following command will allow you
+to build the app:</p>
+<pre class="copyable"><code>pack build &lt;app-name&gt; \
+  --path &lt;path/to/app&gt; \
+  --buildpack &lt;path/to/project&gt; \
+  --builder paketobuildpacks/builder:base \
+  --verbose
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<div class="code-output"><div class="btn">Output</div><div class="cf"></div><pre><code>===&gt; DETECTING
+[detector] ======== Output: com.example.node-engine@0.0.1 ========
+[detector]
+[detector] always fail
+[detector] ======== Results ========
+[detector] err:  com.example.node-engine@0.0.1 (1)
+[detector] ERROR: No buildpack groups passed detection.
+[detector] ERROR: Please check that you are running against the correct path.
+[detector] ERROR: failed to detect: no buildpacks participating
+ERROR: failed with status code: 6
+</code></pre></div>
+
+<p>Now that we have a skeleton laid out let&rsquo;s make it do something more useful
+than just fail all of the time.</p>
+<p>To do that we need to dive into the concept of provides and requires. If you
+want to read the buildpacks specification for provides and requires you can
+look
+<a href="https://github.com/buildpacks/spec/blob/master/buildpack.md#phase-1-detection">here</a>.</p>
+<p><strong>Quick summary</strong>: A buildpack&rsquo;s detect binary has as part of it
+<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#DetectResult"><code>packit.DetectResult</code></a>
+pass out a
+<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#BuildPlan"><code>packit.BuildPlan</code></a>
+in which there is a list of provisions and requirements. A buildpack can state
+that it provides dependencies or that it requires dependencies or it can both
+require and provide dependencies. A buildpack can only detect true if all of
+its provides match up with requires from itself or a subsequent buildpacks in a
+buildpack sequence and that all of is requires match up with provides from
+itself or previous buildpacks in a sequence of buildpacks.</p>
+<p>In our situation, our buildpack is the only one running in the sequence so in
+order for us to pass detection we have to both provide <code>node</code> as a dependency
+but we also need to require <code>node</code> as well. So let&rsquo;s go implement that provide
+and require relationship in our detect code.</p>
+<p><code>node/detect.go</code></p>
+<pre class="copyable"><code>package node
+
+import (
+	&#34;github.com/paketo-buildpacks/packit&#34;
+)
+
+func Detect() packit.DetectFunc {
+	return func(context packit.DetectContext) (packit.DetectResult, error) {
+		return packit.DetectResult{
+			Plan: packit.BuildPlan{
+				Provides: []packit.BuildPlanProvision{
+					{Name: &#34;node&#34;},
+				},
+				Requires: []packit.BuildPlanRequirement{
+					{Name: &#34;node&#34;},
+				},
+			},
+		}, nil
+	}
+}
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>Let&rsquo;s do a quick rundown of what is happening now. In the <code>packit.DetectResult</code>
+we are now returning a <code>Plan</code>. Inside that plan we state that this buildpack
+provides the <code>node</code> dependency and that it requires the <code>node</code> dependency. If
+you were to run the code that the used to build and test our code earlier you
+should get something that look like this:</p>
+<pre class="copyable"><code>GOOS=linux go build -ldflags=&#34;-s -w&#34; -o ./bin/detect ./cmd/detect/main.go
+pack build &lt;app-name&gt; \
+  --path &lt;path/to/app&gt; \
+  --buildpack &lt;path/to/project&gt; \
+  --builder paketobuildpacks/builder:base \
+  --verbose
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<div class="code-output"><div class="btn">Output</div><div class="cf"></div><pre><code>===&gt; DETECTING
+[detector] ======== Results ========
+[detector] pass: com.example.node-engine@0.0.1
+[detector] Resolving plan... (try #1)
+[detector] com.example.node-engine 0.0.1
+===&gt; ANALYZING
+[analyzer] Previous image with name &#34;index.docker.io/library/test-node:latest&#34; not found
+===&gt; RESTORING
+===&gt; BUILDING
+[builder] ERROR: failed to build: fork/exec /cnb/buildpacks/com.example.node-engine/0.0.1/bin/build: no such file or directory
+ERROR: failed with status code: 7
+</code></pre></div>
+
+<p>As you can see detection now passes! However, we still get an error because we
+have no <code>build</code> binary yet, so let&rsquo;s fix that.</p>
+<h3 id="binbuild"><code>bin/build</code></h3>
+<p>For a complete on how the Build Phase works you can read the <code>Build Phase</code>
+section in the <a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit">packit
+godocs</a>, but once again I
+will give you a quick overview. The Packit library has a
+<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#Build"><code>packit.Build()</code></a>
+function which consumes a
+<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#BuildFunc"><code>packit.BuildFunc</code></a>
+which contains all of the buildpack specific build logic and is written by us.
+So lets put down some skeleton code.</p>
+<p><code>cmd/build/main.go</code></p>
+<pre class="copyable"><code>package main
+
+import (
+	&#34;&lt;path/to/project or github.com/&lt;some-org or some-user&gt;/&lt;some-repo&gt;&gt;/node&#34;
+	&#34;github.com/paketo-buildpacks/packit&#34;
+)
+
+func main() {
+	packit.Build(node.Build())
+}
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p><code>node/build.go</code></p>
+<pre class="copyable"><code>package node
+
+import (
+	&#34;fmt&#34;
+
+	&#34;github.com/paketo-buildpacks/packit&#34;
+)
+
+func Build() packit.BuildFunc {
+	return func(context packit.BuildContext) (packit.BuildResult, error) {
+		return packit.BuildResult{}, fmt.Errorf(&#34;always fail&#34;)
+	}
+}
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>We have now written some code that will cause our build process to fail every
+time. You can test that by ensuring that you have a <code>detect</code> binary built and
+then by running the following command to build your <code>build</code> binary and run
+<code>pack build</code>:</p>
+<pre class="copyable"><code>GOOS=linux go build -ldflags=&#34;-s -w&#34; -o ./bin/build ./cmd/build/main.go
+pack build &lt;app-name&gt; \
+  --path &lt;path/to/app&gt; \
+  --buildpack &lt;path/to/project&gt; \
+  --builder paketobuildpacks/builder:base \
+  --verbose
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<div class="code-output"><div class="btn">Output</div><div class="cf"></div><pre><code>===&gt; DETECTING
+[detector] ======== Results ========
+[detector] pass: com.example.node-engine@0.0.1
+[detector] Resolving plan... (try #1)
+[detector] com.example.node-engine 0.0.1
+===&gt; ANALYZING
+[analyzer] Previous image with name &#34;index.docker.io/library/test-node:latest&#34; not found
+===&gt; RESTORING
+===&gt; BUILDING
+[builder]
+[builder] always fail
+[builder] ERROR: failed to build: exit status 1
+ERROR: failed with status code: 7
+</code></pre></div>
+
+<p>Now that we have a build process set up let&rsquo;s talk about how we are going to
+add our dependency to our final image. To pass dependency metadata into the
+build process we use the <code>buildpack.toml</code> and add the following fields:</p>
+<pre class="copyable"><code>[metadata]
+  [[metadata.dependencies]]
+    uri = &#34;https://nodejs.org/dist/v12.16.1/node-v12.16.1-linux-x64.tar.xz&#34;
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>Let&rsquo;s talk about the chunk we just added.</p>
+<pre class="copyable"><code># This holds section holds buildpack specific metadata
+[metadata]
+  [[metadata.dependencies]]
+    # The uri for the dependency that is compatible with the stack you are running against
+    uri = &#34;https://nodejs.org/dist/v12.16.1/node-v12.16.1-linux-x64.tar.xz&#34;
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>So let&rsquo;s add some code that parses the uri field out. For toml parsing we
+generally use <a href="https://www.godoc.org/github.com/BurntSushi/toml">BurntSushi&rsquo;s TOML
+Library</a>, so with that let&rsquo;s
+write up some quick parsing code.</p>
+<p><code>node/build.go</code></p>
+<pre class="copyable"><code>package node
+
+import (
+	&#34;fmt&#34;
+	&#34;os&#34;
+	&#34;path/filepath&#34;
+
+	&#34;github.com/BurntSushi/toml&#34;
+	&#34;github.com/paketo-buildpacks/packit&#34;
+)
+
+func Build() packit.BuildFunc {
+	return func(context packit.BuildContext) (packit.BuildResult, error) {
+		file, err := os.Open(filepath.Join(context.CNBPath, &#34;buildpack.toml&#34;))
+		if err != nil {
+			return packit.BuildResult{}, err
+		}
+
+		var m struct {
+			Metadata struct {
+				Dependencies []struct {
+					URI string `toml:&#34;uri&#34;`
+				} `toml:&#34;dependencies&#34;`
+			} `toml:&#34;metadata&#34;`
+		}
+		_, err = toml.DecodeReader(file, &amp;m)
+		if err != nil {
+			return packit.BuildResult{}, err
+		}
+
+		uri := m.Metadata.Dependencies[0].URI
+		fmt.Printf(&#34;URI -&gt; %s&#34;, uri)
+
+		return packit.BuildResult{}, fmt.Errorf(&#34;always fail&#34;)
+	}
+}
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>Compiling our <code>build</code> executable and running <code>pack build</code> should produce the following:</p>
+<pre class="copyable"><code>GOOS=linux go build -ldflags=&#34;-s -w&#34; -o ./bin/build ./cmd/build/main.go
+pack build &lt;app-name&gt; \
+  --path &lt;path/to/app&gt; \
+  --buildpack &lt;path/to/project&gt; \
+  --builder paketobuildpacks/builder:base \
+  --verbose
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<div class="code-output"><div class="btn">Output</div><div class="cf"></div><pre><code>===&gt; DETECTING
+[detector] ======== Results ========
+[detector] pass: com.example.node-engine@0.0.1
+[detector] Resolving plan... (try #1)
+[detector] com.example.node-engine 0.0.1
+===&gt; ANALYZING
+[analyzer] Previous image with name &#34;index.docker.io/library/test-node:latest&#34; not found
+===&gt; RESTORING
+===&gt; BUILDING
+[builder] URI -&gt; https://nodejs.org/dist/v12.16.1/node-v12.16.1-linux-x64.tar.xz
+[builder] ERROR: failed to build: exit status 1
+[builder] always fail
+ERROR: failed with status code: 7
+</code></pre></div>
+
+<p>Now that we have the URI of the dependency that we need to download, let&rsquo;s set
+up the layer structure for the dependency to be installed on to. We do that
+with the following piece:</p>
+<pre class="copyable"><code>package node
+
+import (
+	&#34;fmt&#34;
+	&#34;os&#34;
+	&#34;path/filepath&#34;
+
+	&#34;github.com/BurntSushi/toml&#34;
+	&#34;github.com/paketo-buildpacks/packit&#34;
+)
+
+func Build() packit.BuildFunc {
+	return func(context packit.BuildContext) (packit.BuildResult, error) {
+		file, err := os.Open(filepath.Join(context.CNBPath, &#34;buildpack.toml&#34;))
+		if err != nil {
+			return packit.BuildResult{}, err
+		}
+
+		var m struct {
+			Metadata struct {
+				Dependencies []struct {
+					URI string `toml:&#34;uri&#34;`
+				} `toml:&#34;dependencies&#34;`
+			} `toml:&#34;metadata&#34;`
+		}
+		_, err = toml.DecodeReader(file, &amp;m)
+		if err != nil {
+			return packit.BuildResult{}, err
+		}
+
+		uri := m.Metadata.Dependencies[0].URI
+		fmt.Printf(&#34;URI -&gt; %s&#34;, uri)
+
+		nodeLayer, err := context.Layers.Get(&#34;node&#34;, packit.LaunchLayer)
+		if err != nil {
+			return packit.BuildResult{}, err
+		}
+
+		err = nodeLayer.Reset()
+		if err != nil {
+			return packit.BuildResult{}, err
+		}
+
+		return packit.BuildResult{}, fmt.Errorf(&#34;always fail&#34;)
+	}
+}
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>Let&rsquo;s talk about the <code>context.Layers.Get()</code> function and the
+<code>nodeLayer.Reset()</code> function individually. On the
+<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#BuildContext"><code>packit.BuildContext</code></a>
+object there is a field <code>Layers</code> which is a
+<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layers"><code>packit.Layers</code></a>
+type. The
+<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layers.Get"><code>packit.Layers.Get()</code></a>
+function takes in the name of a layer and
+<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#LayerType"><code>packit.LayerTypes</code></a>
+and returns a
+<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layer"><code>packit.Layer</code></a> object
+that has been populated with any metadata that exists from previous builds of
+your app. This metadata can be useful in determining whether or not a layer can
+be reused from cache but we don&rsquo;t need to worry about that for now. The
+<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layer.Reset"><code>packit.Layer.Reset()</code></a>
+function  clears all of the metadata and existing files restored from cache for
+the given layer, giving a clean slate to work with. Now that we have our layers
+set up, let&rsquo;s download our dependency and untar it on the layer.</p>
+<pre class="copyable"><code>package node
+
+import (
+	&#34;fmt&#34;
+	&#34;io/ioutil&#34;
+	&#34;os&#34;
+	&#34;os/exec&#34;
+	&#34;path/filepath&#34;
+
+	&#34;github.com/BurntSushi/toml&#34;
+	&#34;github.com/paketo-buildpacks/packit&#34;
+)
+
+func Build() packit.BuildFunc {
+	return func(context packit.BuildContext) (packit.BuildResult, error) {
+		file, err := os.Open(filepath.Join(context.CNBPath, &#34;buildpack.toml&#34;))
+		if err != nil {
+			return packit.BuildResult{}, err
+		}
+
+		var m struct {
+			Metadata struct {
+				Dependencies []struct {
+					URI string `toml:&#34;uri&#34;`
+				} `toml:&#34;dependencies&#34;`
+			} `toml:&#34;metadata&#34;`
+		}
+		_, err = toml.DecodeReader(file, &amp;m)
+		if err != nil {
+			return packit.BuildResult{}, err
+		}
+
+		uri := m.Metadata.Dependencies[0].URI
+		fmt.Printf(&#34;URI -&gt; %s\n&#34;, uri)
+
+		nodeLayer, err := context.Layers.Get(&#34;node&#34;, packit.LaunchLayer)
+		if err != nil {
+			return packit.BuildResult{}, err
+		}
+
+		err = nodeLayer.Reset()
+		if err != nil {
+			return packit.BuildResult{}, err
+		}
+
+		downloadDir, err := ioutil.TempDir(&#34;&#34;, &#34;downloadDir&#34;)
+		if err != nil {
+			return packit.BuildResult{}, err
+		}
+		defer os.RemoveAll(downloadDir)
+
+		fmt.Println(&#34;Downloading dependency...&#34;)
+		err = exec.Command(&#34;curl&#34;,
+			uri,
+			&#34;-o&#34;, filepath.Join(downloadDir, &#34;node.tar.xz&#34;),
+		).Run()
+		if err != nil {
+			return packit.BuildResult{}, err
+		}
+
+		fmt.Println(&#34;Untaring dependency...&#34;)
+		err = exec.Command(&#34;tar&#34;,
+			&#34;-xf&#34;,
+			filepath.Join(downloadDir, &#34;node.tar.xz&#34;),
+			&#34;--strip-components=1&#34;,
+			&#34;-C&#34;, nodeLayer.Path,
+		).Run()
+		if err != nil {
+			return packit.BuildResult{}, err
+		}
+
+		return packit.BuildResult{
+			Plan: context.Plan,
+			Layers: []packit.Layer{
+				nodeLayer,
+			},
+		}, nil
+	}
+}
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>If you rebuild the <code>build</code> binary and run the <code>pack build</code> command once more
+you will finally have your first successful build, HOORAY!</p>
+<pre class="copyable"><code>GOOS=linux go build -ldflags=&#34;-s -w&#34; -o ./bin/build ./cmd/build/main.go
+pack build &lt;app-name&gt; \
+  --path &lt;path/to/app&gt; \
+  --buildpack &lt;path/to/project&gt; \
+  --builder paketobuildpacks/builder:base \
+  --verbose
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>The additional lines that were added are fairly straightforward, we create a
+temporary directory to put out downloaded tarball into in order to make sure
+that we don&rsquo;t pollute our image. We then download the dependency tarball with a
+<code>curl</code> command and untar the resulting tarball directly in the <code>nodeLayer</code> path
+using <code>tar</code> on the command line. It is worth noting that this is not the most
+efficient way of handling this in Go, but for demonstration purposes it is the
+most straightforward. You may notice that we use the <code>--strip-components</code> flag
+on our tar commands because this particular tarball comes with a top level
+directory before you reach the <code>lib</code>, <code>bin</code>, and <code>include</code> directories. We want
+these directories to be at the top level of our layer path because these files
+are interpreted directly by the lifecycle, which you can read more about
+<a href="https://github.com/buildpacks/spec/blob/master/buildpack.md#environment">here</a>.
+With this you have a perfectly functional buildpack, which you can test by
+running a <code>pack build</code> like we did earlier and then running the following
+<code>docker</code> command if you are using the simple app indicated earlier:</p>
+<pre class="copyable"><code>docker run -d -p 8080:8080 -e PORT=8080 &lt;app-name&gt; &#34;node server.js&#34;
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>You can then verify that this is running by either running:</p>
+<pre class="copyable"><code>curl http://localhost:8080
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<div class="code-output"><div class="btn">Output</div><div class="cf"></div><pre><code>hello world
+</code></pre></div>
+
+<p>or visiting <a href="http://localhost:8080"><code>http://localhost:8080</code></a> in your web
+browser. Either way you should expect to see &ldquo;hello world&rdquo; as your output.</p>
+
+        </div>
+
+        <p class="docs-lastmod"><strong>Last modified:</strong> January 29, 2021</p>
+    </div>
+</div>
+
+
+    <div class="pre-footer pad50">
+    <div class="cf text-right">
+        <img class="footer-logo left" src="https://www.cloudfoundry.org/wp-content/uploads/2017/01/CFF_Logo_rgb.png" alt="Paketo Buildpacks is a Cloud Foundry Project">
+        <p class="right">Paketo Buildpacks is a <a href="https://www.cloudfoundry.org/">Cloud Foundry Project</a></p>
+    </div>
+</div>
+<footer class="cf">
+    <nav class="cf">
+        <div class="upper-nav right">
+            <a class="external-link" target="_blank" href="https://twitter.com/Paketo_io">Twitter <svg viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><path d="M 32,6.076c-1.177,0.522-2.443,0.875-3.771,1.034c 1.355-0.813, 2.396-2.099, 2.887-3.632 c-1.269,0.752-2.674,1.299-4.169,1.593c-1.198-1.276-2.904-2.073-4.792-2.073c-3.626,0-6.565,2.939-6.565,6.565 c0,0.515, 0.058,1.016, 0.17,1.496c-5.456-0.274-10.294-2.888-13.532-6.86c-0.565,0.97-0.889,2.097-0.889,3.301 c0,2.278, 1.159,4.287, 2.921,5.465c-1.076-0.034-2.088-0.329-2.974-0.821c-0.001,0.027-0.001,0.055-0.001,0.083 c0,3.181, 2.263,5.834, 5.266,6.438c-0.551,0.15-1.131,0.23-1.73,0.23c-0.423,0-0.834-0.041-1.235-0.118 c 0.836,2.608, 3.26,4.506, 6.133,4.559c-2.247,1.761-5.078,2.81-8.154,2.81c-0.53,0-1.052-0.031-1.566-0.092 c 2.905,1.863, 6.356,2.95, 10.064,2.95c 12.076,0, 18.679-10.004, 18.679-18.68c0-0.285-0.006-0.568-0.019-0.849 C 30.007,8.548, 31.12,7.392, 32,6.076z"></path></g></svg></a>
+            <a class="external-link" target="_blank" href="https://medium.com/paketo-buildpacks/">Blog <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 32v448h448V32H0zm372.2 106.1l-24 23c-2.1 1.6-3.1 4.2-2.7 6.7v169.3c-.4 2.6.6 5.2 2.7 6.7l23.5 23v5.1h-118V367l24.3-23.6c2.4-2.4 2.4-3.1 2.4-6.7V199.8l-67.6 171.6h-9.1L125 199.8v115c-.7 4.8 1 9.7 4.4 13.2l31.6 38.3v5.1H71.2v-5.1l31.6-38.3c3.4-3.5 4.9-8.4 4.1-13.2v-133c.4-3.7-1-7.3-3.8-9.8L75 138.1V133h87.3l67.4 148L289 133.1h83.2v5z"/></svg></a>
+            <a class="external-link" target="_blank" href="https://slack.paketo.io">Slack <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M94.12 315.1c0 25.9-21.16 47.06-47.06 47.06S0 341 0 315.1c0-25.9 21.16-47.06 47.06-47.06h47.06v47.06zm23.72 0c0-25.9 21.16-47.06 47.06-47.06s47.06 21.16 47.06 47.06v117.84c0 25.9-21.16 47.06-47.06 47.06s-47.06-21.16-47.06-47.06V315.1zm47.06-188.98c-25.9 0-47.06-21.16-47.06-47.06S139 32 164.9 32s47.06 21.16 47.06 47.06v47.06H164.9zm0 23.72c25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06H47.06C21.16 243.96 0 222.8 0 196.9s21.16-47.06 47.06-47.06H164.9zm188.98 47.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06h-47.06V196.9zm-23.72 0c0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06V79.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06V196.9zM283.1 385.88c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06v-47.06h47.06zm0-23.72c-25.9 0-47.06-21.16-47.06-47.06 0-25.9 21.16-47.06 47.06-47.06h117.84c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06H283.1z"/></svg></a>
+            <a class="external-link" target="_blank" href="https://github.com/paketo-buildpacks">GitHub <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg></a>
+        </div>
+    </nav>
+</footer>
+<script src="/js/plugins.js"></script>
+<script src="/js/clipboard.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+</body>
+
+</html>
