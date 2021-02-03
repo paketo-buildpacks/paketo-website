@@ -4,11 +4,7 @@
     <title>Tutorials on Paketo Buildpacks</title>
     <link>https://paketo.io/docs/tutorials/</link>
     <description>Recent content in Tutorials on Paketo Buildpacks</description>
-    <generator>Hugo -- gohugo.io</generator>
-    
-	<atom:link href="https://paketo.io/docs/tutorials/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://paketo.io/docs/tutorials/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creating a Paketo Buildpack</title>
       <link>https://paketo.io/docs/tutorials/create-paketo-buildpack/</link>
