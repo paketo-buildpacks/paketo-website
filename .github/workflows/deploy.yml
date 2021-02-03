@@ -1,0 +1,58 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: gh-pages
+
+    - name: Checkout build environment
+      uses: actions/checkout@v2
+      with:
+        ref: main
+        path: build-environment
+
+    - name: Install Hugo
+      run: |
+        mkdir -p build-environment/.bin
+        curl "https://github.com/gohugoio/hugo/releases/download/v0.80.0/hugo_extended_0.80.0_Linux-64bit.tar.gz" \
+          --silent \
+          --location \
+          --output /tmp/hugo.tar.gz
+        tar -xOzvf /tmp/hugo.tar.gz 'hugo' > build-environment/.bin/hugo
+        chmod +x build-environment/.bin/hugo
+        rm /tmp/hugo.tar.gz
+
+    - name: Build
+      run: cd build-environment && .bin/hugo
+
+    - name: Update
+      run: |
+        git rm -r --ignore-unmatch .
+        cp -a build-environment/public/* .
+        rm -rf build-environment
+
+    - name: Commit
+      id: commit
+      run: |
+        git config --global user.email "paketobuildpacks@gmail.com"
+        git config --global user.name "paketo-bot"
+
+        if [[ -n "$(git status --short)" ]]; then
+          git add --all .
+          git commit --message "Deploying"
+          echo "::set-output name=commit_sha::$(git rev-parse HEAD)"
+        fi
+
+    - name: Push
+      if: ${{ steps.commit.outputs.commit_sha != '' }}
+      run: git push origin gh-pages
