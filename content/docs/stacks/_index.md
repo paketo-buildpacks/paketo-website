@@ -72,4 +72,24 @@ gcr.io/paketo-buildpacks/run:full-cnb
 * Build: ubuntu:bionic + many common C libraries and utilities
 * Run: ubuntu:bionic + many common libraries and utilities
 
+## When are Paketo stacks updated?
+
+Stacks are rebuilt whenever a package is patched to fix a CVE.
+For more information about CVEs, see [Common Vulnerabilities and Exposures (CVE)](https://cve.mitre.org/).
+Stacks are also rebuilt weekly to ensure packages without CVEs are also up to date.
+
+We aim to release stack updates that fix High and Critical CVEs within 48 hours of the patch release. For stack updates fixing Low and Medium CVEs, we aim to release within two weeks.
+
+**Note:** Security scanning tools might report vulnerabilities in apps even when using the latest stack. This can occur when a CVE patch is not yet available upstream or if Canonical determines that the vulnerability is not severe enough to fix.
+
+Stacks are backwards compatible. A stack can safely be upgraded to the most recent version within the major version line. If for some reason backwards compatibility is broken, it happens when a new major version is released.
+
+## What security and hardening features do Paketo stacks offer?
+
+* By using Ubuntu 18.04 as the base image for our stacks, we benefit from all of the security provided by Canonical and Ubuntu. For more information, see the [Canonical web site](https://ubuntu.com/security) and the [Ubuntu wiki](https://wiki.ubuntu.com/Security/Features).
+* Our automatic monitoring and patching of CVEs means that our stacks are often updated within hours of Canonical's patches.
+* The stack images are run as a dedicated non-root user when building and running applications.
+* Each stack image has detailed metadata describing the image's components, such as the base operating system and packages.
+* Each stack has separate images for building and running applications. The packages on the runtime image are curated to exclude compilers and other tools that might pose security risks.
+
 [Github Repo](https://github.com/paketo-buildpacks/stacks)
