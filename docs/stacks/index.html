@@ -314,11 +314,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Build: ubuntu:bionic + many common C libraries and utilities</li>
 <li>Run: ubuntu:bionic + many common libraries and utilities</li>
 </ul>
+<h2 id="when-are-paketo-stacks-updated">When are Paketo stacks updated?</h2>
+<p>Stacks are rebuilt whenever a package is patched to fix a CVE.
+For more information about CVEs, see <a href="https://cve.mitre.org/">Common Vulnerabilities and Exposures (CVE)</a>.
+Stacks are also rebuilt weekly to ensure packages without CVEs are also up to date.</p>
+<p>We aim to release stack updates that fix High and Critical CVEs within 48 hours of the patch release. For stack updates fixing Low and Medium CVEs, we aim to release within two weeks.</p>
+<p><strong>Note:</strong> Security scanning tools might report vulnerabilities in apps even when using the latest stack. This can occur when a CVE patch is not yet available upstream or if Canonical determines that the vulnerability is not severe enough to fix.</p>
+<p>Stacks are backwards compatible. A stack can safely be upgraded to the most recent version within the major version line. If for some reason backwards compatibility is broken, it happens when a new major version is released.</p>
+<h2 id="what-security-and-hardening-features-do-paketo-stacks-offer">What security and hardening features do Paketo stacks offer?</h2>
+<ul>
+<li>By using Ubuntu 18.04 as the base image for our stacks, we benefit from all of the security provided by Canonical and Ubuntu. For more information, see the <a href="https://ubuntu.com/security">Canonical web site</a> and the <a href="https://wiki.ubuntu.com/Security/Features">Ubuntu wiki</a>.</li>
+<li>Our automatic monitoring and patching of CVEs means that our stacks are often updated within hours of Canonical&rsquo;s patches.</li>
+<li>The stack images are run as a dedicated non-root user when building and running applications.</li>
+<li>Each stack image has detailed metadata describing the image&rsquo;s components, such as the base operating system and packages.</li>
+<li>Each stack has separate images for building and running applications. The packages on the runtime image are curated to exclude compilers and other tools that might pose security risks.</li>
+</ul>
 <p><a href="https://github.com/paketo-buildpacks/stacks">Github Repo</a></p>
 
         </div>
 
-        <p class="docs-lastmod"><strong>Last modified:</strong> February 3, 2021</p>
+        <p class="docs-lastmod"><strong>Last modified:</strong> February 4, 2021</p>
     </div>
 </div>
 
