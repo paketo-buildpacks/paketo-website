@@ -6,6 +6,7 @@ pygmentsCodefences = true
 
 # path name excluded from documentation menu
 menu_exclusion = [
+    "contribute",
     "docs"
 ]
 

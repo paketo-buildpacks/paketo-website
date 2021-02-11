@@ -602,6 +602,40 @@ nav a, .cta, .docs-body a {
 	width: 170px;
 	top: 350px;
 }
+
+/*contribute */
+
+.contribute h4 {
+	cursor: pointer;
+	color: #384a9a;
+	transition: color 0.3s ease;
+	margin: 0;
+}
+.contribute h4:hover, .contribute h4.shown {
+	color: #469cb9
+}
+.contribute h4:before {
+	content: "+";
+	float: right;
+	font-size: 2.5rem;
+	font-weight: 300;
+	padding-left: 20px;
+}
+.contribute h4.shown:before {
+	content: "-";
+}
+.bordered-container {
+	border: 1px solid #ccc;
+	margin: 20px 20px 0 0;
+	padding: 20px;
+}
+.contribute-content ul {
+	padding-top: 1em;
+}
+.contribute-content li {
+	list-style: none;
+}
+
 /* get-started */
 
 .icon {
