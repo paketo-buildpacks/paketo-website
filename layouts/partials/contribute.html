@@ -1,0 +1,23 @@
+<div class="pad50 pad-top-100 pad-btm-100">
+    <div class="cf">
+        <div class="text-col pad-right">
+            <h2>{{ .Site.Params.contribute.headline }}</h2>
+            <div class="pad-right cf">
+                {{ with .Site.Params.contribute }}
+
+                    {{ range .item }}
+
+                        <div class="contribute">
+
+                            <h4 class="contribute-header">{{ .q  }}</h4>
+                            <p class="contribute-content hidden">{{ .a | safeHTML }}</p>
+
+                        </div>
+
+                    {{ end }}
+
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
