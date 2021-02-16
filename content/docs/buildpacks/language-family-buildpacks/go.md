@@ -35,30 +35,40 @@ notes](https://github.com/paketo-buildpacks/go/releases).
 
 ## Specifying a Go Version
 
-The Go CNB (Cloud Native Buildpack) allows you to specify a version of Go to use during deployment. This
-version can be specified via `buildpack.yml` or `go.mod`. When specifying a version of Go,
-you must choose a version that is available within the buildpack. The supported
-versions can be found
+The Go CNB (Cloud Native Buildpack) allows you to specify a version of Go to
+use during deployment. This version can be specified via the `BP_GO_VERSION`
+environment variable or `go.mod`. When specifying a version of Go, you must
+choose a version that is available within the buildpack. The supported versions
+can be found
 [here](https://github.com/paketo-buildpacks/go-dist/releases/latest).
+
+Please note that setting the Go version through a buildpack.yml file will be
+deprecated in Go Dist Buildpack v1.0.0.
 
 The buildpack prioritizes the versions specified in
 each possible configuration location with the following precedence, from
-highest to lowest: `buildpack.yml`, `go.mod`.
+highest to lowest: `BP_GO_VERSION`, `go.mod`.
 
 Specifying a version of Go is not required. In the case that is not specified,
 the buildpack will provide the default version, which can be seen in the
 `buildpack.toml` file.
 
-### Using buildpack.yml
+### Using BP_GO_VERSION
 
-To configure the buildpack to use Go v1.14.6 when deploying your app, include
-the values below in your `buildpack.yml` file:
+To configure the buildpack to use Go v1.14.6 when deploying your app, set the
+following environment variable at build time, either directly (ex. `pack build
+my-app --env BP_GO_VERSION=1.14.6`) or through a
+[project.toml](https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md)
+file:
 
 {{< code/copyable >}}
----
-go:
-  version: 1.14.6
+BP_GO_VERSION="1.14.6"
 {{< /code/copyable >}}
+
+### Deprecated: Using buildpack.yml
+Specifying the Go version through buildpack.yml configuration will be
+deprecated in Go Dist Buildpack v1.0.0. To migrate from using buildpack.yml
+please set the` $BP_GO_VERSION` environment variable.
 
 ## Configuring Build Flags
 
@@ -79,7 +89,7 @@ BP_GO_BUILD_FLAGS=-buildmode=some-build-mode -tags=paketo,production -ldflags="-
 ### Deprecated: Using buildpack.yml
 Specifying the Go Build flags through buildpack.yml configuration will be
 deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
-please set the $BP_GO_BUILD_FLAGS environment variable.
+please set the `$BP_GO_BUILD_FLAGS` environment variable.
 
 ## Configuring Targets
 
@@ -88,7 +98,7 @@ result in multiples binaries being built.Targets must be a list of paths
 relative to the root directory of the source code.
 
 To set custom targets for your build assign a list of targets to the
-`$BP_GO_TARGETS` environment variable as shown below:
+`BP_GO_TARGETS` environment variable as shown below:
 
 {{< code/copyable >}}
 BP_GO_TARGETS=./some-target:./other-target
@@ -97,7 +107,7 @@ BP_GO_TARGETS=./some-target:./other-target
 ### Deprecated: Using buildpack.yml
 Specifying the Go Build targets through buildpack.yml configuration will be
 deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
-please set the $BP_GO_TARGETS environment variable.
+please set the `$BP_GO_TARGETS` environment variable.
 
 ## Configuring Import Paths
 
@@ -113,7 +123,7 @@ BP_GO_BUILD_IMPORT_PATH=example.com/some-app
 ### Deprecated: Using buildpack.yml
 Specifying the Go Build import path through buildpack.yml configuration will be
 deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
-please set the $BP_GO_BUILD_IMPORT_PATH environment variable.
+please set the `$BP_GO_BUILD_IMPORT_PATH` environment variable.
 
 ## Configuring File Removal
 
