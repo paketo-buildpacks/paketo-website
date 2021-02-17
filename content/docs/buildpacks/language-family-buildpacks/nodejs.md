@@ -34,13 +34,13 @@ notes](https://github.com/paketo-buildpacks/nodejs/releases).
 ## Specifying a Node Engine Version
 The Node Engine CNB (Cloud Native Buildpack) allows you to specify a version of Node.js to use during
 deployment. This version can be specified in a number of ways, including
-through `.nvmrc`, `buildpack.yml`, or `package.json` files. When specifying a
+through `buildpack.yml`, `package.json`, `.nvmrc` or `.node-version` files. When specifying a
 version of the Node.js engine, you must choose a version that is available
 within the buildpack.
 
 The buildpack prioritizes the versions specified in
 each possible configuration location with the following precedence, from
-highest to lowest: `buildpack.yml`, `package.json`, `.nvmrc`.
+highest to lowest: `buildpack.yml`, `package.json`, `.nvmrc` and `.node-version`.
 
 ### Using buildpack.yml
 To configure the buildpack to use Node.js v12.12.0 when deploying your app,
@@ -78,6 +78,27 @@ uses. To specify the Node.js version your apps use during deployment, include a
 of a `.nvmrc` file, see [.nvmrc](https://github.com/nvm-sh/nvm#nvmrc) in the
 Node Version Manager repository on GitHub.
 
+### Using .node-version
+`.node-version` is another common option for managing an app's Node.js version,
+that is compatible with common NodeJS version managers such as `asdf` and `nodenv`.
+You can use a`.node-version` file to set the Node.js version that your apps use
+during deployment, according to one of the following formats:
+
+{{< code/copyable >}}
+12.12.0
+{{< /code/copyable >}}
+
+OR
+
+{{< code/copyable >}}
+v12.12.0
+{{< /code/copyable >}}
+
+OR
+
+{{< code/copyable >}}
+12.12
+{{< /code/copyable >}}
 
 ## Buildpack-Set Environment Variables
 The Node.js CNB sets a number of environment variables during the `build` and
