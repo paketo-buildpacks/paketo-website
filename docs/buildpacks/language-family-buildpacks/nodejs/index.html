@@ -274,12 +274,12 @@ notes</a>.</p>
 <h2 id="specifying-a-node-engine-version">Specifying a Node Engine Version</h2>
 <p>The Node Engine CNB (Cloud Native Buildpack) allows you to specify a version of Node.js to use during
 deployment. This version can be specified in a number of ways, including
-through <code>.nvmrc</code>, <code>buildpack.yml</code>, or <code>package.json</code> files. When specifying a
+through <code>buildpack.yml</code>, <code>package.json</code>, <code>.nvmrc</code> or <code>.node-version</code> files. When specifying a
 version of the Node.js engine, you must choose a version that is available
 within the buildpack.</p>
 <p>The buildpack prioritizes the versions specified in
 each possible configuration location with the following precedence, from
-highest to lowest: <code>buildpack.yml</code>, <code>package.json</code>, <code>.nvmrc</code>.</p>
+highest to lowest: <code>buildpack.yml</code>, <code>package.json</code>, <code>.nvmrc</code> and <code>.node-version</code>.</p>
 <h3 id="using-buildpackyml">Using buildpack.yml</h3>
 <p>To configure the buildpack to use Node.js v12.12.0 when deploying your app,
 include the values below in your <code>buildpack.yml</code> file:</p>
@@ -310,6 +310,22 @@ uses. To specify the Node.js version your apps use during deployment, include a
 <code>.nvmrc</code> file with the version number. For more information about the contents
 of a <code>.nvmrc</code> file, see <a href="https://github.com/nvm-sh/nvm#nvmrc">.nvmrc</a> in the
 Node Version Manager repository on GitHub.</p>
+<h3 id="using-node-version">Using .node-version</h3>
+<p><code>.node-version</code> is another common option for managing an app&rsquo;s Node.js version,
+that is compatible with common NodeJS version managers such as <code>asdf</code> and <code>nodenv</code>.
+You can use a<code>.node-version</code> file to set the Node.js version that your apps use
+during deployment, according to one of the following formats:</p>
+<pre class="copyable"><code>12.12.0
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>OR</p>
+<pre class="copyable"><code>v12.12.0
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>OR</p>
+<pre class="copyable"><code>12.12
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
 <h2 id="buildpack-set-environment-variables">Buildpack-Set Environment Variables</h2>
 <p>The Node.js CNB sets a number of environment variables during the <code>build</code> and
 <code>launch</code> phases of the app lifecycle. The sections below describe each
@@ -571,7 +587,7 @@ the Base builder, and the module may require other shared objects.</p>
 
         </div>
 
-        <p class="docs-lastmod"><strong>Last modified:</strong> February 16, 2021</p>
+        <p class="docs-lastmod"><strong>Last modified:</strong> February 19, 2021</p>
     </div>
 </div>
 
