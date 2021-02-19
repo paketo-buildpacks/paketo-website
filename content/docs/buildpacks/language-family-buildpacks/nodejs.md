@@ -79,10 +79,9 @@ of a `.nvmrc` file, see [.nvmrc](https://github.com/nvm-sh/nvm#nvmrc) in the
 Node Version Manager repository on GitHub.
 
 ### Using .node-version
-`.node-version` is another common option for managing an app's Node.js version,
-that is compatible with common NodeJS version managers such as `asdf` and `nodenv`.
-You can use a`.node-version` file to set the Node.js version that your apps use
-during deployment, according to one of the following formats:
+`.node-version` is another common option that is compatible with Node.js version managers
+such as `asdf` and `nodenv`. You can use a `.node-version` file to set the Node.js version
+that your apps use during deployment, according to one of the following formats:
 
 {{< code/copyable >}}
 12.12.0
