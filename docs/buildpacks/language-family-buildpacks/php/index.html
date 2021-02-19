@@ -362,6 +362,12 @@ will be generated for you by the buildpack.</p>
 <p>If your php app that uses <code>composer</code> has a valid <code>vendor</code> directory, then
 the buildpack will not download those packages. It will instead use the the
 packages location in the <code>vendor</code> directory.</p>
+<h2 id="configuring-custom-ini-files">Configuring custom .ini files</h2>
+<p>If you like to configure custom .ini files in addition to the <code>php.ini</code>
+provided by the buildpack, you can create a directory named <code>.php.ini.d</code> at the
+root of your app and put your custom ini files there. See
+<a href="https://paketo.io/docs/buildpacks/language-family-buildpacks/php/#php_ini_scan_dir"><code>PHP_INI_SCAN_DIR</code></a>
+in the Variables section below.</p>
 <h2 id="buildpack-set-environment-variables">Buildpack-Set Environment Variables</h2>
 <p>The PHP CNB sets a number of environment variables during the <code>build</code> and
 <code>launch</code> phases of the app lifecycle. The sections below describe each
