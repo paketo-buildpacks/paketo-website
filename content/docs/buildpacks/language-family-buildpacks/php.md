@@ -145,6 +145,14 @@ If your php app that uses `composer` has a valid `vendor` directory, then
 the buildpack will not download those packages. It will instead use the the
 packages location in the `vendor` directory.
 
+## Configuring custom .ini files
+
+If you like to configure custom .ini files in addition to the `php.ini`
+provided by the buildpack, you can create a directory named `.php.ini.d` at the
+root of your app and put your custom ini files there. See
+[`PHP_INI_SCAN_DIR`](https://paketo.io/docs/buildpacks/language-family-buildpacks/php/#php_ini_scan_dir)
+in the Variables section below.
+
 ## Buildpack-Set Environment Variables
 
 The PHP CNB sets a number of environment variables during the `build` and
