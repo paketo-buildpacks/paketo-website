@@ -1,21 +1,18 @@
 ---
-title: "Contribute"
+title: "Community"
 weight: 100
 ---
 
 # Contributing to Paketo Buildpacks
 
 ## How can I contribute to the project?
+
 Welcome! We're glad you have an interest in improving Paketo Buildpacks.
 Firstly, check out our [Contribution
 Guide](https://github.com/paketo-buildpacks/.github/blob/main/CONTRIBUTING.md)
-for an idea of where to start.
-
-### Dashboard
-The [Paketo Dashboard](https://dashboard.paketo.io/) contains lists of all open
-GitHub issues and pull requests across the Paketo Buildpacks organization. Once you've
-provided a personal access token, feel free to pick an issue which interests
-you and submit your solution as a pull request.
+for an idea of where to start. We also have a collection of [good first
+issues](https://github.com/search?q=org%3Apaketo-buildpacks+org%3Apaketo-community+label%3A%22good+first+issue%22+state%3Aopen&type=Issues)
+on our repositories if you're eager to start contributing.
 
 ### RFCs
 
@@ -34,11 +31,13 @@ portal](https://github.com/paketo-buildpacks/feedback/discussions) to weigh in
 on ongoing conversations or to start a new one.
 
 
-## Connect with the community There are a few good ways to keep up with
-developments within the Paketo Buildpacks community:
+## Connect with the community
+There are a few good ways to keep up with developments within the Paketo
+Buildpacks community:
 - Join our [working group
   meetings](https://github.com/paketo-buildpacks/community#working-group-meetings)
 - Help improve docs: If you see something that's unclear or outdated, file an
-  issue about it on the relevant repository!
+  issue about it on the [paketo website
+  repository](https://github.com/paketo-buildpacks/paketo-website/issues)!
 
 
