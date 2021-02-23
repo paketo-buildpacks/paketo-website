@@ -27,16 +27,6 @@
 
     $(function(){
         $(document)
-        .on('click', '.contribute-header', function(){
-            var el = $(this);
-            if(el.hasClass('shown')){
-                el.removeClass('shown');
-                el.next().slideUp({duration: 500, easing: 'easeInOutQuart'});
-            } else {
-                el.addClass('shown');
-                el.next().slideDown({duration: 500, easing: 'easeInOutQuart'});
-            }
-        })
         .on('click', '.nav-opener', function(){
             var el = $(this);
             if(el.hasClass('opened')){

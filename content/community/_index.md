@@ -10,7 +10,7 @@ weight: 100
 Welcome! We're glad you have an interest in improving Paketo Buildpacks.
 Firstly, check out our [Contribution
 Guide](https://github.com/paketo-buildpacks/.github/blob/main/CONTRIBUTING.md)
-for an idea of where to start. We also have a collection of [good first
+for an idea of where to begin. We also have a collection of [good first
 issues](https://github.com/search?q=org%3Apaketo-buildpacks+org%3Apaketo-community+label%3A%22good+first+issue%22+state%3Aopen&type=Issues)
 on our repositories if you're eager to start contributing.
 
