@@ -208,6 +208,20 @@ will be chosen based on a priority list which reflects the order of the list
 above with `server.js` being the highest priority and  `index.js` being the
 lowest.
 
+### Using BP_LAUNCHPOINT
+THIS IS NODE START SPECIFIC
+The `BP_LAUNCHPOINT` environment variable may be used to specify a file for the
+start command that is not included in the set of files the buildpack looks for
+by default. The buildpack will verify that the file specified exists and then
+use that as to set the start command. `BP_LAUNCHPOINT` can be used as follows:
+
+
+{{< code/copyable >}}
+BP_LAUNCHPOINT=./src/launchpoint.js
+{{< /code/copyable >}}
+
+This will result in the following start command: `node src/launchpoint.js`
+
 ## Package Management with NPM
 Many Node.js apps require a number of third-party libraries to perform common
 tasks and behaviors. NPM is an option for managing these third-party
