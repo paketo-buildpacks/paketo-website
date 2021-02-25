@@ -274,18 +274,18 @@ notes</a>.</p>
 <h2 id="specifying-a-node-engine-version">Specifying a Node Engine Version</h2>
 <p>The Node Engine CNB (Cloud Native Buildpack) allows you to specify a version of Node.js to use during
 deployment. This version can be specified in a number of ways, including
-through <code>buildpack.yml</code>, <code>package.json</code>, <code>.nvmrc</code> or <code>.node-version</code> files. When specifying a
+through the <code>BP_NODE_VERSION</code> environment variable, a <code>package.json</code>, <code>.nvmrc</code> or <code>.node-version</code> files. When specifying a
 version of the Node.js engine, you must choose a version that is available
-within the buildpack.</p>
+within the buildpack. The supported versions can be found <a href="https://github.com/paketo-buildpacks/node-engine/releases/latest">here</a>.</p>
 <p>The buildpack prioritizes the versions specified in
 each possible configuration location with the following precedence, from
-highest to lowest: <code>buildpack.yml</code>, <code>package.json</code>, <code>.nvmrc</code> and <code>.node-version</code>.</p>
-<h3 id="using-buildpackyml">Using buildpack.yml</h3>
-<p>To configure the buildpack to use Node.js v12.12.0 when deploying your app,
-include the values below in your <code>buildpack.yml</code> file:</p>
-<pre class="copyable"><code>---
-nodejs:
-  version: 12.12.0
+highest to lowest: <code>BP_NODE_VERSION</code>, <code>package.json</code>, <code>.nvmrc</code> and <code>.node-version</code>.</p>
+<h3 id="using-bp_node_version">Using BP_NODE_VERSION</h3>
+<p>To configure the buildpack to use Node.js v12.12.0 when deploying your app, set the
+following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_NODE_VERSION=12.12.0</code>) or through a
+<a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
+file:</p>
+<pre class="copyable"><code>BP_NODE_VERSION=&#34;12.12.0&#34;
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 
 <h3 id="using-packagejson">Using package.json</h3>
@@ -325,6 +325,9 @@ that your apps use during deployment, according to one of the following formats:
 <pre class="copyable"><code>12.12
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 
+<h3 id="deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</h3>
+<p>Specifying the Node version through <code>buildpack.yml</code> configuration will be deprecated in Node Engine Buildpack v1.0.0.
+To migrate from using <code>buildpack.yml</code> please set the <code>$BP_NODE_VERSION</code> environment variable.</p>
 <h2 id="buildpack-set-environment-variables">Buildpack-Set Environment Variables</h2>
 <p>The Node.js CNB sets a number of environment variables during the <code>build</code> and
 <code>launch</code> phases of the app lifecycle. The sections below describe each
@@ -390,24 +393,20 @@ dependencies if NPM install is used.</p>
 <code>optimize-memory</code> feature sets this value to three-quarters of the total memory
 available in the container. For example, if your app is limited to 1 GB
 when pushed, the heap of your Node.js app is limited to 768 MB.</p>
-<p>There are two ways to enable memory optimization: through your <code>buildpack.yml</code>
-file, and by using the <code>OPTIMIZE_MEMORY</code> environment variable.</p>
-<h3 id="use-the-buildpackyml">Use the buildpack.yml</h3>
-<p>To enable memory optimization through your <code>buildpack.yml</code> file, add the values
-below to your <code>buildpack.yml</code> file:</p>
-<pre class="copyable"><code>---
-nodejs:
-  optimize-memory: true
-</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
-
-<h3 id="use-the-optimize_memory-environment-variable">Use the OPTIMIZE_MEMORY Environment Variable</h3>
-<p>To enable memory optimization through the <code>OPTIMIZE_MEMORY</code> environment
+<p>You can enable memory optimization through the <code>BP_NODE_OPTIMIZE_MEMORY</code> environment variable.</p>
+<h3 id="using-bp_node_optimize_memory-environment-variable">Using <code>BP_NODE_OPTIMIZE_MEMORY</code> Environment Variable</h3>
+<p>To enable memory optimization through the <code>BP_NODE_OPTIMIZE_MEMORY</code> environment
 variable, set it to <code>true</code>.</p>
 <pre class="copyable"><code>pack build my-app \
   --buildpack gcr.io/paketo-buildpacks/nodejs \
-  --env OPTIMIZE_MEMORY=true
+  --env BP_NODE_OPTIMIZE_MEMORY=true
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 
+<h3 id="deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</h3>
+<p>Enabling memory optimization through your <code>buildpack.yml</code> file will be
+deprecated in Node Engine Buildpack v1.0.0. To migrate from using
+<code>buildpack.yml</code> please set the <code>BP_NODE_OPTIMIZE_MEMORY</code> environment variable
+mentioned above.</p>
 <h2 id="node-start-command">Node Start Command</h2>
 <p>The Node.js CNB allows you to build a Node.js app that does not rely on any
 external packages. To detect whether for not the app is a Node.js app the
@@ -423,6 +422,15 @@ If you have multiples of these files in your apps root directory then the one
 will be chosen based on a priority list which reflects the order of the list
 above with <code>server.js</code> being the highest priority and  <code>index.js</code> being the
 lowest.</p>
+<h3 id="using-bp_launchpoint">Using BP_LAUNCHPOINT</h3>
+<p>The <code>BP_LAUNCHPOINT</code> environment variable may be used to specify a file for the
+start command that is not included in the set of files the buildpack looks for
+by default. The buildpack will verify that the file specified exists and then
+use that as to set the start command. <code>BP_LAUNCHPOINT</code> can be used as follows:</p>
+<pre class="copyable"><code>BP_LAUNCHPOINT=./src/launchpoint.js
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>This will result in the following start command: <code>node src/launchpoint.js</code></p>
 <h2 id="package-management-with-npm">Package Management with NPM</h2>
 <p>Many Node.js apps require a number of third-party libraries to perform common
 tasks and behaviors. NPM is an option for managing these third-party
@@ -586,7 +594,7 @@ the Base builder, and the module may require other shared objects.</p>
 
         </div>
 
-        <p class="docs-lastmod"><strong>Last modified:</strong> February 19, 2021</p>
+        <p class="docs-lastmod"><strong>Last modified:</strong> February 25, 2021</p>
     </div>
 </div>
 
