@@ -209,7 +209,6 @@ above with `server.js` being the highest priority and  `index.js` being the
 lowest.
 
 ### Using BP_LAUNCHPOINT
-THIS IS NODE START SPECIFIC
 The `BP_LAUNCHPOINT` environment variable may be used to specify a file for the
 start command that is not included in the set of files the buildpack looks for
 by default. The buildpack will verify that the file specified exists and then
