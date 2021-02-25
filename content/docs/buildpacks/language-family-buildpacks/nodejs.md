@@ -34,22 +34,24 @@ notes](https://github.com/paketo-buildpacks/nodejs/releases).
 ## Specifying a Node Engine Version
 The Node Engine CNB (Cloud Native Buildpack) allows you to specify a version of Node.js to use during
 deployment. This version can be specified in a number of ways, including
-through `buildpack.yml`, `package.json`, `.nvmrc` or `.node-version` files. When specifying a
+through the `BP_NODE_VERSION` environment variable, a `package.json`, `.nvmrc` or `.node-version` files. When specifying a
 version of the Node.js engine, you must choose a version that is available
-within the buildpack.
+within the buildpack. The supported versions can be found [here](https://github.com/paketo-buildpacks/node-engine/releases/latest).
 
 The buildpack prioritizes the versions specified in
 each possible configuration location with the following precedence, from
-highest to lowest: `buildpack.yml`, `package.json`, `.nvmrc` and `.node-version`.
+highest to lowest: `BP_NODE_VERSION`, `package.json`, `.nvmrc` and `.node-version`.
 
-### Using buildpack.yml
-To configure the buildpack to use Node.js v12.12.0 when deploying your app,
-include the values below in your `buildpack.yml` file:
+### Using BP_NODE_VERSION
+
+To configure the buildpack to use Node.js v12.12.0 when deploying your app, set the
+following environment variable at build time, either directly (ex. `pack build
+my-app --env BP_NODE_VERSION=12.12.0`) or through a
+[project.toml](https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md)
+file:
 
 {{< code/copyable >}}
----
-nodejs:
-  version: 12.12.0
+BP_NODE_VERSION="12.12.0"
 {{< /code/copyable >}}
 
 ### Using package.json
@@ -98,6 +100,12 @@ OR
 {{< code/copyable >}}
 12.12
 {{< /code/copyable >}}
+
+
+### Deprecated: Using buildpack.yml
+
+Specifying the Node version through `buildpack.yml` configuration will be deprecated in Node Engine Buildpack v1.0.0.
+To migrate from using `buildpack.yml` please set the `$BP_NODE_VERSION` environment variable.
 
 ## Buildpack-Set Environment Variables
 The Node.js CNB sets a number of environment variables during the `build` and
@@ -166,28 +174,24 @@ Node.js limits the total size of all objects on the heap. Enabling the
 available in the container. For example, if your app is limited to 1&nbsp;GB
 when pushed, the heap of your Node.js app is limited to 768&nbsp;MB.
 
-There are two ways to enable memory optimization: through your `buildpack.yml`
-file, and by using the `OPTIMIZE_MEMORY` environment variable.
+You can enable memory optimization through the `BP_NODE_OPTIMIZE_MEMORY` environment variable.
 
-### Use the buildpack.yml
-To enable memory optimization through your `buildpack.yml` file, add the values
-below to your `buildpack.yml` file:
-
-{{< code/copyable >}}
----
-nodejs:
-  optimize-memory: true
-{{< /code/copyable >}}
-
-### Use the OPTIMIZE_MEMORY Environment Variable
-To enable memory optimization through the `OPTIMIZE_MEMORY` environment
+### Using `BP_NODE_OPTIMIZE_MEMORY` Environment Variable
+To enable memory optimization through the `BP_NODE_OPTIMIZE_MEMORY` environment
 variable, set it to `true`.
 
 {{< code/copyable >}}
 pack build my-app \
   --buildpack gcr.io/paketo-buildpacks/nodejs \
-  --env OPTIMIZE_MEMORY=true
+  --env BP_NODE_OPTIMIZE_MEMORY=true
 {{< /code/copyable >}}
+
+### Deprecated: Using buildpack.yml
+
+Enabling memory optimization through your `buildpack.yml` file will be
+deprecated in Node Engine Buildpack v1.0.0. To migrate from using
+`buildpack.yml` please set the `BP_NODE_OPTIMIZE_MEMORY` environment variable
+mentioned above.
 
 ## Node Start Command
 The Node.js CNB allows you to build a Node.js app that does not rely on any
@@ -203,6 +207,19 @@ If you have multiples of these files in your apps root directory then the one
 will be chosen based on a priority list which reflects the order of the list
 above with `server.js` being the highest priority and  `index.js` being the
 lowest.
+
+### Using BP_LAUNCHPOINT
+The `BP_LAUNCHPOINT` environment variable may be used to specify a file for the
+start command that is not included in the set of files the buildpack looks for
+by default. The buildpack will verify that the file specified exists and then
+use that as to set the start command. `BP_LAUNCHPOINT` can be used as follows:
+
+
+{{< code/copyable >}}
+BP_LAUNCHPOINT=./src/launchpoint.js
+{{< /code/copyable >}}
+
+This will result in the following start command: `node src/launchpoint.js`
 
 ## Package Management with NPM
 Many Node.js apps require a number of third-party libraries to perform common
