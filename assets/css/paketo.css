@@ -43,6 +43,11 @@ a {
 a:hover {
 	opacity: 0.5;
 }
+
+/* icon { */
+/* 	padding: 0 0.7em; */
+
+/* } */
 ins {
 	background-color: #ff9;
 	color: #000;
@@ -381,6 +386,33 @@ header ul {
 header li {
 	display: flex;
 	padding-left: 40px;
+
+  nav a:before, .cta:before, .docs-body a:before {
+	content: "";
+	/* position: absolute; */
+	bottom: -0.02em;
+	height: 0.1em;
+	left: 0;
+	width: 100%;
+	/* background: #F7CA44; */
+	z-index: -1;
+  }
+}
+.docs-body a.edit::before{
+    height: 1em;
+    width: auto;
+    min-width: 1em;
+    display: inline-block;
+    align-self: center;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+  background-repeat: no-repeat;
+  background-size: contain;
+	padding: 0 1.3em;
+  background-image: url("/images/GitHub-Mark-32px.png");
+  content: "Edit"
 }
 .external-link {
 	background: #293878;

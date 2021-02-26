@@ -5,7 +5,9 @@
     <div class="docs-body relative">
         <div class="text-col docs-text pad50">
           <div class="upper-nav right">
-            <a target="_blank" href="http://github.com/paketo-buildpacks/paketo-website/tree/main/content/{{ .File.Path }}">View docs on Github</a>
+            <div class="edit-button">
+              <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/{{ .File.Path }}" target="_blank" class=edit></a>
+            </div>
           </div>
           {{ .Content }}
         </div>
@@ -13,3 +15,5 @@
         <p class="docs-lastmod"><strong>Last modified:</strong> {{ .Lastmod.Format "January 2, 2006" }}</p>
     </div>
 </div>
+
+
