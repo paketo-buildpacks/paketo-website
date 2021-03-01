@@ -343,44 +343,28 @@ table {
 /* header */
 
 header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 20px;
-	border-bottom: 1px solid #ccc;
-	background: #fefefe;
+	padding: 20px 50px;
+	position: relative;
+	z-index: 4;
 }
 header .logo img {
 	max-width: 260px;
 }
-header .logo a {
-	opacity: 1;
-}
-header a {
+nav a {
 	margin-left: 20px;
 	text-decoration: none;
 	color: #293878;
 	font-weight: 600;
 	font-size: 1.3em;
 }
-header a svg {
+nav a svg {
 	max-height: 20px;
 	float: left;
 	padding-right: 5px;
 	width: 24px;
 }
-header a svg path {
+nav a svg path {
 	fill: white;
-}
-header ul {
-	display: flex;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-header li {
-	display: flex;
-	padding-left: 40px;
 }
 .external-link {
 	background: #293878;
@@ -458,7 +442,6 @@ header li {
 	text-decoration: none;
 	display: inline-block;
 	box-shadow: 0 0 5px grey;
-	opacity: 1;
 }
 .hero .logos {
 	display: flex;
@@ -799,15 +782,6 @@ footer {
 	background: #384a9a;
 	padding: 20px 50px;
 	color: #ccc
-}
-nav a svg {
-	max-height: 20px;
-	float: left;
-	padding-right: 5px;
-	width: 24px;
-}
-nav a svg path {
-	fill: white;
 }
 @media (max-width: 1000px) {
 	.half-1000 {
