@@ -1,4 +1,4 @@
-/* CSS reset.  Why?  Because browser makers make the www difficult to style. Enough with that. */
+/* CSS reset. Why? Because browser makers make the www difficult to style. Enough with that. */
 
 @charset "utf-8";
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -35,8 +35,10 @@ a {
 	margin: 0;
 	padding: 0;
 	font-size: 100%;
+	text-decoration: underline;
 	vertical-align: baseline;
 	background: transparent;
+	color: inherit;
 }
 ins {
 	background-color: #ff9;
@@ -63,7 +65,7 @@ table {
 input, select {
 	vertical-align: middle;
 }
-/* End the Reset.  Let the games begin. */
+/* End the Reset. Let the games begin. */
 
 *, *:before, *:after {
 	-moz-box-sizing: border-box;
@@ -74,34 +76,25 @@ body {
 	background: #F0F2F9;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	font-weight: 400;
-	font-size: 22px;
-	line-height: 33px;
+	font-size: 1.1em;
+	line-height: 1.5em;
 	color: #4A516D;
-}
-a, a:before {
-	text-decoration: none;
-	color: #293878;
-	outline: none;
-	transition: all 0.3s ease;
-	font-weight: 600;
 }
 img {
 	height: auto;
 	max-width: 100%;
 }
 p {
-	font-size: 1.2rem;
-	line-height: 1.5em;
 	padding: 0.7em 0;
 }
 h1, h2, h3, h4, h5, h6 {
-	line-height: 1.2em;
+	line-height: 1.5em;
 	color: #343433;
 	-webkit-font-smoothing: subpixel-antialiased;
 	letter-spacing: -0.025em;
 }
 h1 {
-	font-size: 3.2rem;
+	font-size: 3rem;
 	font-weight: 600;
 }
 h2 {
@@ -114,11 +107,11 @@ h3 {
 	padding-top: 20px;
 }
 h4 {
-  font-weight: bold;
-  font-size: 19px;
-  line-height: 23px;
-  letter-spacing: 0.05em;
-  color: #4A516D;
+	font-weight: bold;
+	font-size: 1.1em;
+	line-height: 23px;
+	letter-spacing: 0.05em;
+	color: #4A516D;
 }
 ul {
 	list-style: disc;
@@ -141,16 +134,16 @@ hr {
 code {
 	font-family: monospace;
 	color: #378BAF;
-	font-size: 1.2rem;
+	font-size: 1.1em;
 	line-height: 1.5em;
 }
 td {
-	border:  1px solid #DDD;
+	border:	1px solid #DDD;
 	background: white;
 	padding: 10px;
 }
 th {
-	border:  1px solid #DDD;
+	border:	1px solid #DDD;
 	background: white;
 	padding: 10px;
 	word-break: break-word;
@@ -225,7 +218,7 @@ table {
 .text-center {
 	text-align: center;
 }
-/* need to add z-index?  Us these class? */
+/* need to add z-index? Us these class? */
 
 .z0 {
 	z-index: 0;
@@ -306,7 +299,7 @@ table {
 	width: 66.6666%;
 	margin-right: -4px;
 }
-/* structure  */
+/* structure */
 
 .relative {
 	position: relative;
@@ -354,15 +347,12 @@ header {
 header .logo img {
 	max-width: 260px;
 }
-nav a, .cta, .docs-body a {
-	position: relative;
-	padding: 0 4px;
-	z-index: 1;
-	display: inline-block;
-	line-height: 1em;
-}
 nav a {
 	margin-left: 20px;
+	text-decoration: none;
+	color: #293878;
+	font-weight: 600;
+	font-size: 1.3em;
 }
 nav a svg {
 	max-height: 20px;
@@ -373,19 +363,12 @@ nav a svg {
 nav a svg path {
 	fill: white;
 }
-nav a:before, .cta:before, .docs-body a:before {
-	content: "";
-	position: absolute;
-	bottom: -0.02em;
-	height: 0.1em;
-	left: 0;
-	width: 100%;
-	background: #F7CA44;
-	z-index: -1;
-}
-nav a:hover:before, .cta:hover:before, .docs-body a:hover:before {
-	height: 100%;
-	bottom: 0;
+nav a, .cta, .docs-body a {
+	position: relative;
+	padding: 0 4px;
+	z-index: 1;
+	display: inline-block;
+	line-height: 1em;
 }
 .external-link {
 	background: #293878;
@@ -445,39 +428,42 @@ nav a:hover:before, .cta:hover:before, .docs-body a:hover:before {
 	padding: 50px 50px 30px 50px;
 }
 .hero h2 {
-  color: #4A516D;
-  font-weight: 300;
+	color: #4A516D;
+	font-weight: 300;
 }
 .hero .cta {
-  font-size: 2rem;
+	font-size: 2rem;
 }
 .hero .cta:before {
-  background: none;
+	background: none;
 }
 .hero a.btn {
-  background: #2A3878;
-  border: none;
-  color: #FEFEFE;
-  padding: 22px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: 0 0 5px grey;
+	background: #2A3878;
+	border: none;
+	color: #FEFEFE;
+	padding: 22px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	box-shadow: 0 0 5px grey;
 }
 .hero .logos {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-  align-items: center;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.hero a.logo:hover {
+	opacity: 0.5;
 }
 .hero .logos .logo {
-  flex-basis: 33.33%;
-  text-align: center;
+	flex-basis: 33.33%;
+	text-align: center;
 }
 .hero .logos .logo img {
-  margin: 20px;
-  max-height: 90px;
-  max-width: 140px;
+	margin: 20px;
+	max-height: 90px;
+	max-width: 140px;
 }
 .hero .text-col {
 	max-width: 66.666vw;
@@ -658,8 +644,8 @@ footer p {
 	background: #FEFEFE;
 }
 .docs img {
-  display: block;
-  margin: 0 auto;
+	display: block;
+	margin: 0 auto;
 	border: 1px solid #E4E4E4;
 }
 .docs-sidebar {
@@ -669,6 +655,9 @@ footer p {
 }
 .docs-body {
 	width: calc(100% - 380px);
+}
+.docs-body a:hover{
+	opacity: 0.5;
 }
 .docs-lastmod {
 	padding-left: 50px;
@@ -685,19 +674,23 @@ footer p {
 	list-style: none;
 	position: relative;
 	padding: 0;
+	font-weight: bolder;
 }
 .docs-menu ul.sub-menu {
 	padding-left: 20px;
 	position: relative;
 }
 .docs-menu ul.sub-menu li a{
-  font-weight: normal;
+	font-weight: normal;
 }
 .docs-menu a {
 	display: block;
 	position: relative;
 	margin: 5px 0;
 	padding: 5px;
+	text-decoration: none;
+	opacity: 1;
+	color: #293878;
 }
 .docs-menu a.active {
 	color: #5DBCD2;
@@ -720,6 +713,7 @@ footer p {
 .docs-menu a.active:before, .docs-menu a:hover:before {
 	width: 100%;
 	background: #FEFEFE;
+	color: #293878;
 }
 .docs-menu a:hover {
 	color: #5DBCD2;
@@ -735,62 +729,62 @@ footer p {
 	overflow-wrap: break-word;
 }
 .docs pre img {
-  display: none;
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  background: #FFF;
-  cursor: pointer;
-  border: none;
+	display: none;
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	background: #FFF;
+	cursor: pointer;
+	border: none;
 }
 .docs pre:hover img {
-  display: block;
+	display: block;
 }
 .docs pre.copied img {
-  display: none;
+	display: none;
 }
 .docs pre .copied {
-  visibility: hidden;
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  opacity: 1;
+	visibility: hidden;
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	opacity: 1;
 }
 .docs pre.copied .copied {
-  visibility: visible;
-  opacity: 0;
-  transition: visibility 0s, opacity 1s ease-in-out 1s;
+	visibility: visible;
+	opacity: 0;
+	transition: visibility 0s, opacity 1s ease-in-out 1s;
 }
 .docs .code-output pre {
-  display: none;
-  background: #E4E4E4;
+	display: none;
+	background: #E4E4E4;
 }
 .docs .code-output.visible pre {
-  display: block;
+	display: block;
 }
 .docs .code-output pre code {
-  color: #585858;
+	color: #585858;
 }
 .docs .code-output .btn {
-  background: #E4E4E4;
-  text-transform: uppercase;
-  font-size: 0.6em;
-  display: block;
-  margin-top: 3px;
-  padding: 0 5px;
-  float: left;
-  text-align: center;
+	background: #E4E4E4;
+	text-transform: uppercase;
+	font-size: 0.6em;
+	display: block;
+	margin-top: 3px;
+	padding: 0 5px;
+	float: left;
+	text-align: center;
 }
 .docs .code-output .btn:before {
-  display: inline-block;
-  width: 35px;
-  content: 'View ';
+	display: inline-block;
+	width: 35px;
+	content: 'View ';
 }
 .docs .code-output .btn:hover {
-  cursor: pointer;
+	cursor: pointer;
 }
 .docs .code-output.visible .btn:before {
-  content: 'Hide ';
+	content: 'Hide ';
 }
 
 /* footer */
@@ -991,9 +985,9 @@ footer {
 		max-height: 16vmin;
 		max-width: 25vmin;
 	}
-  .docs pre:hover img {
-    display: none;
-  }
+	.docs pre:hover img {
+		display: none;
+	}
 }
 @media (max-width: 400px) {
 	.half-400 {
