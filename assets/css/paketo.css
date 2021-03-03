@@ -434,6 +434,13 @@ nav a, .cta, .docs-body a {
 	float: right;
 }
 
+.github-edit__redirect:hover {
+	opacity: 0.8 !important;
+	border: 1px solid #4a516d;
+	background: white;
+	color: #4a516d;
+}
+
 .redirect__content {
 	display: flex;
 	text-align: center;

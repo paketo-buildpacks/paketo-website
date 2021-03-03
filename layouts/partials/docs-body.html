@@ -3,16 +3,11 @@
         {{ partial "docs-sidebar.html" . }}
     </div>
     <div class="docs-body relative">
-        <!-- This needs the proper implementation to redirect to github location rather than google -->
-        <!--Could break this out into a partial and pulled in which should place button above content title-->
         <div class="text-col docs-text pad50">
-            <a href="https://www.google.com" class="github-edit__redirect" style="text-decoration:none">
-                <div class="redirect__content">
-                    <img class="github-logo" src="/images/github-mark.png">
-                    <div class="edit-text">Edit</div>
-                </div>
-            </a>
+            {{ .Scratch.Set "path" .File.Path }}
+            {{ partial "github-edit.html" . }}
             {{ .Content }}
+            {{ partial "github-edit.html" . }}
         </div>
         <p class="docs-lastmod"><strong>Last modified:</strong> {{ .Lastmod.Format "January 2, 2006" }}</p>
     </div>
