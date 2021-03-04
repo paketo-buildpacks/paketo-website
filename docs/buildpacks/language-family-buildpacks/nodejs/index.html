@@ -407,6 +407,25 @@ variable, set it to <code>true</code>.</p>
 deprecated in Node Engine Buildpack v1.0.0. To migrate from using
 <code>buildpack.yml</code> please set the <code>BP_NODE_OPTIMIZE_MEMORY</code> environment variable
 mentioned above.</p>
+<h2 id="using-ca-certificates">Using CA Certificates</h2>
+<p>Users can provide their own CA certificates and have them included in the
+container root truststore at build-time and runtime using the <a href="https://github.com/paketo-buildpacks/ca-certificates">CA Certificates
+CNB</a>. Check out the
+<a href="https://paketo.io/docs/buildpacks/configuration/#ca-certificates">docs</a> for
+how to enable this.</p>
+<h3 id="nodejs-specific-settings">Node.js Specific Settings</h3>
+<p>On top of the configurations mentioned in the CA Certificate docs, the
+<code>NODE_OPTIONS</code> environment variable must be set to <code>--use-openssl-ca</code>. This
+ensures that the <code>node</code> process will utilize the newly added CA certificate.</p>
+<p>The final command to run a container with CA certificates will look like the following:
+<pre class="copyable"><code>docker run \
+  -it -p 8080:8080 --env PORT=8080 \
+  --env SERVICE_BINDING_ROOT=/bindings \
+  --env NODE_OPTIONS=&#34;--use-openssl-ca&#34; \
+  --volume &#34;my-app/binding:/bindings/ca-certificates&#34; \
+  my-app
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+</p>
 <h2 id="node-start-command">Node Start Command</h2>
 <p>The Node.js CNB allows you to build a Node.js app that does not rely on any
 external packages. To detect whether for not the app is a Node.js app the
@@ -594,7 +613,7 @@ the Base builder, and the module may require other shared objects.</p>
 
         </div>
 
-        <p class="docs-lastmod"><strong>Last modified:</strong> March 1, 2021</p>
+        <p class="docs-lastmod"><strong>Last modified:</strong> March 4, 2021</p>
     </div>
 </div>
 
