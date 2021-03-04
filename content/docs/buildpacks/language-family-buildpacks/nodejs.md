@@ -373,6 +373,28 @@ The Node.js CNB also supports simple apps that do not require third-party packag
 If no package manager is detected, the Node.js CNB will set the start command
 `node server.js`. The app name is ___not___ currently configurable.
 
+
+## Using a Procfile
+The Node.js CNB includes the [Procfile
+CNB](https://github.com/paketo-buildpacks/procfile). This buildpack turns the
+contents of a Procfile into process types.  Check out the
+[docs](https://paketo.io/docs/buildpacks/configuration/#procfiles) for
+information on how to use this buildpack.
+
+## Adding Environment Variables to the Build/Run Image
+The Node.js CNB includes the [Environment Variables
+CNB](https://github.com/paketo-buildpacks/environment-variables). This
+buildpack embeds environment variables into an image.  Check out the
+[docs](https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md)
+for information on how to use this buildpack.
+
+## Adding Image Labels to the Build/Run Image
+The Node.js CNB includes the [Image Labels
+CNB](https://github.com/paketo-buildpacks/image-labels).This buildpack enables
+configuration of labels on the created image.  Check out the
+[docs](https://paketo.io/docs/buildpacks/configuration/#applying-custom-labels)
+for information on how to use this buildpack.
+
 ## Stack support
 The Node.js Buildpack runs fine on the Base builder for most apps. If your app
 requires compilation of native extensions using `node-gyp`, the buildpack requires that
