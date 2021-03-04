@@ -196,23 +196,16 @@ mentioned above.
 ## Using CA Certificates
 Users can provide their own CA certificates and have them included in the
 container root truststore at build-time and runtime using the [CA Certificates
-CNB](https://github.com/paketo-buildpacks/ca-certificates).
+CNB](https://github.com/paketo-buildpacks/ca-certificates). Check out the
+[docs](https://paketo.io/docs/buildpacks/configuration/#ca-certificates) for
+how to enable this.
 
-To enable this behavior, the app should contain:
-- a binding of `type` `ca-certificates` and
-- each provided certificate in the binding should contain one PEM encoded CA
-  certificate.
+### Node.js Specific Settings
+On top of the configurations mentioned in the CA Certificate docs, the
+`NODE_OPTIONS` environment variable must be set to `--use-openssl-ca`. This
+ensures that the `node` process will utilize the newly added CA certificate.
 
-Check out the [CA Certificates
-README](https://github.com/paketo-buildpacks/ca-certificates/blob/main/README.md)
-for more information about app set configuration.
-
-### CA Certificates at runtime
-To use CA certificates at runtime, the `SERVICE_BINDING_ROOT` and
-`NODE_OPTIONS` environment variables must be set, as well as a volume mount for
-the bindings.  The `NODE_OPTIONS=--use-openssl-ca` argument is especially
-necessary for `node` to utilize the new CA.
-
+The final command to run a container with CA certificates will look like the following:
 {{< code/copyable >}}
 docker run \
   -it -p 8080:8080 --env PORT=8080 \
