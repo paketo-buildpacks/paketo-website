@@ -605,6 +605,24 @@ packages, the start command is <code>yarn start</code>.</p>
 <h3 id="start-command">Start Command</h3>
 <p>If no package manager is detected, the Node.js CNB will set the start command
 <code>node server.js</code>. The app name is <em><strong>not</strong></em> currently configurable.</p>
+<h2 id="using-a-procfile">Using a Procfile</h2>
+<p>The Node.js CNB includes the <a href="https://github.com/paketo-buildpacks/procfile">Procfile
+CNB</a>. This buildpack turns the
+contents of a Procfile into process types.  Check out the
+<a href="https://paketo.io/docs/buildpacks/configuration/#procfiles">docs</a> for
+information on how to use this buildpack.</p>
+<h2 id="adding-environment-variables-to-the-buildrun-image">Adding Environment Variables to the Build/Run Image</h2>
+<p>The Node.js CNB includes the <a href="https://github.com/paketo-buildpacks/environment-variables">Environment Variables
+CNB</a>. This
+buildpack embeds environment variables into an image.  Check out the
+<a href="https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md">docs</a>
+for information on how to use this buildpack.</p>
+<h2 id="adding-image-labels-to-the-buildrun-image">Adding Image Labels to the Build/Run Image</h2>
+<p>The Node.js CNB includes the <a href="https://github.com/paketo-buildpacks/image-labels">Image Labels
+CNB</a>.This buildpack enables
+configuration of labels on the created image.  Check out the
+<a href="https://paketo.io/docs/buildpacks/configuration/#applying-custom-labels">docs</a>
+for information on how to use this buildpack.</p>
 <h2 id="stack-support">Stack support</h2>
 <p>The Node.js Buildpack runs fine on the Base builder for most apps. If your app
 requires compilation of native extensions using <code>node-gyp</code>, the buildpack requires that
