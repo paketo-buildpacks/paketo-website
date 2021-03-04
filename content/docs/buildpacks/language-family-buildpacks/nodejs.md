@@ -193,6 +193,29 @@ deprecated in Node Engine Buildpack v1.0.0. To migrate from using
 `buildpack.yml` please set the `BP_NODE_OPTIMIZE_MEMORY` environment variable
 mentioned above.
 
+## Using CA Certificates
+Users can provide their own CA certificates and have them included in the
+container root truststore at build-time and runtime using the [CA Certificates
+CNB](https://github.com/paketo-buildpacks/ca-certificates). Check out the
+[docs](https://paketo.io/docs/buildpacks/configuration/#ca-certificates) for
+how to enable this.
+
+### Node.js Specific Settings
+On top of the configurations mentioned in the CA Certificate docs, the
+`NODE_OPTIONS` environment variable must be set to `--use-openssl-ca`. This
+ensures that the `node` process will utilize the newly added CA certificate.
+
+The final command to run a container with CA certificates will look like the following:
+{{< code/copyable >}}
+docker run \
+  -it -p 8080:8080 --env PORT=8080 \
+  --env SERVICE_BINDING_ROOT=/bindings \
+  --env NODE_OPTIONS="--use-openssl-ca" \
+  --volume "my-app/binding:/bindings/ca-certificates" \
+  my-app
+{{< /code/copyable >}}
+
+
 ## Node Start Command
 The Node.js CNB allows you to build a Node.js app that does not rely on any
 external packages. To detect whether for not the app is a Node.js app the
