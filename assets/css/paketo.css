@@ -40,6 +40,9 @@ a {
 	background: transparent;
 	color: inherit;
 }
+a:hover {
+	opacity: .7;
+}
 ins {
 	background-color: #ff9;
 	color: #000;
@@ -376,10 +379,6 @@ nav a, .cta, .docs-body a {
 	padding: 8px 16px;
 	border-radius: 4px;
 }
-.external-link:hover {
-	background: #489ebc;
-	color: white;
-}
 .nav-opener {
 	position: fixed;
 	backface-visibility: hidden;
@@ -452,9 +451,6 @@ nav a, .cta, .docs-body a {
 	flex-flow: row wrap;
 	justify-content: space-evenly;
 	align-items: center;
-}
-.hero a.logo:hover {
-	opacity: 0.5;
 }
 .hero .logos .logo {
 	flex-basis: 33.33%;
@@ -657,9 +653,7 @@ footer p {
 .docs-body {
 	width: calc(100% - 380px);
 }
-.docs-body a:hover{
-	opacity: 0.5;
-}
+
 .docs-lastmod {
 	padding-left: 50px;
 	font-style: italic;
