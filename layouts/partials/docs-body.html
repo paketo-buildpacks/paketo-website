@@ -4,9 +4,11 @@
     </div>
     <div class="docs-body relative">
         <div class="text-col docs-text pad50">
+            {{ .Scratch.Set "path" .File.Path }}
+            {{ partial "github-edit.html" . }}
             {{ .Content }}
+            {{ partial "github-edit.html" . }}
         </div>
-
         <p class="docs-lastmod"><strong>Last modified:</strong> {{ .Lastmod.Format "January 2, 2006" }}</p>
     </div>
 </div>
