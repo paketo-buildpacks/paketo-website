@@ -39,7 +39,7 @@ The [pack CLI][pack] is used throughout the examples. `pack` is just one of seve
 
 Examples assume that either the [Paketo Tiny][tiny builder] or [Paketo Base builder][base builder] is the default builder:
 {{< code/copyable >}}
-pack set-default-builder paketobuildpacks/builder:tiny
+pack config default-builder paketobuildpacks/builder:tiny
 {{< /code/copyable >}}
 
 All java native image example images should return `{"status":"UP"}` from the [actuator health endpoint][spring boot actuator endpoints].
