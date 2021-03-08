@@ -262,31 +262,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <h1 id="java-native-image-buildpack">Java Native Image Buildpack</h1>
 <p>The <a href="https://github.com/paketo-buildpacks/java-native-image%5D">Paketo Java Native Image Buildpack</a> allows users to create an image containing a <a href="https://www.graalvm.org/docs/introduction/">GraalVM</a> <a href="https://www.graalvm.org/reference-manual/native-image/">native image</a> application.</p>
 <p>The Java Native Buildpack is a <a href="https://paketo.io/docs/buildpacks/language-family-buildpacks/#composite-buildpacks">composite buildpack</a> and each step in a build is handled by one of it&rsquo;s <a href="#components">components</a>. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages of the component buildpacks.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
-<ul>
-<li><a href="#java-native-image-buildpack">Java Native Image Buildpack</a>
-<ul>
-<li><a href="#table-of-contents">Table of Contents</a></li>
-<li><a href="#about-the-examples">About the Examples</a></li>
-<li><a href="#supported-applications">Supported Applications</a></li>
-<li><a href="#building-from-source">Building From Source</a></li>
-<li><a href="#building-from-an-executable-jar">Building from an Executable JAR</a></li>
-<li><a href="#about-the-native-image">About the Native Image</a>
-<ul>
-<li><a href="#inspecting-the-jvm-version">Inspecting the JVM Version</a></li>
-<li><a href="#configuring-the-jvm-version">Configuring the JVM Version</a></li>
-</ul>
-</li>
-<li><a href="#spring-boot-applications">Spring Boot Applications</a></li>
-<li><a href="#selecting-a-process">Selecting a Process</a>
-<ul>
-<li><a href="#providing-additional-arguments">Providing Additional Arguments</a></li>
-</ul>
-</li>
-<li><a href="#components">Components</a></li>
-</ul>
-</li>
-</ul>
+<div class="toc">
+	<h2>Table of Contents</h2>
+  	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#about-the-examples">About the Examples</a></li>
+    <li><a href="#supported-applications">Supported Applications</a></li>
+    <li><a href="#building-from-source">Building From Source</a></li>
+    <li><a href="#building-from-an-executable-jar">Building from an Executable JAR</a></li>
+    <li><a href="#about-the-native-image">About the Native Image</a>
+      <ul>
+        <li><a href="#inspecting-the-jvm-version">Inspecting the JVM Version</a></li>
+        <li><a href="#configuring-the-jvm-version">Configuring the JVM Version</a></li>
+      </ul>
+    </li>
+    <li><a href="#spring-boot-applications">Spring Boot Applications</a></li>
+    <li><a href="#selecting-a-process">Selecting a Process</a>
+      <ul>
+        <li><a href="#providing-additional-arguments">Providing Additional Arguments</a></li>
+      </ul>
+    </li>
+    <li><a href="#components">Components</a></li>
+  </ul>
+</nav>
+</div>
 <h2 id="about-the-examples">About the Examples</h2>
 <p>All Java Native Image Buildpack examples will use the Paketo <a href="https://github.com/paketo-buildpacks/samples">sample applications</a>.</p>
 <p>Examples assume that the root of this repository is the working directory:
@@ -341,14 +340,14 @@ pack build samples/java-native \
 <blockquote>
 <p>&ldquo;On Mac and Windows, it is recommended to increase the memory allocated to Docker to at least 8G (and potentially to add more CPUs as well) since native-image compiler is a heavy process. See this <a href="https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437">Stackoverflow answer</a> for more details. On Linux, Docker uses by default the resources available on the host so no configuration is needed.&rdquo;</p>
 </blockquote>
-<h4 id="inspecting-the-jvm-version">Inspecting the JVM Version</h4>
+<h3 id="inspecting-the-jvm-version">Inspecting the JVM Version</h3>
 <p>The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.</p>
 <p><strong>Example</strong> Inspecting the JRE Version</p>
 <p>Given an image named <code>samples/java-native</code> built from one of examples above, the following command will print the exact version of the installed substrate VM.
 <pre class="copyable"><code>pack inspect-image samples/java-native --bom | jq &#39;.local[] | select(.name==&#34;native-image-svm&#34;) | .metadata.version&#39;
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 </p>
-<h4 id="configuring-the-jvm-version">Configuring the JVM Version</h4>
+<h3 id="configuring-the-jvm-version">Configuring the JVM Version</h3>
 <p>The following environment variable configures the JVM version at build-time.</p>
 <ul>
 <li><code>BP_JVM_VERSION</code>

@@ -273,6 +273,43 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
 for how to run the app.</p>
 <p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
 also compatible with the Paketo Full builder.</strong></p>
+<div class="toc">
+	<h2>Table of Contents</h2>
+  	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#specifying-a-ruby-version">Specifying a Ruby Version</a>
+      <ul>
+        <li><a href="#using-bp_mri_version">Using BP_MRI_VERSION</a></li>
+        <li><a href="#using-a-gemfile">Using a Gemfile</a></li>
+        <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#package-management">Package Management</a></li>
+    <li><a href="#specifying-a-bundler-version">Specifying a Bundler Version</a>
+      <ul>
+        <li><a href="#using-bp_bundler_version">Using BP_BUNDLER_VERSION</a></li>
+        <li><a href="#using-a-gemfilelock">Using a Gemfile.lock</a></li>
+        <li><a href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#vendored-packages">Vendored Packages</a></li>
+    <li><a href="#webservers--task-runners">Webservers &amp; Task Runners</a>
+      <ul>
+        <li><a href="#webservers">Webservers</a></li>
+        <li><a href="#task-runners">Task Runners</a></li>
+      </ul>
+    </li>
+    <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
+    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+      <ul>
+        <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
+        <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
 <h2 id="supported-dependencies">Supported Dependencies</h2>
 <p>The Ruby Paketo Buildpack supports several versions of
 <a href="https://www.ruby-lang.org">MRI</a>, <a href="https://bundler.io/">Bundler</a>, and common

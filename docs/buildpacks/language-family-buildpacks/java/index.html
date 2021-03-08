@@ -262,62 +262,44 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <h1 id="java-buildpack">Java Buildpack</h1>
 <p>The <a href="https://github.com/paketo-buildpacks/java">Paketo Java Buildpack</a> allows users to create an image containing a JVM application from a precompiled artifact or directly from source.</p>
 <p>The Java Buildpack is a <a href="https://paketo.io/docs/buildpacks/language-family-buildpacks/#compposite-buildapcks">composite buildpack</a> and each step in a build is handled by one of it&rsquo;s <a href="#components">components</a>. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages for the component buildpacks.</p>
-<h2 id="table-of-contents">Table of Contents</h2>
-<!-- raw HTML omitted -->
-<ul>
-<li><a href="#java-buildpack">Java Buildpack</a>
-<ul>
-<li><a href="#table-of-contents">Table of Contents</a></li>
-<li><a href="#about-the-examples">About the Examples</a></li>
-<li><a href="#building-from-source">Building from Source</a>
-<ul>
-<li><a href="#configuring-the-build-tool">Configuring the Build Tool</a>
-<ul>
-<li><a href="#selecting-a-module-or-artifact">Selecting a Module or Artifact</a></li>
-<li><a href="#specifying-the-build-command">Specifying the Build Command</a></li>
-<li><a href="#connecting-to-a-private-maven-repository">Connecting to a Private Maven Repository</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#building-from-a-compiled-artifact">Building from a Compiled Artifact</a></li>
-<li><a href="#about-the-jvm">About the JVM</a>
-<ul>
-<li><a href="#the-jvm-version">The JVM Version</a>
-<ul>
-<li><a href="#inspecting-the-jvm-version">Inspecting the JVM Version</a></li>
-<li><a href="#configuring-the-jvm-version">Configuring the JVM Version</a></li>
-</ul>
-</li>
-<li><a href="#runtime-jvm-configuration">Runtime JVM Configuration</a>
-<ul>
-<li><a href="#memory-calculator">Memory Calculator</a></li>
-<li><a href="#configuring-jvm-at-runtime">Configuring JVM at Runtime</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#spring-boot-applications">Spring Boot Applications</a>
-<ul>
-<li><a href="#additional-metadata">Additional Metadata</a></li>
-<li><a href="#runtime-auto-configuration">Runtime Auto-Configuration</a></li>
-<li><a href="#optimizations">Optimizations</a></li>
-</ul>
-</li>
-<li><a href="#connecting-to-an-apm">Connecting to an APM</a></li>
-<li><a href="#debugging">Debugging</a></li>
-<li><a href="#enabling-jmx">Enabling JMX</a></li>
-<li><a href="#selecting-a-process">Selecting a Process</a>
-<ul>
-<li><a href="#providing-additional-arguments">Providing Additional Arguments</a></li>
-<li><a href="#executing-a-custom-command">Executing a Custom Command</a></li>
-<li><a href="#executing-a-custom-command-in-the-buildpack-provided-environment">Executing a Custom Command in the Buildpack-Provided Environment</a></li>
-</ul>
-</li>
-<li><a href="#components">Components</a></li>
-</ul>
-</li>
-</ul>
+<div class="toc">
+	<h2>Table of Contents</h2>
+  	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#about-the-examples">About the Examples</a></li>
+    <li><a href="#building-from-source">Building from Source</a>
+      <ul>
+        <li><a href="#configuring-the-build-tool">Configuring the Build Tool</a></li>
+      </ul>
+    </li>
+    <li><a href="#building-from-a-compiled-artifact">Building from a Compiled Artifact</a></li>
+    <li><a href="#about-the-jvm">About the JVM</a>
+      <ul>
+        <li><a href="#the-jvm-version">The JVM Version</a></li>
+        <li><a href="#runtime-jvm-configuration">Runtime JVM Configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#spring-boot-applications">Spring Boot Applications</a>
+      <ul>
+        <li><a href="#additional-metadata">Additional Metadata</a></li>
+        <li><a href="#runtime-auto-configuration">Runtime Auto-Configuration</a></li>
+        <li><a href="#optimizations">Optimizations</a></li>
+      </ul>
+    </li>
+    <li><a href="#connecting-to-an-apm">Connecting to an APM</a></li>
+    <li><a href="#debugging">Debugging</a></li>
+    <li><a href="#enabling-jmx">Enabling JMX</a></li>
+    <li><a href="#selecting-a-process">Selecting a Process</a>
+      <ul>
+        <li><a href="#providing-additional-arguments">Providing Additional Arguments</a></li>
+        <li><a href="#executing-a-custom-command">Executing a Custom Command</a></li>
+        <li><a href="#executing-a-custom-command-in-the-buildpack-provided-environment">Executing a Custom Command in the Buildpack-Provided Environment</a></li>
+      </ul>
+    </li>
+    <li><a href="#components">Components</a></li>
+  </ul>
+</nav>
+</div>
 <h2 id="about-the-examples">About the Examples</h2>
 <p>All Java Buildpack examples will use the Paketo <a href="https://github.com/paketo-buildpacks/samples">sample applications</a>.</p>
 <p>Examples assume that the root of this repository is the working directory:

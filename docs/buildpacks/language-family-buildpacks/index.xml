@@ -49,7 +49,7 @@ NOTE: The Paketo Full builder is required because HTTPD relies on operating syst
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/java/</guid>
       <description>Java Buildpack The Paketo Java Buildpack allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
 The Java Buildpack is a composite buildpack and each step in a build is handled by one of it&amp;rsquo;s components. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages for the component buildpacks.
-Table of Contents  Java Buildpack  Table of Contents About the Examples Building from Source  Configuring the Build Tool  Selecting a Module or Artifact Specifying the Build Command Connecting to a Private Maven Repository     Building from a Compiled Artifact About the JVM  The JVM Version  Inspecting the JVM Version Configuring the JVM Version   Runtime JVM Configuration  Memory Calculator Configuring JVM at Runtime     Spring Boot Applications  Additional Metadata Runtime Auto-Configuration Optimizations   Connecting to an APM Debugging Enabling JMX Selecting a Process  Providing Additional Arguments Executing a Custom Command Executing a Custom Command in the Buildpack-Provided Environment   Components    About the Examples All Java Buildpack examples will use the Paketo sample applications.</description>
+Table of Contents  About the Examples Building from Source  Configuring the Build Tool   Building from a Compiled Artifact About the JVM  The JVM Version Runtime JVM Configuration   Spring Boot Applications  Additional Metadata Runtime Auto-Configuration Optimizations   Connecting to an APM Debugging Enabling JMX Selecting a Process  Providing Additional Arguments Executing a Custom Command Executing a Custom Command in the Buildpack-Provided Environment   Components    About the Examples All Java Buildpack examples will use the Paketo sample applications.</description>
     </item>
     
     <item>
@@ -60,7 +60,7 @@ Table of Contents  Java Buildpack  Table of Contents About the Examples Building
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/java-native-image/</guid>
       <description>Java Native Image Buildpack The Paketo Java Native Image Buildpack allows users to create an image containing a GraalVM native image application.
 The Java Native Buildpack is a composite buildpack and each step in a build is handled by one of it&amp;rsquo;s components. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages of the component buildpacks.
-Table of Contents  Java Native Image Buildpack  Table of Contents About the Examples Supported Applications Building From Source Building from an Executable JAR About the Native Image  Inspecting the JVM Version Configuring the JVM Version   Spring Boot Applications Selecting a Process  Providing Additional Arguments   Components    About the Examples All Java Native Image Buildpack examples will use the Paketo sample applications.</description>
+Table of Contents  About the Examples Supported Applications Building From Source Building from an Executable JAR About the Native Image  Inspecting the JVM Version Configuring the JVM Version   Spring Boot Applications Selecting a Process  Providing Additional Arguments   Components    About the Examples All Java Native Image Buildpack examples will use the Paketo sample applications.</description>
     </item>
     
     <item>
@@ -97,7 +97,7 @@ NOTE: Though the example above uses the Paketo Base builder, this buildpack is a
 To build a sample app locally with this CNB using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples cd samples/php/webserver pack build my-app --buildpack gcr.io/paketo-buildpacks/php \ --builder paketobuildpacks/builder:full Copied! See samples for how to run the app.
 NOTE: The Paketo Full builder is required because PHP relies on operating system libraries only present in the Full builder.
-Supported Dependencies The PHP Paketo Buildpack supports several versions of PHP.</description>
+Table of Contents  Supported Dependencies Specifying a PHP Version  Using buildpack.</description>
     </item>
     
     <item>
@@ -110,7 +110,7 @@ Supported Dependencies The PHP Paketo Buildpack supports several versions of PHP
 To build a sample app locally with this buildpack using the pack CLI, run
 git clone &amp;lt;https://github.com/paketo-buildpacks/samples&amp;gt; cd samples/ruby/puma pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.
 NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder.
-Supported Dependencies The Ruby Paketo Buildpack supports several versions of MRI, Bundler, and common Ruby webservers and task runners.</description>
+Table of Contents  Supported Dependencies Specifying a Ruby Version  Using BP_MRI_VERSION Using a Gemfile Deprecated: Using buildpack.</description>
     </item>
     
   </channel>

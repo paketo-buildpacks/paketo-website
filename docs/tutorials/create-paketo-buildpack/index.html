@@ -270,7 +270,23 @@ control to the buildpack author.</p>
 <p>This tutorial&rsquo;s goal is to take you from nothing to a buildpack that puts a
 dependency on the filesystem as fast as possible, so with that let&rsquo;s get
 started!</p>
-<h3 id="packithttpsgithubcompaketo-buildpackspackit"><a href="https://github.com/paketo-buildpacks/packit">Packit</a></h3>
+<div class="toc">
+	<h2>Table of Contents</h2>
+  	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#packithttpsgithubcompaketo-buildpackspackit"><a href="https://github.com/paketo-buildpacks/packit">Packit</a></a></li>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#lets-get-started">Let&rsquo;s Get Started</a>
+      <ul>
+        <li><a href="#buildpacktoml"><code>buildpack.toml</code></a></li>
+        <li><a href="#bindetect"><code>bin/detect</code></a></li>
+        <li><a href="#binbuild"><code>bin/build</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+<h2 id="packithttpsgithubcompaketo-buildpackspackit"><a href="https://github.com/paketo-buildpacks/packit">Packit</a></h2>
 <p><a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit"><img src="https://img.shields.io/badge/pkg.go.dev-doc-blue" alt="GoDoc"></a></p>
 <p>For complete documentation of the Packit library, you can browse the godocs
 linked above. In the interest of saving you time, let&rsquo;s talk about the three

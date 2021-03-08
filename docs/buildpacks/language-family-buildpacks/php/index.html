@@ -273,6 +273,36 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/php \
 for how to run the app.</p>
 <p><strong>NOTE: The Paketo Full builder is required because PHP relies on operating
 system libraries only present in the Full builder.</strong></p>
+<div class="toc">
+	<h2>Table of Contents</h2>
+  	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#specifying-a-php-version">Specifying a PHP Version</a>
+      <ul>
+        <li><a href="#using-buildpackyml">Using buildpack.yml</a></li>
+        <li><a href="#using-composerjson">Using composer.json</a></li>
+      </ul>
+    </li>
+    <li><a href="#composer-configuration">Composer Configuration</a></li>
+    <li><a href="#web-server-configuration">Web Server Configuration</a></li>
+    <li><a href="#vendoring-composer-packages">Vendoring composer packages</a></li>
+    <li><a href="#configuring-custom-ini-files">Configuring custom .ini files</a></li>
+    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+      <ul>
+        <li><a href="#app_root">APP_ROOT</a></li>
+        <li><a href="#server_root">SERVER_ROOT</a></li>
+        <li><a href="#mibdirs">MIBDIRS</a></li>
+        <li><a href="#path">PATH</a></li>
+        <li><a href="#php_api">PHP_API</a></li>
+        <li><a href="#php_extension_dir">PHP_EXTENSION_DIR</a></li>
+        <li><a href="#php_home">PHP_HOME</a></li>
+        <li><a href="#php_ini_scan_dir">PHP_INI_SCAN_DIR</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
 <h2 id="supported-dependencies">Supported Dependencies</h2>
 <p>The PHP Paketo Buildpack supports several versions of PHP.
 For more details on the specific versions supported in a given buildpack

@@ -275,6 +275,20 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/httpd \
 for how to run the app.</p>
 <p><strong>NOTE: The Paketo Full builder is required because HTTPD relies on operating
 system libraries only present in the Full builder.</strong></p>
+<div class="toc">
+	<h2>Table of Contents</h2>
+  	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#specifying-an-httpd-version">Specifying an HTTPD Version</a>
+      <ul>
+        <li><a href="#using-buildpackyml">Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#configurations">Configurations</a></li>
+  </ul>
+</nav>
+</div>
 <h2 id="supported-dependencies">Supported Dependencies</h2>
 <p>The HTTPD Paketo Buildpack supports several versions of Apache HTTP Server.
 For more details on the specific versions supported in a given buildpack

@@ -273,6 +273,50 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
 for how to run the app.</p>
 <p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
 also compatible with the Paketo Full builder and Paketo Tiny builder.</strong></p>
+<div class="toc">
+	<h2>Table of Contents</h2>
+  	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#specifying-a-go-version">Specifying a Go Version</a>
+      <ul>
+        <li><a href="#using-bp_go_version">Using BP_GO_VERSION</a></li>
+        <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuring-build-flags">Configuring Build Flags</a>
+      <ul>
+        <li><a href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuring-targets">Configuring Targets</a>
+      <ul>
+        <li><a href="#deprecated-using-buildpackyml-2">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuring-import-paths">Configuring Import Paths</a>
+      <ul>
+        <li><a href="#deprecated-using-buildpackyml-3">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#configuring-file-removal">Configuring File Removal</a></li>
+    <li><a href="#package-management-options">Package Management Options</a>
+      <ul>
+        <li><a href="#package-management-with-go-modules">Package Management with Go Modules</a></li>
+        <li><a href="#package-management-with-dep">Package Management with Dep</a></li>
+        <li><a href="#no-package-management">No Package Management</a></li>
+      </ul>
+    </li>
+    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+      <ul>
+        <li><a href="#gopath"><code>GOPATH</code></a></li>
+        <li><a href="#gocache"><code>GOCACHE</code></a></li>
+        <li><a href="#depcachedir"><code>DEPCACHEDIR</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
 <h2 id="supported-dependencies">Supported Dependencies</h2>
 <p>The Go Paketo Buildpack supports several versions of Go.
 For more details on the specific versions supported in a given buildpack

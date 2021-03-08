@@ -273,6 +273,70 @@ for how to run the app.</p>
 <p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
 also compatible with the Paketo Full builder. The Paketo Full builder is
 required if your app utilizes common C libraries.</strong></p>
+<div class="toc">
+	<h2>Table of Contents</h2>
+  	<nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#specifying-a-node-engine-version">Specifying a Node Engine Version</a>
+      <ul>
+        <li><a href="#using-bp_node_version">Using BP_NODE_VERSION</a></li>
+        <li><a href="#using-packagejson">Using package.json</a></li>
+        <li><a href="#using-nvmrc">Using .nvmrc</a></li>
+        <li><a href="#using-node-version">Using .node-version</a></li>
+        <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+      <ul>
+        <li><a href="#memory_available">MEMORY_AVAILABLE</a></li>
+        <li><a href="#node_env">NODE_ENV</a></li>
+        <li><a href="#node_home">NODE_HOME</a></li>
+        <li><a href="#node_verbose">NODE_VERBOSE</a></li>
+        <li><a href="#npm_config_loglevel">NPM_CONFIG_LOGLEVEL</a></li>
+        <li><a href="#npm_config_production">NPM_CONFIG_PRODUCTION</a></li>
+        <li><a href="#path">PATH</a></li>
+      </ul>
+    </li>
+    <li><a href="#enabling-heap-memory-optimization">Enabling Heap Memory Optimization</a>
+      <ul>
+        <li><a href="#using-bp_node_optimize_memory-environment-variable">Using <code>BP_NODE_OPTIMIZE_MEMORY</code> Environment Variable</a></li>
+        <li><a href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#node-start-command">Node Start Command</a>
+      <ul>
+        <li><a href="#using-bp_launchpoint">Using BP_LAUNCHPOINT</a></li>
+      </ul>
+    </li>
+    <li><a href="#package-management-with-npm">Package Management with NPM</a>
+      <ul>
+        <li><a href="#npm-installation-process">NPM Installation Process</a></li>
+        <li><a href="#determining-node-modules-layer-reuse">Determining Node Modules Layer Reuse</a></li>
+        <li><a href="#npm-configuration">NPM Configuration</a></li>
+        <li><a href="#npm-start-command">NPM Start Command</a></li>
+      </ul>
+    </li>
+    <li><a href="#package-management-with-yarn">Package Management with Yarn</a>
+      <ul>
+        <li><a href="#yarn-installation-process">Yarn Installation Process</a></li>
+        <li><a href="#yarn-configuration">Yarn Configuration</a></li>
+        <li><a href="#yarn-start-command">Yarn Start Command</a></li>
+      </ul>
+    </li>
+    <li><a href="#projects-without-package-management">Projects Without Package Management</a>
+      <ul>
+        <li><a href="#start-command">Start Command</a></li>
+      </ul>
+    </li>
+    <li><a href="#using-ca-certificates">Using CA Certificates</a></li>
+    <li><a href="#using-a-procfile">Using a Procfile</a></li>
+    <li><a href="#adding-environment-variables-to-the-buildrun-image">Adding Environment Variables to the Build/Run Image</a></li>
+    <li><a href="#adding-image-labels-to-the-buildrun-image">Adding Image Labels to the Build/Run Image</a></li>
+    <li><a href="#stack-support">Stack support</a></li>
+  </ul>
+</nav>
+</div>
 <h2 id="supported-dependencies">Supported Dependencies</h2>
 <p>The Node.js Paketo Buildpack supports several versions of Node.js.
 For more details on the specific versions supported in a given buildpack
