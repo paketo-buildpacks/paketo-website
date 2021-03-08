@@ -39,7 +39,7 @@ The [pack CLI][pack] is used throughout the examples. `pack` is just one of seve
 
 Examples assume that the [Paketo Base builder][base builder] is the default builder:
 {{< code/copyable >}}
-pack set-default-builder paketobuildpacks/builder:base
+pack config default-builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
 ## Types of Configuration
