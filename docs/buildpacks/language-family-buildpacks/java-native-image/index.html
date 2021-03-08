@@ -296,7 +296,7 @@ cd samples
 </p>
 <p>The <a href="https://github.com/buildpacks/pack">pack CLI</a> is used throughout the examples. <code>pack</code> is just one of several Cloud Native Buildpack <a href="https://buildpacks.io/docs/concepts/components/platform/">platforms</a> than can execute builds with the Java Native Image Buildpacks. For example, Spring Boot developers may want to explore the <a href="https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#build-image">Spring Boot Maven Plugin</a> or <a href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#build-image">Spring Boot Gradle Plugin</a>.</p>
 <p>Examples assume that either the <a href="https://paketo.io/docs/builders/#tiny">Paketo Tiny</a> or <a href="https://paketo.io/docs/builders/#base">Paketo Base builder</a> is the default builder:
-<pre class="copyable"><code>pack set-default-builder paketobuildpacks/builder:tiny
+<pre class="copyable"><code>pack config default-builder paketobuildpacks/builder:tiny
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 </p>
 <p>All java native image example images should return <code>{&quot;status&quot;:&quot;UP&quot;}</code> from the [actuator health endpoint][spring boot actuator endpoints].

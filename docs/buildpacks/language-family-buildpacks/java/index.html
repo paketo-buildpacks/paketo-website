@@ -327,7 +327,7 @@ cd samples
 </p>
 <p>The <a href="https://github.com/buildpacks/pack">pack CLI</a> is used throughout the examples. <code>pack</code> is just one of several Cloud Native Buildpack <a href="https://buildpacks.io/docs/concepts/components/platform/">platforms</a> than can execute builds with the Java Buildpacks. For example, Spring Boot developers may want to explore the <a href="https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#build-image">Spring Boot Maven Plugin</a> or <a href="https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#build-image">Spring Boot Gradle Plugin</a> .</p>
 <p>Examples assume that the <a href="https://paketo.io/docs/builders/#base">Paketo Base builder</a> is the default builder:
-<pre class="copyable"><code>pack set-default-builder paketobuildpacks/builder:base
+<pre class="copyable"><code>pack config default-builder paketobuildpacks/builder:base
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 </p>
 <p>All java example images should return <code>{&quot;status&quot;:&quot;UP&quot;}</code> from the <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints">actuator health endpoint</a>.
