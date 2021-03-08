@@ -20,7 +20,9 @@ This tutorial's goal is to take you from nothing to a buildpack that puts a
 dependency on the filesystem as fast as possible, so with that let's get
 started!
 
-### [Packit](https://github.com/paketo-buildpacks/packit)
+{{< table_of_contents >}}
+
+## [Packit](https://github.com/paketo-buildpacks/packit)
 [![GoDoc](https://img.shields.io/badge/pkg.go.dev-doc-blue)](https://pkg.go.dev/github.com/paketo-buildpacks/packit)
 
 For complete documentation of the Packit library, you can browse the godocs

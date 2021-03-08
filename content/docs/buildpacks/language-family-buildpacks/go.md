@@ -26,6 +26,8 @@ for how to run the app.
 **NOTE: Though the example above uses the Paketo Base builder, this buildpack is
 also compatible with the Paketo Full builder and Paketo Tiny builder.**
 
+{{< table_of_contents >}}
+
 ## Supported Dependencies
 
 The Go Paketo Buildpack supports several versions of Go.

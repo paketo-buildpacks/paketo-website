@@ -12,36 +12,7 @@ The [Paketo Java Buildpack][java] allows users to create an image containing a J
 
 The Java Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of it's [components](#components). The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages for the component buildpacks.
 
-## Table of Contents
-<!-- Using https://github.com/yzhang-gh/vscode-markdown to manage toc -->
-- [Java Buildpack](#java-buildpack)
-  - [Table of Contents](#table-of-contents)
-  - [About the Examples](#about-the-examples)
-  - [Building from Source](#building-from-source)
-    - [Configuring the Build Tool](#configuring-the-build-tool)
-      - [Selecting a Module or Artifact](#selecting-a-module-or-artifact)
-      - [Specifying the Build Command](#specifying-the-build-command)
-      - [Connecting to a Private Maven Repository](#connecting-to-a-private-maven-repository)
-  - [Building from a Compiled Artifact](#building-from-a-compiled-artifact)
-  - [About the JVM](#about-the-jvm)
-    - [The JVM Version](#the-jvm-version)
-      - [Inspecting the JVM Version](#inspecting-the-jvm-version)
-      - [Configuring the JVM Version](#configuring-the-jvm-version)
-    - [Runtime JVM Configuration](#runtime-jvm-configuration)
-      - [Memory Calculator](#memory-calculator)
-      - [Configuring JVM at Runtime](#configuring-jvm-at-runtime)
-  - [Spring Boot Applications](#spring-boot-applications)
-    - [Additional Metadata](#additional-metadata)
-    - [Runtime Auto-Configuration](#runtime-auto-configuration)
-    - [Optimizations](#optimizations)
-  - [Connecting to an APM](#connecting-to-an-apm)
-  - [Debugging](#debugging)
-  - [Enabling JMX](#enabling-jmx)
-  - [Selecting a Process](#selecting-a-process)
-    - [Providing Additional Arguments](#providing-additional-arguments)
-    - [Executing a Custom Command](#executing-a-custom-command)
-    - [Executing a Custom Command in the Buildpack-Provided Environment](#executing-a-custom-command-in-the-buildpack-provided-environment)
-  - [Components](#components)
+{{< table_of_contents >}}
 
 ## About the Examples
 All Java Buildpack examples will use the Paketo [sample applications][samples].
