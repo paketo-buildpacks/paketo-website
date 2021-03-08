@@ -350,7 +350,7 @@ header {
 header .logo img {
 	max-width: 260px;
 }
-nav a {
+footer nav a, header nav a {
 	margin-left: 20px;
 	text-decoration: none;
 	color: #293878;
@@ -815,6 +815,12 @@ footer p {
 }
 .docs .code-output.visible .btn:before {
 	content: 'Hide ';
+}
+.toc {
+	font-size: 1em;
+	line-height: 1.1em;
+	color: inherit;
+	text-decoration: none;
 }
 
 /* footer */

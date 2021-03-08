@@ -25,6 +25,8 @@ for how to run the app.
 also compatible with the Paketo Full builder. The Paketo Full builder is
 required if your app utilizes common C libraries.**
 
+{{< table_of_contents >}}
+
 ## Supported Dependencies
 The Node.js Paketo Buildpack supports several versions of Node.js.
 For more details on the specific versions supported in a given buildpack

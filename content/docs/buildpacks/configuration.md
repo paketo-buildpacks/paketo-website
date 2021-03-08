@@ -8,23 +8,7 @@ menu:
 ---
 
 # Configuring Paketo Buildpacks
-- [Configuring Paketo Buildpacks](#configuring-paketo-buildpacks)
-  - [About the Examples](#about-the-examples)
-  - [Types of Configuration](#types-of-configuration)
-    - [Environment Variables](#environment-variables)
-      - [Build-time Environment Variables](#build-time-environment-variables)
-      - [Runtime Environment Variables](#runtime-environment-variables)
-    - [buildpack.yml](#buildpackyml)
-    - [Bindings](#bindings)
-      - [Why bindings?](#why-bindings)
-      - [What is a binding?](#what-is-a-binding)
-      - [How to use bindings?](#how-to-use-bindings)
-    - [Procfiles](#procfiles)
-  - [Building Behind a Firewall](#building-behind-a-firewall)
-    - [Proxy Configuration](#proxy-configuration)
-    - [Dependency Mappings](#dependency-mappings)
-  - [CA Certificates](#ca-certificates)
-  - [Applying Custom Labels](#applying-custom-labels)
+{{< table_of_contents >}}
 
 ## About the Examples
 Configuration examples will use the Paketo [sample applications][samples].

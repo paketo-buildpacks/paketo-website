@@ -11,20 +11,7 @@ The [Paketo Java Native Image Buildpack][bp/java-native-image] allows users to c
 
 The Java Native Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of it's [components](#components). The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages of the component buildpacks.
   
-## Table of Contents
-- [Java Native Image Buildpack](#java-native-image-buildpack)
-  - [Table of Contents](#table-of-contents)
-  - [About the Examples](#about-the-examples)
-  - [Supported Applications](#supported-applications)
-  - [Building From Source](#building-from-source)
-  - [Building from an Executable JAR](#building-from-an-executable-jar)
-  - [About the Native Image](#about-the-native-image)
-      - [Inspecting the JVM Version](#inspecting-the-jvm-version)
-      - [Configuring the JVM Version](#configuring-the-jvm-version)
-  - [Spring Boot Applications](#spring-boot-applications)
-  - [Selecting a Process](#selecting-a-process)
-    - [Providing Additional Arguments](#providing-additional-arguments)
-  - [Components](#components)
+{{< table_of_contents >}}
 
 ## About the Examples
 All Java Native Image Buildpack examples will use the Paketo [sample applications][samples].
@@ -101,7 +88,7 @@ The [Spring Boot Native Image Buildpack][bp/spring-boot-native-image] uses `nati
 
 > "On Mac and Windows, it is recommended to increase the memory allocated to Docker to at least 8G (and potentially to add more CPUs as well) since native-image compiler is a heavy process. See this [Stackoverflow answer](https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437) for more details. On Linux, Docker uses by default the resources available on the host so no configuration is needed."
 
-#### Inspecting the JVM Version
+### Inspecting the JVM Version
 The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.
 
 **Example** Inspecting the JRE Version
@@ -111,7 +98,7 @@ Given an image named `samples/java-native` built from one of examples above, the
 pack inspect-image samples/java-native --bom | jq '.local[] | select(.name=="native-image-svm") | .metadata.version'
 {{< /code/copyable >}}
 
-#### Configuring the JVM Version
+### Configuring the JVM Version
 The following environment variable configures the JVM version at build-time.
 * `BP_JVM_VERSION`
     * Defaults to the latest LTS version at the time of release.
