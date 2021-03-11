@@ -36,14 +36,12 @@ curl -s http://localhost:8080/actuator/health | jq .
 {{< /code/copyable >}}
 
 ## Supported Applications
-The Java Native Image Buildpack currently only supports Spring Boot applications.
-
 For all native image builds, it is required that:
-* `BP_BOOT_NATIVE_IMAGE` is set at build time.
+* `BP_NATIVE_IMAGE` is set at build time.
+
+For Spring Boot applications, it is required that:
 * The application declares a dependency on [Spring Native][spring native].
-
-
-The version of [Spring Native][spring native] declared by the application may require a specific version of Spring Boot. See the Spring Native [release notes][spring native releases] for supported Spring Boot versions.
+* The version of [Spring Native][spring native] declared by the application may require a specific version of Spring Boot. See the Spring Native [release notes][spring native releases] for supported Spring Boot versions.
 
 ## Building From Source
 The Java Native Image Buildpack supports the same [build tools and configuration options][java/building from source] as the [Java Buildpack][bp/java]. The build must produce an [executable jar][executable jar].
@@ -56,8 +54,8 @@ The following command creates an image from source with `maven`.
 
 {{< code/copyable >}}
 pack build samples/java-native \
-  --env BP_BOOT_NATIVE_IMAGE=true
-  --path java/native-image
+  --env BP_NATIVE_IMAGE=true
+  --path java/native-image/java-native-image-sample
 {{< /code/copyable >}}
 
 ## Building from an Executable JAR
@@ -72,7 +70,7 @@ cd samples/java/native-image
 ./mvnw package
 pack build samples/java-native \
   --env BP_BOOT_NATIVE_IMAGE=true
-  --path java/native-image/target/demo-0.0.1-SNAPSHOT.jar
+  --path java/native-image/java-native-image-sample/target/demo-0.0.1-SNAPSHOT.jar
 {{< /code/copyable >}}
 
 The resulting application image will be identical to that built in the "Building a Native image with Maven" example.
@@ -145,7 +143,7 @@ The following component buildpacks compose the Paketo Java Native Image Buildpac
 |[Paketo SBT Buildpack][bp/sbt] | Optional | Builds SBT-based applications from source.
 |[Paketo Executable JAR Buildpack][bp/executable-jar] | Optional | Contributes a process Type that launches an executable JAR.
 |[Paketo Spring Boot Buildpack][bp/spring-boot]| Optional | Contributes configuration and metadata to Spring Boot applications.
-|[Paketo Spring Boot Native Image Buildpack][bp/spring-boot-native-image]| **Required** | Creates a native image from a Spring Boot application.
+|[Paketo Native Image Buildpack][bp/native-image]| **Required** | Creates a native image from a JVM application.
 |[Paketo Procfile Buildpack][bp/procfile]| Optional | Allows the application to define or redefine process types with a [Procfile][procfiles]
 |[Paketo Environment Variables Buildpack][bp/environment-variables]| Optional | Contributes arbitrary user-provided environment variables to the image.
 |[Paketo Image Labels Buildpack][bp/image-labels]| Optional | Contributes OCI-specific and arbitrary user-provided labels to the image.
@@ -163,7 +161,7 @@ The following component buildpacks compose the Paketo Java Native Image Buildpac
 [bp/procfile]:https://github.com/paketo-buildpacks/procfile
 [bp/sbt]:https://github.com/paketo-buildpacks/sbt
 [bp/spring-boot]:https://github.com/paketo-buildpacks/spring-boot
-[bp/spring-boot-native-image]:https://github.com/paketo-buildpacks/spring-boot-native-image
+[bp/native-image]:https://github.com/paketo-buildpacks/spring-boot-native-image
 
 [samples]:https://github.com/paketo-buildpacks/samples
 
