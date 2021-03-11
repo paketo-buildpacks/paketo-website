@@ -304,21 +304,23 @@ curl -s http://localhost:8080/actuator/health | jq .
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 </p>
 <h2 id="supported-applications">Supported Applications</h2>
-<p>The Java Native Image Buildpack currently only supports Spring Boot applications.</p>
 <p>For all native image builds, it is required that:</p>
 <ul>
-<li><code>BP_BOOT_NATIVE_IMAGE</code> is set at build time.</li>
-<li>The application declares a dependency on <a href="https://github.com/spring-projects-experimental/spring-native">Spring Native</a>.</li>
+<li><code>BP_NATIVE_IMAGE</code> is set at build time.</li>
 </ul>
-<p>The version of <a href="https://github.com/spring-projects-experimental/spring-native">Spring Native</a> declared by the application may require a specific version of Spring Boot. See the Spring Native <a href="https://github.com/spring-projects-experimental/spring-native/releases">release notes</a> for supported Spring Boot versions.</p>
+<p>For Spring Boot applications, it is required that:</p>
+<ul>
+<li>The application declares a dependency on <a href="https://github.com/spring-projects-experimental/spring-native">Spring Native</a>.</li>
+<li>The version of <a href="https://github.com/spring-projects-experimental/spring-native">Spring Native</a> declared by the application may require a specific version of Spring Boot. See the Spring Native <a href="https://github.com/spring-projects-experimental/spring-native/releases">release notes</a> for supported Spring Boot versions.</li>
+</ul>
 <h2 id="building-from-source">Building From Source</h2>
 <p>The Java Native Image Buildpack supports the same <a href="https://paketo.io/docs/buildpacks/language-family-buildpacks/java/#building-from-source">build tools and configuration options</a> as the <a href="https://github.com/paketo-buildpacks/java%5D">Java Buildpack</a>. The build must produce an <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable jar</a>.</p>
 <p>After compiling and packaging, the buildpack will replace provided application source code with the exploded JAR and proceed as described in <a href="#building-from-an-executable-jar">Building from an Executable Jar</a>.</p>
 <p><strong>Example</strong>: Building a Native image with Maven</p>
 <p>The following command creates an image from source with <code>maven</code>.</p>
 <pre class="copyable"><code>pack build samples/java-native \
-  --env BP_BOOT_NATIVE_IMAGE=true
-  --path java/native-image
+  --env BP_NATIVE_IMAGE=true
+  --path java/native-image/java-native-image-sample
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 
 <h2 id="building-from-an-executable-jar">Building from an Executable JAR</h2>
@@ -329,13 +331,13 @@ curl -s http://localhost:8080/actuator/health | jq .
 ./mvnw package
 pack build samples/java-native \
   --env BP_BOOT_NATIVE_IMAGE=true
-  --path java/native-image/target/demo-0.0.1-SNAPSHOT.jar
+  --path java/native-image/java-native-image-sample/target/demo-0.0.1-SNAPSHOT.jar
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 
 <p>The resulting application image will be identical to that built in the &ldquo;Building a Native image with Maven&rdquo; example.</p>
 <h2 id="about-the-native-image">About the Native Image</h2>
 <p>The <a href="https://github.com/paketo-buildpacks/graalvm">GraalVM Buildpack</a> will provide the <a href="https://www.graalvm.org/docs/introduction/">GraalVM</a> JDK, including the <code>native-image</code> utility (the <a href="https://www.graalvm.org/reference-manual/native-image/">Native image builder</a>), and the <a href="https://www.graalvm.org/reference-manual/native-image/SubstrateVM/">Substrate VM</a>.</p>
-<p>The <a href="https://github.com/paketo-buildpacks/spring-boot-native-image">Spring Boot Native Image Buildpack</a> uses <code>native-image</code> to compile the Java bytecode into a standalone executable. The Spring Boot Native Image Buildpack relies on <a href="https://github.com/spring-projects-experimental/spring-native">Spring Native</a>, a <a href="https://www.graalvm.org/sdk/javadoc/org/graalvm/nativeimage/hosted/Feature.html">GraalVM Feature</a>, to configure the native image build. The application must include Spring Native as a dependency; if it does not the build will fail.</p>
+<p>The [Spring Boot Native Image Buildpack][bp/spring-boot-native-image] uses <code>native-image</code> to compile the Java bytecode into a standalone executable. The Spring Boot Native Image Buildpack relies on <a href="https://github.com/spring-projects-experimental/spring-native">Spring Native</a>, a <a href="https://www.graalvm.org/sdk/javadoc/org/graalvm/nativeimage/hosted/Feature.html">GraalVM Feature</a>, to configure the native image build. The application must include Spring Native as a dependency; if it does not the build will fail.</p>
 <p><strong>Note</strong>: The <code>native-image</code> build is a memory intensive process and may be slow if insufficient memory is provided. From the <a href="https://repo.spring.io/milestone/org/springframework/experimental/spring-graalvm-native-docs/0.8.5/spring-graalvm-native-docs-0.8.5.zip!/reference/index.html#_prerequisites">prerequisites</a> in the Spring Native reference docs:</p>
 <blockquote>
 <p>&ldquo;On Mac and Windows, it is recommended to increase the memory allocated to Docker to at least 8G (and potentially to add more CPUs as well) since native-image compiler is a heavy process. See this <a href="https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437">Stackoverflow answer</a> for more details. On Linux, Docker uses by default the resources available on the host so no configuration is needed.&rdquo;</p>
@@ -423,9 +425,9 @@ curl -s http://localhost:8081/actuator/health
 <td>Contributes configuration and metadata to Spring Boot applications.</td>
 </tr>
 <tr>
-<td><a href="https://github.com/paketo-buildpacks/spring-boot-native-image">Paketo Spring Boot Native Image Buildpack</a></td>
+<td><a href="https://github.com/paketo-buildpacks/spring-boot-native-image">Paketo Native Image Buildpack</a></td>
 <td><strong>Required</strong></td>
-<td>Creates a native image from a Spring Boot application.</td>
+<td>Creates a native image from a JVM application.</td>
 </tr>
 <tr>
 <td><a href="https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a></td>
@@ -456,7 +458,7 @@ curl -s http://localhost:8081/actuator/health
     </div>
 </a>
         </div>
-        <p class="docs-lastmod"><strong>Last modified:</strong> March 10, 2021</p>
+        <p class="docs-lastmod"><strong>Last modified:</strong> March 11, 2021</p>
     </div>
 </div>
 
