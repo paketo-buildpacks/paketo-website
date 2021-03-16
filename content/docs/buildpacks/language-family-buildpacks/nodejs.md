@@ -223,6 +223,29 @@ BP_LAUNCHPOINT=./src/launchpoint.js
 
 This will result in the following start command: `node src/launchpoint.js`
 
+## Specifying Project Directory
+
+To specify a subdirectory to be used as the root of the app, please use the
+`BP_NODE_PROJECT_PATH` environment variable at build time either directly or
+through a [`project.toml`](https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md).
+This could be useful if your app is a part of a monorepo.
+
+For example, if your project has the following structure:
+```
+.
+├── go-app
+│   ├── go.mod
+│   └── main.go
+└── node-app
+    ├── file.js
+    ├── index.js
+    └── package.json
+```
+you could then set the following at build time.
+```
+$BP_NODE_PROJECT_PATH=node-app
+```
+
 ## Package Management with NPM
 Many Node.js apps require a number of third-party libraries to perform common
 tasks and behaviors. NPM is an option for managing these third-party
