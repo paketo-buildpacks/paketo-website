@@ -227,7 +227,7 @@ This will result in the following start command: `node src/launchpoint.js`
 
 To specify a subdirectory to be used as the root of the app, please use the
 `BP_NODE_PROJECT_PATH` environment variable at build time either directly or
-through a [`project.toml`](https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md).
+through a [`project.toml`](https://buildpacks.io/docs/app-developer-guide/using-project-descriptor).
 This could be useful if your app is a part of a monorepo.
 
 For example, if your project has the following structure:
