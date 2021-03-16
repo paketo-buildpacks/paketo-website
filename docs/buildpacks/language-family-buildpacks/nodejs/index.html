@@ -309,6 +309,7 @@ required if your app utilizes common C libraries.</strong></p>
         <li><a href="#using-bp_launchpoint">Using BP_LAUNCHPOINT</a></li>
       </ul>
     </li>
+    <li><a href="#specifying-project-directory">Specifying Project Directory</a></li>
     <li><a href="#package-management-with-npm">Package Management with NPM</a>
       <ul>
         <li><a href="#npm-installation-process">NPM Installation Process</a></li>
@@ -502,7 +503,23 @@ use that as to set the start command. <code>BP_LAUNCHPOINT</code> can be used as
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 
 <p>This will result in the following start command: <code>node src/launchpoint.js</code></p>
-<h2 id="package-management-with-npm">Package Management with NPM</h2>
+<h2 id="specifying-project-directory">Specifying Project Directory</h2>
+<p>To specify a subdirectory to be used as the root of the app, please use the
+<code>BP_NODE_PROJECT_PATH</code> environment variable at build time either directly or
+through a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor"><code>project.toml</code></a>.
+This could be useful if your app is a part of a monorepo.</p>
+<p>For example, if your project has the following structure:</p>
+<pre><code>.
+├── go-app
+│   ├── go.mod
+│   └── main.go
+└── node-app
+    ├── file.js
+    ├── index.js
+    └── package.json
+</code></pre><p>you could then set the following at build time.</p>
+<pre><code>$BP_NODE_PROJECT_PATH=node-app
+</code></pre><h2 id="package-management-with-npm">Package Management with NPM</h2>
 <p>Many Node.js apps require a number of third-party libraries to perform common
 tasks and behaviors. NPM is an option for managing these third-party
 dependencies that the Node.js CNB fully supports. Including a <code>package.json</code>
@@ -694,7 +711,7 @@ the Base builder, and the module may require other shared objects.</p>
     </div>
 </a>
         </div>
-        <p class="docs-lastmod"><strong>Last modified:</strong> March 11, 2021</p>
+        <p class="docs-lastmod"><strong>Last modified:</strong> March 16, 2021</p>
     </div>
 </div>
 
