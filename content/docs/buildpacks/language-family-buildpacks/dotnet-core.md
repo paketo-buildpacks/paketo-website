@@ -1,15 +1,15 @@
 ---
-title: ".Net Core Buildpack"
+title: ".NET Core Buildpack"
 weight: 301
 menu:
   main:
     parent: "language-family-buildpacks"
 ---
 
-# .Net Core Buildpack
+# .NET Core Buildpack
 
-The [.Net Core Paketo Buildpack](https://github.com/paketo-buildpacks/dotnet-core)
-supports building several configurations of .Net Core applications.
+The [.NET Core Paketo Buildpack](https://github.com/paketo-buildpacks/dotnet-core)
+supports building several configurations of .NET Core applications.
 
 To build your app locally with the buildpack using the `pack` CLI, run
 
@@ -31,34 +31,34 @@ also compatible with the Paketo Full builder.**
 
 ## Supported Dependencies
 
-The .Net Core Paketo Buildpack supports several versions of the .Net Core Framework.
+The .NET Core Paketo Buildpack supports several versions of the .NET Core Framework.
 For more details on the specific versions supported in a given buildpack
 version, see the [release
 notes](https://github.com/paketo-buildpacks/dotnet-core/releases).
 
 ## Application Types
 
-The .Net Core Buildpack supports several types of application source code that
+The .NET Core Buildpack supports several types of application source code that
 can be built into a container image. Developers can provide raw source code, or
 built artifacts like Framework-Dependent Deployments/Executables or
 Self-Contained Deployments when building their application.
 
 ### Source Applications
 
-The .Net Core Build Buildpack is capable of building application source code
+The .NET Core Buildpack is capable of building application source code
 into Framework-Dependent Deployments (FDD) or Executables (FDE).  This is
-achieved using the `dotnet publish` command. For .Net Core Framework 2.x
+achieved using the `dotnet publish` command. For .NET Core Framework 2.x
 applications, [an FDD is
 produced](https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli#framework-dependent-deployment)
 as the default build artifact, while [an FDE is
 produced](https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli#framework-dependent-executable)
-when the application source is for .Net Core Framework 3.x.
+when the application source is for .NET Core Framework 3.x.
 
 ### Framework-Dependent Deployments or Framework-Dependent Executables
 
 When building an application that has already been published as a
 Framework-Dependent Deployment or Framework-Dependent Executable, the buildpack
-will include the required .Net Core Framework dependencies and set the start
+will include the required .NET Core Framework dependencies and set the start
 command.
 
 ### Self-Contained Deployment
@@ -66,29 +66,29 @@ command.
 When building an application as a [Self-Contained
 Deployment](https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli#self-contained-deployment)(SCD),
 the buildpack will ensure the correct start command will be used to run your
-app. No .Net Core Framework dependencies will be included in the built image as
+app. No .NET Core Framework dependencies will be included in the built image as
 they are already included in the SCD artifact.
 
 ## Specifying Runtime and ASP.Net Versions
 
-The .Net Core Runtime and .Net Core ASP.Net Buildpacks allow you to specify a
-version of the .Net Core Runtime and ASP.Net to use during deployment. This
+The .NET Core Runtime and .NET Core ASP.Net Buildpacks allow you to specify a
+version of the .NET Core Runtime and ASP.Net to use during deployment. This
 version can be specified in several ways including through a
 `runtimeconfig.json`, MSBuild Project file, or `buildpack.yml` file. When
-specifying a version of the .Net Core Runtime and ASP.Net, you must choose a
+specifying a version of the .NET Core Runtime and ASP.Net, you must choose a
 version that is available within these buildpacks. These versions can be found
-in the [.Net Core Runtime release
+in the [.NET Core Runtime release
 notes](https://github.com/paketo-buildpacks/dotnet-core-runtime/releases) and
-[.Net Core ASP.Net release
+[.NET Core ASP.Net release
 notes](https://github.com/paketo-buildpacks/dotnet-core-aspnet/releases).
 
-.Net Core ASP.Net will only be included in the build process if your
+.NET Core ASP.Net will only be included in the build process if your
 application declares its Runtime Framework as either `Microsoft.AspNetCore.App`
 or `Microsoft.AspNetCore.All`.
 
 ### Using buildpack.yml
 
-To configure the buildpack to use .Net Core Runtime and ASP.Net v2.1.14 when
+To configure the buildpack to use .NET Core Runtime and ASP.Net v2.1.14 when
 deploying your app, include the values below in your `buildpack.yml` file:
 
 {{< code/copyable >}}
@@ -106,8 +106,8 @@ documentation](https://docs.microsoft.com/en-us/dotnet/core/versions/selection#f
 
 If you are using a
 [`runtimeconfig.json`](https://docs.microsoft.com/en-us/dotnet/core/run-time-config/)
-file, you can specify the .Net Core Runtime version within that file. To
-configure the buildpack to use .Net Core Runtime v2.1.14 when deploying your
+file, you can specify the .NET Core Runtime version within that file. To
+configure the buildpack to use .NET Core Runtime v2.1.14 when deploying your
 app, include the values below in your `runtimeconfig.json` file:
 
 {{< code/copyable >}}
@@ -123,8 +123,8 @@ app, include the values below in your `runtimeconfig.json` file:
 ### Using a Project file
 
 If you are using a Project file (eg. `*.csproj`, `*.fsproj`, or `*.vbproj`), you can specify
-the .Net Core Runtime version within that file. To configure the buildpack to
-use .Net Core Runtime v2.1.14 when deploying your app, include the values below
+the .NET Core Runtime version within that file. To configure the buildpack to
+use .NET Core Runtime v2.1.14 when deploying your app, include the values below
 in your Project file:
 
 {{< code/copyable >}}
@@ -135,10 +135,10 @@ in your Project file:
 </Project>
 {{< /code/copyable >}}
 
-Alternatively, for applications that do not rely upon a specific .Net Core
+Alternatively, for applications that do not rely upon a specific .NET Core
 Runtime patch version, you can specify the Target Framework and the buildpack
-will choose the appropriate .Net Core Runtime version. To configure the
-buildpack to use a .Net Core Runtime version in the 2.1 .Net Core Target Framework
+will choose the appropriate .NET Core Runtime version. To configure the
+buildpack to use a .NET Core Runtime version in the 2.1 .NET Core Target Framework
 when deploying your app, include the values below in your Project file:
 
 {{< code/copyable >}}
@@ -149,35 +149,35 @@ when deploying your app, include the values below in your Project file:
 </Project>
 {{< /code/copyable >}}
 
-For more details about specifying a .Net Core version using a Project file,
+For more details about specifying a .NET Core version using a Project file,
 please review the [Microsoft
 documentation](https://docs.microsoft.com/en-us/dotnet/core/versions/selection).
 
-### .Net Core Framework Version Selection
+### .NET Core Framework Version Selection
 
-The .Net Core Buildpack uses the same version selection policy that Microsoft
-has put together for .Net Core Framework. If you would like to know more about
+The .NET Core Buildpack uses the same version selection policy that Microsoft
+has put together for .NET Core Framework. If you would like to know more about
 the policy please refer to this
 [documentation](https://docs.microsoft.com/en-us/dotnet/core/versions/selection)
 provided by Microsoft.
 
 ## Specifying an SDK Version
 
-The .Net Core SDK Buildpack allows you to specify a version of the .Net Core
+The .NET Core SDK Buildpack allows you to specify a version of the .NET Core
 SDK to use during deployment. This version is usually derived from the .Net
-Core Runtime version chosen for the application. The .Net Core SDK Buildpack
+Core Runtime version chosen for the application. The .NET Core SDK Buildpack
 maintains a set of SDK versions that are known compatible versions to run with
-any of the set of available .Net Core Runtime versions. When specifying a
-version of the .Net Core SDK, you must choose a version that is available
+any of the set of available .NET Core Runtime versions. When specifying a
+version of the .NET Core SDK, you must choose a version that is available
 within the buildpack. These versions can be found in the [release
 notes](https://github.com/paketo-buildpacks/dotnet-core-sdk/releases).
 
-However, the .Net Core SDK version can be explicitly set by specifying a
+However, the .NET Core SDK version can be explicitly set by specifying a
 version in either a `buildpack.yml` or `global.json` file.
 
 ### Using buildpack.yml
 
-To configure the buildpack to use .Net Core SDK v2.1.804 when deploying your
+To configure the buildpack to use .NET Core SDK v2.1.804 when deploying your
 app, include the values below in your `buildpack.yml` file:
 
 {{< code/copyable >}}
@@ -190,8 +190,8 @@ dotnet-sdk:
 
 If you are using a
 [`global.json`](https://docs.microsoft.com/en-us/dotnet/core/tools/global-json)
-file, you can specify the .Net Core SDK version within that file. To configure
-the buildpack to use .Net Core SDK v2.1.804 when deploying your app, include
+file, you can specify the .NET Core SDK version within that file. To configure
+the buildpack to use .NET Core SDK v2.1.804 when deploying your app, include
 the values below in your `global.json` file:
 
 {{< code/copyable >}}
@@ -204,7 +204,7 @@ the values below in your `global.json` file:
 
 ## Specifying a Custom Project Path
 
-By default, the .Net Core Build Buildpack will consider the root directory of
+By default, the .NET Core Build Buildpack will consider the root directory of
 your codebase to be the project directory. This directory should contain a C#,
 F#, or Visual Basic Project file. If your project directory is not located at
 the root of your source code, you can override the project directory by
@@ -228,19 +228,19 @@ The `DOTNET_ROOT` environment variable specifies the path to the directory where
 
 ### RUNTIME_VERSION
 
-The `RUNTIME_VERSION` environment variable specifies the version of the .Net Core Runtime installed by the .Net Core Runtime Buildpack.
+The `RUNTIME_VERSION` environment variable specifies the version of the .NET Core Runtime installed by the .NET Core Runtime Buildpack.
 
 * Set by: `dotnet-core-runtime`
 * Phases: `build`
-* Value: installed version of the .Net Core Runtime
+* Value: installed version of the .NET Core Runtime
 
 ### SDK_LOCATION
 
-The `SDK_LOCATION` environment variable specifies the file path location of the installed .Net Core SDK.
+The `SDK_LOCATION` environment variable specifies the file path location of the installed .NET Core SDK.
 
 * Set by: `dotnet-core-sdk`
 * Phases: `build`
-* Value: path to the .Net Core SDK installation
+* Value: path to the .NET Core SDK installation
 
 ### PATH
 
@@ -252,7 +252,7 @@ The `PATH` environment variable is modified to enable the `dotnet` CLI to be fou
 
 ## Launch Process
 
-The .Net Core Conf Buildpack will ensure that your application image is built
+The .NET Core Buildpack will ensure that your application image is built
 with a valid launch process command. These commands differ slightly depending
 upon the type of built artifact produced during the build process.
 
@@ -281,3 +281,27 @@ variable.
 {{< code/copyable >}}
 ./myapp --urls http://0.0.0.0:${PORT:-8080}
 {{< /code/copyable >}}
+
+## Using CA Certificates
+.NET Core Buildpack users can provide their own CA certificates and have them
+included in the container root truststore at build-time and runtime by
+following the instructions outlined in the [CA
+Certificates](https://paketo.io/docs/buildpacks/configuration/#ca-certificates)
+section of our configuration docs.
+
+## Setting Custom Start Processes
+.NET Core Buildpack users can set custom start processes for their app image by
+following the instructions in the
+[Procfiles](https://paketo.io/docs/buildpacks/configuration/#procfiles) section
+of our configuration docs.
+
+## Setting Environment Variables in the App Image
+.NET Core Buildpack users can embed launch-time environment variables in their
+app image by following the documentation for the [Environment Variables
+Buildpack](https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md).
+
+## Adding Custom Labels to the App Image
+.NET Core Buildpack users can add labels to their app image by following the
+instructions in the [Applying Custom
+Labels](https://paketo.io/docs/buildpacks/configuration/#applying-custom-labels)
+section of our configuration docs.

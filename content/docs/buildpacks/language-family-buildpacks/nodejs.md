@@ -376,32 +376,28 @@ If no package manager is detected, the Node.js CNB will set the start command
 `node server.js`. The app name is ___not___ currently configurable.
 
 ## Using CA Certificates
-Users can provide their own CA certificates and have them included in the
-container root truststore at build-time and runtime using the [CA Certificates
-CNB](https://github.com/paketo-buildpacks/ca-certificates). Check out the
-[docs](https://paketo.io/docs/buildpacks/configuration/#ca-certificates) for
-how to enable this.
+Node.js Buildpack users can provide their own CA certificates and have them
+included in the container root truststore at build-time and runtime by
+following the instructions outlined in the [CA
+Certificates](https://paketo.io/docs/buildpacks/configuration/#ca-certificates)
+section of our configuration docs.
 
-## Using a Procfile
-The Node.js CNB includes the [Procfile
-CNB](https://github.com/paketo-buildpacks/procfile). This buildpack turns the
-contents of a Procfile into process types.  Check out the
-[docs](https://paketo.io/docs/buildpacks/configuration/#procfiles) for
-information on how to use this buildpack.
+## Setting Custom Start Processes
+Node.js Buildpack users can set custom start processes for their app image by
+following the instructions in the
+[Procfiles](https://paketo.io/docs/buildpacks/configuration/#procfiles) section
+of our configuration docs.
 
-## Adding Environment Variables to the Build/Run Image
-The Node.js CNB includes the [Environment Variables
-CNB](https://github.com/paketo-buildpacks/environment-variables). This
-buildpack embeds environment variables into an image.  Check out the
-[docs](https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md)
-for information on how to use this buildpack.
+## Setting Environment Variables in the App Image
+Node.js Buildpack users can embed launch-time environment variables in their
+app image by following the documentation for the [Environment Variables
+Buildpack](https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md).
 
-## Adding Image Labels to the Build/Run Image
-The Node.js CNB includes the [Image Labels
-CNB](https://github.com/paketo-buildpacks/image-labels).This buildpack enables
-configuration of labels on the created image.  Check out the
-[docs](https://paketo.io/docs/buildpacks/configuration/#applying-custom-labels)
-for information on how to use this buildpack.
+## Adding Custom Labels to the App Image
+Node.js Buildpack users can add labels to their app image by following the
+instructions in the [Applying Custom
+Labels](https://paketo.io/docs/buildpacks/configuration/#applying-custom-labels)
+section of our configuration docs.
 
 ## Stack support
 The Node.js Buildpack runs fine on the Base builder for most apps. If your app
