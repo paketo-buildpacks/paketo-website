@@ -72,10 +72,72 @@ The NGINX buildpack supports two app configurations:
    buildpack simply provides the NGINX dependency to subsequent buildpacks
    without actually setting up a server.
 
-## Custom NGINX configs
+## Data driven templates
 
-The NGINX CNB also supports data driven templates for nginx config. You may use
-variables like `{{port}}`, `{{env "FOO"}}` and `{{module "ngx_stream_module"}}`.
+The NGINX buildpack supports data driven templates for nginx config. You can
+use templated variables like `{{port}}`, `{{env "FOO"}}` and `{{module
+"ngx_stream_module"}}` in your `nginx.conf` to use values known at launch time.
+
+A usage example can be found in the [`samples` repository under the `nginx`
+directory](https://github.com/paketo-buildpacks/samples/tree/main/nginx).
+
+### PORT
+
+Use `{{port}}` to dynamically set the port at which the server will accepts requests. At launch time, the buildpack will read the value of `$PORT` to set the value of `{{port}}`.
+
+For example, to set an NGINX server to listen on `$PORT`, use the following in your `nginx.conf` file:
+
+{{< code/copyable >}}
+server {
+  listen {{port}};
+}
+{{< /code/copyable >}}
+
+Then run the built image using the `PORT` variable set as follows:
+
+{{< code/copyable >}}
+docker run --tty --env PORT=8080 --publish 8080:8080 my-nginx-image
+{{< /code/copyable >}}
+
+### Environment Variables
+
+This is a generic case of the `{{port}}` directive described ealier. To use the
+value of any environment variable `$FOOVAR` available at launch time, use the
+directive `{{env "FOOVAR"}}` in your `nginx.conf`.
+
+For example, include the following in your `nginx.conf` file to enable or
+disable gzipping of responses based on the value of `GZIP_DOWNLOADS`:
+
+{{< code/copyable >}}
+gzip {{env "GZIP_DOWNLOADS"}};
+{{< /code/copyable >}}
+
+Then run the built image using the `GZIP_DOWNLOADS` variable set as follows:
+
+{{< code/copyable >}}
+docker run --tty --env PORT=8080 --env GZIP_DOWNLOADS=off --publish 8080:8080 my-nginx-image
+{{< /code/copyable >}}
+
+### Loading dynamic modules
+
+You can use templates to set the path to a dynamic module using the
+`load_module` directive.
+
+* To load a user-provided module named `ngx_foo_module`, provide a
+  `modules/ngx_foo_module.so` file in your app directory and add the following
+  to the top of your `nginx.conf` file:
+
+{{< code/copyable >}}
+{{module "ngx_foo_module"}}
+{{< /code/copyable >}}
+
+* To load a buildpack-provided module like `ngx_stream_module`, add the
+  following to the top of your `nginx.conf` file. You do not need to provide an
+  `ngx_stream_module.so` file:
+
+{{< code/copyable >}}
+{{module "ngx_stream_module"}}
+{{< /code/copyable >}}
 
 See the [NGINX
 docs](https://nginx.org/en/docs/beginners_guide.html#conf_structure) for more
