@@ -330,7 +330,7 @@ curl -s http://localhost:8080/actuator/health | jq .
 <pre class="copyable"><code>cd samples/java/native-image
 ./mvnw package
 pack build samples/java-native \
-  --env BP_BOOT_NATIVE_IMAGE=true
+  --env BP_NATIVE_IMAGE=true
   --path java/native-image/java-native-image-sample/target/demo-0.0.1-SNAPSHOT.jar
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 
@@ -458,7 +458,7 @@ curl -s http://localhost:8081/actuator/health
     </div>
 </a>
         </div>
-        <p class="docs-lastmod"><strong>Last modified:</strong> March 16, 2021</p>
+        <p class="docs-lastmod"><strong>Last modified:</strong> March 19, 2021</p>
     </div>
 </div>
 
