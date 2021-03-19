@@ -285,7 +285,13 @@ also compatible with the Paketo Full builder.</strong></p>
       </ul>
     </li>
     <li><a href="#configurations">Configurations</a></li>
-    <li><a href="#custom-nginx-configs">Custom NGINX configs</a></li>
+    <li><a href="#data-driven-templates">Data driven templates</a>
+      <ul>
+        <li><a href="#port">PORT</a></li>
+        <li><a href="#environment-variables">Environment Variables</a></li>
+        <li><a href="#loading-dynamic-modules">Loading dynamic modules</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div>
@@ -327,9 +333,55 @@ buildpack simply provides the NGINX dependency to subsequent buildpacks
 without actually setting up a server.</p>
 </li>
 </ol>
-<h2 id="custom-nginx-configs">Custom NGINX configs</h2>
-<p>The NGINX CNB also supports data driven templates for nginx config. You may use
-variables like <code>{{port}}</code>, <code>{{env &quot;FOO&quot;}}</code> and <code>{{module &quot;ngx_stream_module&quot;}}</code>.</p>
+<h2 id="data-driven-templates">Data driven templates</h2>
+<p>The NGINX buildpack supports data driven templates for nginx config. You can
+use templated variables like <code>{{port}}</code>, <code>{{env &quot;FOO&quot;}}</code> and <code>{{module &quot;ngx_stream_module&quot;}}</code> in your <code>nginx.conf</code> to use values known at launch time.</p>
+<p>A usage example can be found in the <a href="https://github.com/paketo-buildpacks/samples/tree/main/nginx"><code>samples</code> repository under the <code>nginx</code>
+directory</a>.</p>
+<h3 id="port">PORT</h3>
+<p>Use <code>{{port}}</code> to dynamically set the port at which the server will accepts requests. At launch time, the buildpack will read the value of <code>$PORT</code> to set the value of <code>{{port}}</code>.</p>
+<p>For example, to set an NGINX server to listen on <code>$PORT</code>, use the following in your <code>nginx.conf</code> file:</p>
+<pre class="copyable"><code>server {
+  listen {{port}};
+}
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>Then run the built image using the <code>PORT</code> variable set as follows:</p>
+<pre class="copyable"><code>docker run --tty --env PORT=8080 --publish 8080:8080 my-nginx-image
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<h3 id="environment-variables">Environment Variables</h3>
+<p>This is a generic case of the <code>{{port}}</code> directive described ealier. To use the
+value of any environment variable <code>$FOOVAR</code> available at launch time, use the
+directive <code>{{env &quot;FOOVAR&quot;}}</code> in your <code>nginx.conf</code>.</p>
+<p>For example, include the following in your <code>nginx.conf</code> file to enable or
+disable gzipping of responses based on the value of <code>GZIP_DOWNLOADS</code>:</p>
+<pre class="copyable"><code>gzip {{env &#34;GZIP_DOWNLOADS&#34;}};
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>Then run the built image using the <code>GZIP_DOWNLOADS</code> variable set as follows:</p>
+<pre class="copyable"><code>docker run --tty --env PORT=8080 --env GZIP_DOWNLOADS=off --publish 8080:8080 my-nginx-image
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<h3 id="loading-dynamic-modules">Loading dynamic modules</h3>
+<p>You can use templates to set the path to a dynamic module using the
+<code>load_module</code> directive.</p>
+<ul>
+<li>To load a user-provided module named <code>ngx_foo_module</code>, provide a
+<code>modules/ngx_foo_module.so</code> file in your app directory and add the following
+to the top of your <code>nginx.conf</code> file:</li>
+</ul>
+<pre class="copyable"><code>{{module &#34;ngx_foo_module&#34;}}
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<ul>
+<li>To load a buildpack-provided module like <code>ngx_stream_module</code>, add the
+following to the top of your <code>nginx.conf</code> file. You do not need to provide an
+<code>ngx_stream_module.so</code> file:</li>
+</ul>
+<pre class="copyable"><code>{{module &#34;ngx_stream_module&#34;}}
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
 <p>See the <a href="https://nginx.org/en/docs/beginners_guide.html#conf_structure">NGINX
 docs</a> for more
 information about how to set up an <code>nginx.conf</code> file.</p>
