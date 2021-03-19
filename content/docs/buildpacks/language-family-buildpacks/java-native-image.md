@@ -69,7 +69,7 @@ The following command uses Maven directly to compile an executable JAR and then 
 cd samples/java/native-image
 ./mvnw package
 pack build samples/java-native \
-  --env BP_BOOT_NATIVE_IMAGE=true
+  --env BP_NATIVE_IMAGE=true
   --path java/native-image/java-native-image-sample/target/demo-0.0.1-SNAPSHOT.jar
 {{< /code/copyable >}}
 
