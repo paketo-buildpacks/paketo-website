@@ -101,3 +101,16 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
 
 [params.docs_menu]
   title = "PAKETO DOCS"
+
+
+[module]
+  [[module.imports]]
+    path = "github.com/paketo-buildpacks/dotnet-core/docs"
+
+    [[module.imports.mounts]]
+      source = "content/dotnet-core.md"
+      target = "content/docs/buildpacks/language-family-buildpacks/dotnet-core.md"
+
+  # [[module.mounts]]
+  #   source="content"
+  #   target="content"
