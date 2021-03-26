@@ -110,7 +110,3 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
     [[module.imports.mounts]]
       source = "content/dotnet-core.md"
       target = "content/docs/buildpacks/language-family-buildpacks/dotnet-core.md"
-
-  # [[module.mounts]]
-  #   source="content"
-  #   target="content"
