@@ -4,6 +4,9 @@ on:
   push:
     branches:
     - main
+  schedule:
+  - cron: '0 */4 * * *'
+  workflow_dispatch: {}
 
 jobs:
   deploy:
@@ -33,7 +36,7 @@ jobs:
         rm /tmp/hugo.tar.gz
 
     - name: Build
-      run: cd build-environment && .bin/hugo
+      run: cd build-environment && .bin/hugo mod get -u ./... && .bin/hugo
 
     - name: Update
       run: |
