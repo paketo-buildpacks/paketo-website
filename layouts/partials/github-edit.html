@@ -1,6 +1,7 @@
 {{ $path := .Scratch.Get "path" }}
 {{ $filename := .Scratch.Get "filename" }}
-{{ $langFams := slice "dotnet-core"}} #Add language families to this slice as we migrate docs to modules
+{{/* Add language families to this slice as we migrate docs to modules */}}
+{{ $langFams := slice "dotnet-core"}}
 {{ .Scratch.Set "url" (printf "http://github.com/paketo-buildpacks/paketo-website/edit/main/content/%s" $path) }}
 {{if (in $langFams $filename) }}
   {{ .Scratch.Set "url" (printf "http://github.com/paketo-buildpacks/%s/edit/main/docs/content/%s.md" $filename $filename) }}
