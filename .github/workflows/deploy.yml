@@ -34,7 +34,7 @@ jobs:
         rm /tmp/hugo.tar.gz
 
     - name: Build
-      run: cd build-environment && .bin/hugo mod get -u ./... && .bin/hugo
+      run: cd build-environment && .bin/hugo
 
     - name: Update
       run: |
