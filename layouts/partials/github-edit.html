@@ -1,4 +1,11 @@
-<a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/{{ .Scratch.Get "path" }}" target="_blank" class="github-edit__redirect" style="text-decoration:none">
+{{ $path := .Scratch.Get "path" }}
+{{ $filename := .Scratch.Get "filename" }}
+{{ $langFams := slice "dotnet-core"}} #Add language families to this slice as we migrate docs to modules
+{{ .Scratch.Set "url" (printf "http://github.com/paketo-buildpacks/paketo-website/edit/main/content/%s" $path) }}
+{{if (in $langFams $filename) }}
+  {{ .Scratch.Set "url" (printf "http://github.com/paketo-buildpacks/%s/edit/main/docs/content/%s.md" $filename $filename) }}
+{{ end }}
+  <a href="{{ .Scratch.Get "url" }}" target="_blank" class="github-edit__redirect" style="text-decoration:none">
     <div class="redirect__content">
         <img class="github-logo" src="/images/github-mark.png">
         <div class="edit-text">Edit</div>
