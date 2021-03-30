@@ -5,6 +5,7 @@
     <div class="docs-body relative">
         <div class="text-col docs-text pad50">
             {{ .Scratch.Set "path" .File.Path }}
+            {{ .Scratch.Set "filename" .File.TranslationBaseName }}
             {{ partial "github-edit.html" . }}
             {{ .Content }}
             {{ partial "github-edit.html" . }}
