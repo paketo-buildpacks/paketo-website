@@ -290,7 +290,8 @@ system libraries only present in the Full builder.</strong></p>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
     <li><a href="#specifying-an-httpd-version">Specifying an HTTPD Version</a>
       <ul>
-        <li><a href="#using-buildpackyml">Using buildpack.yml</a></li>
+        <li><a href="#using-bp_httpd_version">Using BP_HTTPD_VERSION</a></li>
+        <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
     <li><a href="#configurations">Configurations</a></li>
@@ -304,23 +305,25 @@ version, see the <a href="https://github.com/paketo-buildpacks/httpd/releases">r
 notes</a>.</p>
 <h2 id="specifying-an-httpd-version">Specifying an HTTPD Version</h2>
 <p>The HTTPD CNB (Cloud Native Buildpack) allows you to specify a version of the
-Apache HTTP Server to use during deployment. This version can be specified in a
-number of ways, including through <code>buildpack.yml</code>. When specifying a version of
-the Apache HTTP Server, you must choose a version that is available within the
-buildpack.</p>
+Apache HTTP Server to use during deployment. This version can be specified
+through the <code>BP_HTTPD_VERSION</code> environment variable. When specifying a version
+of the Apache HTTP Server, you must choose a version that is available within the
+buildpack. The supported versions can be found <a href="https://github.com/paketo-buildpacks/httpd/releases">here</a></p>
 <p>Specifying a version of <code>httpd</code> is not required. In the case that it is not
 specified, the buildpack will provide the default version listed in the release
 notes.</p>
-<h3 id="using-buildpackyml">Using buildpack.yml</h3>
-<p>To configure the buildpack to use Apache HTTP Server v2.4.43 when deploying
-your app, for example, include the values below in your <code>buildpack.yml</code> file:</p>
-<pre class="copyable"><code>httpd:
-  # this allows you to specify a version constraint for the httpd dependency
-  # any valid semver constaints (e.g. 2.* and 2.4.*) are also acceptable
-  #
-  version: 2.4.43
+<h3 id="using-bp_httpd_version">Using BP_HTTPD_VERSION</h3>
+<p>To configure the buildpack to use HTTPD v2.4.46 when deploying your app, set the
+following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_HTTPD_VERSION=2.4.*</code>) or through a
+<a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
+file:</p>
+<pre class="copyable"><code>BP_HTTPD_VERSION=&#34;2.4.46&#34;
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 
+<h3 id="deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</h3>
+<p>Specifying the HTTP Server version through <code>buildpack.yml</code> configuration will
+be deprecated in Apache HTTP Server Buildpack v1.0.0. To migrate from using
+<code>buildpack.yml</code> please set the <code>$BP_HTTPD_VERSION</code> environment variable.</p>
 <h2 id="configurations">Configurations</h2>
 <p>The HTTPD buildpack supports two app configurations:</p>
 <ol>
