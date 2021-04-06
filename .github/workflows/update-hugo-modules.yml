@@ -15,6 +15,11 @@ jobs:
       with:
         ref: main
 
+    - name: Checkout Branch
+      uses: paketo-buildpacks/github-config/actions/pull-request/checkout-branch@main
+      with:
+        branch: automation/hugo-modules/update
+
     - name: Install Hugo
       run: |
         mkdir -p .bin
