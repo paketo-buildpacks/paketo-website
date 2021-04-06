@@ -322,6 +322,10 @@ also compatible with the Paketo Full builder and Paketo Tiny builder.</strong></
         <li><a href="#depcachedir"><code>DEPCACHEDIR</code></a></li>
       </ul>
     </li>
+    <li><a href="#using-ca-certificates">Using CA Certificates</a></li>
+    <li><a href="#setting-custom-start-processes">Setting Custom Start Processes</a></li>
+    <li><a href="#setting-environment-variables-in-the-app-image">Setting Environment Variables in the App Image</a></li>
+    <li><a href="#adding-custom-labels-to-the-app-image">Adding Custom Labels to the App Image</a></li>
   </ul>
 </nav>
 </div>
@@ -491,6 +495,26 @@ cache layer in the app image.</p>
 <li>Phases: <code>build</code></li>
 <li>Value: Dep Cache layer path</li>
 </ul>
+<h2 id="using-ca-certificates">Using CA Certificates</h2>
+<p>Go Buildpack users can provide their own CA certificates and have them
+included in the container root truststore at build-time and runtime by
+following the instructions outlined in the <a href="https://paketo.io/docs/buildpacks/configuration/#ca-certificates">CA
+Certificates</a>
+section of our configuration docs.</p>
+<h2 id="setting-custom-start-processes">Setting Custom Start Processes</h2>
+<p>Go Buildpack users can set custom start processes for their app image by
+following the instructions in the
+<a href="https://paketo.io/docs/buildpacks/configuration/#procfiles">Procfiles</a> section
+of our configuration docs.</p>
+<h2 id="setting-environment-variables-in-the-app-image">Setting Environment Variables in the App Image</h2>
+<p>Go Buildpack users can embed launch-time environment variables in their
+app image by following the documentation for the <a href="https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md">Environment Variables
+Buildpack</a>.</p>
+<h2 id="adding-custom-labels-to-the-app-image">Adding Custom Labels to the App Image</h2>
+<p>Go Buildpack users can add labels to their app image by following the
+instructions in the <a href="https://paketo.io/docs/buildpacks/configuration/#applying-custom-labels">Applying Custom
+Labels</a>
+section of our configuration docs.</p>
 
             
 
@@ -506,7 +530,7 @@ cache layer in the app image.</p>
 </a>
 
         </div>
-        <p class="docs-lastmod"><strong>Last modified:</strong> March 30, 2021</p>
+        <p class="docs-lastmod"><strong>Last modified:</strong> April 6, 2021</p>
     </div>
 </div>
 

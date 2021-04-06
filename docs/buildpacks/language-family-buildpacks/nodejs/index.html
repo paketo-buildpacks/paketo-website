@@ -339,9 +339,9 @@ required if your app utilizes common C libraries.</strong></p>
       </ul>
     </li>
     <li><a href="#using-ca-certificates">Using CA Certificates</a></li>
-    <li><a href="#using-a-procfile">Using a Procfile</a></li>
-    <li><a href="#adding-environment-variables-to-the-buildrun-image">Adding Environment Variables to the Build/Run Image</a></li>
-    <li><a href="#adding-image-labels-to-the-buildrun-image">Adding Image Labels to the Build/Run Image</a></li>
+    <li><a href="#setting-custom-start-processes">Setting Custom Start Processes</a></li>
+    <li><a href="#setting-environment-variables-in-the-app-image">Setting Environment Variables in the App Image</a></li>
+    <li><a href="#adding-custom-labels-to-the-app-image">Adding Custom Labels to the App Image</a></li>
     <li><a href="#stack-support">Stack support</a></li>
   </ul>
 </nav>
@@ -683,29 +683,25 @@ packages, the start command is <code>yarn start</code>.</p>
 <p>If no package manager is detected, the Node.js CNB will set the start command
 <code>node server.js</code>. The app name is <em><strong>not</strong></em> currently configurable.</p>
 <h2 id="using-ca-certificates">Using CA Certificates</h2>
-<p>Users can provide their own CA certificates and have them included in the
-container root truststore at build-time and runtime using the <a href="https://github.com/paketo-buildpacks/ca-certificates">CA Certificates
-CNB</a>. Check out the
-<a href="https://paketo.io/docs/buildpacks/configuration/#ca-certificates">docs</a> for
-how to enable this.</p>
-<h2 id="using-a-procfile">Using a Procfile</h2>
-<p>The Node.js CNB includes the <a href="https://github.com/paketo-buildpacks/procfile">Procfile
-CNB</a>. This buildpack turns the
-contents of a Procfile into process types.  Check out the
-<a href="https://paketo.io/docs/buildpacks/configuration/#procfiles">docs</a> for
-information on how to use this buildpack.</p>
-<h2 id="adding-environment-variables-to-the-buildrun-image">Adding Environment Variables to the Build/Run Image</h2>
-<p>The Node.js CNB includes the <a href="https://github.com/paketo-buildpacks/environment-variables">Environment Variables
-CNB</a>. This
-buildpack embeds environment variables into an image.  Check out the
-<a href="https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md">docs</a>
-for information on how to use this buildpack.</p>
-<h2 id="adding-image-labels-to-the-buildrun-image">Adding Image Labels to the Build/Run Image</h2>
-<p>The Node.js CNB includes the <a href="https://github.com/paketo-buildpacks/image-labels">Image Labels
-CNB</a>.This buildpack enables
-configuration of labels on the created image.  Check out the
-<a href="https://paketo.io/docs/buildpacks/configuration/#applying-custom-labels">docs</a>
-for information on how to use this buildpack.</p>
+<p>Node.js Buildpack users can provide their own CA certificates and have them
+included in the container root truststore at build-time and runtime by
+following the instructions outlined in the <a href="https://paketo.io/docs/buildpacks/configuration/#ca-certificates">CA
+Certificates</a>
+section of our configuration docs.</p>
+<h2 id="setting-custom-start-processes">Setting Custom Start Processes</h2>
+<p>Node.js Buildpack users can set custom start processes for their app image by
+following the instructions in the
+<a href="https://paketo.io/docs/buildpacks/configuration/#procfiles">Procfiles</a> section
+of our configuration docs.</p>
+<h2 id="setting-environment-variables-in-the-app-image">Setting Environment Variables in the App Image</h2>
+<p>Node.js Buildpack users can embed launch-time environment variables in their
+app image by following the documentation for the <a href="https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md">Environment Variables
+Buildpack</a>.</p>
+<h2 id="adding-custom-labels-to-the-app-image">Adding Custom Labels to the App Image</h2>
+<p>Node.js Buildpack users can add labels to their app image by following the
+instructions in the <a href="https://paketo.io/docs/buildpacks/configuration/#applying-custom-labels">Applying Custom
+Labels</a>
+section of our configuration docs.</p>
 <h2 id="stack-support">Stack support</h2>
 <p>The Node.js Buildpack runs fine on the Base builder for most apps. If your app
 requires compilation of native extensions using <code>node-gyp</code>, the buildpack requires that
@@ -726,7 +722,7 @@ the Base builder, and the module may require other shared objects.</p>
 </a>
 
         </div>
-        <p class="docs-lastmod"><strong>Last modified:</strong> March 30, 2021</p>
+        <p class="docs-lastmod"><strong>Last modified:</strong> April 6, 2021</p>
     </div>
 </div>
 
