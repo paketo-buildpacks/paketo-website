@@ -40,27 +40,33 @@ notes](https://github.com/paketo-buildpacks/httpd/releases).
 ## Specifying an HTTPD Version
 
 The HTTPD CNB (Cloud Native Buildpack) allows you to specify a version of the
-Apache HTTP Server to use during deployment. This version can be specified in a
-number of ways, including through `buildpack.yml`. When specifying a version of
-the Apache HTTP Server, you must choose a version that is available within the
-buildpack.
+Apache HTTP Server to use during deployment. This version can be specified
+through the `BP_HTTPD_VERSION` environment variable. When specifying a version
+of the Apache HTTP Server, you must choose a version that is available within the
+buildpack. The supported versions can be found [here](https://github.com/paketo-buildpacks/httpd/releases)
 
 Specifying a version of `httpd` is not required. In the case that it is not
 specified, the buildpack will provide the default version listed in the release
 notes.
 
-### Using buildpack.yml
+### Using BP_HTTPD_VERSION
 
-To configure the buildpack to use Apache HTTP Server v2.4.43 when deploying
-your app, for example, include the values below in your `buildpack.yml` file:
+To configure the buildpack to use HTTPD v2.4.46 when deploying your app, set the
+following environment variable at build time, either directly (ex. `pack build
+my-app --env BP_HTTPD_VERSION=2.4.*`) or through a
+[project.toml](https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md)
+file:
 
 {{< code/copyable >}}
-httpd:
-  # this allows you to specify a version constraint for the httpd dependency
-  # any valid semver constaints (e.g. 2.* and 2.4.*) are also acceptable
-  #
-  version: 2.4.43
+BP_HTTPD_VERSION="2.4.46"
 {{< /code/copyable >}}
+
+### Deprecated: Using buildpack.yml
+
+Specifying the HTTP Server version through `buildpack.yml` configuration will
+be deprecated in Apache HTTP Server Buildpack v1.0.0. To migrate from using
+`buildpack.yml` please set the `$BP_HTTPD_VERSION` environment variable.
+
 
 ## Configurations
 The HTTPD buildpack supports two app configurations:
