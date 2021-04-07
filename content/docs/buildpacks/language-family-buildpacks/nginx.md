@@ -48,19 +48,24 @@ Specifying a version of `nginx` is not required. In the case that it is not
 specified, the buildpack will provide the default version listed in the release
 notes.
 
-### Using buildpack.yml
+### Using BP_NGINX_VERSION
 
-To configure the buildpack to use NGINX v1.17.9 when deploying your app, for example,
-include the values below in your `buildpack.yml` file:
+To configure the buildpack to use NGINX v1.19.8 when deploying your app, set the
+following environment variable at build time, either directly (ex. `pack build
+my-app --env BP_NGINX_VERSION=1.19.8`) or through a
+[project.toml](https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md)
+file:
 
 {{< code/copyable >}}
-nginx:
-  # this allows you to specify a version constraint for the `NGINX` dependency
-  # any valid semver constaints (e.g. 1.* and 1.17.*) are also acceptable
-  #
-  # you can also specify "mainline" or "stable"
-  version: 1.17.9
+BP_NGINX_VERSION="1.19.8"
 {{< /code/copyable >}}
+
+
+### Deprecated: Using buildpack.yml
+
+Specifying the NGINX version through `buildpack.yml` configuration will be
+deprecated in NGINX Server Buildpack v1.0.0.  To migrate from using
+`buildpack.yml` please set the `$BP_NGINX_VERSION` environment variable.
 
 ## Configurations
 The NGINX buildpack supports two app configurations:
