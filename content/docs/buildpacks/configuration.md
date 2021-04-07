@@ -73,7 +73,7 @@ Programs invoked at runtime, including the application itself, will accept envir
 
 #### Image Embedded Environment Variables
 
-Users may embedded environment variables into the images created by using the [Environment Variables buildpack][bp/environment-variables]. The Environment Variables buildpack looks for environment variables matching the pattern `$BPE_*`. When detected, the buildpack will modify the launch environment to adjust the specified variables. This is a good way to set non-sensitive configuration values such as defaults or modifiy environment variables that you do not want your image users to need to set.
+Users may embed environment variables into the images created by using the [Environment Variables buildpack][bp/environment-variables]. The Environment Variables buildpack looks for environment variables matching the pattern `$BPE_*`. When detected, the buildpack will modify the launch environment to adjust the specified variables. This is a good way to set non-sensitive configuration values such as defaults or modify environment variables that you do not need users to set.
 
 The buildpack supports the following actions on environment variables:
 
