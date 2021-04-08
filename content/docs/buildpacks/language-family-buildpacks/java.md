@@ -158,7 +158,7 @@ The resulting application image will be identical to that built in the Building 
 
 The Java Buildpack uses the [BellSoft Liberica][liberica] implementations of the JRE and JDK. JVM installation is handled by the [BellSoft Liberica Buildpack][bp/bellsoft-liberica]. The JDK will be installed in the build container but only the JRE will be contributed to the application image.
 
-See the [homepage][bp/bellsoft-liberica] for the Bellsoft Liberica Buildpackfor a full set of configuration options.
+See the [homepage][bp/bellsoft-liberica] for the Bellsoft Liberica Buildpack for a full set of configuration options.
 
 ### The JVM Version
 
