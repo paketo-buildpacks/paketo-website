@@ -215,7 +215,7 @@ By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The 
 * [Paketo GraalVM Buildpack][bp/graalvm]
 * [Paketo SapMachine Buildpack][bp/sap-machine]
 
-To use an alternative JVM vendor, you will need to set two `--buildpack` arguments to `pack build`, one for the alternative JVM vendor you'd like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM vendor buildpacks, the first one, the one you're specifying will claim the buildplan entries so the second one will end up being a noop and doing nothing.
+To use an alternative JVM, you will need to set two `--buildpack` arguments to `pack build`, one for the alternative JVM buildpack you'd like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you're specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.
 
 This example will switch in the Azul Zulu buildpack:
 
