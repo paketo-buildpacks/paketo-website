@@ -206,7 +206,7 @@ See the [homepage][bp/bellsoft-liberica] for the Bellsoft Liberica Buildpack for
 
 ### Using Alternative JVMs
 
-By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The following alternative JVM vendors may be substituted in place of Liberica's JVM.
+By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implemenations in place of Liberica's JVM.
 
 * [Paketo Amazon Corretto Buildpack][bp/amazon-corretto]
 * [Paketo Azul Zulu Buildpack][bp/azul-zulu]
