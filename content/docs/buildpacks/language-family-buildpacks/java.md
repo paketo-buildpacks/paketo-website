@@ -204,7 +204,7 @@ The runtime JVM can be configured in two ways:
 
 See the [homepage][bp/bellsoft-liberica] for the Bellsoft Liberica Buildpack for a full set of configuration options.
 
-### Using Alternative JVM Vendors
+### Using Alternative JVMs
 
 By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The following alternative JVM vendors may be substituted in place of Liberica's JVM.
 
