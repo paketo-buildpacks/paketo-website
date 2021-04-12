@@ -273,6 +273,18 @@ docker run --rm \
   samples/ca-certificates <url>
 ```
 
+**Disabling CA Certificates**
+
+If a language family buildpack contains the Paketo CA Certifcates Buildpack,
+the CA Certificates Buildpack will always pass detection so that certificates
+can be provided dynamically at runtime.
+
+To opt out of this behavior all together, the `BP_ENABLE_RUNTIME_CERT_BINDING`
+environment variable can be set to `false` at build-time. This will disable the
+ability to set certificates at runtime. The CA Certificates Buildpack will then
+only detect if a certificate binding is provided at build-time.
+
+
 ## Applying Custom Labels
 
 Paketo users may add labels to the application image using the [Image Labels Buildpack][bp/image-labels].
