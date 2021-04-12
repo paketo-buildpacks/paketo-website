@@ -285,6 +285,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul>
         <li><a href="#the-jvm-version">The JVM Version</a></li>
         <li><a href="#runtime-jvm-configuration">Runtime JVM Configuration</a></li>
+        <li><a href="#using-alternative-jvms">Using Alternative JVMs</a></li>
       </ul>
     </li>
     <li><a href="#spring-boot-applications">Spring Boot Applications</a>
@@ -375,10 +376,10 @@ curl -s http://localhost:8080/actuator/health | jq .
 </ul>
 <h4 id="connecting-to-a-private-maven-repository">Connecting to a Private Maven Repository</h4>
 <p>A <a href="https://paketo.io/docs/buildpacks/configuration/#bindings">binding</a> with type <code>maven</code> and key <code>settings.xml</code> can be used to provide custom <a href="http://maven.apache.org/settings.html">Maven settings</a>.</p>
-<pre><code>&lt;binding-name&gt;
+<div class="highlight"><pre class="chroma"><code class="language-plain" data-lang="plain">&lt;binding-name&gt;
 ├── settings.xml
 └── type
-</code></pre><p>The value of <code>settings.xml</code> file may contain the credentials needed to connect to a private Maven repository.</p>
+</code></pre></div><p>The value of <code>settings.xml</code> file may contain the credentials needed to connect to a private Maven repository.</p>
 <p><strong>Example</strong>: Providing Maven Settings</p>
 <p>The following steps demonstrate how to use a <code>settings.xml</code> file from your workstation with <code>pack</code>.</p>
 <ol>
@@ -431,7 +432,7 @@ pack build samples/java \
 <p>The resulting application image will be identical to that built in the Building with Maven example.</p>
 <h2 id="about-the-jvm">About the JVM</h2>
 <p>The Java Buildpack uses the <a href="https://bell-sw.com/">BellSoft Liberica</a> implementations of the JRE and JDK. JVM installation is handled by the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">BellSoft Liberica Buildpack</a>. The JDK will be installed in the build container but only the JRE will be contributed to the application image.</p>
-<p>See the [homepage][<a href="https://github.com/paketo-buildpacks/bellsoft-liberica">bp/bellsoft-liberica</a>] for the Bellsoft Liberica Buildpackfor a full set of configuration options.</p>
+<p>See the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">homepage</a> for the Bellsoft Liberica Buildpack for a full set of configuration options.</p>
 <h3 id="the-jvm-version">The JVM Version</h3>
 <p>The Bellsoft Liberica Buildpack provides support for the latest patch release of all version lines supported at the time of buildpack release. The exact set of JDK/JRE versions support by a given buildpack version can be found in the Java Buildpack <a href="https://github.com/paketo-buildpacks/java/releases">release notes</a>.</p>
 <h4 id="inspecting-the-jvm-version">Inspecting the JVM Version</h4>
@@ -469,6 +470,54 @@ pack build samples/java \
 <li>Flags can be set directly at runtime with the <code>JAVA_TOOL_OPTIONS</code> environment variable. User-provided flags will be appended to buildpack-provided flags. If the user and a buildpack set the same flag, user-provided flags take precedence.</li>
 </ol>
 <p>See the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">homepage</a> for the Bellsoft Liberica Buildpack for a full set of configuration options.</p>
+<h3 id="using-alternative-jvms">Using Alternative JVMs</h3>
+<p>By default, the <a href="https://github.com/paketo-buildpacks/java">Paketo Java buildpack</a> will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implemenations in place of Liberica&rsquo;s JVM.</p>
+<table>
+<thead>
+<tr>
+<th>JVM</th>
+<th>Buildpack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://aws.amazon.com/corretto/">Amazon Corretto</a></td>
+<td><a href="https://github.com/paketo-buildpacks/amazon-corretto">Paketo Amazon Corretto Buildpack</a></td>
+</tr>
+<tr>
+<td><a href="https://www.azul.com/downloads/zulu-community/">Azul Zulu</a></td>
+<td><a href="https://github.com/paketo-buildpacks/azul-zulu">Paketo Azul Zulu Buildpack</a></td>
+</tr>
+<tr>
+<td><a href="https://bell-sw.com/pages/libericajdk/">BellSoft Liberica</a></td>
+<td><a href="https://github.com/paketo-buildpacks/bellsoft-liberica">Paketo BellSoft Liberica Buildpack - Default</a></td>
+</tr>
+<tr>
+<td><a href="https://www.eclipse.org/openj9/">Eclipse OpenJ9</a></td>
+<td><a href="https://github.com/paketo-buildpacks/eclipse-openj9">Paketo Eclipse OpenJ9 Buildpack</a></td>
+</tr>
+<tr>
+<td><a href="https://www.graalvm.org/">GraalVM</a></td>
+<td><a href="https://github.com/paketo-buildpacks/graalvm">Paketo GraalVM Buildpack</a></td>
+</tr>
+<tr>
+<td><a href="https://sap.github.io/SapMachine/">SapMachine</a></td>
+<td><a href="https://github.com/paketo-buildpacks/sap-machine">Paketo SapMachine Buildpack</a></td>
+</tr>
+</tbody>
+</table>
+<p>To use an alternative JVM, you will need to set two <code>--buildpack</code> arguments to <code>pack build</code>, one for the alternative JVM buildpack you&rsquo;d like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you&rsquo;re specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.</p>
+<p>This example will switch in the Azul Zulu buildpack:</p>
+<pre class="copyable"><code>pack build samples/jar --buildpack gcr.io/paketo-buidpacks/azul-zulu --buildpack paketo-buildpacks/java`
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>There is one drawback to this approach. When using the method above to specify an alternative JVM vendor buildpack, this alternate buildpack ends up running before the CA certs buildpack and therefore traffic from the alternate JVM vendor buildpack won’t trust any additional CA certs. This is not expected to impact many users because JVM buildpacks should reach out to URLs that have a cert signed by a known authority with a CA in the default system truststore.</p>
+<p>If you have customized your JVM buildpack to download the JVM from a URL that uses a certificate not signed by a well-known CA, you can workaround this by specifying the CA certs buildpack to run first. This works because while you will end up with the CA certificates buildpack specified twice, the lifecycle is smart enough to drop the second one.</p>
+<p>For example:</p>
+<pre class="copyable"><code>pack build samples/jar --buildpack paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buidpacks/azul-zulu --buildpack paketo-buildpacks/java`
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>It does not hurt to use this command for all situations, it is just more verbose and most users can get away without specifying the CA certificates buildpack to be first.</p>
 <h2 id="spring-boot-applications">Spring Boot Applications</h2>
 <p>If the application uses Spring Boot the <a href="https://github.com/paketo-buildpacks/spring-boot">Spring Boot Buildpack</a> will enhance the resulting image by adding additional metadata to the image config,
 applying Boot-specific performance optimizations, and enabling runtime auto-configuration.</p>
@@ -696,7 +745,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
 </a>
 
         </div>
-        <p class="docs-lastmod"><strong>Last modified:</strong> April 8, 2021</p>
+        <p class="docs-lastmod"><strong>Last modified:</strong> April 12, 2021</p>
     </div>
 </div>
 
