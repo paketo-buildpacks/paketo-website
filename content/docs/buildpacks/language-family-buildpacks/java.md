@@ -8,6 +8,7 @@ menu:
 ---
 
 # Java Buildpack
+
 The [Paketo Java Buildpack][java] allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
 
 The Java Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of it's [components](#components). The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages for the component buildpacks.
@@ -15,6 +16,7 @@ The Java Buildpack is a [composite buildpack][composite buildpack] and each step
 {{< table_of_contents >}}
 
 ## About the Examples
+
 All Java Buildpack examples will use the Paketo [sample applications][samples].
 
 Examples assume that the root of this repository is the working directory:
@@ -37,14 +39,16 @@ curl -s http://localhost:8080/actuator/health | jq .
 {{< /code/copyable >}}
 
 ## Building from Source
+
 The Java Buildpack can build from source using any of the following build tools:
+
 * [Gradle][gradle] - Support provided by the [Gradle Buildpack][bp/gradle]
 * [Leiningen][leiningen] - Support provided by the [Leiningen Buildpack][bp/leiningen]
 * [Maven][maven] - Support provided by the [Maven Buildpack][bp/maven]
 * [SBT][sbt] - Support provided by the [SBT Buildpack][bp/sbt])
- 
+
 The correct build tool to use will be detected based on the contents of the application directory.
- 
+
 The build should produce one the of [supported artifact formats](#building-from-a-compiled-artifact). After building, the buildpack will replace provided application source code with the exploded archive. The build will proceed as described in [Building from a Compiled Artifact](#building-from-a-compiled-artifact).
 
 **Example**: Building with Maven
@@ -57,33 +61,37 @@ pack build samples/java \
 {{< /code/copyable >}}
 
 ### Configuring the Build Tool
+
 **Note**: The following set of configuration options are not comprehensive, see the homepage for the relevant component buildpacks for a full-set of configuration options.
 
 #### Selecting a Module or Artifact
 
 For a given build `<TOOL>`, where `<TOOL>` is one of `MAVEN`, `GRADLE`, `LEIN` or `SBT`, the selected artifact can be configured with one of the following environment variable at build-time:
+
 * `BP_<TOOL>_BUILT_MODULE`
-    * *Defaults* to the root module.
-    * Configures the module in a multi-module build from which the buildpack will select the application artifact.
-    * *Example*: Given `BP_MAVEN_BUILT_MODULE=api`, Paketo Maven Buildpack will look for the application artifact with the file pattern `target/api/*.[jw]ar`.
+  * *Defaults* to the root module.
+  * Configures the module in a multi-module build from which the buildpack will select the application artifact.
+  * *Example*: Given `BP_MAVEN_BUILT_MODULE=api`, Paketo Maven Buildpack will look for the application artifact with the file pattern `target/api/*.[jw]ar`.
 * `BP_<TOOL>_BUILT_ARTIFACT`
-    * Defaults to a tool-specific pattern (e.g. `target/*.[jw]ar` for Maven, `build/libs/*.[jw]ar` for gradle). See component buildpack homepage for details.
-    * Configures the built application artifact path, using [Bash Pattern Matching][bash pattern matching].
-    * Supercedes `BP_<TOOL>_BUILT_MODULE` if set to a non-default value.
-    * *Example*: Given`BP_MAVEN_BUILT_ARTIFACT=out/api-*.jar`, the Paketo Maven Buildpack will select a file with name `out/api-1.0.0.jar`.
+  * Defaults to a tool-specific pattern (e.g. `target/*.[jw]ar` for Maven, `build/libs/*.[jw]ar` for gradle). See component buildpack homepage for details.
+  * Configures the built application artifact path, using [Bash Pattern Matching][bash pattern matching].
+  * Supercedes `BP_<TOOL>_BUILT_MODULE` if set to a non-default value.
+  * *Example*: Given`BP_MAVEN_BUILT_ARTIFACT=out/api-*.jar`, the Paketo Maven Buildpack will select a file with name `out/api-1.0.0.jar`.
 
 #### Specifying the Build Command
 
 For a given build `<TOOL>`, where `<TOOL>` is one of `MAVEN`, `GRADLE`, `LEIN` or `SBT`, the build command can be configured with the following environment variable at build-time:
+
 * `BP_<TOOL>_BUILD_ARGUMENTS`
-    * *Defaults* to a tool-specific value (e.g. `-Dmaven.test.skip=true package` for Maven, `--no-daemon -x test build` for Gradle). See component buildpack homepage for details.
-    * Configures the arguments to pass to the build tool.
-    * *Example*: Given `BP_GRADLE_BUILD_ARGUMENTS=war`, the Paketo Gradle Buildpack will execute `./gradlew war` or `gradle war` (depending on the presence of the gradle wrapper).
+  * *Defaults* to a tool-specific value (e.g. `-Dmaven.test.skip=true package` for Maven, `--no-daemon -x test build` for Gradle). See component buildpack homepage for details.
+  * Configures the arguments to pass to the build tool.
+  * *Example*: Given `BP_GRADLE_BUILD_ARGUMENTS=war`, the Paketo Gradle Buildpack will execute `./gradlew war` or `gradle war` (depending on the presence of the gradle wrapper).
 
 #### Connecting to a Private Maven Repository
 
 A [binding][bindings] with type `maven` and key `settings.xml` can be used to provide custom [Maven settings][maven settings].
-```
+
+```plain
 <binding-name>
 ├── settings.xml
 └── type
@@ -94,7 +102,6 @@ The value of `settings.xml` file may contain the credentials needed to connect t
 **Example**: Providing Maven Settings
 
 The following steps demonstrate how to use a `settings.xml` file from your workstation with `pack`.
-
 
 1. Create a directory to contain the binding.
 {{< code/copyable >}}
@@ -119,11 +126,13 @@ pack build samples/java \
 {{< /code/copyable >}}
 
 ## Building from a Compiled Artifact
+
 An application developer may build an image from following archive formats:
+
 * [Executable JAR][executable jar] - Support provided by the [Executable Jar Buildpack][bp/executable-jar]
 * [WAR][war] - Support provided by the [Apache Tomcat Buildpack][bp/apache-tomcat]
 * [Distribution ZIP][dist-zip] - Support provided by the [DistZip Buildpack][bp/dist-zip]
- 
+
 The Java Buildpack expects the application directory to contain the extracted contents of the archive (e.g. an exploded JAR). Most platforms will automatically extract any provided archives.
 
 If a WAR is detect the Java Buildpack will install [Apache Tomcat][apache tomcat]. For exact set of supported Tomcat versions can be found in the Java Buildpack [releases notes][bp/java/releases]. For tomcat configuration options see the [Apache Tomcat Buildpack][bp/apache-tomcat].
@@ -146,14 +155,17 @@ pack build samples/java \
 The resulting application image will be identical to that built in the Building with Maven example.
 
 ## About the JVM
+
 The Java Buildpack uses the [BellSoft Liberica][liberica] implementations of the JRE and JDK. JVM installation is handled by the [BellSoft Liberica Buildpack][bp/bellsoft-liberica]. The JDK will be installed in the build container but only the JRE will be contributed to the application image.
 
-See the [homepage][[bp/bellsoft-liberica]] for the Bellsoft Liberica Buildpackfor a full set of configuration options.
+See the [homepage][bp/bellsoft-liberica] for the Bellsoft Liberica Buildpack for a full set of configuration options.
 
 ### The JVM Version
+
 The Bellsoft Liberica Buildpack provides support for the latest patch release of all version lines supported at the time of buildpack release. The exact set of JDK/JRE versions support by a given buildpack version can be found in the Java Buildpack [release notes][bp/java/releases].
 
 #### Inspecting the JVM Version
+
 The exact JRE version that was contributed to a given image can be read from the Bill-of-Materials.
 
 **Example** Inspecting the JRE Version
@@ -164,21 +176,27 @@ pack inspect-image samples/app --bom | jq '.local[] | select(.name=="jre") | .me
 {{< /code/copyable >}}
 
 #### Configuring the JVM Version
+
 The following environment variable configures the JVM version at build-time.
+
 * `BP_JVM_VERSION`
-    * Defaults to the latest LTS version at the time of release.
-    * Configures a specific JDK or JRE version.
-    * *Example*: Given `BP_JVM_VERSION=8` or `BP_JVM_VERSION=8.*` the buildpack will install the latest patch releases of the Java 8 JDK and JRE.
+  * Defaults to the latest LTS version at the time of release.
+  * Configures a specific JDK or JRE version.
+  * *Example*: Given `BP_JVM_VERSION=8` or `BP_JVM_VERSION=8.*` the buildpack will install the latest patch releases of the Java 8 JDK and JRE.
 
 ### Runtime JVM Configuration
+
 The Java Buildpack configures the JVM by setting `JAVA_TOOL_OPTIONS` in the JVM environment.
- 
+
 #### Memory Calculator
+
 The Java Buildpack installs a component called the Memory Calculator which will configure JVM memory based on the resources available to the container at runtime. The calculated flags will be appended to `JAVA_TOOL_OPTIONS`.
 
 #### Configuring JVM at Runtime
+
 The runtime JVM can be configured in two ways:
-1. Buildpack-provided runtime components including the Memory Calculator accept semantically named environment variables which are then used to derive `JAVA_TOOL_OPTIONS` flags. Examples include: 
+
+1. Buildpack-provided runtime components including the Memory Calculator accept semantically named environment variables which are then used to derive `JAVA_TOOL_OPTIONS` flags. Examples include:
     * `BPL_JVM_HEAD_ROOM`
     * `BPL_JVM_LOADED_CLASS_COUNT`
     * `BPL_JVM_THREAD_COUNT`
@@ -186,17 +204,53 @@ The runtime JVM can be configured in two ways:
 
 See the [homepage][bp/bellsoft-liberica] for the Bellsoft Liberica Buildpack for a full set of configuration options.
 
+### Using Alternative JVMs
+
+By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implemenations in place of Liberica's JVM.
+
+| JVM                                                         | Buildpack                                                            |
+| ----------------------------------------------------------- | -------------------------------------------------------------------- |
+| [Amazon Corretto](https://aws.amazon.com/corretto/)         | [Paketo Amazon Corretto Buildpack][bp/amazon-corretto]               |
+| [Azul Zulu](https://www.azul.com/downloads/zulu-community/) | [Paketo Azul Zulu Buildpack][bp/azul-zulu]                           |
+| [BellSoft Liberica](https://bell-sw.com/pages/libericajdk/) | [Paketo BellSoft Liberica Buildpack - Default][bp/bellsoft-liberica] |
+| [Eclipse OpenJ9](https://www.eclipse.org/openj9/)           | [Paketo Eclipse OpenJ9 Buildpack][bp/eclipse-openj9]                 |
+| [GraalVM](https://www.graalvm.org/)                         | [Paketo GraalVM Buildpack][bp/graalvm]                               |
+| [SapMachine](https://sap.github.io/SapMachine/)             | [Paketo SapMachine Buildpack][bp/sap-machine]                        |
+
+To use an alternative JVM, you will need to set two `--buildpack` arguments to `pack build`, one for the alternative JVM buildpack you'd like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you're specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.
+
+This example will switch in the Azul Zulu buildpack:
+
+{{< code/copyable >}}
+pack build samples/jar --buildpack gcr.io/paketo-buidpacks/azul-zulu --buildpack paketo-buildpacks/java`
+{{< /code/copyable >}}
+
+There is one drawback to this approach. When using the method above to specify an alternative JVM vendor buildpack, this alternate buildpack ends up running before the CA certs buildpack and therefore traffic from the alternate JVM vendor buildpack won’t trust any additional CA certs. This is not expected to impact many users because JVM buildpacks should reach out to URLs that have a cert signed by a known authority with a CA in the default system truststore.
+
+If you have customized your JVM buildpack to download the JVM from a URL that uses a certificate not signed by a well-known CA, you can workaround this by specifying the CA certs buildpack to run first. This works because while you will end up with the CA certificates buildpack specified twice, the lifecycle is smart enough to drop the second one.
+
+For example:
+
+{{< code/copyable >}}
+pack build samples/jar --buildpack paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buidpacks/azul-zulu --buildpack paketo-buildpacks/java`
+{{< /code/copyable >}}
+
+It does not hurt to use this command for all situations, it is just more verbose and most users can get away without specifying the CA certificates buildpack to be first.
+
 ## Spring Boot Applications
+
 If the application uses Spring Boot the [Spring Boot Buildpack][bp/spring-boot] will enhance the resulting image by adding additional metadata to the image config,
 applying Boot-specific performance optimizations, and enabling runtime auto-configuration.
 
 ### Additional Metadata
+
 The Spring Boot Buildpack adds the following additional image labels:
-   * `org.opencontainers.image.title` - set to the value of `Implementation-Title` from  `MANIFEST.MF`.
-   * `org.opencontainers.image.version` - set to the values of `Implementation-Version` from `MANIFEST.MF`.
-   * `org.springframework.boot.version` - set to the value of `Spring-Boot-Version` from `MANIFEST.MF`.
-   * `org.springframework.cloud.dataflow.spring-configuration-metadata.json` - containing [configuration metadata][spring boot configuration metadata].
-   * `org.springframework.cloud.dataflow.spring-configuration-metadata.json` - containing `dataflow-configuration-metadata.properties`, if present.
+
+* `org.opencontainers.image.title` - set to the value of `Implementation-Title` from  `MANIFEST.MF`.
+* `org.opencontainers.image.version` - set to the values of `Implementation-Version` from `MANIFEST.MF`.
+* `org.springframework.boot.version` - set to the value of `Spring-Boot-Version` from `MANIFEST.MF`.
+* `org.springframework.cloud.dataflow.spring-configuration-metadata.json` - containing [configuration metadata][spring boot configuration metadata].
+* `org.springframework.cloud.dataflow.spring-configuration-metadata.json` - containing `dataflow-configuration-metadata.properties`, if present.
 
 In addition, the buildpack will add an entry with name `dependencies` to the Bill-of-Materials listing the application dependencies.
 
@@ -216,11 +270,13 @@ The Spring Boot Buildpack adds [Spring Cloud Bindings][spring cloud bindings] to
 The Spring Boot Buildpack can apply domain-specific knowledge to optimize the performance of Spring Boot applications. For example, if the buildpack detects that the application is a reactive web application the thread count will be reduced to `50` from a default of `250`.
 
 ## Connecting to an APM
+
 The Java Buildpack supports the following [APM][apm] integrations:
+
 * [Azure Application Insights][azure application insights] - support provided by the [Azure Application Insights Buildpack][bp/azure-application-insights]
 * [Google Stackdriver][google stackdriver] - support provided by the [Google Stackdriver Buildpack][bp/google-stackdriver]
 
-APM integration are enabled with [bindings][bindings]. If a binding of the correct `type` is provided at build-time the corresponding java agent will be contributed to the application image. Connection credentials will be read from the binding at runtime. 
+APM integration are enabled with [bindings][bindings]. If a binding of the correct `type` is provided at build-time the corresponding java agent will be contributed to the application image. Connection credentials will be read from the binding at runtime.
 
 **Example**: Connecting to Azure Application Insights
 
@@ -330,34 +386,39 @@ docker run --rm --entrypoint launcher samples/java echo 'JAVA_TOOL_OPTIONS: $JAV
 Each argument provided to the launcher will be evaluated by the shell prior to execution and the original tokenization will be preserved. Note that, in the example above `'JAVA_TOOL_OPTIONS: $JAVA_TOOL_OPTIONS'` is single quoted so that `$JAVA_TOOL_OPTIONS` is evaluated in the container, rather than by the host shell.
 
 ## Components
+
 The following component buildpacks compose the Java Buildpack. Buildpacks are listed in the order they are executed.
 
-| Buildpack | Required/Optional | Responsibility
-|-----------|----------|---------------
-|[Paketo CA Certificates Buildpack][bp/ca-certificates] | Optional | Adds CA certificates to the system truststore at build and runtime.
-|[Paketo BellSoft Liberica Buildpack][bp/bellsoft-liberica] | **Required**| Provides the JDK and/or JRE.
-|[Paketo Gradle Buildpack][bp/gradle] | Optional | Builds Gradle-based applications from source.
-|[Paketo Leiningen Buildpack][bp/leiningen] | Optional | Builds Leiningen-based applications from source.
-|[Paketo Maven Buildpack][bp/maven] | Optional | Builds Maven-based applications from source.
-|[Paketo SBT Buildpack][bp/sbt] | Optional | Builds SBT-based applications from source.
-|[Paketo Executable JAR Buildpack][bp/executable-jar] | Optional | Contributes a process Type that launches an executable JAR.
-|[Paketo Apache Tomcat Buildpack][bp/apache-tomcat]| Optional| Contributes Apache Tomcat and a process type that launches a WAR with Tomcat.
-|[Paketo DistZip Buildpack][bp/dist-zip]| Optional |  Contributes a process type that launches a DistZip-style application.
-|[Paketo Spring Boot Buildpack][bp/spring-boot]| Optional | Contributes configuration and metadata to Spring Boot applications.
-|[Paketo Procfile Buildpack][bp/procfile]| Optional | Allows the application to define or redefine process types with a [Procfile][procfiles]
-|[Paketo Azure Application Insights Buildpack][bp/azure-application-insights]|Optional | Contributes the Application Insights Agent and configures it to connect to the service.
-|[Paketo Debug Buildpack][bp/debug]| Optional | Configures debugging for JVM applications.
-|[Paketo Google Stackdriver Buildpack][bp/google-stackdriver]| Optional | Contributes Stackdriver agents and configures them to connect to the service.
-|[Paketo JMX Buildpack][bp/jmx]| Optional | Configures JMX for JVM applications.
-|[Paketo Encrypt At Rest Buildpack][bp/encrypt-at-rest]| Optional | Encrypts an application layer and contributes a profile script that decrypts it at launch time.
-|[Paketo Environment Variables Buildpack][bp/environment-variables]| Optional | Contributes arbitrary user-provided environment variables to the image.
-|[Paketo Image Labels Buildpack][bp/image-labels]| Optional | Contributes OCI-specific and arbitrary user-provided labels to the image.
-
+| Buildpack                                                                    | Required/Optional | Responsibility                                                                                  |
+| ---------------------------------------------------------------------------- | ----------------- | ----------------------------------------------------------------------------------------------- |
+| [Paketo CA Certificates Buildpack][bp/ca-certificates]                       | Optional          | Adds CA certificates to the system truststore at build and runtime.                             |
+| [Paketo BellSoft Liberica Buildpack][bp/bellsoft-liberica]                   | **Required**      | Provides the JDK and/or JRE.                                                                    |
+| [Paketo Gradle Buildpack][bp/gradle]                                         | Optional          | Builds Gradle-based applications from source.                                                   |
+| [Paketo Leiningen Buildpack][bp/leiningen]                                   | Optional          | Builds Leiningen-based applications from source.                                                |
+| [Paketo Maven Buildpack][bp/maven]                                           | Optional          | Builds Maven-based applications from source.                                                    |
+| [Paketo SBT Buildpack][bp/sbt]                                               | Optional          | Builds SBT-based applications from source.                                                      |
+| [Paketo Executable JAR Buildpack][bp/executable-jar]                         | Optional          | Contributes a process Type that launches an executable JAR.                                     |
+| [Paketo Apache Tomcat Buildpack][bp/apache-tomcat]                           | Optional          | Contributes Apache Tomcat and a process type that launches a WAR with Tomcat.                   |
+| [Paketo DistZip Buildpack][bp/dist-zip]                                      | Optional          | Contributes a process type that launches a DistZip-style application.                           |
+| [Paketo Spring Boot Buildpack][bp/spring-boot]                               | Optional          | Contributes configuration and metadata to Spring Boot applications.                             |
+| [Paketo Procfile Buildpack][bp/procfile]                                     | Optional          | Allows the application to define or redefine process types with a [Procfile][procfiles]         |
+| [Paketo Azure Application Insights Buildpack][bp/azure-application-insights] | Optional          | Contributes the Application Insights Agent and configures it to connect to the service.         |
+| [Paketo Debug Buildpack][bp/debug]                                           | Optional          | Configures debugging for JVM applications.                                                      |
+| [Paketo Google Stackdriver Buildpack][bp/google-stackdriver]                 | Optional          | Contributes Stackdriver agents and configures them to connect to the service.                   |
+| [Paketo JMX Buildpack][bp/jmx]                                               | Optional          | Configures JMX for JVM applications.                                                            |
+| [Paketo Encrypt At Rest Buildpack][bp/encrypt-at-rest]                       | Optional          | Encrypts an application layer and contributes a profile script that decrypts it at launch time. |
+| [Paketo Environment Variables Buildpack][bp/environment-variables]           | Optional          | Contributes arbitrary user-provided environment variables to the image.                         |
+| [Paketo Image Labels Buildpack][bp/image-labels]                             | Optional          | Contributes OCI-specific and arbitrary user-provided labels to the image.                       |
 
 <!-- buildpacks -->
 [bp/apache-tomcat]:https://github.com/paketo-buildpacks/apache-tomcat
 [bp/azure-application-insights]:https://github.com/paketo-buildpacks/azure-application-insights
 [bp/bellsoft-liberica]:https://github.com/paketo-buildpacks/bellsoft-liberica
+[bp/amazon-corretto]:https://github.com/paketo-buildpacks/amazon-corretto
+[bp/azul-zulu]:https://github.com/paketo-buildpacks/azul-zulu
+[bp/eclipse-openj9]:https://github.com/paketo-buildpacks/eclipse-openj9
+[bp/graalvm]:https://github.com/paketo-buildpacks/graalvm
+[bp/sap-machine]:https://github.com/paketo-buildpacks/sap-machine
 [bp/ca-certificates]:https://github.com/paketo-buildpacks/ca-certificates
 [bp/debug]:https://github.com/paketo-buildpacks/debug
 [bp/dist-zip]:https://github.com/paketo-buildpacks/dist-zip
@@ -367,7 +428,7 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 [bp/google-stackdriver]:https://github.com/paketo-buildpacks/google-stackdriver
 [bp/gradle]:https://github.com/paketo-buildpacks/gradle
 [bp/image-labels]:https://github.com/paketo-buildpacks/image-labels
-[bp/java]:https://github.com/paketo-buildpacks/java]
+[bp/java]:https://github.com/paketo-buildpacks/java
 [bp/jmx]:https://github.com/paketo-buildpacks/jmx
 [bp/leiningen]:https://github.com/paketo-buildpacks/leiningen
 [bp/maven]:https://github.com/paketo-buildpacks/maven
