@@ -289,7 +289,8 @@ also compatible with the Paketo Full builder.</strong></p>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
     <li><a href="#specifying-an-nginx-version">Specifying an NGINX Version</a>
       <ul>
-        <li><a href="#using-buildpackyml">Using buildpack.yml</a></li>
+        <li><a href="#using-bp_nginx_version">Using BP_NGINX_VERSION</a></li>
+        <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
     <li><a href="#configurations">Configurations</a></li>
@@ -317,17 +318,18 @@ within the buildpack.</p>
 <p>Specifying a version of <code>nginx</code> is not required. In the case that it is not
 specified, the buildpack will provide the default version listed in the release
 notes.</p>
-<h3 id="using-buildpackyml">Using buildpack.yml</h3>
-<p>To configure the buildpack to use NGINX v1.17.9 when deploying your app, for example,
-include the values below in your <code>buildpack.yml</code> file:</p>
-<pre class="copyable"><code>nginx:
-  # this allows you to specify a version constraint for the `NGINX` dependency
-  # any valid semver constaints (e.g. 1.* and 1.17.*) are also acceptable
-  #
-  # you can also specify &#34;mainline&#34; or &#34;stable&#34;
-  version: 1.17.9
+<h3 id="using-bp_nginx_version">Using BP_NGINX_VERSION</h3>
+<p>To configure the buildpack to use NGINX v1.19.8 when deploying your app, set the
+following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_NGINX_VERSION=1.19.8</code>) or through a
+<a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
+file:</p>
+<pre class="copyable"><code>BP_NGINX_VERSION=&#34;1.19.8&#34;
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 
+<h3 id="deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</h3>
+<p>Specifying the NGINX version through <code>buildpack.yml</code> configuration will be
+deprecated in NGINX Server Buildpack v1.0.0.  To migrate from using
+<code>buildpack.yml</code> please set the <code>$BP_NGINX_VERSION</code> environment variable.</p>
 <h2 id="configurations">Configurations</h2>
 <p>The NGINX buildpack supports two app configurations:</p>
 <ol>
