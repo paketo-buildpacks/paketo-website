@@ -325,6 +325,10 @@ also compatible with the Paketo Full builder.</strong></p>
         <li><a href="#self-contained-deployment-and-framework-dependent-executables">Self-Contained Deployment and Framework-Dependent Executables</a></li>
       </ul>
     </li>
+    <li><a href="#using-ca-certificates">Using CA Certificates</a></li>
+    <li><a href="#setting-custom-start-processes">Setting Custom Start Processes</a></li>
+    <li><a href="#setting-environment-variables-in-the-app-image">Setting Environment Variables in the App Image</a></li>
+    <li><a href="#adding-custom-labels-to-the-app-image">Adding Custom Labels to the App Image</a></li>
   </ul>
 </nav>
 </div>
@@ -527,6 +531,26 @@ variable.</p>
 <pre class="copyable"><code>./myapp --urls http://0.0.0.0:${PORT:-8080}
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 
+<h2 id="using-ca-certificates">Using CA Certificates</h2>
+<p>.Net Core Buildpack users can provide their own CA certificates and have them
+included in the container root truststore at build-time and runtime by
+following the instructions outlined in the <a href="https://paketo.io/docs/buildpacks/configuration/#ca-certificates">CA
+Certificates</a>
+section of our configuration docs.</p>
+<h2 id="setting-custom-start-processes">Setting Custom Start Processes</h2>
+<p>.Net Core Buildpack users can set custom start processes for their app image by
+following the instructions in the
+<a href="https://paketo.io/docs/buildpacks/configuration/#procfiles">Procfiles</a> section
+of our configuration docs.</p>
+<h2 id="setting-environment-variables-in-the-app-image">Setting Environment Variables in the App Image</h2>
+<p>.Net Core Buildpack users can embed launch-time environment variables in their
+app image by following the documentation for the <a href="https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md">Environment Variables
+Buildpack</a>.</p>
+<h2 id="adding-custom-labels-to-the-app-image">Adding Custom Labels to the App Image</h2>
+<p>.Net Core Buildpack users can add labels to their app image by following the
+instructions in the <a href="https://paketo.io/docs/buildpacks/configuration/#applying-custom-labels">Applying Custom
+Labels</a>
+section of our configuration docs.</p>
 
             
 
