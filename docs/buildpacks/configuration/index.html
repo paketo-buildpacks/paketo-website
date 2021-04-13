@@ -504,7 +504,15 @@ docker run samples/nodejs # should print &#34;hello world&#34;
 </span><span class="se"></span>  --env <span class="nv">SERVICE_BINDING_ROOT</span><span class="o">=</span>/bindings <span class="se">\
 </span><span class="se"></span>  --volume <span class="s2">&#34;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/ca-certficates/binding:/bindings/ca-certificates&#34;</span> <span class="se">\
 </span><span class="se"></span>  samples/ca-certificates &lt;url&gt;
-</code></pre></div><h2 id="applying-custom-labels">Applying Custom Labels</h2>
+</code></pre></div><p><strong>Disabling CA Certificates</strong></p>
+<p>If a language family buildpack contains the Paketo CA Certifcates Buildpack,
+the CA Certificates Buildpack will always pass detection so that certificates
+can be provided dynamically at runtime.</p>
+<p>To opt out of this behavior all together, the <code>BP_ENABLE_RUNTIME_CERT_BINDING</code>
+environment variable can be set to <code>false</code> at build-time. This will disable the
+ability to set certificates at runtime. The CA Certificates Buildpack will then
+only detect if a certificate binding is provided at build-time.</p>
+<h2 id="applying-custom-labels">Applying Custom Labels</h2>
 <p>Paketo users may add labels to the application image using the <a href="https://github.com/paketo-buildpacks/image-labels">Image Labels Buildpack</a>.</p>
 <p>Environment variables prefixed with <code>BP_OCI_</code> can be used to set <a href="https://github.com/opencontainers/image-spec/blob/master/annotations.md#pre-defined-annotation-keys">OCI-specific</a>. For example, if <code>BP_OCI_AUTHORS</code> is set at build-time, the Image Labels Buildpack will add a label to the image with key <code>org.opencontainers.image.authors</code> and value equal to the value of <code>$BP_OCI_AUTHORS</code>.</p>
 <p>Users may contribute arbitrary labels by providing a collection of space-delimited key-value pairs with the <code>BP_IMAGE_LABELS</code> environment variable. Values containing spaces can be quoted.</p>
@@ -539,7 +547,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
 </a>
 
         </div>
-        <p class="docs-lastmod"><strong>Last modified:</strong> April 12, 2021</p>
+        <p class="docs-lastmod"><strong>Last modified:</strong> April 13, 2021</p>
     </div>
 </div>
 
