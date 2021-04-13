@@ -136,6 +136,7 @@ The following component buildpacks compose the Paketo Java Native Image Buildpac
 
 | Buildpack | Required/Optional | Responsibility
 |-----------|----------|---------------
+|[Paketo CA Certificates Buildpack][bp/ca-certificates] | Optional | Adds CA certificates to the system truststore at build and runtime.
 |[Paketo GraalVM Buildpack][bp/graalvm] | **Required**| Provides the GraalVM JDK and Native Image [Substrate VM](https://www.graalvm.org/reference-manual/native-image/SubstrateVM/).
 |[Paketo Gradle Buildpack][bp/gradle] | Optional | Builds Gradle-based applications from source.
 |[Paketo Leiningen Buildpack][bp/leiningen] | Optional | Builds Leiningen-based applications from source.
@@ -149,6 +150,7 @@ The following component buildpacks compose the Paketo Java Native Image Buildpac
 |[Paketo Image Labels Buildpack][bp/image-labels]| Optional | Contributes OCI-specific and arbitrary user-provided labels to the image.
 
 <!-- buildpacks -->
+[bp/ca-certificates]:https://github.com/paketo-buildpacks/ca-certificates
 [bp/graalvm]:https://github.com/paketo-buildpacks/graalvm
 [bp/environment-variables]:https://github.com/paketo-buildpacks/environment-variables
 [bp/executable-jar]:https://github.com/paketo-buildpacks/executable-jar
