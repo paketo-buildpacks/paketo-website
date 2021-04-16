@@ -1,2 +1,2 @@
-github.com/paketo-buildpacks/dotnet-core/docs v0.0.0-20210415215700-2735a532827c h1:96E2lzxm91B10PTDVnl3hJJXkrq23NIRYpsrSu3M8xU=
-github.com/paketo-buildpacks/dotnet-core/docs v0.0.0-20210415215700-2735a532827c/go.mod h1:zhHrJf9s3o4z9Rj/byD69R0YPDOdvDSe+iWjeE2gvI4=
+github.com/paketo-buildpacks/dotnet-core/docs v0.2.0 h1:RLKP4TjomEH0jtXhPGkZCVbdAlKf08pobTSG1BhmBEA=
+github.com/paketo-buildpacks/dotnet-core/docs v0.2.0/go.mod h1:zhHrJf9s3o4z9Rj/byD69R0YPDOdvDSe+iWjeE2gvI4=
