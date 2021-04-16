@@ -298,19 +298,24 @@ also compatible with the Paketo Full builder.</strong></p>
     </li>
     <li><a href="#specifying-runtime-and-aspnet-versions">Specifying Runtime and ASP.Net Versions</a>
       <ul>
-        <li><a href="#using-buildpackyml">Using buildpack.yml</a></li>
+        <li><a href="#using-bp_dotnet_framework_version">Using <code>BP_DOTNET_FRAMEWORK_VERSION</code></a></li>
         <li><a href="#using-runtimeconfigjson">Using runtimeconfig.json</a></li>
         <li><a href="#using-a-project-file">Using a Project file</a></li>
         <li><a href="#net-core-framework-version-selection">.Net Core Framework Version Selection</a></li>
+        <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
     <li><a href="#specifying-an-sdk-version">Specifying an SDK Version</a>
       <ul>
-        <li><a href="#using-buildpackyml-1">Using buildpack.yml</a></li>
-        <li><a href="#using-globaljson">Using global.json</a></li>
+        <li><a href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
-    <li><a href="#specifying-a-custom-project-path">Specifying a Custom Project Path</a></li>
+    <li><a href="#specifying-a-custom-project-path">Specifying a Custom Project Path</a>
+      <ul>
+        <li><a href="#using-bp_dotnet_project_path">Using <code>BP_DOTNET_PROJECT_PATH</code></a></li>
+        <li><a href="#deprecated-using-buildpackyml-2">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
       <ul>
         <li><a href="#dotnet_root">DOTNET_ROOT</a></li>
@@ -366,27 +371,37 @@ they are already included in the SCD artifact.</p>
 <p>The .Net Core Runtime and .Net Core ASP.Net Buildpacks allow you to specify a
 version of the .Net Core Runtime and ASP.Net to use during deployment. This
 version can be specified in several ways including through a
-<code>runtimeconfig.json</code>, MSBuild Project file, or <code>buildpack.yml</code> file. When
-specifying a version of the .Net Core Runtime and ASP.Net, you must choose a
-version that is available within these buildpacks. These versions can be found
-in the <a href="https://github.com/paketo-buildpacks/dotnet-core-runtime/releases">.Net Core Runtime release
+<code>runtimeconfig.json</code>, MSBuild Project file, or build-time environment
+variables. When specifying a version of the .Net Core Runtime and ASP.Net, you
+must choose a version that is available within these buildpacks. These versions
+can be found in the <a href="https://github.com/paketo-buildpacks/dotnet-core-runtime/releases">.Net Core Runtime release
 notes</a> and
 <a href="https://github.com/paketo-buildpacks/dotnet-core-aspnet/releases">.Net Core ASP.Net release
 notes</a>.</p>
 <p>.Net Core ASP.Net will only be included in the build process if your
 application declares its Runtime Framework as either <code>Microsoft.AspNetCore.App</code>
 or <code>Microsoft.AspNetCore.All</code>.</p>
-<h3 id="using-buildpackyml">Using buildpack.yml</h3>
-<p>To configure the buildpack to use .Net Core Runtime and ASP.Net v2.1.14 when
-deploying your app, include the values below in your <code>buildpack.yml</code> file:</p>
-<pre class="copyable"><code>---
-dotnet-framework:
-  version: &#34;2.1.14&#34;
+<h3 id="using-bp_dotnet_framework_version">Using <code>BP_DOTNET_FRAMEWORK_VERSION</code></h3>
+<p>To configure the buildpack to use a certain version of the .Net Core Runtime
+and ASP.Net when deploying your app, set the <code>$BP_DOTNET_FRAMEWORK</code> environment
+variable at build time, either by passing a flag to the
+<a href="https://buildpacks.io/docs/concepts/components/platform/">platform</a> or by
+adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
+<a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/">documentation</a>
+to learn more about <code>project.toml</code> files.</p>
+<p><strong>With a <code>pack build</code> flag</strong>
+<pre class="copyable"><code>pack build myapp --env BP_DOTNET_FRAMEWORK_VERSION=5.0.4
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
-
-<p><strong>Note</strong>: If you include any <code>dotnet-framework.version</code> entry in your
-<code>buildpack.yml</code>, the buildpack <strong>will not</strong> run runtime version roll-forward
-logic. To learn more about roll-forward logic, see the <a href="https://docs.microsoft.com/en-us/dotnet/core/versions/selection#framework-dependent-apps-roll-forward">Microsoft .Net Runtime
+</p>
+<p><strong>In a <code>project.toml</code> file</strong>
+<pre class="copyable"><code>[[ build.env ]]
+  name = &#39;BP_DOTNET_FRAMEWORK_VERSION&#39;
+  value = &#39;5.0.4&#39;
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+</p>
+<p><strong>Note</strong>: If you specify a particular version using the above environment
+variable, the buildpack <strong>will not</strong> run runtime version roll-forward logic. To
+learn more about roll-forward logic, see the <a href="https://docs.microsoft.com/en-us/dotnet/core/versions/selection#framework-dependent-apps-roll-forward">Microsoft .Net Runtime
 documentation</a>.</p>
 <h3 id="using-runtimeconfigjson">Using runtimeconfig.json</h3>
 <p>If you are using a
@@ -436,49 +451,57 @@ has put together for .Net Core Framework. If you would like to know more about
 the policy please refer to this
 <a href="https://docs.microsoft.com/en-us/dotnet/core/versions/selection">documentation</a>
 provided by Microsoft.</p>
+<h3 id="deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</h3>
+<p>Specifying the .Net Core Framework version through <code>buildpack.yml</code>
+configuration will be deprecated in .Net Core Runtime and .Net Core ASPNET
+Buildpacks v1.0.0.  To migrate from using <code>buildpack.yml</code>, please set the
+<code>BP_DOTNET_FRAMEWORK_VERSION</code> environment variable.</p>
 <h2 id="specifying-an-sdk-version">Specifying an SDK Version</h2>
-<p>The .Net Core SDK Buildpack allows you to specify a version of the .Net Core
-SDK to use during deployment. This version is usually derived from the .Net
-Core Runtime version chosen for the application. The .Net Core SDK Buildpack
-maintains a set of SDK versions that are known compatible versions to run with
-any of the set of available .Net Core Runtime versions. When specifying a
-version of the .Net Core SDK, you must choose a version that is available
-within the buildpack. These versions can be found in the <a href="https://github.com/paketo-buildpacks/dotnet-core-sdk/releases">release
-notes</a>.</p>
+<p>By default, the .Net Core SDK Buildpack installs the latest available patch
+version of the SDK that is compatible with the installed .Net Core runtime.
+The available SDK versions for each buildpack release can be found in the
+<a href="https://github.com/paketo-buildpacks/dotnet-core-sdk/releases">release notes</a>.</p>
 <p>However, the .Net Core SDK version can be explicitly set by specifying a
-version in either a <code>buildpack.yml</code> or <code>global.json</code> file.</p>
-<h3 id="using-buildpackyml-1">Using buildpack.yml</h3>
-<p>To configure the buildpack to use .Net Core SDK v2.1.804 when deploying your
-app, include the values below in your <code>buildpack.yml</code> file:</p>
-<pre class="copyable"><code>---
-dotnet-sdk:
-  version: &#34;2.1.804&#34;
-</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
-
-<h3 id="using-globaljson">Using global.json</h3>
-<p>If you are using a
-<a href="https://docs.microsoft.com/en-us/dotnet/core/tools/global-json"><code>global.json</code></a>
-file, you can specify the .Net Core SDK version within that file. To configure
-the buildpack to use .Net Core SDK v2.1.804 when deploying your app, include
-the values below in your <code>global.json</code> file:</p>
-<pre class="copyable"><code>{
-  &#34;sdk&#34;: {
-    &#34;version&#34;: &#34;2.1.804&#34;
-  }
-}
-</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
-
+version in a <code>buildpack.yml</code> file.</p>
+<h3 id="deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</h3>
+<p>Specifying the .Net Core SDK version through <code>buildpack.yml</code> configuration will
+be deprecated in .Net Core SDK Buildpack v1.0.0.</p>
+<p>Because versions of the .NET Core runtime and .NET Core SDK dependencies are so
+tightly coupled, most users should instead use the
+<code>BP_DOTNET_FRAMEWORK_VERSION</code> environment variable to specify which version of
+the .NET Core runtime that the .NET Core Runtime Buildpack should install. The
+.Net Core SDK buildpack will automatically install an SDK version that is
+compatible with the selected .NET Core runtime version.</p>
 <h2 id="specifying-a-custom-project-path">Specifying a Custom Project Path</h2>
 <p>By default, the .Net Core Build Buildpack will consider the root directory of
 your codebase to be the project directory. This directory should contain a C#,
 F#, or Visual Basic Project file. If your project directory is not located at
-the root of your source code, you can override the project directory by
-including the following values in your <code>buildpack.yml</code> file:</p>
-<pre class="copyable"><code>---
-dotnet-build:
-  project-path: &#34;src/asp_web_app&#34;
+the root of your source code you will need to set a custom project path.</p>
+<h3 id="using-bp_dotnet_project_path">Using <code>BP_DOTNET_PROJECT_PATH</code></h3>
+<p>You can specify a project path by setting the <code>$BP_DOTNET_PROJECT_PATH</code>
+environment variable at build time, either by passing a flag to the
+<a href="https://buildpacks.io/docs/concepts/components/platform/">platform</a> or by
+adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
+<a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/">documentation</a>
+to learn more about <code>project.toml</code> files.</p>
+<p><strong>With a <code>pack build</code> flag</strong>
+<pre class="copyable"><code>pack build my-app --env BP_DOTNET_PROJECT_PATH=./src/my-app
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+</p>
+<p><strong>In a <code>project.toml</code> file</strong>
+<pre class="copyable"><code>[[ build.env ]]
+  name = &#39;BP_DOTNET_PROJECT_PATH&#39;
+  value = &#39;./src/my-app&#39;
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 
+See the <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/">Cloud Native Buildpacks
+documentation</a>
+to learn more about <code>project.toml</code> files.</p>
+<h3 id="deprecated-using-buildpackyml-2">Deprecated: Using buildpack.yml</h3>
+<p>Specifying the project path through <code>buildpack.yml</code> configuration will be
+deprecated in Dotnet Publish Buildpack v1.0.0 &amp; Dotnet Execute Buildpack
+v1.0.0. To migrate from using <code>buildpack.yml</code>, please set the
+<code>$BP_DOTNET_PROJECT_PATH</code> environment variable.</p>
 <h2 id="buildpack-set-environment-variables">Buildpack-Set Environment Variables</h2>
 <h3 id="dotnet_root">DOTNET_ROOT</h3>
 <p>The <code>DOTNET_ROOT</code> environment variable specifies the path to the directory where .Net Runtimes and SDKs are installed.</p>
@@ -568,7 +591,7 @@ section of our configuration docs.</p>
 </a>
 
         </div>
-        <p class="docs-lastmod"><strong>Last modified:</strong> April 14, 2021</p>
+        <p class="docs-lastmod"><strong>Last modified:</strong> April 16, 2021</p>
     </div>
 </div>
 
