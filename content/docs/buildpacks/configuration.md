@@ -307,6 +307,32 @@ docker inspect samples/nodejs | jq '.[].Config.Labels["org.opencontainers.image.
 docker inspect samples/nodejs | jq '.[].Config.Labels["io.packeto.example"]' # should print "Adding Custom Labels"
 {{< /code/copyable >}}
 
+## Configuring Locale
+
+By default, an image created using Paketo buildpacks will not have a specific locale set. If you run `locale`, you'll end up with these settings:
+
+```bash
+LANG=
+LANGUAGE=
+LC_CTYPE="POSIX"
+LC_NUMERIC="POSIX"
+LC_TIME="POSIX"
+LC_COLLATE="POSIX"
+LC_MONETARY="POSIX"
+LC_MESSAGES="POSIX"
+LC_PAPER="POSIX"
+LC_NAME="POSIX"
+LC_ADDRESS="POSIX"
+LC_TELEPHONE="POSIX"
+LC_MEASUREMENT="POSIX"
+LC_IDENTIFICATION="POSIX"
+LC_ALL=
+```
+
+If you wish to set a locale, you may do so when you run the image by setting the corresponding environment variable. For example, with Docker one could execute `docker run -e LANG=en_US.utf8 ...` to change the locale.
+
+This isn't always necessary but can impact output from your application. For example if you have an application that writes unicode characters to STDOUT/STDERR and you go to view those, possibly with `docker logs`, they will not display correctly unless you have a locale set that supports unicode, like UTF-8 in the example above.
+
 <!-- buildpacks -->
 [bp/ca-certificates]:https://github.com/paketo-buildpacks/ca-certificates
 [bp/image-labels]:https://github.com/paketo-buildpacks/image-labels
