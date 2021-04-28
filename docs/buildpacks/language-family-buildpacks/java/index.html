@@ -368,7 +368,7 @@ curl -s http://localhost:8080/actuator/health | jq .
 <ul>
 <li><code>BP_&lt;TOOL&gt;_BUILD_ARGUMENTS</code>
 <ul>
-<li><em>Defaults</em> to a tool-specific value (e.g. <code>-Dmaven.test.skip=true package</code> for Maven, <code>--no-daemon -x test build</code> for Gradle). See component buildpack homepage for details.</li>
+<li><em>Defaults</em> to a tool-specific value (e.g. <code>-Dmaven.test.skip=true package</code> for Maven, <code>--no-daemon assemble</code> for Gradle). See component buildpack homepage for details.</li>
 <li>Configures the arguments to pass to the build tool.</li>
 <li><em>Example</em>: Given <code>BP_GRADLE_BUILD_ARGUMENTS=war</code>, the Paketo Gradle Buildpack will execute <code>./gradlew war</code> or <code>gradle war</code> (depending on the presence of the gradle wrapper).</li>
 </ul>
