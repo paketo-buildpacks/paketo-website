@@ -289,6 +289,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </li>
     <li><a href="#ca-certificates">CA Certificates</a></li>
     <li><a href="#applying-custom-labels">Applying Custom Labels</a></li>
+    <li><a href="#configuring-locale">Configuring Locale</a></li>
   </ul>
 </nav>
 </div>
@@ -528,6 +529,25 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;org.opencontainer
 docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.example&#34;]&#39; # should print &#34;Adding Custom Labels&#34;
 </code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
 </p>
+<h2 id="configuring-locale">Configuring Locale</h2>
+<p>By default, an image created using Paketo buildpacks will not have a specific locale set. If you run <code>locale</code>, you&rsquo;ll end up with these settings:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">LANG</span><span class="o">=</span>
+<span class="nv">LANGUAGE</span><span class="o">=</span>
+<span class="nv">LC_CTYPE</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+<span class="nv">LC_NUMERIC</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+<span class="nv">LC_TIME</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+<span class="nv">LC_COLLATE</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+<span class="nv">LC_MONETARY</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+<span class="nv">LC_MESSAGES</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+<span class="nv">LC_PAPER</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+<span class="nv">LC_NAME</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+<span class="nv">LC_ADDRESS</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+<span class="nv">LC_TELEPHONE</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+<span class="nv">LC_MEASUREMENT</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+<span class="nv">LC_IDENTIFICATION</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+<span class="nv">LC_ALL</span><span class="o">=</span>
+</code></pre></div><p>If you wish to set a locale, you may do so when you run the image by setting the corresponding environment variable. For example, with Docker one could execute <code>docker run -e LANG=en_US.utf8 ...</code> to change the locale.</p>
+<p>This isn&rsquo;t always necessary but can impact output from your application. For example if you have an application that writes unicode characters to STDOUT/STDERR and you go to view those, possibly with <code>docker logs</code>, they will not display correctly unless you have a locale set that supports unicode, like UTF-8 in the example above.</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
@@ -547,7 +567,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
 </a>
 
         </div>
-        <p class="docs-lastmod"><strong>Last modified:</strong> April 26, 2021</p>
+        <p class="docs-lastmod"><strong>Last modified:</strong> April 28, 2021</p>
     </div>
 </div>
 
