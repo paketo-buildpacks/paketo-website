@@ -7,6 +7,7 @@ menu:
 ---
 
 # Java Native Image Buildpack
+
 The [Paketo Java Native Image Buildpack][bp/java-native-image] allows users to create an image containing a [GraalVM][graalvm] [native image][graalvm native image] application.
 
 The Java Native Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of it's [components](#components). The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages of the component buildpacks.
@@ -14,6 +15,7 @@ The Java Native Buildpack is a [composite buildpack][composite buildpack] and ea
 {{< table_of_contents >}}
 
 ## About the Examples
+
 All Java Native Image Buildpack examples will use the Paketo [sample applications][samples].
 
 Examples assume that the root of this repository is the working directory:
@@ -36,14 +38,18 @@ curl -s http://localhost:8080/actuator/health | jq .
 {{< /code/copyable >}}
 
 ## Supported Applications
+
 For all native image builds, it is required that:
+
 * `BP_NATIVE_IMAGE` is set at build time.
 
 For Spring Boot applications, it is required that:
+
 * The application declares a dependency on [Spring Native][spring native].
 * The version of [Spring Native][spring native] declared by the application may require a specific version of Spring Boot. See the Spring Native [release notes][spring native releases] for supported Spring Boot versions.
 
 ## Building From Source
+
 The Java Native Image Buildpack supports the same [build tools and configuration options][java/building from source] as the [Java Buildpack][bp/java]. The build must produce an [executable jar][executable jar].
 
 After compiling and packaging, the buildpack will replace provided application source code with the exploded JAR and proceed as described in [Building from an Executable Jar](#building-from-an-executable-jar).
@@ -59,6 +65,7 @@ pack build samples/java-native \
 {{< /code/copyable >}}
 
 ## Building from an Executable JAR
+
 An application developer may build an image from an exploded [executable JAR][executable jar]. Most platforms will automatically extract provided archives.
 
 **Example**: Building a Native image from an Executable JAR
@@ -79,14 +86,14 @@ The resulting application image will be identical to that built in the "Building
 
 The [GraalVM Buildpack][bp/graalvm] will provide the [GraalVM][graalvm] JDK, including the `native-image` utility (the [Native image builder][graalvm native image]), and the [Substrate VM][graalvm substrate vm].
 
-The [Spring Boot Native Image Buildpack][bp/spring-boot-native-image] uses `native-image` to compile the Java bytecode into a standalone executable. The Spring Boot Native Image Buildpack relies on [Spring Native][spring native], a [GraalVM Feature][graalvm feature], to configure the native image build. The application must include Spring Native as a dependency; if it does not the build will fail.
+The [Native Image Buildpack][bp/native-image] uses `native-image` to compile the Java bytecode into a standalone executable. The Native Image Buildpack uses the standard tools for building native images and does not depend on Spring Native support.
 
 **Note**: The `native-image` build is a memory intensive process and may be slow if insufficient memory is provided. From the [prerequisites][spring native prerequisites] in the Spring Native reference docs:
-
 
 > "On Mac and Windows, it is recommended to increase the memory allocated to Docker to at least 8G (and potentially to add more CPUs as well) since native-image compiler is a heavy process. See this [Stackoverflow answer](https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437) for more details. On Linux, Docker uses by default the resources available on the host so no configuration is needed."
 
 ### Inspecting the JVM Version
+
 The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.
 
 **Example** Inspecting the JRE Version
@@ -97,14 +104,33 @@ pack inspect-image samples/java-native --bom | jq '.local[] | select(.name=="nat
 {{< /code/copyable >}}
 
 ### Configuring the JVM Version
-The following environment variable configures the JVM version at build-time.
-* `BP_JVM_VERSION`
-    * Defaults to the latest LTS version at the time of release.
-    * Configures a specific JVM version.
-    * *Example*: Given `BP_JVM_VERSION=8` or `BP_JVM_VERSION=8.*` the buildpack will install the latest patch releases of the Java 8 JDK and JRE.
 
+The following environment variable configures the JVM version at build-time.
+
+* `BP_JVM_VERSION`
+  * Defaults to the latest LTS version at the time of release.
+  * Configures a specific JVM version.
+  * *Example*: Given `BP_JVM_VERSION=8` or `BP_JVM_VERSION=8.*` the buildpack will install the latest patch releases of the Java 8 JDK and JRE.
+
+### Configuring the GraalVM Version
+
+Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a sepecific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.
+
+The following table documents the versions available.
+
+| GraalVM Version | Java Native Image Buildpack Version |
+| --------------- | ----------------------------------- |
+| 21.1            | 5.4.0                               |
+| 21.0            | 5.3.0                               |
+
+For example, to select GraalVM 21.0:
+
+{{< code/copyable >}}
+pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/java-native-image:5.3.0
+{{< /code/copyable >}}
 
 ## Spring Boot Applications
+
 The Java Native Image Buildpack contains the [Spring Boot Buildpack][bp/spring-boot] and provides the same Spring Boot [features][java/spring boot applications] as the Java Buildpack.
 
 ## Selecting a Process
@@ -132,21 +158,22 @@ curl -s http://localhost:8081/actuator/health
 {{< /code/copyable >}}
 
 ## Components
+
 The following component buildpacks compose the Paketo Java Native Image Buildpack.
 
-| Buildpack | Required/Optional | Responsibility
-|-----------|----------|---------------
-|[Paketo GraalVM Buildpack][bp/graalvm] | **Required**| Provides the GraalVM JDK and Native Image [Substrate VM](https://www.graalvm.org/reference-manual/native-image/SubstrateVM/).
-|[Paketo Gradle Buildpack][bp/gradle] | Optional | Builds Gradle-based applications from source.
-|[Paketo Leiningen Buildpack][bp/leiningen] | Optional | Builds Leiningen-based applications from source.
-|[Paketo Maven Buildpack][bp/maven] | Optional | Builds Maven-based applications from source.
-|[Paketo SBT Buildpack][bp/sbt] | Optional | Builds SBT-based applications from source.
-|[Paketo Executable JAR Buildpack][bp/executable-jar] | Optional | Contributes a process Type that launches an executable JAR.
-|[Paketo Spring Boot Buildpack][bp/spring-boot]| Optional | Contributes configuration and metadata to Spring Boot applications.
-|[Paketo Native Image Buildpack][bp/native-image]| **Required** | Creates a native image from a JVM application.
-|[Paketo Procfile Buildpack][bp/procfile]| Optional | Allows the application to define or redefine process types with a [Procfile][procfiles]
-|[Paketo Environment Variables Buildpack][bp/environment-variables]| Optional | Contributes arbitrary user-provided environment variables to the image.
-|[Paketo Image Labels Buildpack][bp/image-labels]| Optional | Contributes OCI-specific and arbitrary user-provided labels to the image.
+| Buildpack                                                          | Required/Optional | Responsibility                                                                                                                |
+| ------------------------------------------------------------------ | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| [Paketo GraalVM Buildpack][bp/graalvm]                             | **Required**      | Provides the GraalVM JDK and Native Image [Substrate VM](https://www.graalvm.org/reference-manual/native-image/SubstrateVM/). |
+| [Paketo Gradle Buildpack][bp/gradle]                               | Optional          | Builds Gradle-based applications from source.                                                                                 |
+| [Paketo Leiningen Buildpack][bp/leiningen]                         | Optional          | Builds Leiningen-based applications from source.                                                                              |
+| [Paketo Maven Buildpack][bp/maven]                                 | Optional          | Builds Maven-based applications from source.                                                                                  |
+| [Paketo SBT Buildpack][bp/sbt]                                     | Optional          | Builds SBT-based applications from source.                                                                                    |
+| [Paketo Executable JAR Buildpack][bp/executable-jar]               | Optional          | Contributes a process Type that launches an executable JAR.                                                                   |
+| [Paketo Spring Boot Buildpack][bp/spring-boot]                     | Optional          | Contributes configuration and metadata to Spring Boot applications.                                                           |
+| [Paketo Native Image Buildpack][bp/native-image]                   | **Required**      | Creates a native image from a JVM application.                                                                                |
+| [Paketo Procfile Buildpack][bp/procfile]                           | Optional          | Allows the application to define or redefine process types with a [Procfile][procfiles]                                       |
+| [Paketo Environment Variables Buildpack][bp/environment-variables] | Optional          | Contributes arbitrary user-provided environment variables to the image.                                                       |
+| [Paketo Image Labels Buildpack][bp/image-labels]                   | Optional          | Contributes OCI-specific and arbitrary user-provided labels to the image.                                                     |
 
 <!-- buildpacks -->
 [bp/graalvm]:https://github.com/paketo-buildpacks/graalvm
