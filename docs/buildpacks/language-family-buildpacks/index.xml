@@ -60,7 +60,7 @@ Table of Contents  About the Examples Building from Source  Configuring the Buil
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/java-native-image/</guid>
       <description>Java Native Image Buildpack The Paketo Java Native Image Buildpack allows users to create an image containing a GraalVM native image application.
 The Java Native Buildpack is a composite buildpack and each step in a build is handled by one of it&amp;rsquo;s components. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages of the component buildpacks.
-Table of Contents  About the Examples Supported Applications Building From Source Building from an Executable JAR About the Native Image  Inspecting the JVM Version Configuring the JVM Version   Spring Boot Applications Selecting a Process  Providing Additional Arguments   Components    About the Examples All Java Native Image Buildpack examples will use the Paketo sample applications.</description>
+Table of Contents  About the Examples Supported Applications Building From Source Building from an Executable JAR About the Native Image  Inspecting the JVM Version Configuring the JVM Version Configuring the GraalVM Version   Spring Boot Applications Selecting a Process  Providing Additional Arguments   Components    About the Examples All Java Native Image Buildpack examples will use the Paketo sample applications.</description>
     </item>
     
     <item>

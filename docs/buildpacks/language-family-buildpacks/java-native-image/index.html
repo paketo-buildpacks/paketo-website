@@ -282,6 +282,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul>
         <li><a href="#inspecting-the-jvm-version">Inspecting the JVM Version</a></li>
         <li><a href="#configuring-the-jvm-version">Configuring the JVM Version</a></li>
+        <li><a href="#configuring-the-graalvm-version">Configuring the GraalVM Version</a></li>
       </ul>
     </li>
     <li><a href="#spring-boot-applications">Spring Boot Applications</a></li>
@@ -345,7 +346,7 @@ pack build samples/java-native \
 <p>The resulting application image will be identical to that built in the &ldquo;Building a Native image with Maven&rdquo; example.</p>
 <h2 id="about-the-native-image">About the Native Image</h2>
 <p>The <a href="https://github.com/paketo-buildpacks/graalvm">GraalVM Buildpack</a> will provide the <a href="https://www.graalvm.org/docs/introduction/">GraalVM</a> JDK, including the <code>native-image</code> utility (the <a href="https://www.graalvm.org/reference-manual/native-image/">Native image builder</a>), and the <a href="https://www.graalvm.org/reference-manual/native-image/SubstrateVM/">Substrate VM</a>.</p>
-<p>The [Spring Boot Native Image Buildpack][bp/spring-boot-native-image] uses <code>native-image</code> to compile the Java bytecode into a standalone executable. The Spring Boot Native Image Buildpack relies on <a href="https://github.com/spring-projects-experimental/spring-native">Spring Native</a>, a <a href="https://www.graalvm.org/sdk/javadoc/org/graalvm/nativeimage/hosted/Feature.html">GraalVM Feature</a>, to configure the native image build. The application must include Spring Native as a dependency; if it does not the build will fail.</p>
+<p>The <a href="https://github.com/paketo-buildpacks/spring-boot-native-image">Native Image Buildpack</a> uses <code>native-image</code> to compile the Java bytecode into a standalone executable. The Native Image Buildpack uses the standard tools for building native images and does not depend on Spring Native support.</p>
 <p><strong>Note</strong>: The <code>native-image</code> build is a memory intensive process and may be slow if insufficient memory is provided. From the <a href="https://repo.spring.io/milestone/org/springframework/experimental/spring-graalvm-native-docs/0.8.5/spring-graalvm-native-docs-0.8.5.zip!/reference/index.html#_prerequisites">prerequisites</a> in the Spring Native reference docs:</p>
 <blockquote>
 <p>&ldquo;On Mac and Windows, it is recommended to increase the memory allocated to Docker to at least 8G (and potentially to add more CPUs as well) since native-image compiler is a heavy process. See this <a href="https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437">Stackoverflow answer</a> for more details. On Linux, Docker uses by default the resources available on the host so no configuration is needed.&rdquo;</p>
@@ -368,6 +369,31 @@ pack build samples/java-native \
 </ul>
 </li>
 </ul>
+<h3 id="configuring-the-graalvm-version">Configuring the GraalVM Version</h3>
+<p>Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a sepecific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.</p>
+<p>The following table documents the versions available.</p>
+<table>
+<thead>
+<tr>
+<th>GraalVM Version</th>
+<th>Java Native Image Buildpack Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>21.1</td>
+<td>5.4.0</td>
+</tr>
+<tr>
+<td>21.0</td>
+<td>5.3.0</td>
+</tr>
+</tbody>
+</table>
+<p>For example, to select GraalVM 21.0:</p>
+<pre class="copyable"><code>pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/java-native-image:5.3.0
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
 <h2 id="spring-boot-applications">Spring Boot Applications</h2>
 <p>The Java Native Image Buildpack contains the <a href="https://github.com/paketo-buildpacks/spring-boot">Spring Boot Buildpack</a> and provides the same Spring Boot <a href="https://paketo.io/docs/buildpacks/language-family-buildpacks/java/#spring-boot-applications">features</a> as the Java Buildpack.</p>
 <h2 id="selecting-a-process">Selecting a Process</h2>
