@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "paketo-staging",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
