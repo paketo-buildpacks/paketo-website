@@ -2,14 +2,27 @@ on:
   push:
     branch:
       - v2
+  workflow_dispatch: {}
+
 name: Deploy Hugo to Firebase
+
 jobs:
-  build:
+  build_and_deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
       with:
         submodules: false
-    - uses: ryank90/action-hugo-firebase-deploy@master
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
       with:
-        firebase-token: ${{ secrets.FIREBASE_TOKEN }}
+        hugo-version: '0.83.1'
+        extended: true
+    - name: Build
+      run: hugo
+    - name: Deploy
+      uses: w9jds/firebase-action@master
+      with:
+        args: deploy --message \"${{ github.event.head_commit.message }}\"
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
