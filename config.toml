@@ -4,6 +4,8 @@ title = "Paketo Buildpacks"
 pygmentsUseClasses = true
 pygmentsCodefences = true
 
+enableRobotsTXT = true
+
 # path name excluded from documentation menu
 menu_exclusion = [
     "contribute",
