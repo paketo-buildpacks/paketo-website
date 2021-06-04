@@ -1,0 +1,15 @@
+on:
+  push:
+    branch:
+      - v2
+name: Deploy Hugo to Firebase
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: false
+    - uses: ryank90/action-hugo-firebase-deploy@master
+      with:
+        firebase-token: ${{ secrets.FIREBASE_TOKEN }}
