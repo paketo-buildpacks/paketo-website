@@ -1,6 +1,6 @@
 on:
   push:
-    branch:
+    branches:
       - v2
   workflow_dispatch: {}
 
