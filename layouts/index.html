@@ -2,28 +2,435 @@
 <html>
 
 <head>
-    {{ partial "head.html" . }}
+<style>
+    /* Reset elements */
+    @charset "utf-8";
+    html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+    pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small,
+    strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label,
+    legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside,
+    canvas, details, figcaption, figure, footer, header, hgroup, menu, nav,
+    section, summary, time, mark, audio, video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        background: transparent;
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+
+        font-family: Avenir Next;
+        font-style: normal;
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    /* homepage-sections */
+
+    .homepage-section {
+        padding-top: 20px;
+        padding: 28px;
+        padding-bottom: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .homepage-section--dark {
+        background: #4B5259;
+    }
+
+    .homepage-section__header {
+        min-height: 247px;
+    }
+
+    .homepage-section__languages {
+        align-items: center;
+    }
+
+    .homepage-section__what-are-buildpacks {
+        min-height: 474px;
+    }
+
+    .homepage-section__how-it-works {
+        min-height: 712px;
+    }
+
+    .homepage-section__features {
+        min-height: 946px;
+    }
+
+    .homepage-section__contribute {
+        min-height: 712px;
+    }
+
+    .homepage-section__footer {
+        min-height: 360px;
+    }
+
+    .languages{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-bottom: 80px;
+    }
+
+    .languages__item {
+        height: 40px;
+        margin-right: 10px;
+    }
+
+    .languages__item__logo {
+        height: 100%;
+    }
+
+    .footer-text__social {
+        font-family: Metropolis;
+        font-size: 22px;
+        line-height: 24px;
+        margin-bottom: 28px;
+    }
+
+    .footer-text--small {
+        font-family: Metropolis;
+        font-size: 12px;
+        line-height: 24px;
+        font-weight: 100;
+    }
+
+    /* content style */
+    .font--default {
+        font-family: Avenir Next;
+    }
+
+    .text__logo {
+        margin-bottom: 75px;
+        font-weight: 100;
+        font-size: 36px;
+    }
+
+    .text__tagline {
+        margin-bottom: 20px;
+    }
+
+    .text__tagline__item {
+        font-size: 20px;
+        line-height: 28px;
+        font-weight: 600;
+    }
+
+    .text__section-header {
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 600;
+        margin-bottom: 32px;     
+    }
+
+    .text--light {
+        color: #ffffff;
+    }
+
+    .text--dark {
+        color: #133D47;
+    }
+
+    .text--shadow {
+        text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .text--600 {
+        font-weight: 600;
+    }
+
+    .text--500 {
+        font-weight: 500;
+    }
+
+    .text-line-height--24 {
+        line-height: 24px;
+    }
+
+    .body-mobile {
+        font-weight: 400;
+        font-size: 1em;
+        line-height: 24px;
+    }
+    .button {
+        display: flex;
+        background: linear-gradient(194.93deg, #9DDCB2 10.52%, #0ABBB0 97.9%);
+        box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        text-decoration: none;
+        height: 70px;
+        width: 272px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .homepage-featureset__features-list {
+        padding-left: 25px;
+
+    }
+
+    .features-list__element {
+        margin-bottom: 10px;
+    }
+
+    .homepage-featureset {
+        margin-bottom: 70px;
+    }
+
+    .homepage-featureset__image {
+        margin-top:10px;
+        width: 100%;
+    }
+
+    .homepage-featureset__imageset {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .homepage-featureset__imageset__image {
+        padding-top: 15px;
+        width: 28%;
+    }
+
+    .homepage-featureset__caption {
+
+    }
+
+    /* navigation */
+
+    .right {
+	    float: right !important;
+    }
+
+    .nav {
+        background: #fff !important;
+		width: 250px;
+		min-height: 548;
+		position: fixed;
+		right: 0;
+		top: 0;
+		padding-top: 80px;
+		box-shadow: 0 0 42px rgba(0, 0, 0, 0.1);
+		transform: translateX(100%);
+		transition: transform 0.3s cubic-bezier(.22, .61, .36, 1);
+    }
+    .nav--showing {
+        display: flex;
+        flex-direction: column;
+		transform: translateX(0%);
+
+    }
+
+    .nav__item {
+        margin-left: 20px;
+        font-family: Avenir Next;
+        text-decoration: none;
+        color: #000000;
+        font-size: 1.3em;
+        position: relative;
+        z-index: 1;
+        line-height: 1em;
+        display: block;
+        padding: 10px;
+        margin-bottom: 10px;
+        margin-right: 20px;
+    }
+
+    .nav-opener {
+        display: block;
+        position: fixed;
+        backface-visibility: hidden;
+        top: 20px;
+        right: 21px;
+        font-size: 1.2em;
+        width: 35px;
+        height: 26.33px;
+        cursor: pointer;
+        z-index: 8;
+    }
+
+    .nav-opener__bar {
+        background: #9AA3A4;
+        border-radius: 6.5px;
+        width: 100%;
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        transition: all 0.2s ease;
+    }
+
+    .nav-opener__bar-top, .nav-opener__bar-bottom {
+        transform-origin: left
+    }
+    .nav-opener__bar-top {
+        left: 0%;
+        right: 0%;
+        top: 0%;
+        bottom: 83.54%;
+    }
+
+    .nav-opener__bar--opened .nav-opener__bar-top {
+        transform: rotate(45deg);
+        background: #000000;
+        width: 35px;
+        height: 4.33px;
+        top: 0.26px;
+    }
+
+    .nav-opener__bar-bottom {
+        left: 0%;
+        right: 0%;
+        top: 83.54%;
+        bottom: 0%;
+    }
+
+    .nav-opener__bar--opened .nav-opener__bar-bottom {
+        transform: rotate(-45deg);
+        background: #000000;
+        width: 35px;
+        height: 4.33px;
+        top: 25.01px;
+    }
+
+    .nav-opener__bar-middle {
+        left: 0%;
+        right: 0%;
+        top: 41.77%;
+        bottom: 41.77%;
+    }
+    .nav-opener__bar--opened .nav-opener__bar-middle {
+        width: 0;
+        left: 8px;
+    }
+
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    {{ partial "header.html" . }}
-
+    <header class="homepage-section homepage-section__header homepage-section--dark">
+        <h1 class="text__logo text--light font--default">Paketo</h1>
+        <div class="right">
+            <div class="nav-opener">
+                <span class="nav-opener__bar nav-opener__bar-top"></span>
+                <span class="nav-opener__bar nav-opener__bar-middle"></span>
+                <span class="nav-opener__bar nav-opener__bar-bottom"></span>
+            </div>
+            <nav class="nav">
+                <div class="right">
+                    <a class="nav__item" href="/docs/">docs</a>
+                    <a class="nav__item" href="/contribute/">contribute</a>
+                    <a class="nav__item" target="_blank" href="https://blog.paketo.io">blog</a>
+                    <a class="nav__item" target="_blank" href="https://github.com/paketo-buildpacks">github</a>
+                </div>
+            </nav>
+        </div>
+        <div class="text__tagline">
+            <h2 class="text__tagline__item text--light font--default text--shadow">Your app,</h2>
+            <h2 class="text__tagline__item text--light font--default text--shadow">in your favorite language,</h2>
+            <h2 class="text__tagline__item text--light font--default text--shadow"> ready to run in the cloud</h2>
+        </div>
+    </header>
     <div class="content">
+        <section class="homepage-section homepage-section__languages">
+                    <div class="languages">
+                        {{ with .Site.Params.hero}}
+                        {{ range .logos }}
+                            {{ range .item }}
+                                <a class="languages__item" href="docs/buildpacks/language-family-buildpacks/{{ .docs }}">
+                                  <img class="languages__item__logo" src="/v2/images/{{ .img  }}" alt="{{ .alt }}">
+                                </a>
+                            {{ end }}
+                        {{ end }}
+                        {{ end }}
+                    </div>
+            <a class="button text--shadow text--light" href="docs">Get Started</a>
+        </section>
 
-        {{ partial "hero.html" . }}
-        {{ partial "what-are.html" . }}
-        {{ partial "why-paketo.html" . }}
-        {{ partial "get-started.html" . }}
+        <section class="homepage-section homepage-section__what-are-buildpacks homepage-section--dark">
+            <h1 class="text__section-header text--light text--shadow">What are Paketo Buildpacks?</h1>
+            <div class="homepage-featureset">
+                <ul class="text--light body-mobile homepage-featureset__features-list">
+                    <li class="features-list__element">
+                        Suspendisse condimentum maximus metus eu euismod. Donec nec porta mi. Vestibulum mattis, ipsum a ultrices.
+                    </li>
+                    <li class="features-list__element">
+                        Phasellus nisl massa, interdum id aliquet ac, rhoncus vitae odio. Etiam quis purus vel turpis.
+                    </li>
+                    <li class="features-list__element">
+                        Quisque feugiat orci at lorem maximus, sit amet vestibulum lacus iaculis. Nunc id metus nulla.
+                    </li>
+                </ul>
+                <img class="homepage-featureset__image" src="/v2/images/buildpack-equation.svg" alt="Buildpacks transform your source code into OCI images">
+            </div>
+            <div class="homepage-featureset">
+                <div class="homepage-featureset__caption text--light">
+                    Duis turpis risus, pulvinar sed ante eget, dignissim semper lectus. Donec volutpat neque risus, tincidunt.
+                </div>
+                <div class="homepage-featureset__imageset">
+                    <img class="homepage-featureset__imageset__image" src="/v2/images/icon-cloud.svg" alt="Cloud platforms">
+                    <img class="homepage-featureset__imageset__image" src="/v2/images/docker-logo.svg" alt="Docker">
+                    <img class="homepage-featureset__imageset__image" src="/v2/images/kubernetes-logo.svg" alt="Kubernetes">
+                </div>
+            </div>
+            <div class="homepage-featureset">
+                <div class="homepage-featureset__caption text--light">
+                    Cras accumsan iaculis elit, eget accumsan leo commodo nec. Nullam vitae sapien semper leo elementum.
+                </div>
+                <div class="homepage-featureset__imageset">
+                    <img class="homepage-featureset__imageset__image" src="/v2/images/jenkins-logo.png" alt="Jenkins">
+                    <img class="homepage-featureset__imageset__image" src="/v2/images/circleCI-logo.png" alt="CircleCI">
+                    <img class="homepage-featureset__imageset__image" src="/v2/images/azure-devops-logo.png" alt="Azure DevOps">
+                </div>
+            </div>
+            <div class="homepage-featureset">
+                <div class="homepage-featureset__caption text--light">
+                    Cras accumsan iaculis elit, eget accumsan leo commodo nec. Nullam vitae sapien semper leo elementum.
+                </div>
+            </div>
 
+
+            
+        </section>
+        <section class="homepage-section homepage-section__how-it-works">
+            <h1 class="text__section-header text--dark">Here's how it works</h1>
+
+            ...FANCY ANIMATION HERE...
+        </section>
+        <section class="homepage-section homepage-section__features homepage-section--dark">
+            <h1 class="text__section-header text--light text--shadow">Features</h1>
+
+        </section>
+        <section class="homepage-section homepage-section__contribute">
+            <h1 class="text__section-header text--dark">Ready to contribute?</h1>
+
+            <h1 class="text__section-header">About the Paketo project</h1>
+            <p>Our buildpacks are based on applying the learnings from over 10 years
+               of building and maintaining Cloud Foundry buildpacks
+            </p>
+            <p>
+                Community-driven project Staffed for the long term with full-time team members from VMware Neutral governance through the CFF - get involved! (link)
+            </p>
+        </section>
+
+        <footer class="homepage-section homepage-section__footer homepage-section--dark text--light">
+            <p class="footer-text__social">Twitter</p>
+            <p class="footer-text__social">Slack</p>
+            <p class="footer-text__social">GitHub</p>
+            <p class="footer-text--small">Paketo Buildpacks is a Cloud Foundry Project</p>
+        </footer>
     </div>
-
-    {{ partial "footer.html" .}}
-
 </body>
-
+<script src="/js/plugins.js"></script>
+<script src="/v2/js/homepage.js"></script>
 </html>
