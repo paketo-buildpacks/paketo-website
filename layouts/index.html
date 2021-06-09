@@ -69,7 +69,7 @@
     }
 
     .homepage-section__how-it-works {
-        min-height: 712px;
+
     }
 
     .homepage-section__features {
@@ -209,6 +209,18 @@
 
     .homepage-featureset__caption {
 
+    }
+
+    .how-it-works-content{
+        width: 100%;
+        max-width: 570px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .how-it-works-content__animation{
+        padding-bottom: 21px;
     }
 
     /* navigation */
@@ -406,14 +418,14 @@
                     Cras accumsan iaculis elit, eget accumsan leo commodo nec. Nullam vitae sapien semper leo elementum.
                 </div>
             </div>
-
-
-            
         </section>
         <section class="homepage-section homepage-section__how-it-works">
             <h1 class="text__section-header text--dark">Here's how it works</h1>
-
-            ...FANCY ANIMATION HERE...
+            <div class="how-it-works-content">
+                {{ partial "how-it-works-animation.html" . }}
+                <p class="text--dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae sem hendrerit, imperdiet magna vitae, pulvinar lorem.
+                </p>
+            </div>
         </section>
         <section class="homepage-section homepage-section__features homepage-section--dark">
             <h1 class="text__section-header text--light text--shadow">Features</h1>
