@@ -100,6 +100,49 @@
         height: 100%;
     }
 
+    .feature {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+
+    .feature__tagline {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .patch-icon {
+        width: 18.5%;
+        max-width: 56px;
+        margin-right: 12px;
+    }
+
+    .bolt-icon {
+        width: 6.4%;
+        max-width: 30px;
+        margin-right: 26px;
+    }
+
+    .magglass-icon {
+        width: 17%;
+        max-width: 50px;
+        margin-right: 12px;
+    }
+
+    .vine-icon {
+        width: 9%;
+        max-width: 37px;
+        margin-right: 12px;
+    }
+
+    .sliders-icon {
+        width: 9%;
+        max-width: 37px;
+        margin-right: 12px;
+    }
+
     .footer-text__social {
         font-family: Metropolis;
         font-size: 22px;
@@ -160,6 +203,18 @@
         line-height: 24px;
     }
 
+    .text-line-height--22 {
+        line-height: 22px;
+    }
+
+    .text-size--16 {
+        font-size: 16px;
+    }
+
+    .text-size--14 {
+        font-size: 14px;
+    }
+
     .body-mobile {
         font-weight: 400;
         font-size: 1em;
@@ -177,38 +232,33 @@
         align-items: center;
     }
 
-    .homepage-featureset__features-list {
+    .whatare-list {
         padding-left: 25px;
-
     }
 
-    .features-list__element {
+    .whatare-list__element {
         margin-bottom: 10px;
     }
 
-    .homepage-featureset {
+    .what-are-buildpacks-element {
         margin-bottom: 70px;
     }
 
-    .homepage-featureset__image {
+    .what-are-buildpacks-element__image {
         margin-top:10px;
         width: 100%;
     }
 
-    .homepage-featureset__imageset {
+    .what-are-buildpacks-element__imageset {
         margin-top: 10px;
         width: 100%;
         display: flex;
         justify-content: space-around;
     }
 
-    .homepage-featureset__imageset__image {
+    .what-are-buildpacks-element__imageset__image {
         padding-top: 15px;
         width: 28%;
-    }
-
-    .homepage-featureset__caption {
-
     }
 
     .how-it-works-content{
@@ -379,42 +429,42 @@
 
         <section class="homepage-section homepage-section__what-are-buildpacks homepage-section--dark">
             <h1 class="text__section-header text--light text--shadow">What are Paketo Buildpacks?</h1>
-            <div class="homepage-featureset">
-                <ul class="text--light body-mobile homepage-featureset__features-list">
-                    <li class="features-list__element">
+            <div class="what-are-buildpacks-element">
+                <ul class="text--light body-mobile whatare-list">
+                    <li class="whatare-list__element">
                         Suspendisse condimentum maximus metus eu euismod. Donec nec porta mi. Vestibulum mattis, ipsum a ultrices.
                     </li>
-                    <li class="features-list__element">
+                    <li class="whatare-list__element">
                         Phasellus nisl massa, interdum id aliquet ac, rhoncus vitae odio. Etiam quis purus vel turpis.
                     </li>
-                    <li class="features-list__element">
+                    <li class="whatare-list__element">
                         Quisque feugiat orci at lorem maximus, sit amet vestibulum lacus iaculis. Nunc id metus nulla.
                     </li>
                 </ul>
-                <img class="homepage-featureset__image" src="/v2/images/buildpack-equation.svg" alt="Buildpacks transform your source code into OCI images">
+                <img class="what-are-buildpacks-element__image" src="/v2/images/buildpack-equation.svg" alt="Buildpacks transform your source code into OCI images">
             </div>
-            <div class="homepage-featureset">
-                <div class="homepage-featureset__caption text--light">
+            <div class="what-are-buildpacks-element">
+                <div class="text--light">
                     Duis turpis risus, pulvinar sed ante eget, dignissim semper lectus. Donec volutpat neque risus, tincidunt.
                 </div>
-                <div class="homepage-featureset__imageset">
-                    <img class="homepage-featureset__imageset__image" src="/v2/images/icon-cloud.svg" alt="Cloud platforms">
-                    <img class="homepage-featureset__imageset__image" src="/v2/images/docker-logo.svg" alt="Docker">
-                    <img class="homepage-featureset__imageset__image" src="/v2/images/kubernetes-logo.svg" alt="Kubernetes">
+                <div class="what-are-buildpacks-element__imageset">
+                    <img class="what-are-buildpacks-element__imageset__image" src="/v2/images/icon-cloud.svg" alt="Cloud platforms">
+                    <img class="what-are-buildpacks-element__imageset__image" src="/v2/images/docker-logo.svg" alt="Docker">
+                    <img class="what-are-buildpacks-element__imageset__image" src="/v2/images/kubernetes-logo.svg" alt="Kubernetes">
                 </div>
             </div>
-            <div class="homepage-featureset">
-                <div class="homepage-featureset__caption text--light">
+            <div class="what-are-buildpacks-element">
+                <div class="text--light">
                     Cras accumsan iaculis elit, eget accumsan leo commodo nec. Nullam vitae sapien semper leo elementum.
                 </div>
-                <div class="homepage-featureset__imageset">
-                    <img class="homepage-featureset__imageset__image" src="/v2/images/jenkins-logo.png" alt="Jenkins">
-                    <img class="homepage-featureset__imageset__image" src="/v2/images/circleCI-logo.png" alt="CircleCI">
-                    <img class="homepage-featureset__imageset__image" src="/v2/images/azure-devops-logo.png" alt="Azure DevOps">
+                <div class="what-are-buildpacks-element__imageset">
+                    <img class="what-are-buildpacks-element__imageset__image" src="/v2/images/jenkins-logo.png" alt="Jenkins">
+                    <img class="what-are-buildpacks-element__imageset__image" src="/v2/images/circleCI-logo.png" alt="CircleCI">
+                    <img class="what-are-buildpacks-element__imageset__image" src="/v2/images/azure-devops-logo.png" alt="Azure DevOps">
                 </div>
             </div>
-            <div class="homepage-featureset">
-                <div class="homepage-featureset__caption text--light">
+            <div class="what-are-buildpacks-element">
+                <div class="text--light">
                     Cras accumsan iaculis elit, eget accumsan leo commodo nec. Nullam vitae sapien semper leo elementum.
                 </div>
             </div>
@@ -429,7 +479,51 @@
         </section>
         <section class="homepage-section homepage-section__features homepage-section--dark">
             <h1 class="text__section-header text--light text--shadow">Features</h1>
-
+            <div class="feature">
+                <div class="feature__tagline">
+                    <img class="patch-icon" src="/v2/images/icon-patch.svg" alt="A patch icon">
+                    <div class="text--light text--500 text-line-height--22 text-size--16">Nullam molestie elit id ex dictum, ut eleifend.</div>
+                </div>
+                <div class="text--light text--500 text-size--14 text-line-height--24">
+                    Suspendisse non maximus purus, eu tincidunt erat. Proin pretium neque et ipsum tempus vestibulum.
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature__tagline">
+                    <img class="bolt-icon" src="/v2/images/icon-bolt.svg" alt="A lightning bolt icon">
+                    <div class="text--light text--500 text-line-height--22 text-size--16">Sed varius suscipit venenatis. Morbi venenatis gravida.</div>
+                </div>
+                <div class="text--light text--500 text-size--14 text-line-height--24">
+                    Nam ullamcorper felis arcu, non rutrum dolor sagittis et. Quisque mauris erat, sollicitudin ac.
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature__tagline">
+                    <img class="magglass-icon" src="/v2/images/icon-magglass.svg" alt="A magnifying glass icon">
+                    <div class="text--light text--500 text-line-height--22 text-size--16">Integer hendrerit tellus eu tincidunt porttitor.</div>
+                </div>
+                <div class="text--light text--500 text-size--14 text-line-height--24">
+                    Donec non nisl scelerisque, pretium ex sit amet, suscipit velit.
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature__tagline">
+                    <img class="vine-icon" src="/v2/images/icon-vine.svg" alt="A vine icon">
+                    <div class="text--light text--500 text-line-height--22 text-size--16">Proin congue erat eu ex sodales.</div>
+                </div>
+                <div class="text--light text--500 text-size--14 text-line-height--24">
+                    Aliquam erat volutpat. Morbi ornare at leo id tristique. Donec.
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature__tagline">
+                    <img class="sliders-icon" src="/v2/images/icon-sliders.svg" alt="A slider icon">
+                    <div class="text--light text--500 text-line-height--22 text-size--16">Donec mattis neque ut dui fringilla.</div>
+                </div>
+                <div class="text--light text--500 text-size--14 text-line-height--24">
+                    Curabitur vestibulum odio at ultricies pretium. Suspendisse venenatis dapibus purus.
+                </div>
+            </div>
         </section>
         <section class="homepage-section homepage-section__contribute">
             <h1 class="text__section-header text--dark">Ready to contribute?</h1>
