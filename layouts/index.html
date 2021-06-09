@@ -32,10 +32,20 @@
 
     /* homepage-sections */
 
+
+    .paketo-logo {
+        width: 46%;
+        height: auto;
+        min-width: 142px;
+        max-width: 200px;
+        margin-bottom: 66px;
+    }
+
     .homepage-section {
-        padding-top: 20px;
         padding: 28px;
-        padding-bottom: 30px;
+        padding-top: 34px;
+        padding-bottom: 20x;
+        padding-right: 30px;
         display: flex;
         flex-direction: column;
     }
@@ -47,6 +57,7 @@
 
     .homepage-section__header {
         min-height: 247px;
+        padding-top: 20px
     }
 
     .homepage-section__languages {
@@ -106,12 +117,6 @@
     /* content style */
     .font--default {
         font-family: Avenir Next;
-    }
-
-    .text__logo {
-        margin-bottom: 75px;
-        font-weight: 100;
-        font-size: 36px;
     }
 
     .text__tagline {
@@ -320,7 +325,9 @@
 
 <body>
     <header class="homepage-section homepage-section__header homepage-section--dark">
-        <h1 class="text__logo text--light font--default">Paketo</h1>
+        <a href="/">
+            <img class="paketo-logo" src="/v2/images/paketo-logo-light.svg" alt="Paketo Buildpacks Homepage">
+        </a>
         <div class="right">
             <div class="nav-opener">
                 <span class="nav-opener__bar nav-opener__bar-top"></span>
