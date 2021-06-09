@@ -84,18 +84,45 @@
 
     .languages{
         display: flex;
+        flex-direction: row;
+        align-items: center;
         justify-content: center;
         flex-wrap: wrap;
-        padding-bottom: 80px;
+        margin-bottom: 80px;
     }
 
     .languages__item {
-        height: 40px;
-        margin-right: 10px;
+        width: fit-content;
+        height: fit-content;
+        margin: 5px;
     }
 
-    .languages__item__logo {
-        height: 100%;
+    .logo {
+        height: 35px;
+    }
+
+    .logo-java {
+        height: 80px;
+    }
+
+    .logo-graalvm {
+        height: 25px;
+    }
+
+    .logo-go{
+        height: 56px;
+    }
+
+    .logo-nginx {
+        height: 45px;
+    }
+
+    .logo-php {
+        height: 45px;
+    }
+
+    .logo-httpd {
+        height: 66px;
     }
 
     .feature {
@@ -188,7 +215,7 @@
         font-size: 18px;
         line-height: 24px;
         font-weight: 600;
-        margin-bottom: 32px;     
+        margin-bottom: 32px;
     }
 
     .text__homepage-link {
@@ -238,6 +265,7 @@
         font-size: 14px;
         line-height: 24px;
     }
+
     .button {
         display: flex;
         background: linear-gradient(194.93deg, #9DDCB2 10.52%, #0ABBB0 97.9%);
@@ -297,6 +325,13 @@
         margin-left: 0px;
     }
 
+    /* layout helpers */
+
+    .center-horizontal {
+        display: flex;
+        justify-content: center;
+    }
+
     /* navigation */
 
     .right {
@@ -315,6 +350,7 @@
 		transform: translateX(100%);
 		transition: transform 0.3s cubic-bezier(.22, .61, .36, 1);
     }
+
     .nav--showing {
         display: flex;
         flex-direction: column;
@@ -442,7 +478,7 @@
                         {{ range .logos }}
                             {{ range .item }}
                                 <a class="languages__item" href="docs/buildpacks/language-family-buildpacks/{{ .docs }}">
-                                  <img class="languages__item__logo" src="/v2/images/{{ .img  }}" alt="{{ .alt }}">
+                                  <img class="logo {{ .css_class }}" src="/v2/images/{{ .img  }}" alt="{{ .alt }}">
                                 </a>
                             {{ end }}
                         {{ end }}
@@ -561,7 +597,7 @@
             <p class="body-mobile text--dark paragraph">
                 Vivamus aliquam varius nulla, at sodales lorem finibus a. Curabitur congue nisl nisi, at rutrum mauris dictum eu. Nulla faucibus aliquam purus et ullamcorper. Donec elementum faucibus ullamcorper. Fusce accumsan urna urna. Donec ante quam.
             </p>
-            <a class="button text--shadow text--light" href="docs">Get Started</a>
+            <div class="center-horizontal"><a class="button text--shadow text--light" href="docs">Get Started</a></div>
         </section>
 
         <footer class="homepage-section homepage-section__footer homepage-section--dark text--light">
