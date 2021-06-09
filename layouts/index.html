@@ -44,7 +44,7 @@
     .homepage-section {
         padding: 28px;
         padding-top: 34px;
-        padding-bottom: 20x;
+        padding-bottom: 20px;
         padding-right: 30px;
         display: flex;
         flex-direction: column;
@@ -68,16 +68,12 @@
         min-height: 474px;
     }
 
-    .homepage-section__how-it-works {
-
-    }
-
     .homepage-section__features {
         min-height: 946px;
     }
 
     .homepage-section__contribute {
-        min-height: 712px;
+        padding-bottom: 64px;
     }
 
     .homepage-section__footer {
@@ -124,7 +120,6 @@
         max-width: 30px;
         margin-right: 26px;
     }
-
     .magglass-icon {
         width: 17%;
         max-width: 50px;
@@ -143,11 +138,22 @@
         margin-right: 12px;
     }
 
-    .footer-text__social {
+    .footer-social-link {
         font-family: Metropolis;
         font-size: 22px;
         line-height: 24px;
         margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    .footer-social-link__image-container{
+        width: 70px;
+        margin-right: 12px;
+    }
+
+    .footer-social-link__image-container__image {
+        padding-left: 10px;
     }
 
     .footer-text--small {
@@ -160,6 +166,10 @@
     /* content style */
     .font--default {
         font-family: Avenir Next;
+    }
+
+    .paragraph {
+        margin-bottom: 32px;
     }
 
     .text__tagline {
@@ -177,6 +187,12 @@
         line-height: 24px;
         font-weight: 600;
         margin-bottom: 32px;     
+    }
+
+    .text__homepage-link {
+        color: #1A95B3;
+        font-weight: 500;
+        margin-bottom: 40px;
     }
 
     .text--light {
@@ -217,7 +233,7 @@
 
     .body-mobile {
         font-weight: 400;
-        font-size: 1em;
+        font-size: 14px;
         line-height: 24px;
     }
     .button {
@@ -271,6 +287,12 @@
 
     .how-it-works-content__animation{
         padding-bottom: 21px;
+    }
+
+    .cloudfoundry-logo {
+        width: 160px;
+        margin: 13px; /* must be >=8% of width to follow branding guidelines*/
+        margin-left: 0px;
     }
 
     /* navigation */
@@ -527,21 +549,48 @@
         </section>
         <section class="homepage-section homepage-section__contribute">
             <h1 class="text__section-header text--dark">Ready to contribute?</h1>
-
+            <a class="text__homepage-link body-mobile" href="contribute/">
+                Check out R community page 2 learn more!!
+            </a>
             <h1 class="text__section-header">About the Paketo project</h1>
-            <p>Our buildpacks are based on applying the learnings from over 10 years
-               of building and maintaining Cloud Foundry buildpacks
+            <p class="body-mobile text--dark paragraph">
+                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque sed ante lobortis, fringilla est at, ullamcorper dui. Cras sed sapien.
             </p>
-            <p>
-                Community-driven project Staffed for the long term with full-time team members from VMware Neutral governance through the CFF - get involved! (link)
+            <p class="body-mobile text--dark paragraph">
+                Vivamus aliquam varius nulla, at sodales lorem finibus a. Curabitur congue nisl nisi, at rutrum mauris dictum eu. Nulla faucibus aliquam purus et ullamcorper. Donec elementum faucibus ullamcorper. Fusce accumsan urna urna. Donec ante quam.
             </p>
+            <a class="button text--shadow text--light" href="docs">Get Started</a>
         </section>
 
         <footer class="homepage-section homepage-section__footer homepage-section--dark text--light">
-            <p class="footer-text__social">Twitter</p>
-            <p class="footer-text__social">Slack</p>
-            <p class="footer-text__social">GitHub</p>
-            <p class="footer-text--small">Paketo Buildpacks is a Cloud Foundry Project</p>
+            <a class="footer-social-link" href="https://twitter.com/Paketo_io">
+                <div class="footer-social-link__image-container">
+                    <img class="footer-social-link__image-container__image" src="/v2/images/logo-twitter.svg"/>
+                </div>
+                <div class="text--light">
+                    Twitter
+                </div>
+            </a>
+            <a class="footer-social-link" href="https://slack.paketo.io/">
+                <div class="footer-social-link__image-container">
+                    <img class="footer-social-link__image-container__image" src="/v2/images/logo-slack.svg"/>
+                </div>
+                <div class="text--light">
+                    Slack
+                </div>
+            </a>
+            <a class="footer-social-link" href="https://github.com/paketo-buildpacks">
+                <div class="footer-social-link__image-container">
+                    <img src="/v2/images/logo-github.svg"/>
+                </div>
+                <div class="text--light">
+                    GitHub
+                </div>
+            </a>
+            <div class="footer-text--small">Paketo Buildpacks is a <a class="text--light" href="https://www.cloudfoundry.org/">Cloud Foundry</a> Project</div>
+            <img class="cloudfoundry-logo" src="v2/images/logo-cloudfoundry-light.svg"/>
+            <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
+
         </footer>
     </div>
 </body>
