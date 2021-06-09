@@ -34,11 +34,13 @@
 
 
     .paketo-logo {
-        width: 46%;
-        height: auto;
-        min-width: 142px;
-        max-width: 200px;
+        width: fit-content;
+        height: fit-content;
         margin-bottom: 66px;
+    }
+
+    .paketo-logo__image{
+        width: 142px;
     }
 
     .homepage-section {
@@ -409,8 +411,8 @@
 
 <body>
     <header class="homepage-section homepage-section__header homepage-section--dark">
-        <a href="/">
-            <img class="paketo-logo" src="/v2/images/paketo-logo-light.svg" alt="Paketo Buildpacks Homepage">
+        <a class="paketo-logo" href="/">
+            <img class="paketo-logo__image" src="/v2/images/paketo-logo-light.svg" alt="Paketo Buildpacks Homepage">
         </a>
         <div class="right">
             <div class="nav-opener">
