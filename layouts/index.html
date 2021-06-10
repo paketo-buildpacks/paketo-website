@@ -335,15 +335,16 @@
 
 
 
-    .how-it-works-content{
-        width: 100%;
-        max-width: 570px;
+    .how-it-works-animation-container{
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row;
+        justify-content: center;
     }
 
-    .how-it-works-content__animation{
+    .how-it-works-animation {
+        max-width: 570px;
+    }
+    .how-it-works-animation__animation{
         padding-bottom: 21px;
     }
 
@@ -573,11 +574,14 @@
         </section>
         <section class="homepage-section homepage-section__how-it-works">
             <h1 class="text__section-header text--dark">Here's how it works</h1>
-            <div class="how-it-works-content">
-                {{ partial "how-it-works-animation.html" . }}
-                <p class="text--dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae sem hendrerit, imperdiet magna vitae, pulvinar lorem.
-                </p>
+            <div class="how-it-works-animation-container">
+                <div class="how-it-works-animation">
+                    {{ partial "how-it-works-animation.html" . }}
+                    <p class="text--dark">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae sem hendrerit, imperdiet magna vitae, pulvinar lorem.
+                    </p>
+                </div>
             </div>
+
         </section>
         <section class="homepage-section homepage-section--dark">
             <h1 class="text__section-header text--light text--shadow">Features</h1>
