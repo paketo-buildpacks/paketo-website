@@ -291,13 +291,49 @@
         margin-top: 10px;
         width: 100%;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 18px
     }
 
-    .what-are-buildpacks-element__imageset__image {
+    .what-are-buildpacks-element__imageset__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding-top: 15px;
-        width: 28%;
+        width: 110px;
+        height: 110px;
     }
+
+    .what-are-buildpacks-element__logo-cloud {
+        width: 90px;
+    }
+
+    .what-are-buildpacks-element__logo-docker {
+        width: 80px;
+    }
+
+    .what-are-buildpacks-element__logo-k8s {
+        width: 64px;
+    }
+
+    .what-are-buildpacks-element__logo-azure-devops {
+        width: 110px;
+    }
+
+    .what-are-buildpacks-element__logo-jenkins {
+        height: 96px;
+    }
+
+    .what-are-buildpacks-element__logo-circleci {
+        width: 110px;
+    }
+
+    .what-are-buildpacks-element__logo-azure-devops {
+        width: 110px;
+    }
+
+
 
     .how-it-works-content{
         width: 100%;
@@ -500,9 +536,15 @@
                     Duis turpis risus, pulvinar sed ante eget, dignissim semper lectus. Donec volutpat neque risus, tincidunt.
                 </div>
                 <div class="what-are-buildpacks-element__imageset">
-                    <img class="what-are-buildpacks-element__imageset__image" src="/v2/images/icon-cloud.svg" alt="Cloud platforms">
-                    <img class="what-are-buildpacks-element__imageset__image" src="/v2/images/docker-logo.svg" alt="Docker">
-                    <img class="what-are-buildpacks-element__imageset__image" src="/v2/images/kubernetes-logo.svg" alt="Kubernetes">
+                    <div class="what-are-buildpacks-element__imageset__container">
+                        <img class="what-are-buildpacks-element__logo-cloud" src="/v2/images/icon-cloud.svg" alt="Cloud platforms">
+                    </div>
+                    <div class="what-are-buildpacks-element__imageset__container">
+                        <img class="what-are-buildpacks-element__logo-docker" src="/v2/images/docker-logo.svg" alt="Docker">
+                    </div>
+                    <div class="what-are-buildpacks-element__imageset__container">
+                        <img class="what-are-buildpacks-element__logo-k8s" src="/v2/images/kubernetes-logo.svg" alt="Kubernetes">
+                    </div>
                 </div>
             </div>
             <div class="what-are-buildpacks-element">
@@ -510,9 +552,15 @@
                     Cras accumsan iaculis elit, eget accumsan leo commodo nec. Nullam vitae sapien semper leo elementum.
                 </div>
                 <div class="what-are-buildpacks-element__imageset">
-                    <img class="what-are-buildpacks-element__imageset__image" src="/v2/images/jenkins-logo.png" alt="Jenkins">
-                    <img class="what-are-buildpacks-element__imageset__image" src="/v2/images/circleCI-logo.png" alt="CircleCI">
-                    <img class="what-are-buildpacks-element__imageset__image" src="/v2/images/azure-devops-logo.png" alt="Azure DevOps">
+                    <div class="what-are-buildpacks-element__imageset__container">
+                        <img class="what-are-buildpacks-element__logo-jenkins" src="/v2/images/jenkins-logo.png" alt="Jenkins">
+                    </div>
+                    <div>
+                        <img class="what-are-buildpacks-element__logo-circleci" src="/v2/images/circleCI-logo.png" alt="CircleCI">
+                    </div>
+                    <div>
+                        <img class="what-are-buildpacks-element__logo-azure-devops" src="/v2/images/azure-devops-logo.png" alt="Azure DevOps">
+                    </div>
                 </div>
             </div>
             <div class="what-are-buildpacks-element">
