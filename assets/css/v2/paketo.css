@@ -1,0 +1,452 @@
+
+    /* layout */
+
+    .content {
+        display: flex;
+        flex-direction: column;
+
+        font-family: Avenir Next, sans-serif;
+        font-style: normal;
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    /* layout helpers */
+
+    .center-horizontal {
+        display: flex;
+        justify-content: center;
+    }
+
+    .width-100pct {
+        width: 100%;
+    }
+
+    .height-100pct {
+        height: 100%;
+    }
+    /* homepage-sections */
+
+
+    .paketo-logo {
+        width: fit-content;
+        height: fit-content;
+        margin-bottom: 66px;
+    }
+
+    .paketo-logo__image{
+        width: 142px;
+    }
+
+    .homepage-section {
+        padding: 28px;
+        padding-top: 34px;
+        padding-bottom: 34px;
+        padding-right: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .homepage-section--dark {
+        background: #4B5259;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .homepage-section__header {
+        min-height: 247px;
+        padding-top: 20px
+    }
+
+    .homepage-section__languages {
+        align-items: center;
+    }
+
+    .homepage-section__contribute {
+        padding-bottom: 64px;
+    }
+
+    .homepage-section__footer {
+        min-height: 360px;
+    }
+
+    .languages{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+    }
+
+    .languages__item {
+        width: fit-content;
+        height: fit-content;
+        margin: 5px;
+    }
+
+    .logo {
+        height: 35px;
+    }
+
+    .logo-java {
+        height: 80px;
+    }
+
+    .logo-graalvm {
+        height: 25px;
+    }
+
+    .logo-go{
+        height: 56px;
+    }
+
+    .logo-nginx {
+        height: 45px;
+    }
+
+    .logo-php {
+        height: 45px;
+    }
+
+    .logo-httpd {
+        height: 66px;
+    }
+
+    .feature {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+    }
+
+    .feature__tagline {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 12px;
+    }
+
+    .feature__tagline__icon-container {
+        width: 60px;
+        height: 60px;
+        padding-right: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-social-link {
+        font-family: Metropolis, sans-serif;
+        font-size: 22px;
+        line-height: 24px;
+        margin-bottom: 28px;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+    }
+    .footer-social-link__image-container{
+        width: 70px;
+        margin-right: 12px;
+    }
+
+    .footer-social-link__image-container__image {
+        padding-left: 10px;
+    }
+
+    .footer-text--small {
+        font-family: Metropolis, sans-serif;
+        font-size: 12px;
+        line-height: 24px;
+        font-weight: 100;
+    }
+
+    /* content style */
+    .font--default {
+        font-family: Avenir Next, sans-serif;
+    }
+
+    .paragraph {
+        margin-bottom: 32px;
+    }
+
+    .text__tagline {
+        margin-bottom: 20px;
+    }
+
+    .text__tagline__item {
+        font-size: 20px;
+        line-height: 28px;
+        font-weight: 600;
+    }
+
+    .text__section-header {
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 600;
+        margin-bottom: 32px;
+    }
+
+    .text__homepage-link {
+        color: #1A95B3;
+        font-weight: 500;
+        margin-bottom: 40px;
+    }
+
+    .text--light {
+        color: #ffffff;
+    }
+
+    .text--dark {
+        color: #133D47;
+    }
+
+    .text--shadow {
+        text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .text--600 {
+        font-weight: 600;
+    }
+
+    .text--500 {
+        font-weight: 500;
+    }
+
+    .text-line-height--24 {
+        line-height: 24px;
+    }
+
+    .text-line-height--22 {
+        line-height: 22px;
+    }
+
+    .text-size--16 {
+        font-size: 16px;
+    }
+
+    .text-size--14 {
+        font-size: 14px;
+    }
+
+    .body-mobile {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .button {
+        display: flex;
+        background: linear-gradient(194.93deg, #9DDCB2 10.52%, #0ABBB0 97.9%);
+        box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        text-decoration: none;
+        height: 70px;
+        width: 272px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    a:hover {
+        opacity: 0.8;
+    }
+
+    .whatare-list {
+        padding-left: 25px;
+    }
+
+    .whatare-list__element {
+        margin-bottom: 10px;
+    }
+
+    .what-are-buildpacks-element {
+        margin-bottom: 70px;
+    }
+
+    .what-are-buildpacks-element__image {
+        margin-top:10px;
+        max-width: 300px;
+    }
+
+    .what-are-buildpacks-element__imageset {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 18px
+    }
+
+    .what-are-buildpacks-element__imageset__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 15px;
+        width: 110px;
+        height: 110px;
+    }
+
+    .what-are-buildpacks-element__logo-cloud {
+        width: 90px;
+    }
+
+    .what-are-buildpacks-element__logo-docker {
+        width: 80px;
+    }
+
+    .what-are-buildpacks-element__logo-k8s {
+        width: 64px;
+    }
+
+    .what-are-buildpacks-element__logo-azure-devops {
+        width: 110px;
+    }
+
+    .what-are-buildpacks-element__logo-jenkins {
+        height: 80px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .what-are-buildpacks-element__logo-circleci {
+        width: 110px;
+    }
+
+    .what-are-buildpacks-element__logo-azure-devops {
+        width: 110px;
+    }
+
+    .how-it-works-animation-container{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .how-it-works-animation {
+        max-width: 570px;
+    }
+    .how-it-works-animation__animation{
+        padding-bottom: 21px;
+    }
+
+    .cloudfoundry-logo {
+        width: 160px;
+        margin: 13px; /* must be >=8% of width to follow branding guidelines*/
+        margin-left: 0px;
+    }
+
+
+    /* navigation */
+
+    .right {
+	    float: right !important;
+    }
+
+    .nav {
+        background: #fff !important;
+		width: 100vw;
+        height: 100vh;
+		position: fixed;
+		right: 0;
+		top: 0;
+        display: flex;
+        flex-direction: column;
+		transform: translateX(100%);
+		transition: transform 0.3s cubic-bezier(.22, .61, .36, 1);
+    }
+
+    .nav--showing {
+		transform: translateX(0%);
+    }
+
+    .nav__linkarea {
+        height: 100%;
+        margin-top: 80px;
+        margin-bottom: 90px;
+        margin-left: 32px;
+        margin-right: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .nav-link {
+        margin-left: 20px;
+        margin-bottom: 10px;
+        margin-right: 20px;
+        margin-top: 10px;
+        font-family: Avenir Next, sans-serif;
+        text-decoration: none;
+        color: #000000;
+        font-size: 40px;
+        position: relative;
+        z-index: 1;
+        line-height: 40px;
+        display: block;
+        width: fit-content;
+    }
+
+    .nav-opener {
+        display: block;
+        position: fixed;
+        backface-visibility: hidden;
+        top: 20px;
+        right: 21px;
+        font-size: 1.2em;
+        width: 35px;
+        height: 26.33px;
+        cursor: pointer;
+        z-index: 8;
+    }
+
+    .nav-opener__bar {
+        background: #9AA3A4;
+        border-radius: 6.5px;
+        width: 100%;
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        transition: all 0.2s ease;
+    }
+
+    .nav-opener__bar-top, .nav-opener__bar-bottom {
+        transform-origin: left
+    }
+    .nav-opener__bar-top {
+        left: 0%;
+        right: 0%;
+        top: 0%;
+        bottom: 83.54%;
+    }
+
+    .nav-opener__bar--opened .nav-opener__bar-top {
+        transform: rotate(45deg);
+        background: #000000;
+        width: 35px;
+        height: 4.33px;
+        top: 0.26px;
+    }
+
+    .nav-opener__bar-bottom {
+        left: 0%;
+        right: 0%;
+        top: 83.54%;
+        bottom: 0%;
+    }
+
+    .nav-opener__bar--opened .nav-opener__bar-bottom {
+        transform: rotate(-45deg);
+        background: #000000;
+        width: 35px;
+        height: 4.33px;
+        top: 25.01px;
+    }
+
+    .nav-opener__bar-middle {
+        left: 0%;
+        right: 0%;
+        top: 41.77%;
+        bottom: 41.77%;
+    }
+    .nav-opener__bar--opened .nav-opener__bar-middle {
+        width: 0;
+        left: 8px;
+    }
