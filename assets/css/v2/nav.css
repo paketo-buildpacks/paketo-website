@@ -1,0 +1,124 @@
+
+    /* navigation */
+
+    .right {
+	    float: right !important;
+    }
+
+    .nav {
+        background: #fff !important;
+		width: 100vw;
+        height: 100vh;
+		position: fixed;
+		right: 0;
+		top: 0;
+        display: flex;
+        flex-direction: column;
+		transform: translateX(100%);
+		transition: transform 0.3s cubic-bezier(.22, .61, .36, 1);
+    }
+
+    @media (min-width: 400px) {
+        .nav {
+            max-width: 320px;
+        }
+    }
+
+    .nav--showing {
+		transform: translateX(0%);
+    }
+
+    .nav__linkarea {
+        height: 100%;
+        margin-top: 80px;
+        margin-bottom: 90px;
+        margin-left: 32px;
+        margin-right: 32px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .nav-link {
+        margin-left: 20px;
+        margin-bottom: 10px;
+        margin-right: 20px;
+        margin-top: 10px;
+        font-family: Avenir Next, sans-serif;
+        text-decoration: none;
+        color: #000000;
+        font-size: 40px;
+        position: relative;
+        z-index: 1;
+        line-height: 40px;
+        display: block;
+        width: fit-content;
+    }
+
+    .nav-opener {
+        display: block;
+        position: fixed;
+        backface-visibility: hidden;
+        top: 20px;
+        right: 21px;
+        font-size: 1.2em;
+        width: 35px;
+        height: 26.33px;
+        cursor: pointer;
+        z-index: 8;
+    }
+
+    .nav-opener__bar {
+        background: #9AA3A4;
+        border-radius: 6.5px;
+        width: 100%;
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 0;
+        transition: all 0.2s ease;
+    }
+
+    .nav-opener__bar-top, .nav-opener__bar-bottom {
+        transform-origin: left
+    }
+    .nav-opener__bar-top {
+        left: 0%;
+        right: 0%;
+        top: 0%;
+        bottom: 83.54%;
+    }
+
+    .nav-opener__bar--opened .nav-opener__bar-top {
+        transform: rotate(45deg);
+        background: #000000;
+        width: 35px;
+        height: 4.33px;
+        top: 0.26px;
+    }
+
+    .nav-opener__bar-bottom {
+        left: 0%;
+        right: 0%;
+        top: 83.54%;
+        bottom: 0%;
+    }
+
+    .nav-opener__bar--opened .nav-opener__bar-bottom {
+        transform: rotate(-45deg);
+        background: #000000;
+        width: 35px;
+        height: 4.33px;
+        top: 25.01px;
+    }
+
+    .nav-opener__bar-middle {
+        left: 0%;
+        right: 0%;
+        top: 41.77%;
+        bottom: 41.77%;
+    }
+    .nav-opener__bar--opened .nav-opener__bar-middle {
+        width: 0;
+        left: 8px;
+    }
