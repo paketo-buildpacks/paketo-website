@@ -1,9 +1,7 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1 viewport-fit=cover">
-    {{- $css := resources.Get "css/main-v2.scss" | toCSS | minify | fingerprint -}}
-    <link rel="stylesheet" href="{{ $css.RelPermalink }}">
+    {{ partial "head-v2.html" . }}
 </head>
 <body>
     <header class="homepage-section homepage-section__header homepage-section--dark">
