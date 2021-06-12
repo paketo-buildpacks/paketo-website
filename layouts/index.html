@@ -23,12 +23,16 @@
                 </div>
             </nav>
         </div>
-        <div class="text__tagline">
-            <h2 class="text__tagline__item text--light font--default text--shadow">Your app,</h2>
-            <h2 class="text__tagline__item text--light font--default text--shadow">in your favorite language,</h2>
-            <h2 class="text__tagline__item text--light font--default text--shadow"> ready to run in the cloud</h2>
-        </div>
     </header>
+    <section class="homepage-section homepage-section--dark center-horizontal">
+        <div class="section-content center-horizontal">
+            <div class="section-content text__tagline">
+                <h2 class="text__tagline__item text--light font--default text--shadow">Your app,</h2>
+                <h2 class="text__tagline__item text--light font--default text--shadow">in your favorite language,</h2>
+                <h2 class="text__tagline__item text--light font--default text--shadow"> ready to run in the cloud</h2>
+            </div>
+        </div>
+    </section>
     <div class="content">
         <section class="homepage-section homepage-section__languages">
                     <div class="languages">
@@ -102,8 +106,10 @@
             </div>
             </div>
         </section>
-        <section class="homepage-section homepage-section__how-it-works">
-            <h1 class="text__section-header text--dark section-content">Here's how it works</h1>
+        <section class="homepage-section center-horizontal">
+            <div class="section-content">
+                <h1 class="text__section-header text--dark">Here's how it works</h1>
+            </div>
             <div class="how-it-works-animation-container">
                 <div class="how-it-works-animation">
                     {{ partial "how-it-works-animation.html" . }}

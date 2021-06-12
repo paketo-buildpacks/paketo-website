@@ -13,6 +13,11 @@
 
     .section-content {
         max-width: 500px;
+
+        @media (min-width: 400px) {
+        max-width: 320px;
+        min-width: 500px;
+        }
     }
 
     /* layout helpers */
@@ -36,15 +41,15 @@
     .paketo-logo {
         width: fit-content;
         height: fit-content;
-        margin-bottom: 66px;
+        margin-bottom: 46px;
     }
 
     .paketo-logo__image{
-        width: 142px;
+        width: 112px;
     }
 
     .homepage-section {
-        padding: 28px;
+        padding-left: 28px;
         padding-top: 34px;
         padding-bottom: 34px;
         padding-right: 30px;
@@ -58,7 +63,6 @@
     }
 
     .homepage-section__header {
-        min-height: 247px;
         padding-top: 20px
     }
 
@@ -173,7 +177,7 @@
     }
 
     .text__tagline {
-        margin-bottom: 20px;
+        margin-bottom: 14px;
     }
 
     .text__tagline__item {
