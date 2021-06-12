@@ -1,12 +1,22 @@
 /* Let the games begin. */
 
+/* playing with variables to ease transition to new darker design */
+$bg-color-v1: #f0f2f9;
+$bg-color-v2: #4B5259;
+
+$menu-text-color-v1: #293878;
+$menu-text-color-v2: #fff;
+
+$bg-color: $bg-color-v1;
+$menu-text-color: $menu-text-color-v1;
+
 *, *:before, *:after {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 body {
-	background: #F0F2F9;
+	background: $bg-color;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 	font-weight: 400;
 	font-size: 1.1em;
@@ -283,7 +293,7 @@ header .logo img {
 footer nav a, header nav a {
 	margin-left: 20px;
 	text-decoration: none;
-	color: #293878;
+	color: $menu-text-color;
 	font-weight: 600;
 	font-size: 1.3em;
 }
@@ -304,7 +314,7 @@ nav a, .cta, .docs-body a {
 	line-height: 1em;
 }
 .external-link {
-	background: #293878;
+	background: $menu-text-color;
 	color: white;
 	padding: 8px 16px;
 	border-radius: 4px;
@@ -356,9 +366,9 @@ nav a, .cta, .docs-body a {
 
 .github-edit__redirect {
 	margin-top: 16px;
-	border: 1px solid #f0f2f9;
+	border: 1px solid $bg-color;
 	border-radius: 5px;
-	background: #f0f2f9;
+	background: $bg-color;
 	width: 75px;
 	float: right;
 }
@@ -613,7 +623,7 @@ footer p {
 .docs-sidebar {
 	width: 380px;
 	border-right: 1px solid #ccc;
-	background: #F0F2F9;
+	background: $bg-color;
 }
 .docs-body {
 	width: calc(100% - 380px);
@@ -650,7 +660,7 @@ footer p {
 	padding: 5px;
 	text-decoration: none;
 	opacity: 1;
-	color: #293878;
+	color: $menu-text-color;
 }
 .docs-menu a.active {
 	color: #5DBCD2;
@@ -660,7 +670,7 @@ footer p {
 	content: "";
 	transition: all 0.3s cubic-bezier(.17, .84, .44, 1);
 	position: absolute;
-	background: #F0F2F9;
+	background: $bg-color;
 	border-left: 1px solid #ccc;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
@@ -673,7 +683,7 @@ footer p {
 .docs-menu a.active:before, .docs-menu a:hover:before {
 	width: 100%;
 	background: #FEFEFE;
-	color: #293878;
+	color: $menu-text-color;
 }
 .docs-menu a:hover {
 	color: #5DBCD2;
@@ -857,7 +867,7 @@ footer {
 		display: none;
 	}
 	.docs-menu a.active {
-		background: #F0F2F9;
+		background: $bg-color;
 		border: 1px solid #ccc;
 		padding-right: 15px;
 	}

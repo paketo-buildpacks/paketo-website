@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1 viewport-fit=cover">
     {{- $css := resources.Get "css/main-v2.scss" | toCSS | minify | fingerprint -}}
     <link rel="stylesheet" href="{{ $css.RelPermalink }}">
 </head>
@@ -46,8 +46,8 @@
                     </div>
             <a class="button text--shadow text--light" href="docs">Get Started</a>
         </section>
-
-        <section class="homepage-section homepage-section--dark">
+        <section class="homepage-section homepage-section--dark center-horizontal">
+            <div class="section-content">
             <h1 class="text__section-header text--light text--shadow">What are Paketo Buildpacks?</h1>
             <div class="what-are-buildpacks-element">
                 <ul class="text--light body-mobile whatare-list">
@@ -102,9 +102,10 @@
                     Cras accumsan iaculis elit, eget accumsan leo commodo nec. Nullam vitae sapien semper leo elementum.
                 </div>
             </div>
+            </div>
         </section>
         <section class="homepage-section homepage-section__how-it-works">
-            <h1 class="text__section-header text--dark">Here's how it works</h1>
+            <h1 class="text__section-header text--dark section-content">Here's how it works</h1>
             <div class="how-it-works-animation-container">
                 <div class="how-it-works-animation">
                     {{ partial "how-it-works-animation.html" . }}
@@ -112,9 +113,9 @@
                     </p>
                 </div>
             </div>
-
         </section>
-        <section class="homepage-section homepage-section--dark">
+        <section class="homepage-section homepage-section--dark center-horizontal">
+            <div class="section-content">
             <h1 class="text__section-header text--light text--shadow">Features</h1>
             <div class="feature">
                 <div class="feature__tagline">
@@ -171,19 +172,22 @@
                     Curabitur vestibulum odio at ultricies pretium. Suspendisse venenatis dapibus purus.
                 </div>
             </div>
+            </div>
         </section>
-        <section class="homepage-section homepage-section__contribute">
-            <h1 class="text__section-header text--dark">Ready to contribute?</h1>
-            <a class="text__homepage-link body-mobile" href="contribute/">
-                Check out R community page 2 learn more!!
-            </a>
-            <h1 class="text__section-header">About the Paketo project</h1>
-            <p class="body-mobile text--dark paragraph">
-                Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque sed ante lobortis, fringilla est at, ullamcorper dui. Cras sed sapien.
-            </p>
-            <p class="body-mobile text--dark paragraph">
-                Vivamus aliquam varius nulla, at sodales lorem finibus a. Curabitur congue nisl nisi, at rutrum mauris dictum eu. Nulla faucibus aliquam purus et ullamcorper. Donec elementum faucibus ullamcorper. Fusce accumsan urna urna. Donec ante quam.
-            </p>
+        <section class="homepage-section homepage-section__contribute center-horizontal">
+            <div class="section-content">
+                <h1 class="text__section-header text--dark">Ready to contribute?</h1>
+                <a class="text__homepage-link body-mobile" href="contribute/">
+                    Check out R community page 2 learn more!!
+                </a>
+                <h1 class="text__section-header">About the Paketo project</h1>
+                <p class="body-mobile text--dark paragraph">
+                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque sed ante lobortis, fringilla est at, ullamcorper dui. Cras sed sapien.
+                </p>
+                <p class="body-mobile text--dark paragraph">
+                    Vivamus aliquam varius nulla, at sodales lorem finibus a. Curabitur congue nisl nisi, at rutrum mauris dictum eu. Nulla faucibus aliquam purus et ullamcorper. Donec elementum faucibus ullamcorper. Fusce accumsan urna urna. Donec ante quam.
+                </p>
+            </div>
             <div class="center-horizontal"><a class="button text--shadow text--light" href="docs">Get Started</a></div>
         </section>
 
