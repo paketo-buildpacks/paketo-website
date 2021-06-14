@@ -12,10 +12,12 @@
     }
 
     .section-content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
         max-width: 500px;
 
         @media (min-width: 400px) {
-        max-width: 320px;
         min-width: 500px;
         }
     }
