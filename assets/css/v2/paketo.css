@@ -17,8 +17,8 @@
         width: 100%;
         max-width: 500px;
 
-        @media (min-width: 400px) {
-        min-width: 500px;
+        @media (min-width: 480px) {
+        min-width: 450px;
         }
     }
 
@@ -194,11 +194,18 @@
         line-height: 24px;
         font-weight: 600;
         margin-bottom: 32px;
+
+        @media (min-width: 480px) {
+            font-weight: 500;
+            font-size: 32px;
+            line-height: 44px;
+        }
     }
 
     .text__homepage-link {
         color: #1A95B3;
         font-weight: 500;
+        font-family: Metropolis, sans-serif;
         margin-bottom: 40px;
     }
 
@@ -238,10 +245,27 @@
         font-size: 14px;
     }
 
-    .body-mobile {
+    h3 {
+        font-size: 16px;
+        line-height: 22px;
+        font-weight: 500;
+
+        @media (min-width: 480px) {
+            font-size: 24px;
+            line-height: 33px;
+        }
+    }
+
+    .body {
         font-weight: 400;
         font-size: 14px;
         line-height: 24px;
+
+        @media (min-width: 480px) {
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 24px;
+        }
     }
 
     .button {
