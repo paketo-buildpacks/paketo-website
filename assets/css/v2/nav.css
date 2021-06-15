@@ -2,25 +2,32 @@
     /* navigation */
 
     .right {
-	    float: right !important;
+        float: right !important;
+
+        @media (min-width: 480px) {
+            float: none !important;
+            display: flex;
+            width: 100%;
+        }
     }
 
     .nav {
-        background: #fff !important;
+        background: #fff;
 		width: 100vw;
         height: 100vh;
 		position: fixed;
 		right: 0;
 		top: 0;
-        display: flex;
-        flex-direction: column;
 		transform: translateX(100%);
-		transition: transform 0.3s cubic-bezier(.22, .61, .36, 1);
-    }
+        transition: transform 0.3s cubic-bezier(.22, .61, .36, 1);
 
-    @media (min-width: 400px) {
-        .nav {
-            max-width: 320px;
+        @media (min-width: 480px) {
+            transform: translateX(0%);
+            height: 100%;
+            width: 100%;
+            height: auto;
+            position: relative;
+            background: none;
         }
     }
 
@@ -37,6 +44,15 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
+
+        @media (min-width: 480px) {
+            flex-direction: row;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            margin: 0;
+            margin-right: 0px;
+            height: fit-content;
+        }
     }
 
     .nav-link {
@@ -53,6 +69,13 @@
         line-height: 40px;
         display: block;
         width: fit-content;
+
+        @media (min-width: 480px) {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffffff;
+            margin: 10px;
+        }
     }
 
     .nav-opener {
@@ -66,6 +89,10 @@
         height: 26.33px;
         cursor: pointer;
         z-index: 8;
+
+        @media (min-width: 480px) {
+            display: none;
+        }
     }
 
     .nav-opener__bar {

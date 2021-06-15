@@ -48,6 +48,10 @@
 
     .paketo-logo__image{
         width: 112px;
+
+        @media (min-width: 480px) {
+            width: 245px;
+        }
     }
 
     .homepage-section {
@@ -66,7 +70,13 @@
 
     .homepage-section__header {
         background: #4B5259;
-        padding-top: 20px
+        padding-top: 20px;
+
+        @media (min-width: 480px) {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
     }
 
     .homepage-section__languages {
