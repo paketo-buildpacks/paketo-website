@@ -350,14 +350,8 @@
         width: 110px;
     }
 
-    .how-it-works-animation-container{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
-
     .how-it-works-animation {
-        max-width: 570px;
+        width: 100%;
     }
     .how-it-works-animation__animation{
         padding-bottom: 21px;
