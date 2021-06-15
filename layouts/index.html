@@ -4,26 +4,8 @@
     {{ partial "head-v2.html" . }}
 </head>
 <body>
-    <header class="homepage-section homepage-section__header">
-        <a class="paketo-logo" href="/">
-            <img class="paketo-logo__image" src="/v2/images/paketo-logo-light.svg" alt="Paketo Buildpacks Homepage">
-        </a>
-        <div class="right">
-            <div class="nav-opener">
-                <span class="nav-opener__bar nav-opener__bar-top"></span>
-                <span class="nav-opener__bar nav-opener__bar-middle"></span>
-                <span class="nav-opener__bar nav-opener__bar-bottom"></span>
-            </div>
-            <nav class="nav">
-                <div class="nav__linkarea">
-                    <a class="nav-link" href="/docs/">docs</a>
-                    <a class="nav-link" href="/contribute/">contribute</a>
-                    <a class="nav-link" target="_blank" href="https://blog.paketo.io">blog</a>
-                    <a class="nav-link" target="_blank" href="https://github.com/paketo-buildpacks">github</a>
-                </div>
-            </nav>
-        </div>
-    </header>
+    {{ $headerTheme := "dark" }}
+    {{ partial "v2/header.html" (dict "headerTheme" $headerTheme ) }}
     <section class="homepage-section homepage-section--dark center-horizontal">
         <div class="section-content center-horizontal">
             <div class="section-content text__tagline">
@@ -112,7 +94,7 @@
                 <p class="text--dark body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae sem hendrerit, imperdiet magna vitae, pulvinar lorem.
                 </p>
                     <div class="how-it-works-animation">
-                        {{ partial "how-it-works-animation.html" . }}
+                        {{ partial "v2/how-it-works-animation.html" . }}
                     </div>
             </div>
         </section>
@@ -192,41 +174,8 @@
             </div>
             <div class="center-horizontal"><a class="button text--shadow text--light" href="docs">Get Started</a></div>
         </section>
-
-        <footer class="homepage-section homepage-section__footer homepage-section--dark text--light">
-            <div class="footer-social-links-container">
-                <a class="footer-social-link" href="https://twitter.com/Paketo_io">
-                    <div class="footer-social-link__image-container">
-                        <img class="footer-social-link__image-container__image" src="/v2/images/logo-twitter.svg" alt="Blue Twitter bird logo"/>
-                    </div>
-                    <div class="text--light">
-                        Twitter
-                    </div>
-                </a>
-                <a class="footer-social-link" href="https://slack.paketo.io/">
-                    <div class="footer-social-link__image-container">
-                        <img class="footer-social-link__image-container__image" src="/v2/images/logo-slack.svg" alt="Slack logo"/>
-                    </div>
-                    <div class="text--light">
-                        Slack
-                    </div>
-                </a>
-                <a class="footer-social-link" href="https://github.com/paketo-buildpacks">
-                    <div class="footer-social-link__image-container">
-                        <img src="/v2/images/logo-github.svg" alt="GitHub Octocat logo"/>
-                    </div>
-                    <div class="text--light">
-                        GitHub
-                    </div>
-                </a>
-            </div>
-            <div class="footer-privacy-policy">
-                <div class="footer-text--small">Paketo Buildpacks is a <a class="text--light" href="https://www.cloudfoundry.org/">Cloud Foundry</a> Project</div>
-                <img class="cloudfoundry-logo" src="v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
-                <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
-            </div>
-        </footer>
     </div>
+    {{ partial "v2/footer.html" . }}
 </body>
 <script src="/js/plugins.js"></script>
 <script src="/v2/js/homepage.js"></script>

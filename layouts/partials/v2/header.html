@@ -1,0 +1,28 @@
+{{ $logoImage := "paketo-logo-light.svg" }}
+{{ $textColor := "" }}
+{{ $backgroundColor := "" }}
+{{ if eq .headerTheme "light" }}
+    {{ $logoImage = "paketo-logo-dark.svg" }}
+    {{ $textColor = "text--dark" }}
+    {{ $backgroundColor = "homepage-section--light" }}
+{{ end }}
+<header class="homepage-section homepage-section__header {{ $backgroundColor }}">
+    <a class="paketo-logo" href="/">
+        <img class="paketo-logo__image" src="/v2/images/{{ $logoImage }}" alt="Paketo Buildpacks Homepage">
+    </a>
+    <div class="right">
+        <div class="nav-opener">
+            <span class="nav-opener__bar nav-opener__bar-top"></span>
+            <span class="nav-opener__bar nav-opener__bar-middle"></span>
+            <span class="nav-opener__bar nav-opener__bar-bottom"></span>
+        </div>
+        <nav class="nav">
+            <div class="nav__linkarea">
+                <a class="nav-link {{ $textColor }}" href="/docs/">docs</a>
+                <a class="nav-link {{ $textColor }}" href="/contribute/">contribute</a>
+                <a class="nav-link {{ $textColor }}" target="_blank" href="https://blog.paketo.io">blog</a>
+                <a class="nav-link {{ $textColor }}" target="_blank" href="https://github.com/paketo-buildpacks">github</a>
+            </div>
+        </nav>
+    </div>
+</header>
