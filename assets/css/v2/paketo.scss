@@ -1,4 +1,4 @@
-    @import 'v2/variables';   
+    @import 'v2/variables';
    /* layout */
 
     .content {
@@ -330,12 +330,12 @@
         opacity: 0.8;
     }
 
-    .whatare-list {
+    .list--disc {
         padding-left: 25px;
         list-style-type: disc;
     }
 
-    .whatare-list__element {
+    .list__element {
         margin-bottom: 10px;
     }
 

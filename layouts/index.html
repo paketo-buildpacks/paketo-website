@@ -33,15 +33,18 @@
             <div class="section-content">
             <h2 class="text__section-header text--light text--shadow">What are Paketo Buildpacks?</h2>
             <div class="what-are-buildpacks-element">
-                <ul class="text--light body whatare-list">
-                    <li class="whatare-list__element">
-                        Suspendisse condimentum maximus metus eu euismod. Donec nec porta mi. Vestibulum mattis, ipsum a ultrices.
+                <ul class="text--light body list--disc">
+                    <li class="list__element">
+                        Buildpacks transform your application source code into container images
                     </li>
-                    <li class="whatare-list__element">
-                        Phasellus nisl massa, interdum id aliquet ac, rhoncus vitae odio. Etiam quis purus vel turpis.
+                    <li class="list__element">
+                        The Paketo project provides production-ready buildpacks for the most popular languages and frameworks
                     </li>
-                    <li class="whatare-list__element">
-                        Quisque feugiat orci at lorem maximus, sit amet vestibulum lacus iaculis. Nunc id metus nulla.
+                    <li class="list__element">
+                        Use Paketo Buildpacks to easily build your apps and keep them updated
+                    </li>
+                    <li class="list__element">
+                        Learn more about <a href="https://buildpacks.io">buildpacks</a>
                     </li>
                 </ul>
                 <div class="what-are-buildpacks-element__imageset">
@@ -50,7 +53,7 @@
             </div>
             <div class="what-are-buildpacks-element">
                 <div class="body text--light">
-                    Duis turpis risus, pulvinar sed ante eget, dignissim semper lectus. Donec volutpat neque risus, tincidunt.
+                    Paketo Buildpacks can run on any platform that supports container images, including Docker and Kubernetes!
                 </div>
                 <div class="what-are-buildpacks-element__imageset">
                     <div class="what-are-buildpacks-element__imageset__container">
@@ -66,7 +69,7 @@
             </div>
             <div class="what-are-buildpacks-element">
                 <div class="body text--light">
-                    Cras accumsan iaculis elit, eget accumsan leo commodo nec. Nullam vitae sapien semper leo elementum.
+                    Compatible with CI/CD integrations around containers such as CircleCI, Gitlab, Tekton, and much more!
                 </div>
                 <div class="what-are-buildpacks-element__imageset">
                     <div class="what-are-buildpacks-element__imageset__container">
@@ -82,7 +85,8 @@
             </div>
             <div class="what-are-buildpacks-element">
                 <div class="body text--light">
-                    Cras accumsan iaculis elit, eget accumsan leo commodo nec. Nullam vitae sapien semper leo elementum.
+                    Paketo Buildpacks are leveraged by many application platforms and local development tools
+                    including Hashicorp Waypoint, the Pack CLI, Spring Boot, Tilt, and VMware Tanzu Build Service.
                 </div>
             </div>
             </div>
@@ -90,7 +94,9 @@
         <section class="homepage-section center-horizontal">
             <div class="section-content">
                 <h2 class="text__section-header text--dark">Here's how it works</h2>
-                <p class="text--dark body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae sem hendrerit, imperdiet magna vitae, pulvinar lorem.
+                <p class="text--dark body">
+                    Just bring your app and Paketo Buildpacks will detect what language your app is using,
+                    gather the required dependencies, and build it into an image.
                 </p>
                     <div class="how-it-works-animation">
                         {{ partial "v2/how-it-works-animation.html" . }}
@@ -103,45 +109,12 @@
             <div class="feature">
                 <div class="feature__tagline">
                     <div class="feature__tagline__icon-container">
-                        <img class="width-100pct" src="/v2/images/icon-patch.svg" alt="A patch icon">
-                    </div>
-                    <h3 class="text--light">Nullam molestie elit id ex dictum, ut eleifend.</h3>
-                </div>
-                <div class="text--light text--500 body">
-                    Suspendisse non maximus purus, eu tincidunt erat. Proin pretium neque et ipsum tempus vestibulum.
-                </div>
-            </div>
-            <div class="feature">
-                <div class="feature__tagline">
-                    <div class="feature__tagline__icon-container">
                         <img class="height-100pct" src="/v2/images/icon-bolt.svg" alt="A lightning bolt icon">
                     </div>
-                    <h3 class="text--light">Sed varius suscipit venenatis. Morbi venenatis gravida.</h3>
+                    <h3 class="text--light">Fast rebuilds through built-in caching</h3>
                 </div>
                 <div class="text--light text--500 body">
-                    Nam ullamcorper felis arcu, non rutrum dolor sagittis et. Quisque mauris erat, sollicitudin ac.
-                </div>
-            </div>
-            <div class="feature">
-                <div class="feature__tagline">
-                    <div class="feature__tagline__icon-container">
-                        <img class="width-100pct" src="/v2/images/icon-magglass.svg" alt="A magnifying glass icon">
-                    </div>
-                    <h3 class="text--light">Integer hendrerit tellus eu tincidunt porttitor.</h3>
-                </div>
-                <div class="text--light text--500 body">
-                    Donec non nisl scelerisque, pretium ex sit amet, suscipit velit.
-                </div>
-            </div>
-            <div class="feature">
-                <div class="feature__tagline">
-                    <div class="feature__tagline__icon-container">
-                        <img class="height-100pct" src="/v2/images/icon-vine.svg" alt="A vine icon">
-                    </div>
-                    <h3 class="text--light">Proin congue erat eu ex sodales.</h3>
-                </div>
-                <div class="text--light text--500 body">
-                    Aliquam erat volutpat. Morbi ornare at leo id tristique. Donec.
+                    Quickly rebuild your apps without advanced customization of your build tooling
                 </div>
             </div>
             <div class="feature">
@@ -149,10 +122,48 @@
                     <div class="feature__tagline__icon-container">
                         <img class="width-100pct" src="/v2/images/icon-sliders.svg" alt="A slider icon">
                     </div>
-                    <h3 class="text--light">Donec mattis neque ut dui fringilla.</h3>
+                    <h3 class="text--light">Easy customization</h3>
                 </div>
                 <div class="text--light text--500 body">
-                    Curabitur vestibulum odio at ultricies pretium. Suspendisse venenatis dapibus purus.
+                    Paketo Buildpacks are modular and can easily be composed to suit your app’s needs.
+                    If your use case isn’t supported yet, leverage our tooling to build a buildpack,
+                    and contribute it to the community (or file a feature request)!
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature__tagline">
+                    <div class="feature__tagline__icon-container">
+                        <img class="width-100pct" src="/v2/images/icon-magglass.svg" alt="A magnifying glass icon">
+                    </div>
+                    <h3 class="text--light">Containers you can trust</h3>
+                </div>
+                <div class="text--light text--500 body">
+                    Gain visibility into your software supply chain through an extensive bill of materials
+                    provided by buildpacks
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature__tagline">
+                    <div class="feature__tagline__icon-container">
+                        <img class="width-100pct" src="/v2/images/icon-patch.svg" alt="A patch icon">
+                    </div>
+                    <h3 class="text--light">Patch OS-Level vulnerabilities, fast</h3>
+                </div>
+                <div class="text--light text--500 body">
+                    With buildpacks in your CI you can patch the OS layer of your app images without
+                    rebuilding your source code
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature__tagline">
+                    <div class="feature__tagline__icon-container">
+                        <img class="height-100pct" src="/v2/images/icon-vine.svg" alt="A vine icon">
+                    </div>
+                    <h3 class="text--light">Compliance and security that scales with your organization</h3>
+                </div>
+                <div class="text--light text--500 body">
+                    Use the Paketo “builder” abstraction to control what your team can use - no matter
+                    how many developers you have
                 </div>
             </div>
             </div>
@@ -161,15 +172,25 @@
             <div class="section-content">
                 <h2 class="text__section-header text--dark">Ready to contribute?</h2>
                 <a class="text__homepage-link body" href="contribute/">
-                    Check out R community page 2 learn more!!
+                    Check out our community page to learn more!
                 </a>
                 <h2 class="text__section-header text--dark">About the Paketo project</h2>
-                <p class="body text--dark paragraph">
-                    Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque sed ante lobortis, fringilla est at, ullamcorper dui. Cras sed sapien.
-                </p>
-                <p class="body text--dark paragraph">
-                    Vivamus aliquam varius nulla, at sodales lorem finibus a. Curabitur congue nisl nisi, at rutrum mauris dictum eu. Nulla faucibus aliquam purus et ullamcorper. Donec elementum faucibus ullamcorper. Fusce accumsan urna urna. Donec ante quam.
-                </p>
+                <ul class="list-disc">
+                <li class="body text--dark list__element">
+                    Our buildpacks are based on the learnings from years of building and maintaining buildpacks
+                    for Cloud Foundry (for VMs). Paketo Buildpacks work great with Spring and are the recommended
+                    way to build containers with Spring Boot.
+                </li>
+                <li class="body text--dark list__element">
+                    Buildpacks have received wide adoption across various platforms and power the productivity of tens of thousands of developers and operators dail
+                </li>
+                <li class="body text--dark list__element">
+                    Paketo is a community-driven project with active project maintainers and contributors that are driving the long term success of Paketo
+                </li>
+                <li class="body text--dark list__element">
+                    Vendor-neutral governance through the Cloud Foundry Foundation
+                </li>
+            </ul>
             </div>
             <div class="center-horizontal"><a class="button text--shadow text--light" href="docs">Get Started</a></div>
         </section>
