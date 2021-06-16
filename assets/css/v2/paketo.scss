@@ -355,7 +355,11 @@
 
     .what-are-buildpacks-element__image {
         margin-top:10px;
-        max-width: 300px;
+        width: 100%;
+
+        @media (min-width: $mobile-breakpoint) {
+            max-width: 400px;
+        }
     }
 
     .what-are-buildpacks-element__imageset {
