@@ -50,6 +50,10 @@
         width: fit-content;
         height: fit-content;
         margin-bottom: 46px;
+
+        @media (min-width: $mobile-breakpoint) {
+            padding: 20px;
+        }
     }
 
     .paketo-logo__image{
