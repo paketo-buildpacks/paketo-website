@@ -29,10 +29,13 @@
         $(document)
         .on('click', '.nav-opener', function(){
             var el = $(this);
+            var navTray = $(document.getElementById("nav-tray"))
             if(el.hasClass('nav-opener__bar--opened')){
-                el.removeClass('nav-opener__bar--opened').next('nav').removeClass('nav--showing');
+                el.removeClass('nav-opener__bar--opened');
+                navTray.removeClass('nav--showing');
             } else {
-                el.addClass('nav-opener__bar--opened').next('nav').addClass('nav--showing');
+                el.addClass('nav-opener__bar--opened')
+                navTray.addClass('nav--showing');
             }
         });
     });
