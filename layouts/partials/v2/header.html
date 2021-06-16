@@ -16,14 +16,16 @@
             <span class="nav-opener__bar nav-opener__bar-middle"></span>
             <span class="nav-opener__bar nav-opener__bar-bottom"></span>
         </div>
-        <nav class="nav">
-            <div class="nav__linkarea">
-                <a class="nav-link {{ $textColor }}" href="/docs/">docs</a>
-                <a class="nav-link {{ $textColor }}" href="/contribute/">community</a>
-                <a class="nav-link {{ $textColor }}" target="_blank" href="https://blog.paketo.io">blog</a>
-                <a class="nav-link {{ $textColor }}" target="_blank" href="https://github.com/paketo-buildpacks">github</a>
-            </div>
-        </nav>
+        <div class="nav-container">
+            <nav class="nav" id="nav-tray" >
+                <div class="nav__linkarea">
+                    <a class="nav-link {{ $textColor }}" href="/docs/">docs</a>
+                    <a class="nav-link {{ $textColor }}" href="/contribute/">community</a>
+                    <a class="nav-link {{ $textColor }}" target="_blank" href="https://blog.paketo.io">blog</a>
+                    <a class="nav-link {{ $textColor }}" target="_blank" href="https://github.com/paketo-buildpacks">github</a>
+                </div>
+            </nav>
+        </div>
     </div>
     <div class="desktop-nav">
         <a class="nav-link {{ $textColor }}" href="/docs/">docs</a>
