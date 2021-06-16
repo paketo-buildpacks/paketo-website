@@ -1,14 +1,8 @@
-    @import 'v2/variables';   
+    @import 'v2/variables';
     /* navigation */
 
     .right {
         float: right !important;
-
-        @media (min-width: $mobile-breakpoint) {
-            float: none !important;
-            display: flex;
-            width: 100%;
-        }
     }
 
     .nav {
@@ -20,16 +14,20 @@
         top: 0;
         display: flex;
         flex-direction: column;
-		transform: translateX(100%);
+        transform: translateX(100%);
         transition: transform 0.3s cubic-bezier(.22, .61, .36, 1);
 
-        @media (min-width: $mobile-breakpoint) {
-            transform: translateX(0%);
-            height: 100%;
-            width: 100%;
+        @media (min-width: 800px) {
+            display: none;
+        }
+
+        @media (min-width: $mobile-breakpoint) and (max-width: 800px) {
+            height: 500px;
+            width: 320px;
             height: auto;
-            position: relative;
-            background: none;
+            position: absolute;
+            border-bottom-left-radius: 10px;
+            box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
         }
     }
 
@@ -47,7 +45,7 @@
         flex-direction: column;
         justify-content: space-around;
 
-        @media (min-width: $mobile-breakpoint) {
+        @media (min-width: 800px) {
             flex-direction: row;
             justify-content: flex-end;
             flex-wrap: wrap;
@@ -72,7 +70,7 @@
         display: block;
         width: fit-content;
 
-        @media (min-width: $mobile-breakpoint) {
+        @media (min-width: 800px) {
             font-size: 24px;
             font-weight: bold;
             color: #ffffff;
@@ -91,8 +89,12 @@
         cursor: pointer;
         z-index: 8;
 
-        @media (min-width: $mobile-breakpoint) {
+        @media (min-width: 800px) {
             display: none;
+        }
+
+        @media (min-width: $mobile-breakpoint) {
+            position:absolute;
         }
     }
 
@@ -149,4 +151,12 @@
     .nav-opener__bar--opened .nav-opener__bar-middle {
         width: 0;
         left: 8px;
+    }
+
+    .desktop-nav {
+        display: none;
+
+        @media (min-width:800px) {
+            display: flex;
+        }
     }
