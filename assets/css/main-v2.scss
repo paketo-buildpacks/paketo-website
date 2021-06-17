@@ -2,3 +2,17 @@
 @import 'v2/variables';
 @import 'v2/nav';
 @import 'v2/paketo';
+
+@media (prefers-reduced-motion) {
+    .nav {
+      transition: none;
+    }
+
+    .nav-opener__bar {
+        transition: none;
+    }
+
+    .how-it-works-animation {
+        display: none;
+    }
+  }
