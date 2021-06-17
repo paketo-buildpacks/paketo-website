@@ -12,33 +12,16 @@
 		right: 0;
         top: 0;
         overflow: hidden;
-
-        @media (min-width: $mobile-breakpoint) and (max-width: 800px) {
-            width: 320px;
-            height: auto;
-            position: absolute;
-            padding-bottom: 5px;
-            padding-left: 5px;
-        }
     }
 
     .nav {
-        background: #fff;
+        background: $light-background-color;
         width: 100%;
         height: 100%;
         display: flex;
         flex-direction: column;
         transform: translateX(110%);
         transition: transform 0.3s cubic-bezier(.22, .61, .36, 1);
-
-        @media (min-width: $mobile-breakpoint) and (max-width: 800px) {
-            border-bottom-left-radius: 10px;
-            box-shadow: -2px 3px 4px rgba(0, 0, 0, 0.25);
-        }
-
-        @media (min-width: 800px) {
-            display: none;
-        }
     }
 
     .nav--showing {
@@ -54,15 +37,6 @@
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-
-        @media (min-width: 800px) {
-            flex-direction: row;
-            justify-content: flex-end;
-            flex-wrap: wrap;
-            margin: 0;
-            margin-right: 0px;
-            height: fit-content;
-        }
     }
 
     .nav-link {
@@ -80,12 +54,6 @@
         display: block;
         width: fit-content;
         height: fit-content;
-
-        @media (min-width: 800px) {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ffffff;
-        }
     }
 
     .nav-opener {
@@ -99,14 +67,6 @@
         height: 26.33px;
         cursor: pointer;
         z-index: 8;
-
-        @media (min-width: 800px) {
-            display: none;
-        }
-
-        @media (min-width: $mobile-breakpoint) {
-            position:absolute;
-        }
     }
 
     .nav-opener__bar {
@@ -123,6 +83,7 @@
     .nav-opener__bar-top, .nav-opener__bar-bottom {
         transform-origin: left
     }
+
     .nav-opener__bar-top {
         left: 0%;
         right: 0%;
@@ -166,8 +127,43 @@
 
     .desktop-nav {
         display: none;
+    }
 
-        @media (min-width:800px) {
+    @media (min-width: $mobile-breakpoint) and (max-width: $header-hamburger-breakpoint) {
+        .nav-opener {
+            position: absolute;
+        }
+
+        .nav-container {
+            width: 320px;
+            height: auto;
+            position: absolute;
+            padding-bottom: 5px;
+            padding-left: 5px;
+        }
+
+        .nav {
+            border-bottom-left-radius: 10px;
+            box-shadow: -2px 3px 4px rgba(0, 0, 0, 0.25);
+        }
+    }
+
+    @media (min-width: $header-hamburger-breakpoint) {
+        .nav-opener {
+            display: none;
+        }
+
+        .nav {
+            display: none;
+        }
+
+        .nav-link {
+            font-size: 24px;
+            font-weight: bold;
+            color: $light-text-color;
+        }
+
+        .desktop-nav {
             display: flex;
         }
     }
