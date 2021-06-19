@@ -27,7 +27,13 @@
     </div>
     <div class="footer-privacy-policy">
         <div class="footer-text--small">Paketo Buildpacks is a <a class="text--light" href="https://www.cloudfoundry.org/">Cloud Foundry</a> Project</div>
-        <img class="cloudfoundry-logo" src="v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
+        <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
     </div>
 </footer>
+{{- $pluginJS := resources.Get "js/plugins.js" | fingerprint -}}
+{{- $clipboardJS := resources.Get "js/clipboard.min.js" | fingerprint -}}
+{{- $mainJS := resources.Get "js/v2/main.js" | fingerprint -}}
+<script src="{{ $pluginJS.RelPermalink }}"></script>
+<script src="{{ $clipboardJS.RelPermalink }}"></script>
+<script src="{{ $mainJS.RelPermalink }}"></script>

@@ -14,7 +14,5 @@
 <meta name="twitter:card" content="" />
 {{ end }}
 
-{{- $css := resources.Get "css/main-v2.scss" | toCSS | minify | fingerprint -}}
+{{ $css := resources.Get "css/main-v2.scss" | toCSS | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
-<script src="/js/plugins.js"></script>
-<script src="/v2/js/homepage.js"></script>

@@ -1,11 +1,9 @@
-/* navigation */
+/* nav */
 .right {
     float: right !important;
 }
 
 .nav-container {
-    width: 100vw;
-    height: 100vh;
     position: fixed;
     right: 0;
     top: 0;
@@ -42,7 +40,7 @@
     margin-bottom: 10px;
     margin-right: 20px;
     margin-top: 10px;
-    font-family: Avenir Next, sans-serif;
+    font-family: "Avenir Next", sans-serif;
     text-decoration: none;
     color: #000000;
     font-size: 40px;
@@ -166,3 +164,5 @@
         display: flex;
     }
 }
+
+/* end nav */

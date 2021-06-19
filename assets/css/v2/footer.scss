@@ -44,3 +44,9 @@
     display: flex;
     flex-direction: column;
 }
+
+.cloudfoundry-logo {
+    width: 160px;
+    margin: 13px; /* must be >=8% of width to follow branding guidelines*/
+    margin-left: 0px;
+}
