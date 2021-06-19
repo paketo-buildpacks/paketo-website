@@ -29,10 +29,13 @@
         $(document)
         .on('click', '.nav-opener', function(){
             var el = $(this);
-            if(el.hasClass('opened')){
-                el.removeClass('opened').next('nav').removeClass('showing');
+            var navTray = $(document.getElementById("nav-tray"))
+            if(el.hasClass('nav-opener__bar--opened')){
+                el.removeClass('nav-opener__bar--opened');
+                navTray.removeClass('nav--showing');
             } else {
-                el.addClass('opened').next('nav').addClass('showing');
+                el.addClass('nav-opener__bar--opened')
+                navTray.addClass('nav--showing');
             }
         });
 
@@ -65,6 +68,7 @@
                 return el.previousElementSibling.innerText;
             }
         });
+
         docsClipboard.on('success', function(el) {
           var parent = el.trigger.parentElement;
           parent.classList.add('copied');

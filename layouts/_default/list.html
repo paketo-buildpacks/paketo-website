@@ -10,8 +10,8 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
-    {{ partial "header.html" . }}
+
+    {{ partial "v2/header.html" (dict "headerTheme" "dark" ) }}
 
     <div class="pad50 list">
         <div class="text-col">
@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    {{ partial "footer.html" .}}
+    {{ partial "v2/footer.html" .}}
 
 </body>
 

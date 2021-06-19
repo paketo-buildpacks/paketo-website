@@ -11,11 +11,11 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    {{ partial "header.html" . }}
+    {{ partial "v2/header.html" (dict "headerTheme" "dark" ) }}
 
     {{ partial "docs-body.html" . }}
 
-    {{ partial "footer.html" .}}
+    {{ partial "v2/footer.html" .}}
 
 </body>
 
