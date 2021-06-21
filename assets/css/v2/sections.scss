@@ -44,5 +44,6 @@
 
     @media (min-width: $mobile-breakpoint-footer) {
         flex-direction: row-reverse;
+        align-items: center;
     }
 }
