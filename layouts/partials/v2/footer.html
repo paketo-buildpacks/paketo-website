@@ -31,9 +31,6 @@
         <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
     </div>
 </footer>
-{{- $pluginJS := resources.Get "js/plugins.js" | fingerprint -}}
-{{- $clipboardJS := resources.Get "js/clipboard.min.js" | fingerprint -}}
-{{- $mainJS := resources.Get "js/v2/main.js" | fingerprint -}}
-<script src="{{ $pluginJS.RelPermalink }}"></script>
-<script src="{{ $clipboardJS.RelPermalink }}"></script>
-<script src="{{ $mainJS.RelPermalink }}"></script>
+
+{{- $js := resources.Get "js/main.js" | js.Build | fingerprint -}}
+<script src="{{ $js.RelPermalink }}"></script>

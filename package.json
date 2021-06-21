@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "clipboard": "zenorocha/clipboard.js#44df750"
+  }
+}
