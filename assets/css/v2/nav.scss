@@ -7,7 +7,14 @@
     position: fixed;
     right: 0;
     top: 0;
-    overflow: hidden;
+    overflow-x: hidden;
+    width: 0vw;
+    height: 100vh;
+    transition: width 0.3s;
+}
+
+.nav-container--showing {
+    width: 100vw;
 }
 
 .nav {
@@ -132,11 +139,15 @@
     }
 
     .nav-container {
-        width: 320px;
+        width: 0px;
         height: auto;
         position: absolute;
         padding-bottom: 5px;
         padding-left: 5px;
+    }
+
+    .nav-container--showing {
+        width: 320px;
     }
 
     .nav {

@@ -30,12 +30,17 @@
         .on('click', '.nav-opener', function(){
             var el = $(this);
             var navTray = $(document.getElementById("nav-tray"))
+            var navContainer=$(document.getElementById("nav-container"))
             if(el.hasClass('nav-opener__bar--opened')){
                 el.removeClass('nav-opener__bar--opened');
                 navTray.removeClass('nav--showing');
+                navContainer.removeClass('nav-container--showing')
+
             } else {
                 el.addClass('nav-opener__bar--opened')
                 navTray.addClass('nav--showing');
+                navContainer.addClass('nav-container--showing')
+
             }
         });
 
