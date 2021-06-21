@@ -1,6 +1,7 @@
 /* nav */
-.right {
+.right-overlay {
     float: right !important;
+    z-index: 4;
 }
 
 .nav-container {
