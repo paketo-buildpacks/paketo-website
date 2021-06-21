@@ -401,8 +401,6 @@ table {
 	transition: all 0.3s cubic-bezier(.17, .84, .44, 1);
 	position: absolute;
 	background: $light-background-color;
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
 	width: 1px;
 	top: 0;
 	right: -1px;
@@ -413,6 +411,8 @@ table {
 	width: 100%;
 	background: $light-background-color;
 	color: $dark-text-color;
+	border-top-left-radius: 10px;
+	border-bottom-left-radius: 10px;
 }
 .docs-menu a:hover {
 	color: $link-text-color;
