@@ -8,8 +8,8 @@
 <body>
     {{ partial "v2/header.html" (dict "headerTheme" "dark" ) . }}
     <main>
-        <section class="homepage-section homepage-section--dark center-horizontal">
-            <div class="section-content center-horizontal">
+        <section class="homepage-section homepage-section--dark">
+            <div class="section-content">
                 <div class="section-content text__tagline">
                     <h1 class="text__tagline__item text--light font--default text--shadow">Your app,<br />
                         in your favorite language,<br />
@@ -18,8 +18,8 @@
                 </div>
             </div>
         </section>
-        <div class="content">
-            <section class="homepage-section homepage-section__languages">
+        <div class="homepage-content">
+            <section class="homepage-section">
                 <div class="languages">
                     {{ with .Site.Params.hero}}
                     {{ range .logos }}
@@ -33,7 +33,7 @@
                 </div>
                 <a class="button text--shadow text--light" href="docs">Get Started</a>
             </section>
-            <section class="homepage-section homepage-section--dark center-horizontal">
+            <section class="homepage-section homepage-section--dark">
                 <div class="section-content">
                     <h2 class="text__section-header text--light text--shadow">What are Paketo Buildpacks?</h2>
                     <div class="what-are-buildpacks-element">
@@ -106,7 +106,7 @@
                     </div>
                 </div>
             </section>
-            <section class="homepage-section center-horizontal">
+            <section class="homepage-section">
                 <div class="section-content">
                     <h2 class="text__section-header text--dark">Here's how it works</h2>
                     <p class="text--dark body">
@@ -118,7 +118,7 @@
                     </div>
                 </div>
             </section>
-            <section class="homepage-section homepage-section--dark center-horizontal">
+            <section class="homepage-section homepage-section--dark">
                 <div class="section-content">
                     <h2 class="text__section-header text--light text--shadow">Features</h2>
                     <div class="feature">
@@ -184,7 +184,7 @@
                     </div>
                 </div>
             </section>
-            <section class="homepage-section homepage-section__contribute center-horizontal">
+            <section class="homepage-section homepage-section--padded">
                 <div class="section-content">
                     <h2 class="text__section-header text--dark">Ready to contribute?</h2>
                     <a class="text__homepage-link body" href="contribute/">
