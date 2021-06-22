@@ -13,3 +13,24 @@
         width: 245px;
     }
 }
+
+.header--light {
+    background: $light-background-color !important;
+}
+
+.header {
+    background: $dark-background-color;
+    box-shadow: none;
+    padding-top: 20px;
+    padding-left: 28px;
+    padding-bottom: 34px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $mobile-breakpoint) {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
