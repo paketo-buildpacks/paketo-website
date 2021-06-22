@@ -44,11 +44,16 @@
 
 .footer-social-link__image-container{
     width: 70px;
+    margin-left: 10px;
     margin-right: 12px;
+
+    @media(min-width: $mobile-breakpoint-footer) {
+        width: 50px;
+    }
 }
 
 .footer-social-link__image-container__image {
-    padding-left: 10px;
+    width: 100%;
 }
 
 .footer-text--small {
