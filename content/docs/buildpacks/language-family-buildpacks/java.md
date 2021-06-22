@@ -76,7 +76,7 @@ For a given build `<TOOL>`, where `<TOOL>` is one of `MAVEN`, `GRADLE`, `LEIN` o
   * Defaults to a tool-specific pattern (e.g. `target/*.[jw]ar` for Maven, `build/libs/*.[jw]ar` for gradle). See component buildpack homepage for details.
   * Configures the built application artifact path, using [Bash Pattern Matching][bash pattern matching].
   * Supercedes `BP_<TOOL>_BUILT_MODULE` if set to a non-default value.
-  * *Example*: Given`BP_MAVEN_BUILT_ARTIFACT=out/api-*.jar`, the Paketo Maven Buildpack will select a file with name `out/api-1.0.0.jar`.
+  * *Example*: Given `BP_MAVEN_BUILT_ARTIFACT=out/api-*.jar`, the Paketo Maven Buildpack will select a file with name `out/api-1.0.0.jar`.
 
 #### Specifying the Build Command
 
