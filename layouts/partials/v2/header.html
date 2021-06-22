@@ -4,9 +4,9 @@
 {{ if eq .headerTheme "light" }}
     {{ $logoImage = "paketo-logo-dark.svg" }}
     {{ $textColor = "text--dark" }}
-    {{ $backgroundColor = "homepage-section--light" }}
+    {{ $backgroundColor = "header--light" }}
 {{ end }}
-<header class="homepage-section homepage-section--dark homepage-section--header {{ $backgroundColor }}">
+<header class="header {{ $backgroundColor }}">
     <a class="paketo-logo" href="/">
         <img class="paketo-logo__image" src="/v2/images/{{ $logoImage }}" alt="Paketo Buildpacks Homepage">
     </a>
