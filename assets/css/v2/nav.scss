@@ -56,7 +56,9 @@
     z-index: 1;
     line-height: 40px;
     display: block;
+    width: -moz-fit-content;
     width: fit-content;
+    height: -moz-fit-content;
     height: fit-content;
 }
 
