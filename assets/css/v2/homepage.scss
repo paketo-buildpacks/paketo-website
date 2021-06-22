@@ -53,35 +53,39 @@
 }
 
 .languages__item {
-    margin: 5px;
+    margin: 10px;
 }
 
 .logo {
     height: 35px;
 }
 
-.logo-java {
+.logo--java {
     height: 80px;
+    margin-left: 12px;
+    margin-right: 12px;
 }
 
-.logo-graalvm {
+.logo--graalvm {
     height: 25px;
 }
 
-.logo-go {
+.logo--go {
     height: 56px;
 }
 
-.logo-nginx {
+.logo--nginx {
     height: 45px;
 }
 
-.logo-php {
+.logo--php {
     height: 45px;
 }
 
-.logo-httpd {
+.logo--httpd {
     height: 66px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .feature {
