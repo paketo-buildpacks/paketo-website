@@ -6,6 +6,7 @@
     padding-right: 30px;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .homepage-section--dark {
@@ -18,32 +19,6 @@
     box-shadow: none;
 }
 
-.homepage-section--header {
-    box-shadow: none;
-    padding-top: 20px;
-
-    @media (min-width: $mobile-breakpoint) {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
-
-.homepage-section__languages {
-    align-items: center;
-}
-
-.homepage-section__contribute {
+.homepage-section--padded {
     padding-bottom: 64px;
-}
-
-.homepage-section__footer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    @media (min-width: $mobile-breakpoint-footer) {
-        flex-direction: row-reverse;
-        align-items: center;
-    }
 }
