@@ -19,7 +19,7 @@ jobs:
         hugo-version: '0.83.1'
         extended: true
     - name: Build
-      run: hugo
+      run: npm install && hugo
     - name: Deploy
       uses: w9jds/firebase-action@master
       with:
