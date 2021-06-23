@@ -18,6 +18,8 @@ jobs:
       with:
         hugo-version: '0.84.0'
         extended: true
+    - name: Disable Crawling on staging site
+      run: printf "User-agent: *\nDissallow: /\n" > layouts/robots.txt
     - name: Build
       run: npm install && hugo
     - name: Deploy
