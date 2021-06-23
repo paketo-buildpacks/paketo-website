@@ -403,7 +403,7 @@ table {
 	height: 100%;
 	z-index: -1;
 }
-.docs-menu a.active:before, .docs-menu a:hover:before {
+.docs-menu a.active:before {
 	width: 100%;
 	background: $light-background-color;
 	color: $dark-text-color;
@@ -411,7 +411,7 @@ table {
 	border-bottom-left-radius: 10px;
 }
 .docs-menu a:hover {
-	color: $link-text-color;
+	color: $link-text-dark-background-color;
 }
 .docs pre {
 	position: relative;
