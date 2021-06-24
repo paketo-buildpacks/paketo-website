@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy Prod to gh pages
 
 on:
   push:
