@@ -33,9 +33,10 @@
                 </div>
                 <a class="button text--shadow text--light" href="docs">Get Started</a>
             </section>
-            <section class="homepage-section homepage-section--dark">
-                <div class="section-content">
-                    <h2 class="text__section-header text--light text--shadow">What are Paketo Buildpacks?</h2>
+            <section class="homepage-section homepage-section--dark homepage-section--with-background">
+                <div class="section-content-container">
+                    <div class="section-text">
+                        <h2 class="text__section-header text--light text--shadow">What are Paketo Buildpacks?</h2>
                     <div class="what-are-buildpacks-element">
                         <ul class="text--light body list--disc">
                             <li class="list__element">
@@ -103,6 +104,11 @@
                             including Hashicorp Waypoint, the Pack CLI, Spring Boot, Tilt, and VMware Tanzu Build
                             Service.
                         </div>
+                    </div>
+
+                    </div>
+                    <div class="background-image-container background-image-container--layers" >
+                        {{ partial "v2/background-layers.html" }}
                     </div>
                 </div>
             </section>
