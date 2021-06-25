@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100%;
     max-width: 500px;
 
     @media (min-width: $mobile-breakpoint) {
@@ -22,16 +23,13 @@
 }
 
 .section-content--with-background {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 100%;
-    max-width: 1200px;
-    justify-content: space-around;
-    overflow-y: visible;
 
     @media (min-width: $mobile-breakpoint) {
-        min-width: 450px;
+        flex-direction: row-reverse;
+        width: 100%;
+        max-width: 1200px;
+        justify-content: space-around;
+        overflow-y: visible;
     }
 }
 
@@ -51,8 +49,6 @@
     height: 100%;
     display: flex;
     justify-content: space-around;
-    padding-left: 400px;
-    padding-right: 400px;
 }
 
 /* layout helpers */
@@ -149,16 +145,27 @@
 }
 
 .background-image-container--layers {
+    margin-bottom: -340px;
     transition: margin-left 0.5s;
-
-    @media (min-width: $mobile-breakpoint) and (max-width: 900px) {
-        margin-left: -500px;
-    }
+    display: flex;
+    justify-content: flex-end;
     
-    @media (min-width: 900px) {
+
+    @media (min-width: $mobile-breakpoint) {
+        margin-right: -30px;
+        display: block;
         margin-left: -200px;
         margin-top: -60px;
         margin-bottom: -80px;  
+    }
+}
+
+.background-layers {
+    width: 198px;
+    height: auto;
+
+    @media (min-width: $mobile-breakpoint) {
+        width: 751px;
     }
 }
 
