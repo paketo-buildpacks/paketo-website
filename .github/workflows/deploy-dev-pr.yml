@@ -33,7 +33,7 @@ jobs:
       run: hugo
 
     - name: Deploy
-    - uses: actions/github-script@v4
+      uses: actions/github-script@v4
       with:
         script: |
             const firebase = require('firebase-tools')
