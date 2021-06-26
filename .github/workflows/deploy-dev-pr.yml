@@ -8,6 +8,10 @@ jobs:
   deploy-dev-pr:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 16
+        check-latest: true
     - uses: actions/checkout@v1
       with:
         submodules: false
@@ -18,16 +22,34 @@ jobs:
         hugo-version: '0.84.0'
         extended: true
 
+    - name: Install node Modules
+      run: npm ci
+
     - name: Disable Crawling on staging site
       run: |
         printf "User-agent: *\nDissallow: /\n" > layouts/robots.txt
 
     - name: Build
-      run: npm install && hugo
+      run: hugo
 
     - name: Deploy
-      uses: w9jds/firebase-action@master
+    - uses: actions/github-script@v4
       with:
-        args: hosting:channel:deploy --json -e 24h --only paketo-staging "${GITHUB_HEAD_REF##*/}"
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        script: |
+            const firebase = require('firebase-tools')
+            const { GITHUB_HEAD_REF } = process.env
+            // overkill... probably.
+            const prBranch = GITHUB_HEAD_REF.split('/')
+                            .filter(item => item.trim().length > 0)
+                            .pop()
+
+            firebase( {token: secrets.FIREBASE_TOKEN} )
+              .hosting
+              .channel
+              .deploy(prBranch, {json: true, e: 24h, only: paketo-staging})
+              .then((data) => {
+                console.log(data)
+              })
+              .catch((err) => {
+                console.log(err)
+              })
