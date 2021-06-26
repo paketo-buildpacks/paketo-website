@@ -1,0 +1,36 @@
+name: Deploy PR to Firebase
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize # new commits pushed
+      - ready_for_review # pr take out of draft mode
+      - review_requested
+jobs:
+  deploy-dev-pr:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: false
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.84.0'
+        extended: true
+
+    - name: Disable Crawling on staging site
+      run: |
+        printf "User-agent: *\nDissallow: /\n" > layouts/robots.txt
+
+    - name: Build
+      run: npm install && hugo
+
+    - name: Deploy
+      uses: w9jds/firebase-action@master
+      with:
+        args: hosting:channel:deploy --json -e 24h --only paketo-staging "${GITHUB_HEAD_REF##*/}"
+      env:
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
