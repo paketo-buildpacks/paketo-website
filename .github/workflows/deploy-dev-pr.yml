@@ -3,10 +3,7 @@ name: Deploy PR to Firebase
 on:
   pull_request:
     types:
-      - opened
-      - synchronize # new commits pushed
-      - ready_for_review # pr take out of draft mode
-      - review_requested
+      - synchronize # new commits pushed, hopefully this covers 'opened' too.
 jobs:
   deploy-dev-pr:
     runs-on: ubuntu-latest
