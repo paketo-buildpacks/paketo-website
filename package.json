@@ -2,5 +2,8 @@
   "dependencies": {
     "clipboard": "zenorocha/clipboard.js#44df750",
     "firebase-tools": "^9.14.0"
+  },
+  "scripts": {
+    "deploy": "node -e \"const deploy = require('./deploy.js'); deploy()\""
   }
 }
