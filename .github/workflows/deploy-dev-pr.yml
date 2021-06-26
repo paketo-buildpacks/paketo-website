@@ -23,7 +23,7 @@ jobs:
         extended: true
 
     - name: Install node Modules
-      run: npm ci
+      run: npm install
 
     - name: Disable Crawling on staging site
       run: |
