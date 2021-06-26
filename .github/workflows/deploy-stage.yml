@@ -31,8 +31,7 @@ jobs:
     - name: Build
       run: |
         npm --version
-        npm ci
-        hugo
+        npm install && hugo
 
     - name: Deploy
       uses: w9jds/firebase-action@master
