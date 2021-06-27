@@ -4,6 +4,8 @@ on:
   pull_request:
     types:
       - synchronize # new commits pushed, hopefully this covers 'opened' too.
+  workflow_dispatch: {}
+
 jobs:
   deploy-dev-pr:
     runs-on: ubuntu-latest

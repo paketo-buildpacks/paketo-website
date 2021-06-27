@@ -18,6 +18,8 @@ module.exports = async ({ context, github } = {} ) => {
           owner: context.repo.owner,
           repo: context.repo.repo,
           body: `PR deployed to: ${data.paketo-staging.url}`
+        }).then((result) => {
+          console.log(result);
         });
       }
       console.log(data);
