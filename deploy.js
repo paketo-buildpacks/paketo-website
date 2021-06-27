@@ -13,7 +13,7 @@ module.exports = async ({ context, github } = {} ) => {
     .deploy(branch, { json: true, e: '24h', only: 'paketo-staging', token: FIREBASE_TOKEN})
     .then((data) => {
       if (context !== undefined && github !== undefined) {
-        console.log(`Lests create a comment`)
+        console.log(`Lets create a comment`)
         const payload = {
           issues_number: context.issue.number,
           owner: context.repo.owner,
