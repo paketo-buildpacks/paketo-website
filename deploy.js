@@ -17,7 +17,7 @@ module.exports = async ({ context, github }) => {
         issues_number: context.issue.number,
         owner: context.repo.owner,
         repo: context.repo.repo,
-        body: `PR deployed to: ${data.paketo-staging.url}`
+        body: `PR deployed to: ${data['paketo-staging'].url}`
       }
       console.log(`payload: ${payload}`);
       github.issues.createComment(payload).then((result) => {
