@@ -1,6 +1,6 @@
 firebase = require('firebase-tools');
 
-module.exports = async ({ context, github ) => {
+module.exports = async ({ context, github }) => {
   const { GITHUB_HEAD_REF, FIREBASE_TOKEN} = process.env;
   // overkill... probably.
   const branch = GITHUB_HEAD_REF.split('/')
