@@ -1,6 +1,6 @@
 firebase = require('firebase-tools');
 
-module.exports = async () => {
+module.exports = async ({ context, github } = {} ) => {
   const { GITHUB_HEAD_REF, FIREBASE_TOKEN} = process.env;
   // overkill... probably.
   const branch = GITHUB_HEAD_REF.split('/')
@@ -12,10 +12,18 @@ module.exports = async () => {
     .channel
     .deploy(branch, { json: true, e: '24h', only: 'paketo-staging', token: FIREBASE_TOKEN})
     .then((data) => {
-      console.log(data)
+      if (context !== undefined && github !== undefined) {
+        github.issues.createComment({
+          issues_number: context.issue.number,
+          owner: context.repo.owner,
+          repo: context.repo.repo,
+          body: `PR deployed to: ${data.paketo-staging.url}`
+        });
+      }
+      console.log(data);
     })
     .catch((err) => {
-      console.log(err)
+      console.log(err);
     });
 }
 
