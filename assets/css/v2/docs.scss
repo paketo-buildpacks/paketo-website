@@ -31,8 +31,12 @@
 .docs-body__table-of-contents ul {
     list-style: none;
     padding: 0px;               // don't indent h2 headers
-   }
+}
 
-   .docs-body__table-of-contents ul li ul { // indent h3 subheaders
+.docs-body__table-of-contents ul li ul { // indent h3 subheaders
        padding: 0 1em;
-   }
+}
+
+.markup-heading__link {
+    text-decoration: none;
+}
