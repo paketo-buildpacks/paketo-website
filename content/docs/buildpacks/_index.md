@@ -28,8 +28,6 @@ Paketo NPM Start Buildpack 0.0.2
 In this section, we will make sense of this output and explain how the
 buildpacks detect what dependencies are needed by your app to build it into a runnable app image.
 
-{{< table_of_contents >}}
-
 ## What are Buildpacks?  
 Buildpacks examine your app source code, identify and gather dependencies, and output OCI compliant app and dependency layers.
 

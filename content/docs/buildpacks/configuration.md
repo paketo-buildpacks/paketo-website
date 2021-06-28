@@ -9,8 +9,6 @@ menu:
 
 # Configuring Paketo Buildpacks
 
-{{< table_of_contents >}}
-
 ## About the Examples
 
 Configuration examples will use the Paketo [sample applications][samples].

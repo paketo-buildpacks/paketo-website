@@ -274,7 +274,7 @@ table {
 }
 /* header */
 
-.cta, .docs-body a {
+.cta {
 	position: relative;
 	padding: 0 4px;
 	z-index: 1;
@@ -346,9 +346,6 @@ table {
 	width: 380px;
 	border-right: 1px solid #ccc;
 	background: $dark-background-color;
-}
-.docs-body {
-	width: calc(100% - 380px);
 }
 
 .docs-lastmod {
@@ -544,8 +541,7 @@ table {
 	.pad-right {
 		padding-right: 1em;
 	}
-	.docs-sidebar,
-	.docs-body {
+	.docs-sidebar {
 		width: 100%;
 	}
 	.docs-menu {

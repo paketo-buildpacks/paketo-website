@@ -28,8 +28,6 @@ for how to run the app.
 **NOTE: The Paketo Full builder is required because HTTPD relies on operating
 system libraries only present in the Full builder.**
 
-{{< table_of_contents >}}
-
 ## Supported Dependencies
 
 The HTTPD Paketo Buildpack supports several versions of Apache HTTP Server.

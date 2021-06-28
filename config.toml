@@ -113,6 +113,11 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
 [params.docs_menu]
   title = "PAKETO DOCS"
 
+[markup]
+  [markup.tableOfContents]
+    endLevel = 3
+    ordered = false
+    startLevel = 2
 
 [module]
   [[module.imports]]
