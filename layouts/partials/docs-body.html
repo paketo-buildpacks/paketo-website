@@ -2,8 +2,9 @@
     <div class="docs-sidebar relative z2 bg-white">
         {{ partial "docs-sidebar.html" . }}
     </div>
-    <div class="docs-body relative">
-        <div class="text-col docs-text pad50">
+    <div class="docs-body">
+        <div class="docs-body__text">
+            {{ partial "v2/docs-table-of-contents.html" . }}
             {{ .Scratch.Set "path" .File.Path }}
             {{ .Scratch.Set "filename" .File.TranslationBaseName }}
             {{ partial "github-edit.html" . }}

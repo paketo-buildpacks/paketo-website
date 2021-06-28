@@ -1,0 +1,38 @@
+/* docs */
+
+/* table of contents */
+
+.docs-body {
+    width: 100%;
+    position: relative;
+    padding-left: 31px;
+    padding-right: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    @media (min-width: $mobile-breakpoint) {
+        width: calc(100% - 380px);
+    }
+}
+
+.docs-body__text {
+    max-width: 1000px;
+	overflow: auto;
+}
+
+.docs-body__table-of-contents {
+    color: $dark-text-color;
+    font-size: 17px;
+    line-height: 24px;
+    text-decoration-line: underline;
+    padding-bottom: 60px;
+}
+
+.docs-body__table-of-contents ul {
+    list-style: none;
+    padding: 0px;               // don't indent h2 headers
+   }
+
+   .docs-body__table-of-contents ul li ul { // indent h3 subheaders
+       padding: 0 1em;
+   }
