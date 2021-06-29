@@ -4,7 +4,7 @@
     </div>
     <div class="docs-body">
         <div class="docs-body__container">
-            <h1>{{ .Title }}</h1>
+            <h1 class="">{{ .Title }}</h1>
             {{ partial "v2/docs-table-of-contents.html" . }}
             {{ .Scratch.Set "path" .File.Path }}
             {{ .Scratch.Set "filename" .File.TranslationBaseName }}
