@@ -39,3 +39,46 @@
    .docs-body__table-of-contents ul li ul { // indent h3 subheaders
        padding: 0 1em;
    }
+
+/* github redirect */
+
+.github-edit {
+    display: none;
+
+    margin-top: 16px;
+	border: 1px solid $dark-background-color;
+	border-radius: 5px;
+	background: $light-background-color;
+	width: 75px;
+	float: right;
+
+    @media (min-width: $mobile-breakpoint) {
+        display: block;
+    }
+}
+
+.github-edit:hover {
+	opacity: 0.8 !important;
+	border: 1px solid #4a516d;
+	background: white;
+	color: #4a516d;
+}
+
+.github-edit__content {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin: 8px 0px;
+}
+
+.github-edit__logo-container {
+	border: none;
+	width: 30%;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.github-edit__text {
+	margin-right: 10px;
+	font-size: 12px;
+}

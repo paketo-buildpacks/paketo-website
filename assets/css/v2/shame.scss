@@ -1,0 +1,8 @@
+/* a home for css hacks needed to make things look okay during refactor */
+
+// Needed to prevent the edit on github actiion button image to have a border
+// because .docs img{} styling in paketo scss is aggressive
+:root .github-edit__logo {
+	border: none;
+	width: 100%;
+}
