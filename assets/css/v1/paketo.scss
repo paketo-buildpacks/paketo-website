@@ -511,7 +511,7 @@ table {
 		width: 19vw;
 	}
 }
-@media (max-width: 800px) {
+@media (max-width: $header-hamburger-breakpoint) {
 	.hero .builders .logos {
 		display: flex;
 		flex-flow: row wrap;
