@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy Prod to gh pages
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch: {}
 
 jobs:
-  deploy:
+  deploy-prod:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
