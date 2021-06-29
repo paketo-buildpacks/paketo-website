@@ -10,7 +10,7 @@ module.exports = async ({ context, github } = {}) => {
   firebase
     .hosting
     .channel
-    .deploy(branch, { json: true, e: '24h', only: 'paketo-staging', token: FIREBASE_TOKEN})
+    .deploy(branch, { json: true, e: '72h', only: 'paketo-staging', token: FIREBASE_TOKEN})
     .then((data) => {
       if (context !== undefined && github !== undefined) {
         console.log(`Lets create a comment`)
@@ -22,9 +22,6 @@ module.exports = async ({ context, github } = {}) => {
         }).then((result) => {
           console.log(result);
         })
-        .catch((err) => {
-          console.log(`createComment: ${err}`);
-        });
       }
       console.log(data);
     })

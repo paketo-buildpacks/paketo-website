@@ -37,6 +37,7 @@ jobs:
     - name: Deploy
       uses: actions/github-script@v4
       with:
+        github-token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
         script: |
             const deploy = require('./deploy.js')
             await deploy({ context, github })
