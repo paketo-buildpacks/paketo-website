@@ -14,12 +14,14 @@ module.exports = async ({ context, github } = {}) => {
     .then((data) => {
       if (context !== undefined && github !== undefined) {
         console.log(`Lets create a comment`)
-        github.issues.createComment({
+        const payload = {
           issues_number: context.issue.number,
           owner: context.repo.owner,
           repo: context.repo.repo,
           body: `PR deployed to: ${data['paketo-staging'].url}`
-        }).then((result) => {
+        }
+        console.log(JSON.stringify(payload));
+        github.issues.createComment(payload).then((result) => {
           console.log(result);
         })
       }
