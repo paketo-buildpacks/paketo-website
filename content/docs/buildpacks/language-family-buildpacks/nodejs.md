@@ -6,7 +6,6 @@ menu:
     parent: "language-family-buildpacks"
 ---
 
-# Node.js Buildpack
 The [Node.js Paketo Buildpack](https://github.com/paketo-buildpacks/nodejs) supports several popular configurations for Node.js apps.
 
 To build a sample app locally with this CNB using the `pack` CLI, run

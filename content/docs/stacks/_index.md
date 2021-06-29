@@ -4,7 +4,6 @@ weight: 400
 menu: "main"
 ---
 
-# Stacks
 In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. One of the core pieces to Buildpacks and Builders are Stack Images. Stacks provide the buildpack lifecycle with build-time and run-time environments in the form of images.
 
 ## What is a stack?

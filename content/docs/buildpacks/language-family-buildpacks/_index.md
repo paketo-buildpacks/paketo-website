@@ -7,7 +7,6 @@ menu:
     identifier: language-family-buildpacks
 ---
 
-# Language Family Buildpacks
 The Paketo language family buildpacks are [composite buildpacks](#composite-buildpacks) that provide easy out-of-the-box support the most popular language runtimes and app configurations.
 
 ## Component Buildpacks

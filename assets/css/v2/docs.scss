@@ -15,9 +15,13 @@
     }
 }
 
-.docs-body__text {
+.docs-body__container {
     max-width: 1000px;
 	overflow: auto;
+}
+
+.docs-body__markdown {
+    margin-top: 60px;
 }
 
 .docs-body__table-of-contents {
@@ -25,7 +29,6 @@
     font-size: 17px;
     line-height: 24px;
     text-decoration-line: underline;
-    padding-bottom: 60px;
 }
 
 .docs-body__table-of-contents ul {

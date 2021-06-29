@@ -6,7 +6,6 @@ menu:
     identifier: "buildpacks"
 ---
 
-# Buildpacks
 In the Getting Started tutorial, you ran a `pack build` command to build a sample app. This resulted in some output similar to this block:
 
 ```

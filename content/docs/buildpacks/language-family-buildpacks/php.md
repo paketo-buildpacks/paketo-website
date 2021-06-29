@@ -6,8 +6,6 @@ menu:
     parent: "language-family-buildpacks"
 ---
 
-# PHP Buildpack
-
 The [PHP Paketo Buildpack](https://github.com/paketo-buildpacks/php) enables developers to build
 PHP-based applications.
 

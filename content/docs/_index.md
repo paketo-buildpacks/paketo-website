@@ -4,7 +4,6 @@ weight: 100
 menu: "main"
 ---
 
-# Getting Started
 This section gets you started with Paketo Buildpacks using Paketo **Builders**, the **Pack** CLI, and **Docker**.
 
 Let's use the `base` Paketo Builder and the **Pack** CLI to build a Node.js app

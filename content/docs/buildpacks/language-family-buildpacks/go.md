@@ -6,8 +6,6 @@ menu:
     parent: "language-family-buildpacks"
 ---
 
-# Go Buildpack
-
 The [Go Paketo Buildpack](https://github.com/paketo-buildpacks/go) supports several popular
 configurations for Go apps.
 

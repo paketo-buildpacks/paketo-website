@@ -6,8 +6,6 @@ menu:
     parent: "tutorials"
 ---
 
-# How to Write a Cloud Native Buildpack Using Packit
-
 If the entire Cloud Native Buildpack experience is new to you, you may want to
 stop and take some time to read about [authoring a a Cloud Native
 Buildpack](https://buildpacks.io/docs/buildpack-author-guide/create-buildpack/)

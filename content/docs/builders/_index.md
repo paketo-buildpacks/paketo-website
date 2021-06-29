@@ -6,7 +6,6 @@ menu:
     identifier: builders
 ---
 
-# Builders
 In the Getting Started tutorial, you used the `pack` CLI and the base `builder` to create a runnable image with your application. This section explains what `builders` are and what builders are released by the Paketo project.
 
 
