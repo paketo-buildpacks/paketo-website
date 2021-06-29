@@ -7,8 +7,6 @@ menu:
     indentifier: configuration
 ---
 
-# Configuring Paketo Buildpacks
-
 ## About the Examples
 
 Configuration examples will use the Paketo [sample applications][samples].

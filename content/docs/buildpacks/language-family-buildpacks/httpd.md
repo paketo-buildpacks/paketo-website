@@ -6,8 +6,6 @@ menu:
     parent: "language-family-buildpacks"
 ---
 
-# HTTPD Buildpack
-
 The [HTTPD Paketo Buildpack](https://github.com/paketo-buildpacks/httpd)
 supports the installation of the Apache HTTP Server binary distribution
 onto the `$PATH` inside a container. This makes it available to subsequent

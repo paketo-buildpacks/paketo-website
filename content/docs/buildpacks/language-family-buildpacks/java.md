@@ -7,8 +7,6 @@ menu:
     parent: "language-family-buildpacks"
 ---
 
-# Java Buildpack
-
 The [Paketo Java Buildpack][java] allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
 
 The Java Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of it's [components](#components). The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages for the component buildpacks.

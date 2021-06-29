@@ -6,7 +6,4 @@ menu:
     identifier: "tutorials"
 ---
 
-
-# Available Tutorials
-
 ### [Creating a Paketo Buildpack](/docs/tutorials/create-paketo-buildpack)

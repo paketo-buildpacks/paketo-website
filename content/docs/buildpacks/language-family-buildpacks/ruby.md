@@ -6,8 +6,6 @@ menu:
     parent: "language-family-buildpacks"
 ---
 
-# Ruby Buildpack
-
 The [Paketo Ruby Buildpack](https://github.com/paketo-buildpacks/ruby) supports
 several popular configurations for Ruby apps.
 

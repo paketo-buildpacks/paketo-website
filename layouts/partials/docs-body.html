@@ -3,12 +3,15 @@
         {{ partial "docs-sidebar.html" . }}
     </div>
     <div class="docs-body">
-        <div class="docs-body__text">
+        <div class="docs-body__container">
+            <h1>{{ .Title }}</h1>
             {{ partial "v2/docs-table-of-contents.html" . }}
             {{ .Scratch.Set "path" .File.Path }}
             {{ .Scratch.Set "filename" .File.TranslationBaseName }}
             {{ partial "github-edit.html" . }}
-            {{ .Content }}
+            <div class="docs-body__markdown">
+                {{ .Content }}
+            </div>
             {{ partial "github-edit.html" . }}
         </div>
         <p class="docs-lastmod"><strong>Last modified:</strong> {{ .Lastmod.Format "January 2, 2006" }}</p>

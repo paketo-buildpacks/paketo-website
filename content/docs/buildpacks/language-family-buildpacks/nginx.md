@@ -6,8 +6,6 @@ menu:
     parent: "language-family-buildpacks"
 ---
 
-# NGINX Buildpack
-
 The [NGINX Paketo Buildpack](https://github.com/paketo-buildpacks/nginx) supports the installation of the NGINX binary distribution onto
 the `$PATH` inside a container. This makes it available to subsequent
 buildpacks.
