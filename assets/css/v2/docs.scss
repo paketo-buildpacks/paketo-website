@@ -1,7 +1,5 @@
 /* docs */
 
-/* table of contents */
-
 .docs-body {
     width: 100%;
     position: relative;
@@ -10,8 +8,17 @@
     padding-top: 40px;
     padding-bottom: 40px;
 
+    font-family: "Avenir Next", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    color: $dark-text-color;
+
     @media (min-width: $header-hamburger-breakpoint) {
         width: calc(100% - 380px);
+        font-weight: normal;
+        font-size: 17px;
     }
 }
 
@@ -24,6 +31,7 @@
     margin-top: 60px;
 }
 
+/* table of contents */
 .docs-body__table-of-contents {
     color: $dark-text-color;
     font-size: 17px;
@@ -81,4 +89,11 @@
 .github-edit__text {
 	margin-right: 10px;
 	font-size: 12px;
+}
+
+/* mod time*/
+.docs-mod-time {
+	padding-left: 50px;
+    font-style: italic;
+    padding: 0px;
 }
