@@ -6,9 +6,11 @@
 {{if (in $langFams $filename) }}
   {{ .Scratch.Set "url" (printf "http://github.com/paketo-buildpacks/%s/edit/main/docs/content/%s.md" $filename $filename) }}
 {{ end }}
-  <a href="{{ .Scratch.Get "url" }}" target="_blank" class="github-edit__redirect" style="text-decoration:none">
-    <div class="redirect__content">
-        <img class="github-logo" src="/images/github-mark.png">
-        <div class="edit-text">Edit</div>
+  <a href="{{ .Scratch.Get "url" }}" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
     </div>
 </a>
