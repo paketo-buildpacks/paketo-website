@@ -17,6 +17,9 @@
 
     @media (min-width: $header-hamburger-breakpoint) {
         width: calc(100% - 380px);
+    }
+
+    @media (min-width: $mobile-breakpoint) {
         font-weight: normal;
         font-size: 17px;
     }
