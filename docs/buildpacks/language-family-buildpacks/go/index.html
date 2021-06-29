@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/buildpacks/language-family-buildpacks/go/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.f50ae1e556c5da1f7222572749389f4dbe5cc4248176ef1cfd6e9009de5f9bf7.css">
+<link rel="stylesheet" href="/css/main-v1.min.fbd8e43af91a529e6787142ef1b72d6bc82b3f99e762bba6271220232d27e357.css">
 </head>
 
 <body>
@@ -259,40 +259,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
     </div>
-    <div class="docs-body relative">
-        <div class="text-col docs-text pad50">
-            
-            
-            
-
-
-
-
-
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/language-family-buildpacks/go.md" target="_blank" class="github-edit__redirect" style="text-decoration:none">
-    <div class="redirect__content">
-        <img class="github-logo" src="/images/github-mark.png">
-        <div class="edit-text">Edit</div>
-    </div>
-</a>
-
-            <h1 id="go-buildpack">Go Buildpack</h1>
-<p>The <a href="https://github.com/paketo-buildpacks/go">Go Paketo Buildpack</a> supports several popular
-configurations for Go apps.</p>
-<p>To build a sample app locally with this buildpack using the <code>pack</code> CLI, run</p>
-<pre class="copyable"><code>git clone https://github.com/paketo-buildpacks/samples
-cd samples/go/mod
-pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
-  --builder paketobuildpacks/builder:base
-</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
-
-<p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/go/mod">samples</a>
-for how to run the app.</p>
-<p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
-also compatible with the Paketo Full builder and Paketo Tiny builder.</strong></p>
-<div class="toc">
-	<h2>Table of Contents</h2>
-  	<nav id="TableOfContents">
+    <div class="docs-body">
+        <div class="docs-body__container">
+            <h1>Go Buildpack</h1>
+            <div class="docs-body__table-of-contents">
+    <nav id="TableOfContents">
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
     <li><a href="#specifying-a-go-version">Specifying a Go Version</a>
@@ -340,6 +311,37 @@ also compatible with the Paketo Full builder and Paketo Tiny builder.</strong></
   </ul>
 </nav>
 </div>
+            
+            
+            
+
+
+
+
+
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/language-family-buildpacks/go.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
+    </div>
+</a>
+
+            <div class="docs-body__markdown">
+                <p>The <a href="https://github.com/paketo-buildpacks/go">Go Paketo Buildpack</a> supports several popular
+configurations for Go apps.</p>
+<p>To build a sample app locally with this buildpack using the <code>pack</code> CLI, run</p>
+<pre class="copyable"><code>git clone https://github.com/paketo-buildpacks/samples
+cd samples/go/mod
+pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+  --builder paketobuildpacks/builder:base
+</code><img src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copied">Copied!</div></pre>
+
+<p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/go/mod">samples</a>
+for how to run the app.</p>
+<p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
+also compatible with the Paketo Full builder and Paketo Tiny builder.</strong></p>
 <h2 id="supported-dependencies">Supported Dependencies</h2>
 <p>The Go Paketo Buildpack supports several versions of Go.
 For more details on the specific versions supported in a given buildpack
@@ -542,16 +544,19 @@ instructions in the <a href="https://paketo.io/docs/buildpacks/configuration/#ap
 Labels</a>
 section of our configuration docs.</p>
 
+            </div>
             
 
 
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/language-family-buildpacks/go.md" target="_blank" class="github-edit__redirect" style="text-decoration:none">
-    <div class="redirect__content">
-        <img class="github-logo" src="/images/github-mark.png">
-        <div class="edit-text">Edit</div>
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/language-family-buildpacks/go.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
     </div>
 </a>
 

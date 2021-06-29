@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/buildpacks/language-family-buildpacks/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.f50ae1e556c5da1f7222572749389f4dbe5cc4248176ef1cfd6e9009de5f9bf7.css">
+<link rel="stylesheet" href="/css/main-v1.min.fbd8e43af91a529e6787142ef1b72d6bc82b3f99e762bba6271220232d27e357.css">
 </head>
 
 <body>
@@ -259,8 +259,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
     </div>
-    <div class="docs-body relative">
-        <div class="text-col docs-text pad50">
+    <div class="docs-body">
+        <div class="docs-body__container">
+            <h1>Language Family Buildpacks</h1>
+            <div class="docs-body__table-of-contents">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#component-buildpacks">Component Buildpacks</a></li>
+    <li><a href="#composite-buildpacks">Composite Buildpacks</a></li>
+  </ul>
+</nav>
+</div>
             
             
             
@@ -269,31 +278,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/language-family-buildpacks/_index.md" target="_blank" class="github-edit__redirect" style="text-decoration:none">
-    <div class="redirect__content">
-        <img class="github-logo" src="/images/github-mark.png">
-        <div class="edit-text">Edit</div>
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/language-family-buildpacks/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
     </div>
 </a>
 
-            <h1 id="language-family-buildpacks">Language Family Buildpacks</h1>
-<p>The Paketo language family buildpacks are <a href="#composite-buildpacks">composite buildpacks</a> that provide easy out-of-the-box support the most popular language runtimes and app configurations.</p>
+            <div class="docs-body__markdown">
+                <p>The Paketo language family buildpacks are <a href="#composite-buildpacks">composite buildpacks</a> that provide easy out-of-the-box support the most popular language runtimes and app configurations.</p>
 <h2 id="component-buildpacks">Component Buildpacks</h2>
 <p>Paketo provides many component buildpacks, each with a well-defined responsibility. Component buildpacks may require contributions from upstream buildpacks and/or provide required components to downstream buildpacks.</p>
 <p>For example, the Gradle Buildpack is a component buildpack, responsible for installing Gradle in the build container and using Gradle to compile and package a JVM application. It requires that an upstream component to provide a JDK. It provides a compiled JVM application to downstream buildpacks.</p>
 <h2 id="composite-buildpacks">Composite Buildpacks</h2>
 <p>Component buildpacks can be combined to compose higher-level composite buildpacks. Composite buildpacks contain an ordered list of component buildpacks. Some buildpacks in the ordering may be optional, participating only when they detect that they are needed.</p>
 
+            </div>
             
 
 
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/language-family-buildpacks/_index.md" target="_blank" class="github-edit__redirect" style="text-decoration:none">
-    <div class="redirect__content">
-        <img class="github-logo" src="/images/github-mark.png">
-        <div class="edit-text">Edit</div>
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/language-family-buildpacks/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
     </div>
 </a>
 

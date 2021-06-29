@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/buildpacks/language-family-buildpacks/httpd/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.f50ae1e556c5da1f7222572749389f4dbe5cc4248176ef1cfd6e9009de5f9bf7.css">
+<link rel="stylesheet" href="/css/main-v1.min.fbd8e43af91a529e6787142ef1b72d6bc82b3f99e762bba6271220232d27e357.css">
 </head>
 
 <body>
@@ -259,8 +259,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
     </div>
-    <div class="docs-body relative">
-        <div class="text-col docs-text pad50">
+    <div class="docs-body">
+        <div class="docs-body__container">
+            <h1>HTTPD Buildpack</h1>
+            <div class="docs-body__table-of-contents">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#specifying-an-httpd-version">Specifying an HTTPD Version</a>
+      <ul>
+        <li><a href="#using-bp_httpd_version">Using BP_HTTPD_VERSION</a></li>
+        <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#configurations">Configurations</a></li>
+  </ul>
+</nav>
+</div>
             
             
             
@@ -269,15 +284,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/language-family-buildpacks/httpd.md" target="_blank" class="github-edit__redirect" style="text-decoration:none">
-    <div class="redirect__content">
-        <img class="github-logo" src="/images/github-mark.png">
-        <div class="edit-text">Edit</div>
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/language-family-buildpacks/httpd.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
     </div>
 </a>
 
-            <h1 id="httpd-buildpack">HTTPD Buildpack</h1>
-<p>The <a href="https://github.com/paketo-buildpacks/httpd">HTTPD Paketo Buildpack</a>
+            <div class="docs-body__markdown">
+                <p>The <a href="https://github.com/paketo-buildpacks/httpd">HTTPD Paketo Buildpack</a>
 supports the installation of the Apache HTTP Server binary distribution
 onto the <code>$PATH</code> inside a container. This makes it available to subsequent
 buildpacks.</p>
@@ -292,21 +309,6 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/httpd \
 for how to run the app.</p>
 <p><strong>NOTE: The Paketo Full builder is required because HTTPD relies on operating
 system libraries only present in the Full builder.</strong></p>
-<div class="toc">
-	<h2>Table of Contents</h2>
-  	<nav id="TableOfContents">
-  <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#specifying-an-httpd-version">Specifying an HTTPD Version</a>
-      <ul>
-        <li><a href="#using-bp_httpd_version">Using BP_HTTPD_VERSION</a></li>
-        <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
-      </ul>
-    </li>
-    <li><a href="#configurations">Configurations</a></li>
-  </ul>
-</nav>
-</div>
 <h2 id="supported-dependencies">Supported Dependencies</h2>
 <p>The HTTPD Paketo Buildpack supports several versions of Apache HTTP Server.
 For more details on the specific versions supported in a given buildpack
@@ -347,16 +349,19 @@ buildpacks without actually setting up a server.</p>
 </li>
 </ol>
 
+            </div>
             
 
 
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/language-family-buildpacks/httpd.md" target="_blank" class="github-edit__redirect" style="text-decoration:none">
-    <div class="redirect__content">
-        <img class="github-logo" src="/images/github-mark.png">
-        <div class="edit-text">Edit</div>
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/language-family-buildpacks/httpd.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
     </div>
 </a>
 

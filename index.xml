@@ -11,8 +11,9 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/buildpacks/configuration/</guid>
-      <description>Configuring Paketo Buildpacks Table of Contents  About the Examples Types of Configuration  Environment Variables buildpack.yml Bindings Procfiles   Building Behind a Firewall  Proxy Configuration Dependency Mappings   CA Certificates Applying Custom Labels Configuring Locale    About the Examples Configuration examples will use the Paketo sample applications.
-Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied!</description>
+      <description>About the Examples Configuration examples will use the Paketo sample applications.
+Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied! The pack CLI is used throughout the examples. pack is just one of several Cloud Native Buildpack platforms than can execute builds with Paketo Buildpacks.
+Examples assume that the Paketo Base builder is the default builder: pack config default-builder paketobuildpacks/builder:base Copied! Types of Configuration Paketo buildpacks can be configured via the following mechanisms:</description>
     </item>
     
     <item>
@@ -33,7 +34,7 @@ NOTE: Though the example above uses the Paketo Base builder, this buildpack is a
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/go/</guid>
-      <description>Go Buildpack The Go Paketo Buildpack supports several popular configurations for Go apps.
+      <description>The Go Paketo Buildpack supports several popular configurations for Go apps.
 To build a sample app locally with this buildpack using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples cd samples/go/mod pack build my-app --buildpack gcr.io/paketo-buildpacks/go \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.
 NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder and Paketo Tiny builder.</description>
@@ -45,7 +46,7 @@ NOTE: Though the example above uses the Paketo Base builder, this buildpack is a
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/httpd/</guid>
-      <description>HTTPD Buildpack The HTTPD Paketo Buildpack supports the installation of the Apache HTTP Server binary distribution onto the $PATH inside a container. This makes it available to subsequent buildpacks.
+      <description>The HTTPD Paketo Buildpack supports the installation of the Apache HTTP Server binary distribution onto the $PATH inside a container. This makes it available to subsequent buildpacks.
 To build a sample app locally with this CNB using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples cd samples/httpd pack build my-app --buildpack gcr.io/paketo-buildpacks/httpd \ --builder paketobuildpacks/builder:full Copied! See samples for how to run the app.
 NOTE: The Paketo Full builder is required because HTTPD relies on operating system libraries only present in the Full builder.</description>
@@ -57,9 +58,9 @@ NOTE: The Paketo Full builder is required because HTTPD relies on operating syst
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/java/</guid>
-      <description>Java Buildpack The Paketo Java Buildpack allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
+      <description>The Paketo Java Buildpack allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
 The Java Buildpack is a composite buildpack and each step in a build is handled by one of it&amp;rsquo;s components. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages for the component buildpacks.
-Table of Contents  About the Examples Building from Source  Configuring the Build Tool   Building from a Compiled Artifact About the JVM  The JVM Version Runtime JVM Configuration Using Alternative JVMs   Spring Boot Applications  Additional Metadata Runtime Auto-Configuration Optimizations   Connecting to an APM Debugging Enabling JMX Selecting a Process  Providing Additional Arguments Executing a Custom Command Executing a Custom Command in the Buildpack-Provided Environment   Components    About the Examples All Java Buildpack examples will use the Paketo sample applications.</description>
+About the Examples All Java Buildpack examples will use the Paketo sample applications.</description>
     </item>
     
     <item>
@@ -68,9 +69,9 @@ Table of Contents  About the Examples Building from Source  Configuring the Buil
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/java-native-image/</guid>
-      <description>Java Native Image Buildpack The Paketo Java Native Image Buildpack allows users to create an image containing a GraalVM native image application.
+      <description>The Paketo Java Native Image Buildpack allows users to create an image containing a GraalVM native image application.
 The Java Native Buildpack is a composite buildpack and each step in a build is handled by one of it&amp;rsquo;s components. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages of the component buildpacks.
-Table of Contents  About the Examples Supported Applications Building From Source Building from an Executable JAR About the Native Image  Inspecting the JVM Version Configuring the JVM Version Configuring the GraalVM Version   Spring Boot Applications Selecting a Process  Providing Additional Arguments   Components    About the Examples All Java Native Image Buildpack examples will use the Paketo sample applications.</description>
+About the Examples All Java Native Image Buildpack examples will use the Paketo sample applications.</description>
     </item>
     
     <item>
@@ -79,7 +80,7 @@ Table of Contents  About the Examples Supported Applications Building From Sourc
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/nginx/</guid>
-      <description>NGINX Buildpack The NGINX Paketo Buildpack supports the installation of the NGINX binary distribution onto the $PATH inside a container. This makes it available to subsequent buildpacks.
+      <description>The NGINX Paketo Buildpack supports the installation of the NGINX binary distribution onto the $PATH inside a container. This makes it available to subsequent buildpacks.
 To build a sample app locally with this CNB using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples cd samples/nginx pack build my-app --buildpack gcr.io/paketo-buildpacks/nginx \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.
 NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder.</description>
@@ -91,7 +92,7 @@ NOTE: Though the example above uses the Paketo Base builder, this buildpack is a
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/nodejs/</guid>
-      <description>Node.js Buildpack The Node.js Paketo Buildpack supports several popular configurations for Node.js apps.
+      <description>The Node.js Paketo Buildpack supports several popular configurations for Node.js apps.
 To build a sample app locally with this CNB using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples cd samples/nodejs/npm pack build my-app --buildpack gcr.io/paketo-buildpacks/nodejs \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.
 NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder. The Paketo Full builder is required if your app utilizes common C libraries.</description>
@@ -103,11 +104,11 @@ NOTE: Though the example above uses the Paketo Base builder, this buildpack is a
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/php/</guid>
-      <description>PHP Buildpack The PHP Paketo Buildpack enables developers to build PHP-based applications.
+      <description>The PHP Paketo Buildpack enables developers to build PHP-based applications.
 To build a sample app locally with this CNB using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples cd samples/php/webserver pack build my-app --buildpack gcr.io/paketo-buildpacks/php \ --builder paketobuildpacks/builder:full Copied! See samples for how to run the app.
 NOTE: The Paketo Full builder is required because PHP relies on operating system libraries only present in the Full builder.
-Table of Contents  Supported Dependencies Specifying a PHP Version  Using buildpack.</description>
+Supported Dependencies The PHP Paketo Buildpack supports several versions of PHP.</description>
     </item>
     
     <item>
@@ -116,11 +117,11 @@ Table of Contents  Supported Dependencies Specifying a PHP Version  Using buildp
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/ruby/</guid>
-      <description>Ruby Buildpack The Paketo Ruby Buildpack supports several popular configurations for Ruby apps.
+      <description>The Paketo Ruby Buildpack supports several popular configurations for Ruby apps.
 To build a sample app locally with this buildpack using the pack CLI, run
 git clone &amp;lt;https://github.com/paketo-buildpacks/samples&amp;gt; cd samples/ruby/puma pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.
 NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder.
-Table of Contents  Supported Dependencies Specifying a Ruby Version  Using BP_MRI_VERSION Using a Gemfile Deprecated: Using buildpack.</description>
+Supported Dependencies The Ruby Paketo Buildpack supports several versions of MRI, Bundler, and common Ruby webservers and task runners.</description>
     </item>
     
     <item>
@@ -129,7 +130,8 @@ Table of Contents  Supported Dependencies Specifying a Ruby Version  Using BP_MR
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/tutorials/create-paketo-buildpack/</guid>
-      <description>How to Write a Cloud Native Buildpack Using Packit If the entire Cloud Native Buildpack experience is new to you, you may want to stop and take some time to read about authoring a a Cloud Native Buildpack (CNB). Packit is a Go library that is an abstraction that conforms to the CNB specification that takes a minimal approach in terms of the features that are implemented giving a lot of fine control to the buildpack author.</description>
+      <description>If the entire Cloud Native Buildpack experience is new to you, you may want to stop and take some time to read about authoring a a Cloud Native Buildpack (CNB). Packit is a Go library that is an abstraction that conforms to the CNB specification that takes a minimal approach in terms of the features that are implemented giving a lot of fine control to the buildpack author.
+This tutorial&amp;rsquo;s goal is to take you from nothing to a buildpack that puts a dependency on the filesystem as fast as possible, so with that let&amp;rsquo;s get started!</description>
     </item>
     
   </channel>

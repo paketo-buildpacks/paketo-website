@@ -11,7 +11,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/tutorials/create-paketo-buildpack/</guid>
-      <description>How to Write a Cloud Native Buildpack Using Packit If the entire Cloud Native Buildpack experience is new to you, you may want to stop and take some time to read about authoring a a Cloud Native Buildpack (CNB). Packit is a Go library that is an abstraction that conforms to the CNB specification that takes a minimal approach in terms of the features that are implemented giving a lot of fine control to the buildpack author.</description>
+      <description>If the entire Cloud Native Buildpack experience is new to you, you may want to stop and take some time to read about authoring a a Cloud Native Buildpack (CNB). Packit is a Go library that is an abstraction that conforms to the CNB specification that takes a minimal approach in terms of the features that are implemented giving a lot of fine control to the buildpack author.
+This tutorial&amp;rsquo;s goal is to take you from nothing to a buildpack that puts a dependency on the filesystem as fast as possible, so with that let&amp;rsquo;s get started!</description>
     </item>
     
   </channel>

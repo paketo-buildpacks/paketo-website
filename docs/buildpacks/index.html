@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/buildpacks/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.f50ae1e556c5da1f7222572749389f4dbe5cc4248176ef1cfd6e9009de5f9bf7.css">
+<link rel="stylesheet" href="/css/main-v1.min.fbd8e43af91a529e6787142ef1b72d6bc82b3f99e762bba6271220232d27e357.css">
 </head>
 
 <body>
@@ -259,8 +259,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
     </div>
-    <div class="docs-body relative">
-        <div class="text-col docs-text pad50">
+    <div class="docs-body">
+        <div class="docs-body__container">
+            <h1>Buildpacks</h1>
+            <div class="docs-body__table-of-contents">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-are-buildpacks">What are Buildpacks?</a>
+      <ul>
+        <li><a href="#detect-phase">Detect Phase</a></li>
+        <li><a href="#build-phase">Build Phase</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-do-paketo-buildpacks-work-together">How do Paketo Buildpacks work together?</a></li>
+    <li><a href="#how-do-paketo-buildpacks-relate-to-the-cloud-native-buildpacks-project">How do Paketo Buildpacks relate to the Cloud Native Buildpacks project?</a></li>
+    <li><a href="#how-are-paketo-buildpacks-different-from-cloud-foundry-buildpacks">How are Paketo Buildpacks different from Cloud Foundry Buildpacks?</a></li>
+  </ul>
+</nav>
+</div>
             
             
             
@@ -269,15 +285,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/_index.md" target="_blank" class="github-edit__redirect" style="text-decoration:none">
-    <div class="redirect__content">
-        <img class="github-logo" src="/images/github-mark.png">
-        <div class="edit-text">Edit</div>
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
     </div>
 </a>
 
-            <h1 id="buildpacks">Buildpacks</h1>
-<p>In the Getting Started tutorial, you ran a <code>pack build</code> command to build a sample app. This resulted in some output similar to this block:</p>
+            <div class="docs-body__markdown">
+                <p>In the Getting Started tutorial, you ran a <code>pack build</code> command to build a sample app. This resulted in some output similar to this block:</p>
 <pre><code>...
 ===&gt; DETECTING
 paketo-buildpacks/node-engine 0.1.1
@@ -293,22 +311,6 @@ Paketo NPM Start Buildpack 0.0.2
 ...
 </code></pre><p>In this section, we will make sense of this output and explain how the
 buildpacks detect what dependencies are needed by your app to build it into a runnable app image.</p>
-<div class="toc">
-	<h2>Table of Contents</h2>
-  	<nav id="TableOfContents">
-  <ul>
-    <li><a href="#what-are-buildpacks">What are Buildpacks?</a>
-      <ul>
-        <li><a href="#detect-phase">Detect Phase</a></li>
-        <li><a href="#build-phase">Build Phase</a></li>
-      </ul>
-    </li>
-    <li><a href="#how-do-paketo-buildpacks-work-together">How do Paketo Buildpacks work together?</a></li>
-    <li><a href="#how-do-paketo-buildpacks-relate-to-the-cloud-native-buildpacks-project">How do Paketo Buildpacks relate to the Cloud Native Buildpacks project?</a></li>
-    <li><a href="#how-are-paketo-buildpacks-different-from-cloud-foundry-buildpacks">How are Paketo Buildpacks different from Cloud Foundry Buildpacks?</a></li>
-  </ul>
-</nav>
-</div>
 <h2 id="what-are-buildpacks">What are Buildpacks?</h2>
 <p>Buildpacks examine your app source code, identify and gather dependencies, and output OCI compliant app and dependency layers.</p>
 <p><strong>Paketo buildpacks provide language runtime support for your favorite
@@ -377,16 +379,19 @@ lifecycle</a>.</p>
 </tbody>
 </table>
 
+            </div>
             
 
 
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/_index.md" target="_blank" class="github-edit__redirect" style="text-decoration:none">
-    <div class="redirect__content">
-        <img class="github-logo" src="/images/github-mark.png">
-        <div class="edit-text">Edit</div>
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/buildpacks/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
     </div>
 </a>
 

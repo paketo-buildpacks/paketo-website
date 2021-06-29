@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/tutorials/create-paketo-buildpack/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.f50ae1e556c5da1f7222572749389f4dbe5cc4248176ef1cfd6e9009de5f9bf7.css">
+<link rel="stylesheet" href="/css/main-v1.min.fbd8e43af91a529e6787142ef1b72d6bc82b3f99e762bba6271220232d27e357.css">
 </head>
 
 <body>
@@ -259,37 +259,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
     </div>
-    <div class="docs-body relative">
-        <div class="text-col docs-text pad50">
-            
-            
-            
-
-
-
-
-
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/tutorials/create-paketo-buildpack.md" target="_blank" class="github-edit__redirect" style="text-decoration:none">
-    <div class="redirect__content">
-        <img class="github-logo" src="/images/github-mark.png">
-        <div class="edit-text">Edit</div>
-    </div>
-</a>
-
-            <h1 id="how-to-write-a-cloud-native-buildpack-using-packit">How to Write a Cloud Native Buildpack Using Packit</h1>
-<p>If the entire Cloud Native Buildpack experience is new to you, you may want to
-stop and take some time to read about <a href="https://buildpacks.io/docs/buildpack-author-guide/create-buildpack/">authoring a a Cloud Native
-Buildpack</a>
-(CNB). Packit is a Go library that is an abstraction that conforms to the <a href="https://github.com/buildpacks/spec">CNB
-specification</a> that takes a minimal
-approach in terms of the features that are implemented giving a lot of fine
-control to the buildpack author.</p>
-<p>This tutorial&rsquo;s goal is to take you from nothing to a buildpack that puts a
-dependency on the filesystem as fast as possible, so with that let&rsquo;s get
-started!</p>
-<div class="toc">
-	<h2>Table of Contents</h2>
-  	<nav id="TableOfContents">
+    <div class="docs-body">
+        <div class="docs-body__container">
+            <h1>Creating a Paketo Buildpack</h1>
+            <div class="docs-body__table-of-contents">
+    <nav id="TableOfContents">
   <ul>
     <li><a href="#packithttpsgithubcompaketo-buildpackspackit"><a href="https://github.com/paketo-buildpacks/packit">Packit</a></a></li>
     <li><a href="#prerequisites">Prerequisites</a></li>
@@ -303,6 +277,34 @@ started!</p>
   </ul>
 </nav>
 </div>
+            
+            
+            
+
+
+
+
+
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/tutorials/create-paketo-buildpack.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
+    </div>
+</a>
+
+            <div class="docs-body__markdown">
+                <p>If the entire Cloud Native Buildpack experience is new to you, you may want to
+stop and take some time to read about <a href="https://buildpacks.io/docs/buildpack-author-guide/create-buildpack/">authoring a a Cloud Native
+Buildpack</a>
+(CNB). Packit is a Go library that is an abstraction that conforms to the <a href="https://github.com/buildpacks/spec">CNB
+specification</a> that takes a minimal
+approach in terms of the features that are implemented giving a lot of fine
+control to the buildpack author.</p>
+<p>This tutorial&rsquo;s goal is to take you from nothing to a buildpack that puts a
+dependency on the filesystem as fast as possible, so with that let&rsquo;s get
+started!</p>
 <h2 id="packithttpsgithubcompaketo-buildpackspackit"><a href="https://github.com/paketo-buildpacks/packit">Packit</a></h2>
 <p><a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit"><img src="https://img.shields.io/badge/pkg.go.dev-doc-blue" alt="GoDoc"></a></p>
 <p>For complete documentation of the Packit library, you can browse the godocs
@@ -829,16 +831,19 @@ running a <code>pack build</code> like we did earlier and then running the follo
 <p>or visiting <a href="http://localhost:8080"><code>http://localhost:8080</code></a> in your web
 browser. Either way you should expect to see &ldquo;hello world&rdquo; as your output.</p>
 
+            </div>
             
 
 
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/tutorials/create-paketo-buildpack.md" target="_blank" class="github-edit__redirect" style="text-decoration:none">
-    <div class="redirect__content">
-        <img class="github-logo" src="/images/github-mark.png">
-        <div class="edit-text">Edit</div>
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/tutorials/create-paketo-buildpack.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
     </div>
 </a>
 
