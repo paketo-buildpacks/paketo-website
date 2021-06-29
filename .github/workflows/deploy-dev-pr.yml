@@ -3,7 +3,7 @@ name: Deploy PR to Firebase
 on:
   pull_request:
     types:
-      - synchronize # new commits pushed, hopefully this covers 'opened' too.
+    - synchronize # new commits pushed, hopefully this covers 'opened' too.
   workflow_dispatch: {}
 
 jobs:
@@ -37,7 +37,6 @@ jobs:
     - name: Deploy
       uses: actions/github-script@v4
       with:
-        github-token: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
         script: |
             const deploy = require('./deploy.js')
             await deploy({ expires: '72h' })
