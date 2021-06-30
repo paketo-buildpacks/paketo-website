@@ -1,5 +1,14 @@
 /* docs */
 
+.rf-docs {
+    display: block;
+    background: $light-background-color;
+
+    @media (min-width: $header-hamburger-breakpoint) {
+        display: flex;
+    }
+}
+
 .docs-body {
     width: 100%;
     position: relative;
@@ -144,7 +153,100 @@
 	font-size: 12px;
 }
 
-/* mod time*/
+/* code blocks */
+.copyable {	
+    position: relative;
+	display: block;
+	background-color: $light-background-color;
+	padding: 0.35em 0.6em;
+	border: 1px solid #E4E4E4;
+	overflow: auto;
+}
+
+.copyable__code {
+    font-family: monospace;
+}
+
+.copyable__clipboard {
+    display: block;
+	position: absolute;
+	top: 2px;
+	right: 2px;
+    background: #FFF;
+	cursor: pointer;
+	border: none;
+}
+
+.copyable:hover .copyable__clipboard {
+    display: block;
+}
+
+.copyable--clicked .copyable__clipboard {
+    display: none;
+}
+
+.copyable--clicked:hover .copyable__clipboard {
+    display: none;
+}
+
+.copyable__copied {
+    visibility: hidden;
+	position: absolute;
+	top: 2px;
+	right: 2px;
+    background-color: $light-background-color;
+    opacity: 100;
+    font-family: $default-font-family;
+}
+
+.copyable--clicked .copyable__clipboard {
+    display: none;
+}
+
+.copyable--clicked:hover .copyable__clipboard {
+    display: none;
+}
+
+.copyable--clicked .copyable__copied {
+    visibility: visible;
+	opacity: 0;
+	transition: visibility 0s, opacity 1s ease-in-out 1s;
+}
+
+@media (min-width: $mobile-breakpoint) {
+    .copyable__clipboard {
+        display: none;
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        background: #FFF;
+        cursor: pointer;
+        border: none;
+    }
+
+    .copyable:hover .copyable__clipboard {
+        display: block;
+    }
+
+    .copyable__copied {
+        visibility: hidden;
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        background-color: $light-background-color;
+        opacity: 100;
+        font-family: $default-font-family;
+    }
+
+    .copyable--clicked .copyable__copied {
+        visibility: visible;
+        opacity: 0;
+        transition: visibility 0s, opacity 1s ease-in-out 1s;
+    }
+
+}
+
+/* bits and bobs */
 .docs-mod-time {
 	padding-left: 50px;
     font-style: italic;

@@ -7,8 +7,8 @@ export default class CodeSnippet {
     if (element.classList.contains('copyable')) {
       new Clipboard({
         element: this.element,
-        button: this.element.querySelector('img'),
-        code: this.element.querySelector('code').innerText,
+        button: this.element.querySelector('.copyable__clipboard'),
+        code: this.element.querySelector('.copyable__code').innerText,
       });
     }
 
@@ -31,7 +31,7 @@ class Clipboard {
 
   handleClick() {
     ClipboardJS.copy(this.code);
-    this.element.classList.add('copied');
+    this.element.classList.add('copyable--clicked');
   }
 }
 
