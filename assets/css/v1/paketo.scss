@@ -105,15 +105,7 @@ table {
 .opaque {
 	opacity: 1.0;
 }
-/* micro clearfix below. contains floats like .clearfix. */
 
-.cf:before, .cf:after {
-	content: " ";
-	display: table;
-}
-.cf:after {
-	clear: both;
-}
 /* need to clear floats instead of contain them? use this below. */
 
 .clear, .clear-both {
@@ -371,43 +363,7 @@ table {
 .docs-menu a:hover {
 	color: $link-text-dark-background-color;
 }
-.docs pre {
-	position: relative;
-	display: block;
-	background-color: $light-background-color;
-	font-family: monospace;
-	padding: 0.35em 0.6em;
-	border: 1px solid #E4E4E4;
-	overflow: auto;
-	overflow-wrap: break-word;
-}
-.docs pre img {
-	display: none;
-	position: absolute;
-	top: 2px;
-	right: 2px;
-	background: #FFF;
-	cursor: pointer;
-	border: none;
-}
-.docs pre:hover img {
-	display: block;
-}
-.docs pre.copied img {
-	display: none;
-}
-.docs pre .copied {
-	visibility: hidden;
-	position: absolute;
-	top: 2px;
-	right: 2px;
-	opacity: 1;
-}
-.docs pre.copied .copied {
-	visibility: visible;
-	opacity: 0;
-	transition: visibility 0s, opacity 1s ease-in-out 1s;
-}
+
 .docs .code-output pre {
 	display: none;
 	background: #E4E4E4;

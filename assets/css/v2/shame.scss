@@ -7,6 +7,24 @@
 	width: 100%;
 }
 
+// Makes docs-sidebar look ok before refactor
 .docs-sidebar {
     font-family: "Avenir Next", sans-serif;
+}
+
+// Needed to override some styles on .docs img
+// that shouldn't apply to the click to copy clipboard 
+:root .copyable__clipboard {
+	display: block;
+	border: none;
+}
+// Since the above uses :root, these ones also have to
+// so that the click-to-copy JS can update the classes and 
+// make a visible impact
+:root .copyable--clicked .copyable__clipboard {
+	display: none;
+}
+
+:root .copyable--clicked:hover .copyable__clipboard {
+	display: none;
 }
