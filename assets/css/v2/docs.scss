@@ -48,7 +48,8 @@ body {
 .docs-menu__parent {
     list-style: inherit;
     position: relative;
-    padding: 0;
+    padding: 0px;
+    padding-right: 5px;
 }
 
 .docs-menu__children-list {
@@ -61,6 +62,7 @@ body {
     list-style: inherit;
     position: relative;
     padding: 0;
+    padding-right: 5px;
 }
 
 .docs-menu__link {
