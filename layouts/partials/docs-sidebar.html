@@ -1,33 +1,33 @@
 <!-- sidebar start -->
-<div class="docs-menu">
-    <h4>{{ .Site.Params.docs_menu.title }}</h4>
-    <ul>
+<nav class="docs-menu">
+    <h4 class="docs-menu__title">{{ .Site.Params.docs_menu.title }}</h4>
+    <ul class="docs-menu__top-level-list">
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
             {{ template "docs-menu-entry" dict "currentPage" $currentPage "entry" .}}
         {{ end }}
     </ul>
-</div>
+</nav>
 
 <!-- templates -->
 {{- define "docs-menu-entry" }}
     {{- $currentPage := .currentPage }}
     {{- $entry := .entry }}
     {{ if $entry.HasChildren }}
-        <li>
-            <a href="{{ $entry.URL }}"  class="{{ if $currentPage.IsMenuCurrent "main" $entry }}active{{ end }}">
+        <li class="docs-menu__parent">
+            <a href="{{ $entry.URL }}"  class="docs-menu__link {{ if $currentPage.IsMenuCurrent "main" $entry }}docs-menu__link--active{{ end }}">
                 {{ $entry.Pre }}
                 <span>{{ $entry.Name }}</span>
             </a>
-            <ul class="sub-menu">
+            <ul class="docs-menu__children-list">
                 {{ range $entry.Children }}
                     {{ template "docs-menu-entry"  dict "currentPage" $currentPage "entry" . }}
                 {{ end }}
             </ul>
         </li>
     {{ else }}
-        <li>
-            <a href="{{ $entry.URL }}" class="{{ if $currentPage.IsMenuCurrent "main" $entry }}active{{ end }}">
+        <li class="docs-menu__leaf">
+            <a href="{{ $entry.URL }}" class="docs-menu__link {{ if $currentPage.IsMenuCurrent "main" $entry }}docs-menu__link--active{{ end }}">
                 {{ $entry.Pre }}
                 <span>{{ $entry.Name }}</span>
             </a>

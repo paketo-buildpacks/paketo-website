@@ -1,6 +1,14 @@
 /* docs */
+body {
+	background: $light-background-color;
+	font-family: "Avenir Next", sans-serif;
+	font-weight: 400;
+	font-size: 1.1em;
+	line-height: 1.5em;
+	color: $dark-text-color;
+}
 
-.rf-docs {
+.docs {
     display: block;
     background: $light-background-color;
 
@@ -9,6 +17,94 @@
     }
 }
 
+/* docs nav */
+.docs-sidebar {
+    width: 100%;
+    padding-top: 50px;
+	padding-left: 50px;
+    background: $dark-background-color;
+    
+    @media (min-width: $header-hamburger-breakpoint) {
+        width: 380px;    
+    }
+}
+
+.docs-menu {
+    padding-bottom: 50px;
+}
+
+.docs-menu__title {
+	color: $light-text-color;
+	line-height: 3em;
+}
+
+.docs-menu__top-level-list {
+    padding: 0;
+    list-style: none;
+    position: relative;
+    padding: 0;
+}
+
+.docs-menu__parent {
+    list-style: inherit;
+    position: relative;
+    padding: 0;
+}
+
+.docs-menu__children-list {
+    list-style: inherit;
+    padding-left: 20px;
+	position: relative;
+}
+
+.docs-menu__leaf {
+    list-style: inherit;
+    position: relative;
+    padding: 0;
+}
+
+.docs-menu__link {
+    display: inline-block;
+    position: relative;
+    margin: 5px 0;
+    padding: 5px;
+    text-decoration: none;
+    opacity: 1;
+    color: $light-text-color;
+}
+.docs-menu__link--active {
+	color: $dark-text-color;
+    padding-left: 15px;
+    background: $light-background-color;
+    padding-right: 15px;
+    border-radius: 10px;
+}
+
+.docs-menu__link--active:hover {
+    color: $link-text-color;
+}
+
+.docs-menu__link:hover {
+	color: $link-text-dark-background-color;
+}
+
+@media (min-width: $header-hamburger-breakpoint) {
+    .docs-menu {
+		padding-bottom: 0px;
+	}
+
+	.docs-menu a {
+        display: block;
+    }
+
+    .docs-menu a.active {
+        border-radius: 0px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+}
+
+/* docs body */
 .docs-body {
     width: 100%;
     position: relative;
@@ -279,6 +375,12 @@
 }
 
 /* bits and bobs */
+.docs img {
+	display: block;
+	margin: 0 auto;
+	border: 1px solid #E4E4E4;
+}
+
 .docs-mod-time {
 	padding-left: 50px;
     font-style: italic;
