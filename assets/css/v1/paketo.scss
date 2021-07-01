@@ -299,6 +299,7 @@ table {
 	margin: 0 auto;
 	border: 1px solid #E4E4E4;
 }
+
 .docs-sidebar {
 	width: 380px;
 	border-right: 1px solid #ccc;
@@ -362,38 +363,6 @@ table {
 }
 .docs-menu a:hover {
 	color: $link-text-dark-background-color;
-}
-
-.docs .code-output pre {
-	display: none;
-	background: #E4E4E4;
-}
-.docs .code-output.visible pre {
-	display: block;
-}
-.docs .code-output pre code {
-	color: #585858;
-}
-.docs .code-output .btn {
-	background: #E4E4E4;
-	text-transform: uppercase;
-	font-size: 0.6em;
-	display: block;
-	margin-top: 3px;
-	padding: 0 5px;
-	float: left;
-	text-align: center;
-}
-.docs .code-output .btn:before {
-	display: inline-block;
-	width: 35px;
-	content: 'View ';
-}
-.docs .code-output .btn:hover {
-	cursor: pointer;
-}
-.docs .code-output.visible .btn:before {
-	content: 'Hide ';
 }
 .toc {
 	font-size: 1em;
