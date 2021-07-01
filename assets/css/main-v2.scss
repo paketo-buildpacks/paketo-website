@@ -1,12 +1,13 @@
 @import 'common/reset';
 @import 'v2/variables';
 @import 'v2/text';
-@import 'v2/header.scss';
+@import 'v2/header';
 @import 'v2/nav';
 @import 'v2/homepage';
 @import 'v2/sections';
 @import 'v2/footer';
 @import 'v2/docs';
+@import 'v2/shame';
 
 @media (prefers-reduced-motion) {
     .nav {

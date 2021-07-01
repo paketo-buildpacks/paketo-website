@@ -289,88 +289,6 @@ table {
 	display: inline-block;
 }
 
-/* docs */
-.docs {
-	min-height: 70vh;
-	background: $light-background-color;
-}
-.docs img {
-	display: block;
-	margin: 0 auto;
-	border: 1px solid #E4E4E4;
-}
-
-.docs-sidebar {
-	width: 380px;
-	border-right: 1px solid #ccc;
-	background: $dark-background-color;
-}
-
-.docs-sidebar {
-	padding-top: 50px;
-	padding-left: 50px;
-}
-.docs-menu h4 {
-	color: $light-text-color;
-	line-height: 3em;
-}
-.docs-menu ul {
-	padding: 0;
-}
-.docs-menu li {
-	list-style: none;
-	position: relative;
-	padding: 0;
-	font-weight: bolder;
-}
-.docs-menu ul.sub-menu {
-	padding-left: 20px;
-	position: relative;
-}
-.docs-menu ul.sub-menu li a{
-	font-weight: normal;
-}
-.docs-menu a {
-	display: block;
-	position: relative;
-	margin: 5px 0;
-	padding: 5px;
-	text-decoration: none;
-	opacity: 1;
-	color: $light-text-color;
-}
-.docs-menu a.active {
-	color: $dark-text-color;
-	padding-left: 15px;
-}
-.docs-menu a:before {
-	content: "";
-	transition: all 0.3s cubic-bezier(.17, .84, .44, 1);
-	position: absolute;
-	background: $light-background-color;
-	width: 1px;
-	top: 0;
-	right: -1px;
-	height: 100%;
-	z-index: -1;
-}
-.docs-menu a.active:before {
-	width: 100%;
-	background: $light-background-color;
-	color: $dark-text-color;
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
-}
-.docs-menu a:hover {
-	color: $link-text-dark-background-color;
-}
-.toc {
-	font-size: 1em;
-	line-height: 1.1em;
-	color: inherit;
-	text-decoration: none;
-}
-
 @media (max-width: 1000px) {
 	.half-1000 {
 		width: 50%;
@@ -427,26 +345,6 @@ table {
 	.pad-right {
 		padding-right: 1em;
 	}
-	.docs-sidebar {
-		width: 100%;
-	}
-	.docs-menu {
-		padding-bottom: 50px;
-	}
-	.docs-menu a {
-		display: inline-block;
-	}
-	.docs-menu a:before {
-		display: none;
-	}
-	.docs-menu a.active {
-		background: $light-background-color;
-		padding-right: 15px;
-	}
-
-	.docs-menu a:hover {
-		color: $link-text-dark-background-color;
-	}
 }
 @media (max-width: 600px) {
 	.half-600 {
@@ -502,9 +400,6 @@ table {
 		margin-right: 5px;
 		border-radius: 3px 3px 0 0;
 	}
-	.clipboard {
-		display: none;
-	}
 	.half-500 {
 		width: 50%;
 	}
@@ -519,9 +414,6 @@ table {
 	.hero .logos .logo img {
 		max-height: 16vmin;
 		max-width: 25vmin;
-	}
-	.docs pre:hover img {
-		display: none;
 	}
 }
 @media (max-width: 400px) {
