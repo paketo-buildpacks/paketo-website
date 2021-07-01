@@ -15,7 +15,7 @@ export default class CodeSnippet {
     if (element.nextElementSibling && element.nextElementSibling.classList.contains('code-output')) {
       new Output({
         element: element.nextElementSibling,
-        button: element.nextElementSibling.querySelector('.btn'),
+        button: element.nextElementSibling.querySelector('.code-output__btn'),
       });
     }
   }
@@ -43,6 +43,13 @@ class Output {
   }
 
   handleClick() {
-    this.element.classList.toggle('visible');
+    this.element.classList.toggle('code-output--opened');
+    var button = this.element.querySelector('.code-output__btn')
+    if (button.textContent == "View Output") {
+      button.textContent = "Hide Output";
+    }
+    else {
+      button.textContent = "View Output";
+    }
   }
 }

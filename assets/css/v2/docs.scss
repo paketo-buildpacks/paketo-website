@@ -153,7 +153,7 @@
 	font-size: 12px;
 }
 
-/* code blocks */
+/* copyable code blocks */
 .copyable {	
     position: relative;
 	display: block;
@@ -244,6 +244,38 @@
         transition: visibility 0s, opacity 1s ease-in-out 1s;
     }
 
+}
+
+/* view output expander */
+
+.code-output__btn {
+    width: 80px;
+    background: #E4E4E4; // TODO: Check contrast and extract to variable
+	text-transform: uppercase;
+	font-size: 0.6em;
+	margin-top: 10px;
+    padding: 3px;
+	text-align: center;
+}
+
+.code-output__btn:hover {
+    cursor: pointer;
+}
+
+.code-output__output-container {
+    display: none;
+    background: #E4E4E4;
+    color: #585858;
+    width: 100%;
+    overflow: auto;
+}
+
+.code-output--opened {
+
+    .code-output__output-container {
+        display: block;
+        
+    }
 }
 
 /* bits and bobs */

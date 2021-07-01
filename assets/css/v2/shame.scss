@@ -28,3 +28,18 @@
 :root .copyable--clicked:hover .copyable__clipboard {
 	display: none;
 }
+
+// The class that Hugo automatically gives to <pre> elements that wrap
+// things in ``` ``` blocks in markdown
+// A better solution would be to configure the markdown renderer to make all
+// ``` ``` blocks be <div class="copyable"> automatically
+.chroma {
+	position: relative;
+	display: block;
+	background-color: $light-background-color;
+	font-family: monospace;
+	padding: 0.35em 0.6em;
+	border: 1px solid #E4E4E4;
+	overflow: auto;
+	overflow-wrap: break-word;
+}
