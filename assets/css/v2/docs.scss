@@ -349,7 +349,7 @@ body {
 
 .code-output__btn {
     width: 80px;
-    background: #E4E4E4; // TODO: Check contrast and extract to variable
+    background: $docs-output-expander-color; // TODO: Check contrast
 	text-transform: uppercase;
 	font-size: 0.6em;
 	margin-top: 10px;
@@ -363,10 +363,16 @@ body {
 
 .code-output__output-container {
     display: none;
-    background: #E4E4E4;
-    color: #585858;
+    background: $docs-output-expander-color;
     width: 100%;
     overflow: auto;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.code-output__output {
+    color: $dark-text-color;
 }
 
 .code-output--opened {
