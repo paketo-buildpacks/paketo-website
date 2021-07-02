@@ -22,10 +22,11 @@ Examples assume that the Paketo Base builder is the default builder: pack config
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/dotnet-core/</guid>
-      <description>.Net Core Buildpack The .Net Core Paketo Buildpack supports building several configurations of .Net Core applications.
+      <description>The .Net Core Paketo Buildpack supports building several configurations of .Net Core applications.
 To build your app locally with the buildpack using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples cd samples/dotnet-core/aspnet pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.
-NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder.</description>
+NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder.
+Supported Dependencies The .</description>
     </item>
     
     <item>
