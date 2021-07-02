@@ -3,8 +3,10 @@ title: "Configuring Paketo Buildpacks"
 weight: 300
 menu:
   main:
-    parent: buildpacks
+    parent: Reference
     indentifier: configuration
+aliases:
+  - /docs/buildpacks/configuration/
 ---
 
 ## About the Examples
@@ -340,8 +342,8 @@ This isn't always necessary but can impact output from your application. For exa
 [samples]:https://github.com/paketo-buildpacks/samples
 
 <!-- paketo docs references -->
-[base builder]:{{< ref "/docs/builders#base" >}}
-[language family buildpacks]:{{< ref "/docs/buildpacks/language-family-buildpacks" >}}
+[base builder]:{{< ref "/docs/concepts/builders#base" >}}
+[language family buildpacks]:{{< ref "/docs/howto" >}}
 
 <!-- cnb references -->
 [pack]:https://github.com/buildpacks/pack

@@ -1,9 +1,11 @@
 ---
 title: "Go Buildpack"
-weight: 302
+weight: 304
 menu:
   main:
-    parent: "language-family-buildpacks"
+    parent: "howto"
+aliases:
+  - /docs/buildpacks/language-family-buildpacks/go
 ---
 
 The [Go Paketo Buildpack](https://github.com/paketo-buildpacks/go) supports several popular

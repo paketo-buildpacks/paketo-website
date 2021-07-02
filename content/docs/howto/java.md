@@ -1,10 +1,11 @@
 ---
 title: "Java Buildpack"
-weight: 304
+weight: 316
 menu:
   main:
-    identifier: "java"
-    parent: "language-family-buildpacks"
+    parent: "howto"
+aliases:
+  - /docs/buildpacks/language-family-buildpacks/java/
 ---
 
 The [Paketo Java Buildpack][java] allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
@@ -258,7 +259,7 @@ The following command uses `pack` to list every dependency of a sample applicati
 {{< code/copyable >}}
 pack inspect-image samples/java --bom | jq '.local[] | select(.name=="dependencies") | .metadata.dependencies[].name'
 {{< /code/copyable >}}
-  
+
 ### Runtime Auto-Configuration
 
 The Spring Boot Buildpack adds [Spring Cloud Bindings][spring cloud bindings] to the application class path. Spring Cloud Bindings will auto-configure the application to connect to an external service when a binding of a supported type provides credentials and connection information at runtime. Runtime auto-configuration is enabled by default but can be disabled with the `BPL_SPRING_CLOUD_BINDINGS_ENABLED` environment variable.
@@ -311,7 +312,7 @@ docker run --env BPL_DEBUG_ENABLED=true --publish 8000:8000 samples/java
 {{< /code/copyable >}}
 
 Connect your IDE debugger to connect to the published port.
-![Eclipse Remote Debug Configuration](/images/debug-eclipse.png)  
+![Eclipse Remote Debug Configuration](/images/debug-eclipse.png)
 
 ## Enabling JMX
 
@@ -441,10 +442,10 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 [samples]:https://github.com/paketo-buildpacks/samples
 
 <!-- paketo docs references -->
-[base builder]:{{< ref "/docs/builders#base" >}}
-[bindings]:{{< ref "/docs/buildpacks/configuration#bindings" >}}
-[composite buildpack]:{{< ref "/docs/buildpacks/language-family-buildpacks#compposite-buildapcks" >}}
-[procfiles]:{{< ref "/docs/buildpacks/configuration#procfiles" >}}
+[base builder]:{{< ref "/docs/concepts/builders#base" >}}
+[bindings]:{{< ref "/docs/reference/configuration#bindings" >}}
+[composite buildpack]:{{< ref "/docs/howto#compposite-buildapcks" >}}
+[procfiles]:{{< ref "/docs/reference/configuration#procfiles" >}}
 
 <!-- cnb references -->
 [pack]:https://github.com/buildpacks/pack

@@ -1,10 +1,11 @@
 ---
-title: "Language Family Buildpacks"
+title: "How To"
 weight: 301
 menu:
   main:
-    parent: buildpacks
-    identifier: language-family-buildpacks
+    identifier: howto
+aliases:
+  - /docs/buildpacks/language-family-buildpacks/
 ---
 
 The Paketo language family buildpacks are [composite buildpacks](#composite-buildpacks) that provide easy out-of-the-box support the most popular language runtimes and app configurations.

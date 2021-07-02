@@ -1,9 +1,11 @@
 ---
 title: "Node.js Buildpack"
-weight: 307
+weight: 324
 menu:
   main:
-    parent: "language-family-buildpacks"
+    parent: "howto"
+aliases:
+  - /docs/buildpacks/language-family-buildpacks/nodejs/
 ---
 
 The [Node.js Paketo Buildpack](https://github.com/paketo-buildpacks/nodejs) supports several popular configurations for Node.js apps.
@@ -109,7 +111,7 @@ To migrate from using `buildpack.yml` please set the `$BP_NODE_VERSION` environm
 ## Buildpack-Set Environment Variables
 The Node.js CNB sets a number of environment variables during the `build` and
 `launch` phases of the app lifecycle. The sections below describe each
-environment variable and its impact on your app. 
+environment variable and its impact on your app.
 
 ### MEMORY_AVAILABLE
 The `MEMORY_AVAILABLE` environment variable reports the total amount of memory

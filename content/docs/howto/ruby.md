@@ -1,9 +1,11 @@
 ---
 title: "Ruby Buildpack"
-weight: 309
+weight: 332
 menu:
   main:
-    parent: "language-family-buildpacks"
+    parent: "howto"
+aliases:
+  - /docs/buildpacks/language-family-buildpacks/ruby/
 ---
 
 The [Paketo Ruby Buildpack](https://github.com/paketo-buildpacks/ruby) supports
