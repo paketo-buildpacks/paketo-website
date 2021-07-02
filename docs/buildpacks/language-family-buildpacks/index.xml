@@ -15,7 +15,7 @@
 To build your app locally with the buildpack using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples cd samples/dotnet-core/aspnet pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.
 NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder.
-Supported Dependencies The .</description>
+Supported DependenciesThe .</description>
     </item>
     
     <item>
@@ -50,7 +50,7 @@ NOTE: The Paketo Full builder is required because HTTPD relies on operating syst
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/java/</guid>
       <description>The Paketo Java Buildpack allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
 The Java Buildpack is a composite buildpack and each step in a build is handled by one of it&amp;rsquo;s components. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages for the component buildpacks.
-About the Examples All Java Buildpack examples will use the Paketo sample applications.</description>
+About the ExamplesAll Java Buildpack examples will use the Paketo sample applications.</description>
     </item>
     
     <item>
@@ -61,7 +61,7 @@ About the Examples All Java Buildpack examples will use the Paketo sample applic
       <guid>https://paketo.io/docs/buildpacks/language-family-buildpacks/java-native-image/</guid>
       <description>The Paketo Java Native Image Buildpack allows users to create an image containing a GraalVM native image application.
 The Java Native Buildpack is a composite buildpack and each step in a build is handled by one of it&amp;rsquo;s components. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages of the component buildpacks.
-About the Examples All Java Native Image Buildpack examples will use the Paketo sample applications.</description>
+About the ExamplesAll Java Native Image Buildpack examples will use the Paketo sample applications.</description>
     </item>
     
     <item>
@@ -98,7 +98,7 @@ NOTE: Though the example above uses the Paketo Base builder, this buildpack is a
 To build a sample app locally with this CNB using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples cd samples/php/webserver pack build my-app --buildpack gcr.io/paketo-buildpacks/php \ --builder paketobuildpacks/builder:full Copied! See samples for how to run the app.
 NOTE: The Paketo Full builder is required because PHP relies on operating system libraries only present in the Full builder.
-Supported Dependencies The PHP Paketo Buildpack supports several versions of PHP.</description>
+Supported DependenciesThe PHP Paketo Buildpack supports several versions of PHP.</description>
     </item>
     
     <item>
@@ -111,7 +111,7 @@ Supported Dependencies The PHP Paketo Buildpack supports several versions of PHP
 To build a sample app locally with this buildpack using the pack CLI, run
 git clone &amp;lt;https://github.com/paketo-buildpacks/samples&amp;gt; cd samples/ruby/puma pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.
 NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder.
-Supported Dependencies The Ruby Paketo Buildpack supports several versions of MRI, Bundler, and common Ruby webservers and task runners.</description>
+Supported DependenciesThe Ruby Paketo Buildpack supports several versions of MRI, Bundler, and common Ruby webservers and task runners.</description>
     </item>
     
   </channel>

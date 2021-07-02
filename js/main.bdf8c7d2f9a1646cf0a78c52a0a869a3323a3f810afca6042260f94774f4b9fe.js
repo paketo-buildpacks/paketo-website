@@ -620,14 +620,14 @@
       if (element.classList.contains("copyable")) {
         new Clipboard({
           element: this.element,
-          button: this.element.querySelector("img"),
-          code: this.element.querySelector("code").innerText
+          button: this.element.querySelector(".copyable__clipboard"),
+          code: this.element.querySelector(".copyable__code").innerText
         });
       }
       if (element.nextElementSibling && element.nextElementSibling.classList.contains("code-output")) {
         new Output({
           element: element.nextElementSibling,
-          button: element.nextElementSibling.querySelector(".btn")
+          button: element.nextElementSibling.querySelector(".code-output__btn")
         });
       }
     }
@@ -641,7 +641,7 @@
     }
     handleClick() {
       import_clipboard.default.copy(this.code);
-      this.element.classList.add("copied");
+      this.element.classList.add("copyable--clicked");
     }
   };
   var Output = class {
@@ -650,7 +650,13 @@
       button.addEventListener("click", this.handleClick.bind(this));
     }
     handleClick() {
-      this.element.classList.toggle("visible");
+      this.element.classList.toggle("code-output--opened");
+      var button = this.element.querySelector(".code-output__btn");
+      if (button.textContent == "View Output") {
+        button.textContent = "Hide Output";
+      } else {
+        button.textContent = "View Output";
+      }
     }
   };
 
