@@ -70,25 +70,26 @@ body {
     position: relative;
     margin: 5px 0;
     padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     text-decoration: none;
     opacity: 1;
     color: $light-text-color;
 }
+
 .docs-menu__link--active {
 	color: $dark-text-color;
-    padding-left: 15px;
     background: $light-background-color;
-    padding-right: 15px;
     border-radius: 10px;
-}
-
-.docs-menu__link--active:hover {
-    color: $link-text-color;
-    opacity: 100%;
 }
 
 .docs-menu__link:hover {
 	color: $link-text-dark-background-color;
+    opacity: 100%;
+}
+
+.docs-menu__link--active:hover {
+    color: $link-text-color;
 }
 
 @media (min-width: $header-hamburger-breakpoint) {

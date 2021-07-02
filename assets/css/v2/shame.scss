@@ -43,3 +43,12 @@
 	overflow: auto;
 	overflow-wrap: break-word;
 }
+
+// Without this, the docs-menu__link hover state color overrides
+// docs-menu__link--active hover state color. This color is
+// needed because it complies with accessibility contrast
+// requirements against the light background of active nav
+// elements
+.docs-menu__link--active:hover.docs-menu__link--active:hover {
+    color: $link-text-color;
+}
