@@ -1,5 +1,5 @@
 ---
-title: "Creating a Paketo Buildpack"
+title: "Create a Paketo Buildpack"
 weight: 344
 menu:
   main:
