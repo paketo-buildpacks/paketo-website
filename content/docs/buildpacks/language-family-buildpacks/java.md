@@ -206,11 +206,13 @@ By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The 
 
 | JVM                                                         | Buildpack                                                            |
 | ----------------------------------------------------------- | -------------------------------------------------------------------- |
+| [Alibaba Dragonwell](http://dragonwell-jdk.io/)             | [Paketo Alibaba Dragonwell Buildpack][bp/dragonwell]                 |
 | [Amazon Corretto](https://aws.amazon.com/corretto/)         | [Paketo Amazon Corretto Buildpack][bp/amazon-corretto]               |
 | [Azul Zulu](https://www.azul.com/downloads/zulu-community/) | [Paketo Azul Zulu Buildpack][bp/azul-zulu]                           |
 | [BellSoft Liberica](https://bell-sw.com/pages/libericajdk/) | [Paketo BellSoft Liberica Buildpack - Default][bp/bellsoft-liberica] |
 | [Eclipse OpenJ9](https://www.eclipse.org/openj9/)           | [Paketo Eclipse OpenJ9 Buildpack][bp/eclipse-openj9]                 |
 | [GraalVM](https://www.graalvm.org/)                         | [Paketo GraalVM Buildpack][bp/graalvm]                               |
+| [Microsoft OpenJDK](https://www.microsoft.com/openjdk)      | [Paketo Microsoft OpenJDK Buildpack][bp/microsoft]                   |
 | [SapMachine](https://sap.github.io/SapMachine/)             | [Paketo SapMachine Buildpack][bp/sap-machine]                        |
 
 To use an alternative JVM, you will need to set two `--buildpack` arguments to `pack build`, one for the alternative JVM buildpack you'd like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you're specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.
@@ -414,6 +416,8 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 [bp/azul-zulu]:https://github.com/paketo-buildpacks/azul-zulu
 [bp/eclipse-openj9]:https://github.com/paketo-buildpacks/eclipse-openj9
 [bp/graalvm]:https://github.com/paketo-buildpacks/graalvm
+[bp/dragonwell]:https://github.com/paketo-buildpacks/graalvm
+[bp/microsoft]:https://github.com/paketo-buildpacks/graalvm
 [bp/sap-machine]:https://github.com/paketo-buildpacks/sap-machine
 [bp/ca-certificates]:https://github.com/paketo-buildpacks/ca-certificates
 [bp/debug]:https://github.com/paketo-buildpacks/debug
