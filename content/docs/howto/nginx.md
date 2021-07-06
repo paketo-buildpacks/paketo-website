@@ -1,9 +1,11 @@
 ---
 title: "NGINX Buildpack"
-weight: 306
+weight: 320
 menu:
   main:
-    parent: "language-family-buildpacks"
+    parent: "howto"
+aliases:
+  - /docs/buildpacks/language-family-buildpacks/nginx/
 ---
 
 The [NGINX Paketo Buildpack](https://github.com/paketo-buildpacks/nginx) supports the installation of the NGINX binary distribution onto

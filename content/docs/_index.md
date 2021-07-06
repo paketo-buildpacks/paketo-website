@@ -2,6 +2,8 @@
 title: "Getting Started"
 weight: 100
 menu: "main"
+aliases:
+  - /docs/
 ---
 
 This section gets you started with Paketo Buildpacks using Paketo **Builders**, the **Pack** CLI, and **Docker**.
@@ -10,7 +12,7 @@ Let's use the `base` Paketo Builder and the **Pack** CLI to build a Node.js app
 as a runnable container image. App source code is available
 [here](https://github.com/paketo-buildpacks/samples/tree/main/demo-apps/app-source).
 
-**Prerequisites** - Install Pack and Docker  
+**Prerequisites** - Install Pack and Docker
 Follow [these instructions](https://buildpacks.io/docs/install-pack/) to get all set up.
 
 And we're good to go! Let's build our app into a container image using the `pack build` command.

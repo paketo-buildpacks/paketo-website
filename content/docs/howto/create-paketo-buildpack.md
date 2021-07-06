@@ -1,9 +1,11 @@
 ---
-title: "Creating a Paketo Buildpack"
-weight: 410
+title: "Create a Paketo Buildpack"
+weight: 344
 menu:
   main:
-    parent: "tutorials"
+    parent: "howto"
+aliases:
+  - /docs/tutorials/create-paketo-buildpack/
 ---
 
 If the entire Cloud Native Buildpack experience is new to you, you may want to

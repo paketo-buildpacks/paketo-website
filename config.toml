@@ -118,11 +118,3 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
     endLevel = 3
     ordered = false
     startLevel = 2
-
-[module]
-  [[module.imports]]
-    path = "github.com/paketo-buildpacks/dotnet-core/docs"
-
-    [[module.imports.mounts]]
-      source = "content/dotnet-core.md"
-      target = "content/docs/buildpacks/language-family-buildpacks/dotnet-core.md"

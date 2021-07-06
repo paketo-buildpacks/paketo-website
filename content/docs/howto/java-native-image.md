@@ -1,9 +1,11 @@
 ---
 title: "Java Native Image Buildpack"
-weight: 305
+weight: 312
 menu:
   main:
-    parent: "language-family-buildpacks"
+    parent: "howto"
+aliases:
+  - /docs/buildpacks/language-family-buildpacks/java-native-image/
 ---
 
 The [Paketo Java Native Image Buildpack][bp/java-native-image] allows users to create an image containing a [GraalVM][graalvm] [native image][graalvm native image] application.
@@ -193,13 +195,13 @@ The following component buildpacks compose the Paketo Java Native Image Buildpac
 [platforms]:https://buildpacks.io/docs/concepts/components/platform/
 
 <!-- paketo docs references -->
-[base builder]:{{< ref "/docs/builders#base" >}}
-[tiny builder]:{{< ref "/docs/builders#tiny" >}}
-[bindings]:{{< ref "/docs/buildpacks/configuration#bindings" >}}
-[composite buildpack]:{{< ref "/docs/buildpacks/language-family-buildpacks#composite-buildpacks" >}}
-[procfiles]:{{< ref "/docs/buildpacks/configuration#procfiles" >}}
-[java/building from source]:{{< ref "/docs/buildpacks/language-family-buildpacks/java#building-from-source" >}}
-[java/spring boot applications]:{{< ref "/docs/buildpacks/language-family-buildpacks/java#spring-boot-applications" >}}
+[base builder]:{{< ref "/docs/concepts/builders#base" >}}
+[tiny builder]:{{< ref "/docs/concepts/builders#tiny" >}}
+[bindings]:{{< ref "/docs/reference/configuration#bindings" >}}
+[composite buildpack]:{{< ref "/docs/howto#composite-buildpacks" >}}
+[procfiles]:{{< ref "/docs/reference/configuration#procfiles" >}}
+[java/building from source]:{{< ref "/docs/howto/java#building-from-source" >}}
+[java/spring boot applications]:{{< ref "/docs/howto/java#spring-boot-applications" >}}
 
 <!-- other references -->
 [graalvm]:https://www.graalvm.org/docs/introduction/

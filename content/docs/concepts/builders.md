@@ -1,9 +1,11 @@
 ---
 title: "Builders"
-weight: 200
+weight: 420
 menu:
   main:
-    identifier: builders
+    parent: "Concepts"
+aliases:
+  - /docs/builders/
 ---
 
 In the Getting Started tutorial, you used the `pack` CLI and the base `builder` to create a runnable image with your application. This section explains what `builders` are and what builders are released by the Paketo project.
@@ -41,7 +43,7 @@ pack build my-app-image --builder paketobuildpacks/builder:base
 Paketo Base Builder [Github Repo](https://github.com/paketo-buildpacks/base-builder)
 
 ### Tiny
-Builder based off of a Distroless `ubuntu:bionic` stack. Consists of buildpacks to build most **Go** and **Java** [GraalVM Native Image](https://www.graalvm.org/docs/reference-manual/native-image/) apps. To build your app with it locally using `pack`, run: 
+Builder based off of a Distroless `ubuntu:bionic` stack. Consists of buildpacks to build most **Go** and **Java** [GraalVM Native Image](https://www.graalvm.org/docs/reference-manual/native-image/) apps. To build your app with it locally using `pack`, run:
 
 {{< code/copyable >}}
 pack build my-app-image --builder paketobuildpacks/builder:tiny

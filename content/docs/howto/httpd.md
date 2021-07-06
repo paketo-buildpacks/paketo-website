@@ -1,9 +1,11 @@
 ---
 title: "HTTPD Buildpack"
-weight: 303
+weight: 308
 menu:
   main:
-    parent: "language-family-buildpacks"
+    parent: "howto"
+aliases:
+  - /docs/buildpacks/language-family-buildpacks/httpd/
 ---
 
 The [HTTPD Paketo Buildpack](https://github.com/paketo-buildpacks/httpd)

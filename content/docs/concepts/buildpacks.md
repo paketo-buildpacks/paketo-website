@@ -1,9 +1,11 @@
 ---
 title: "Buildpacks"
-weight: 300
+weight: 400
 menu:
   main:
-    identifier: "buildpacks"
+    parent: "Concepts"
+aliases:
+  - /docs/buildpacks/
 ---
 
 In the Getting Started tutorial, you ran a `pack build` command to build a sample app. This resulted in some output similar to this block:
@@ -27,7 +29,7 @@ Paketo NPM Start Buildpack 0.0.2
 In this section, we will make sense of this output and explain how the
 buildpacks detect what dependencies are needed by your app to build it into a runnable app image.
 
-## What are Buildpacks?  
+## What are Buildpacks?
 Buildpacks examine your app source code, identify and gather dependencies, and output OCI compliant app and dependency layers.
 
 **Paketo buildpacks provide language runtime support for your favorite
@@ -40,7 +42,7 @@ your app's dependencies.
 A buildpack operates on your source code in two phases: **detect** and
 **build**.
 
-### Detect Phase 
+### Detect Phase
 In the `detect` phase, the buildpack looks for indicators in
 your source code to determine whether or not it needs to be included to build your app.
 
@@ -54,7 +56,7 @@ dependencies they are responsible for. Once detection has passed for a
 buildpack, the buildpack returns a contract of what it requires, and what it
 will provide to the subsequent `build` phase.
 
-### Build Phase 
+### Build Phase
 In the `build` phase, the buildpack contributes to the final
 app image, fulfilling the contract given by the `detect` phase. These
 contributions could be adding an image layer containing a dependency binary
@@ -74,7 +76,7 @@ runnable app image:
 For more information about buildpacks, visit
 [buildpacks.io](https://buildpacks.io/docs/concepts/components/buildpack/)
 
-## How do Paketo Buildpacks work together?  
+## How do Paketo Buildpacks work together?
 The Paketo project provides language family buildpacks, which combine multiple buildpacks into ordered groupings. The groupings satisfy each buildpack's requirements (mentioned in the  `detect` section). The language family buildpacks provide language runtime support for the most popular languages and app configurations.
 
 Keep reading to learn more about the specifics for each language family Paketo

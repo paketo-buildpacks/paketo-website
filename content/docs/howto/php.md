@@ -1,9 +1,11 @@
 ---
 title: "PHP Buildpack"
-weight: 308
+weight: 328
 menu:
   main:
-    parent: "language-family-buildpacks"
+    parent: "howto"
+aliases:
+  - /docs/buildpacks/language-family-buildpacks/php/
 ---
 
 The [PHP Paketo Buildpack](https://github.com/paketo-buildpacks/php) enables developers to build
@@ -156,7 +158,7 @@ in the Variables section below.
 
 The PHP CNB sets a number of environment variables during the `build` and
 `launch` phases of the app lifecycle. The sections below describe each
-environment variable and its impact on your app. 
+environment variable and its impact on your app.
 
 ### APP_ROOT
 
