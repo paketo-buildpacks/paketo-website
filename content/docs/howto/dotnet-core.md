@@ -4,6 +4,7 @@ weight: 302
 menu:
   main:
     parent: "howto"
+    name: ".Net Core"
 aliases:
   - /docs/buildpacks/language-family-buildpacks/dotnet-core/
 ---

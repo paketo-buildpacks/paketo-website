@@ -4,6 +4,7 @@ weight: 324
 menu:
   main:
     parent: "howto"
+    name: "Node.js"
 aliases:
   - /docs/buildpacks/language-family-buildpacks/nodejs/
 ---

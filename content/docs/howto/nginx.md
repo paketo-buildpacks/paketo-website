@@ -4,6 +4,7 @@ weight: 320
 menu:
   main:
     parent: "howto"
+    name: "NGINX"
 aliases:
   - /docs/buildpacks/language-family-buildpacks/nginx/
 ---

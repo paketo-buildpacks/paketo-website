@@ -4,6 +4,7 @@ weight: 316
 menu:
   main:
     parent: "howto"
+    name: "Java"
 aliases:
   - /docs/buildpacks/language-family-buildpacks/java/
 ---
