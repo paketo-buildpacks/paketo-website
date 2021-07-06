@@ -11,17 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Getting Started - Paketo Buildpacks</title>
+<title>Stacks - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="Getting Started">
-<meta name="og:url" content="https://paketo.io/docs/">
+<meta name="og:title" content="Stacks">
+<meta name="og:url" content="https://paketo.io/docs/concepts/stacks/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
-<meta name="twitter:url" content="https://paketo.io/docs/" />
+<meta name="twitter:url" content="https://paketo.io/docs/concepts/stacks/" />
 <meta name="twitter:card" content="" />
 <link rel="stylesheet" href="/css/main-v1.min.26ed5f0e39ba552e1b5273d9f81cabc312097f156e6f745545e075d5a349feaf.css">
 </head>
@@ -77,7 +77,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
     
         <li class="docs-menu__leaf">
-            <a href="/docs/" class="docs-menu__link docs-menu__link--active">
+            <a href="/docs/" class="docs-menu__link ">
                 
                 <span>Getting Started</span>
             </a>
@@ -229,7 +229,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/concepts/stacks/" class="docs-menu__link ">
+            <a href="/docs/concepts/stacks/" class="docs-menu__link docs-menu__link--active">
                 
                 <span>Stacks</span>
             </a>
@@ -271,9 +271,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="docs-body">
         <div class="docs-body__container">
-            <h1 class="">Getting Started</h1>
+            <h1 class="">Stacks</h1>
             <div class="docs-body__table-of-contents">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-a-stack">What is a stack?</a></li>
+    <li><a href="#what-paketo-stacks-are-available">What Paketo stacks are available?</a>
+      <ul>
+        <li><a href="#tiny">Tiny</a></li>
+        <li><a href="#base">Base</a></li>
+        <li><a href="#full">Full</a></li>
+      </ul>
+    </li>
+    <li><a href="#when-are-paketo-stacks-updated">When are Paketo stacks updated?</a></li>
+    <li><a href="#what-security-and-hardening-features-do-paketo-stacks-offer">What security and hardening features do Paketo stacks offer?</a></li>
+  </ul>
+</nav>
 </div>
             
             
@@ -283,7 +296,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/concepts/stacks.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -293,99 +306,67 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </a>
 
             <div class="docs-body__markdown">
-                <p>This section gets you started with Paketo Buildpacks using Paketo <strong>Builders</strong>, the <strong>Pack</strong> CLI, and <strong>Docker</strong>.</p>
-<p>Let&rsquo;s use the <code>base</code> Paketo Builder and the <strong>Pack</strong> CLI to build a Node.js app
-as a runnable container image. App source code is available
-<a href="https://github.com/paketo-buildpacks/samples/tree/main/demo-apps/app-source">here</a>.</p>
-<p><strong>Prerequisites</strong> - Install Pack and Docker
-Follow <a href="https://buildpacks.io/docs/install-pack/">these instructions</a> to get all set up.</p>
-<p>And we&rsquo;re good to go! Let&rsquo;s build our app into a container image using the <code>pack build</code> command.</p>
-<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
-cd samples/demo-apps/app-source
-pack build paketo-demo-app --builder paketobuildpacks/builder:base
+                <p>In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. One of the core pieces to Buildpacks and Builders are Stack Images. Stacks provide the buildpack lifecycle with build-time and run-time environments in the form of images.</p>
+<h2 id="what-is-a-stack" class="markup-heading"><a class="markup-heading__link" href="#what-is-a-stack">What is a stack?</a></h2><p>A <code>stack</code> consists of two images:</p>
+<ul>
+<li><code>build image</code>: the environment in which your app is built</li>
+<li><code>run image</code>: the OS layer for your app image</li>
+</ul>
+<p>For more information about <code>stacks</code>, see <a href="https://buildpacks.io/docs/concepts/components/stack/">buildpacks.io</a>.</p>
+<h2 id="what-paketo-stacks-are-available" class="markup-heading"><a class="markup-heading__link" href="#what-paketo-stacks-are-available">What Paketo stacks are available?</a></h2><p>The Paketo project releases several stacks. These are:</p>
+<h3 id="tiny" class="markup-heading"><a class="markup-heading__link" href="#tiny">Tiny</a></h3><h4 id="build-image" class="markup-heading"><a class="markup-heading__link" href="#build-image">Build Image</a></h4><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/build:tiny-cnb
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<div class="code-output">
-    <div class="btn code-output__btn code-output__btn">View Output</div>
-    <pre class="code-output__output-container">
-        <code class="code-output__output">......................
-===&gt; DETECTING
-paketo-buildpacks/node-engine 0.1.1
-paketo-buildpacks/npm-install 0.2.0
-paketo-buildpacks/npm-start   0.0.2
-===&gt; ANALYZING
-Restoring metadata for &#34;paketo-buildpacks/node-engine:node&#34; from app image
-===&gt; RESTORING
-Restoring data for &#34;paketo-buildpacks/node-engine:node&#34; from cache
-===&gt; BUILDING
-Paketo Node Engine Buildpack 0.1.1
-  Resolving Node Engine version
-    Candidate version sources (in priority order):
-      package.json -&gt; &#34;~10&#34;
-      &lt;unknown&gt;    -&gt; &#34;*&#34;
-
-    Selected Node Engine version (using package.json): 10.22.0
-
-  Reusing cached layer /layers/paketo-buildpacks_node-engine/node
-
-Paketo NPM Install Buildpack 0.2.0
-  Resolving installation process
-    Process inputs:
-      node_modules      -&gt; &#34;Not found&#34;
-      npm-cache         -&gt; &#34;Not found&#34;
-      package-lock.json -&gt; &#34;Not found&#34;
-
-    Selected NPM build process: &#39;npm install&#39;
-
-  Executing build process
-    Running &#39;npm install --unsafe-perm --cache /layers/paketo-buildpacks_npm-install/npm-cache&#39;
-      Completed in 1.348s
-
-  Configuring environment
-    NPM_CONFIG_LOGLEVEL   -&gt; &#34;error&#34;
-    NPM_CONFIG_PRODUCTION -&gt; &#34;true&#34;
-    PATH                  -&gt; &#34;$PATH:/layers/paketo-buildpacks_npm-install/modules/node_modules/.bin&#34;
-
-Paketo NPM Start Buildpack 0.0.2
-  Assigning launch processes
-    web: node server.js
-===&gt; EXPORTING
-Reusing layer &#39;paketo-buildpacks/node-engine:node&#39;
-Adding layer &#39;paketo-buildpacks/npm-install:modules&#39;
-Adding layer &#39;paketo-buildpacks/npm-install:npm-cache&#39;
-Adding 1/1 app layer(s)
-Reusing layer &#39;launcher&#39;
-Adding layer &#39;config&#39;
-Reusing layer &#39;process-types&#39;
-Adding label &#39;io.buildpacks.lifecycle.metadata&#39;
-Adding label &#39;io.buildpacks.build.metadata&#39;
-Adding label &#39;io.buildpacks.project.metadata&#39;
-Setting default process type &#39;web&#39;
-......................
-Successfully built image paketo-demo-app
-</code>
-    </pre>
-</div>
-
-<p>We&rsquo;ve successfully created an image called <strong>paketo-demo-app</strong>. Now let&rsquo;s run our app image and validate that everything is working.</p>
-<pre class="copyable"><code class="copyable__code">docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
+<h4 id="run-images" class="markup-heading"><a class="markup-heading__link" href="#run-images">Run Images</a></h4><p><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/run:tiny-cnb
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<p>Wait a few seconds for your app to start.</p>
-<pre class="copyable"><code class="copyable__code">curl http://localhost:8080/greeting
+<pre class="copyable"><code class="copyable__code">gcr.io/paketo-buildpacks/run:tiny-cnb
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+</p>
+<h4 id="contains" class="markup-heading"><a class="markup-heading__link" href="#contains">Contains:</a></h4><ul>
+<li>Build: ubuntu:bionic + openssl + CA certs + compilers + shell utilities</li>
+<li>Run: distroless-like bionic + glibc + openssl + CA certs</li>
+</ul>
+<h3 id="base" class="markup-heading"><a class="markup-heading__link" href="#base">Base</a></h3><h4 id="build-image-1" class="markup-heading"><a class="markup-heading__link" href="#build-image-1">Build Image</a></h4><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/build:base-cnb
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<div class="code-output">
-    <div class="btn code-output__btn code-output__btn">View Output</div>
-    <pre class="code-output__output-container">
-        <code class="code-output__output">Hello from your application image
-</code>
-    </pre>
-</div>
+<h4 id="run-images-1" class="markup-heading"><a class="markup-heading__link" href="#run-images-1">Run Images</a></h4><p><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/run:base-cnb
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<p>Awesome! Our app is now running on <code>localhost:8080</code>.</p>
-<p>Check out more <a href="https://github.com/paketo-buildpacks/samples">sample apps</a> that work with Paketo Buildpacks.</p>
-<p>Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.</p>
+<pre class="copyable"><code class="copyable__code">gcr.io/paketo-buildpacks/run:base-cnb
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+</p>
+<h4 id="contains-1" class="markup-heading"><a class="markup-heading__link" href="#contains-1">Contains:</a></h4><ul>
+<li>Build: ubuntu:bionic + openssl + CA certs + compilers + shell utilities</li>
+<li>Run: ubuntu:bionic + openssl + CA certs</li>
+</ul>
+<h3 id="full" class="markup-heading"><a class="markup-heading__link" href="#full">Full</a></h3><h4 id="build-image-2" class="markup-heading"><a class="markup-heading__link" href="#build-image-2">Build Image</a></h4><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/build:full-cnb
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<h4 id="run-images-2" class="markup-heading"><a class="markup-heading__link" href="#run-images-2">Run Images</a></h4><p><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/run:full-cnb
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<pre class="copyable"><code class="copyable__code">gcr.io/paketo-buildpacks/run:full-cnb
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+</p>
+<h4 id="contains-2" class="markup-heading"><a class="markup-heading__link" href="#contains-2">Contains:</a></h4><ul>
+<li>Build: ubuntu:bionic + many common C libraries and utilities</li>
+<li>Run: ubuntu:bionic + many common libraries and utilities</li>
+</ul>
+<h2 id="when-are-paketo-stacks-updated" class="markup-heading"><a class="markup-heading__link" href="#when-are-paketo-stacks-updated">When are Paketo stacks updated?</a></h2><p>Stacks are rebuilt whenever a package is patched to fix a CVE.
+For more information about CVEs, see <a href="https://cve.mitre.org/">Common Vulnerabilities and Exposures (CVE)</a>.
+Stacks are also rebuilt weekly to ensure packages without CVEs are also up to date.</p>
+<p>We aim to release stack updates that fix High and Critical CVEs within 48 hours of the patch release. For stack updates fixing Low and Medium CVEs, we aim to release within two weeks.</p>
+<p><strong>Note:</strong> Security scanning tools might report vulnerabilities in apps even when using the latest stack. This can occur when a CVE patch is not yet available upstream or if Canonical determines that the vulnerability is not severe enough to fix.</p>
+<p>Stacks are backwards compatible. A stack can safely be upgraded to the most recent version within the major version line. If for some reason backwards compatibility is broken, it happens when a new major version is released.</p>
+<h2 id="what-security-and-hardening-features-do-paketo-stacks-offer" class="markup-heading"><a class="markup-heading__link" href="#what-security-and-hardening-features-do-paketo-stacks-offer">What security and hardening features do Paketo stacks offer?</a></h2><ul>
+<li>By using Ubuntu 18.04 as the base image for our stacks, we benefit from all of the security provided by Canonical and Ubuntu. For more information, see the <a href="https://ubuntu.com/security">Canonical web site</a> and the <a href="https://wiki.ubuntu.com/Security/Features">Ubuntu wiki</a>.</li>
+<li>Our automatic monitoring and patching of CVEs means that our stacks are often updated within hours of Canonical&rsquo;s patches.</li>
+<li>The stack images are run as a dedicated non-root user when building and running applications.</li>
+<li>Each stack image has detailed metadata describing the image&rsquo;s components, such as the base operating system and packages.</li>
+<li>Each stack has separate images for building and running applications. The packages on the runtime image are curated to exclude compilers and other tools that might pose security risks.</li>
+</ul>
+<p><a href="https://github.com/paketo-buildpacks/stacks">Github Repo</a></p>
 
             </div>
             
@@ -394,7 +375,7 @@ Successfully built image paketo-demo-app
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/concepts/stacks.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">

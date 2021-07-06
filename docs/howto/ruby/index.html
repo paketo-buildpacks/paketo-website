@@ -1,0 +1,511 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PN39N8V');</script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Ruby Buildpack - Paketo Buildpacks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<meta name="og:site_name" content="Paketo Buildpacks">
+<meta name="og:title" content="Ruby Buildpack">
+<meta name="og:url" content="https://paketo.io/docs/howto/ruby/">
+<meta name="twitter:title" content="Paketo Buildpacks" />
+<meta name="twitter:url" content="https://paketo.io/docs/howto/ruby/" />
+<meta name="twitter:card" content="" />
+<link rel="stylesheet" href="/css/main-v1.min.26ed5f0e39ba552e1b5273d9f81cabc312097f156e6f745545e075d5a349feaf.css">
+</head>
+
+<body>
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+
+    
+
+
+
+<header class="header ">
+    <a class="paketo-logo" href="/">
+        <img class="paketo-logo__image" src="/v2/images/logo-paketo-light.svg" alt="Paketo Buildpacks Homepage">
+    </a>
+    <div id="navigation" class="right-overlay">
+        <div class="nav-opener">
+            <span class="nav-opener__bar nav-opener__bar-top"></span>
+            <span class="nav-opener__bar nav-opener__bar-middle"></span>
+            <span class="nav-opener__bar nav-opener__bar-bottom"></span>
+        </div>
+        <div class="nav-container" id="nav-container">
+            <nav class="nav" id="nav-tray" >
+                <div class="nav__linkarea">
+                    <a class="nav-link " href="/docs">docs</a>
+                    <a class="nav-link " href="/contribute">community</a>
+                    <a class="nav-link " href="https://blog.paketo.io">blog</a>
+                    <a class="nav-link " href="https://github.com/paketo-buildpacks">github</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="desktop-nav">
+        <a class="nav-link " href="/docs">docs</a>
+        <a class="nav-link " href="/contribute">community</a>
+        <a class="nav-link " href="https://blog.paketo.io">blog</a>
+        <a class="nav-link " href="https://github.com/paketo-buildpacks">github</a>
+    </div>
+</header>
+
+
+    <div class="docs">
+    <div class="docs-sidebar">
+        
+<nav class="docs-menu">
+    <h4 class="docs-menu__title">PAKETO DOCS</h4>
+    <ul class="docs-menu__top-level-list">
+        
+        
+            
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/" class="docs-menu__link ">
+                
+                <span>Getting Started</span>
+            </a>
+        </li>
+    
+        
+            
+    
+        <li class="docs-menu__parent">
+            <a href="/docs/howto/"  class="docs-menu__link ">
+                
+                <span>How To</span>
+            </a>
+            <ul class="docs-menu__children-list">
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/dotnet-core/" class="docs-menu__link ">
+                
+                <span>.Net Core Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/go/" class="docs-menu__link ">
+                
+                <span>Go Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/httpd/" class="docs-menu__link ">
+                
+                <span>HTTPD Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/java-native-image/" class="docs-menu__link ">
+                
+                <span>Java Native Image Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/java/" class="docs-menu__link ">
+                
+                <span>Java Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/nginx/" class="docs-menu__link ">
+                
+                <span>NGINX Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/nodejs/" class="docs-menu__link ">
+                
+                <span>Node.js Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/php/" class="docs-menu__link ">
+                
+                <span>PHP Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/ruby/" class="docs-menu__link docs-menu__link--active">
+                
+                <span>Ruby Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/create-paketo-buildpack/" class="docs-menu__link ">
+                
+                <span>Create a Paketo Buildpack</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+            
+    
+        <li class="docs-menu__parent">
+            <a href=""  class="docs-menu__link ">
+                
+                <span>Concepts</span>
+            </a>
+            <ul class="docs-menu__children-list">
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/buildpacks/" class="docs-menu__link ">
+                
+                <span>Buildpacks</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/builders/" class="docs-menu__link ">
+                
+                <span>Builders</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/stacks/" class="docs-menu__link ">
+                
+                <span>Stacks</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+            
+    
+        <li class="docs-menu__parent">
+            <a href=""  class="docs-menu__link ">
+                
+                <span>Reference</span>
+            </a>
+            <ul class="docs-menu__children-list">
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/configuration/" class="docs-menu__link ">
+                
+                <span>Configuring Paketo Buildpacks</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+    </ul>
+</nav>
+
+
+
+    </div>
+    <div class="docs-body">
+        <div class="docs-body__container">
+            <h1 class="">Ruby Buildpack</h1>
+            <div class="docs-body__table-of-contents">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#specifying-a-ruby-version">Specifying a Ruby Version</a>
+      <ul>
+        <li><a href="#using-bp_mri_version">Using BP_MRI_VERSION</a></li>
+        <li><a href="#using-a-gemfile">Using a Gemfile</a></li>
+        <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#package-management">Package Management</a></li>
+    <li><a href="#specifying-a-bundler-version">Specifying a Bundler Version</a>
+      <ul>
+        <li><a href="#using-bp_bundler_version">Using BP_BUNDLER_VERSION</a></li>
+        <li><a href="#using-a-gemfilelock">Using a Gemfile.lock</a></li>
+        <li><a href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#vendored-packages">Vendored Packages</a></li>
+    <li><a href="#webservers--task-runners">Webservers &amp; Task Runners</a>
+      <ul>
+        <li><a href="#webservers">Webservers</a></li>
+        <li><a href="#task-runners">Task Runners</a></li>
+      </ul>
+    </li>
+    <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
+    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+      <ul>
+        <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
+        <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+            
+            
+            
+
+
+
+
+
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/ruby.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
+    </div>
+</a>
+
+            <div class="docs-body__markdown">
+                <p>The <a href="https://github.com/paketo-buildpacks/ruby">Paketo Ruby Buildpack</a> supports
+several popular configurations for Ruby apps.</p>
+<p>To build a sample app locally with this buildpack using the <code>pack</code> CLI, run</p>
+<pre class="copyable"><code class="copyable__code">git clone &lt;https://github.com/paketo-buildpacks/samples&gt;
+cd samples/ruby/puma
+pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
+  --builder paketobuildpacks/builder:base
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/ruby/thin">samples</a>
+for how to run the app.</p>
+<p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
+also compatible with the Paketo Full builder.</strong></p>
+<h2 id="supported-dependencies" class="markup-heading"><a class="markup-heading__link" href="#supported-dependencies">Supported Dependencies</a></h2><p>The Ruby Paketo Buildpack supports several versions of
+<a href="https://www.ruby-lang.org">MRI</a>, <a href="https://bundler.io/">Bundler</a>, and common
+Ruby webservers and task runners.  For more details on the specific versions
+supported in a given buildpack version, see the <a href="https://github.com/paketo-buildpacks/ruby/releases/latest">release
+notes</a>.</p>
+<h2 id="specifying-a-ruby-version" class="markup-heading"><a class="markup-heading__link" href="#specifying-a-ruby-version">Specifying a Ruby Version</a></h2><p>The Ruby Buildpack allows you to specify a version of Ruby to use during
+deployment. This version can be specified via the <code>BP_MRI_VERSION</code> environment
+variable or a <code>Gemfile</code>. When specifying a version of Ruby, you must choose a version that is available
+within the buildpack. The supported versions can be found
+<a href="https://github.com/paketo-buildpacks/mri/releases/latest">here</a>.</p>
+<p>Please note that setting the Ruby version through a <code>buildpack.yml</code> file will
+be deprecated in MRI Buildpack v1.0.0.</p>
+<p>The buildpack prioritizes the versions specified in
+each possible configuration location with the following precedence, from
+highest to lowest: <code>BP_MRI_VERSION</code>, <code>Gemfile</code>.</p>
+<p>Specifying a version of Ruby is not required. In the case that is not
+specified, the buildpack will provide the default version, which can be seen in
+the <a href="https://github.com/paketo-buildpacks/mri/blob/main/buildpack.toml"><code>buildpack.toml</code>
+</a> file.</p>
+<h3 id="using-bp_mri_version" class="markup-heading"><a class="markup-heading__link" href="#using-bp_mri_version">Using BP_MRI_VERSION</a></h3><p>To configure the buildpack to use Ruby v2.7.1 when deploying your app, set the
+following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_MRI_VERSION=2.7.1</code>) or through a
+<a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
+file:</p>
+<pre class="copyable"><code class="copyable__code">BP_MRI_VERSION=&#34;2.7.1&#34;
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<h3 id="using-a-gemfile" class="markup-heading"><a class="markup-heading__link" href="#using-a-gemfile">Using a Gemfile</a></h3><p>To configure the buildpack to use Ruby v2.7.1 when deploying your app, include
+the values below in your <code>Gemfile</code>:</p>
+<pre class="copyable"><code class="copyable__code">source &#39;https://rubygems.org&#39;
+
+ruby &#39;~&gt; 2.7.1&#39;
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<h3 id="deprecated-using-buildpackyml" class="markup-heading"><a class="markup-heading__link" href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></h3><p>Specifying the Ruby version through <code>buildpack.yml</code> configuration will be deprecated in MRI Buildpack v1.0.0.
+To migrate from using <code>buildpack.yml</code> please set the <code>$BP_MRI_VERSION</code> environment variable.</p>
+<h2 id="package-management" class="markup-heading"><a class="markup-heading__link" href="#package-management">Package Management</a></h2><p>The Ruby Buildpack uses <a href="https://bundler.io/">Bundler</a> to install and manage
+the gems needed to run your application. Including a <code>Gemfile</code> in your app
+source code instructs the <a href="https://github.com/paketo-buildpacks/bundle-install"><code>bundle-install</code>
+buildpack</a> to vendor your
+dependencies using <code>bundle install</code>.</p>
+<h2 id="specifying-a-bundler-version" class="markup-heading"><a class="markup-heading__link" href="#specifying-a-bundler-version">Specifying a Bundler Version</a></h2><p>The Ruby Buildpack allows you to specify a version of Bundler to use during
+deployment. This version can be specified via the <code>BP_BUNDLER_VERSION</code>
+environment variable or a <code>Gemfile.lock</code> created during dependency vendoring.
+When specifying a version of Bundler, you must choose a version that is
+available within the buildpack.  The supported versions can be found
+<a href="https://github.com/paketo-buildpacks/bundler/releases/latest">here</a>.</p>
+<p>Please note that setting the Bundler version through a <code>buildpack.yml</code> file
+will be deprecated in Bundler Buildpack v1.0.0.</p>
+<p>The buildpack prioritizes the versions specified in each possible configuration
+location with the following precedence, from
+highest to lowest: <code>BP_BUNDLER_VERSION</code>, <code>Gemfile.lock</code>.</p>
+<p>Specifying a version of Bundler is not required. In the case that is not
+specified, the buildpack will provide the default version, which can be seen in
+the <a href="https://github.com/paketo-buildpacks/bundler/blob/main/buildpack.toml"><code>buildpack.toml</code>
+</a> file.</p>
+<h3 id="using-bp_bundler_version" class="markup-heading"><a class="markup-heading__link" href="#using-bp_bundler_version">Using BP_BUNDLER_VERSION</a></h3><p>To configure the buildpack to use Bundler v2.1.4 when deploying your app, set
+the following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_BUNDLER_VERSION=2.1.4</code>) or through a
+<a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
+file:</p>
+<pre class="copyable"><code class="copyable__code">BP_BUNDLER_VERSION=&#34;2.1.4&#34;
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<h3 id="using-a-gemfilelock" class="markup-heading"><a class="markup-heading__link" href="#using-a-gemfilelock">Using a Gemfile.lock</a></h3><p>To configure the buildpack to use Bundler v2.1.4 when deploying your app, run
+<code>bundle install</code> on your application source code using v2.1.4 of Bundler. This
+will result in a <code>Gemfile.lock</code> that includes the following snippet:</p>
+<pre class="copyable"><code class="copyable__code">BUNDLED WITH
+   2.1.4
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<h3 id="deprecated-using-buildpackyml-1" class="markup-heading"><a class="markup-heading__link" href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></h3><p>Specifying the Bundler version through <code>buildpack.yml</code> configuration will be deprecated in Bundler Buildpack v1.0.0.
+To migrate from using <code>buildpack.yml</code> please set the <code>$BP_BUNDLER_VERSION</code> environment variable.</p>
+<h2 id="vendored-packages" class="markup-heading"><a class="markup-heading__link" href="#vendored-packages">Vendored Packages</a></h2><p>In order to build apps in an offline environment, the app will need to have the
+<code>.gem</code> files located in the <code>cache_path</code>. Bundler will copy the required gems
+into this location, typically <code>vendor/cache</code> when running the <code>bundle package</code>
+command. During the <code>bundle install</code> process, the buildpack will instruct
+Bundler to prefer gems in this cache over those on the RubyGems index by
+running <code>bundle install --local</code>.</p>
+<h2 id="webservers--task-runners" class="markup-heading"><a class="markup-heading__link" href="#webservers--task-runners">Webservers &amp; Task Runners</a></h2><p>The Ruby Buildpack supports a number of webservers and task runners that are
+useful for running Ruby applications. If your application uses one of these
+tools, it will be automatically detected and a start command for your
+applicatin will be assigned when building your application container.</p>
+<h3 id="webservers" class="markup-heading"><a class="markup-heading__link" href="#webservers">Webservers</a></h3><ul>
+<li><a href="http://github.com/paketo-buildpacks/passenger">Passenger</a></li>
+<li><a href="http://github.com/paketo-buildpacks/puma">Puma</a></li>
+<li><a href="http://github.com/paketo-buildpacks/rackup">Rackup</a></li>
+<li><a href="http://github.com/paketo-buildpacks/thin">Thin</a></li>
+<li><a href="http://github.com/paketo-buildpacks/unicorn">Unicorn</a></li>
+</ul>
+<h3 id="task-runners" class="markup-heading"><a class="markup-heading__link" href="#task-runners">Task Runners</a></h3><ul>
+<li><a href="http://github.com/paketo-buildpacks/rake">Rake</a></li>
+</ul>
+<h2 id="rails-asset-pipeline" class="markup-heading"><a class="markup-heading__link" href="#rails-asset-pipeline">Rails Asset Pipeline</a></h2><p>The <a href="http://github.com/paketo-buildpacks/rails-assets">Rails Assets buildpack</a>
+supports Rails apps (Rails version &gt;= 5.0) that need asset precompilation.</p>
+<p>To use this buildpack, your app must contain an <code>app/assets</code> directory, and your
+app&rsquo;s <code>Gemfile</code> must specify the <code>rails</code> gem. The buildpack runs <code>bundle exec rails assets:precompile</code> for the app, and works with any of the supported Ruby
+webservers listed above.</p>
+<h2 id="buildpack-set-environment-variables" class="markup-heading"><a class="markup-heading__link" href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a></h2><p>The Ruby CNB sets a few environment variables during the <code>build</code> and <code>launch</code>
+phases of the app lifecycle. The sections below describe each environment
+variable and its impact on your app.</p>
+<h3 id="gem_path" class="markup-heading"><a class="markup-heading__link" href="#gem_path"><code>GEM_PATH</code></a></h3><ul>
+<li>Set by: <code>mri</code>, <code>bundler</code></li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: location of the directory gems will be installed for each respective dependency</li>
+</ul>
+<h3 id="bundle_path" class="markup-heading"><a class="markup-heading__link" href="#bundle_path"><code>BUNDLE_PATH</code></a></h3><ul>
+<li>Set by: <code>bundle-install</code></li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: location where all gems in your bundle will be located</li>
+</ul>
+
+            </div>
+            
+
+
+
+
+
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/ruby.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
+    </div>
+</a>
+
+        </div>
+        <p class="docs-mod-time"><strong>Last modified:</strong> July 6, 2021</p>
+    </div>
+</div>
+
+
+    <footer class="footer text--light">
+    <div class="footer-social-links-container">
+        <a class="footer-social-link" href="https://twitter.com/Paketo_io">
+            <div class="footer-social-link__image-container">
+                <img class="footer-social-link__image-container__image" src="/v2/images/logo-twitter.svg" alt="Blue Twitter bird logo"/>
+            </div>
+            <div class="text--light">
+                Twitter
+            </div>
+        </a>
+        <a class="footer-social-link" href="https://slack.paketo.io/">
+            <div class="footer-social-link__image-container">
+                <img class="footer-social-link__image-container__image" src="/v2/images/logo-slack.svg" alt="Slack logo"/>
+            </div>
+            <div class="text--light">
+                Slack
+            </div>
+        </a>
+        <a class="footer-social-link" href="https://github.com/paketo-buildpacks">
+            <div class="footer-social-link__image-container">
+                <img src="/v2/images/logo-github.svg" alt="GitHub Octocat logo"/>
+            </div>
+            <div class="text--light">
+                GitHub
+            </div>
+        </a>
+    </div>
+    <div class="footer-privacy-policy">
+        <div class="footer-text--small">Paketo Buildpacks is a <a class="text--light" href="https://www.cloudfoundry.org/">Cloud Foundry</a> Project</div>
+        <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
+        <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
+    </div>
+</footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
+
+
+</body>
+
+</html>

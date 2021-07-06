@@ -11,17 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Getting Started - Paketo Buildpacks</title>
+<title>NGINX Buildpack - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="Getting Started">
-<meta name="og:url" content="https://paketo.io/docs/">
+<meta name="og:title" content="NGINX Buildpack">
+<meta name="og:url" content="https://paketo.io/docs/howto/nginx/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
-<meta name="twitter:url" content="https://paketo.io/docs/" />
+<meta name="twitter:url" content="https://paketo.io/docs/howto/nginx/" />
 <meta name="twitter:card" content="" />
 <link rel="stylesheet" href="/css/main-v1.min.26ed5f0e39ba552e1b5273d9f81cabc312097f156e6f745545e075d5a349feaf.css">
 </head>
@@ -77,7 +77,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
     
         <li class="docs-menu__leaf">
-            <a href="/docs/" class="docs-menu__link docs-menu__link--active">
+            <a href="/docs/" class="docs-menu__link ">
                 
                 <span>Getting Started</span>
             </a>
@@ -146,7 +146,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/nginx/" class="docs-menu__link ">
+            <a href="/docs/howto/nginx/" class="docs-menu__link docs-menu__link--active">
                 
                 <span>NGINX Buildpack</span>
             </a>
@@ -271,9 +271,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="docs-body">
         <div class="docs-body__container">
-            <h1 class="">Getting Started</h1>
+            <h1 class="">NGINX Buildpack</h1>
             <div class="docs-body__table-of-contents">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#specifying-an-nginx-version">Specifying an NGINX Version</a>
+      <ul>
+        <li><a href="#using-bp_nginx_version">Using BP_NGINX_VERSION</a></li>
+        <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#configurations">Configurations</a></li>
+    <li><a href="#data-driven-templates">Data driven templates</a>
+      <ul>
+        <li><a href="#port">PORT</a></li>
+        <li><a href="#environment-variables">Environment Variables</a></li>
+        <li><a href="#loading-dynamic-modules">Loading dynamic modules</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 </div>
             
             
@@ -283,7 +301,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/nginx.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -293,99 +311,102 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </a>
 
             <div class="docs-body__markdown">
-                <p>This section gets you started with Paketo Buildpacks using Paketo <strong>Builders</strong>, the <strong>Pack</strong> CLI, and <strong>Docker</strong>.</p>
-<p>Let&rsquo;s use the <code>base</code> Paketo Builder and the <strong>Pack</strong> CLI to build a Node.js app
-as a runnable container image. App source code is available
-<a href="https://github.com/paketo-buildpacks/samples/tree/main/demo-apps/app-source">here</a>.</p>
-<p><strong>Prerequisites</strong> - Install Pack and Docker
-Follow <a href="https://buildpacks.io/docs/install-pack/">these instructions</a> to get all set up.</p>
-<p>And we&rsquo;re good to go! Let&rsquo;s build our app into a container image using the <code>pack build</code> command.</p>
+                <p>The <a href="https://github.com/paketo-buildpacks/nginx">NGINX Paketo Buildpack</a> supports the installation of the NGINX binary distribution onto
+the <code>$PATH</code> inside a container. This makes it available to subsequent
+buildpacks.</p>
+<p>To build a sample app locally with this CNB using the <code>pack</code> CLI, run</p>
 <pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
-cd samples/demo-apps/app-source
-pack build paketo-demo-app --builder paketobuildpacks/builder:base
+cd samples/nginx
+pack build my-app --buildpack gcr.io/paketo-buildpacks/nginx \
+  --builder paketobuildpacks/builder:base
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<div class="code-output">
-    <div class="btn code-output__btn code-output__btn">View Output</div>
-    <pre class="code-output__output-container">
-        <code class="code-output__output">......................
-===&gt; DETECTING
-paketo-buildpacks/node-engine 0.1.1
-paketo-buildpacks/npm-install 0.2.0
-paketo-buildpacks/npm-start   0.0.2
-===&gt; ANALYZING
-Restoring metadata for &#34;paketo-buildpacks/node-engine:node&#34; from app image
-===&gt; RESTORING
-Restoring data for &#34;paketo-buildpacks/node-engine:node&#34; from cache
-===&gt; BUILDING
-Paketo Node Engine Buildpack 0.1.1
-  Resolving Node Engine version
-    Candidate version sources (in priority order):
-      package.json -&gt; &#34;~10&#34;
-      &lt;unknown&gt;    -&gt; &#34;*&#34;
-
-    Selected Node Engine version (using package.json): 10.22.0
-
-  Reusing cached layer /layers/paketo-buildpacks_node-engine/node
-
-Paketo NPM Install Buildpack 0.2.0
-  Resolving installation process
-    Process inputs:
-      node_modules      -&gt; &#34;Not found&#34;
-      npm-cache         -&gt; &#34;Not found&#34;
-      package-lock.json -&gt; &#34;Not found&#34;
-
-    Selected NPM build process: &#39;npm install&#39;
-
-  Executing build process
-    Running &#39;npm install --unsafe-perm --cache /layers/paketo-buildpacks_npm-install/npm-cache&#39;
-      Completed in 1.348s
-
-  Configuring environment
-    NPM_CONFIG_LOGLEVEL   -&gt; &#34;error&#34;
-    NPM_CONFIG_PRODUCTION -&gt; &#34;true&#34;
-    PATH                  -&gt; &#34;$PATH:/layers/paketo-buildpacks_npm-install/modules/node_modules/.bin&#34;
-
-Paketo NPM Start Buildpack 0.0.2
-  Assigning launch processes
-    web: node server.js
-===&gt; EXPORTING
-Reusing layer &#39;paketo-buildpacks/node-engine:node&#39;
-Adding layer &#39;paketo-buildpacks/npm-install:modules&#39;
-Adding layer &#39;paketo-buildpacks/npm-install:npm-cache&#39;
-Adding 1/1 app layer(s)
-Reusing layer &#39;launcher&#39;
-Adding layer &#39;config&#39;
-Reusing layer &#39;process-types&#39;
-Adding label &#39;io.buildpacks.lifecycle.metadata&#39;
-Adding label &#39;io.buildpacks.build.metadata&#39;
-Adding label &#39;io.buildpacks.project.metadata&#39;
-Setting default process type &#39;web&#39;
-......................
-Successfully built image paketo-demo-app
-</code>
-    </pre>
-</div>
-
-<p>We&rsquo;ve successfully created an image called <strong>paketo-demo-app</strong>. Now let&rsquo;s run our app image and validate that everything is working.</p>
-<pre class="copyable"><code class="copyable__code">docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
+<p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/nginx">samples</a>
+for how to run the app.</p>
+<p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
+also compatible with the Paketo Full builder.</strong></p>
+<h2 id="supported-dependencies" class="markup-heading"><a class="markup-heading__link" href="#supported-dependencies">Supported Dependencies</a></h2><p>The NGINX Paketo Buildpack supports several versions of NGINX.
+For more details on the specific versions supported in a given buildpack
+version, see the <a href="https://github.com/paketo-buildpacks/nginx/releases">release
+notes</a>.</p>
+<h2 id="specifying-an-nginx-version" class="markup-heading"><a class="markup-heading__link" href="#specifying-an-nginx-version">Specifying an NGINX Version</a></h2><p>The NGINX CNB (Cloud Native Buildpack) allows you to specify a version of NGINX to use during
+deployment. This version can be specified in a number of ways, including
+through <code>buildpack.yml</code>. When specifying a
+version of the NGINX engine, you must choose a version that is available
+within the buildpack.</p>
+<p>Specifying a version of <code>nginx</code> is not required. In the case that it is not
+specified, the buildpack will provide the default version listed in the release
+notes.</p>
+<h3 id="using-bp_nginx_version" class="markup-heading"><a class="markup-heading__link" href="#using-bp_nginx_version">Using BP_NGINX_VERSION</a></h3><p>To configure the buildpack to use NGINX v1.19.8 when deploying your app, set the
+following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_NGINX_VERSION=1.19.8</code>) or through a
+<a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
+file:</p>
+<pre class="copyable"><code class="copyable__code">BP_NGINX_VERSION=&#34;1.19.8&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<p>Wait a few seconds for your app to start.</p>
-<pre class="copyable"><code class="copyable__code">curl http://localhost:8080/greeting
+<h3 id="deprecated-using-buildpackyml" class="markup-heading"><a class="markup-heading__link" href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></h3><p>Specifying the NGINX version through <code>buildpack.yml</code> configuration will be
+deprecated in NGINX Server Buildpack v1.0.0.  To migrate from using
+<code>buildpack.yml</code> please set the <code>$BP_NGINX_VERSION</code> environment variable.</p>
+<h2 id="configurations" class="markup-heading"><a class="markup-heading__link" href="#configurations">Configurations</a></h2><p>The NGINX buildpack supports two app configurations:</p>
+<ol>
+<li>
+<p>When an <code>nginx.conf</code> file <strong>is present</strong> in your app&rsquo;s source code, the
+buildpack will set up an NGINX server with that config.</p>
+</li>
+<li>
+<p>When the <code>nginx.conf</code> <strong>is not present</strong> in the app&rsquo;s source code, the
+buildpack simply provides the NGINX dependency to subsequent buildpacks
+without actually setting up a server.</p>
+</li>
+</ol>
+<h2 id="data-driven-templates" class="markup-heading"><a class="markup-heading__link" href="#data-driven-templates">Data driven templates</a></h2><p>The NGINX buildpack supports data driven templates for nginx config. You can
+use templated variables like <code>{{port}}</code>, <code>{{env &quot;FOO&quot;}}</code> and <code>{{module &quot;ngx_stream_module&quot;}}</code> in your <code>nginx.conf</code> to use values known at launch time.</p>
+<p>A usage example can be found in the <a href="https://github.com/paketo-buildpacks/samples/tree/main/nginx"><code>samples</code> repository under the <code>nginx</code>
+directory</a>.</p>
+<h3 id="port" class="markup-heading"><a class="markup-heading__link" href="#port">PORT</a></h3><p>Use <code>{{port}}</code> to dynamically set the port at which the server will accepts requests. At launch time, the buildpack will read the value of <code>$PORT</code> to set the value of <code>{{port}}</code>.</p>
+<p>For example, to set an NGINX server to listen on <code>$PORT</code>, use the following in your <code>nginx.conf</code> file:</p>
+<pre class="copyable"><code class="copyable__code">server {
+  listen {{port}};
+}
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<div class="code-output">
-    <div class="btn code-output__btn code-output__btn">View Output</div>
-    <pre class="code-output__output-container">
-        <code class="code-output__output">Hello from your application image
-</code>
-    </pre>
-</div>
+<p>Then run the built image using the <code>PORT</code> variable set as follows:</p>
+<pre class="copyable"><code class="copyable__code">docker run --tty --env PORT=8080 --publish 8080:8080 my-nginx-image
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<p>Awesome! Our app is now running on <code>localhost:8080</code>.</p>
-<p>Check out more <a href="https://github.com/paketo-buildpacks/samples">sample apps</a> that work with Paketo Buildpacks.</p>
-<p>Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.</p>
+<h3 id="environment-variables" class="markup-heading"><a class="markup-heading__link" href="#environment-variables">Environment Variables</a></h3><p>This is a generic case of the <code>{{port}}</code> directive described ealier. To use the
+value of any environment variable <code>$FOOVAR</code> available at launch time, use the
+directive <code>{{env &quot;FOOVAR&quot;}}</code> in your <code>nginx.conf</code>.</p>
+<p>For example, include the following in your <code>nginx.conf</code> file to enable or
+disable gzipping of responses based on the value of <code>GZIP_DOWNLOADS</code>:</p>
+<pre class="copyable"><code class="copyable__code">gzip {{env &#34;GZIP_DOWNLOADS&#34;}};
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>Then run the built image using the <code>GZIP_DOWNLOADS</code> variable set as follows:</p>
+<pre class="copyable"><code class="copyable__code">docker run --tty --env PORT=8080 --env GZIP_DOWNLOADS=off --publish 8080:8080 my-nginx-image
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<h3 id="loading-dynamic-modules" class="markup-heading"><a class="markup-heading__link" href="#loading-dynamic-modules">Loading dynamic modules</a></h3><p>You can use templates to set the path to a dynamic module using the
+<code>load_module</code> directive.</p>
+<ul>
+<li>To load a user-provided module named <code>ngx_foo_module</code>, provide a
+<code>modules/ngx_foo_module.so</code> file in your app directory and add the following
+to the top of your <code>nginx.conf</code> file:</li>
+</ul>
+<pre class="copyable"><code class="copyable__code">{{module &#34;ngx_foo_module&#34;}}
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<ul>
+<li>To load a buildpack-provided module like <code>ngx_stream_module</code>, add the
+following to the top of your <code>nginx.conf</code> file. You do not need to provide an
+<code>ngx_stream_module.so</code> file:</li>
+</ul>
+<pre class="copyable"><code class="copyable__code">{{module &#34;ngx_stream_module&#34;}}
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>See the <a href="https://nginx.org/en/docs/beginners_guide.html#conf_structure">NGINX
+docs</a> for more
+information about how to set up an <code>nginx.conf</code> file.</p>
 
             </div>
             
@@ -394,7 +415,7 @@ Successfully built image paketo-demo-app
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/nginx.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">

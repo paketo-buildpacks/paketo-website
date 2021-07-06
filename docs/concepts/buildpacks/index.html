@@ -11,17 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Getting Started - Paketo Buildpacks</title>
+<title>Buildpacks - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="Getting Started">
-<meta name="og:url" content="https://paketo.io/docs/">
+<meta name="og:title" content="Buildpacks">
+<meta name="og:url" content="https://paketo.io/docs/concepts/buildpacks/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
-<meta name="twitter:url" content="https://paketo.io/docs/" />
+<meta name="twitter:url" content="https://paketo.io/docs/concepts/buildpacks/" />
 <meta name="twitter:card" content="" />
 <link rel="stylesheet" href="/css/main-v1.min.26ed5f0e39ba552e1b5273d9f81cabc312097f156e6f745545e075d5a349feaf.css">
 </head>
@@ -77,7 +77,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
     
         <li class="docs-menu__leaf">
-            <a href="/docs/" class="docs-menu__link docs-menu__link--active">
+            <a href="/docs/" class="docs-menu__link ">
                 
                 <span>Getting Started</span>
             </a>
@@ -209,7 +209,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/concepts/buildpacks/" class="docs-menu__link ">
+            <a href="/docs/concepts/buildpacks/" class="docs-menu__link docs-menu__link--active">
                 
                 <span>Buildpacks</span>
             </a>
@@ -271,9 +271,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="docs-body">
         <div class="docs-body__container">
-            <h1 class="">Getting Started</h1>
+            <h1 class="">Buildpacks</h1>
             <div class="docs-body__table-of-contents">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-are-buildpacks">What are Buildpacks?</a>
+      <ul>
+        <li><a href="#detect-phase">Detect Phase</a></li>
+        <li><a href="#build-phase">Build Phase</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-do-paketo-buildpacks-work-together">How do Paketo Buildpacks work together?</a></li>
+    <li><a href="#how-do-paketo-buildpacks-relate-to-the-cloud-native-buildpacks-project">How do Paketo Buildpacks relate to the Cloud Native Buildpacks project?</a></li>
+    <li><a href="#how-are-paketo-buildpacks-different-from-cloud-foundry-buildpacks">How are Paketo Buildpacks different from Cloud Foundry Buildpacks?</a></li>
+  </ul>
+</nav>
 </div>
             
             
@@ -283,7 +295,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/concepts/buildpacks.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -293,99 +305,83 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </a>
 
             <div class="docs-body__markdown">
-                <p>This section gets you started with Paketo Buildpacks using Paketo <strong>Builders</strong>, the <strong>Pack</strong> CLI, and <strong>Docker</strong>.</p>
-<p>Let&rsquo;s use the <code>base</code> Paketo Builder and the <strong>Pack</strong> CLI to build a Node.js app
-as a runnable container image. App source code is available
-<a href="https://github.com/paketo-buildpacks/samples/tree/main/demo-apps/app-source">here</a>.</p>
-<p><strong>Prerequisites</strong> - Install Pack and Docker
-Follow <a href="https://buildpacks.io/docs/install-pack/">these instructions</a> to get all set up.</p>
-<p>And we&rsquo;re good to go! Let&rsquo;s build our app into a container image using the <code>pack build</code> command.</p>
-<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
-cd samples/demo-apps/app-source
-pack build paketo-demo-app --builder paketobuildpacks/builder:base
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
-<div class="code-output">
-    <div class="btn code-output__btn code-output__btn">View Output</div>
-    <pre class="code-output__output-container">
-        <code class="code-output__output">......................
+                <p>In the Getting Started tutorial, you ran a <code>pack build</code> command to build a sample app. This resulted in some output similar to this block:</p>
+<pre><code>...
 ===&gt; DETECTING
 paketo-buildpacks/node-engine 0.1.1
 paketo-buildpacks/npm-install 0.2.0
 paketo-buildpacks/npm-start   0.0.2
-===&gt; ANALYZING
-Restoring metadata for &#34;paketo-buildpacks/node-engine:node&#34; from app image
-===&gt; RESTORING
-Restoring data for &#34;paketo-buildpacks/node-engine:node&#34; from cache
+...
 ===&gt; BUILDING
 Paketo Node Engine Buildpack 0.1.1
-  Resolving Node Engine version
-    Candidate version sources (in priority order):
-      package.json -&gt; &#34;~10&#34;
-      &lt;unknown&gt;    -&gt; &#34;*&#34;
-
-    Selected Node Engine version (using package.json): 10.22.0
-
-  Reusing cached layer /layers/paketo-buildpacks_node-engine/node
-
+...
 Paketo NPM Install Buildpack 0.2.0
-  Resolving installation process
-    Process inputs:
-      node_modules      -&gt; &#34;Not found&#34;
-      npm-cache         -&gt; &#34;Not found&#34;
-      package-lock.json -&gt; &#34;Not found&#34;
-
-    Selected NPM build process: &#39;npm install&#39;
-
-  Executing build process
-    Running &#39;npm install --unsafe-perm --cache /layers/paketo-buildpacks_npm-install/npm-cache&#39;
-      Completed in 1.348s
-
-  Configuring environment
-    NPM_CONFIG_LOGLEVEL   -&gt; &#34;error&#34;
-    NPM_CONFIG_PRODUCTION -&gt; &#34;true&#34;
-    PATH                  -&gt; &#34;$PATH:/layers/paketo-buildpacks_npm-install/modules/node_modules/.bin&#34;
-
+...
 Paketo NPM Start Buildpack 0.0.2
-  Assigning launch processes
-    web: node server.js
-===&gt; EXPORTING
-Reusing layer &#39;paketo-buildpacks/node-engine:node&#39;
-Adding layer &#39;paketo-buildpacks/npm-install:modules&#39;
-Adding layer &#39;paketo-buildpacks/npm-install:npm-cache&#39;
-Adding 1/1 app layer(s)
-Reusing layer &#39;launcher&#39;
-Adding layer &#39;config&#39;
-Reusing layer &#39;process-types&#39;
-Adding label &#39;io.buildpacks.lifecycle.metadata&#39;
-Adding label &#39;io.buildpacks.build.metadata&#39;
-Adding label &#39;io.buildpacks.project.metadata&#39;
-Setting default process type &#39;web&#39;
-......................
-Successfully built image paketo-demo-app
-</code>
-    </pre>
-</div>
-
-<p>We&rsquo;ve successfully created an image called <strong>paketo-demo-app</strong>. Now let&rsquo;s run our app image and validate that everything is working.</p>
-<pre class="copyable"><code class="copyable__code">docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
-<p>Wait a few seconds for your app to start.</p>
-<pre class="copyable"><code class="copyable__code">curl http://localhost:8080/greeting
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
-<div class="code-output">
-    <div class="btn code-output__btn code-output__btn">View Output</div>
-    <pre class="code-output__output-container">
-        <code class="code-output__output">Hello from your application image
-</code>
-    </pre>
-</div>
-
-<p>Awesome! Our app is now running on <code>localhost:8080</code>.</p>
-<p>Check out more <a href="https://github.com/paketo-buildpacks/samples">sample apps</a> that work with Paketo Buildpacks.</p>
-<p>Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.</p>
+...
+</code></pre><p>In this section, we will make sense of this output and explain how the
+buildpacks detect what dependencies are needed by your app to build it into a runnable app image.</p>
+<h2 id="what-are-buildpacks" class="markup-heading"><a class="markup-heading__link" href="#what-are-buildpacks">What are Buildpacks?</a></h2><p>Buildpacks examine your app source code, identify and gather dependencies, and output OCI compliant app and dependency layers.</p>
+<p><strong>Paketo buildpacks provide language runtime support for your favorite
+languages.</strong></p>
+<p>Each buildpack is a modular unit, responsible for providing a single
+dependency. Multiple implementation buildpacks come together to provide all of
+your app&rsquo;s dependencies.</p>
+<p>A buildpack operates on your source code in two phases: <strong>detect</strong> and
+<strong>build</strong>.</p>
+<h3 id="detect-phase" class="markup-heading"><a class="markup-heading__link" href="#detect-phase">Detect Phase</a></h3><p>In the <code>detect</code> phase, the buildpack looks for indicators in
+your source code to determine whether or not it needs to be included to build your app.</p>
+<p>In the Getting Started tutorial, you can see in the output that
+<code>paketo-buildpacks/npm-install</code> is used. This is because the NPM Install Buildpack&rsquo;s detection
+criteria looks for a <code>package.json</code> file in the app source code. Since it&rsquo;s
+present in the sample app we used, detection passes on the NPM Install Buildpack.</p>
+<p>Different buildpacks have different detection criteria according to the
+dependencies they are responsible for. Once detection has passed for a
+buildpack, the buildpack returns a contract of what it requires, and what it
+will provide to the subsequent <code>build</code> phase.</p>
+<h3 id="build-phase" class="markup-heading"><a class="markup-heading__link" href="#build-phase">Build Phase</a></h3><p>In the <code>build</code> phase, the buildpack contributes to the final
+app image, fulfilling the contract given by the <code>detect</code> phase. These
+contributions could be adding an image layer containing a dependency binary
+(like the Node.js engine) or could be as simple as a running a command (like
+<code>npm install</code>).</p>
+<p>In the Getting Started tutorial, the <code>pack build</code> output contains a section in the
+build phase for the NPM Install Buildpack under a &ldquo;BUILDING&rdquo; header. You can
+see that the buildpack runs <code>npm install</code> to install the app&rsquo;s dependencies.
+Subsequently, the NPM Start Buildpack sets the start command to <code>node server.js</code>.</p>
+<p>The image below illustrates how buildpacks contribute layers to the final
+runnable app image:</p>
+<p><img src="/images/docs-buildpacks-app-image.png" alt="Final app image"></p>
+<p>For more information about buildpacks, visit
+<a href="https://buildpacks.io/docs/concepts/components/buildpack/">buildpacks.io</a></p>
+<h2 id="how-do-paketo-buildpacks-work-together" class="markup-heading"><a class="markup-heading__link" href="#how-do-paketo-buildpacks-work-together">How do Paketo Buildpacks work together?</a></h2><p>The Paketo project provides language family buildpacks, which combine multiple buildpacks into ordered groupings. The groupings satisfy each buildpack&rsquo;s requirements (mentioned in the  <code>detect</code> section). The language family buildpacks provide language runtime support for the most popular languages and app configurations.</p>
+<p>Keep reading to learn more about the specifics for each language family Paketo
+Buildpack.</p>
+<h2 id="how-do-paketo-buildpacks-relate-to-the-cloud-native-buildpacks-project" class="markup-heading"><a class="markup-heading__link" href="#how-do-paketo-buildpacks-relate-to-the-cloud-native-buildpacks-project">How do Paketo Buildpacks relate to the Cloud Native Buildpacks project?</a></h2><p>Paketo Buildpacks implement the Buildpack API described in the <a href="https://github.com/buildpacks/spec">Cloud Native Buildpacks
+Specification</a>. The <code>build</code> and <code>detect</code>
+phases of Paketo Buildpacks are designed to be run by the <a href="https://buildpacks.io/docs/concepts/components/lifecycle/">CNB
+lifecycle</a>.</p>
+<h2 id="how-are-paketo-buildpacks-different-from-cloud-foundry-buildpacks" class="markup-heading"><a class="markup-heading__link" href="#how-are-paketo-buildpacks-different-from-cloud-foundry-buildpacks">How are Paketo Buildpacks different from Cloud Foundry Buildpacks?</a></h2><table>
+<thead>
+<tr>
+<th>Paketo Buildpacks</th>
+<th>CF Buildpacks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Produce OCI images that can be <strong>deployed anywhere</strong></td>
+<td>Produce droplets that must be deployed with CF</td>
+</tr>
+<tr>
+<td>Each language buildpack is made up of <strong>small, composable components</strong></td>
+<td>Each language buildpack is one monolithic codebase</td>
+</tr>
+<tr>
+<td><strong>Easy to add features</strong> by writing your own buildpack</td>
+<td>Must fork a buildpack to extend features</td>
+</tr>
+</tbody>
+</table>
 
             </div>
             
@@ -394,7 +390,7 @@ Successfully built image paketo-demo-app
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/concepts/buildpacks.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">

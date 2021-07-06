@@ -5,5 +5,48 @@
     <link>https://paketo.io/docs/</link>
     <description>Recent content in Getting Started on Paketo Buildpacks</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://paketo.io/docs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Configuring Paketo Buildpacks</title>
+      <link>https://paketo.io/docs/reference/configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/reference/configuration/</guid>
+      <description>About the ExamplesConfiguration examples will use the Paketo sample applications.
+Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied! The pack CLI is used throughout the examples. pack is just one of several Cloud Native Buildpack platforms than can execute builds with Paketo Buildpacks.
+Examples assume that the Paketo Base builder is the default builder: pack config default-builder paketobuildpacks/builder:base Copied! Types of ConfigurationPaketo buildpacks can be configured via the following mechanisms:</description>
+    </item>
+    
+    <item>
+      <title>Buildpacks</title>
+      <link>https://paketo.io/docs/concepts/buildpacks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/concepts/buildpacks/</guid>
+      <description>In the Getting Started tutorial, you ran a pack build command to build a sample app. This resulted in some output similar to this block:
+... ===&amp;gt; DETECTING paketo-buildpacks/node-engine 0.1.1 paketo-buildpacks/npm-install 0.2.0 paketo-buildpacks/npm-start 0.0.2 ... ===&amp;gt; BUILDING Paketo Node Engine Buildpack 0.1.1 ... Paketo NPM Install Buildpack 0.2.0 ... Paketo NPM Start Buildpack 0.0.2 ... In this section, we will make sense of this output and explain how the buildpacks detect what dependencies are needed by your app to build it into a runnable app image.</description>
+    </item>
+    
+    <item>
+      <title>Builders</title>
+      <link>https://paketo.io/docs/concepts/builders/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/concepts/builders/</guid>
+      <description>In the Getting Started tutorial, you used the pack CLI and the base builder to create a runnable image with your application. This section explains what builders are and what builders are released by the Paketo project.
+What is a builder?A builder is an image that contains three components:
+ a set of buildpacks, which provide your app&amp;rsquo;s dependencies a stack, which provides the OS layer for your app image the CNB lifecycle, which puts everything together to produce your final app image  For more information about builders, see buildpacks.</description>
+    </item>
+    
+    <item>
+      <title>Stacks</title>
+      <link>https://paketo.io/docs/concepts/stacks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/concepts/stacks/</guid>
+      <description>In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. One of the core pieces to Buildpacks and Builders are Stack Images. Stacks provide the buildpack lifecycle with build-time and run-time environments in the form of images.
+What is a stack?A stack consists of two images:
+ build image: the environment in which your app is built run image: the OS layer for your app image  For more information about stacks, see buildpacks.</description>
+    </item>
+    
   </channel>
 </rss>

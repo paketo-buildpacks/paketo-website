@@ -11,17 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Getting Started - Paketo Buildpacks</title>
+<title>How To - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="Getting Started">
-<meta name="og:url" content="https://paketo.io/docs/">
+<meta name="og:title" content="How To">
+<meta name="og:url" content="https://paketo.io/docs/howto/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
-<meta name="twitter:url" content="https://paketo.io/docs/" />
+<meta name="twitter:url" content="https://paketo.io/docs/howto/" />
 <meta name="twitter:card" content="" />
 <link rel="stylesheet" href="/css/main-v1.min.26ed5f0e39ba552e1b5273d9f81cabc312097f156e6f745545e075d5a349feaf.css">
 </head>
@@ -77,7 +77,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
     
         <li class="docs-menu__leaf">
-            <a href="/docs/" class="docs-menu__link docs-menu__link--active">
+            <a href="/docs/" class="docs-menu__link ">
                 
                 <span>Getting Started</span>
             </a>
@@ -87,7 +87,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
     
         <li class="docs-menu__parent">
-            <a href="/docs/howto/"  class="docs-menu__link ">
+            <a href="/docs/howto/"  class="docs-menu__link docs-menu__link--active">
                 
                 <span>How To</span>
             </a>
@@ -271,9 +271,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="docs-body">
         <div class="docs-body__container">
-            <h1 class="">Getting Started</h1>
+            <h1 class="">How To</h1>
             <div class="docs-body__table-of-contents">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#component-buildpacks">Component Buildpacks</a></li>
+    <li><a href="#composite-buildpacks">Composite Buildpacks</a></li>
+  </ul>
+</nav>
 </div>
             
             
@@ -283,7 +288,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -293,99 +298,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </a>
 
             <div class="docs-body__markdown">
-                <p>This section gets you started with Paketo Buildpacks using Paketo <strong>Builders</strong>, the <strong>Pack</strong> CLI, and <strong>Docker</strong>.</p>
-<p>Let&rsquo;s use the <code>base</code> Paketo Builder and the <strong>Pack</strong> CLI to build a Node.js app
-as a runnable container image. App source code is available
-<a href="https://github.com/paketo-buildpacks/samples/tree/main/demo-apps/app-source">here</a>.</p>
-<p><strong>Prerequisites</strong> - Install Pack and Docker
-Follow <a href="https://buildpacks.io/docs/install-pack/">these instructions</a> to get all set up.</p>
-<p>And we&rsquo;re good to go! Let&rsquo;s build our app into a container image using the <code>pack build</code> command.</p>
-<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
-cd samples/demo-apps/app-source
-pack build paketo-demo-app --builder paketobuildpacks/builder:base
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
-<div class="code-output">
-    <div class="btn code-output__btn code-output__btn">View Output</div>
-    <pre class="code-output__output-container">
-        <code class="code-output__output">......................
-===&gt; DETECTING
-paketo-buildpacks/node-engine 0.1.1
-paketo-buildpacks/npm-install 0.2.0
-paketo-buildpacks/npm-start   0.0.2
-===&gt; ANALYZING
-Restoring metadata for &#34;paketo-buildpacks/node-engine:node&#34; from app image
-===&gt; RESTORING
-Restoring data for &#34;paketo-buildpacks/node-engine:node&#34; from cache
-===&gt; BUILDING
-Paketo Node Engine Buildpack 0.1.1
-  Resolving Node Engine version
-    Candidate version sources (in priority order):
-      package.json -&gt; &#34;~10&#34;
-      &lt;unknown&gt;    -&gt; &#34;*&#34;
-
-    Selected Node Engine version (using package.json): 10.22.0
-
-  Reusing cached layer /layers/paketo-buildpacks_node-engine/node
-
-Paketo NPM Install Buildpack 0.2.0
-  Resolving installation process
-    Process inputs:
-      node_modules      -&gt; &#34;Not found&#34;
-      npm-cache         -&gt; &#34;Not found&#34;
-      package-lock.json -&gt; &#34;Not found&#34;
-
-    Selected NPM build process: &#39;npm install&#39;
-
-  Executing build process
-    Running &#39;npm install --unsafe-perm --cache /layers/paketo-buildpacks_npm-install/npm-cache&#39;
-      Completed in 1.348s
-
-  Configuring environment
-    NPM_CONFIG_LOGLEVEL   -&gt; &#34;error&#34;
-    NPM_CONFIG_PRODUCTION -&gt; &#34;true&#34;
-    PATH                  -&gt; &#34;$PATH:/layers/paketo-buildpacks_npm-install/modules/node_modules/.bin&#34;
-
-Paketo NPM Start Buildpack 0.0.2
-  Assigning launch processes
-    web: node server.js
-===&gt; EXPORTING
-Reusing layer &#39;paketo-buildpacks/node-engine:node&#39;
-Adding layer &#39;paketo-buildpacks/npm-install:modules&#39;
-Adding layer &#39;paketo-buildpacks/npm-install:npm-cache&#39;
-Adding 1/1 app layer(s)
-Reusing layer &#39;launcher&#39;
-Adding layer &#39;config&#39;
-Reusing layer &#39;process-types&#39;
-Adding label &#39;io.buildpacks.lifecycle.metadata&#39;
-Adding label &#39;io.buildpacks.build.metadata&#39;
-Adding label &#39;io.buildpacks.project.metadata&#39;
-Setting default process type &#39;web&#39;
-......................
-Successfully built image paketo-demo-app
-</code>
-    </pre>
-</div>
-
-<p>We&rsquo;ve successfully created an image called <strong>paketo-demo-app</strong>. Now let&rsquo;s run our app image and validate that everything is working.</p>
-<pre class="copyable"><code class="copyable__code">docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
-<p>Wait a few seconds for your app to start.</p>
-<pre class="copyable"><code class="copyable__code">curl http://localhost:8080/greeting
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
-<div class="code-output">
-    <div class="btn code-output__btn code-output__btn">View Output</div>
-    <pre class="code-output__output-container">
-        <code class="code-output__output">Hello from your application image
-</code>
-    </pre>
-</div>
-
-<p>Awesome! Our app is now running on <code>localhost:8080</code>.</p>
-<p>Check out more <a href="https://github.com/paketo-buildpacks/samples">sample apps</a> that work with Paketo Buildpacks.</p>
-<p>Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.</p>
+                <p>The Paketo language family buildpacks are <a href="#composite-buildpacks">composite buildpacks</a> that provide easy out-of-the-box support the most popular language runtimes and app configurations.</p>
+<h2 id="component-buildpacks" class="markup-heading"><a class="markup-heading__link" href="#component-buildpacks">Component Buildpacks</a></h2><p>Paketo provides many component buildpacks, each with a well-defined responsibility. Component buildpacks may require contributions from upstream buildpacks and/or provide required components to downstream buildpacks.</p>
+<p>For example, the Gradle Buildpack is a component buildpack, responsible for installing Gradle in the build container and using Gradle to compile and package a JVM application. It requires that an upstream component to provide a JDK. It provides a compiled JVM application to downstream buildpacks.</p>
+<h2 id="composite-buildpacks" class="markup-heading"><a class="markup-heading__link" href="#composite-buildpacks">Composite Buildpacks</a></h2><p>Component buildpacks can be combined to compose higher-level composite buildpacks. Composite buildpacks contain an ordered list of component buildpacks. Some buildpacks in the ordering may be optional, participating only when they detect that they are needed.</p>
 
             </div>
             
@@ -394,7 +310,7 @@ Successfully built image paketo-demo-app
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
