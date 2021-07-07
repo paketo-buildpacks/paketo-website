@@ -3,7 +3,7 @@ title: "Buildpacks"
 weight: 400
 menu:
   main:
-    parent: "Concepts"
+    parent: "concepts"
 aliases:
   - /docs/buildpacks/
 ---
@@ -30,7 +30,8 @@ In this section, we will make sense of this output and explain how the
 buildpacks detect what dependencies are needed by your app to build it into a runnable app image.
 
 ## What are Buildpacks?
-Buildpacks examine your app source code, identify and gather dependencies, and output OCI compliant app and dependency layers.
+Buildpacks examine your app source code, identify and gather dependencies, and
+output OCI compliant app and dependency layers.
 
 **Paketo buildpacks provide language runtime support for your favorite
 languages.**
@@ -47,9 +48,10 @@ In the `detect` phase, the buildpack looks for indicators in
 your source code to determine whether or not it needs to be included to build your app.
 
 In the Getting Started tutorial, you can see in the output that
-`paketo-buildpacks/npm-install` is used. This is because the NPM Install Buildpack's detection
-criteria looks for a `package.json` file in the app source code. Since it's
-present in the sample app we used, detection passes on the NPM Install Buildpack.
+`paketo-buildpacks/npm-install` is used. This is because the NPM Install
+Buildpack's detection criteria looks for a `package.json` file in the app
+source code. Since it's present in the sample app we used, detection passes on
+the NPM Install Buildpack.
 
 Different buildpacks have different detection criteria according to the
 dependencies they are responsible for. Once detection has passed for a
@@ -76,11 +78,29 @@ runnable app image:
 For more information about buildpacks, visit
 [buildpacks.io](https://buildpacks.io/docs/concepts/components/buildpack/)
 
-## How do Paketo Buildpacks work together?
-The Paketo project provides language family buildpacks, which combine multiple buildpacks into ordered groupings. The groupings satisfy each buildpack's requirements (mentioned in the  `detect` section). The language family buildpacks provide language runtime support for the most popular languages and app configurations.
+### Component Buildpacks
+Paketo provides many component buildpacks, each with a well-defined
+responsibility. Component buildpacks may require contributions from upstream
+buildpacks and/or provide required components to downstream buildpacks.
 
-Keep reading to learn more about the specifics for each language family Paketo
-Buildpack.
+For example, the Gradle Buildpack is a component buildpack, responsible for
+installing Gradle in the build container and using Gradle to compile and
+package a JVM application. It requires that an upstream component to provide a
+JDK. It provides a compiled JVM application to downstream buildpacks.
+
+### Composite Buildpacks
+
+Component buildpacks can be combined to compose higher-level composite
+buildpacks. Composite buildpacks contain an ordered list of component
+buildpacks. Some buildpacks in the ordering may be optional, participating only
+when they detect that they are needed.
+
+## How do Paketo Buildpacks work together?
+The Paketo language family buildpacks are [composite
+buildpacks](#composite-buildpacks) that provide easy out-of-the-box support the
+most popular language runtimes and app configurations. These buildpacks combine
+multiple component buildpacks into ordered groupings. The groupings satisfy
+each buildpack's requirements (mentioned in the  `detect` section).
 
 ## How do Paketo Buildpacks relate to the Cloud Native Buildpacks project?
 

@@ -444,7 +444,7 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 <!-- paketo docs references -->
 [base builder]:{{< ref "/docs/concepts/builders#base" >}}
 [bindings]:{{< ref "/docs/reference/configuration#bindings" >}}
-[composite buildpack]:{{< ref "/docs/howto#compposite-buildapcks" >}}
+[composite buildpack]:{{< ref "/docs/concepts/buildpacks#composite-buildpacks" >}}
 [procfiles]:{{< ref "/docs/reference/configuration#procfiles" >}}
 
 <!-- cnb references -->

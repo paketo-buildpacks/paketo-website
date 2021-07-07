@@ -198,7 +198,7 @@ The following component buildpacks compose the Paketo Java Native Image Buildpac
 [base builder]:{{< ref "/docs/concepts/builders#base" >}}
 [tiny builder]:{{< ref "/docs/concepts/builders#tiny" >}}
 [bindings]:{{< ref "/docs/reference/configuration#bindings" >}}
-[composite buildpack]:{{< ref "/docs/howto#composite-buildpacks" >}}
+[composite buildpack]:{{< ref "/docs/concepts/buildpacks#composite-buildpacks" >}}
 [procfiles]:{{< ref "/docs/reference/configuration#procfiles" >}}
 [java/building from source]:{{< ref "/docs/howto/java#building-from-source" >}}
 [java/spring boot applications]:{{< ref "/docs/howto/java#spring-boot-applications" >}}
