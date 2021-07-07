@@ -64,6 +64,18 @@ body {
     padding: 0;
     padding-right: 5px;
 }
+.docs-menu__section-header {
+    cursor: default;
+    display: inline-block;
+    position: relative;
+    margin: 5px 0;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-decoration: none;
+    opacity: 1;
+    color: $light-text-color;
+}
 
 .docs-menu__link {
     display: inline-block;

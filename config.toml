@@ -119,15 +119,24 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
     name = "Reference"
     weight = 500
 
+    [menu.main.params]
+      class = "docs-menu__section-header"
+
   [[menu.main]]
     identifier = "howto"
     name = "How To"
     weight = 200
 
+    [menu.main.params]
+      class = "docs-menu__section-header"
+
   [[menu.main]]
     identifier = "concepts"
     name = "Concepts"
     weight = 300
+
+    [menu.main.params]
+      class = "docs-menu__section-header"
 
 
 [markup]
