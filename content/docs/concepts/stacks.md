@@ -3,7 +3,7 @@ title: "Stacks"
 weight: 430
 menu:
   main:
-    parent: "Concepts"
+    parent: "concepts"
 aliases:
   - /docs/stacks/
 ---
