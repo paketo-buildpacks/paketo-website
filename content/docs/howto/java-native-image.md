@@ -4,6 +4,7 @@ weight: 312
 menu:
   main:
     parent: "howto"
+    name: Java Native Image
 aliases:
   - /docs/buildpacks/language-family-buildpacks/java-native-image/
 ---

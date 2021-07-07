@@ -4,6 +4,7 @@ weight: 328
 menu:
   main:
     parent: "howto"
+    name: "PHP"
 aliases:
   - /docs/buildpacks/language-family-buildpacks/php/
 ---
