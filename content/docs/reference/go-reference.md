@@ -3,7 +3,7 @@ title: "Go Buildpack Reference"
 weight: 300
 menu:
   main:
-    parent: Reference
+    parent: reference
     identifier: go-reference
     name: "Go Buildpack"
 ---
