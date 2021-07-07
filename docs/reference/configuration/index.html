@@ -87,7 +87,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
     
         <li class="docs-menu__parent">
-            <a href="/docs/howto/"  class="docs-menu__link ">
+            <a href=""  class="docs-menu__link ">
                 
                 <span>How To</span>
             </a>
@@ -258,6 +258,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </a>
         </li>
     
+                
+            </ul>
+        </li>
+    
+        
+            
+    
+        <li class="docs-menu__parent">
+            <a href=""  class="docs-menu__link ">
+                
+                <span>Reference</span>
+            </a>
+            <ul class="docs-menu__children-list">
                 
                     
     
@@ -466,7 +479,7 @@ on the filesystem, where either the <code>type</code> or <code>kind</code> file 
 </p>
 <h3 id="procfiles" class="markup-heading"><a class="markup-heading__link" href="#procfiles">Procfiles</a></h3><p>Paketo users may override buildpack-provided types or augment the app-image with additional process types using a <code>Procfile</code>.  <code>Procfile</code> support is provided by the <a href="https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a>. The Procfile Buildpack will search for a file named <code>Procfile</code> at the root of the application. <code>Procfiles</code> should adhere to the following schema:</p>
 <div class="highlight"><pre class="chroma"><code class="language-plain" data-lang="plain">&lt;type&gt;: &lt;command&gt;
-</code></pre></div><p>If a given <a href="https://paketo.io/docs/howto/">language family buildpack</a> does not contain the Procfile Buildpack it can be explicitly appended at runtime.</p>
+</code></pre></div><p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Procfile Buildpack it can be explicitly appended at runtime.</p>
 <p><strong>Example</strong>: A Hello World Procfile</p>
 <p>The following adds a process with <code>type</code> equal to <code>hello</code> and makes it the default process.
 <pre class="copyable"><code class="copyable__code">echo &#34;hello: echo hello world&#34; &gt; nodejs/yarn/Procfile
@@ -505,7 +518,7 @@ docker run samples/nodejs # should print &#34;hello world&#34;
 <div class="highlight"><pre class="chroma"><code class="language-plain" data-lang="plain">&lt;binding-name&gt;
 ├── &lt;cert file name&gt;
 └── type
-</code></pre></div><p>If a given <a href="https://paketo.io/docs/howto/">language family buildpack</a> does not contain the Paketo CA Certificates Buildpack it can be explicitly prepended at runtime.</p>
+</code></pre></div><p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Paketo CA Certificates Buildpack it can be explicitly prepended at runtime.</p>
 <p><strong>Example</strong>: Adding a CA Certificate at Runtime</p>
 <p>The samples repository contains a simple Golang application that will make a <code>HEAD</code> request to a provided URL.</p>
 <p>Given a file <code>&lt;your-ca.pem&gt;</code> containing a single PEM encoded CA certificate needed to verify a TLS connection to an https URL <code>&lt;url&gt;</code>, add the CA certificate to the binding.</p>
@@ -531,7 +544,7 @@ only detect if a certificate binding is provided at build-time.</p>
 <h2 id="applying-custom-labels" class="markup-heading"><a class="markup-heading__link" href="#applying-custom-labels">Applying Custom Labels</a></h2><p>Paketo users may add labels to the application image using the <a href="https://github.com/paketo-buildpacks/image-labels">Image Labels Buildpack</a>.</p>
 <p>Environment variables prefixed with <code>BP_OCI_</code> can be used to set <a href="https://github.com/opencontainers/image-spec/blob/master/annotations.md#pre-defined-annotation-keys">OCI-specific</a>. For example, if <code>BP_OCI_AUTHORS</code> is set at build-time, the Image Labels Buildpack will add a label to the image with key <code>org.opencontainers.image.authors</code> and value equal to the value of <code>$BP_OCI_AUTHORS</code>.</p>
 <p>Users may contribute arbitrary labels by providing a collection of space-delimited key-value pairs with the <code>BP_IMAGE_LABELS</code> environment variable. Values containing spaces can be quoted.</p>
-<p>If a given <a href="https://paketo.io/docs/howto/">language family buildpack</a> does not contain the Image Labels Buildpack it can be explicitly appended at runtime.</p>
+<p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Image Labels Buildpack it can be explicitly appended at runtime.</p>
 <p><strong>Example</strong>: Adding Custom Labels
 <pre class="copyable"><code class="copyable__code">pack build samples/nodejs \
   --path nodejs/yarn \
