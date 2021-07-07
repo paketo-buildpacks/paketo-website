@@ -11,14 +11,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Go Buildpack - Paketo Buildpacks</title>
+<title>How to Build Go Apps with Paketo Buildpacks - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="Go Buildpack">
+<meta name="og:title" content="How to Build Go Apps with Paketo Buildpacks">
 <meta name="og:url" content="https://paketo.io/docs/howto/go/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/howto/go/" />
@@ -98,7 +98,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li class="docs-menu__leaf">
             <a href="/docs/howto/dotnet-core/" class="docs-menu__link ">
                 
-                <span>.Net Core Buildpack</span>
+                <span>.Net Core</span>
             </a>
         </li>
     
@@ -108,7 +108,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li class="docs-menu__leaf">
             <a href="/docs/howto/go/" class="docs-menu__link docs-menu__link--active">
                 
-                <span>Go Buildpack</span>
+                <span>Go</span>
             </a>
         </li>
     
@@ -118,7 +118,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li class="docs-menu__leaf">
             <a href="/docs/howto/httpd/" class="docs-menu__link ">
                 
-                <span>HTTPD Buildpack</span>
+                <span>HTTPD</span>
             </a>
         </li>
     
@@ -128,7 +128,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li class="docs-menu__leaf">
             <a href="/docs/howto/java-native-image/" class="docs-menu__link ">
                 
-                <span>Java Native Image Buildpack</span>
+                <span>Java Native Image</span>
             </a>
         </li>
     
@@ -138,7 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li class="docs-menu__leaf">
             <a href="/docs/howto/java/" class="docs-menu__link ">
                 
-                <span>Java Buildpack</span>
+                <span>Java</span>
             </a>
         </li>
     
@@ -148,7 +148,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li class="docs-menu__leaf">
             <a href="/docs/howto/nginx/" class="docs-menu__link ">
                 
-                <span>NGINX Buildpack</span>
+                <span>NGINX</span>
             </a>
         </li>
     
@@ -158,7 +158,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li class="docs-menu__leaf">
             <a href="/docs/howto/nodejs/" class="docs-menu__link ">
                 
-                <span>Node.js Buildpack</span>
+                <span>Node.js</span>
             </a>
         </li>
     
@@ -168,7 +168,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li class="docs-menu__leaf">
             <a href="/docs/howto/php/" class="docs-menu__link ">
                 
-                <span>PHP Buildpack</span>
+                <span>PHP</span>
             </a>
         </li>
     
@@ -178,7 +178,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li class="docs-menu__leaf">
             <a href="/docs/howto/ruby/" class="docs-menu__link ">
                 
-                <span>Ruby Buildpack</span>
+                <span>Ruby</span>
             </a>
         </li>
     
@@ -259,6 +259,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </li>
     
                 
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/go-reference/" class="docs-menu__link ">
+                
+                <span>Go Buildpack</span>
+            </a>
+        </li>
+    
+                
             </ul>
         </li>
     
@@ -271,53 +281,39 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="docs-body">
         <div class="docs-body__container">
-            <h1 class="">Go Buildpack</h1>
+            <h1 class="">How to Build Go Apps with Paketo Buildpacks</h1>
             <div class="docs-body__table-of-contents">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#specifying-a-go-version">Specifying a Go Version</a>
+    <li><a href="#build-a-sample-go-application">Build a Sample Go Application</a></li>
+    <li><a href="#install-a-specific-go-version">Install a Specific Go Version</a>
       <ul>
         <li><a href="#using-bp_go_version">Using BP_GO_VERSION</a></li>
         <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
-    <li><a href="#configuring-build-flags">Configuring Build Flags</a>
+    <li><a href="#configure-the-go-build-command">Configure the <code>go build</code> Command</a>
       <ul>
         <li><a href="#bp_go_build_flags">BP_GO_BUILD_FLAGS</a></li>
         <li><a href="#bp_go_build_ldflags">BP_GO_BUILD_LDFLAGS</a></li>
         <li><a href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
-    <li><a href="#configuring-targets">Configuring Targets</a>
+    <li><a href="#build-multiple-binaries-in-an-app-image">Build Multiple Binaries In An App Image</a>
       <ul>
         <li><a href="#deprecated-using-buildpackyml-2">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
-    <li><a href="#configuring-import-paths">Configuring Import Paths</a>
+    <li><a href="#configure-module-import-paths">Configure Module Import Paths</a>
       <ul>
         <li><a href="#deprecated-using-buildpackyml-3">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
-    <li><a href="#configuring-file-removal">Configuring File Removal</a></li>
-    <li><a href="#package-management-options">Package Management Options</a>
-      <ul>
-        <li><a href="#package-management-with-go-modules">Package Management with Go Modules</a></li>
-        <li><a href="#package-management-with-dep">Package Management with Dep</a></li>
-        <li><a href="#no-package-management">No Package Management</a></li>
-      </ul>
-    </li>
-    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
-      <ul>
-        <li><a href="#gopath"><code>GOPATH</code></a></li>
-        <li><a href="#gocache"><code>GOCACHE</code></a></li>
-        <li><a href="#depcachedir"><code>DEPCACHEDIR</code></a></li>
-      </ul>
-    </li>
-    <li><a href="#using-ca-certificates">Using CA Certificates</a></li>
-    <li><a href="#setting-custom-start-processes">Setting Custom Start Processes</a></li>
-    <li><a href="#setting-environment-variables-in-the-app-image">Setting Environment Variables in the App Image</a></li>
-    <li><a href="#adding-custom-labels-to-the-app-image">Adding Custom Labels to the App Image</a></li>
+    <li><a href="#keep-specific-files-in-the-app-image">Keep Specific Files in the App Image</a></li>
+    <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
+    <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
+    <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
+    <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
   </ul>
 </nav>
 </div>
@@ -339,9 +335,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </a>
 
             <div class="docs-body__markdown">
-                <p>The <a href="https://github.com/paketo-buildpacks/go">Go Paketo Buildpack</a> supports several popular
-configurations for Go apps.</p>
-<p>To build a sample app locally with this buildpack using the <code>pack</code> CLI, run</p>
+                <h2 id="build-a-sample-go-application" class="markup-heading"><a class="markup-heading__link" href="#build-a-sample-go-application">Build a Sample Go Application</a></h2><p>To build a sample app locally with this buildpack using the <code>pack</code> CLI, run</p>
 <pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples/go/mod
 pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
@@ -352,11 +346,7 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
 for how to run the app.</p>
 <p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
 also compatible with the Paketo Full builder and Paketo Tiny builder.</strong></p>
-<h2 id="supported-dependencies" class="markup-heading"><a class="markup-heading__link" href="#supported-dependencies">Supported Dependencies</a></h2><p>The Go Paketo Buildpack supports several versions of Go.
-For more details on the specific versions supported in a given buildpack
-version, see the <a href="https://github.com/paketo-buildpacks/go/releases">release
-notes</a>.</p>
-<h2 id="specifying-a-go-version" class="markup-heading"><a class="markup-heading__link" href="#specifying-a-go-version">Specifying a Go Version</a></h2><p>The Go CNB (Cloud Native Buildpack) allows you to specify a version of Go to
+<h2 id="install-a-specific-go-version" class="markup-heading"><a class="markup-heading__link" href="#install-a-specific-go-version">Install a Specific Go Version</a></h2><p>The Go CNB (Cloud Native Buildpack) allows you to specify a version of Go to
 use during deployment. This version can be specified via the <code>BP_GO_VERSION</code>
 environment variable or <code>go.mod</code>. When specifying a version of Go, you must
 choose a version that is available within the buildpack. The supported versions
@@ -380,7 +370,7 @@ file:</p>
 <h3 id="deprecated-using-buildpackyml" class="markup-heading"><a class="markup-heading__link" href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></h3><p>Specifying the Go version through buildpack.yml configuration will be
 deprecated in Go Dist Buildpack v1.0.0. To migrate from using buildpack.yml
 please set the<code> $BP_GO_VERSION</code> environment variable.</p>
-<h2 id="configuring-build-flags" class="markup-heading"><a class="markup-heading__link" href="#configuring-build-flags">Configuring Build Flags</a></h2><p>The <code>go build</code> command supports a number of flags that allow users to override
+<h2 id="configure-the-go-build-command" class="markup-heading"><a class="markup-heading__link" href="#configure-the-go-build-command">Configure the <code>go build</code> Command</a></h2><p>The <code>go build</code> command supports a number of flags that allow users to override
 defaults for more control over build configurations. By default, the buildpack
 sets the following build flags:</p>
 <ul>
@@ -408,7 +398,7 @@ file:</p>
 <h3 id="deprecated-using-buildpackyml-1" class="markup-heading"><a class="markup-heading__link" href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></h3><p>Specifying the Go Build flags through buildpack.yml configuration will be
 deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
 please set the <code>$BP_GO_BUILD_FLAGS</code> environment variable.</p>
-<h2 id="configuring-targets" class="markup-heading"><a class="markup-heading__link" href="#configuring-targets">Configuring Targets</a></h2><p>The Go CNB allows users to specify multiple targets for <code>go build</code>. This will
+<h2 id="build-multiple-binaries-in-an-app-image" class="markup-heading"><a class="markup-heading__link" href="#build-multiple-binaries-in-an-app-image">Build Multiple Binaries In An App Image</a></h2><p>The Go CNB allows users to specify multiple targets for <code>go build</code>. This will
 result in multiples binaries being built.Targets must be a list of paths
 relative to the root directory of the source code.</p>
 <p>To set custom targets for your build assign a list of targets to the
@@ -419,7 +409,7 @@ relative to the root directory of the source code.</p>
 <h3 id="deprecated-using-buildpackyml-2" class="markup-heading"><a class="markup-heading__link" href="#deprecated-using-buildpackyml-2">Deprecated: Using buildpack.yml</a></h3><p>Specifying the Go Build targets through buildpack.yml configuration will be
 deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
 please set the <code>$BP_GO_TARGETS</code> environment variable.</p>
-<h2 id="configuring-import-paths" class="markup-heading"><a class="markup-heading__link" href="#configuring-import-paths">Configuring Import Paths</a></h2><p>If you are building a $GOPATH application that imports its own sub-packages,
+<h2 id="configure-module-import-paths" class="markup-heading"><a class="markup-heading__link" href="#configure-module-import-paths">Configure Module Import Paths</a></h2><p>If you are building a $GOPATH application that imports its own sub-packages,
 you will need to specify the import paths for those sub-packages. The Go CNB
 supports setting these import paths via the <code>$BP_GO_BUILD_IMPORT_PATH</code>
 environment variable:</p>
@@ -429,7 +419,7 @@ environment variable:</p>
 <h3 id="deprecated-using-buildpackyml-3" class="markup-heading"><a class="markup-heading__link" href="#deprecated-using-buildpackyml-3">Deprecated: Using buildpack.yml</a></h3><p>Specifying the Go Build import path through buildpack.yml configuration will be
 deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
 please set the <code>$BP_GO_BUILD_IMPORT_PATH</code> environment variable.</p>
-<h2 id="configuring-file-removal" class="markup-heading"><a class="markup-heading__link" href="#configuring-file-removal">Configuring File Removal</a></h2><p>The Go CNB by defaults deletes the contents of your app root once it has
+<h2 id="keep-specific-files-in-the-app-image" class="markup-heading"><a class="markup-heading__link" href="#keep-specific-files-in-the-app-image">Keep Specific Files in the App Image</a></h2><p>The Go CNB by defaults deletes the contents of your app root once it has
 compiled your app in an effort to optimize the size the final image. However
 sometimes there are static assets that you would like to appear in the final
 image. To have these files or directories persist set the <code>BP_KEEP_FILES</code>
@@ -437,91 +427,19 @@ environment variable, which can be passed to <code>pack build</code>:
 <pre class="copyable"><code class="copyable__code">BP_KEEP_FILES=assets/*:public/*
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h2 id="package-management-options" class="markup-heading"><a class="markup-heading__link" href="#package-management-options">Package Management Options</a></h2><p>With the Go CNB, there are three options for package management depending on
-your application:</p>
-<ul>
-<li>The built-in <a href="https://github.com/golang/go/wiki/Modules">Go modules</a> feature,</li>
-<li>The <a href="https://github.com/golang/dep">Dep</a> tool</li>
-<li>No package manager</li>
-</ul>
-<p>Support for each of these package managers is mutually-exclusive. You can find
-specific information for each option below.</p>
-<h3 id="package-management-with-go-modules" class="markup-heading"><a class="markup-heading__link" href="#package-management-with-go-modules">Package Management with Go Modules</a></h3><p>Many Go apps require third-party libraries to perform common tasks and
-behaviors. Go modules are a built-in option for managing these third-party
-dependencies that the Go CNB fully supports. Including a <code>go.mod</code> file in your
-app source code instructs the buildpack to vendor your dependencies using Go
-modules. During the build phase, the <code>go-mod-vendor</code>
-<a href="https://github.com/paketo-buildpacks/go-mod-vendor">buildpack</a> checks to see
-if the application requires any external modules and if it does, runs the <code>go mod vendor</code> command for your app. The resulting <code>vendor</code> directory will exist
-in the app&rsquo;s root directory and will contain all the packages needed to build
-your Go app.</p>
-<h3 id="package-management-with-dep" class="markup-heading"><a class="markup-heading__link" href="#package-management-with-dep">Package Management with Dep</a></h3><p>Dep is an alternative option to Go Modules for package management in Go apps.
-Including a <code>Gopkg.toml</code> file (more information about this
-<a href="https://golang.github.io/dep/docs/Gopkg.toml.html">here</a>) in your app source
-code instructs the buildpack to download the <code>dep</code> package, and then vendor
-your dependencies using it. There may be an optional <code>Gopkg.lock</code> file that
-outlines specific versions of the dependencies to be packaged. During its build
-phase, the <code>dep-ensure</code>
-<a href="https://github.com/paketo-buildpacks/dep-ensure">buildpack</a> runs the <code>dep ensure</code> command for your app. The resulting <code>vendor</code> directory will exist in
-the app&rsquo;s root directory and will contain all the packages needed to build your
-Go app.</p>
-<h3 id="no-package-management" class="markup-heading"><a class="markup-heading__link" href="#no-package-management">No Package Management</a></h3><p>The Go CNB also supports both self-vendored apps and simpler apps that do not
-require third-party packages. In this case there is no vendoring step, and the
-<code>go build</code> command is run on the app source code as it is provided.</p>
-<h2 id="buildpack-set-environment-variables" class="markup-heading"><a class="markup-heading__link" href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a></h2><p>The Go CNB sets a few environment variables during the <code>build</code> and <code>launch</code>
-phases of the app lifecycle. The sections below describe each environment
-variable and its impact on your app.</p>
-<h3 id="gopath" class="markup-heading"><a class="markup-heading__link" href="#gopath"><code>GOPATH</code></a></h3><p>The <code>GOPATH</code> environment variable tells Go where to look for artifacts such as
-source code and binaries. The Go CNB takes care of setting the <code>GOPATH</code> for
-you, depending on your app and which package management option your app uses.</p>
-<ul>
-<li>Set by: <code>go-mod-vendor</code>, <code>dep-ensure</code> and <code>go-build</code></li>
-<li>Phases: <code>build</code></li>
-<li>Value: path to Go workspace</li>
-</ul>
-<h4 id="go-modules" class="markup-heading"><a class="markup-heading__link" href="#go-modules">Go Modules</a></h4><p>When using Go modules, the Go CNB sets the <code>GOPATH</code> to a cached module layer in
-the image so that between builds of the app, the dependencies don&rsquo;t have to be
-redownloaded. Essentially, the <code>GOPATH</code> is being used to tell the <code>go mod vendor</code> command where to look for dependencies. It&rsquo;s worth noting that in this
-case, the <code>GOPATH</code> isn&rsquo;t persisted beyond vendoring the dependencies and gets
-overwritten by a subsequent buildpack.</p>
-<h4 id="dep" class="markup-heading"><a class="markup-heading__link" href="#dep">Dep</a></h4><p>When using the Dep tool, the Go CNB sets the <code>GOPATH</code> to a temporary directory.
-The app source code gets copied into the <code>GOPATH</code> location so that the <code>dep ensure</code> command knows where to look for the source code, as well as where to
-put the <code>vendor</code> directory. The <code>vendor</code> directory that is created is then
-copied to the original source code directory. The <code>GOPATH</code> in this case is used
-to run <code>dep ensure</code>, but does not persist beyond that step.</p>
-<h4 id="build" class="markup-heading"><a class="markup-heading__link" href="#build">Build</a></h4><p>The <code>go-build</code> buildpack participates in the Go CNB in every case, regardless
-of which package management option is used. The <code>GOPATH</code> is set to a temporary
-directory which includes the app source code and local sub-packages. The
-<code>GOPATH</code> is utilized in running <code>go build</code> to compile your app.</p>
-<h3 id="gocache" class="markup-heading"><a class="markup-heading__link" href="#gocache"><code>GOCACHE</code></a></h3><p>The <code>GOCACHE</code> variable specifies where build outputs are stored for reuse in
-subsequent builds. It gets set to a cached layer in  the image by the
-<code>go-build</code> buildpack, so that it is persisted between builds.</p>
-<ul>
-<li>Set by: <code>go-build</code></li>
-<li>Phases: <code>build</code></li>
-<li>Value: Go Cache layer path</li>
-</ul>
-<h3 id="depcachedir" class="markup-heading"><a class="markup-heading__link" href="#depcachedir"><code>DEPCACHEDIR</code></a></h3><p><code>DEPCACHEDIR</code> specifies where upstream dependency source code is stored for use
-by the Dep tool. The <code>dep-ensure</code> buildpack sets this variable to the path of a
-cache layer in the app image.</p>
-<ul>
-<li>Set by: <code>dep-ensure</code></li>
-<li>Phases: <code>build</code></li>
-<li>Value: Dep Cache layer path</li>
-</ul>
-<h2 id="using-ca-certificates" class="markup-heading"><a class="markup-heading__link" href="#using-ca-certificates">Using CA Certificates</a></h2><p>Go Buildpack users can provide their own CA certificates and have them
+<h2 id="install-a-custom-ca-certificate" class="markup-heading"><a class="markup-heading__link" href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></h2><p>Go Buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
 following the instructions outlined in the <a href="https://paketo.io/docs/buildpacks/configuration/#ca-certificates">CA
 Certificates</a>
 section of our configuration docs.</p>
-<h2 id="setting-custom-start-processes" class="markup-heading"><a class="markup-heading__link" href="#setting-custom-start-processes">Setting Custom Start Processes</a></h2><p>Go Buildpack users can set custom start processes for their app image by
+<h2 id="override-the-start-process-set-by-the-buildpack" class="markup-heading"><a class="markup-heading__link" href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></h2><p>Go Buildpack users can set custom start processes for their app image by
 following the instructions in the
 <a href="https://paketo.io/docs/buildpacks/configuration/#procfiles">Procfiles</a> section
 of our configuration docs.</p>
-<h2 id="setting-environment-variables-in-the-app-image" class="markup-heading"><a class="markup-heading__link" href="#setting-environment-variables-in-the-app-image">Setting Environment Variables in the App Image</a></h2><p>Go Buildpack users can embed launch-time environment variables in their
+<h2 id="set-environment-variables-for-app-launch-time" class="markup-heading"><a class="markup-heading__link" href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></h2><p>Go Buildpack users can embed launch-time environment variables in their
 app image by following the documentation for the <a href="https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md">Environment Variables
 Buildpack</a>.</p>
-<h2 id="adding-custom-labels-to-the-app-image" class="markup-heading"><a class="markup-heading__link" href="#adding-custom-labels-to-the-app-image">Adding Custom Labels to the App Image</a></h2><p>Go Buildpack users can add labels to their app image by following the
+<h2 id="add-custom-labels-to-the-app-image" class="markup-heading"><a class="markup-heading__link" href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></h2><p>Go Buildpack users can add labels to their app image by following the
 instructions in the <a href="https://paketo.io/docs/buildpacks/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
@@ -543,7 +461,7 @@ section of our configuration docs.</p>
 </a>
 
         </div>
-        <p class="docs-mod-time"><strong>Last modified:</strong> July 6, 2021</p>
+        <p class="docs-mod-time"><strong>Last modified:</strong> July 7, 2021</p>
     </div>
 </div>
 

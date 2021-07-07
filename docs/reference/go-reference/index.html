@@ -11,17 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Buildpacks - Paketo Buildpacks</title>
+<title>Go Buildpack Reference - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="Buildpacks">
-<meta name="og:url" content="https://paketo.io/docs/concepts/buildpacks/">
+<meta name="og:title" content="Go Buildpack Reference">
+<meta name="og:url" content="https://paketo.io/docs/reference/go-reference/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
-<meta name="twitter:url" content="https://paketo.io/docs/concepts/buildpacks/" />
+<meta name="twitter:url" content="https://paketo.io/docs/reference/go-reference/" />
 <meta name="twitter:card" content="" />
 <link rel="stylesheet" href="/css/main-v1.min.26ed5f0e39ba552e1b5273d9f81cabc312097f156e6f745545e075d5a349feaf.css">
 </head>
@@ -209,7 +209,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/concepts/buildpacks/" class="docs-menu__link docs-menu__link--active">
+            <a href="/docs/concepts/buildpacks/" class="docs-menu__link ">
                 
                 <span>Buildpacks</span>
             </a>
@@ -262,7 +262,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/reference/go-reference/" class="docs-menu__link ">
+            <a href="/docs/reference/go-reference/" class="docs-menu__link docs-menu__link--active">
                 
                 <span>Go Buildpack</span>
             </a>
@@ -281,19 +281,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="docs-body">
         <div class="docs-body__container">
-            <h1 class="">Buildpacks</h1>
+            <h1 class="">Go Buildpack Reference</h1>
             <div class="docs-body__table-of-contents">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#what-are-buildpacks">What are Buildpacks?</a>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#package-management-options">Package Management Options</a>
       <ul>
-        <li><a href="#detect-phase">Detect Phase</a></li>
-        <li><a href="#build-phase">Build Phase</a></li>
+        <li><a href="#package-management-with-go-modules">Package Management with Go Modules</a></li>
+        <li><a href="#package-management-with-dep">Package Management with Dep</a></li>
+        <li><a href="#no-package-management">No Package Management</a></li>
       </ul>
     </li>
-    <li><a href="#how-do-paketo-buildpacks-work-together">How do Paketo Buildpacks work together?</a></li>
-    <li><a href="#how-do-paketo-buildpacks-relate-to-the-cloud-native-buildpacks-project">How do Paketo Buildpacks relate to the Cloud Native Buildpacks project?</a></li>
-    <li><a href="#how-are-paketo-buildpacks-different-from-cloud-foundry-buildpacks">How are Paketo Buildpacks different from Cloud Foundry Buildpacks?</a></li>
+    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+      <ul>
+        <li><a href="#gopath"><code>GOPATH</code></a></li>
+        <li><a href="#gocache"><code>GOCACHE</code></a></li>
+        <li><a href="#depcachedir"><code>DEPCACHEDIR</code></a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div>
@@ -305,7 +311,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/concepts/buildpacks.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/go-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -315,83 +321,84 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </a>
 
             <div class="docs-body__markdown">
-                <p>In the Getting Started tutorial, you ran a <code>pack build</code> command to build a sample app. This resulted in some output similar to this block:</p>
-<pre><code>...
-===&gt; DETECTING
-paketo-buildpacks/node-engine 0.1.1
-paketo-buildpacks/npm-install 0.2.0
-paketo-buildpacks/npm-start   0.0.2
-...
-===&gt; BUILDING
-Paketo Node Engine Buildpack 0.1.1
-...
-Paketo NPM Install Buildpack 0.2.0
-...
-Paketo NPM Start Buildpack 0.0.2
-...
-</code></pre><p>In this section, we will make sense of this output and explain how the
-buildpacks detect what dependencies are needed by your app to build it into a runnable app image.</p>
-<h2 id="what-are-buildpacks" class="markup-heading"><a class="markup-heading__link" href="#what-are-buildpacks">What are Buildpacks?</a></h2><p>Buildpacks examine your app source code, identify and gather dependencies, and output OCI compliant app and dependency layers.</p>
-<p><strong>Paketo buildpacks provide language runtime support for your favorite
-languages.</strong></p>
-<p>Each buildpack is a modular unit, responsible for providing a single
-dependency. Multiple implementation buildpacks come together to provide all of
-your app&rsquo;s dependencies.</p>
-<p>A buildpack operates on your source code in two phases: <strong>detect</strong> and
-<strong>build</strong>.</p>
-<h3 id="detect-phase" class="markup-heading"><a class="markup-heading__link" href="#detect-phase">Detect Phase</a></h3><p>In the <code>detect</code> phase, the buildpack looks for indicators in
-your source code to determine whether or not it needs to be included to build your app.</p>
-<p>In the Getting Started tutorial, you can see in the output that
-<code>paketo-buildpacks/npm-install</code> is used. This is because the NPM Install Buildpack&rsquo;s detection
-criteria looks for a <code>package.json</code> file in the app source code. Since it&rsquo;s
-present in the sample app we used, detection passes on the NPM Install Buildpack.</p>
-<p>Different buildpacks have different detection criteria according to the
-dependencies they are responsible for. Once detection has passed for a
-buildpack, the buildpack returns a contract of what it requires, and what it
-will provide to the subsequent <code>build</code> phase.</p>
-<h3 id="build-phase" class="markup-heading"><a class="markup-heading__link" href="#build-phase">Build Phase</a></h3><p>In the <code>build</code> phase, the buildpack contributes to the final
-app image, fulfilling the contract given by the <code>detect</code> phase. These
-contributions could be adding an image layer containing a dependency binary
-(like the Node.js engine) or could be as simple as a running a command (like
-<code>npm install</code>).</p>
-<p>In the Getting Started tutorial, the <code>pack build</code> output contains a section in the
-build phase for the NPM Install Buildpack under a &ldquo;BUILDING&rdquo; header. You can
-see that the buildpack runs <code>npm install</code> to install the app&rsquo;s dependencies.
-Subsequently, the NPM Start Buildpack sets the start command to <code>node server.js</code>.</p>
-<p>The image below illustrates how buildpacks contribute layers to the final
-runnable app image:</p>
-<p><img src="/images/docs-buildpacks-app-image.png" alt="Final app image"></p>
-<p>For more information about buildpacks, visit
-<a href="https://buildpacks.io/docs/concepts/components/buildpack/">buildpacks.io</a></p>
-<h2 id="how-do-paketo-buildpacks-work-together" class="markup-heading"><a class="markup-heading__link" href="#how-do-paketo-buildpacks-work-together">How do Paketo Buildpacks work together?</a></h2><p>The Paketo project provides language family buildpacks, which combine multiple buildpacks into ordered groupings. The groupings satisfy each buildpack&rsquo;s requirements (mentioned in the  <code>detect</code> section). The language family buildpacks provide language runtime support for the most popular languages and app configurations.</p>
-<p>Keep reading to learn more about the specifics for each language family Paketo
-Buildpack.</p>
-<h2 id="how-do-paketo-buildpacks-relate-to-the-cloud-native-buildpacks-project" class="markup-heading"><a class="markup-heading__link" href="#how-do-paketo-buildpacks-relate-to-the-cloud-native-buildpacks-project">How do Paketo Buildpacks relate to the Cloud Native Buildpacks project?</a></h2><p>Paketo Buildpacks implement the Buildpack API described in the <a href="https://github.com/buildpacks/spec">Cloud Native Buildpacks
-Specification</a>. The <code>build</code> and <code>detect</code>
-phases of Paketo Buildpacks are designed to be run by the <a href="https://buildpacks.io/docs/concepts/components/lifecycle/">CNB
-lifecycle</a>.</p>
-<h2 id="how-are-paketo-buildpacks-different-from-cloud-foundry-buildpacks" class="markup-heading"><a class="markup-heading__link" href="#how-are-paketo-buildpacks-different-from-cloud-foundry-buildpacks">How are Paketo Buildpacks different from Cloud Foundry Buildpacks?</a></h2><table>
-<thead>
-<tr>
-<th>Paketo Buildpacks</th>
-<th>CF Buildpacks</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Produce OCI images that can be <strong>deployed anywhere</strong></td>
-<td>Produce droplets that must be deployed with CF</td>
-</tr>
-<tr>
-<td>Each language buildpack is made up of <strong>small, composable components</strong></td>
-<td>Each language buildpack is one monolithic codebase</td>
-</tr>
-<tr>
-<td><strong>Easy to add features</strong> by writing your own buildpack</td>
-<td>Must fork a buildpack to extend features</td>
-</tr>
-</tbody>
-</table>
+                <p>The <a href="https://github.com/paketo-buildpacks/go">Go Paketo Buildpack</a> supports several popular
+configurations for Go apps.</p>
+<h2 id="supported-dependencies" class="markup-heading"><a class="markup-heading__link" href="#supported-dependencies">Supported Dependencies</a></h2><p>The Go Paketo Buildpack supports several versions of Go.
+For more details on the specific versions supported in a given buildpack
+version, see the <a href="https://github.com/paketo-buildpacks/go/releases">release
+notes</a>.</p>
+<h2 id="package-management-options" class="markup-heading"><a class="markup-heading__link" href="#package-management-options">Package Management Options</a></h2><p>With the Go CNB, there are three options for package management depending on
+your application:</p>
+<ul>
+<li>The built-in <a href="https://github.com/golang/go/wiki/Modules">Go modules</a> feature,</li>
+<li>The <a href="https://github.com/golang/dep">Dep</a> tool</li>
+<li>No package manager</li>
+</ul>
+<p>Support for each of these package managers is mutually-exclusive. You can find
+specific information for each option below.</p>
+<h3 id="package-management-with-go-modules" class="markup-heading"><a class="markup-heading__link" href="#package-management-with-go-modules">Package Management with Go Modules</a></h3><p>Many Go apps require third-party libraries to perform common tasks and
+behaviors. Go modules are a built-in option for managing these third-party
+dependencies that the Go CNB fully supports. Including a <code>go.mod</code> file in your
+app source code instructs the buildpack to vendor your dependencies using Go
+modules. During the build phase, the <code>go-mod-vendor</code>
+<a href="https://github.com/paketo-buildpacks/go-mod-vendor">buildpack</a> checks to see
+if the application requires any external modules and if it does, runs the <code>go mod vendor</code> command for your app. The resulting <code>vendor</code> directory will exist
+in the app&rsquo;s root directory and will contain all the packages needed to build
+your Go app.</p>
+<h3 id="package-management-with-dep" class="markup-heading"><a class="markup-heading__link" href="#package-management-with-dep">Package Management with Dep</a></h3><p>Dep is an alternative option to Go Modules for package management in Go apps.
+Including a <code>Gopkg.toml</code> file (more information about this
+<a href="https://golang.github.io/dep/docs/Gopkg.toml.html">here</a>) in your app source
+code instructs the buildpack to download the <code>dep</code> package, and then vendor
+your dependencies using it. There may be an optional <code>Gopkg.lock</code> file that
+outlines specific versions of the dependencies to be packaged. During its build
+phase, the <code>dep-ensure</code>
+<a href="https://github.com/paketo-buildpacks/dep-ensure">buildpack</a> runs the <code>dep ensure</code> command for your app. The resulting <code>vendor</code> directory will exist in
+the app&rsquo;s root directory and will contain all the packages needed to build your
+Go app.</p>
+<h3 id="no-package-management" class="markup-heading"><a class="markup-heading__link" href="#no-package-management">No Package Management</a></h3><p>The Go CNB also supports both self-vendored apps and simpler apps that do not
+require third-party packages. In this case there is no vendoring step, and the
+<code>go build</code> command is run on the app source code as it is provided.</p>
+<h2 id="buildpack-set-environment-variables" class="markup-heading"><a class="markup-heading__link" href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a></h2><p>The Go CNB sets a few environment variables during the <code>build</code> and <code>launch</code>
+phases of the app lifecycle. The sections below describe each environment
+variable and its impact on your app.</p>
+<h3 id="gopath" class="markup-heading"><a class="markup-heading__link" href="#gopath"><code>GOPATH</code></a></h3><p>The <code>GOPATH</code> environment variable tells Go where to look for artifacts such as
+source code and binaries. The Go CNB takes care of setting the <code>GOPATH</code> for
+you, depending on your app and which package management option your app uses.</p>
+<ul>
+<li>Set by: <code>go-mod-vendor</code>, <code>dep-ensure</code> and <code>go-build</code></li>
+<li>Phases: <code>build</code></li>
+<li>Value: path to Go workspace</li>
+</ul>
+<h4 id="go-modules" class="markup-heading"><a class="markup-heading__link" href="#go-modules">Go Modules</a></h4><p>When using Go modules, the Go CNB sets the <code>GOPATH</code> to a cached module layer in
+the image so that between builds of the app, the dependencies don&rsquo;t have to be
+redownloaded. Essentially, the <code>GOPATH</code> is being used to tell the <code>go mod vendor</code> command where to look for dependencies. It&rsquo;s worth noting that in this
+case, the <code>GOPATH</code> isn&rsquo;t persisted beyond vendoring the dependencies and gets
+overwritten by a subsequent buildpack.</p>
+<h4 id="dep" class="markup-heading"><a class="markup-heading__link" href="#dep">Dep</a></h4><p>When using the Dep tool, the Go CNB sets the <code>GOPATH</code> to a temporary directory.
+The app source code gets copied into the <code>GOPATH</code> location so that the <code>dep ensure</code> command knows where to look for the source code, as well as where to
+put the <code>vendor</code> directory. The <code>vendor</code> directory that is created is then
+copied to the original source code directory. The <code>GOPATH</code> in this case is used
+to run <code>dep ensure</code>, but does not persist beyond that step.</p>
+<h4 id="build" class="markup-heading"><a class="markup-heading__link" href="#build">Build</a></h4><p>The <code>go-build</code> buildpack participates in the Go CNB in every case, regardless
+of which package management option is used. The <code>GOPATH</code> is set to a temporary
+directory which includes the app source code and local sub-packages. The
+<code>GOPATH</code> is utilized in running <code>go build</code> to compile your app.</p>
+<h3 id="gocache" class="markup-heading"><a class="markup-heading__link" href="#gocache"><code>GOCACHE</code></a></h3><p>The <code>GOCACHE</code> variable specifies where build outputs are stored for reuse in
+subsequent builds. It gets set to a cached layer in  the image by the
+<code>go-build</code> buildpack, so that it is persisted between builds.</p>
+<ul>
+<li>Set by: <code>go-build</code></li>
+<li>Phases: <code>build</code></li>
+<li>Value: Go Cache layer path</li>
+</ul>
+<h3 id="depcachedir" class="markup-heading"><a class="markup-heading__link" href="#depcachedir"><code>DEPCACHEDIR</code></a></h3><p><code>DEPCACHEDIR</code> specifies where upstream dependency source code is stored for use
+by the Dep tool. The <code>dep-ensure</code> buildpack sets this variable to the path of a
+cache layer in the app image.</p>
+<ul>
+<li>Set by: <code>dep-ensure</code></li>
+<li>Phases: <code>build</code></li>
+<li>Value: Dep Cache layer path</li>
+</ul>
 
             </div>
             
@@ -400,7 +407,7 @@ lifecycle</a>.</p>
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/concepts/buildpacks.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/go-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">

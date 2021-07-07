@@ -17,6 +17,18 @@ Examples assume that the Paketo Base builder is the default builder: pack config
     </item>
     
     <item>
+      <title>Go Buildpack Reference</title>
+      <link>https://paketo.io/docs/reference/go-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/reference/go-reference/</guid>
+      <description>The Go Paketo Buildpack supports several popular configurations for Go apps.
+Supported DependenciesThe Go Paketo Buildpack supports several versions of Go. For more details on the specific versions supported in a given buildpack version, see the release notes.
+Package Management OptionsWith the Go CNB, there are three options for package management depending on your application:
+ The built-in Go modules feature, The Dep tool No package manager  Support for each of these package managers is mutually-exclusive.</description>
+    </item>
+    
+    <item>
       <title>.Net Core Buildpack</title>
       <link>https://paketo.io/docs/howto/dotnet-core/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -30,15 +42,15 @@ Supported DependenciesThe .</description>
     </item>
     
     <item>
-      <title>Go Buildpack</title>
+      <title>How to Build Go Apps with Paketo Buildpacks</title>
       <link>https://paketo.io/docs/howto/go/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/howto/go/</guid>
-      <description>The Go Paketo Buildpack supports several popular configurations for Go apps.
-To build a sample app locally with this buildpack using the pack CLI, run
+      <description>Build a Sample Go ApplicationTo build a sample app locally with this buildpack using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples cd samples/go/mod pack build my-app --buildpack gcr.io/paketo-buildpacks/go \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.
-NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder and Paketo Tiny builder.</description>
+NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder and Paketo Tiny builder.
+Install a Specific Go VersionThe Go CNB (Cloud Native Buildpack) allows you to specify a version of Go to use during deployment.</description>
     </item>
     
     <item>

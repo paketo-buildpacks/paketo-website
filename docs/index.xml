@@ -17,6 +17,18 @@ Examples assume that the Paketo Base builder is the default builder: pack config
     </item>
     
     <item>
+      <title>Go Buildpack Reference</title>
+      <link>https://paketo.io/docs/reference/go-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/reference/go-reference/</guid>
+      <description>The Go Paketo Buildpack supports several popular configurations for Go apps.
+Supported DependenciesThe Go Paketo Buildpack supports several versions of Go. For more details on the specific versions supported in a given buildpack version, see the release notes.
+Package Management OptionsWith the Go CNB, there are three options for package management depending on your application:
+ The built-in Go modules feature, The Dep tool No package manager  Support for each of these package managers is mutually-exclusive.</description>
+    </item>
+    
+    <item>
       <title>Buildpacks</title>
       <link>https://paketo.io/docs/concepts/buildpacks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
