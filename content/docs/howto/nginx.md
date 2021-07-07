@@ -1,5 +1,5 @@
 ---
-title: "NGINX Buildpack"
+title: "How to Build NGINX Apps with Paketo Buildpacks"
 weight: 320
 menu:
   main:
@@ -9,10 +9,7 @@ aliases:
   - /docs/buildpacks/language-family-buildpacks/nginx/
 ---
 
-The [NGINX Paketo Buildpack](https://github.com/paketo-buildpacks/nginx) supports the installation of the NGINX binary distribution onto
-the `$PATH` inside a container. This makes it available to subsequent
-buildpacks.
-
+## Build a Sample App
 To build a sample app locally with this CNB using the `pack` CLI, run
 
 {{< code/copyable >}}
@@ -28,14 +25,7 @@ for how to run the app.
 **NOTE: Though the example above uses the Paketo Base builder, this buildpack is
 also compatible with the Paketo Full builder.**
 
-## Supported Dependencies
-
-The NGINX Paketo Buildpack supports several versions of NGINX.
-For more details on the specific versions supported in a given buildpack
-version, see the [release
-notes](https://github.com/paketo-buildpacks/nginx/releases).
-
-## Specifying an NGINX Version
+## Install a Specific NGINX Version
 
 The NGINX CNB (Cloud Native Buildpack) allows you to specify a version of NGINX to use during
 deployment. This version can be specified in a number of ways, including
@@ -66,17 +56,13 @@ Specifying the NGINX version through `buildpack.yml` configuration will be
 deprecated in NGINX Server Buildpack v1.0.0.  To migrate from using
 `buildpack.yml` please set the `$BP_NGINX_VERSION` environment variable.
 
-## Configurations
-The NGINX buildpack supports two app configurations:
+## Start an NGINX Server at App Launch Time
 
-1. When an `nginx.conf` file **is present** in your app's source code, the
-   buildpack will set up an NGINX server with that config.
+Include an `nginx.conf` file in your application's source code. The NGINX Paketo
+buildpack will install the NGINX binary _and_ configure it to start when the app
+image launches.
 
-1. When the `nginx.conf` **is not present** in the app's source code, the
-   buildpack simply provides the NGINX dependency to subsequent buildpacks
-   without actually setting up a server.
-
-## Data driven templates
+## Configure the NGINX Server with Launch-time Values
 
 The NGINX buildpack supports data driven templates for nginx config. You can
 use templated variables like `{{port}}`, `{{env "FOO"}}` and `{{module
@@ -122,12 +108,12 @@ Then run the built image using the `GZIP_DOWNLOADS` variable set as follows:
 docker run --tty --env PORT=8080 --env GZIP_DOWNLOADS=off --publish 8080:8080 my-nginx-image
 {{< /code/copyable >}}
 
-### Loading dynamic modules
+## Use Dynamic Modules at App Launch Time
 
 You can use templates to set the path to a dynamic module using the
 `load_module` directive.
 
-* To load a user-provided module named `ngx_foo_module`, provide a
+  To load a user-provided module named `ngx_foo_module`, provide a
   `modules/ngx_foo_module.so` file in your app directory and add the following
   to the top of your `nginx.conf` file:
 
@@ -135,7 +121,7 @@ You can use templates to set the path to a dynamic module using the
 {{module "ngx_foo_module"}}
 {{< /code/copyable >}}
 
-* To load a buildpack-provided module like `ngx_stream_module`, add the
+  To load a buildpack-provided module like `ngx_stream_module`, add the
   following to the top of your `nginx.conf` file. You do not need to provide an
   `ngx_stream_module.so` file:
 
