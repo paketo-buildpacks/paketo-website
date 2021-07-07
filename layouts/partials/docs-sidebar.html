@@ -15,10 +15,17 @@
     {{- $entry := .entry }}
     {{ if $entry.HasChildren }}
         <li class="docs-menu__parent">
+            {{ if isset $entry.Params "class" }}
+            <div class="{{ $entry.Params.class }}">
+                {{ $entry.Pre }}
+                <span>{{ $entry.Name }}</span>
+            </div>
+            {{ else }}
             <a href="{{ $entry.URL }}"  class="docs-menu__link {{ if $currentPage.IsMenuCurrent "main" $entry }}docs-menu__link--active{{ end }}">
                 {{ $entry.Pre }}
                 <span>{{ $entry.Name }}</span>
             </a>
+            {{ end }}
             <ul class="docs-menu__children-list">
                 {{ range $entry.Children }}
                     {{ template "docs-menu-entry"  dict "currentPage" $currentPage "entry" . }}
