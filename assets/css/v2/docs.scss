@@ -126,6 +126,9 @@ body {
 
     @media (min-width: $header-hamburger-breakpoint) {
         width: calc(100% - 380px);
+        display: flex;
+        flex-direction: row;
+        padding-right: 30px;
     }
 
     @media (min-width: $mobile-breakpoint) {
@@ -209,6 +212,32 @@ body {
 .docs-body__table-of-contents ul li ul { // indent h3 subheaders
        padding: 0 1em;
    }
+
+.docs-body__table-of-contents-container {
+    display: none;
+
+    padding-top: 40px;
+    padding-left: 48px;
+    max-width: 600px;
+}
+
+.docs-body__table-of-contents--desktop {
+    display: none;
+}
+
+@media(min-width: $table-of-contents-breakpoint) {
+    .docs-body__table-of-contents--mobile {
+        display: none;
+    }
+
+    .docs-body__table-of-contents--desktop {
+        display: block;
+    }
+
+    .docs-body__table-of-contents-container {
+        display: block;
+    }
+}
 
 /* github redirect */
 
