@@ -113,6 +113,23 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
 [params.docs_menu]
   title = "PAKETO DOCS"
 
+[menu]
+  [[ menu.main ]]
+    identifier = "reference"
+    name = "Reference"
+    weight = 500
+
+  [[menu.main]]
+    identifier = "howto"
+    name = "How To"
+    weight = 200
+
+  [[menu.main]]
+    identifier = "concepts"
+    name = "Concepts"
+    weight = 300
+
+
 [markup]
   [markup.tableOfContents]
     endLevel = 3

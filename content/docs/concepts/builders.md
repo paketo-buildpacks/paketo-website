@@ -3,7 +3,7 @@ title: "Builders"
 weight: 420
 menu:
   main:
-    parent: "Concepts"
+    parent: "concepts"
 aliases:
   - /docs/builders/
 ---

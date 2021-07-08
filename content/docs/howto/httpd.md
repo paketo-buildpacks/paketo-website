@@ -4,6 +4,7 @@ weight: 308
 menu:
   main:
     parent: "howto"
+    name: "HTTPD"
 aliases:
   - /docs/buildpacks/language-family-buildpacks/httpd/
 ---

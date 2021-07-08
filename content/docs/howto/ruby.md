@@ -4,6 +4,7 @@ weight: 332
 menu:
   main:
     parent: "howto"
+    name: "Ruby"
 aliases:
   - /docs/buildpacks/language-family-buildpacks/ruby/
 ---
