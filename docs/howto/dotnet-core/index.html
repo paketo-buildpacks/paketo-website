@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/howto/dotnet-core/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.26ed5f0e39ba552e1b5273d9f81cabc312097f156e6f745545e075d5a349feaf.css">
+<link rel="stylesheet" href="/css/main-v1.min.11683961628fd5a8a634075ad9c453e01a683e10e52c7419150fca0ed6cbd1fe.css">
 </head>
 
 <body>
@@ -281,8 +281,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="docs-body">
         <div class="docs-body__container">
+            
+
+
+
+
+
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/%25!s%28%3cnil%3e%29" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
+    </div>
+</a>
+
             <h1 class="">.Net Core Buildpack</h1>
-            <div class="docs-body__table-of-contents">
+            <div class="docs-body__table-of-contents docs-body__table-of-contents--mobile">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
@@ -336,23 +351,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
             
             
-            
-
-
-
-
-
-  
-
-  <a href="http://github.com/paketo-buildpacks/dotnet-core/edit/main/docs/content/dotnet-core.md" target="_blank" class="github-edit" style="text-decoration:none">
-    <div class="github-edit__content">
-      <div class="github-edit__logo-container">
-        <img class="github-edit__logo" src="/images/github-mark.png">
-      </div>
-        <div class="github-edit__text">Edit</div>
-    </div>
-</a>
-
             <div class="docs-body__markdown">
                 <p>The <a href="https://github.com/paketo-buildpacks/dotnet-core">.Net Core Paketo Buildpack</a>
 supports building several configurations of .Net Core applications.</p>
@@ -596,8 +594,62 @@ section of our configuration docs.</p>
     </div>
 </a>
 
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 8, 2021</p>
         </div>
-        <p class="docs-mod-time"><strong>Last modified:</strong> July 7, 2021</p>
+        <div class="docs-body__table-of-contents-container">
+            <div class="docs-body__table-of-contents docs-body__table-of-contents--desktop">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#application-types">Application Types</a>
+      <ul>
+        <li><a href="#source-applications">Source Applications</a></li>
+        <li><a href="#framework-dependent-deployments-or-framework-dependent-executables">Framework-Dependent Deployments or Framework-Dependent Executables</a></li>
+        <li><a href="#self-contained-deployment">Self-Contained Deployment</a></li>
+      </ul>
+    </li>
+    <li><a href="#specifying-runtime-and-aspnet-versions">Specifying Runtime and ASP.Net Versions</a>
+      <ul>
+        <li><a href="#using-bp_dotnet_framework_version">Using <code>BP_DOTNET_FRAMEWORK_VERSION</code></a></li>
+        <li><a href="#using-runtimeconfigjson">Using runtimeconfig.json</a></li>
+        <li><a href="#using-a-project-file">Using a Project file</a></li>
+        <li><a href="#net-core-framework-version-selection">.Net Core Framework Version Selection</a></li>
+        <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#specifying-an-sdk-version">Specifying an SDK Version</a>
+      <ul>
+        <li><a href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#specifying-a-custom-project-path">Specifying a Custom Project Path</a>
+      <ul>
+        <li><a href="#using-bp_dotnet_project_path">Using <code>BP_DOTNET_PROJECT_PATH</code></a></li>
+        <li><a href="#deprecated-using-buildpackyml-2">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+      <ul>
+        <li><a href="#dotnet_root">DOTNET_ROOT</a></li>
+        <li><a href="#runtime_version">RUNTIME_VERSION</a></li>
+        <li><a href="#sdk_location">SDK_LOCATION</a></li>
+        <li><a href="#path">PATH</a></li>
+      </ul>
+    </li>
+    <li><a href="#launch-process">Launch Process</a>
+      <ul>
+        <li><a href="#framework-dependent-deployments-and-source-applications">Framework-Dependent Deployments and Source Applications</a></li>
+        <li><a href="#self-contained-deployment-and-framework-dependent-executables">Self-Contained Deployment and Framework-Dependent Executables</a></li>
+      </ul>
+    </li>
+    <li><a href="#using-ca-certificates">Using CA Certificates</a></li>
+    <li><a href="#setting-custom-start-processes">Setting Custom Start Processes</a></li>
+    <li><a href="#setting-environment-variables-in-the-app-image">Setting Environment Variables in the App Image</a></li>
+    <li><a href="#adding-custom-labels-to-the-app-image">Adding Custom Labels to the App Image</a></li>
+  </ul>
+</nav>
+</div>
+        </div>
     </div>
 </div>
 

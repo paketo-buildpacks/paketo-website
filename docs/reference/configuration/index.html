@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/reference/configuration/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.26ed5f0e39ba552e1b5273d9f81cabc312097f156e6f745545e075d5a349feaf.css">
+<link rel="stylesheet" href="/css/main-v1.min.11683961628fd5a8a634075ad9c453e01a683e10e52c7419150fca0ed6cbd1fe.css">
 </head>
 
 <body>
@@ -281,8 +281,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="docs-body">
         <div class="docs-body__container">
+            
+
+
+
+
+
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/%25!s%28%3cnil%3e%29" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
+    </div>
+</a>
+
             <h1 class="">Configuring Paketo Buildpacks</h1>
-            <div class="docs-body__table-of-contents">
+            <div class="docs-body__table-of-contents docs-body__table-of-contents--mobile">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#about-the-examples">About the Examples</a></li>
@@ -308,21 +323,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
             
             
-            
-
-
-
-
-
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/configuration.md" target="_blank" class="github-edit" style="text-decoration:none">
-    <div class="github-edit__content">
-      <div class="github-edit__logo-container">
-        <img class="github-edit__logo" src="/images/github-mark.png">
-      </div>
-        <div class="github-edit__text">Edit</div>
-    </div>
-</a>
-
             <div class="docs-body__markdown">
                 <h2 id="about-the-examples" class="markup-heading"><a class="markup-heading__link" href="#about-the-examples">About the Examples</a></h2><p>Configuration examples will use the Paketo <a href="https://github.com/paketo-buildpacks/samples">sample applications</a>.</p>
 <p>Examples assume that the root of this repository is the working directory:
@@ -582,8 +582,34 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </div>
 </a>
 
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 8, 2021</p>
         </div>
-        <p class="docs-mod-time"><strong>Last modified:</strong> July 7, 2021</p>
+        <div class="docs-body__table-of-contents-container">
+            <div class="docs-body__table-of-contents docs-body__table-of-contents--desktop">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#about-the-examples">About the Examples</a></li>
+    <li><a href="#types-of-configuration">Types of Configuration</a>
+      <ul>
+        <li><a href="#environment-variables">Environment Variables</a></li>
+        <li><a href="#buildpackyml">buildpack.yml</a></li>
+        <li><a href="#bindings">Bindings</a></li>
+        <li><a href="#procfiles">Procfiles</a></li>
+      </ul>
+    </li>
+    <li><a href="#building-behind-a-firewall">Building Behind a Firewall</a>
+      <ul>
+        <li><a href="#proxy-configuration">Proxy Configuration</a></li>
+        <li><a href="#dependency-mappings">Dependency Mappings</a></li>
+      </ul>
+    </li>
+    <li><a href="#ca-certificates">CA Certificates</a></li>
+    <li><a href="#applying-custom-labels">Applying Custom Labels</a></li>
+    <li><a href="#configuring-locale">Configuring Locale</a></li>
+  </ul>
+</nav>
+</div>
+        </div>
     </div>
 </div>
 

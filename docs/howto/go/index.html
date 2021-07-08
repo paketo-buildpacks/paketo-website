@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/howto/go/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.26ed5f0e39ba552e1b5273d9f81cabc312097f156e6f745545e075d5a349feaf.css">
+<link rel="stylesheet" href="/css/main-v1.min.11683961628fd5a8a634075ad9c453e01a683e10e52c7419150fca0ed6cbd1fe.css">
 </head>
 
 <body>
@@ -281,8 +281,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
     <div class="docs-body">
         <div class="docs-body__container">
+            
+
+
+
+
+
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/%25!s%28%3cnil%3e%29" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
+    </div>
+</a>
+
             <h1 class="">How to Build Go Apps with Paketo Buildpacks</h1>
-            <div class="docs-body__table-of-contents">
+            <div class="docs-body__table-of-contents docs-body__table-of-contents--mobile">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#build-a-sample-go-application">Build a Sample Go Application</a></li>
@@ -319,21 +334,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
             
             
-            
-
-
-
-
-
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/go.md" target="_blank" class="github-edit" style="text-decoration:none">
-    <div class="github-edit__content">
-      <div class="github-edit__logo-container">
-        <img class="github-edit__logo" src="/images/github-mark.png">
-      </div>
-        <div class="github-edit__text">Edit</div>
-    </div>
-</a>
-
             <div class="docs-body__markdown">
                 <h2 id="build-a-sample-go-application" class="markup-heading"><a class="markup-heading__link" href="#build-a-sample-go-application">Build a Sample Go Application</a></h2><p>To build a sample app locally with this buildpack using the <code>pack</code> CLI, run</p>
 <pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
@@ -460,8 +460,45 @@ section of our configuration docs.</p>
     </div>
 </a>
 
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 8, 2021</p>
         </div>
-        <p class="docs-mod-time"><strong>Last modified:</strong> July 7, 2021</p>
+        <div class="docs-body__table-of-contents-container">
+            <div class="docs-body__table-of-contents docs-body__table-of-contents--desktop">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#build-a-sample-go-application">Build a Sample Go Application</a></li>
+    <li><a href="#install-a-specific-go-version">Install a Specific Go Version</a>
+      <ul>
+        <li><a href="#using-bp_go_version">Using BP_GO_VERSION</a></li>
+        <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#configure-the-go-build-command">Configure the <code>go build</code> Command</a>
+      <ul>
+        <li><a href="#bp_go_build_flags">BP_GO_BUILD_FLAGS</a></li>
+        <li><a href="#bp_go_build_ldflags">BP_GO_BUILD_LDFLAGS</a></li>
+        <li><a href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#build-multiple-binaries-in-an-app-image">Build Multiple Binaries In An App Image</a>
+      <ul>
+        <li><a href="#deprecated-using-buildpackyml-2">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#configure-module-import-paths">Configure Module Import Paths</a>
+      <ul>
+        <li><a href="#deprecated-using-buildpackyml-3">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#keep-specific-files-in-the-app-image">Keep Specific Files in the App Image</a></li>
+    <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
+    <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
+    <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
+    <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
+  </ul>
+</nav>
+</div>
+        </div>
     </div>
 </div>
 
