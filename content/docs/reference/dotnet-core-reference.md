@@ -1,16 +1,17 @@
 ---
 title: ".NET Core Buildpack Reference"
-weight: 300
 menu:
   main:
-    parent: Reference
+    parent: reference
     identifier: dotnet-core-reference
     name: ".NET Core Buildpack"
 ---
 
-
-The [.Net Core Paketo Buildpack](https://github.com/paketo-buildpacks/dotnet-core)
-supports building several configurations of .Net Core applications.
+This reference documentation offers an in-depth description of the behavior
+and configuration options of the 
+[Paketo .NET Core Buildpack](https://github.com/paketo-buildpacks/dotnet-core).
+For explanations of how to use the buildpack for several common use-cases, see
+the .NET Core How To [documentation](/docs/howto/dotnet-core). 
 
 ## Supported Dependencies
 
@@ -55,7 +56,7 @@ command.
 ### Self-Contained Deployment
 
 When building an application as a [Self-Contained
-Deployment](https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli#self-contained-deployment)(SCD),
+Deployment](https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli#self-contained-deployment) (SCD),
 the buildpack will ensure the correct start command will be used to run your
 app. No .Net Core Framework dependencies will be included in the built image as
 they are already included in the SCD artifact.

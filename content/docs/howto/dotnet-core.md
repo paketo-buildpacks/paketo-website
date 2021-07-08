@@ -9,6 +9,11 @@ aliases:
   - /docs/buildpacks/language-family-buildpacks/dotnet-core/
 ---
 
+This documentation explains how to use the [Paketo .NET Core Buildpack](https://github.com/paketo-buildpacks/dotnet-core)
+to build applications for several common .NET use-cases. For more in-depth
+description of the buildpack's behavior and configuration see the .NET Core
+Buildpack Reference [documentation](/docs/reference/dotnet-core-reference).
+
 ## Build a Sample App
 To build your app locally with the buildpack using the `pack` CLI, run
 
@@ -193,13 +198,13 @@ v1.0.0. To migrate from using `buildpack.yml`, please set the
 .Net Core Buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
 following the instructions outlined in the [CA
-Certificates](https://paketo.io/docs/buildpacks/configuration/#ca-certificates)
+Certificates](/docs/reference/configuration/#ca-certificates)
 section of our configuration docs.
 
 ## Override the Start Process Set by the Buildpack
 .Net Core Buildpack users can set custom start processes for their app image by
 following the instructions in the
-[Procfiles](https://paketo.io/docs/buildpacks/configuration/#procfiles) section
+[Procfiles](/docs/reference/configuration/#procfiles) section
 of our configuration docs.
 
 ## Set Environment Variables for App Launch Time
@@ -210,5 +215,5 @@ Buildpack](https://github.com/paketo-buildpacks/environment-variables/blob/main/
 ## Add Custom Labels to the App Image
 .Net Core Buildpack users can add labels to their app image by following the
 instructions in the [Applying Custom
-Labels](https://paketo.io/docs/buildpacks/configuration/#applying-custom-labels)
+Labels](/docs/reference/configuration/#applying-custom-labels)
 section of our configuration docs.
