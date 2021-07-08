@@ -4,16 +4,19 @@
     </div>
     <div class="docs-body">
         <div class="docs-body__container">
+            {{ partial "github-edit.html" . }}
             <h1 class="">{{ .Title }}</h1>
-            {{ partial "v2/docs-table-of-contents.html" . }}
+            {{ partial "v2/docs-table-of-contents.html" (dict "context" . "viewer" "mobile") }}
             {{ .Scratch.Set "path" .File.Path }}
             {{ .Scratch.Set "filename" .File.TranslationBaseName }}
-            {{ partial "github-edit.html" . }}
             <div class="docs-body__markdown">
                 {{ .Content }}
             </div>
             {{ partial "github-edit.html" . }}
+            <p class="docs-mod-time"><strong>Last modified:</strong> {{ .Lastmod.Format "January 2, 2006" }}</p>
         </div>
-        <p class="docs-mod-time"><strong>Last modified:</strong> {{ .Lastmod.Format "January 2, 2006" }}</p>
+        <div class="docs-body__table-of-contents-container">
+            {{ partial "v2/docs-table-of-contents.html" (dict "context" . "viewer" "desktop") }}
+        </div>
     </div>
 </div>
