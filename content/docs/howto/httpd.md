@@ -1,5 +1,5 @@
 ---
-title: "HTTPD Buildpack"
+title: "How to Build HTTPD Apps with Paketo Buildpacks"
 weight: 308
 menu:
   main:
@@ -9,11 +9,7 @@ aliases:
   - /docs/buildpacks/language-family-buildpacks/httpd/
 ---
 
-The [HTTPD Paketo Buildpack](https://github.com/paketo-buildpacks/httpd)
-supports the installation of the Apache HTTP Server binary distribution
-onto the `$PATH` inside a container. This makes it available to subsequent
-buildpacks.
-
+## Build a sample app
 To build a sample app locally with this CNB using the `pack` CLI, run
 
 {{< code/copyable >}}
@@ -29,14 +25,7 @@ for how to run the app.
 **NOTE: The Paketo Full builder is required because HTTPD relies on operating
 system libraries only present in the Full builder.**
 
-## Supported Dependencies
-
-The HTTPD Paketo Buildpack supports several versions of Apache HTTP Server.
-For more details on the specific versions supported in a given buildpack
-version, see the [release
-notes](https://github.com/paketo-buildpacks/httpd/releases).
-
-## Specifying an HTTPD Version
+## Install a Specific HTTPD Version
 
 The HTTPD CNB (Cloud Native Buildpack) allows you to specify a version of the
 Apache HTTP Server to use during deployment. This version can be specified
@@ -66,13 +55,8 @@ Specifying the HTTP Server version through `buildpack.yml` configuration will
 be deprecated in Apache HTTP Server Buildpack v1.0.0. To migrate from using
 `buildpack.yml` please set the `$BP_HTTPD_VERSION` environment variable.
 
+## Start an HTTPD Server at App Launch Time
 
-## Configurations
-The HTTPD buildpack supports two app configurations:
-
-1. When an `httpd.conf` file **is present** in your app's source code, the
-   buildpack will set up an Apache HTTP server with that config.
-
-1. When the `httpd.conf` **is not present** in the app's source code, the
-   buildpack simply provides the Apache HTTP Server dependency to subsequent
-   buildpacks without actually setting up a server.
+Include an `httpd.conf` file in your application's source code. The HTTPD Paketo buildpack
+will install the Apache HTTP Server binary _and_ configure it to start when the app image
+launches.
