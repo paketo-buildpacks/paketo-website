@@ -1,5 +1,5 @@
 ---
-title: "Ruby Buildpack"
+title: "How to Build Ruby Apps with Paketo Buildpacks"
 weight: 332
 menu:
   main:
@@ -9,9 +9,13 @@ aliases:
   - /docs/buildpacks/language-family-buildpacks/ruby/
 ---
 
-The [Paketo Ruby Buildpack](https://github.com/paketo-buildpacks/ruby) supports
-several popular configurations for Ruby apps.
+This documentation explains how to use the
+[Paketo Ruby Buildpack](https://github.com/paketo-buildpacks/ruby)
+to build applications for several common Ruby use-cases. For more in-depth
+description of the buildpack's behavior and configuration, see the Ruby
+Buildpack Reference [documentation](/docs/reference/ruby-reference).
 
+## Build a Sample App
 To build a sample app locally with this buildpack using the `pack` CLI, run
 
 {{< code/copyable >}}
@@ -27,15 +31,7 @@ for how to run the app.
 **NOTE: Though the example above uses the Paketo Base builder, this buildpack is
 also compatible with the Paketo Full builder.**
 
-## Supported Dependencies
-
-The Ruby Paketo Buildpack supports several versions of
-[MRI](https://www.ruby-lang.org), [Bundler](https://bundler.io/), and common
-Ruby webservers and task runners.  For more details on the specific versions
-supported in a given buildpack version, see the [release
-notes](https://github.com/paketo-buildpacks/ruby/releases/latest).
-
-## Specifying a Ruby Version
+## Install a Specific Ruby Version
 
 The Ruby Buildpack allows you to specify a version of Ruby to use during
 deployment. This version can be specified via the `BP_MRI_VERSION` environment
@@ -83,15 +79,7 @@ ruby '~> 2.7.1'
 Specifying the Ruby version through `buildpack.yml` configuration will be deprecated in MRI Buildpack v1.0.0.
 To migrate from using `buildpack.yml` please set the `$BP_MRI_VERSION` environment variable.
 
-## Package Management
-
-The Ruby Buildpack uses [Bundler](https://bundler.io/) to install and manage
-the gems needed to run your application. Including a `Gemfile` in your app
-source code instructs the [`bundle-install`
-buildpack](https://github.com/paketo-buildpacks/bundle-install) to vendor your
-dependencies using `bundle install`.
-
-## Specifying a Bundler Version
+## Install a Specific Bundler Version
 
 The Ruby Buildpack allows you to specify a version of Bundler to use during
 deployment. This version can be specified via the `BP_BUNDLER_VERSION`
@@ -140,8 +128,7 @@ BUNDLED WITH
 Specifying the Bundler version through `buildpack.yml` configuration will be deprecated in Bundler Buildpack v1.0.0.
 To migrate from using `buildpack.yml` please set the `$BP_BUNDLER_VERSION` environment variable.
 
-## Vendored Packages
-
+## Build an App in an Offline Environment
 In order to build apps in an offline environment, the app will need to have the
 `.gem` files located in the `cache_path`. Bundler will copy the required gems
 into this location, typically `vendor/cache` when running the `bundle package`
@@ -149,49 +136,48 @@ command. During the `bundle install` process, the buildpack will instruct
 Bundler to prefer gems in this cache over those on the RubyGems index by
 running `bundle install --local`.
 
-## Webservers & Task Runners
+## Build an App Image That Runs a Rake Task
+The Ruby Buildpack can build images that run a rake task
+at launch time. Simply include a valid `Rakefile` in your app source
+code. The buildpack will build an image that runs the default rake task
+at launch time.
+See this Paketo sample [app](https://github.com/paketo-buildpacks/samples/tree/main/ruby/rake)
+for a working example.
 
-The Ruby Buildpack supports a number of webservers and task runners that are
-useful for running Ruby applications. If your application uses one of these
-tools, it will be automatically detected and a start command for your
-applicatin will be assigned when building your application container.
+### Run a Non-Default Rake Task
+To configure the app image to run a rake task called `non_default` on launch, use a [Procfile](/docs/reference/configuration/#procfiles) with contents as follows to set the start command:
 
-### Webservers
+{{< code/copyable >}}
+web: bundle exec rake non_default
+{{< /code/copyable >}}
 
-* [Passenger](http://github.com/paketo-buildpacks/passenger)
-* [Puma](http://github.com/paketo-buildpacks/puma)
-* [Rackup](http://github.com/paketo-buildpacks/rackup)
-* [Thin](http://github.com/paketo-buildpacks/thin)
-* [Unicorn](http://github.com/paketo-buildpacks/unicorn)
+To start an app container with a rake task (instead of its default start command), start the app container with  `--entrypoint launcher` and add the desired rake start command at the end:
+{{< code/copyable >}}
+docker run --entrypoint launcher my-rake-app bundle exec rake non_default
+{{< /code/copyable >}}
 
-### Task Runners
+## Run a Ruby Application with a Webserver
+The Ruby Buildpack can automatically detect that a Ruby app needs to be run with
+several common web servers, and will configure the app image accordingly. The buildpack
+currently supports the following webservers:
+- Passenger
+- Puma
+- Rackup
+- Thin
+- Unicorn
 
-* [Rake](http://github.com/paketo-buildpacks/rake)
+To make the Ruby Buildpack automatically configure your app for a given webserver,
+include its gem in your app's `Gemfile`.
 
-## Rails Asset Pipeline
+For example, to use Rackup, include in your `Gemfile`:
+{{< code/copyable >}}
+gem 'rack'
+{{< /code/copyable >}}
 
-The [Rails Assets buildpack](http://github.com/paketo-buildpacks/rails-assets)
-supports Rails apps (Rails version >= 5.0) that need asset precompilation.
+## Build a Rails App
+The Ruby Buildpack supports Rails apps (Rails version >= 5.0) that need
+asset precompilation.
 
-To use this buildpack, your app must contain an `app/assets` directory, and your
-app's `Gemfile` must specify the `rails` gem. The buildpack runs `bundle exec rails
-assets:precompile` for the app, and works with any of the supported Ruby
-webservers listed above.
-
-## Buildpack-Set Environment Variables
-
-The Ruby CNB sets a few environment variables during the `build` and `launch`
-phases of the app lifecycle. The sections below describe each environment
-variable and its impact on your app.
-
-### `GEM_PATH`
-
-* Set by: `mri`, `bundler`
-* Phases: `build` and `launch`
-* Value: location of the directory gems will be installed for each respective dependency
-
-### `BUNDLE_PATH`
-
-* Set by: `bundle-install`
-* Phases: `build` and `launch`
-* Value: location where all gems in your bundle will be located
+To use this feature of the buildpack, 
+1. Include an `app/assets` directory in your app source code
+1. Add the `rails` gem to your `Gemfile`
