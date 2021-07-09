@@ -29,6 +29,17 @@ Package Management OptionsWith the Go CNB, there are three options for package m
     </item>
     
     <item>
+      <title>HTTPD Buildpack Reference</title>
+      <link>https://paketo.io/docs/reference/httpd-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/reference/httpd-reference/</guid>
+      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo HTTPD Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Web Servers How To documentation.
+The HTTPD Paketo Buildpack supports the installation of the Apache HTTP Server binary distribution onto the $PATH inside a container. This makes it available to subsequent buildpacks.
+Supported DependenciesThe HTTPD Paketo Buildpack supports several versions of Apache HTTP Server.</description>
+    </item>
+    
+    <item>
       <title>.Net Core Buildpack</title>
       <link>https://paketo.io/docs/howto/dotnet-core/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -54,15 +65,13 @@ Install a Specific Go VersionThe Go CNB (Cloud Native Buildpack) allows you to s
     </item>
     
     <item>
-      <title>HTTPD Buildpack</title>
-      <link>https://paketo.io/docs/howto/httpd/</link>
+      <title>How to Build Web Servers with Paketo Buildpacks</title>
+      <link>https://paketo.io/docs/howto/web-servers/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://paketo.io/docs/howto/httpd/</guid>
-      <description>The HTTPD Paketo Buildpack supports the installation of the Apache HTTP Server binary distribution onto the $PATH inside a container. This makes it available to subsequent buildpacks.
-To build a sample app locally with this CNB using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/samples cd samples/httpd pack build my-app --buildpack gcr.io/paketo-buildpacks/httpd \ --builder paketobuildpacks/builder:full Copied! See samples for how to run the app.
-NOTE: The Paketo Full builder is required because HTTPD relies on operating system libraries only present in the Full builder.</description>
+      <guid>https://paketo.io/docs/howto/web-servers/</guid>
+      <description>This documentation explains how to use Paketo buildpacks to build applications that run web servers like HTTPD and NGINX. These docs focus on explaining common user workflows. For more in-depth description of the buildpacks&#39; behavior and configuration, see the reference documentation for each web server buildpack.
+HTTPDThe Paketo HTTPD Buildpack enables users to build apps that run an Apache HTTPD server. The following are explanations of common HTTPD Buildpack user workflows.</description>
     </item>
     
     <item>
@@ -85,18 +94,6 @@ About the ExamplesAll Java Native Image Buildpack examples will use the Paketo s
       <description>The Paketo Java Buildpack allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
 The Java Buildpack is a composite buildpack and each step in a build is handled by one of it&amp;rsquo;s components. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages for the component buildpacks.
 About the ExamplesAll Java Buildpack examples will use the Paketo sample applications.</description>
-    </item>
-    
-    <item>
-      <title>NGINX Buildpack</title>
-      <link>https://paketo.io/docs/howto/nginx/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://paketo.io/docs/howto/nginx/</guid>
-      <description>The NGINX Paketo Buildpack supports the installation of the NGINX binary distribution onto the $PATH inside a container. This makes it available to subsequent buildpacks.
-To build a sample app locally with this CNB using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/samples cd samples/nginx pack build my-app --buildpack gcr.io/paketo-buildpacks/nginx \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.
-NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder.</description>
     </item>
     
     <item>
@@ -177,6 +174,17 @@ What is a builder?A builder is an image that contains three components:
       <description>In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. One of the core pieces to Buildpacks and Builders are Stack Images. Stacks provide the buildpack lifecycle with build-time and run-time environments in the form of images.
 What is a stack?A stack consists of two images:
  build image: the environment in which your app is built run image: the OS layer for your app image  For more information about stacks, see buildpacks.</description>
+    </item>
+    
+    <item>
+      <title>NGINX Buildpack Reference</title>
+      <link>https://paketo.io/docs/reference/nginx-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/reference/nginx-reference/</guid>
+      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo NGINX Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Web Servers How To documentation.
+The NGINX Paketo Buildpack supports the installation of the NGINX binary distribution onto the $PATH inside a container. This makes it available to subsequent buildpacks.
+Supported DependenciesThe NGINX Paketo Buildpack supports several versions of NGINX.</description>
     </item>
     
   </channel>

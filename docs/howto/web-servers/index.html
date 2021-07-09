@@ -1,0 +1,548 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PN39N8V');</script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>How to Build Web Servers with Paketo Buildpacks - Paketo Buildpacks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<meta name="og:site_name" content="Paketo Buildpacks">
+<meta name="og:title" content="How to Build Web Servers with Paketo Buildpacks">
+<meta name="og:url" content="https://paketo.io/docs/howto/web-servers/">
+<meta name="twitter:title" content="Paketo Buildpacks" />
+<meta name="twitter:url" content="https://paketo.io/docs/howto/web-servers/" />
+<meta name="twitter:card" content="" />
+<link rel="stylesheet" href="/css/main-v1.min.f01d690deca8678e76d38ddc2c92c4c90937a1f00c8606b68b37fc77e9717eb3.css">
+</head>
+
+<body>
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+
+    
+
+
+
+<header class="header ">
+    <a class="paketo-logo" href="/">
+        <img class="paketo-logo__image" src="/v2/images/logo-paketo-light.svg" alt="Paketo Buildpacks Homepage">
+    </a>
+    <div id="navigation" class="right-overlay">
+        <div class="nav-opener">
+            <span class="nav-opener__bar nav-opener__bar-top"></span>
+            <span class="nav-opener__bar nav-opener__bar-middle"></span>
+            <span class="nav-opener__bar nav-opener__bar-bottom"></span>
+        </div>
+        <div class="nav-container" id="nav-container">
+            <nav class="nav" id="nav-tray" >
+                <div class="nav__linkarea">
+                    <a class="nav-link " href="/docs">docs</a>
+                    <a class="nav-link " href="/contribute">community</a>
+                    <a class="nav-link " href="https://blog.paketo.io">blog</a>
+                    <a class="nav-link " href="https://github.com/paketo-buildpacks">github</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="desktop-nav">
+        <a class="nav-link " href="/docs">docs</a>
+        <a class="nav-link " href="/contribute">community</a>
+        <a class="nav-link " href="https://blog.paketo.io">blog</a>
+        <a class="nav-link " href="https://github.com/paketo-buildpacks">github</a>
+    </div>
+</header>
+
+
+    <div class="docs">
+    <div class="docs-sidebar">
+        
+<nav class="docs-menu">
+    <h4 class="docs-menu__title">PAKETO DOCS</h4>
+    <ul class="docs-menu__top-level-list">
+        
+        
+            
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/" class="docs-menu__link ">
+                
+                <span>Getting Started</span>
+            </a>
+        </li>
+    
+        
+            
+    
+        <li class="docs-menu__parent">
+            
+            <div class="docs-menu__section-header">
+                
+                <span>How To</span>
+            </div>
+            
+            <ul class="docs-menu__children-list">
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/dotnet-core/" class="docs-menu__link ">
+                
+                <span>.Net Core</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/go/" class="docs-menu__link ">
+                
+                <span>Go</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/web-servers/" class="docs-menu__link docs-menu__link--active">
+                
+                <span>Web Servers</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/java-native-image/" class="docs-menu__link ">
+                
+                <span>Java Native Image</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/java/" class="docs-menu__link ">
+                
+                <span>Java</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/nodejs/" class="docs-menu__link ">
+                
+                <span>Node.js</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/php/" class="docs-menu__link ">
+                
+                <span>PHP</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/ruby/" class="docs-menu__link ">
+                
+                <span>Ruby</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/create-paketo-buildpack/" class="docs-menu__link ">
+                
+                <span>Create a Paketo Buildpack</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+            
+    
+        <li class="docs-menu__parent">
+            
+            <div class="docs-menu__section-header">
+                
+                <span>Concepts</span>
+            </div>
+            
+            <ul class="docs-menu__children-list">
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/buildpacks/" class="docs-menu__link ">
+                
+                <span>Buildpacks</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/builders/" class="docs-menu__link ">
+                
+                <span>Builders</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/stacks/" class="docs-menu__link ">
+                
+                <span>Stacks</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+            
+    
+        <li class="docs-menu__parent">
+            
+            <div class="docs-menu__section-header">
+                
+                <span>Reference</span>
+            </div>
+            
+            <ul class="docs-menu__children-list">
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/configuration/" class="docs-menu__link ">
+                
+                <span>Configuring Paketo Buildpacks</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/go-reference/" class="docs-menu__link ">
+                
+                <span>Go Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/httpd-reference/" class="docs-menu__link ">
+                
+                <span>HTTPD Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/nginx-reference/" class="docs-menu__link ">
+                
+                <span>NGINX Buildpack</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+    </ul>
+</nav>
+
+
+
+    </div>
+    <div class="docs-body">
+        <div class="docs-body__container">
+            
+
+
+
+
+
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/%25!s%28%3cnil%3e%29" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
+    </div>
+</a>
+
+            <h1 class="">How to Build Web Servers with Paketo Buildpacks</h1>
+            <div class="docs-body__table-of-contents docs-body__table-of-contents--mobile">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#httpd">HTTPD</a>
+      <ul>
+        <li><a href="#build-a-sample-app">Build a Sample App</a></li>
+        <li><a href="#install-a-specific-httpd-version">Install a Specific HTTPD Version</a></li>
+        <li><a href="#start-an-httpd-server-at-app-launch-time">Start an HTTPD Server at App Launch Time</a></li>
+      </ul>
+    </li>
+    <li><a href="#nginx">NGINX</a>
+      <ul>
+        <li><a href="#build-a-sample-app-1">Build a Sample App</a></li>
+        <li><a href="#install-a-specific-nginx-version">Install a Specific NGINX Version</a></li>
+        <li><a href="#start-an-nginx-server-at-app-launch-time">Start an NGINX Server at App Launch Time</a></li>
+        <li><a href="#configure-the-nginx-server-with-launch-time-values">Configure the NGINX Server with Launch-time Values</a></li>
+        <li><a href="#use-dynamic-modules-at-app-launch-time">Use Dynamic Modules at App Launch Time</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+            
+            
+            <div class="docs-body__markdown">
+                <p>This documentation explains how to use Paketo buildpacks to build applications
+that run web servers like HTTPD and NGINX. These docs focus on explaining
+common user workflows. For more in-depth
+description of the buildpacks' behavior and configuration, see the reference documentation
+for each web server buildpack.</p>
+<h2 id="httpd" class="markup-heading"><a class="markup-heading__link" href="#httpd">HTTPD</a></h2><p>The <a href="https://github.com/paketo-buildpacks/httpd">Paketo HTTPD Buildpack</a> enables
+users to build apps that run an Apache HTTPD server. The following are explanations
+of common HTTPD Buildpack user workflows. For more in-depth
+description of the buildpack&rsquo;s behavior and configuration, see the HTTPD Buildpack
+reference <a href="/docs/reference/httpd-reference">documentation</a>.</p>
+<h3 id="build-a-sample-app" class="markup-heading"><a class="markup-heading__link" href="#build-a-sample-app">Build a Sample App</a></h3><p>To build a sample app locally with this CNB using the <code>pack</code> CLI, run</p>
+<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
+cd samples/httpd
+pack build my-app --buildpack gcr.io/paketo-buildpacks/httpd \
+  --builder paketobuildpacks/builder:full
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/httpd">samples</a>
+for how to run the app.</p>
+<p><strong>NOTE: The Paketo Full builder is required because HTTPD relies on operating
+system libraries only present in the Full builder.</strong></p>
+<h3 id="install-a-specific-httpd-version" class="markup-heading"><a class="markup-heading__link" href="#install-a-specific-httpd-version">Install a Specific HTTPD Version</a></h3><p>The HTTPD CNB (Cloud Native Buildpack) allows you to specify a version of the
+Apache HTTP Server to use during deployment. This version can be specified
+through the <code>BP_HTTPD_VERSION</code> environment variable. When specifying a version
+of the Apache HTTP Server, you must choose a version that is available within the
+buildpack. The supported versions can be found <a href="https://github.com/paketo-buildpacks/httpd/releases">here</a></p>
+<p>Specifying a version of <code>httpd</code> is not required. In the case that it is not
+specified, the buildpack will provide the default version listed in the release
+notes.</p>
+<h4 id="using-bp_httpd_version" class="markup-heading"><a class="markup-heading__link" href="#using-bp_httpd_version">Using BP_HTTPD_VERSION</a></h4><p>To configure the buildpack to use HTTPD v2.4.46 when deploying your app, set the
+following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_HTTPD_VERSION=2.4.*</code>) or through a
+<a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
+file:</p>
+<pre class="copyable"><code class="copyable__code">BP_HTTPD_VERSION=&#34;2.4.46&#34;
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<h4 id="deprecated-using-buildpackyml" class="markup-heading"><a class="markup-heading__link" href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></h4><p>Specifying the HTTP Server version through <code>buildpack.yml</code> configuration will
+be deprecated in Apache HTTP Server Buildpack v1.0.0. To migrate from using
+<code>buildpack.yml</code> please set the <code>$BP_HTTPD_VERSION</code> environment variable.</p>
+<h3 id="start-an-httpd-server-at-app-launch-time" class="markup-heading"><a class="markup-heading__link" href="#start-an-httpd-server-at-app-launch-time">Start an HTTPD Server at App Launch Time</a></h3><p>Include an <code>httpd.conf</code> file in your application&rsquo;s source code. The HTTPD Paketo buildpack
+will install the Apache HTTP Server binary <em>and</em> configure it to start when the app image
+launches.</p>
+<h2 id="nginx" class="markup-heading"><a class="markup-heading__link" href="#nginx">NGINX</a></h2><p>The <a href="https://github.com/paketo-buildpacks/nginx">Paketo NGINX Buildpack</a> enables
+users to build apps that run an NGINX server. The following are explanations
+of common NGINX Buildpack user workflows. For more in-depth
+description of the buildpack&rsquo;s behavior and configuration see the NGINX Buildpack
+reference <a href="/docs/reference/nginx-reference">documentation</a>.</p>
+<h3 id="build-a-sample-app-1" class="markup-heading"><a class="markup-heading__link" href="#build-a-sample-app-1">Build a Sample App</a></h3><p>To build a sample app locally with this CNB using the <code>pack</code> CLI, run</p>
+<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
+cd samples/nginx
+pack build my-app --buildpack gcr.io/paketo-buildpacks/nginx \
+  --builder paketobuildpacks/builder:base
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/nginx">samples</a>
+for how to run the app.</p>
+<p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
+also compatible with the Paketo Full builder.</strong></p>
+<h3 id="install-a-specific-nginx-version" class="markup-heading"><a class="markup-heading__link" href="#install-a-specific-nginx-version">Install a Specific NGINX Version</a></h3><p>The NGINX CNB (Cloud Native Buildpack) allows you to specify a version of NGINX to use during
+deployment. This version can be specified in a number of ways, including
+through <code>buildpack.yml</code>. When specifying a
+version of the NGINX engine, you must choose a version that is available
+within the buildpack.</p>
+<p>Specifying a version of <code>nginx</code> is not required. In the case that it is not
+specified, the buildpack will provide the default version listed in the release
+notes.</p>
+<h4 id="using-bp_nginx_version" class="markup-heading"><a class="markup-heading__link" href="#using-bp_nginx_version">Using BP_NGINX_VERSION</a></h4><p>To configure the buildpack to use NGINX v1.19.8 when deploying your app, set the
+following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_NGINX_VERSION=1.19.8</code>) or through a
+<a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
+file:</p>
+<pre class="copyable"><code class="copyable__code">BP_NGINX_VERSION=&#34;1.19.8&#34;
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<h4 id="deprecated-using-buildpackyml-1" class="markup-heading"><a class="markup-heading__link" href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></h4><p>Specifying the NGINX version through <code>buildpack.yml</code> configuration will be
+deprecated in NGINX Server Buildpack v1.0.0.  To migrate from using
+<code>buildpack.yml</code> please set the <code>$BP_NGINX_VERSION</code> environment variable.</p>
+<h3 id="start-an-nginx-server-at-app-launch-time" class="markup-heading"><a class="markup-heading__link" href="#start-an-nginx-server-at-app-launch-time">Start an NGINX Server at App Launch Time</a></h3><p>Include an <code>nginx.conf</code> file in your application&rsquo;s source code. The NGINX Paketo
+buildpack will install the NGINX binary <em>and</em> configure it to start when the app
+image launches.</p>
+<h3 id="configure-the-nginx-server-with-launch-time-values" class="markup-heading"><a class="markup-heading__link" href="#configure-the-nginx-server-with-launch-time-values">Configure the NGINX Server with Launch-time Values</a></h3><p>The NGINX buildpack supports data driven templates for nginx config. You can
+use templated variables like <code>{{port}}</code>, <code>{{env &quot;FOO&quot;}}</code> and <code>{{module &quot;ngx_stream_module&quot;}}</code> in your <code>nginx.conf</code> to use values known at launch time.</p>
+<p>A usage example can be found in the <a href="https://github.com/paketo-buildpacks/samples/tree/main/nginx"><code>samples</code> repository under the <code>nginx</code>
+directory</a>.</p>
+<h4 id="port" class="markup-heading"><a class="markup-heading__link" href="#port">PORT</a></h4><p>Use <code>{{port}}</code> to dynamically set the port at which the server will accepts requests. At launch time, the buildpack will read the value of <code>$PORT</code> to set the value of <code>{{port}}</code>.</p>
+<p>For example, to set an NGINX server to listen on <code>$PORT</code>, use the following in your <code>nginx.conf</code> file:</p>
+<pre class="copyable"><code class="copyable__code">server {
+  listen {{port}};
+}
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>Then run the built image using the <code>PORT</code> variable set as follows:</p>
+<pre class="copyable"><code class="copyable__code">docker run --tty --env PORT=8080 --publish 8080:8080 my-nginx-image
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<h4 id="environment-variables" class="markup-heading"><a class="markup-heading__link" href="#environment-variables">Environment Variables</a></h4><p>This is a generic case of the <code>{{port}}</code> directive described ealier. To use the
+value of any environment variable <code>$FOOVAR</code> available at launch time, use the
+directive <code>{{env &quot;FOOVAR&quot;}}</code> in your <code>nginx.conf</code>.</p>
+<p>For example, include the following in your <code>nginx.conf</code> file to enable or
+disable gzipping of responses based on the value of <code>GZIP_DOWNLOADS</code>:</p>
+<pre class="copyable"><code class="copyable__code">gzip {{env &#34;GZIP_DOWNLOADS&#34;}};
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>Then run the built image using the <code>GZIP_DOWNLOADS</code> variable set as follows:</p>
+<pre class="copyable"><code class="copyable__code">docker run --tty --env PORT=8080 --env GZIP_DOWNLOADS=off --publish 8080:8080 my-nginx-image
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<h3 id="use-dynamic-modules-at-app-launch-time" class="markup-heading"><a class="markup-heading__link" href="#use-dynamic-modules-at-app-launch-time">Use Dynamic Modules at App Launch Time</a></h3><p>You can use templates to set the path to a dynamic module using the
+<code>load_module</code> directive.</p>
+<p>To load a user-provided module named <code>ngx_foo_module</code>, provide a
+<code>modules/ngx_foo_module.so</code> file in your app directory and add the following
+to the top of your <code>nginx.conf</code> file:</p>
+<pre class="copyable"><code class="copyable__code">{{module &#34;ngx_foo_module&#34;}}
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>To load a buildpack-provided module like <code>ngx_stream_module</code>, add the
+following to the top of your <code>nginx.conf</code> file. You do not need to provide an
+<code>ngx_stream_module.so</code> file:</p>
+<pre class="copyable"><code class="copyable__code">{{module &#34;ngx_stream_module&#34;}}
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>See the <a href="https://nginx.org/en/docs/beginners_guide.html#conf_structure">NGINX
+docs</a> for more
+information about how to set up an <code>nginx.conf</code> file.</p>
+
+            </div>
+            
+
+
+
+
+
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/web-servers.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
+    </div>
+</a>
+
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 9, 2021</p>
+        </div>
+        <div class="docs-body__table-of-contents-container">
+            <div class="docs-body__table-of-contents docs-body__table-of-contents--desktop">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#httpd">HTTPD</a>
+      <ul>
+        <li><a href="#build-a-sample-app">Build a Sample App</a></li>
+        <li><a href="#install-a-specific-httpd-version">Install a Specific HTTPD Version</a></li>
+        <li><a href="#start-an-httpd-server-at-app-launch-time">Start an HTTPD Server at App Launch Time</a></li>
+      </ul>
+    </li>
+    <li><a href="#nginx">NGINX</a>
+      <ul>
+        <li><a href="#build-a-sample-app-1">Build a Sample App</a></li>
+        <li><a href="#install-a-specific-nginx-version">Install a Specific NGINX Version</a></li>
+        <li><a href="#start-an-nginx-server-at-app-launch-time">Start an NGINX Server at App Launch Time</a></li>
+        <li><a href="#configure-the-nginx-server-with-launch-time-values">Configure the NGINX Server with Launch-time Values</a></li>
+        <li><a href="#use-dynamic-modules-at-app-launch-time">Use Dynamic Modules at App Launch Time</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+        </div>
+    </div>
+</div>
+
+
+    <footer class="footer text--light">
+    <div class="footer-social-links-container">
+        <a class="footer-social-link" href="https://twitter.com/Paketo_io">
+            <div class="footer-social-link__image-container">
+                <img class="footer-social-link__image-container__image" src="/v2/images/logo-twitter.svg" alt="Blue Twitter bird logo"/>
+            </div>
+            <div class="text--light">
+                Twitter
+            </div>
+        </a>
+        <a class="footer-social-link" href="https://slack.paketo.io/">
+            <div class="footer-social-link__image-container">
+                <img class="footer-social-link__image-container__image" src="/v2/images/logo-slack.svg" alt="Slack logo"/>
+            </div>
+            <div class="text--light">
+                Slack
+            </div>
+        </a>
+        <a class="footer-social-link" href="https://github.com/paketo-buildpacks">
+            <div class="footer-social-link__image-container">
+                <img src="/v2/images/logo-github.svg" alt="GitHub Octocat logo"/>
+            </div>
+            <div class="text--light">
+                GitHub
+            </div>
+        </a>
+    </div>
+    <div class="footer-privacy-policy">
+        <div class="footer-text--small">Paketo Buildpacks is a <a class="text--light" href="https://www.cloudfoundry.org/">Cloud Foundry</a> Project</div>
+        <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
+        <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
+    </div>
+</footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
+
+
+</body>
+
+</html>
