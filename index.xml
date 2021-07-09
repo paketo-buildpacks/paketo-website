@@ -120,16 +120,14 @@ Supported DependenciesThe PHP Paketo Buildpack supports several versions of PHP.
     </item>
     
     <item>
-      <title>Ruby Buildpack</title>
+      <title>How to Build Ruby Apps with Paketo Buildpacks</title>
       <link>https://paketo.io/docs/howto/ruby/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/howto/ruby/</guid>
-      <description>The Paketo Ruby Buildpack supports several popular configurations for Ruby apps.
-To build a sample app locally with this buildpack using the pack CLI, run
-git clone &amp;lt;https://github.com/paketo-buildpacks/samples&amp;gt; cd samples/ruby/puma pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.
-NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder.
-Supported DependenciesThe Ruby Paketo Buildpack supports several versions of MRI, Bundler, and common Ruby webservers and task runners.</description>
+      <description>This documentation explains how to use the Paketo Ruby Buildpack to build applications for several common Ruby use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration, see the Ruby Buildpack Reference documentation.
+Build a Sample AppTo build a sample app locally with this buildpack using the pack CLI, run
+git clone &amp;lt;https://github.com/paketo-buildpacks/samples&amp;gt; cd samples/ruby/puma pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
     </item>
     
     <item>
@@ -194,6 +192,16 @@ Supported DependenciesThe .Net Core Paketo Buildpack supports several versions o
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo NGINX Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Web Servers How To documentation.
 The NGINX Paketo Buildpack supports the installation of the NGINX binary distribution onto the $PATH inside a container. This makes it available to subsequent buildpacks.
 Supported DependenciesThe NGINX Paketo Buildpack supports several versions of NGINX.</description>
+    </item>
+    
+    <item>
+      <title>Ruby Buildpack Reference</title>
+      <link>https://paketo.io/docs/reference/ruby-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/reference/ruby-reference/</guid>
+      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Ruby Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Ruby How To documentation.
+Supported DependenciesThe Ruby Paketo Buildpack supports several versions of MRI, Bundler, and common Ruby webservers and task runners. For more details on the specific versions supported in a given buildpack version, see the release notes.</description>
     </item>
     
   </channel>

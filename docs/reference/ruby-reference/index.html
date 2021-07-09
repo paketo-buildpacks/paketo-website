@@ -11,17 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Getting Started - Paketo Buildpacks</title>
+<title>Ruby Buildpack Reference - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="Getting Started">
-<meta name="og:url" content="https://paketo.io/docs/">
+<meta name="og:title" content="Ruby Buildpack Reference">
+<meta name="og:url" content="https://paketo.io/docs/reference/ruby-reference/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
-<meta name="twitter:url" content="https://paketo.io/docs/" />
+<meta name="twitter:url" content="https://paketo.io/docs/reference/ruby-reference/" />
 <meta name="twitter:card" content="" />
 <link rel="stylesheet" href="/css/main-v1.min.f01d690deca8678e76d38ddc2c92c4c90937a1f00c8606b68b37fc77e9717eb3.css">
 </head>
@@ -77,7 +77,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             
     
         <li class="docs-menu__leaf">
-            <a href="/docs/" class="docs-menu__link docs-menu__link--active">
+            <a href="/docs/" class="docs-menu__link ">
                 
                 <span>Getting Started</span>
             </a>
@@ -298,7 +298,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/reference/ruby-reference/" class="docs-menu__link ">
+            <a href="/docs/reference/ruby-reference/" class="docs-menu__link docs-menu__link--active">
                 
                 <span>Ruby Buildpack</span>
             </a>
@@ -332,106 +332,75 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 class="">Getting Started</h1>
+            <h1 class="">Ruby Buildpack Reference</h1>
             <div class="docs-body__table-of-contents docs-body__table-of-contents--mobile">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#package-management">Package Management</a></li>
+    <li><a href="#webservers--task-runners">Webservers &amp; Task Runners</a>
+      <ul>
+        <li><a href="#webservers">Webservers</a></li>
+        <li><a href="#task-runners">Task Runners</a></li>
+      </ul>
+    </li>
+    <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
+    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+      <ul>
+        <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
+        <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 </div>
             
             
             <div class="docs-body__markdown">
-                <p>This section gets you started with Paketo Buildpacks using Paketo <strong>Builders</strong>, the <strong>Pack</strong> CLI, and <strong>Docker</strong>.</p>
-<p>Let&rsquo;s use the <code>base</code> Paketo Builder and the <strong>Pack</strong> CLI to build a Node.js app
-as a runnable container image. App source code is available
-<a href="https://github.com/paketo-buildpacks/samples/tree/main/demo-apps/app-source">here</a>.</p>
-<p><strong>Prerequisites</strong> - Install Pack and Docker
-Follow <a href="https://buildpacks.io/docs/install-pack/">these instructions</a> to get all set up.</p>
-<p>And we&rsquo;re good to go! Let&rsquo;s build our app into a container image using the <code>pack build</code> command.</p>
-<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
-cd samples/demo-apps/app-source
-pack build paketo-demo-app --builder paketobuildpacks/builder:base
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
-<div class="code-output">
-    <div class="btn code-output__btn code-output__btn">View Output</div>
-    <pre class="code-output__output-container">
-        <code class="code-output__output">......................
-===&gt; DETECTING
-paketo-buildpacks/node-engine 0.1.1
-paketo-buildpacks/npm-install 0.2.0
-paketo-buildpacks/npm-start   0.0.2
-===&gt; ANALYZING
-Restoring metadata for &#34;paketo-buildpacks/node-engine:node&#34; from app image
-===&gt; RESTORING
-Restoring data for &#34;paketo-buildpacks/node-engine:node&#34; from cache
-===&gt; BUILDING
-Paketo Node Engine Buildpack 0.1.1
-  Resolving Node Engine version
-    Candidate version sources (in priority order):
-      package.json -&gt; &#34;~10&#34;
-      &lt;unknown&gt;    -&gt; &#34;*&#34;
-
-    Selected Node Engine version (using package.json): 10.22.0
-
-  Reusing cached layer /layers/paketo-buildpacks_node-engine/node
-
-Paketo NPM Install Buildpack 0.2.0
-  Resolving installation process
-    Process inputs:
-      node_modules      -&gt; &#34;Not found&#34;
-      npm-cache         -&gt; &#34;Not found&#34;
-      package-lock.json -&gt; &#34;Not found&#34;
-
-    Selected NPM build process: &#39;npm install&#39;
-
-  Executing build process
-    Running &#39;npm install --unsafe-perm --cache /layers/paketo-buildpacks_npm-install/npm-cache&#39;
-      Completed in 1.348s
-
-  Configuring environment
-    NPM_CONFIG_LOGLEVEL   -&gt; &#34;error&#34;
-    NPM_CONFIG_PRODUCTION -&gt; &#34;true&#34;
-    PATH                  -&gt; &#34;$PATH:/layers/paketo-buildpacks_npm-install/modules/node_modules/.bin&#34;
-
-Paketo NPM Start Buildpack 0.0.2
-  Assigning launch processes
-    web: node server.js
-===&gt; EXPORTING
-Reusing layer &#39;paketo-buildpacks/node-engine:node&#39;
-Adding layer &#39;paketo-buildpacks/npm-install:modules&#39;
-Adding layer &#39;paketo-buildpacks/npm-install:npm-cache&#39;
-Adding 1/1 app layer(s)
-Reusing layer &#39;launcher&#39;
-Adding layer &#39;config&#39;
-Reusing layer &#39;process-types&#39;
-Adding label &#39;io.buildpacks.lifecycle.metadata&#39;
-Adding label &#39;io.buildpacks.build.metadata&#39;
-Adding label &#39;io.buildpacks.project.metadata&#39;
-Setting default process type &#39;web&#39;
-......................
-Successfully built image paketo-demo-app
-</code>
-    </pre>
-</div>
-
-<p>We&rsquo;ve successfully created an image called <strong>paketo-demo-app</strong>. Now let&rsquo;s run our app image and validate that everything is working.</p>
-<pre class="copyable"><code class="copyable__code">docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
-<p>Wait a few seconds for your app to start.</p>
-<pre class="copyable"><code class="copyable__code">curl http://localhost:8080/greeting
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
-<div class="code-output">
-    <div class="btn code-output__btn code-output__btn">View Output</div>
-    <pre class="code-output__output-container">
-        <code class="code-output__output">Hello from your application image
-</code>
-    </pre>
-</div>
-
-<p>Awesome! Our app is now running on <code>localhost:8080</code>.</p>
-<p>Check out more <a href="https://github.com/paketo-buildpacks/samples">sample apps</a> that work with Paketo Buildpacks.</p>
-<p>Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.</p>
+                <p>This reference documentation offers an in-depth description of the behavior
+and configuration options of the
+<a href="https://github.com/paketo-buildpacks/ruby">Paketo Ruby Buildpack</a>.
+For explanations of how to use the buildpack for several common use-cases, see
+the Ruby How To <a href="/docs/howto/ruby">documentation</a>.</p>
+<h2 id="supported-dependencies" class="markup-heading"><a class="markup-heading__link" href="#supported-dependencies">Supported Dependencies</a></h2><p>The Ruby Paketo Buildpack supports several versions of
+<a href="https://www.ruby-lang.org">MRI</a>, <a href="https://bundler.io/">Bundler</a>, and common
+Ruby webservers and task runners.  For more details on the specific versions
+supported in a given buildpack version, see the <a href="https://github.com/paketo-buildpacks/ruby/releases/latest">release
+notes</a>.</p>
+<h2 id="package-management" class="markup-heading"><a class="markup-heading__link" href="#package-management">Package Management</a></h2><p>The Ruby Buildpack uses <a href="https://bundler.io/">Bundler</a> to install and manage
+the gems needed to run your application. Including a <code>Gemfile</code> in your app
+source code instructs the <a href="https://github.com/paketo-buildpacks/bundle-install"><code>bundle-install</code>
+buildpack</a> to vendor your
+dependencies using <code>bundle install</code>.</p>
+<h2 id="webservers--task-runners" class="markup-heading"><a class="markup-heading__link" href="#webservers--task-runners">Webservers &amp; Task Runners</a></h2><p>The Ruby Buildpack supports a number of webservers and task runners that are
+useful for running Ruby applications. If your application uses one of these
+tools, it will be automatically detected and a start command for your
+application will be assigned when building your application container.</p>
+<h3 id="webservers" class="markup-heading"><a class="markup-heading__link" href="#webservers">Webservers</a></h3><ul>
+<li><a href="http://github.com/paketo-buildpacks/passenger">Passenger</a></li>
+<li><a href="http://github.com/paketo-buildpacks/puma">Puma</a></li>
+<li><a href="http://github.com/paketo-buildpacks/rackup">Rackup</a></li>
+<li><a href="http://github.com/paketo-buildpacks/thin">Thin</a></li>
+<li><a href="http://github.com/paketo-buildpacks/unicorn">Unicorn</a></li>
+</ul>
+<h3 id="task-runners" class="markup-heading"><a class="markup-heading__link" href="#task-runners">Task Runners</a></h3><ul>
+<li><a href="http://github.com/paketo-buildpacks/rake">Rake</a></li>
+</ul>
+<h2 id="rails-asset-pipeline" class="markup-heading"><a class="markup-heading__link" href="#rails-asset-pipeline">Rails Asset Pipeline</a></h2><p>The <a href="http://github.com/paketo-buildpacks/rails-assets">Paketo Rails Assets Buildpack</a> is a <a href="/docs/concepts/buildpacks/#component-buildpacks">component buildpack</a> included in the Ruby Buildpack. It supports Rails apps (Rails version &gt;= 5.0) that need asset precompilation.</p>
+<p>The buildpack runs bundle exec rails assets:precompile for the app, and works with any of the supported Ruby webservers listed above.</p>
+<h2 id="buildpack-set-environment-variables" class="markup-heading"><a class="markup-heading__link" href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a></h2><p>The Ruby CNB sets a few environment variables during the <code>build</code> and <code>launch</code>
+phases of the app lifecycle. The sections below describe each environment
+variable and its impact on your app.</p>
+<h3 id="gem_path" class="markup-heading"><a class="markup-heading__link" href="#gem_path"><code>GEM_PATH</code></a></h3><ul>
+<li>Set by: <code>mri</code>, <code>bundler</code></li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: location of the directory gems will be installed for each respective dependency</li>
+</ul>
+<h3 id="bundle_path" class="markup-heading"><a class="markup-heading__link" href="#bundle_path"><code>BUNDLE_PATH</code></a></h3><ul>
+<li>Set by: <code>bundle-install</code></li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: location where all gems in your bundle will be located</li>
+</ul>
 
             </div>
             
@@ -440,7 +409,7 @@ Successfully built image paketo-demo-app
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/_index.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/ruby-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -453,7 +422,25 @@ Successfully built image paketo-demo-app
         </div>
         <div class="docs-body__table-of-contents-container">
             <div class="docs-body__table-of-contents docs-body__table-of-contents--desktop">
-    <nav id="TableOfContents"></nav>
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#package-management">Package Management</a></li>
+    <li><a href="#webservers--task-runners">Webservers &amp; Task Runners</a>
+      <ul>
+        <li><a href="#webservers">Webservers</a></li>
+        <li><a href="#task-runners">Task Runners</a></li>
+      </ul>
+    </li>
+    <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
+    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+      <ul>
+        <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
+        <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 </div>
         </div>
     </div>

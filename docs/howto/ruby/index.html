@@ -11,14 +11,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Ruby Buildpack - Paketo Buildpacks</title>
+<title>How to Build Ruby Apps with Paketo Buildpacks - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="Ruby Buildpack">
+<meta name="og:title" content="How to Build Ruby Apps with Paketo Buildpacks">
 <meta name="og:url" content="https://paketo.io/docs/howto/ruby/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/howto/ruby/" />
@@ -295,6 +295,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </li>
     
                 
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/ruby-reference/" class="docs-menu__link ">
+                
+                <span>Ruby Buildpack</span>
+            </a>
+        </li>
+    
+                
             </ul>
         </li>
     
@@ -322,49 +332,45 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 class="">Ruby Buildpack</h1>
+            <h1 class="">How to Build Ruby Apps with Paketo Buildpacks</h1>
             <div class="docs-body__table-of-contents docs-body__table-of-contents--mobile">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#specifying-a-ruby-version">Specifying a Ruby Version</a>
+    <li><a href="#build-a-sample-app">Build a Sample App</a></li>
+    <li><a href="#install-a-specific-ruby-version">Install a Specific Ruby Version</a>
       <ul>
         <li><a href="#using-bp_mri_version">Using BP_MRI_VERSION</a></li>
         <li><a href="#using-a-gemfile">Using a Gemfile</a></li>
         <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
-    <li><a href="#package-management">Package Management</a></li>
-    <li><a href="#specifying-a-bundler-version">Specifying a Bundler Version</a>
+    <li><a href="#install-a-specific-bundler-version">Install a Specific Bundler Version</a>
       <ul>
         <li><a href="#using-bp_bundler_version">Using BP_BUNDLER_VERSION</a></li>
         <li><a href="#using-a-gemfilelock">Using a Gemfile.lock</a></li>
         <li><a href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
-    <li><a href="#vendored-packages">Vendored Packages</a></li>
-    <li><a href="#webservers--task-runners">Webservers &amp; Task Runners</a>
+    <li><a href="#build-an-app-in-an-offline-environment">Build an App in an Offline Environment</a></li>
+    <li><a href="#build-an-app-image-that-runs-a-rake-task">Build an App Image That Runs a Rake Task</a>
       <ul>
-        <li><a href="#webservers">Webservers</a></li>
-        <li><a href="#task-runners">Task Runners</a></li>
+        <li><a href="#run-a-non-default-rake-task">Run a Non-Default Rake Task</a></li>
       </ul>
     </li>
-    <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
-    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
-      <ul>
-        <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
-        <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
-      </ul>
-    </li>
+    <li><a href="#run-a-ruby-application-with-a-webserver">Run a Ruby Application with a Webserver</a></li>
+    <li><a href="#build-a-rails-app">Build a Rails App</a></li>
   </ul>
 </nav>
 </div>
             
             
             <div class="docs-body__markdown">
-                <p>The <a href="https://github.com/paketo-buildpacks/ruby">Paketo Ruby Buildpack</a> supports
-several popular configurations for Ruby apps.</p>
-<p>To build a sample app locally with this buildpack using the <code>pack</code> CLI, run</p>
+                <p>This documentation explains how to use the
+<a href="https://github.com/paketo-buildpacks/ruby">Paketo Ruby Buildpack</a>
+to build applications for several common Ruby use-cases. For more in-depth
+description of the buildpack&rsquo;s behavior and configuration, see the Ruby
+Buildpack Reference <a href="/docs/reference/ruby-reference">documentation</a>.</p>
+<h2 id="build-a-sample-app" class="markup-heading"><a class="markup-heading__link" href="#build-a-sample-app">Build a Sample App</a></h2><p>To build a sample app locally with this buildpack using the <code>pack</code> CLI, run</p>
 <pre class="copyable"><code class="copyable__code">git clone &lt;https://github.com/paketo-buildpacks/samples&gt;
 cd samples/ruby/puma
 pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
@@ -375,12 +381,7 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
 for how to run the app.</p>
 <p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
 also compatible with the Paketo Full builder.</strong></p>
-<h2 id="supported-dependencies" class="markup-heading"><a class="markup-heading__link" href="#supported-dependencies">Supported Dependencies</a></h2><p>The Ruby Paketo Buildpack supports several versions of
-<a href="https://www.ruby-lang.org">MRI</a>, <a href="https://bundler.io/">Bundler</a>, and common
-Ruby webservers and task runners.  For more details on the specific versions
-supported in a given buildpack version, see the <a href="https://github.com/paketo-buildpacks/ruby/releases/latest">release
-notes</a>.</p>
-<h2 id="specifying-a-ruby-version" class="markup-heading"><a class="markup-heading__link" href="#specifying-a-ruby-version">Specifying a Ruby Version</a></h2><p>The Ruby Buildpack allows you to specify a version of Ruby to use during
+<h2 id="install-a-specific-ruby-version" class="markup-heading"><a class="markup-heading__link" href="#install-a-specific-ruby-version">Install a Specific Ruby Version</a></h2><p>The Ruby Buildpack allows you to specify a version of Ruby to use during
 deployment. This version can be specified via the <code>BP_MRI_VERSION</code> environment
 variable or a <code>Gemfile</code>. When specifying a version of Ruby, you must choose a version that is available
 within the buildpack. The supported versions can be found
@@ -410,12 +411,7 @@ ruby &#39;~&gt; 2.7.1&#39;
 
 <h3 id="deprecated-using-buildpackyml" class="markup-heading"><a class="markup-heading__link" href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></h3><p>Specifying the Ruby version through <code>buildpack.yml</code> configuration will be deprecated in MRI Buildpack v1.0.0.
 To migrate from using <code>buildpack.yml</code> please set the <code>$BP_MRI_VERSION</code> environment variable.</p>
-<h2 id="package-management" class="markup-heading"><a class="markup-heading__link" href="#package-management">Package Management</a></h2><p>The Ruby Buildpack uses <a href="https://bundler.io/">Bundler</a> to install and manage
-the gems needed to run your application. Including a <code>Gemfile</code> in your app
-source code instructs the <a href="https://github.com/paketo-buildpacks/bundle-install"><code>bundle-install</code>
-buildpack</a> to vendor your
-dependencies using <code>bundle install</code>.</p>
-<h2 id="specifying-a-bundler-version" class="markup-heading"><a class="markup-heading__link" href="#specifying-a-bundler-version">Specifying a Bundler Version</a></h2><p>The Ruby Buildpack allows you to specify a version of Bundler to use during
+<h2 id="install-a-specific-bundler-version" class="markup-heading"><a class="markup-heading__link" href="#install-a-specific-bundler-version">Install a Specific Bundler Version</a></h2><p>The Ruby Buildpack allows you to specify a version of Bundler to use during
 deployment. This version can be specified via the <code>BP_BUNDLER_VERSION</code>
 environment variable or a <code>Gemfile.lock</code> created during dependency vendoring.
 When specifying a version of Bundler, you must choose a version that is
@@ -446,44 +442,49 @@ will result in a <code>Gemfile.lock</code> that includes the following snippet:<
 
 <h3 id="deprecated-using-buildpackyml-1" class="markup-heading"><a class="markup-heading__link" href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></h3><p>Specifying the Bundler version through <code>buildpack.yml</code> configuration will be deprecated in Bundler Buildpack v1.0.0.
 To migrate from using <code>buildpack.yml</code> please set the <code>$BP_BUNDLER_VERSION</code> environment variable.</p>
-<h2 id="vendored-packages" class="markup-heading"><a class="markup-heading__link" href="#vendored-packages">Vendored Packages</a></h2><p>In order to build apps in an offline environment, the app will need to have the
+<h2 id="build-an-app-in-an-offline-environment" class="markup-heading"><a class="markup-heading__link" href="#build-an-app-in-an-offline-environment">Build an App in an Offline Environment</a></h2><p>In order to build apps in an offline environment, the app will need to have the
 <code>.gem</code> files located in the <code>cache_path</code>. Bundler will copy the required gems
 into this location, typically <code>vendor/cache</code> when running the <code>bundle package</code>
 command. During the <code>bundle install</code> process, the buildpack will instruct
 Bundler to prefer gems in this cache over those on the RubyGems index by
 running <code>bundle install --local</code>.</p>
-<h2 id="webservers--task-runners" class="markup-heading"><a class="markup-heading__link" href="#webservers--task-runners">Webservers &amp; Task Runners</a></h2><p>The Ruby Buildpack supports a number of webservers and task runners that are
-useful for running Ruby applications. If your application uses one of these
-tools, it will be automatically detected and a start command for your
-applicatin will be assigned when building your application container.</p>
-<h3 id="webservers" class="markup-heading"><a class="markup-heading__link" href="#webservers">Webservers</a></h3><ul>
-<li><a href="http://github.com/paketo-buildpacks/passenger">Passenger</a></li>
-<li><a href="http://github.com/paketo-buildpacks/puma">Puma</a></li>
-<li><a href="http://github.com/paketo-buildpacks/rackup">Rackup</a></li>
-<li><a href="http://github.com/paketo-buildpacks/thin">Thin</a></li>
-<li><a href="http://github.com/paketo-buildpacks/unicorn">Unicorn</a></li>
+<h2 id="build-an-app-image-that-runs-a-rake-task" class="markup-heading"><a class="markup-heading__link" href="#build-an-app-image-that-runs-a-rake-task">Build an App Image That Runs a Rake Task</a></h2><p>The Ruby Buildpack can build images that run a rake task
+at launch time. Simply include a valid <code>Rakefile</code> in your app source
+code. The buildpack will build an image that runs the default rake task
+at launch time.
+See this Paketo sample <a href="https://github.com/paketo-buildpacks/samples/tree/main/ruby/rake">app</a>
+for a working example.</p>
+<h3 id="run-a-non-default-rake-task" class="markup-heading"><a class="markup-heading__link" href="#run-a-non-default-rake-task">Run a Non-Default Rake Task</a></h3><p>To configure the app image to run a rake task called <code>non_default</code> on launch, use a <a href="/docs/reference/configuration/#procfiles">Procfile</a> with contents as follows to set the start command:</p>
+<pre class="copyable"><code class="copyable__code">web: bundle exec rake non_default
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>To start an app container with a rake task (instead of its default start command), start the app container with  <code>--entrypoint launcher</code> and add the desired rake start command at the end:
+<pre class="copyable"><code class="copyable__code">docker run --entrypoint launcher my-rake-app bundle exec rake non_default
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+</p>
+<h2 id="run-a-ruby-application-with-a-webserver" class="markup-heading"><a class="markup-heading__link" href="#run-a-ruby-application-with-a-webserver">Run a Ruby Application with a Webserver</a></h2><p>The Ruby Buildpack can automatically detect that a Ruby app needs to be run with
+several common web servers, and will configure the app image accordingly. The buildpack
+currently supports the following webservers:</p>
+<ul>
+<li>Passenger</li>
+<li>Puma</li>
+<li>Rackup</li>
+<li>Thin</li>
+<li>Unicorn</li>
 </ul>
-<h3 id="task-runners" class="markup-heading"><a class="markup-heading__link" href="#task-runners">Task Runners</a></h3><ul>
-<li><a href="http://github.com/paketo-buildpacks/rake">Rake</a></li>
-</ul>
-<h2 id="rails-asset-pipeline" class="markup-heading"><a class="markup-heading__link" href="#rails-asset-pipeline">Rails Asset Pipeline</a></h2><p>The <a href="http://github.com/paketo-buildpacks/rails-assets">Rails Assets buildpack</a>
-supports Rails apps (Rails version &gt;= 5.0) that need asset precompilation.</p>
-<p>To use this buildpack, your app must contain an <code>app/assets</code> directory, and your
-app&rsquo;s <code>Gemfile</code> must specify the <code>rails</code> gem. The buildpack runs <code>bundle exec rails assets:precompile</code> for the app, and works with any of the supported Ruby
-webservers listed above.</p>
-<h2 id="buildpack-set-environment-variables" class="markup-heading"><a class="markup-heading__link" href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a></h2><p>The Ruby CNB sets a few environment variables during the <code>build</code> and <code>launch</code>
-phases of the app lifecycle. The sections below describe each environment
-variable and its impact on your app.</p>
-<h3 id="gem_path" class="markup-heading"><a class="markup-heading__link" href="#gem_path"><code>GEM_PATH</code></a></h3><ul>
-<li>Set by: <code>mri</code>, <code>bundler</code></li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: location of the directory gems will be installed for each respective dependency</li>
-</ul>
-<h3 id="bundle_path" class="markup-heading"><a class="markup-heading__link" href="#bundle_path"><code>BUNDLE_PATH</code></a></h3><ul>
-<li>Set by: <code>bundle-install</code></li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: location where all gems in your bundle will be located</li>
-</ul>
+<p>To make the Ruby Buildpack automatically configure your app for a given webserver,
+include its gem in your app&rsquo;s <code>Gemfile</code>.</p>
+<p>For example, to use Rackup, include in your <code>Gemfile</code>:
+<pre class="copyable"><code class="copyable__code">gem &#39;rack&#39;
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+</p>
+<h2 id="build-a-rails-app" class="markup-heading"><a class="markup-heading__link" href="#build-a-rails-app">Build a Rails App</a></h2><p>The Ruby Buildpack supports Rails apps (Rails version &gt;= 5.0) that need
+asset precompilation.</p>
+<p>To use this feature of the buildpack,</p>
+<ol>
+<li>Include an <code>app/assets</code> directory in your app source code</li>
+<li>Add the <code>rails</code> gem to your <code>Gemfile</code></li>
+</ol>
 
             </div>
             
@@ -507,36 +508,29 @@ variable and its impact on your app.</p>
             <div class="docs-body__table-of-contents docs-body__table-of-contents--desktop">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#specifying-a-ruby-version">Specifying a Ruby Version</a>
+    <li><a href="#build-a-sample-app">Build a Sample App</a></li>
+    <li><a href="#install-a-specific-ruby-version">Install a Specific Ruby Version</a>
       <ul>
         <li><a href="#using-bp_mri_version">Using BP_MRI_VERSION</a></li>
         <li><a href="#using-a-gemfile">Using a Gemfile</a></li>
         <li><a href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
-    <li><a href="#package-management">Package Management</a></li>
-    <li><a href="#specifying-a-bundler-version">Specifying a Bundler Version</a>
+    <li><a href="#install-a-specific-bundler-version">Install a Specific Bundler Version</a>
       <ul>
         <li><a href="#using-bp_bundler_version">Using BP_BUNDLER_VERSION</a></li>
         <li><a href="#using-a-gemfilelock">Using a Gemfile.lock</a></li>
         <li><a href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
-    <li><a href="#vendored-packages">Vendored Packages</a></li>
-    <li><a href="#webservers--task-runners">Webservers &amp; Task Runners</a>
+    <li><a href="#build-an-app-in-an-offline-environment">Build an App in an Offline Environment</a></li>
+    <li><a href="#build-an-app-image-that-runs-a-rake-task">Build an App Image That Runs a Rake Task</a>
       <ul>
-        <li><a href="#webservers">Webservers</a></li>
-        <li><a href="#task-runners">Task Runners</a></li>
+        <li><a href="#run-a-non-default-rake-task">Run a Non-Default Rake Task</a></li>
       </ul>
     </li>
-    <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
-    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
-      <ul>
-        <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
-        <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
-      </ul>
-    </li>
+    <li><a href="#run-a-ruby-application-with-a-webserver">Run a Ruby Application with a Webserver</a></li>
+    <li><a href="#build-a-rails-app">Build a Rails App</a></li>
   </ul>
 </nav>
 </div>
