@@ -40,16 +40,14 @@ Supported DependenciesThe HTTPD Paketo Buildpack supports several versions of Ap
     </item>
     
     <item>
-      <title>.Net Core Buildpack</title>
+      <title>How to Build .NET Core Apps with Paketo Buildpacks</title>
       <link>https://paketo.io/docs/howto/dotnet-core/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/howto/dotnet-core/</guid>
-      <description>The .Net Core Paketo Buildpack supports building several configurations of .Net Core applications.
-To build your app locally with the buildpack using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/samples cd samples/dotnet-core/aspnet pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.
-NOTE: Though the example above uses the Paketo Base builder, this buildpack is also compatible with the Paketo Full builder.
-Supported DependenciesThe .</description>
+      <description>This documentation explains how to use the Paketo .NET Core Buildpack to build applications for several common .NET use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the .NET Core Buildpack Reference documentation.
+Build a Sample AppTo build your app locally with the buildpack using the pack CLI, run
+git clone https://github.com/paketo-buildpacks/samples cd samples/dotnet-core/aspnet pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
     </item>
     
     <item>
@@ -174,6 +172,17 @@ What is a builder?A builder is an image that contains three components:
       <description>In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. One of the core pieces to Buildpacks and Builders are Stack Images. Stacks provide the buildpack lifecycle with build-time and run-time environments in the form of images.
 What is a stack?A stack consists of two images:
  build image: the environment in which your app is built run image: the OS layer for your app image  For more information about stacks, see buildpacks.</description>
+    </item>
+    
+    <item>
+      <title>.NET Core Buildpack Reference</title>
+      <link>https://paketo.io/docs/reference/dotnet-core-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/reference/dotnet-core-reference/</guid>
+      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo .NET Core Buildpack. For explanations of how to use the buildpack for several common use-cases, see the .NET Core How To documentation.
+Supported DependenciesThe .Net Core Paketo Buildpack supports several versions of the .Net Core Framework. For more details on the specific versions supported in a given buildpack version, see the release notes.
+.Net Core Framework Version SelectionWhen detecting what version of the .</description>
     </item>
     
     <item>
