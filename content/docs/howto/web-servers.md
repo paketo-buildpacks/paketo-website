@@ -7,6 +7,7 @@ menu:
     name: "Web Servers"
 aliases:
   - /docs/buildpacks/language-family-buildpacks/httpd/
+  - /docs/buildpacks/language-family-buildpacks/nginx/
 ---
 
 This documentation explains how to use Paketo buildpacks to build applications
