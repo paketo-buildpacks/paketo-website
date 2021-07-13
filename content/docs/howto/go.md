@@ -9,6 +9,9 @@ aliases:
   - /docs/buildpacks/language-family-buildpacks/go
 ---
 
+{{% howto_exec_summary bp_name="Paketo Go Buildpack" bp_repo="https://github.com/paketo-buildpacks/go" reference_docs_path="/docs/reference/go-reference" %}}
+
+
 ## Build a Sample Go Application
 To build a sample app locally with this buildpack using the `pack` CLI, run
 

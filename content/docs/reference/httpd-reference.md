@@ -8,11 +8,7 @@ menu:
     name: "HTTPD Buildpack"
 ---
 
-This reference documentation offers an in-depth description of the behavior
-and configuration options of the 
-[Paketo HTTPD Buildpack](https://github.com/paketo-buildpacks/httpd).
-For explanations of how to use the buildpack for several common use-cases, see
-the Web Servers How To [documentation](/docs/howto/web-servers/#httpd). 
+{{% reference_exec_summary bp_name="Paketo HTTPD Buildpack" bp_repo="https://github.com/paketo-buildpacks/httpd" howto_docs_path="/docs/howto/web-servers/#httpd" %}}
 
 The HTTPD Paketo Buildpack supports the installation of the
 Apache HTTP Server binary distribution

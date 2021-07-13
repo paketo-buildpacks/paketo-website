@@ -9,10 +9,7 @@ aliases:
   - /docs/buildpacks/language-family-buildpacks/dotnet-core/
 ---
 
-This documentation explains how to use the [Paketo .NET Core Buildpack](https://github.com/paketo-buildpacks/dotnet-core)
-to build applications for several common .NET use-cases. For more in-depth
-description of the buildpack's behavior and configuration see the .NET Core
-Buildpack Reference [documentation](/docs/reference/dotnet-core-reference).
+{{% howto_exec_summary bp_name="Paketo .NET Core Buildpack" bp_repo="https://github.com/paketo-buildpacks/dotnet-core" reference_docs_path="/docs/reference/dotnet-core-reference" %}}
 
 ## Build a Sample App
 To build your app locally with the buildpack using the `pack` CLI, run
