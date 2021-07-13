@@ -13,57 +13,65 @@ aliases:
 
 
 ## Build a Sample Go Application
-To build a sample app locally with this buildpack using the `pack` CLI, run
 
+You can quickly build a sample Go app into a runnable OCI image on your
+local machine with Paketo buildpacks.
+
+*Prerequisites*
+- docker CLI
+- pack CLI
+
+1. Clone the Paketo samples and navigate to a Go sample app.
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/go/mod
+{{< /code/copyable >}}
+
+1. Use the pack CLI with the Paketo Go Buildpack to build the sample app.
+{{< code/copyable >}}
 pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
-See [samples](https://github.com/paketo-buildpacks/samples/tree/main/go/mod)
-for how to run the app.
+1. Run the app using instructions found in its `README`.
 
-**NOTE: Though the example above uses the Paketo Base builder, this buildpack is
-also compatible with the Paketo Full builder and Paketo Tiny builder.**
+*Note: Though the example above uses the Paketo Base Builder, this buildpack is
+also compatible with the Paketo Full Builder and Paketo Tiny Builder.*
 
-## Install a Specific Go Version
- 
-The Go CNB (Cloud Native Buildpack) allows you to specify a version of Go to
-use during deployment. This version can be specified via the `BP_GO_VERSION`
-environment variable or `go.mod`. When specifying a version of Go, you must
-choose a version that is available within the buildpack. The supported versions
-can be found
-[here](https://github.com/paketo-buildpacks/go-dist/releases/latest).
+## Override the Automatically Detected Go Version
 
-Please note that setting the Go version through a buildpack.yml file will be
-deprecated in Go Dist Buildpack v1.0.0.
+The Paketo Go buildpack will attempt to automatically detect the correct version
+of Go to install based on the version in your app's `go.mod`. It is possible to
+override this version by setting the `BP_GO_VERSION` environment variable at build time.
 
-The buildpack prioritizes the versions specified in
-each possible configuration location with the following precedence, from
-highest to lowest: `BP_GO_VERSION`, `go.mod`.
-
-Specifying a version of Go is not required. In the case that is not specified,
+`BP_GO_VERSION` can be set to any valid semver version or version constraint (e.g. `1.14.1`, `1.14.*`).
+For the versions available in the buildpack, see the buildpack's [releases page](https://github.com/paketo-buildpacks/go-dist/releases/latest). Specifying a version of Go is not required. In the case that is not specified,
 the buildpack will provide the default version, which can be seen in the
 `buildpack.toml` file.
 
-### Using BP_GO_VERSION
-
-To configure the buildpack to use Go v1.14.6 when deploying your app, set the
-following environment variable at build time, either directly (ex. `pack build
-my-app --env BP_GO_VERSION=1.14.6`) or through a
-[project.toml](https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md)
-file:
-
+### With pack and a Command-Line Flag
+When building with the pack CLI, set `BP_GO_VERSION` at build time with the `--env` flag.
 {{< code/copyable >}}
-BP_GO_VERSION="1.14.6"
+pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+  --env BP_GO_VERSION="1.14.1"
 {{< /code/copyable >}}
 
-### Deprecated: Using buildpack.yml
-Specifying the Go version through buildpack.yml configuration will be
-deprecated in Go Dist Buildpack v1.0.0. To migrate from using buildpack.yml
-please set the` $BP_GO_VERSION` environment variable.
+### With pack and a `project.toml`
+When building with the pack CLI, create a [project.toml](https://buildpacks.io/docs/app-developer-guide/using-project-descriptor) file in your app directory that sets `BP_GO_VERSION` at build time.
+{{< code/copyable >}}
+# project.toml
+[ build ]
+  [[ build.env ]]
+    name="BP_GO_VERSION"
+    value="1.41.1"
+{{< /code/copyable >}}
+
+
+The pack CLI will automatically detect the project file at build time.
+
+### Deprecated: With pack and a `buildpack.yml`
+Please note that setting the Go version through a buildpack.yml file will be
+deprecated in Go Dist Buildpack v1.0.0.
 
 ## Configure the `go build` Command
 
