@@ -7,11 +7,7 @@ menu:
     name: "NGINX Buildpack"
 ---
 
-This reference documentation offers an in-depth description of the behavior
-and configuration options of the 
-[Paketo NGINX Buildpack](https://github.com/paketo-buildpacks/nginx).
-For explanations of how to use the buildpack for several common use-cases, see
-the Web Servers How To [documentation](/docs/howto/web-servers/#nginx). 
+{{% reference_exec_summary bp_name="Paketo NGINX Buildpack" bp_repo="https://github.com/paketo-buildpacks/nginx" howto_docs_path="/docs/howto/web-servers/#nginx" %}}
 
 The NGINX Paketo Buildpack supports the installation of the NGINX binary distribution onto
 the `$PATH` inside a container. This makes it available to subsequent

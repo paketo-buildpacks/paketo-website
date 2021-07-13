@@ -9,11 +9,7 @@ aliases:
   - /docs/buildpacks/language-family-buildpacks/ruby/
 ---
 
-This documentation explains how to use the
-[Paketo Ruby Buildpack](https://github.com/paketo-buildpacks/ruby)
-to build applications for several common Ruby use-cases. For more in-depth
-description of the buildpack's behavior and configuration, see the Ruby
-Buildpack Reference [documentation](/docs/reference/ruby-reference).
+{{% howto_exec_summary bp_name="Paketo Ruby Buildpack" bp_repo="https://github.com/paketo-buildpacks/ruby" reference_docs_path="/docs/reference/ruby-reference" %}}
 
 ## Build a Sample App
 To build a sample app locally with this buildpack using the `pack` CLI, run

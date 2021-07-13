@@ -18,11 +18,7 @@ for each web server buildpack.
 
 ## HTTPD
 
-The [Paketo HTTPD Buildpack](https://github.com/paketo-buildpacks/httpd) enables
-users to build apps that run an Apache HTTPD server. The following are explanations
-of common HTTPD Buildpack user workflows. For more in-depth
-description of the buildpack's behavior and configuration, see the HTTPD Buildpack
-reference [documentation](/docs/reference/httpd-reference).
+{{% howto_exec_summary bp_name="Paketo HTTPD Buildpack" bp_repo="https://github.com/paketo-buildpacks/httpd" reference_docs_path="/docs/reference/httpd-reference" %}}
 
 ### Build a Sample App
 To build a sample app locally with this CNB using the `pack` CLI, run
@@ -78,11 +74,7 @@ launches.
 
 ## NGINX
 
-The [Paketo NGINX Buildpack](https://github.com/paketo-buildpacks/nginx) enables
-users to build apps that run an NGINX server. The following are explanations
-of common NGINX Buildpack user workflows. For more in-depth
-description of the buildpack's behavior and configuration see the NGINX Buildpack
-reference [documentation](/docs/reference/nginx-reference).
+{{% howto_exec_summary bp_name="Paketo NGINX Buildpack" bp_repo="https://github.com/paketo-buildpacks/nginx" reference_docs_path="/docs/reference/nginx-reference" %}}
 
 ### Build a Sample App
 To build a sample app locally with this CNB using the `pack` CLI, run

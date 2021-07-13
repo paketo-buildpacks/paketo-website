@@ -7,11 +7,7 @@ menu:
     name: ".NET Core Buildpack"
 ---
 
-This reference documentation offers an in-depth description of the behavior
-and configuration options of the 
-[Paketo .NET Core Buildpack](https://github.com/paketo-buildpacks/dotnet-core).
-For explanations of how to use the buildpack for several common use-cases, see
-the .NET Core How To [documentation](/docs/howto/dotnet-core). 
+{{% reference_exec_summary bp_name="Paketo .NET Core Buildpack" bp_repo="https://github.com/paketo-buildpacks/dotnet-core" howto_docs_path="/docs/howto/dotnet-core" %}}
 
 ## Supported Dependencies
 

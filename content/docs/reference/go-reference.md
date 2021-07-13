@@ -8,9 +8,7 @@ menu:
     name: "Go Buildpack"
 ---
 
-The [Go Paketo Buildpack](https://github.com/paketo-buildpacks/go) supports several popular
-configurations for Go apps.
-
+{{% reference_exec_summary bp_name="Paketo Go Buildpack" bp_repo="https://github.com/paketo-buildpacks/go" howto_docs_path="/docs/howto/go" %}}
 ## Supported Dependencies
 
 The Go Paketo Buildpack supports several versions of Go.

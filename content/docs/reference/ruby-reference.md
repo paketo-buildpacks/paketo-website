@@ -7,11 +7,7 @@ menu:
     name: "Ruby Buildpack"
 ---
 
-This reference documentation offers an in-depth description of the behavior
-and configuration options of the 
-[Paketo Ruby Buildpack](https://github.com/paketo-buildpacks/ruby).
-For explanations of how to use the buildpack for several common use-cases, see
-the Ruby How To [documentation](/docs/howto/ruby).
+{{% reference_exec_summary bp_name="Paketo Ruby Buildpack" bp_repo="https://github.com/paketo-buildpacks/ruby" howto_docs_path="/docs/howto/ruby" %}}
 
 ## Supported Dependencies
 
