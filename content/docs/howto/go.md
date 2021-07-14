@@ -38,7 +38,7 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
 *Note: Though the example above uses the Paketo Base Builder, this buildpack is
 also compatible with the Paketo Full Builder and Paketo Tiny Builder.*
 
-## Override the Automatically Detected Go Version
+## Override the Detected Go Version
 
 The Paketo Go buildpack will attempt to automatically detect the correct version
 of Go to install based on the version in your app's `go.mod`. It is possible to
@@ -75,44 +75,60 @@ deprecated in Go Dist Buildpack v1.0.0.
 
 ## Configure the `go build` Command
 
-The `go build` command supports a number of flags that allow users to override
-defaults for more control over build configurations. By default, the buildpack
-sets the following build flags:
+The Paketo Go buildpack compiles Go source code with the `go build` command, with certain opinionated flags by default. (See reference [documentation](/docs/reference/go-reference) for information about the default flagset.) It is possible to override or add to these defaults by setting the `BP_GO_BUILD_FLAGS` and `BP_GO_BUILD_LDFLAGS`
+environment variables at build time.
 
-* `-buildmode=pie`
-* `-mod=vendor` (if there is a go.mod file in the app source code)
+###  Set `-ldflags` for `go build`
+The Paketo Go buildpack has a dedicated environment variable for setting the value of `-ldflags`.
 
-### BP_GO_BUILD_FLAGS
-To set custom values for your build flags or override the defaults, assign a
-list of flags to the `BP_GO_BUILD_FLAGS` environment variable at build time, either directly (ex. `pack build
-my-app --env BP_GO_BUILD_FLAGS="-buildmode=some-build-mode -tags=paketo,production"`) or through a
-[project.toml](https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md)
-file:
-
+#### With pack and a Command-Line Flag
+When building with the pack CLI, set `BP_GO_BUILD_LDFLAGS` at build time with the `--env` flag. For example, to add `-ldflags="-X main.variable=some-value"` to the build flagset, set the environment variable as follows:
 {{< code/copyable >}}
-[[ build.env ]]
-  name = 'BP_GO_BUILD_FLAGS'
-  value = '-buildmode=some-build-mode -tags=paketo,production'
+pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+  --env BP_GO_BUILD_LDFLAGS="-X main.variable=some-value"
 {{< /code/copyable >}}
 
-### BP_GO_BUILD_LDFLAGS
-The Go CNB also allows users to configure the value of `-ldflags` for the `go build`
-command by setting the `BP_GO_BUILD_LDFLAGS` environment variable at build time, either directly (ex. `pack build
-my-app --env BP_GO_BUILD_LDFLAGS="-X main.variable=some-value"`) or through a
-[project.toml](https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md)
-file:
-
+#### With pack and a `project.toml`
+When building with the pack CLI, create a [project.toml](https://buildpacks.io/docs/app-developer-guide/using-project-descriptor) file in your app directory that sets `BP_GO_BUILD_LDFLAGS` at build time. For example, to add `-ldflags="-X main.variable=some-value"` to the build flagset, set the environment variable as follows:
 {{< code/copyable >}}
-[[ build.env ]]
-  name = 'BP_GO_BUILD_LDFLAGS'
-  value = '-X main.variable=some-value'
+# project.toml
+[ build ]
+  [[ build.env ]]
+    name="BP_GO_BUILD_LDFLAGS"
+    value="-X main.variable=some-value"
 {{< /code/copyable >}}
 
-### Deprecated: Using buildpack.yml
+The pack CLI will automatically detect the project file at build time.
+
+###  Set Other Flags for `go build`
+Setting `BP_GO_BUILD_FLAGS` will add to the Paketo Go buildpack's default flagset. Any value that you set for a given flag will override the value set by the buildpack. See reference [documentation](/docs/reference/go-reference) for information about default configuration.
+
+#### With pack and a Command-Line Flag
+When building with the pack CLI, set `BP_GO_BUILD_FLAGS` at build time with the `--env` flag. For example, to add `-buildmode=default -tags=paketo` to the build flagset, set the environment variable as follows:
+{{< code/copyable >}}
+pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+  --env BP_GO_BUILD_FLAGS="-buildmode=default -tags=paketo"
+{{< /code/copyable >}}
+
+#### With pack and a `project.toml`
+When building with the pack CLI, create a [project.toml](https://buildpacks.io/docs/app-developer-guide/using-project-descriptor) file in your app directory that sets `BP_GO_BUILD_FLAGS` at build time. For example, to add `-buildmode=default -tags=paketo` to the build flagset, set the environment variable as follows:
+{{< code/copyable >}}
+# project.toml
+[ build ]
+  [[ build.env ]]
+    name="BP_GO_BUILD_FLAGS"
+    value="-buildmode=default -tags=paketo"
+{{< /code/copyable >}}
+
+#### Deprecated: Using buildpack.yml
 Specifying the Go Build flags through buildpack.yml configuration will be
 deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
 please set the `$BP_GO_BUILD_FLAGS` environment variable.
 
+The pack CLI will automatically detect the project file at build time.
+
+--- REWRITE ENDS HERE --
+-------------------------------------------------------
 ## Build Multiple Binaries In An App Image
 The Go CNB allows users to specify multiple targets for `go build`. This will
 result in multiples binaries being built.Targets must be a list of paths

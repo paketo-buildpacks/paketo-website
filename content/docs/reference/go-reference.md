@@ -9,6 +9,48 @@ menu:
 ---
 
 {{% reference_exec_summary bp_name="Paketo Go Buildpack" bp_repo="https://github.com/paketo-buildpacks/go" howto_docs_path="/docs/howto/go" %}}
+
+The Paketo Go Buildpack is a [composite buildpack](/docs/concepts/buildpacks#composite-buildpacks) designed to build applications written in Go. 
+
+## Behavior
+
+### Detection
+
+### Build
+
+## Configuration
+### Environment Variables
+| Name                       | Purpose                                                        | Buildpack           |
+|----------------------------|----------------------------------------------------------------|---------------------|
+| `$BP_GO_VERSION`           | The version of the Golang toolchain to install                 | Paketo Go Dist      |
+| `$BP_GO_BUILD_FLAGS`       | Flags to use when executing `go build`                         | Paketo Go Build     |
+| `$BP_GO_BUILD_LDFLAGS`     | Value of `-ldflags` to use when executing `go build`           | Paketo Go Build     |
+| `$BP_GO_BUILD_IMPORT_PATH` | Path to sub-package(s) needed for build                        | Paketo Go Build     |
+| `$BP_KEEP_FILES`           | Files/paths to ignore when deleting source code from app image | Paketo Go Build     |
+| `$BP_GO_TARGETS`           | Package(s) to build with `go build`                            | Paketo Go Build     |
+| `$BP_IMAGE_LABELS`         | Arbitrary image labels                                         | Paketo Image Labels |
+| `$BP_OCI_AUTHORS`          | The `org.opencontainers.image.authors` image label             | Paketo Image Labels |
+| ... (etc)                  |                                                                |                     |
+
+
+### Bindings
+| Type            | Key                  | Value           | Description                                                                  |
+|-----------------|----------------------|-----------------|------------------------------------------------------------------------------|
+| ca-certificates | `<certificate-name>` | `<certificate>` | CA certificate to trust. Should contain exactly one PEM encoded certificate. |
+
+## Components
+| Name                                   | Required/Optional | Purpose                                               |
+|----------------------------------------|-------------------|-------------------------------------------------------|
+| Paketo CA Certificates Buildpack       | Optional          | Installs custom CA certificates                       |
+| Paketo Go Dist Buildpack               | Required          | Installs the Golang toolchain                         |
+| Paketo Go Mod Vendor Buildpack         | Optional          | Installs app Go modules                               |
+| Paketo Dep Buildpack                   | Optional          | Installs `dep`                                        |
+| Paketo Dep Ensure Buildpack            | Optional          | Uses `dep` to install app dependencies                |
+| Paketo Go Build Buildpack              | Required          | Compiles source code                                  |
+| Paketo Procfile Buildpack              | Optional          | Sets a user-specified start command                   |
+| Paketo Environment Variables Buildpack | Optional          | Sets user-specified launch-time environment variables |
+| Paketo Image Labels Buildpack          | Optional          | Adds user-specified labels to app image metadata      |
+
 ## Supported Dependencies
 
 The Go Paketo Buildpack supports several versions of Go.
@@ -121,3 +163,12 @@ cache layer in the app image.
 * Set by: `dep-ensure`
 * Phases: `build`
 * Value: Dep Cache layer path
+
+
+## Default Configurations
+with a certain flags by default supports a number of flags that allow users to override
+defaults for more control over build configurations. By default, the buildpack
+sets the following build flags:
+
+* `-buildmode=pie`
+* `-mod=vendor` (if there is a go.mod file in the app source code)
