@@ -1,3 +1,5 @@
-<div class="docs-body__table-of-contents docs-body__table-of-contents--{{ .viewer }}">
-    {{ .context.Page.TableOfContents }}
+{{ if ne .context.Params.toc false}}
+<div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--{{ .viewer }}">
+    {{ .context.Page.TableOfContents  }}
 </div>
+{{ end }}
