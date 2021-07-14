@@ -7,8 +7,6 @@
             {{ partial "github-edit.html" . }}
             <h1 class="">{{ .Title }}</h1>
             {{ partial "v2/docs-table-of-contents.html" (dict "context" . "viewer" "mobile") }}
-            {{ .Scratch.Set "path" .File.Path }}
-            {{ .Scratch.Set "filename" .File.TranslationBaseName }}
             <div class="docs-body__markdown">
                 {{ .Content }}
             </div>
