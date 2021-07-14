@@ -1,5 +1,5 @@
 ---
-title: "PHP Buildpack"
+title: "How to Build PHP Apps with Paketo Buildpacks"
 weight: 328
 menu:
   main:
@@ -9,9 +9,9 @@ aliases:
   - /docs/buildpacks/language-family-buildpacks/php/
 ---
 
-The [PHP Paketo Buildpack](https://github.com/paketo-buildpacks/php) enables developers to build
-PHP-based applications.
+{{% howto_exec_summary bp_name="Paketo PHP Buildpack" bp_repo="https://github.com/paketo-buildpacks/php" reference_docs_path="/docs/reference/php-reference" %}}
 
+## Build a Sample App
 To build a sample app locally with this CNB using the `pack` CLI, run
 
 {{< code/copyable >}}
@@ -27,15 +27,7 @@ for how to run the app.
 **NOTE: The Paketo Full builder is required because PHP relies on operating
 system libraries only present in the Full builder.**
 
-
-## Supported Dependencies
-
-The PHP Paketo Buildpack supports several versions of PHP.
-For more details on the specific versions supported in a given buildpack
-version, see the [release
-notes](https://github.com/paketo-buildpacks/php/releases).
-
-## Specifying a PHP Version
+## Install a Specific PHP Version
 
 The PHP Dist CNB allows you to specify a version of PHP to use during
 deployment. This version can be specified in a number of ways, including
@@ -77,7 +69,7 @@ app, include the values below in your `composer.json` file:
 If your app has a `composer.lock` file, the buildpack will use
 the php version defined there.
 
-## Composer Configuration
+## Configure Composer
 
 The following options are configurable in the app's `buildpack.yml`
 
@@ -102,7 +94,7 @@ composer:
   install_global: ["list", "of", "install", "options"]
 {{< /code/copyable >}}
 
-## Web Server Configuration
+## Select a Web Server
 
 The PHP buildpack supports the use of 3 different web servers:
 
@@ -124,6 +116,7 @@ php:
  You can also provide additional configurations like follows:
 
 {{< code/copyable >}}
+# buildpack.yml
 php:
   # directory where web app code is stored
   # default: htdocs
@@ -141,13 +134,13 @@ php:
   serveradmin: admin@localhost
 {{< /code/copyable >}}
 
-## Vendoring composer packages
+## Vendor composer packages
 
 If your php app that uses `composer` has a valid `vendor` directory, then
 the buildpack will not download those packages. It will instead use the the
 packages location in the `vendor` directory.
 
-## Configuring custom .ini files
+## Configure custom .ini files
 
 If you like to configure custom .ini files in addition to the `php.ini`
 provided by the buildpack, you can create a directory named `.php.ini.d` at the
@@ -155,56 +148,26 @@ root of your app and put your custom ini files there. See
 [`PHP_INI_SCAN_DIR`](https://paketo.io/docs/buildpacks/language-family-buildpacks/php/#php_ini_scan_dir)
 in the Variables section below.
 
-## Buildpack-Set Environment Variables
+## Install a Custom CA Certificate
+.Net Core Buildpack users can provide their own CA certificates and have them
+included in the container root truststore at build-time and runtime by
+following the instructions outlined in the [CA
+Certificates](/docs/reference/configuration/#ca-certificates)
+section of our configuration docs.
 
-The PHP CNB sets a number of environment variables during the `build` and
-`launch` phases of the app lifecycle. The sections below describe each
-environment variable and its impact on your app.
+## Override the Start Process Set by the Buildpack
+.Net Core Buildpack users can set custom start processes for their app image by
+following the instructions in the
+[Procfiles](/docs/reference/configuration/#procfiles) section
+of our configuration docs.
 
-### APP_ROOT
+## Set Environment Variables for App Launch Time
+.Net Core Buildpack users can embed launch-time environment variables in their
+app image by following the documentation for the [Environment Variables
+Buildpack](https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md).
 
-* Set by: `httpd` buildpack
-* Phases: `launch`
-* Value: path of app source
-
-### SERVER_ROOT
-
-* Set by: `httpd` buildpack
-* Phases: `launch`
-* Value: path of the httpd installation
-
-### MIBDIRS
-
-* Set by: `php-dist` buildpack
-* Phases: `build` and `launch`
-* Value: See [php documentation](https://www.php.net/manual/en/snmp.installation.php)
-
-### PATH
-
-* Set by: `php-dist` buildpack
-* Phases: `build` and `launch`
-* Value: path to the php executable
-
-### PHP_API
-
-* Set by: `php-dist` buildpack
-* Phases: `build` and `launch`
-* Value: internl api version (YYYYMMDD)
-
-### PHP_EXTENSION_DIR
-
-* Set by: `php-dist` buildpack
-* Phases: `build` and `launch`
-* Value: location of directory with dynamic libraries for extensions
-
-### PHP_HOME
-
-* Set by: `php-dist` buildpack
-* Phases: `build` and `launch`
-* Value: location of php installation
-
-### PHP_INI_SCAN_DIR
-
-* Set by: `php-web` buildpack
-* Phases: `build` and `launch`
-* Value: `<APP-ROOT>/.php.ini.d`
+## Add Custom Labels to the App Image
+.Net Core Buildpack users can add labels to their app image by following the
+instructions in the [Applying Custom
+Labels](/docs/reference/configuration/#applying-custom-labels)
+section of our configuration docs.
