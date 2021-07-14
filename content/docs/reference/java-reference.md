@@ -9,6 +9,10 @@ menu:
 
 {{% reference_exec_summary bp_name="Paketo Java Buildpack" bp_repo="https://github.com/paketo-buildpacks/java" howto_docs_path="/docs/howto/java" %}}
 
+The [Paketo Java Buildpack][java] allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
+
+The Java Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of its [components](#components). For a full set of configuration options and capabilities see the homepages for the component buildpacks.
+
 ## About the JVM
 
 The Java Buildpack uses the [BellSoft Liberica][liberica] implementations of the JRE and JDK. JVM installation is handled by the [BellSoft Liberica Buildpack][bp/bellsoft-liberica]. The JDK will be installed in the build container but only the JRE will be contributed to the application image.

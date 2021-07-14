@@ -11,11 +11,9 @@ aliases:
 
 ---
 
-{{% howto_exec_summary bp_name="Paketo Java Buildpack" bp_repo="https://github.com/paketo-buildpacks/java" reference_docs_path="/docs/reference/java-reference" %}}
-
-The [Paketo Java Buildpack][java] allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
-
-The Java Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of its [components](#components). For a full set of configuration options and capabilities see the homepages for the component buildpacks.
+This documentation explains how to use the Paketo buildpacks
+to build Java applications for several common use-cases. For more in-depth
+description of the buildpacks' behavior and configuration see the [Paketo Java Buildpack][reference/java] and [Paketo Java Native Image Buildpack][reference/java-native-image] reference documentation.
 
 ## About the Examples
 
@@ -47,7 +45,7 @@ The Java Buildpack can build from source using any of the following build tools:
 * [Gradle][gradle] - Support provided by the [Gradle Buildpack][bp/gradle]
 * [Leiningen][leiningen] - Support provided by the [Leiningen Buildpack][bp/leiningen]
 * [Maven][maven] - Support provided by the [Maven Buildpack][bp/maven]
-* [SBT][sbt] - Support provided by the [SBT Buildpack][bp/sbt])
+* [SBT][sbt] - Support provided by the [SBT Buildpack][bp/sbt]
 
 The correct build tool to use will be detected based on the contents of the application directory.
 
@@ -459,6 +457,9 @@ pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buil
 [composite buildpack]:{{< ref "/docs/concepts/buildpacks#composite-buildpacks" >}}
 [java/building from source]:{{< ref "/docs/howto/java#building-from-source" >}}
 [java/spring boot applications]:{{< ref "/docs/howto/java#spring-boot-applications" >}}
+[reference/java]:{{< ref "/docs/reference/java-reference" >}}
+[reference/java-native-image]:{{< ref "/docs/reference/java-native-image-reference" >}}
+
 
 <!-- cnb references -->
 [pack]:https://github.com/buildpacks/pack
