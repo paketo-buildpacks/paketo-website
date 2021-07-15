@@ -20,7 +20,7 @@
             <nav class="nav" id="nav-tray" >
                 <div class="nav__linkarea">
                     <a class="nav-link {{ $textColor }}" href="/docs">docs</a>
-                    <a class="nav-link {{ $textColor }}" href="/contribute">community</a>
+                    <a class="nav-link {{ $textColor }}" href="/community">community</a>
                     <a class="nav-link {{ $textColor }}" href="https://blog.paketo.io">blog</a>
                     <a class="nav-link {{ $textColor }}" href="https://github.com/paketo-buildpacks">github</a>
                 </div>
@@ -28,8 +28,12 @@
         </div>
     </div>
     <div class="desktop-nav">
-        <a class="nav-link {{ $textColor }}" href="/docs">docs</a>
-        <a class="nav-link {{ $textColor }}" href="/contribute">community</a>
+        {{ $docs := "" }}
+        {{ $community := "" }}
+        {{ with .context.File }}{{ if in .Path "docs" }}{{ $docs = "nav-link--active" }}{{ end }}{{ end }}
+        <a class="nav-link {{ $textColor }}{{ $docs }}" href="/docs">docs</a>
+        {{ with .context.File }}{{ if in .Path "community" }}{{ $community = "nav-link--active" }}{{ end }}{{ end }}
+        <a class="nav-link {{ $textColor }}{{ $community }}" href="/community">community</a>
         <a class="nav-link {{ $textColor }}" href="https://blog.paketo.io">blog</a>
         <a class="nav-link {{ $textColor }}" href="https://github.com/paketo-buildpacks">github</a>
     </div>
