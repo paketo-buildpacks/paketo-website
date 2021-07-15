@@ -28,8 +28,12 @@
         </div>
     </div>
     <div class="desktop-nav">
-        <a class="nav-link {{ $textColor }}" href="/docs">docs</a>
-        <a class="nav-link {{ $textColor }}" href="/contribute">community</a>
+        {{ $docs := "" }}
+        {{ $contribute := "" }}
+        {{ if in .context.File.Path "docs" }}{{ $docs = "nav-link--active" }}{{ end }}
+        <a class="nav-link {{ $textColor }}{{ $docs }}" href="/docs">docs</a>
+        {{ if in .context.File.Path "contribute" }}{{ $contribute = "nav-link--active" }}{{ end }}
+        <a class="nav-link {{ $textColor }}{{ $contribute }}" href="/contribute">community</a>
         <a class="nav-link {{ $textColor }}" href="https://blog.paketo.io">blog</a>
         <a class="nav-link {{ $textColor }}" href="https://github.com/paketo-buildpacks">github</a>
     </div>
