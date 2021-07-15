@@ -1,1 +1,5 @@
-<h{{ .Level }} id="{{ .Anchor | safeURL }}" class="markup-heading"><a class="markup-heading__link" href="#{{ .Anchor | safeURL }}">{{ .Text | safeHTML }}</a></h{{ .Level }}>
+<h{{ .Level }} id="{{ if eq .Level 1 }}title{{ else }} {{ .Anchor | safeURL }} {{ end }}" class="markup-heading">
+    <a class="markup-heading__link" href="#{{ if eq .Level 1 }}title{{ else }}{{ .Anchor | safeURL }}{{ end }}">
+        {{ .Text | safeHTML }}
+    </a>
+</h{{ .Level }}>
