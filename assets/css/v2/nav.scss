@@ -62,6 +62,10 @@
     height: fit-content;
 }
 
+.nav-link--active {
+    border-bottom: 2px solid $light-text-color
+}
+
 .nav-opener {
     display: block;
     position: fixed;

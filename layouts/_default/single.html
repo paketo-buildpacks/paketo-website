@@ -10,7 +10,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    {{ partial "v2/header.html" (dict "headerTheme" "dark" ) }}
+    {{ partial "v2/header.html" (dict "headerTheme" "dark" "context" . ) }}
 
     <div class="docs single">
         {{ .Content }}
