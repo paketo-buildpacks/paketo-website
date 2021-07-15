@@ -1,5 +1,5 @@
 ---
-title: "Node.js Buildpack"
+title: "How to Build Node.js Apps with Paketo Buildpacks"
 weight: 324
 menu:
   main:
@@ -9,9 +9,13 @@ aliases:
   - /docs/buildpacks/language-family-buildpacks/nodejs/
 ---
 
-The [Node.js Paketo Buildpack](https://github.com/paketo-buildpacks/nodejs) supports several popular configurations for Node.js apps.
+This documentation explains how to use the [Paketo Node.js Buildpack](https://github.com/paketo-buildpacks/nodejs)
+to build applications for several common use-cases. For more in-depth
+description of the buildpack's behavior and configuration see the Node.js
+Buildpack Reference [documentation](/docs/reference/nodejs-reference).
 
-To build a sample app locally with this CNB using the `pack` CLI, run
+## Build a Sample App
+To build a sample app locally with this buildpack using the pack CLI, run
 
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
@@ -27,18 +31,13 @@ for how to run the app.
 also compatible with the Paketo Full builder. The Paketo Full builder is
 required if your app utilizes common C libraries.**
 
-## Supported Dependencies
-The Node.js Paketo Buildpack supports several versions of Node.js.
-For more details on the specific versions supported in a given buildpack
-version, see the [release
-notes](https://github.com/paketo-buildpacks/nodejs/releases).
-
-## Specifying a Node Engine Version
-The Node Engine CNB (Cloud Native Buildpack) allows you to specify a version of Node.js to use during
+## Install a Specific Node Engine Version
+The Node.js buildpack allows you to specify a version of Node.js to use during
 deployment. This version can be specified in a number of ways, including
 through the `BP_NODE_VERSION` environment variable, a `package.json`, `.nvmrc` or `.node-version` files. When specifying a
 version of the Node.js engine, you must choose a version that is available
-within the buildpack. The supported versions can be found [here](https://github.com/paketo-buildpacks/node-engine/releases/latest).
+within the buildpack. The supported versions can be found on the Paketo Node Engine
+component buildpack's [releases page](https://github.com/paketo-buildpacks/node-engine/releases/latest).
 
 The buildpack prioritizes the versions specified in
 each possible configuration location with the following precedence, from
@@ -109,72 +108,11 @@ OR
 Specifying the Node version through `buildpack.yml` configuration will be deprecated in Node Engine Buildpack v1.0.0.
 To migrate from using `buildpack.yml` please set the `$BP_NODE_VERSION` environment variable.
 
-## Buildpack-Set Environment Variables
-The Node.js CNB sets a number of environment variables during the `build` and
-`launch` phases of the app lifecycle. The sections below describe each
-environment variable and its impact on your app.
-
-### MEMORY_AVAILABLE
-The `MEMORY_AVAILABLE` environment variable reports the total amount of memory
-available to the app. The Node.js CNB calculates this value from the limits
-specified by the operating system in
-`/sys/fs/cgroup/memory/memory.limit_in_bytes`.
-
-* Set by: `profile.d`
-* Phases: `launch`
-* Value: non-negative integer
-
-### NODE_ENV
-The `NODE_ENV` environment variable specifies the environment in which the app
-runs.
-
-* Set by: `node-engine` buildpack
-* Phases: `build`
-* Value: production
-
-### NODE_HOME
-The `NODE_HOME` environment variable sets the path to the `node` installation.
-
-* Set by: `node-engine` buildpack
-* Phases: `build`
-* Value: path to the `node` installation
-
-### NODE_VERBOSE
-The `NODE_VERBOSE` environment variable adjusts the amount of logging output
-from NPM during installs.
-
-* Set by: `node-engine` buildpack
-* Phases: `build`
-* Value: false
-
-### NPM\_CONFIG\_LOGLEVEL
-The `NPM_CONFIG_LOGLEVEL` environment variable adjusts the level of logging NPM
-uses.
-
-* Set by: `npm-install` buildpack
-* Phases: `build`
-* Value: "error"
-
-### NPM\_CONFIG\_PRODUCTION
-The `NPM_CONFIG_PRODUCTION` environment variable installs only production
-dependencies if NPM install is used.
-
-* Set by: `npm-install` buildpack
-* Phases: `build`
-* Value: false
-
-### PATH
-The `node_modules/.bin` directory is appended onto the `PATH` environment variable
-
-* Set by: `yarn-install` or `npm-install` buildpacks
-* Phases: `build`
-* Value: path to the `node_modules/.bin` directory
-
-## Enabling Heap Memory Optimization
+## Enable Heap Memory Optimization
 Node.js limits the total size of all objects on the heap. Enabling the
 `optimize-memory` feature sets this value to three-quarters of the total memory
 available in the container. For example, if your app is limited to 1&nbsp;GB
-when pushed, the heap of your Node.js app is limited to 768&nbsp;MB.
+at run time, the heap of your Node.js app is limited to 768&nbsp;MB.
 
 You can enable memory optimization through the `BP_NODE_OPTIMIZE_MEMORY` environment variable.
 
@@ -195,35 +133,7 @@ deprecated in Node Engine Buildpack v1.0.0. To migrate from using
 `buildpack.yml` please set the `BP_NODE_OPTIMIZE_MEMORY` environment variable
 mentioned above.
 
-## Node Start Command
-The Node.js CNB allows you to build a Node.js app that does not rely on any
-external packages. To detect whether for not the app is a Node.js app the
-Node.js app looks for one of the following files in your apps root directory:
-- `server.js`
-- `app.js`
-- `main.js`
-- `index.js`
-
-The Node.js CNB will then set the start command to be `node <detected file>`.
-If you have multiples of these files in your apps root directory then the one
-will be chosen based on a priority list which reflects the order of the list
-above with `server.js` being the highest priority and  `index.js` being the
-lowest.
-
-### Using BP_LAUNCHPOINT
-The `BP_LAUNCHPOINT` environment variable may be used to specify a file for the
-start command that is not included in the set of files the buildpack looks for
-by default. The buildpack will verify that the file specified exists and then
-use that as to set the start command. `BP_LAUNCHPOINT` can be used as follows:
-
-
-{{< code/copyable >}}
-BP_LAUNCHPOINT=./src/launchpoint.js
-{{< /code/copyable >}}
-
-This will result in the following start command: `node src/launchpoint.js`
-
-## Specifying Project Directory
+## Build an App From Source in a Subdirectory
 
 To specify a subdirectory to be used as the root of the app, please use the
 `BP_NODE_PROJECT_PATH` environment variable at build time either directly or
@@ -246,161 +156,85 @@ you could then set the following at build time.
 $BP_NODE_PROJECT_PATH=node-app
 ```
 
-## Package Management with NPM
-Many Node.js apps require a number of third-party libraries to perform common
-tasks and behaviors. NPM is an option for managing these third-party
-dependencies that the Node.js CNB fully supports. Including a `package.json`
-file in your app source code triggers the NPM installation process. The sections
-below describe the NPM installation process run by the buildpack.
+## Build an App that Uses NPM
+The Node.js buildpack can detect automatically if an app requires `npm`.
 
-### NPM Installation Process
-NPM supports several distinct methods for installing your package dependencies.
-Specifically, the Node.js CNB runs either the [`npm
-install`](https://docs.npmjs.com/cli-commands/install), [`npm
-rebuild`](https://docs.npmjs.com/cli-commands/rebuild.html), or [`npm
-ci`](https://docs.npmjs.com/cli-commands/ci.html) commands to build your app
-with the right set of dependencies. When deciding which installation process to
-use, the Node.js CNB consults your app source code, looking for the presence of
-specific files or directories. The installation process used also determines
-how the Node.js CNB will reuse layers when rebuilding your app.
-
-The table below shows the process the Node.js CNB uses to determine an
-installation process for NPM packages. When a combination of the files and
-directories listed in the table below are present in your app source code,
-the Node.js CNB uses an installation process that ensures the
-correct third-party dependencies are installed during the build process.
-
-
-| `package-lock.json` | `node_modules` | `npm-cache` | Command |
-| ------------------- | -------------- | ----------- | ------- |
-| X | X | X | `npm install` |
-| X | X | ✓ | `npm install` |
-| X | ✓ | X | `npm rebuild` |
-| X | ✓ | ✓ | `npm rebuild` |
-| ✓ | X | X | `npm ci` |
-| ✓ | X | ✓ | `npm ci` |
-| ✓ | ✓ | X | `npm rebuild` |
-| ✓ | ✓ | ✓ | `npm ci` |
-
-The following sections give more information about the files listed in the
-table above, including how to generate them, if desired.
-
-#### package-lock.json
-The `package-lock.json` file is generated by running `npm install`.  For
-more information, see
-[npm-package-lock.json](https://docs.npmjs.com/files/package-lock.json) in the
-NPM documentation.
-
-#### node_modules
-The `node_modules` directory contains vendored copies of all the packages
-installed by the `npm install` process. For more information, see the [Node
-Modules](https://docs.npmjs.com/files/folders.html#node-modules) section of the
-_npm-folders_ topic in the NPM documentation.
-
-#### npm-cache
-The `npm-cache` directory contains a content-addressable cache that stores all
-HTTP-request- and package-related data. Additionally, including a cache ensures
-that the app can be built entirely offline.
-
-To populate an `npm-cache` directory:
-1. Navigate to your source code directory.
-1. Run:
-{{< code/copyable >}}
-npm ci --cache npm-cache
-{{< /code/copyable >}}
-
-For more information about the NPM cache, see
-[npm-cache](https://docs.npmjs.com/cli/cache) in the NPM documentation.
-
-### Determining Node Modules Layer Reuse
-To improve build times for apps, the Node.js CNB has a method for reusing the build
-results from previous builds. When the CNB determines that a portion of the
-build process can be reused from a previous build, the CNB uses the previous
-result. Each installation process uses a different method for determining
-whether the CNB can reuse a previous build result.
-
-For `npm install`, the CNB never reuses a `node_modules` directory from previous builds.
-
-For `npm rebuild`, the CNB can reuse a `node_modules` directory from a previous
-build if the included `node_modules` directory in the app source code has not
-changed since the prior build.
-
-For `npm ci`, the CNB can reuse a `node_modules` directory from a previous
-build if the `package-lock.json` file included in the app source code has not
-changed since the prior build.
-
-### NPM Configuration
-The Node.js CNB respects native configuration options for NPM. If you would
+### Configure NPM During the Build
+The Node.js buildpack respects native configuration options for NPM. If you would
 like to learn more about NPM native configuration please check the NPM
 Configuration [documentation](https://docs.npmjs.com/cli/v6/using-npm/config)
 and the `.npmrc`
 [documentation](https://docs.npmjs.com/cli/v6/configuring-npm/npmrc).
 
-### NPM Start Command
-As part of the build process, the Node.js CNB determines a start command for
-your app. The start command differs depending on which package management
-tooling the Node.js CNB uses. If the Node.js CNB uses `npm` or `yarn` to
-install packages, the start command is generated from the contents of
-`package.json`.
+## Build an App that Uses Yarn
+The Node.js buildpack can detect automatically if an app requires `yarn`, by
+checking for a `yarn.lock` file.
 
-## Package Management with Yarn
-Many Node.js apps require a number of third-party libraries to perform common
-tasks and behaviors. Yarn is an alternative option to NPM for managing these
-third-party dependencies. Including `package.json` and `yarn.lock` files in
-your app source code triggers the Yarn installation process.
-
-### Yarn Installation Process
-The Node.js CNB runs `yarn install` and `yarn check` to ensure that third-party
-dependencies are properly installed.
-The `yarn.lock` file contains a fully resolved set of package dependencies that
-Yarn manages. For more information, see
-[yarn.lock](https://yarnpkg.com/lang/en/docs/yarn-lock/) in the Yarn
-documentation.
-
-### Yarn Configuration
-The Node.js CNB respects native configuration options for Yarn. If you would
+### Configure Yarn During the Build
+The Node.js buildpack respects native configuration options for Yarn. If you would
 like to learn more about Yarn configuration using `.yarnrc` please visit [the
 Yarn documentation](https://classic.yarnpkg.com/en/docs/yarnrc).
 
-### Yarn Start Command
-As part of the build process, the Node.js CNB determines a start command for
-your app. The start command differs depending on which package management
-tooling the Node.js CNB uses. If the Node.js CNB uses `yarn` to install
-packages, the start command is `yarn start`.
+## Compile Native Extensions with `node-gyp`
+If your app requires compilation of native extensions using `node-gyp`, the Node.js buildpack requires that
+you use the Paketo Full Builder. This is because `node-gyp` requires `python` which is excluded from the
+the Paketo Base Builder's stack, and the module may require other shared objects.
 
-## Projects Without Package Management
-The Node.js CNB also supports simple apps that do not require third-party packages.
+### With pack and a Command-Line Flag
+When building with the pack CLI, specify the latest Paketo Full Builder at build time
+with the `--builder` flag.
 
-### Start Command
-If no package manager is detected, the Node.js CNB will set the start command
-`node server.js`. The app name is ___not___ currently configurable.
+{{< code/copyable >}}
+pack build my-app --builder paketobuildpacks/builder:full
+{{< /code/copyable >}}
 
-## Using CA Certificates
+## Build an App Without Package Management
+
+The Node.js buildpack supports building apps without `node_modules` or a `package.json`.
+It will detect this type of app automatically, by looking for one of these four files in
+the root of your application directory:
+- `server.js`
+- `app.js`
+- `main.js`
+- `index.js`
+
+### Specify A Custom Entrypoint
+If your app's entrypoint file is not one of the four files named above,
+you can specify a different file name (or path) by setting the `BP_LAUNCHPOINT`
+environment variable at build time.
+
+#### Using BP_LAUNCHPOINT
+`BP_LAUNCHPOINT` can be set as follows:
+
+
+{{< code/copyable >}}
+BP_LAUNCHPOINT="./src/launchpoint.js"
+{{< /code/copyable >}}
+
+The image produced by the build will run `node src/launchpoint.js`
+as its start command.
+
+## Install a Custom CA Certificate
 Node.js Buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
 following the instructions outlined in the [CA
-Certificates](https://paketo.io/docs/buildpacks/configuration/#ca-certificates)
+Certificates](docs/reference/configuration/#ca-certificates)
 section of our configuration docs.
 
-## Setting Custom Start Processes
+## Override the Start Process Set by the Buildpack
 Node.js Buildpack users can set custom start processes for their app image by
 following the instructions in the
-[Procfiles](https://paketo.io/docs/buildpacks/configuration/#procfiles) section
+[Procfiles](https://paketo.io/docs/reference/configuration/#procfiles) section
 of our configuration docs.
 
-## Setting Environment Variables in the App Image
+## Set Environment Variables for App Launch Time
 Node.js Buildpack users can embed launch-time environment variables in their
 app image by following the documentation for the [Environment Variables
 Buildpack](https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md).
 
-## Adding Custom Labels to the App Image
+## Add Custom Labels to the App Image
 Node.js Buildpack users can add labels to their app image by following the
 instructions in the [Applying Custom
-Labels](https://paketo.io/docs/buildpacks/configuration/#applying-custom-labels)
+Labels](/docs/reference/configuration/#applying-custom-labels)
 section of our configuration docs.
 
-## Stack support
-The Node.js Buildpack runs fine on the Base builder for most apps. If your app
-requires compilation of native extensions using `node-gyp`, the buildpack requires that
-you use the Full builder. This is because `node-gyp` requires `python` which is excluded from the
-the Base builder, and the module may require other shared objects.
