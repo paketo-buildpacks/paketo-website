@@ -15,8 +15,6 @@
             {{ partial "github-edit.html" . }}
             <p class="docs-mod-time"><strong>Last modified:</strong> {{ .Lastmod.Format "January 2, 2006" }}</p>
         </div>
-        <div class="docs-body__table-of-contents-container">
-            {{ partial "v2/docs-table-of-contents.html" (dict "context" . "viewer" "desktop") }}
-        </div>
+        {{ partial "v2/docs-table-of-contents.html" (dict "context" . "viewer" "desktop") }}
     </div>
 </div>

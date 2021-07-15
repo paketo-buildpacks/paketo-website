@@ -5,6 +5,7 @@ menu: "main"
 aliases:
   - /docs/
   - /docs/buildpacks/language-family-buildpacks/
+toc: false
 ---
 
 This section gets you started with Paketo Buildpacks using Paketo **Builders**, the **Pack** CLI, and **Docker**.
