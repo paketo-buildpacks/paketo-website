@@ -1,6 +1,8 @@
 ---
-title: "Contribute"
+title: "Community"
 weight: 100
+aliases:
+  - /contribute
 ---
 
 # Contributing to Paketo Buildpacks
