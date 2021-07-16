@@ -33,6 +33,14 @@
     margin-bottom: 40px;
 }
 
+.text__screen-reader-link {
+    position: absolute;
+    width: 1px;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 .text--light {
     color: $light-text-color;
 }
