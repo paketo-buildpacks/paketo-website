@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/howto/php/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.c58411b93ef938103ca39dd21f9d9c13817bff0cf25ea851ff662c6f57973bce.css">
+<link rel="stylesheet" href="/css/main-v1.min.7a9a3fb621d1aafddddeee0bff82cae4463214bd78ad0dd0fe0ef5781ee7a41e.css">
 </head>
 
 <body>
@@ -31,6 +31,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
+
+    <div id="header-skip-link" class="screenreader-container">
+    <a href="#title" class="screenreader-text">Skip to Content</a>
+</div>
 
     
 
@@ -336,7 +340,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 class="">PHP Buildpack</h1>
+            <h1 id="title">PHP Buildpack</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
@@ -382,11 +386,19 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/php \
 for how to run the app.</p>
 <p><strong>NOTE: The Paketo Full builder is required because PHP relies on operating
 system libraries only present in the Full builder.</strong></p>
-<h2 id="supported-dependencies" class="markup-heading"><a class="markup-heading__link" href="#supported-dependencies">Supported Dependencies</a></h2><p>The PHP Paketo Buildpack supports several versions of PHP.
+<h2 id=" supported-dependencies " class="markup-heading">
+    <a class="markup-heading__link" href="#supported-dependencies">
+        Supported Dependencies
+    </a>
+</h2><p>The PHP Paketo Buildpack supports several versions of PHP.
 For more details on the specific versions supported in a given buildpack
 version, see the <a href="https://github.com/paketo-buildpacks/php/releases">release
 notes</a>.</p>
-<h2 id="specifying-a-php-version" class="markup-heading"><a class="markup-heading__link" href="#specifying-a-php-version">Specifying a PHP Version</a></h2><p>The PHP Dist CNB allows you to specify a version of PHP to use during
+<h2 id=" specifying-a-php-version " class="markup-heading">
+    <a class="markup-heading__link" href="#specifying-a-php-version">
+        Specifying a PHP Version
+    </a>
+</h2><p>The PHP Dist CNB allows you to specify a version of PHP to use during
 deployment. This version can be specified in a number of ways, including
 through <code>buildpack.yml</code> or <code>composer.json</code> files. When specifying a
 version of PHP, you must choose a version that is available
@@ -394,7 +406,11 @@ within the buildpack.</p>
 <p>The buildpack prioritizes the versions specified in
 each possible configuration location with the following precedence, from
 highest to lowest: <code>buildpack.yml</code>, <code>composer.json</code>.</p>
-<h3 id="using-buildpackyml" class="markup-heading"><a class="markup-heading__link" href="#using-buildpackyml">Using buildpack.yml</a></h3><p>To configure the buildpack to use PHP version when deploying your app,
+<h3 id=" using-buildpackyml " class="markup-heading">
+    <a class="markup-heading__link" href="#using-buildpackyml">
+        Using buildpack.yml
+    </a>
+</h3><p>To configure the buildpack to use PHP version when deploying your app,
 include the values like below in your <code>buildpack.yml</code> file. Any valid semver
 constraints are acceptable.</p>
 <pre class="copyable"><code class="copyable__code">---
@@ -402,7 +418,11 @@ php:
   version: 7.2.*
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h3 id="using-composerjson" class="markup-heading"><a class="markup-heading__link" href="#using-composerjson">Using composer.json</a></h3><p>If your apps use <code>composer</code>, you can specify the PHP version your apps use
+<h3 id=" using-composerjson " class="markup-heading">
+    <a class="markup-heading__link" href="#using-composerjson">
+        Using composer.json
+    </a>
+</h3><p>If your apps use <code>composer</code>, you can specify the PHP version your apps use
 during deployment by configuring the <code>require</code> field in the <code>composer.json</code>
 file. To configure the buildpack to use PHP v7.1 or greater when deploying your
 app, include the values below in your <code>composer.json</code> file:</p>
@@ -415,7 +435,11 @@ app, include the values below in your <code>composer.json</code> file:</p>
 
 <p>If your app has a <code>composer.lock</code> file, the buildpack will use
 the php version defined there.</p>
-<h2 id="composer-configuration" class="markup-heading"><a class="markup-heading__link" href="#composer-configuration">Composer Configuration</a></h2><p>The following options are configurable in the app&rsquo;s <code>buildpack.yml</code></p>
+<h2 id=" composer-configuration " class="markup-heading">
+    <a class="markup-heading__link" href="#composer-configuration">
+        Composer Configuration
+    </a>
+</h2><p>The following options are configurable in the app&rsquo;s <code>buildpack.yml</code></p>
 <pre class="copyable"><code class="copyable__code">composer:
   # this allows you to specify a version constaint for composer
   # any valid semver constaints (e.g. 1.* and 1.10.*) are also acceptable
@@ -436,7 +460,11 @@ the php version defined there.</p>
   install_global: [&#34;list&#34;, &#34;of&#34;, &#34;install&#34;, &#34;options&#34;]
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h2 id="web-server-configuration" class="markup-heading"><a class="markup-heading__link" href="#web-server-configuration">Web Server Configuration</a></h2><p>The PHP buildpack supports the use of 3 different web servers:</p>
+<h2 id=" web-server-configuration " class="markup-heading">
+    <a class="markup-heading__link" href="#web-server-configuration">
+        Web Server Configuration
+    </a>
+</h2><p>The PHP buildpack supports the use of 3 different web servers:</p>
 <ul>
 <li>PHP built-in Web Server</li>
 <li>Apache HTTP Web Server</li>
@@ -468,53 +496,97 @@ will be generated for you by the buildpack.</p>
   serveradmin: admin@localhost
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h2 id="vendoring-composer-packages" class="markup-heading"><a class="markup-heading__link" href="#vendoring-composer-packages">Vendoring composer packages</a></h2><p>If your php app that uses <code>composer</code> has a valid <code>vendor</code> directory, then
+<h2 id=" vendoring-composer-packages " class="markup-heading">
+    <a class="markup-heading__link" href="#vendoring-composer-packages">
+        Vendoring composer packages
+    </a>
+</h2><p>If your php app that uses <code>composer</code> has a valid <code>vendor</code> directory, then
 the buildpack will not download those packages. It will instead use the the
 packages location in the <code>vendor</code> directory.</p>
-<h2 id="configuring-custom-ini-files" class="markup-heading"><a class="markup-heading__link" href="#configuring-custom-ini-files">Configuring custom .ini files</a></h2><p>If you like to configure custom .ini files in addition to the <code>php.ini</code>
+<h2 id=" configuring-custom-ini-files " class="markup-heading">
+    <a class="markup-heading__link" href="#configuring-custom-ini-files">
+        Configuring custom .ini files
+    </a>
+</h2><p>If you like to configure custom .ini files in addition to the <code>php.ini</code>
 provided by the buildpack, you can create a directory named <code>.php.ini.d</code> at the
 root of your app and put your custom ini files there. See
 <a href="https://paketo.io/docs/buildpacks/language-family-buildpacks/php/#php_ini_scan_dir"><code>PHP_INI_SCAN_DIR</code></a>
 in the Variables section below.</p>
-<h2 id="buildpack-set-environment-variables" class="markup-heading"><a class="markup-heading__link" href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a></h2><p>The PHP CNB sets a number of environment variables during the <code>build</code> and
+<h2 id=" buildpack-set-environment-variables " class="markup-heading">
+    <a class="markup-heading__link" href="#buildpack-set-environment-variables">
+        Buildpack-Set Environment Variables
+    </a>
+</h2><p>The PHP CNB sets a number of environment variables during the <code>build</code> and
 <code>launch</code> phases of the app lifecycle. The sections below describe each
 environment variable and its impact on your app.</p>
-<h3 id="app_root" class="markup-heading"><a class="markup-heading__link" href="#app_root">APP_ROOT</a></h3><ul>
+<h3 id=" app_root " class="markup-heading">
+    <a class="markup-heading__link" href="#app_root">
+        APP_ROOT
+    </a>
+</h3><ul>
 <li>Set by: <code>httpd</code> buildpack</li>
 <li>Phases: <code>launch</code></li>
 <li>Value: path of app source</li>
 </ul>
-<h3 id="server_root" class="markup-heading"><a class="markup-heading__link" href="#server_root">SERVER_ROOT</a></h3><ul>
+<h3 id=" server_root " class="markup-heading">
+    <a class="markup-heading__link" href="#server_root">
+        SERVER_ROOT
+    </a>
+</h3><ul>
 <li>Set by: <code>httpd</code> buildpack</li>
 <li>Phases: <code>launch</code></li>
 <li>Value: path of the httpd installation</li>
 </ul>
-<h3 id="mibdirs" class="markup-heading"><a class="markup-heading__link" href="#mibdirs">MIBDIRS</a></h3><ul>
+<h3 id=" mibdirs " class="markup-heading">
+    <a class="markup-heading__link" href="#mibdirs">
+        MIBDIRS
+    </a>
+</h3><ul>
 <li>Set by: <code>php-dist</code> buildpack</li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
 <li>Value: See <a href="https://www.php.net/manual/en/snmp.installation.php">php documentation</a></li>
 </ul>
-<h3 id="path" class="markup-heading"><a class="markup-heading__link" href="#path">PATH</a></h3><ul>
+<h3 id=" path " class="markup-heading">
+    <a class="markup-heading__link" href="#path">
+        PATH
+    </a>
+</h3><ul>
 <li>Set by: <code>php-dist</code> buildpack</li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
 <li>Value: path to the php executable</li>
 </ul>
-<h3 id="php_api" class="markup-heading"><a class="markup-heading__link" href="#php_api">PHP_API</a></h3><ul>
+<h3 id=" php_api " class="markup-heading">
+    <a class="markup-heading__link" href="#php_api">
+        PHP_API
+    </a>
+</h3><ul>
 <li>Set by: <code>php-dist</code> buildpack</li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
 <li>Value: internl api version (YYYYMMDD)</li>
 </ul>
-<h3 id="php_extension_dir" class="markup-heading"><a class="markup-heading__link" href="#php_extension_dir">PHP_EXTENSION_DIR</a></h3><ul>
+<h3 id=" php_extension_dir " class="markup-heading">
+    <a class="markup-heading__link" href="#php_extension_dir">
+        PHP_EXTENSION_DIR
+    </a>
+</h3><ul>
 <li>Set by: <code>php-dist</code> buildpack</li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
 <li>Value: location of directory with dynamic libraries for extensions</li>
 </ul>
-<h3 id="php_home" class="markup-heading"><a class="markup-heading__link" href="#php_home">PHP_HOME</a></h3><ul>
+<h3 id=" php_home " class="markup-heading">
+    <a class="markup-heading__link" href="#php_home">
+        PHP_HOME
+    </a>
+</h3><ul>
 <li>Set by: <code>php-dist</code> buildpack</li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
 <li>Value: location of php installation</li>
 </ul>
-<h3 id="php_ini_scan_dir" class="markup-heading"><a class="markup-heading__link" href="#php_ini_scan_dir">PHP_INI_SCAN_DIR</a></h3><ul>
+<h3 id=" php_ini_scan_dir " class="markup-heading">
+    <a class="markup-heading__link" href="#php_ini_scan_dir">
+        PHP_INI_SCAN_DIR
+    </a>
+</h3><ul>
 <li>Set by: <code>php-web</code> buildpack</li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
 <li>Value: <code>&lt;APP-ROOT&gt;/.php.ini.d</code></li>
@@ -536,7 +608,7 @@ environment variable and its impact on your app.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> July 15, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 16, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -607,6 +679,9 @@ environment variable and its impact on your app.</p>
     </div>
 </footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
 
+    <div id="footer-skip-link" class="screenreader-container">
+    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
+</div>
 
 </body>
 

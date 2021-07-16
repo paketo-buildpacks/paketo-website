@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/concepts/stacks/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.c58411b93ef938103ca39dd21f9d9c13817bff0cf25ea851ff662c6f57973bce.css">
+<link rel="stylesheet" href="/css/main-v1.min.7a9a3fb621d1aafddddeee0bff82cae4463214bd78ad0dd0fe0ef5781ee7a41e.css">
 </head>
 
 <body>
@@ -31,6 +31,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
+
+    <div id="header-skip-link" class="screenreader-container">
+    <a href="#title" class="screenreader-text">Skip to Content</a>
+</div>
 
     
 
@@ -336,7 +340,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 class="">Stacks</h1>
+            <h1 id="title">Stacks</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
@@ -357,59 +361,123 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             <div class="docs-body__markdown">
                 <p>In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. One of the core pieces to Buildpacks and Builders are Stack Images. Stacks provide the buildpack lifecycle with build-time and run-time environments in the form of images.</p>
-<h2 id="what-is-a-stack" class="markup-heading"><a class="markup-heading__link" href="#what-is-a-stack">What is a stack?</a></h2><p>A <code>stack</code> consists of two images:</p>
+<h2 id=" what-is-a-stack " class="markup-heading">
+    <a class="markup-heading__link" href="#what-is-a-stack">
+        What is a stack?
+    </a>
+</h2><p>A <code>stack</code> consists of two images:</p>
 <ul>
 <li><code>build image</code>: the environment in which your app is built</li>
 <li><code>run image</code>: the OS layer for your app image</li>
 </ul>
 <p>For more information about <code>stacks</code>, see <a href="https://buildpacks.io/docs/concepts/components/stack/">buildpacks.io</a>.</p>
-<h2 id="what-paketo-stacks-are-available" class="markup-heading"><a class="markup-heading__link" href="#what-paketo-stacks-are-available">What Paketo stacks are available?</a></h2><p>The Paketo project releases several stacks. These are:</p>
-<h3 id="tiny" class="markup-heading"><a class="markup-heading__link" href="#tiny">Tiny</a></h3><h4 id="build-image" class="markup-heading"><a class="markup-heading__link" href="#build-image">Build Image</a></h4><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/build:tiny-cnb
+<h2 id=" what-paketo-stacks-are-available " class="markup-heading">
+    <a class="markup-heading__link" href="#what-paketo-stacks-are-available">
+        What Paketo stacks are available?
+    </a>
+</h2><p>The Paketo project releases several stacks. These are:</p>
+<h3 id=" tiny " class="markup-heading">
+    <a class="markup-heading__link" href="#tiny">
+        Tiny
+    </a>
+</h3><h4 id=" build-image " class="markup-heading">
+    <a class="markup-heading__link" href="#build-image">
+        Build Image
+    </a>
+</h4><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/build:tiny-cnb
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h4 id="run-images" class="markup-heading"><a class="markup-heading__link" href="#run-images">Run Images</a></h4><p><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/run:tiny-cnb
+<h4 id=" run-images " class="markup-heading">
+    <a class="markup-heading__link" href="#run-images">
+        Run Images
+    </a>
+</h4><p><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/run:tiny-cnb
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
 <pre class="copyable"><code class="copyable__code">gcr.io/paketo-buildpacks/run:tiny-cnb
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h4 id="contains" class="markup-heading"><a class="markup-heading__link" href="#contains">Contains:</a></h4><ul>
+<h4 id=" contains " class="markup-heading">
+    <a class="markup-heading__link" href="#contains">
+        Contains:
+    </a>
+</h4><ul>
 <li>Build: ubuntu:bionic + openssl + CA certs + compilers + shell utilities</li>
 <li>Run: distroless-like bionic + glibc + openssl + CA certs</li>
 </ul>
-<h3 id="base" class="markup-heading"><a class="markup-heading__link" href="#base">Base</a></h3><h4 id="build-image-1" class="markup-heading"><a class="markup-heading__link" href="#build-image-1">Build Image</a></h4><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/build:base-cnb
+<h3 id=" base " class="markup-heading">
+    <a class="markup-heading__link" href="#base">
+        Base
+    </a>
+</h3><h4 id=" build-image-1 " class="markup-heading">
+    <a class="markup-heading__link" href="#build-image-1">
+        Build Image
+    </a>
+</h4><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/build:base-cnb
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h4 id="run-images-1" class="markup-heading"><a class="markup-heading__link" href="#run-images-1">Run Images</a></h4><p><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/run:base-cnb
+<h4 id=" run-images-1 " class="markup-heading">
+    <a class="markup-heading__link" href="#run-images-1">
+        Run Images
+    </a>
+</h4><p><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/run:base-cnb
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
 <pre class="copyable"><code class="copyable__code">gcr.io/paketo-buildpacks/run:base-cnb
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h4 id="contains-1" class="markup-heading"><a class="markup-heading__link" href="#contains-1">Contains:</a></h4><ul>
+<h4 id=" contains-1 " class="markup-heading">
+    <a class="markup-heading__link" href="#contains-1">
+        Contains:
+    </a>
+</h4><ul>
 <li>Build: ubuntu:bionic + openssl + CA certs + compilers + shell utilities</li>
 <li>Run: ubuntu:bionic + openssl + CA certs</li>
 </ul>
-<h3 id="full" class="markup-heading"><a class="markup-heading__link" href="#full">Full</a></h3><h4 id="build-image-2" class="markup-heading"><a class="markup-heading__link" href="#build-image-2">Build Image</a></h4><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/build:full-cnb
+<h3 id=" full " class="markup-heading">
+    <a class="markup-heading__link" href="#full">
+        Full
+    </a>
+</h3><h4 id=" build-image-2 " class="markup-heading">
+    <a class="markup-heading__link" href="#build-image-2">
+        Build Image
+    </a>
+</h4><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/build:full-cnb
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h4 id="run-images-2" class="markup-heading"><a class="markup-heading__link" href="#run-images-2">Run Images</a></h4><p><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/run:full-cnb
+<h4 id=" run-images-2 " class="markup-heading">
+    <a class="markup-heading__link" href="#run-images-2">
+        Run Images
+    </a>
+</h4><p><pre class="copyable"><code class="copyable__code">index.docker.io/paketobuildpacks/run:full-cnb
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
 <pre class="copyable"><code class="copyable__code">gcr.io/paketo-buildpacks/run:full-cnb
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h4 id="contains-2" class="markup-heading"><a class="markup-heading__link" href="#contains-2">Contains:</a></h4><ul>
+<h4 id=" contains-2 " class="markup-heading">
+    <a class="markup-heading__link" href="#contains-2">
+        Contains:
+    </a>
+</h4><ul>
 <li>Build: ubuntu:bionic + many common C libraries and utilities</li>
 <li>Run: ubuntu:bionic + many common libraries and utilities</li>
 </ul>
-<h2 id="when-are-paketo-stacks-updated" class="markup-heading"><a class="markup-heading__link" href="#when-are-paketo-stacks-updated">When are Paketo stacks updated?</a></h2><p>Stacks are rebuilt whenever a package is patched to fix a CVE.
+<h2 id=" when-are-paketo-stacks-updated " class="markup-heading">
+    <a class="markup-heading__link" href="#when-are-paketo-stacks-updated">
+        When are Paketo stacks updated?
+    </a>
+</h2><p>Stacks are rebuilt whenever a package is patched to fix a CVE.
 For more information about CVEs, see <a href="https://cve.mitre.org/">Common Vulnerabilities and Exposures (CVE)</a>.
 Stacks are also rebuilt weekly to ensure packages without CVEs are also up to date.</p>
 <p>We aim to release stack updates that fix High and Critical CVEs within 48 hours of the patch release. For stack updates fixing Low and Medium CVEs, we aim to release within two weeks.</p>
 <p><strong>Note:</strong> Security scanning tools might report vulnerabilities in apps even when using the latest stack. This can occur when a CVE patch is not yet available upstream or if Canonical determines that the vulnerability is not severe enough to fix.</p>
 <p>Stacks are backwards compatible. A stack can safely be upgraded to the most recent version within the major version line. If for some reason backwards compatibility is broken, it happens when a new major version is released.</p>
-<h2 id="what-security-and-hardening-features-do-paketo-stacks-offer" class="markup-heading"><a class="markup-heading__link" href="#what-security-and-hardening-features-do-paketo-stacks-offer">What security and hardening features do Paketo stacks offer?</a></h2><ul>
+<h2 id=" what-security-and-hardening-features-do-paketo-stacks-offer " class="markup-heading">
+    <a class="markup-heading__link" href="#what-security-and-hardening-features-do-paketo-stacks-offer">
+        What security and hardening features do Paketo stacks offer?
+    </a>
+</h2><ul>
 <li>By using Ubuntu 18.04 as the base image for our stacks, we benefit from all of the security provided by Canonical and Ubuntu. For more information, see the <a href="https://ubuntu.com/security">Canonical web site</a> and the <a href="https://wiki.ubuntu.com/Security/Features">Ubuntu wiki</a>.</li>
 <li>Our automatic monitoring and patching of CVEs means that our stacks are often updated within hours of Canonical&rsquo;s patches.</li>
 <li>The stack images are run as a dedicated non-root user when building and running applications.</li>
@@ -434,7 +502,7 @@ Stacks are also rebuilt weekly to ensure packages without CVEs are also up to da
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> July 15, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 16, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -492,6 +560,9 @@ Stacks are also rebuilt weekly to ensure packages without CVEs are also up to da
     </div>
 </footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
 
+    <div id="footer-skip-link" class="screenreader-container">
+    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
+</div>
 
 </body>
 
