@@ -17,17 +17,6 @@ Examples assume that the Paketo Base builder is the default builder: pack config
     </item>
     
     <item>
-      <title>Go Buildpack Reference</title>
-      <link>https://paketo.io/docs/reference/go-reference/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://paketo.io/docs/reference/go-reference/</guid>
-      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Go Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Go Buildpack How To documentation.
-Supported DependenciesThe Go Paketo Buildpack supports several versions of Go. For more details on the specific versions supported in a given buildpack version, see the release notes.
-Package Management OptionsWith the Go CNB, there are three options for package management depending on your application:</description>
-    </item>
-    
-    <item>
       <title>HTTPD Buildpack Reference</title>
       <link>https://paketo.io/docs/reference/httpd-reference/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -56,8 +45,9 @@ git clone https://github.com/paketo-buildpacks/samples cd samples/dotnet-core/as
       
       <guid>https://paketo.io/docs/howto/go/</guid>
       <description>This documentation explains how to use the Paketo Go Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Go Buildpack Reference documentation.
-Build a Sample Go ApplicationTo build a sample app locally with this buildpack using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/samples cd samples/go/mod pack build my-app --buildpack gcr.io/paketo-buildpacks/go \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
+Build a Sample Go ApplicationYou can quickly build a sample Go app into a runnable OCI image on your local machine with Paketo buildpacks.
+Prerequisites
+ docker CLI pack CLI    Clone the Paketo samples and navigate to a Go sample app.</description>
     </item>
     
     <item>
@@ -178,6 +168,17 @@ What is a stack?A stack consists of two images:
       <guid>https://paketo.io/docs/reference/dotnet-core-reference/</guid>
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo .NET Core Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo .NET Core Buildpack How To documentation.
 Supported DependenciesThe .Net Core Paketo Buildpack supports several versions of the .Net Core Framework. For more details on the specific versions supported in a given buildpack version, see the release notes.</description>
+    </item>
+    
+    <item>
+      <title>Go Buildpack Reference</title>
+      <link>https://paketo.io/docs/reference/go-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/reference/go-reference/</guid>
+      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Go Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Go Buildpack How To documentation.
+Supported DependenciesThe Go Paketo Buildpack supports several versions of Go. For more details on the specific versions supported in a given buildpack version, see the release notes.
+BehaviorThe Paketo Go Buildpack is a composite buildpack designed to build applications written in Go.</description>
     </item>
     
     <item>

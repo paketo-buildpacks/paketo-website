@@ -262,16 +262,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/reference/go-reference/" class="docs-menu__link docs-menu__link--active">
-                
-                <span>Go Buildpack</span>
-            </a>
-        </li>
-    
-                
-                    
-    
-        <li class="docs-menu__leaf">
             <a href="/docs/reference/httpd-reference/" class="docs-menu__link ">
                 
                 <span>HTTPD Buildpack</span>
@@ -285,6 +275,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <a href="/docs/reference/dotnet-core-reference/" class="docs-menu__link ">
                 
                 <span>.NET Core Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/go-reference/" class="docs-menu__link docs-menu__link--active">
+                
+                <span>Go Buildpack</span>
             </a>
         </li>
     
@@ -342,11 +342,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <nav id="TableOfContents">
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#package-management-options">Package Management Options</a>
+    <li><a href="#behavior">Behavior</a>
       <ul>
-        <li><a href="#package-management-with-go-modules">Package Management with Go Modules</a></li>
-        <li><a href="#package-management-with-dep">Package Management with Dep</a></li>
-        <li><a href="#no-package-management">No Package Management</a></li>
+        <li><a href="#package-management">Package Management</a></li>
+        <li><a href="#compilation">Compilation</a></li>
       </ul>
     </li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
@@ -356,6 +355,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#depcachedir"><code>DEPCACHEDIR</code></a></li>
       </ul>
     </li>
+    <li><a href="#components">Components</a></li>
   </ul>
 </nav>
 </div>
@@ -367,9 +367,11 @@ and configuration options of the
 the  Paketo Go Buildpack  How To <a href="/docs/howto/go">documentation</a>.</p>
 <h2 id="supported-dependencies" class="markup-heading"><a class="markup-heading__link" href="#supported-dependencies">Supported Dependencies</a></h2><p>The Go Paketo Buildpack supports several versions of Go.
 For more details on the specific versions supported in a given buildpack
-version, see the <a href="https://github.com/paketo-buildpacks/go/releases">release
+version, see the <a href="
+https://github.com/paketo-buildpacks/go/releases/latest">release
 notes</a>.</p>
-<h2 id="package-management-options" class="markup-heading"><a class="markup-heading__link" href="#package-management-options">Package Management Options</a></h2><p>With the Go CNB, there are three options for package management depending on
+<h2 id="behavior" class="markup-heading"><a class="markup-heading__link" href="#behavior">Behavior</a></h2><p>The Paketo Go Buildpack is a <a href="https://paketo.io/docs/concepts/buildpacks/#composite-buildpacks">composite buildpack</a> designed to build applications written in Go.</p>
+<h3 id="package-management" class="markup-heading"><a class="markup-heading__link" href="#package-management">Package Management</a></h3><p>With the Go CNB, there are three options for package management depending on
 your application:</p>
 <ul>
 <li>The built-in <a href="https://github.com/golang/go/wiki/Modules">Go modules</a> feature,</li>
@@ -378,28 +380,25 @@ your application:</p>
 </ul>
 <p>Support for each of these package managers is mutually-exclusive. You can find
 specific information for each option below.</p>
-<h3 id="package-management-with-go-modules" class="markup-heading"><a class="markup-heading__link" href="#package-management-with-go-modules">Package Management with Go Modules</a></h3><p>Many Go apps require third-party libraries to perform common tasks and
-behaviors. Go modules are a built-in option for managing these third-party
-dependencies that the Go CNB fully supports. Including a <code>go.mod</code> file in your
-app source code instructs the buildpack to vendor your dependencies using Go
-modules. During the build phase, the <code>go-mod-vendor</code>
-<a href="https://github.com/paketo-buildpacks/go-mod-vendor">buildpack</a> checks to see
+<h4 id="package-management-with-go-modules" class="markup-heading"><a class="markup-heading__link" href="#package-management-with-go-modules">Package Management with Go Modules</a></h4><p>The buildpack will vendor dependencies using go modules if the app source
+code contains a <code>go.mod</code> file. During the build phase, the <code>go-mod-vendor</code>
+<a href="
+https://github.com/paketo-buildpacks/go-mod-vendor">buildpack</a> checks to see
 if the application requires any external modules and if it does, runs the <code>go mod vendor</code> command for your app. The resulting <code>vendor</code> directory will exist
-in the app&rsquo;s root directory and will contain all the packages needed to build
-your Go app.</p>
-<h3 id="package-management-with-dep" class="markup-heading"><a class="markup-heading__link" href="#package-management-with-dep">Package Management with Dep</a></h3><p>Dep is an alternative option to Go Modules for package management in Go apps.
-Including a <code>Gopkg.toml</code> file (more information about this
-<a href="https://golang.github.io/dep/docs/Gopkg.toml.html">here</a>) in your app source
-code instructs the buildpack to download the <code>dep</code> package, and then vendor
-your dependencies using it. There may be an optional <code>Gopkg.lock</code> file that
-outlines specific versions of the dependencies to be packaged. During its build
+in the app&rsquo;s root directory and will contain all packages required for the build.</p>
+<h4 id="package-management-with-dep" class="markup-heading"><a class="markup-heading__link" href="#package-management-with-dep">Package Management with Dep</a></h4><p>Dep is an alternative option to Go Modules for package management in Go apps. The buildpack will vendor dependencies using <code>dep</code> if the app source code
+contains a <code>Gopkg.toml</code> file. (For more information about this file, see the <code>dep</code>
+<a href="https://golang.github.io/dep/docs/Gopkg.toml.html">documentation</a>. There may be an optional <code>Gopkg.lock</code> file that outlines specific versions of the dependencies to be packaged. During its build
 phase, the <code>dep-ensure</code>
-<a href="https://github.com/paketo-buildpacks/dep-ensure">buildpack</a> runs the <code>dep ensure</code> command for your app. The resulting <code>vendor</code> directory will exist in
-the app&rsquo;s root directory and will contain all the packages needed to build your
-Go app.</p>
-<h3 id="no-package-management" class="markup-heading"><a class="markup-heading__link" href="#no-package-management">No Package Management</a></h3><p>The Go CNB also supports both self-vendored apps and simpler apps that do not
+<a href="
+https://github.com/paketo-buildpacks/dep-ensure">buildpack</a> runs the <code>dep ensure</code> command. The resulting <code>vendor</code> directory will exist in
+the app&rsquo;s root directory and will contain all the packages required for the build.</p>
+<h4 id="no-package-management" class="markup-heading"><a class="markup-heading__link" href="#no-package-management">No Package Management</a></h4><p>The buildpack also supports both self-vendored apps and simpler apps that do not
 require third-party packages. In this case there is no vendoring step, and the
 <code>go build</code> command is run on the app source code as it is provided.</p>
+<h3 id="compilation" class="markup-heading"><a class="markup-heading__link" href="#compilation">Compilation</a></h3><p>The buildpack runs <code>go build</code> to compile Go source code into executables. By
+default, it sets the flag <code>-buildmode=pie</code>. If there is a <code>go.mod</code> present in
+the app&rsquo;s root directory, it also builds with <code>mod=vendor</code>. See the Go tool&rsquo;s <a href="https://pkg.go.dev/cmd/go">documentation</a> for details about build configuration.</p>
 <h2 id="buildpack-set-environment-variables" class="markup-heading"><a class="markup-heading__link" href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a></h2><p>The Go CNB sets a few environment variables during the <code>build</code> and <code>launch</code>
 phases of the app lifecycle. The sections below describe each environment
 variable and its impact on your app.</p>
@@ -441,6 +440,72 @@ cache layer in the app image.</p>
 <li>Phases: <code>build</code></li>
 <li>Value: Dep Cache layer path</li>
 </ul>
+<h2 id="components" class="markup-heading"><a class="markup-heading__link" href="#components">Components</a></h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Required/Optional</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Buildpack</a></td>
+<td>Optional</td>
+<td>Installs custom CA certificates</td>
+</tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/go-dist">Paketo Go Dist Buildpack</a></td>
+<td>Required</td>
+<td>Installs the Golang toolchain</td>
+</tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/go-mod-vendor">Paketo Go Mod Vendor Buildpack</a></td>
+<td>Optional</td>
+<td>Installs app Go modules</td>
+</tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/dep">Paketo Dep Buildpack</a></td>
+<td>Optional</td>
+<td>Installs <code>dep</code></td>
+</tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/dep-ensure">Paketo Dep Ensure Buildpack</a></td>
+<td>Optional</td>
+<td>Uses <code>dep</code> to install app dependencies</td>
+</tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/go-build">Paketo Go Build Buildpack</a></td>
+<td>Required</td>
+<td>Compiles source code</td>
+</tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a></td>
+<td>Optional</td>
+<td>Sets a user-specified start command</td>
+</tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/environment-variables">Paketo Environment Variables Buildpack</a></td>
+<td>Optional</td>
+<td>Sets user-specified launch-time environment variables</td>
+</tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/image-labels">Paketo Image Labels Buildpack</a></td>
+<td>Optional</td>
+<td>Adds user-specified labels to app image metadata</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
 
             </div>
             
@@ -465,11 +530,10 @@ cache layer in the app image.</p>
     <nav id="TableOfContents">
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#package-management-options">Package Management Options</a>
+    <li><a href="#behavior">Behavior</a>
       <ul>
-        <li><a href="#package-management-with-go-modules">Package Management with Go Modules</a></li>
-        <li><a href="#package-management-with-dep">Package Management with Dep</a></li>
-        <li><a href="#no-package-management">No Package Management</a></li>
+        <li><a href="#package-management">Package Management</a></li>
+        <li><a href="#compilation">Compilation</a></li>
       </ul>
     </li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
@@ -479,6 +543,7 @@ cache layer in the app image.</p>
         <li><a href="#depcachedir"><code>DEPCACHEDIR</code></a></li>
       </ul>
     </li>
+    <li><a href="#components">Components</a></li>
   </ul>
 </nav>
 </div>
