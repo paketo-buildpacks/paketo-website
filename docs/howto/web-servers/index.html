@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/howto/web-servers/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.7a9a3fb621d1aafddddeee0bff82cae4463214bd78ad0dd0fe0ef5781ee7a41e.css">
+<link rel="stylesheet" href="/css/main-v1.min.c58411b93ef938103ca39dd21f9d9c13817bff0cf25ea851ff662c6f57973bce.css">
 </head>
 
 <body>
@@ -31,10 +31,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
-
-    <div id="header-skip-link" class="screenreader-container">
-    <a href="#title" class="screenreader-text">Skip to Content</a>
-</div>
 
     
 
@@ -340,7 +336,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">How to Build Web Servers with Paketo Buildpacks</h1>
+            <h1 class="">How to Build Web Servers with Paketo Buildpacks</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
@@ -371,20 +367,12 @@ that run web servers like HTTPD and NGINX. These docs focus on explaining
 common user workflows. For more in-depth
 description of the buildpacks' behavior and configuration, see the reference documentation
 for each web server buildpack.</p>
-<h2 id=" httpd " class="markup-heading">
-    <a class="markup-heading__link" href="#httpd">
-        HTTPD
-    </a>
-</h2><p>This documentation explains how to use the
+<h2 id="httpd" class="markup-heading"><a class="markup-heading__link" href="#httpd">HTTPD</a></h2><p>This documentation explains how to use the
 <a href="https://github.com/paketo-buildpacks/httpd">Paketo HTTPD Buildpack</a>
 to build applications for several common use-cases. For more in-depth
 description of the buildpack&rsquo;s behavior and configuration see the  Paketo HTTPD Buildpack
 Reference <a href="/docs/reference/httpd-reference">documentation</a>.</p>
-<h3 id=" build-a-sample-app " class="markup-heading">
-    <a class="markup-heading__link" href="#build-a-sample-app">
-        Build a Sample App
-    </a>
-</h3><p>To build a sample app locally with this CNB using the <code>pack</code> CLI, run</p>
+<h3 id="build-a-sample-app" class="markup-heading"><a class="markup-heading__link" href="#build-a-sample-app">Build a Sample App</a></h3><p>To build a sample app locally with this CNB using the <code>pack</code> CLI, run</p>
 <pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples/httpd
 pack build my-app --buildpack gcr.io/paketo-buildpacks/httpd \
@@ -395,11 +383,7 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/httpd \
 for how to run the app.</p>
 <p><strong>NOTE: The Paketo Full builder is required because HTTPD relies on operating
 system libraries only present in the Full builder.</strong></p>
-<h3 id=" install-a-specific-httpd-version " class="markup-heading">
-    <a class="markup-heading__link" href="#install-a-specific-httpd-version">
-        Install a Specific HTTPD Version
-    </a>
-</h3><p>The HTTPD CNB (Cloud Native Buildpack) allows you to specify a version of the
+<h3 id="install-a-specific-httpd-version" class="markup-heading"><a class="markup-heading__link" href="#install-a-specific-httpd-version">Install a Specific HTTPD Version</a></h3><p>The HTTPD CNB (Cloud Native Buildpack) allows you to specify a version of the
 Apache HTTP Server to use during deployment. This version can be specified
 through the <code>BP_HTTPD_VERSION</code> environment variable. When specifying a version
 of the Apache HTTP Server, you must choose a version that is available within the
@@ -407,45 +391,25 @@ buildpack. The supported versions can be found <a href="https://github.com/paket
 <p>Specifying a version of <code>httpd</code> is not required. In the case that it is not
 specified, the buildpack will provide the default version listed in the release
 notes.</p>
-<h4 id=" using-bp_httpd_version " class="markup-heading">
-    <a class="markup-heading__link" href="#using-bp_httpd_version">
-        Using BP_HTTPD_VERSION
-    </a>
-</h4><p>To configure the buildpack to use HTTPD v2.4.46 when deploying your app, set the
+<h4 id="using-bp_httpd_version" class="markup-heading"><a class="markup-heading__link" href="#using-bp_httpd_version">Using BP_HTTPD_VERSION</a></h4><p>To configure the buildpack to use HTTPD v2.4.46 when deploying your app, set the
 following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_HTTPD_VERSION=2.4.*</code>) or through a
 <a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
 file:</p>
 <pre class="copyable"><code class="copyable__code">BP_HTTPD_VERSION=&#34;2.4.46&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h4 id=" deprecated-using-buildpackyml " class="markup-heading">
-    <a class="markup-heading__link" href="#deprecated-using-buildpackyml">
-        Deprecated: Using buildpack.yml
-    </a>
-</h4><p>Specifying the HTTP Server version through <code>buildpack.yml</code> configuration will
+<h4 id="deprecated-using-buildpackyml" class="markup-heading"><a class="markup-heading__link" href="#deprecated-using-buildpackyml">Deprecated: Using buildpack.yml</a></h4><p>Specifying the HTTP Server version through <code>buildpack.yml</code> configuration will
 be deprecated in Apache HTTP Server Buildpack v1.0.0. To migrate from using
 <code>buildpack.yml</code> please set the <code>$BP_HTTPD_VERSION</code> environment variable.</p>
-<h3 id=" start-an-httpd-server-at-app-launch-time " class="markup-heading">
-    <a class="markup-heading__link" href="#start-an-httpd-server-at-app-launch-time">
-        Start an HTTPD Server at App Launch Time
-    </a>
-</h3><p>Include an <code>httpd.conf</code> file in your application&rsquo;s source code. The HTTPD Paketo buildpack
+<h3 id="start-an-httpd-server-at-app-launch-time" class="markup-heading"><a class="markup-heading__link" href="#start-an-httpd-server-at-app-launch-time">Start an HTTPD Server at App Launch Time</a></h3><p>Include an <code>httpd.conf</code> file in your application&rsquo;s source code. The HTTPD Paketo buildpack
 will install the Apache HTTP Server binary <em>and</em> configure it to start when the app image
 launches.</p>
-<h2 id=" nginx " class="markup-heading">
-    <a class="markup-heading__link" href="#nginx">
-        NGINX
-    </a>
-</h2><p>This documentation explains how to use the
+<h2 id="nginx" class="markup-heading"><a class="markup-heading__link" href="#nginx">NGINX</a></h2><p>This documentation explains how to use the
 <a href="https://github.com/paketo-buildpacks/nginx">Paketo NGINX Buildpack</a>
 to build applications for several common use-cases. For more in-depth
 description of the buildpack&rsquo;s behavior and configuration see the  Paketo NGINX Buildpack
 Reference <a href="/docs/reference/nginx-reference">documentation</a>.</p>
-<h3 id=" build-a-sample-app-1 " class="markup-heading">
-    <a class="markup-heading__link" href="#build-a-sample-app-1">
-        Build a Sample App
-    </a>
-</h3><p>To build a sample app locally with this CNB using the <code>pack</code> CLI, run</p>
+<h3 id="build-a-sample-app-1" class="markup-heading"><a class="markup-heading__link" href="#build-a-sample-app-1">Build a Sample App</a></h3><p>To build a sample app locally with this CNB using the <code>pack</code> CLI, run</p>
 <pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples/nginx
 pack build my-app --buildpack gcr.io/paketo-buildpacks/nginx \
@@ -456,11 +420,7 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/nginx \
 for how to run the app.</p>
 <p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
 also compatible with the Paketo Full builder.</strong></p>
-<h3 id=" install-a-specific-nginx-version " class="markup-heading">
-    <a class="markup-heading__link" href="#install-a-specific-nginx-version">
-        Install a Specific NGINX Version
-    </a>
-</h3><p>The NGINX CNB (Cloud Native Buildpack) allows you to specify a version of NGINX to use during
+<h3 id="install-a-specific-nginx-version" class="markup-heading"><a class="markup-heading__link" href="#install-a-specific-nginx-version">Install a Specific NGINX Version</a></h3><p>The NGINX CNB (Cloud Native Buildpack) allows you to specify a version of NGINX to use during
 deployment. This version can be specified in a number of ways, including
 through <code>buildpack.yml</code>. When specifying a
 version of the NGINX engine, you must choose a version that is available
@@ -468,44 +428,24 @@ within the buildpack.</p>
 <p>Specifying a version of <code>nginx</code> is not required. In the case that it is not
 specified, the buildpack will provide the default version listed in the release
 notes.</p>
-<h4 id=" using-bp_nginx_version " class="markup-heading">
-    <a class="markup-heading__link" href="#using-bp_nginx_version">
-        Using BP_NGINX_VERSION
-    </a>
-</h4><p>To configure the buildpack to use NGINX v1.19.8 when deploying your app, set the
+<h4 id="using-bp_nginx_version" class="markup-heading"><a class="markup-heading__link" href="#using-bp_nginx_version">Using BP_NGINX_VERSION</a></h4><p>To configure the buildpack to use NGINX v1.19.8 when deploying your app, set the
 following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_NGINX_VERSION=1.19.8</code>) or through a
 <a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
 file:</p>
 <pre class="copyable"><code class="copyable__code">BP_NGINX_VERSION=&#34;1.19.8&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h4 id=" deprecated-using-buildpackyml-1 " class="markup-heading">
-    <a class="markup-heading__link" href="#deprecated-using-buildpackyml-1">
-        Deprecated: Using buildpack.yml
-    </a>
-</h4><p>Specifying the NGINX version through <code>buildpack.yml</code> configuration will be
+<h4 id="deprecated-using-buildpackyml-1" class="markup-heading"><a class="markup-heading__link" href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></h4><p>Specifying the NGINX version through <code>buildpack.yml</code> configuration will be
 deprecated in NGINX Server Buildpack v1.0.0.  To migrate from using
 <code>buildpack.yml</code> please set the <code>$BP_NGINX_VERSION</code> environment variable.</p>
-<h3 id=" start-an-nginx-server-at-app-launch-time " class="markup-heading">
-    <a class="markup-heading__link" href="#start-an-nginx-server-at-app-launch-time">
-        Start an NGINX Server at App Launch Time
-    </a>
-</h3><p>Include an <code>nginx.conf</code> file in your application&rsquo;s source code. The NGINX Paketo
+<h3 id="start-an-nginx-server-at-app-launch-time" class="markup-heading"><a class="markup-heading__link" href="#start-an-nginx-server-at-app-launch-time">Start an NGINX Server at App Launch Time</a></h3><p>Include an <code>nginx.conf</code> file in your application&rsquo;s source code. The NGINX Paketo
 buildpack will install the NGINX binary <em>and</em> configure it to start when the app
 image launches.</p>
-<h3 id=" configure-the-nginx-server-with-launch-time-values " class="markup-heading">
-    <a class="markup-heading__link" href="#configure-the-nginx-server-with-launch-time-values">
-        Configure the NGINX Server with Launch-time Values
-    </a>
-</h3><p>The NGINX buildpack supports data driven templates for nginx config. You can
+<h3 id="configure-the-nginx-server-with-launch-time-values" class="markup-heading"><a class="markup-heading__link" href="#configure-the-nginx-server-with-launch-time-values">Configure the NGINX Server with Launch-time Values</a></h3><p>The NGINX buildpack supports data driven templates for nginx config. You can
 use templated variables like <code>{{port}}</code>, <code>{{env &quot;FOO&quot;}}</code> and <code>{{module &quot;ngx_stream_module&quot;}}</code> in your <code>nginx.conf</code> to use values known at launch time.</p>
 <p>A usage example can be found in the <a href="https://github.com/paketo-buildpacks/samples/tree/main/nginx"><code>samples</code> repository under the <code>nginx</code>
 directory</a>.</p>
-<h4 id=" port " class="markup-heading">
-    <a class="markup-heading__link" href="#port">
-        PORT
-    </a>
-</h4><p>Use <code>{{port}}</code> to dynamically set the port at which the server will accepts requests. At launch time, the buildpack will read the value of <code>$PORT</code> to set the value of <code>{{port}}</code>.</p>
+<h4 id="port" class="markup-heading"><a class="markup-heading__link" href="#port">PORT</a></h4><p>Use <code>{{port}}</code> to dynamically set the port at which the server will accepts requests. At launch time, the buildpack will read the value of <code>$PORT</code> to set the value of <code>{{port}}</code>.</p>
 <p>For example, to set an NGINX server to listen on <code>$PORT</code>, use the following in your <code>nginx.conf</code> file:</p>
 <pre class="copyable"><code class="copyable__code">server {
   listen {{port}};
@@ -516,11 +456,7 @@ directory</a>.</p>
 <pre class="copyable"><code class="copyable__code">docker run --tty --env PORT=8080 --publish 8080:8080 my-nginx-image
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h4 id=" environment-variables " class="markup-heading">
-    <a class="markup-heading__link" href="#environment-variables">
-        Environment Variables
-    </a>
-</h4><p>This is a generic case of the <code>{{port}}</code> directive described ealier. To use the
+<h4 id="environment-variables" class="markup-heading"><a class="markup-heading__link" href="#environment-variables">Environment Variables</a></h4><p>This is a generic case of the <code>{{port}}</code> directive described ealier. To use the
 value of any environment variable <code>$FOOVAR</code> available at launch time, use the
 directive <code>{{env &quot;FOOVAR&quot;}}</code> in your <code>nginx.conf</code>.</p>
 <p>For example, include the following in your <code>nginx.conf</code> file to enable or
@@ -532,11 +468,7 @@ disable gzipping of responses based on the value of <code>GZIP_DOWNLOADS</code>:
 <pre class="copyable"><code class="copyable__code">docker run --tty --env PORT=8080 --env GZIP_DOWNLOADS=off --publish 8080:8080 my-nginx-image
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h3 id=" use-dynamic-modules-at-app-launch-time " class="markup-heading">
-    <a class="markup-heading__link" href="#use-dynamic-modules-at-app-launch-time">
-        Use Dynamic Modules at App Launch Time
-    </a>
-</h3><p>You can use templates to set the path to a dynamic module using the
+<h3 id="use-dynamic-modules-at-app-launch-time" class="markup-heading"><a class="markup-heading__link" href="#use-dynamic-modules-at-app-launch-time">Use Dynamic Modules at App Launch Time</a></h3><p>You can use templates to set the path to a dynamic module using the
 <code>load_module</code> directive.</p>
 <p>To load a user-provided module named <code>ngx_foo_module</code>, provide a
 <code>modules/ngx_foo_module.so</code> file in your app directory and add the following
@@ -570,7 +502,7 @@ information about how to set up an <code>nginx.conf</code> file.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> July 16, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 19, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -634,9 +566,6 @@ information about how to set up an <code>nginx.conf</code> file.</p>
     </div>
 </footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
 
-    <div id="footer-skip-link" class="screenreader-container">
-    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
-</div>
 
 </body>
 

@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/reference/go-reference/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.7a9a3fb621d1aafddddeee0bff82cae4463214bd78ad0dd0fe0ef5781ee7a41e.css">
+<link rel="stylesheet" href="/css/main-v1.min.c58411b93ef938103ca39dd21f9d9c13817bff0cf25ea851ff662c6f57973bce.css">
 </head>
 
 <body>
@@ -31,10 +31,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
-
-    <div id="header-skip-link" class="screenreader-container">
-    <a href="#title" class="screenreader-text">Skip to Content</a>
-</div>
 
     
 
@@ -340,7 +336,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">Go Buildpack Reference</h1>
+            <h1 class="">Go Buildpack Reference</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
@@ -369,19 +365,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 and configuration options of the
 <a href="https://github.com/paketo-buildpacks/go">Paketo Go Buildpack</a>. For explanations of how to use the buildpack for several common use-cases, see
 the  Paketo Go Buildpack  How To <a href="/docs/howto/go">documentation</a>.</p>
-<h2 id=" supported-dependencies " class="markup-heading">
-    <a class="markup-heading__link" href="#supported-dependencies">
-        Supported Dependencies
-    </a>
-</h2><p>The Go Paketo Buildpack supports several versions of Go.
+<h2 id="supported-dependencies" class="markup-heading"><a class="markup-heading__link" href="#supported-dependencies">Supported Dependencies</a></h2><p>The Go Paketo Buildpack supports several versions of Go.
 For more details on the specific versions supported in a given buildpack
 version, see the <a href="https://github.com/paketo-buildpacks/go/releases">release
 notes</a>.</p>
-<h2 id=" package-management-options " class="markup-heading">
-    <a class="markup-heading__link" href="#package-management-options">
-        Package Management Options
-    </a>
-</h2><p>With the Go CNB, there are three options for package management depending on
+<h2 id="package-management-options" class="markup-heading"><a class="markup-heading__link" href="#package-management-options">Package Management Options</a></h2><p>With the Go CNB, there are three options for package management depending on
 your application:</p>
 <ul>
 <li>The built-in <a href="https://github.com/golang/go/wiki/Modules">Go modules</a> feature,</li>
@@ -390,11 +378,7 @@ your application:</p>
 </ul>
 <p>Support for each of these package managers is mutually-exclusive. You can find
 specific information for each option below.</p>
-<h3 id=" package-management-with-go-modules " class="markup-heading">
-    <a class="markup-heading__link" href="#package-management-with-go-modules">
-        Package Management with Go Modules
-    </a>
-</h3><p>Many Go apps require third-party libraries to perform common tasks and
+<h3 id="package-management-with-go-modules" class="markup-heading"><a class="markup-heading__link" href="#package-management-with-go-modules">Package Management with Go Modules</a></h3><p>Many Go apps require third-party libraries to perform common tasks and
 behaviors. Go modules are a built-in option for managing these third-party
 dependencies that the Go CNB fully supports. Including a <code>go.mod</code> file in your
 app source code instructs the buildpack to vendor your dependencies using Go
@@ -403,11 +387,7 @@ modules. During the build phase, the <code>go-mod-vendor</code>
 if the application requires any external modules and if it does, runs the <code>go mod vendor</code> command for your app. The resulting <code>vendor</code> directory will exist
 in the app&rsquo;s root directory and will contain all the packages needed to build
 your Go app.</p>
-<h3 id=" package-management-with-dep " class="markup-heading">
-    <a class="markup-heading__link" href="#package-management-with-dep">
-        Package Management with Dep
-    </a>
-</h3><p>Dep is an alternative option to Go Modules for package management in Go apps.
+<h3 id="package-management-with-dep" class="markup-heading"><a class="markup-heading__link" href="#package-management-with-dep">Package Management with Dep</a></h3><p>Dep is an alternative option to Go Modules for package management in Go apps.
 Including a <code>Gopkg.toml</code> file (more information about this
 <a href="https://golang.github.io/dep/docs/Gopkg.toml.html">here</a>) in your app source
 code instructs the buildpack to download the <code>dep</code> package, and then vendor
@@ -417,25 +397,13 @@ phase, the <code>dep-ensure</code>
 <a href="https://github.com/paketo-buildpacks/dep-ensure">buildpack</a> runs the <code>dep ensure</code> command for your app. The resulting <code>vendor</code> directory will exist in
 the app&rsquo;s root directory and will contain all the packages needed to build your
 Go app.</p>
-<h3 id=" no-package-management " class="markup-heading">
-    <a class="markup-heading__link" href="#no-package-management">
-        No Package Management
-    </a>
-</h3><p>The Go CNB also supports both self-vendored apps and simpler apps that do not
+<h3 id="no-package-management" class="markup-heading"><a class="markup-heading__link" href="#no-package-management">No Package Management</a></h3><p>The Go CNB also supports both self-vendored apps and simpler apps that do not
 require third-party packages. In this case there is no vendoring step, and the
 <code>go build</code> command is run on the app source code as it is provided.</p>
-<h2 id=" buildpack-set-environment-variables " class="markup-heading">
-    <a class="markup-heading__link" href="#buildpack-set-environment-variables">
-        Buildpack-Set Environment Variables
-    </a>
-</h2><p>The Go CNB sets a few environment variables during the <code>build</code> and <code>launch</code>
+<h2 id="buildpack-set-environment-variables" class="markup-heading"><a class="markup-heading__link" href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a></h2><p>The Go CNB sets a few environment variables during the <code>build</code> and <code>launch</code>
 phases of the app lifecycle. The sections below describe each environment
 variable and its impact on your app.</p>
-<h3 id=" gopath " class="markup-heading">
-    <a class="markup-heading__link" href="#gopath">
-        <code>GOPATH</code>
-    </a>
-</h3><p>The <code>GOPATH</code> environment variable tells Go where to look for artifacts such as
+<h3 id="gopath" class="markup-heading"><a class="markup-heading__link" href="#gopath"><code>GOPATH</code></a></h3><p>The <code>GOPATH</code> environment variable tells Go where to look for artifacts such as
 source code and binaries. The Go CNB takes care of setting the <code>GOPATH</code> for
 you, depending on your app and which package management option your app uses.</p>
 <ul>
@@ -443,37 +411,21 @@ you, depending on your app and which package management option your app uses.</p
 <li>Phases: <code>build</code></li>
 <li>Value: path to Go workspace</li>
 </ul>
-<h4 id=" go-modules " class="markup-heading">
-    <a class="markup-heading__link" href="#go-modules">
-        Go Modules
-    </a>
-</h4><p>When using Go modules, the Go CNB sets the <code>GOPATH</code> to a cached module layer in
+<h4 id="go-modules" class="markup-heading"><a class="markup-heading__link" href="#go-modules">Go Modules</a></h4><p>When using Go modules, the Go CNB sets the <code>GOPATH</code> to a cached module layer in
 the image so that between builds of the app, the dependencies don&rsquo;t have to be
 redownloaded. Essentially, the <code>GOPATH</code> is being used to tell the <code>go mod vendor</code> command where to look for dependencies. It&rsquo;s worth noting that in this
 case, the <code>GOPATH</code> isn&rsquo;t persisted beyond vendoring the dependencies and gets
 overwritten by a subsequent buildpack.</p>
-<h4 id=" dep " class="markup-heading">
-    <a class="markup-heading__link" href="#dep">
-        Dep
-    </a>
-</h4><p>When using the Dep tool, the Go CNB sets the <code>GOPATH</code> to a temporary directory.
+<h4 id="dep" class="markup-heading"><a class="markup-heading__link" href="#dep">Dep</a></h4><p>When using the Dep tool, the Go CNB sets the <code>GOPATH</code> to a temporary directory.
 The app source code gets copied into the <code>GOPATH</code> location so that the <code>dep ensure</code> command knows where to look for the source code, as well as where to
 put the <code>vendor</code> directory. The <code>vendor</code> directory that is created is then
 copied to the original source code directory. The <code>GOPATH</code> in this case is used
 to run <code>dep ensure</code>, but does not persist beyond that step.</p>
-<h4 id=" build " class="markup-heading">
-    <a class="markup-heading__link" href="#build">
-        Build
-    </a>
-</h4><p>The <code>go-build</code> buildpack participates in the Go CNB in every case, regardless
+<h4 id="build" class="markup-heading"><a class="markup-heading__link" href="#build">Build</a></h4><p>The <code>go-build</code> buildpack participates in the Go CNB in every case, regardless
 of which package management option is used. The <code>GOPATH</code> is set to a temporary
 directory which includes the app source code and local sub-packages. The
 <code>GOPATH</code> is utilized in running <code>go build</code> to compile your app.</p>
-<h3 id=" gocache " class="markup-heading">
-    <a class="markup-heading__link" href="#gocache">
-        <code>GOCACHE</code>
-    </a>
-</h3><p>The <code>GOCACHE</code> variable specifies where build outputs are stored for reuse in
+<h3 id="gocache" class="markup-heading"><a class="markup-heading__link" href="#gocache"><code>GOCACHE</code></a></h3><p>The <code>GOCACHE</code> variable specifies where build outputs are stored for reuse in
 subsequent builds. It gets set to a cached layer in  the image by the
 <code>go-build</code> buildpack, so that it is persisted between builds.</p>
 <ul>
@@ -481,11 +433,7 @@ subsequent builds. It gets set to a cached layer in  the image by the
 <li>Phases: <code>build</code></li>
 <li>Value: Go Cache layer path</li>
 </ul>
-<h3 id=" depcachedir " class="markup-heading">
-    <a class="markup-heading__link" href="#depcachedir">
-        <code>DEPCACHEDIR</code>
-    </a>
-</h3><p><code>DEPCACHEDIR</code> specifies where upstream dependency source code is stored for use
+<h3 id="depcachedir" class="markup-heading"><a class="markup-heading__link" href="#depcachedir"><code>DEPCACHEDIR</code></a></h3><p><code>DEPCACHEDIR</code> specifies where upstream dependency source code is stored for use
 by the Dep tool. The <code>dep-ensure</code> buildpack sets this variable to the path of a
 cache layer in the app image.</p>
 <ul>
@@ -510,7 +458,7 @@ cache layer in the app image.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> July 16, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 19, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -573,9 +521,6 @@ cache layer in the app image.</p>
     </div>
 </footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
 
-    <div id="footer-skip-link" class="screenreader-container">
-    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
-</div>
 
 </body>
 

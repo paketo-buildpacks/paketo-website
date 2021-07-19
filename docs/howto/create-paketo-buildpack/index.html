@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/howto/create-paketo-buildpack/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.7a9a3fb621d1aafddddeee0bff82cae4463214bd78ad0dd0fe0ef5781ee7a41e.css">
+<link rel="stylesheet" href="/css/main-v1.min.c58411b93ef938103ca39dd21f9d9c13817bff0cf25ea851ff662c6f57973bce.css">
 </head>
 
 <body>
@@ -31,10 +31,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
-
-    <div id="header-skip-link" class="screenreader-container">
-    <a href="#title" class="screenreader-text">Skip to Content</a>
-</div>
 
     
 
@@ -340,7 +336,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">Create a Paketo Buildpack</h1>
+            <h1 class="">Create a Paketo Buildpack</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
@@ -369,32 +365,20 @@ control to the buildpack author.</p>
 <p>This tutorial&rsquo;s goal is to take you from nothing to a buildpack that puts a
 dependency on the filesystem as fast as possible, so with that let&rsquo;s get
 started!</p>
-<h2 id=" packithttpsgithubcompaketo-buildpackspackit " class="markup-heading">
-    <a class="markup-heading__link" href="#packithttpsgithubcompaketo-buildpackspackit">
-        <a href="https://github.com/paketo-buildpacks/packit">Packit</a>
-    </a>
-</h2><p><a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit"><img src="https://img.shields.io/badge/pkg.go.dev-doc-blue" alt="GoDoc"></a></p>
+<h2 id="packithttpsgithubcompaketo-buildpackspackit" class="markup-heading"><a class="markup-heading__link" href="#packithttpsgithubcompaketo-buildpackspackit"><a href="https://github.com/paketo-buildpacks/packit">Packit</a></a></h2><p><a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit"><img src="https://img.shields.io/badge/pkg.go.dev-doc-blue" alt="GoDoc"></a></p>
 <p>For complete documentation of the Packit library, you can browse the godocs
 linked above. In the interest of saving you time, let&rsquo;s talk about the three
 artifacts that will need to be present in our final built buildpack. In the end
 we will need a <code>buildpack.toml</code> file, a <code>bin/detect</code> binary, and a <code>bin/build</code>
 binary for this buildpack to be CNB compliant.</p>
-<h2 id=" prerequisites " class="markup-heading">
-    <a class="markup-heading__link" href="#prerequisites">
-        Prerequisites
-    </a>
-</h2><p>You will need the following tools installed on your machine to aid you in
+<h2 id="prerequisites" class="markup-heading"><a class="markup-heading__link" href="#prerequisites">Prerequisites</a></h2><p>You will need the following tools installed on your machine to aid you in
 building and testing your buildpack.</p>
 <ul>
 <li><a href="https://docs.docker.com/install/">Docker</a></li>
 <li><a href="https://buildpacks.io/docs/install-pack/">Pack</a></li>
 <li><a href="https://golang.org/doc/install">Go</a></li>
 </ul>
-<h2 id=" lets-get-started " class="markup-heading">
-    <a class="markup-heading__link" href="#lets-get-started">
-        Let&rsquo;s Get Started
-    </a>
-</h2><p>For demonstration purposes we are going to build a buildpack that installs a
+<h2 id="lets-get-started" class="markup-heading"><a class="markup-heading__link" href="#lets-get-started">Let&rsquo;s Get Started</a></h2><p>For demonstration purposes we are going to build a buildpack that installs a
 <code>nodejs</code> engine, which is based off the Paketo
 <a href="https://github.com/paketo-buildpacks/node-engine">node-engine</a>.</p>
 <p>A sample repository containing all of the code is
@@ -404,11 +388,7 @@ the following command:</p>
 <pre class="copyable"><code class="copyable__code">go mod init &lt;/path/to/project&gt;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h3 id=" buildpacktoml " class="markup-heading">
-    <a class="markup-heading__link" href="#buildpacktoml">
-        <code>buildpack.toml</code>
-    </a>
-</h3><p>The <code>buildpack.toml</code> file should contain the following:</p>
+<h3 id="buildpacktoml" class="markup-heading"><a class="markup-heading__link" href="#buildpacktoml"><code>buildpack.toml</code></a></h3><p>The <code>buildpack.toml</code> file should contain the following:</p>
 <pre class="copyable"><code class="copyable__code"># Indicates compatibility version with lifecycle
 api = &#34;0.2&#34;
 
@@ -423,11 +403,7 @@ api = &#34;0.2&#34;
   id = &#34;io.buildpacks.stacks.bionic&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h3 id=" bindetect " class="markup-heading">
-    <a class="markup-heading__link" href="#bindetect">
-        <code>bin/detect</code>
-    </a>
-</h3><p><strong>Note</strong>: For a complete rundown on how the Detect Phase works you can read the
+<h3 id="bindetect" class="markup-heading"><a class="markup-heading__link" href="#bindetect"><code>bin/detect</code></a></h3><p><strong>Note</strong>: For a complete rundown on how the Detect Phase works you can read the
 <code>Detect Phase</code> section in the <a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit">packit
 godocs</a>.</p>
 <p>In the Packit library, there is a
@@ -583,11 +559,7 @@ ERROR: failed with status code: 7
 
 <p>As you can see detection now passes! However, we still get an error because we
 have no <code>build</code> binary yet, so let&rsquo;s fix that.</p>
-<h3 id=" binbuild " class="markup-heading">
-    <a class="markup-heading__link" href="#binbuild">
-        <code>bin/build</code>
-    </a>
-</h3><p>For a complete on how the Build Phase works you can read the <code>Build Phase</code>
+<h3 id="binbuild" class="markup-heading"><a class="markup-heading__link" href="#binbuild"><code>bin/build</code></a></h3><p>For a complete on how the Build Phase works you can read the <code>Build Phase</code>
 section in the <a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit">packit
 godocs</a>, but once again I
 will give you a quick overview. The Packit library has a
@@ -954,7 +926,7 @@ browser. Either way you should expect to see &ldquo;hello world&rdquo; as your o
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> July 16, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 19, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1011,9 +983,6 @@ browser. Either way you should expect to see &ldquo;hello world&rdquo; as your o
     </div>
 </footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
 
-    <div id="footer-skip-link" class="screenreader-container">
-    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
-</div>
 
 </body>
 

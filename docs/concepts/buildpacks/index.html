@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/concepts/buildpacks/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.7a9a3fb621d1aafddddeee0bff82cae4463214bd78ad0dd0fe0ef5781ee7a41e.css">
+<link rel="stylesheet" href="/css/main-v1.min.c58411b93ef938103ca39dd21f9d9c13817bff0cf25ea851ff662c6f57973bce.css">
 </head>
 
 <body>
@@ -31,10 +31,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
-
-    <div id="header-skip-link" class="screenreader-container">
-    <a href="#title" class="screenreader-text">Skip to Content</a>
-</div>
 
     
 
@@ -340,7 +336,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">Buildpacks</h1>
+            <h1 class="">Buildpacks</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
@@ -377,11 +373,7 @@ Paketo NPM Start Buildpack 0.0.2
 ...
 </code></pre><p>In this section, we will make sense of this output and explain how the
 buildpacks detect what dependencies are needed by your app to build it into a runnable app image.</p>
-<h2 id=" what-are-buildpacks " class="markup-heading">
-    <a class="markup-heading__link" href="#what-are-buildpacks">
-        What are Buildpacks?
-    </a>
-</h2><p>Buildpacks examine your app source code, identify and gather dependencies, and
+<h2 id="what-are-buildpacks" class="markup-heading"><a class="markup-heading__link" href="#what-are-buildpacks">What are Buildpacks?</a></h2><p>Buildpacks examine your app source code, identify and gather dependencies, and
 output OCI compliant app and dependency layers.</p>
 <p><strong>Paketo buildpacks provide language runtime support for your favorite
 languages.</strong></p>
@@ -390,11 +382,7 @@ dependency. Multiple implementation buildpacks come together to provide all of
 your app&rsquo;s dependencies.</p>
 <p>A buildpack operates on your source code in two phases: <strong>detect</strong> and
 <strong>build</strong>.</p>
-<h3 id=" detect-phase " class="markup-heading">
-    <a class="markup-heading__link" href="#detect-phase">
-        Detect Phase
-    </a>
-</h3><p>In the <code>detect</code> phase, the buildpack looks for indicators in
+<h3 id="detect-phase" class="markup-heading"><a class="markup-heading__link" href="#detect-phase">Detect Phase</a></h3><p>In the <code>detect</code> phase, the buildpack looks for indicators in
 your source code to determine whether or not it needs to be included to build your app.</p>
 <p>In the Getting Started tutorial, you can see in the output that
 <code>paketo-buildpacks/npm-install</code> is used. This is because the NPM Install
@@ -405,11 +393,7 @@ the NPM Install Buildpack.</p>
 dependencies they are responsible for. Once detection has passed for a
 buildpack, the buildpack returns a contract of what it requires, and what it
 will provide to the subsequent <code>build</code> phase.</p>
-<h3 id=" build-phase " class="markup-heading">
-    <a class="markup-heading__link" href="#build-phase">
-        Build Phase
-    </a>
-</h3><p>In the <code>build</code> phase, the buildpack contributes to the final
+<h3 id="build-phase" class="markup-heading"><a class="markup-heading__link" href="#build-phase">Build Phase</a></h3><p>In the <code>build</code> phase, the buildpack contributes to the final
 app image, fulfilling the contract given by the <code>detect</code> phase. These
 contributions could be adding an image layer containing a dependency binary
 (like the Node.js engine) or could be as simple as a running a command (like
@@ -423,47 +407,27 @@ runnable app image:</p>
 <p><img src="/images/docs-buildpacks-app-image.png" alt="Final app image"></p>
 <p>For more information about buildpacks, visit
 <a href="https://buildpacks.io/docs/concepts/components/buildpack/">buildpacks.io</a></p>
-<h3 id=" component-buildpacks " class="markup-heading">
-    <a class="markup-heading__link" href="#component-buildpacks">
-        Component Buildpacks
-    </a>
-</h3><p>Paketo provides many component buildpacks, each with a well-defined
+<h3 id="component-buildpacks" class="markup-heading"><a class="markup-heading__link" href="#component-buildpacks">Component Buildpacks</a></h3><p>Paketo provides many component buildpacks, each with a well-defined
 responsibility. Component buildpacks may require contributions from upstream
 buildpacks and/or provide required components to downstream buildpacks.</p>
 <p>For example, the Gradle Buildpack is a component buildpack, responsible for
 installing Gradle in the build container and using Gradle to compile and
 package a JVM application. It requires that an upstream component to provide a
 JDK. It provides a compiled JVM application to downstream buildpacks.</p>
-<h3 id=" composite-buildpacks " class="markup-heading">
-    <a class="markup-heading__link" href="#composite-buildpacks">
-        Composite Buildpacks
-    </a>
-</h3><p>Component buildpacks can be combined to compose higher-level composite
+<h3 id="composite-buildpacks" class="markup-heading"><a class="markup-heading__link" href="#composite-buildpacks">Composite Buildpacks</a></h3><p>Component buildpacks can be combined to compose higher-level composite
 buildpacks. Composite buildpacks contain an ordered list of component
 buildpacks. Some buildpacks in the ordering may be optional, participating only
 when they detect that they are needed.</p>
-<h2 id=" how-do-paketo-buildpacks-work-together " class="markup-heading">
-    <a class="markup-heading__link" href="#how-do-paketo-buildpacks-work-together">
-        How do Paketo Buildpacks work together?
-    </a>
-</h2><p>The Paketo language family buildpacks are <a href="#composite-buildpacks">composite
+<h2 id="how-do-paketo-buildpacks-work-together" class="markup-heading"><a class="markup-heading__link" href="#how-do-paketo-buildpacks-work-together">How do Paketo Buildpacks work together?</a></h2><p>The Paketo language family buildpacks are <a href="#composite-buildpacks">composite
 buildpacks</a> that provide easy out-of-the-box support the
 most popular language runtimes and app configurations. These buildpacks combine
 multiple component buildpacks into ordered groupings. The groupings satisfy
 each buildpack&rsquo;s requirements (mentioned in the  <code>detect</code> section).</p>
-<h2 id=" how-do-paketo-buildpacks-relate-to-the-cloud-native-buildpacks-project " class="markup-heading">
-    <a class="markup-heading__link" href="#how-do-paketo-buildpacks-relate-to-the-cloud-native-buildpacks-project">
-        How do Paketo Buildpacks relate to the Cloud Native Buildpacks project?
-    </a>
-</h2><p>Paketo Buildpacks implement the Buildpack API described in the <a href="https://github.com/buildpacks/spec">Cloud Native Buildpacks
+<h2 id="how-do-paketo-buildpacks-relate-to-the-cloud-native-buildpacks-project" class="markup-heading"><a class="markup-heading__link" href="#how-do-paketo-buildpacks-relate-to-the-cloud-native-buildpacks-project">How do Paketo Buildpacks relate to the Cloud Native Buildpacks project?</a></h2><p>Paketo Buildpacks implement the Buildpack API described in the <a href="https://github.com/buildpacks/spec">Cloud Native Buildpacks
 Specification</a>. The <code>build</code> and <code>detect</code>
 phases of Paketo Buildpacks are designed to be run by the <a href="https://buildpacks.io/docs/concepts/components/lifecycle/">CNB
 lifecycle</a>.</p>
-<h2 id=" how-are-paketo-buildpacks-different-from-cloud-foundry-buildpacks " class="markup-heading">
-    <a class="markup-heading__link" href="#how-are-paketo-buildpacks-different-from-cloud-foundry-buildpacks">
-        How are Paketo Buildpacks different from Cloud Foundry Buildpacks?
-    </a>
-</h2><table>
+<h2 id="how-are-paketo-buildpacks-different-from-cloud-foundry-buildpacks" class="markup-heading"><a class="markup-heading__link" href="#how-are-paketo-buildpacks-different-from-cloud-foundry-buildpacks">How are Paketo Buildpacks different from Cloud Foundry Buildpacks?</a></h2><table>
 <thead>
 <tr>
 <th>Paketo Buildpacks</th>
@@ -502,7 +466,7 @@ lifecycle</a>.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> July 16, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 19, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -561,9 +525,6 @@ lifecycle</a>.</p>
     </div>
 </footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
 
-    <div id="footer-skip-link" class="screenreader-container">
-    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
-</div>
 
 </body>
 

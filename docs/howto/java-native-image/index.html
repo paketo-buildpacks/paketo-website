@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/howto/java-native-image/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.7a9a3fb621d1aafddddeee0bff82cae4463214bd78ad0dd0fe0ef5781ee7a41e.css">
+<link rel="stylesheet" href="/css/main-v1.min.c58411b93ef938103ca39dd21f9d9c13817bff0cf25ea851ff662c6f57973bce.css">
 </head>
 
 <body>
@@ -31,10 +31,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
-
-    <div id="header-skip-link" class="screenreader-container">
-    <a href="#title" class="screenreader-text">Skip to Content</a>
-</div>
 
     
 
@@ -340,7 +336,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">Java Native Image Buildpack</h1>
+            <h1 class="">Java Native Image Buildpack</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
@@ -370,11 +366,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="docs-body__markdown">
                 <p>The <a href="https://github.com/paketo-buildpacks/java-native-image%5D">Paketo Java Native Image Buildpack</a> allows users to create an image containing a <a href="https://www.graalvm.org/docs/introduction/">GraalVM</a> <a href="https://www.graalvm.org/reference-manual/native-image/">native image</a> application.</p>
 <p>The Java Native Buildpack is a <a href="https://paketo.io/docs/concepts/buildpacks/#composite-buildpacks">composite buildpack</a> and each step in a build is handled by one of it&rsquo;s <a href="#components">components</a>. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages of the component buildpacks.</p>
-<h2 id=" about-the-examples " class="markup-heading">
-    <a class="markup-heading__link" href="#about-the-examples">
-        About the Examples
-    </a>
-</h2><p>All Java Native Image Buildpack examples will use the Paketo <a href="https://github.com/paketo-buildpacks/samples">sample applications</a>.</p>
+<h2 id="about-the-examples" class="markup-heading"><a class="markup-heading__link" href="#about-the-examples">About the Examples</a></h2><p>All Java Native Image Buildpack examples will use the Paketo <a href="https://github.com/paketo-buildpacks/samples">sample applications</a>.</p>
 <p>Examples assume that the root of this repository is the working directory:
 <pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples
@@ -390,11 +382,7 @@ cd samples
 curl -s http://localhost:8080/actuator/health | jq .
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h2 id=" supported-applications " class="markup-heading">
-    <a class="markup-heading__link" href="#supported-applications">
-        Supported Applications
-    </a>
-</h2><p>For all native image builds, it is required that:</p>
+<h2 id="supported-applications" class="markup-heading"><a class="markup-heading__link" href="#supported-applications">Supported Applications</a></h2><p>For all native image builds, it is required that:</p>
 <ul>
 <li><code>BP_NATIVE_IMAGE</code> is set at build time.</li>
 </ul>
@@ -403,11 +391,7 @@ curl -s http://localhost:8080/actuator/health | jq .
 <li>The application declares a dependency on <a href="https://github.com/spring-projects-experimental/spring-native">Spring Native</a>.</li>
 <li>The version of <a href="https://github.com/spring-projects-experimental/spring-native">Spring Native</a> declared by the application may require a specific version of Spring Boot. See the Spring Native <a href="https://github.com/spring-projects-experimental/spring-native/releases">release notes</a> for supported Spring Boot versions.</li>
 </ul>
-<h2 id=" building-from-source " class="markup-heading">
-    <a class="markup-heading__link" href="#building-from-source">
-        Building From Source
-    </a>
-</h2><p>The Java Native Image Buildpack supports the same <a href="https://paketo.io/docs/howto/java/#building-from-source">build tools and configuration options</a> as the <a href="https://github.com/paketo-buildpacks/java%5D">Java Buildpack</a>. The build must produce an <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable jar</a>.</p>
+<h2 id="building-from-source" class="markup-heading"><a class="markup-heading__link" href="#building-from-source">Building From Source</a></h2><p>The Java Native Image Buildpack supports the same <a href="https://paketo.io/docs/howto/java/#building-from-source">build tools and configuration options</a> as the <a href="https://github.com/paketo-buildpacks/java%5D">Java Buildpack</a>. The build must produce an <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable jar</a>.</p>
 <p>After compiling and packaging, the buildpack will replace provided application source code with the exploded JAR and proceed as described in <a href="#building-from-an-executable-jar">Building from an Executable Jar</a>.</p>
 <p><strong>Example</strong>: Building a Native image with Maven</p>
 <p>The following command creates an image from source with <code>maven</code>.</p>
@@ -416,11 +400,7 @@ curl -s http://localhost:8080/actuator/health | jq .
   --path java/native-image/java-native-image-sample
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h2 id=" building-from-an-executable-jar " class="markup-heading">
-    <a class="markup-heading__link" href="#building-from-an-executable-jar">
-        Building from an Executable JAR
-    </a>
-</h2><p>An application developer may build an image from an exploded <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable JAR</a>. Most platforms will automatically extract provided archives.</p>
+<h2 id="building-from-an-executable-jar" class="markup-heading"><a class="markup-heading__link" href="#building-from-an-executable-jar">Building from an Executable JAR</a></h2><p>An application developer may build an image from an exploded <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable JAR</a>. Most platforms will automatically extract provided archives.</p>
 <p><strong>Example</strong>: Building a Native image from an Executable JAR</p>
 <p>The following command uses Maven directly to compile an executable JAR and then uses the <code>pack</code> CLI to build an image from the JAR.</p>
 <pre class="copyable"><code class="copyable__code">cd samples/java/native-image
@@ -431,31 +411,19 @@ pack build samples/java-native \
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
 <p>The resulting application image will be identical to that built in the &ldquo;Building a Native image with Maven&rdquo; example.</p>
-<h2 id=" about-the-native-image " class="markup-heading">
-    <a class="markup-heading__link" href="#about-the-native-image">
-        About the Native Image
-    </a>
-</h2><p>The <a href="https://github.com/paketo-buildpacks/graalvm">GraalVM Buildpack</a> will provide the <a href="https://www.graalvm.org/docs/introduction/">GraalVM</a> JDK, including the <code>native-image</code> utility (the <a href="https://www.graalvm.org/reference-manual/native-image/">Native image builder</a>), and the <a href="https://www.graalvm.org/reference-manual/native-image/SubstrateVM/">Substrate VM</a>.</p>
+<h2 id="about-the-native-image" class="markup-heading"><a class="markup-heading__link" href="#about-the-native-image">About the Native Image</a></h2><p>The <a href="https://github.com/paketo-buildpacks/graalvm">GraalVM Buildpack</a> will provide the <a href="https://www.graalvm.org/docs/introduction/">GraalVM</a> JDK, including the <code>native-image</code> utility (the <a href="https://www.graalvm.org/reference-manual/native-image/">Native image builder</a>), and the <a href="https://www.graalvm.org/reference-manual/native-image/SubstrateVM/">Substrate VM</a>.</p>
 <p>The <a href="https://github.com/paketo-buildpacks/spring-boot-native-image">Native Image Buildpack</a> uses <code>native-image</code> to compile the Java bytecode into a standalone executable. The Native Image Buildpack uses the standard tools for building native images and does not depend on Spring Native support.</p>
 <p><strong>Note</strong>: The <code>native-image</code> build is a memory intensive process and may be slow if insufficient memory is provided. From the <a href="https://repo.spring.io/milestone/org/springframework/experimental/spring-graalvm-native-docs/0.8.5/spring-graalvm-native-docs-0.8.5.zip!/reference/index.html#_prerequisites">prerequisites</a> in the Spring Native reference docs:</p>
 <blockquote>
 <p>&ldquo;On Mac and Windows, it is recommended to increase the memory allocated to Docker to at least 8G (and potentially to add more CPUs as well) since native-image compiler is a heavy process. See this <a href="https://stackoverflow.com/questions/44533319/how-to-assign-more-memory-to-docker-container/44533437#44533437">Stackoverflow answer</a> for more details. On Linux, Docker uses by default the resources available on the host so no configuration is needed.&rdquo;</p>
 </blockquote>
-<h3 id=" inspecting-the-jvm-version " class="markup-heading">
-    <a class="markup-heading__link" href="#inspecting-the-jvm-version">
-        Inspecting the JVM Version
-    </a>
-</h3><p>The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.</p>
+<h3 id="inspecting-the-jvm-version" class="markup-heading"><a class="markup-heading__link" href="#inspecting-the-jvm-version">Inspecting the JVM Version</a></h3><p>The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.</p>
 <p><strong>Example</strong> Inspecting the JRE Version</p>
 <p>Given an image named <code>samples/java-native</code> built from one of examples above, the following command will print the exact version of the installed substrate VM.
 <pre class="copyable"><code class="copyable__code">pack inspect-image samples/java-native --bom | jq &#39;.local[] | select(.name==&#34;native-image-svm&#34;) | .metadata.version&#39;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h3 id=" configuring-the-jvm-version " class="markup-heading">
-    <a class="markup-heading__link" href="#configuring-the-jvm-version">
-        Configuring the JVM Version
-    </a>
-</h3><p>The following environment variable configures the JVM version at build-time.</p>
+<h3 id="configuring-the-jvm-version" class="markup-heading"><a class="markup-heading__link" href="#configuring-the-jvm-version">Configuring the JVM Version</a></h3><p>The following environment variable configures the JVM version at build-time.</p>
 <ul>
 <li><code>BP_JVM_VERSION</code>
 <ul>
@@ -465,11 +433,7 @@ pack build samples/java-native \
 </ul>
 </li>
 </ul>
-<h3 id=" configuring-the-graalvm-version " class="markup-heading">
-    <a class="markup-heading__link" href="#configuring-the-graalvm-version">
-        Configuring the GraalVM Version
-    </a>
-</h3><p>Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a sepecific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.</p>
+<h3 id="configuring-the-graalvm-version" class="markup-heading"><a class="markup-heading__link" href="#configuring-the-graalvm-version">Configuring the GraalVM Version</a></h3><p>Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a sepecific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.</p>
 <p>The following table documents the versions available.</p>
 <table>
 <thead>
@@ -493,38 +457,22 @@ pack build samples/java-native \
 <pre class="copyable"><code class="copyable__code">pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/java-native-image:5.3.0
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h2 id=" spring-boot-applications " class="markup-heading">
-    <a class="markup-heading__link" href="#spring-boot-applications">
-        Spring Boot Applications
-    </a>
-</h2><p>The Java Native Image Buildpack contains the <a href="https://github.com/paketo-buildpacks/spring-boot">Spring Boot Buildpack</a> and provides the same Spring Boot <a href="https://paketo.io/docs/howto/java/#spring-boot-applications">features</a> as the Java Buildpack.</p>
-<h2 id=" selecting-a-process " class="markup-heading">
-    <a class="markup-heading__link" href="#selecting-a-process">
-        Selecting a Process
-    </a>
-</h2><p>The Java Native Image Buildpack will contribute a default process type that starts the application.</p>
+<h2 id="spring-boot-applications" class="markup-heading"><a class="markup-heading__link" href="#spring-boot-applications">Spring Boot Applications</a></h2><p>The Java Native Image Buildpack contains the <a href="https://github.com/paketo-buildpacks/spring-boot">Spring Boot Buildpack</a> and provides the same Spring Boot <a href="https://paketo.io/docs/howto/java/#spring-boot-applications">features</a> as the Java Buildpack.</p>
+<h2 id="selecting-a-process" class="markup-heading"><a class="markup-heading__link" href="#selecting-a-process">Selecting a Process</a></h2><p>The Java Native Image Buildpack will contribute a default process type that starts the application.</p>
 <p><strong>Example</strong>: Running the Default Process</p>
 <p>Execute the following commands to start the default process type using a <code>samples/java-native</code> image built from any previous example command.
 <pre class="copyable"><code class="copyable__code">docker run  --rm --publish 8080:8080 samples/java-native
 curl -s http://localhost:8080/actuator/health
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h3 id=" providing-additional-arguments " class="markup-heading">
-    <a class="markup-heading__link" href="#providing-additional-arguments">
-        Providing Additional Arguments
-    </a>
-</h3><p>Additional arguments can be provided to the application using the container [<code>CMD</code>][oci config]. In Kubernetes set <code>CMD</code> using the <code>args</code> field on the [container][kubernetes container resource] resource.</p>
+<h3 id="providing-additional-arguments" class="markup-heading"><a class="markup-heading__link" href="#providing-additional-arguments">Providing Additional Arguments</a></h3><p>Additional arguments can be provided to the application using the container [<code>CMD</code>][oci config]. In Kubernetes set <code>CMD</code> using the <code>args</code> field on the [container][kubernetes container resource] resource.</p>
 <p><strong>Example</strong>: Setting the Server Port</p>
 <p>Execute the following command passes an additional argument to application start command, setting the port to <code>8081</code>.
 <pre class="copyable"><code class="copyable__code">docker run --rm --publish 8081:8081 samples/java-native --server.port=8081
 curl -s http://localhost:8081/actuator/health
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h2 id=" components " class="markup-heading">
-    <a class="markup-heading__link" href="#components">
-        Components
-    </a>
-</h2><p>The following component buildpacks compose the Paketo Java Native Image Buildpack.</p>
+<h2 id="components" class="markup-heading"><a class="markup-heading__link" href="#components">Components</a></h2><p>The following component buildpacks compose the Paketo Java Native Image Buildpack.</p>
 <table>
 <thead>
 <tr>
@@ -612,7 +560,7 @@ curl -s http://localhost:8081/actuator/health
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> July 16, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 19, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -678,9 +626,6 @@ curl -s http://localhost:8081/actuator/health
     </div>
 </footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
 
-    <div id="footer-skip-link" class="screenreader-container">
-    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
-</div>
 
 </body>
 
