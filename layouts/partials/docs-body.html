@@ -5,7 +5,7 @@
     <div class="docs-body">
         <div class="docs-body__container">
             {{ partial "github-edit.html" . }}
-            <h1 id="title">{{ .Title }}</h1>
+            <h1 class="">{{ .Title }}</h1>
             {{ partial "v2/docs-table-of-contents.html" (dict "context" . "viewer" "mobile") }}
             <div class="docs-body__markdown">
                 {{ .Content }}
