@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/howto/go/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.c58411b93ef938103ca39dd21f9d9c13817bff0cf25ea851ff662c6f57973bce.css">
+<link rel="stylesheet" href="/css/main-v1.min.7a9a3fb621d1aafddddeee0bff82cae4463214bd78ad0dd0fe0ef5781ee7a41e.css">
 </head>
 
 <body>
@@ -31,6 +31,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
+
+    <div id="header-skip-link" class="screenreader-container">
+    <a href="#title" class="screenreader-text">Skip to Content</a>
+</div>
 
     
 
@@ -336,7 +340,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 class="">How to Build Go Apps with Paketo Buildpacks</h1>
+            <h1 id="title">How to Build Go Apps with Paketo Buildpacks</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
@@ -383,7 +387,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 to build applications for several common use-cases. For more in-depth
 description of the buildpack&rsquo;s behavior and configuration see the  Paketo Go Buildpack
 Reference <a href="/docs/reference/go-reference">documentation</a>.</p>
-<h2 id="build-a-sample-go-application" class="markup-heading"><a class="markup-heading__link" href="#build-a-sample-go-application">Build a Sample Go Application</a></h2><p>You can quickly build a sample Go app into a runnable OCI image on your
+<h2 id="build-a-sample-go-application" class="markup-heading">
+    <a class="markup-heading__link" href="#build-a-sample-go-application">
+        Build a Sample Go Application
+    </a>
+</h2><p>You can quickly build a sample Go app into a runnable OCI image on your
 local machine with Paketo buildpacks.</p>
 <p><em>Prerequisites</em></p>
 <ul>
@@ -411,19 +419,31 @@ cd samples/go/mod
 </ol>
 <p><em>Note: Though the example above uses the Paketo Base Builder, this buildpack is
 also compatible with the Paketo Full Builder and Paketo Tiny Builder.</em></p>
-<h2 id="override-the-detected-go-version" class="markup-heading"><a class="markup-heading__link" href="#override-the-detected-go-version">Override the Detected Go Version</a></h2><p>The Paketo Go buildpack will attempt to automatically detect the correct version
+<h2 id="override-the-detected-go-version" class="markup-heading">
+    <a class="markup-heading__link" href="#override-the-detected-go-version">
+        Override the Detected Go Version
+    </a>
+</h2><p>The Paketo Go buildpack will attempt to automatically detect the correct version
 of Go to install based on the version in your app&rsquo;s <code>go.mod</code>. It is possible to
 override this version by setting the <code>BP_GO_VERSION</code> environment variable at build time.</p>
 <p><code>BP_GO_VERSION</code> can be set to any valid semver version or version constraint (e.g. <code>1.14.1</code>, <code>1.14.*</code>).
 For the versions available in the buildpack, see the buildpack&rsquo;s <a href="https://github.com/paketo-buildpacks/go/releases/latest">releases page</a>. Specifying a version of Go is not required. In the case that is not specified,
 the buildpack will provide the default version, which can be seen in the
 <code>buildpack.toml</code> file.</p>
-<h4 id="with-pack-and-a-command-line-flag" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-command-line-flag">With pack and a Command-Line Flag</a></h4><p>When building with the pack CLI, set <code>BP_GO_VERSION</code> at build time with the <code>--env</code> flag.
+<h4 id="with-pack-and-a-command-line-flag" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-command-line-flag">
+        With pack and a Command-Line Flag
+    </a>
+</h4><p>When building with the pack CLI, set <code>BP_GO_VERSION</code> at build time with the <code>--env</code> flag.
 <pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_GO_VERSION=&#34;1.14.1&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h4 id="with-pack-and-a-projecttoml" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-projecttoml">With pack and a <code>project.toml</code></a></h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_VERSION</code> at build time.
+<h4 id="with-pack-and-a-projecttoml" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-projecttoml">
+        With pack and a <code>project.toml</code>
+    </a>
+</h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_VERSION</code> at build time.
 <pre class="copyable"><code class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
@@ -432,17 +452,37 @@ the buildpack will provide the default version, which can be seen in the
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
 <p>The pack CLI will automatically detect the project file at build time.</p>
-<h4 id="deprecated-with-pack-and-a-buildpackyml" class="markup-heading"><a class="markup-heading__link" href="#deprecated-with-pack-and-a-buildpackyml">Deprecated: With pack and a <code>buildpack.yml</code></a></h4><p>Please note that setting the Go version through a buildpack.yml file will be
+<h4 id="deprecated-with-pack-and-a-buildpackyml" class="markup-heading">
+    <a class="markup-heading__link" href="#deprecated-with-pack-and-a-buildpackyml">
+        Deprecated: With pack and a <code>buildpack.yml</code>
+    </a>
+</h4><p>Please note that setting the Go version through a buildpack.yml file will be
 deprecated in Go Dist Buildpack v1.0.0.</p>
-<h2 id="configure-the-go-build-command" class="markup-heading"><a class="markup-heading__link" href="#configure-the-go-build-command">Configure the <code>go build</code> Command</a></h2><p>The Paketo Go buildpack compiles Go source code with the <code>go build</code> command, with certain opinionated flags by default. (See reference <a href="https://paketo.io/docs/reference/go-reference/">documentation</a> for information about the default flagset.) It is possible to override or add to these defaults by setting the <code>BP_GO_BUILD_FLAGS</code> and <code>BP_GO_BUILD_LDFLAGS</code>
+<h2 id="configure-the-go-build-command" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-the-go-build-command">
+        Configure the <code>go build</code> Command
+    </a>
+</h2><p>The Paketo Go buildpack compiles Go source code with the <code>go build</code> command, with certain opinionated flags by default. (See reference <a href="https://paketo.io/docs/reference/go-reference/">documentation</a> for information about the default flagset.) It is possible to override or add to these defaults by setting the <code>BP_GO_BUILD_FLAGS</code> and <code>BP_GO_BUILD_LDFLAGS</code>
 environment variables at build time.</p>
-<h3 id="set--ldflags-for-go-build" class="markup-heading"><a class="markup-heading__link" href="#set--ldflags-for-go-build">Set <code>-ldflags</code> for <code>go build</code></a></h3><p>The Paketo Go buildpack has a dedicated environment variable for setting the value of <code>-ldflags</code>.</p>
-<h4 id="with-pack-and-a-command-line-flag-1" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-1">With pack and a Command-Line Flag</a></h4><p>When building with the pack CLI, set <code>BP_GO_BUILD_LDFLAGS</code> at build time with the <code>--env</code> flag. For example, to add <code>-ldflags=&quot;-X main.variable=some-value&quot;</code> to the build flagset, set the environment variable as follows:
+<h3 id="set--ldflags-for-go-build" class="markup-heading">
+    <a class="markup-heading__link" href="#set--ldflags-for-go-build">
+        Set <code>-ldflags</code> for <code>go build</code>
+    </a>
+</h3><p>The Paketo Go buildpack has a dedicated environment variable for setting the value of <code>-ldflags</code>.</p>
+<h4 id="with-pack-and-a-command-line-flag-1" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-1">
+        With pack and a Command-Line Flag
+    </a>
+</h4><p>When building with the pack CLI, set <code>BP_GO_BUILD_LDFLAGS</code> at build time with the <code>--env</code> flag. For example, to add <code>-ldflags=&quot;-X main.variable=some-value&quot;</code> to the build flagset, set the environment variable as follows:
 <pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_GO_BUILD_LDFLAGS=&#34;-X main.variable=some-value&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h4 id="with-pack-and-a-projecttoml-1" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-projecttoml-1">With pack and a <code>project.toml</code></a></h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_BUILD_LDFLAGS</code> at build time. For example, to add <code>-ldflags=&quot;-X main.variable=some-value&quot;</code> to the build flagset, set the environment variable as follows:
+<h4 id="with-pack-and-a-projecttoml-1" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-projecttoml-1">
+        With pack and a <code>project.toml</code>
+    </a>
+</h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_BUILD_LDFLAGS</code> at build time. For example, to add <code>-ldflags=&quot;-X main.variable=some-value&quot;</code> to the build flagset, set the environment variable as follows:
 <pre class="copyable"><code class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
@@ -451,13 +491,25 @@ environment variables at build time.</p>
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
 <p>The pack CLI will automatically detect the project file at build time.</p>
-<h3 id="set-other-flags-for-go-build" class="markup-heading"><a class="markup-heading__link" href="#set-other-flags-for-go-build">Set Other Flags for <code>go build</code></a></h3><p>Setting <code>BP_GO_BUILD_FLAGS</code> will add to the Paketo Go buildpack&rsquo;s default flagset. Any value that you set for a given flag will override the value set by the buildpack. See reference <a href="/docs/reference/go-reference">documentation</a> for information about default configuration.</p>
-<h4 id="with-pack-and-a-command-line-flag-2" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-2">With pack and a Command-Line Flag</a></h4><p>When building with the pack CLI, set <code>BP_GO_BUILD_FLAGS</code> at build time with the <code>--env</code> flag. For example, to add <code>-buildmode=default -tags=paketo</code> to the build flagset, set the environment variable as follows:
+<h3 id="set-other-flags-for-go-build" class="markup-heading">
+    <a class="markup-heading__link" href="#set-other-flags-for-go-build">
+        Set Other Flags for <code>go build</code>
+    </a>
+</h3><p>Setting <code>BP_GO_BUILD_FLAGS</code> will add to the Paketo Go buildpack&rsquo;s default flagset. Any value that you set for a given flag will override the value set by the buildpack. See reference <a href="/docs/reference/go-reference">documentation</a> for information about default configuration.</p>
+<h4 id="with-pack-and-a-command-line-flag-2" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-2">
+        With pack and a Command-Line Flag
+    </a>
+</h4><p>When building with the pack CLI, set <code>BP_GO_BUILD_FLAGS</code> at build time with the <code>--env</code> flag. For example, to add <code>-buildmode=default -tags=paketo</code> to the build flagset, set the environment variable as follows:
 <pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_GO_BUILD_FLAGS=&#34;-buildmode=default -tags=paketo&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h4 id="with-pack-and-a-projecttoml-2" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-projecttoml-2">With pack and a <code>project.toml</code></a></h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_BUILD_FLAGS</code> at build time. For example, to add <code>-buildmode=default -tags=paketo</code> to the build flagset, set the environment variable as follows:
+<h4 id="with-pack-and-a-projecttoml-2" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-projecttoml-2">
+        With pack and a <code>project.toml</code>
+    </a>
+</h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_BUILD_FLAGS</code> at build time. For example, to add <code>-buildmode=default -tags=paketo</code> to the build flagset, set the environment variable as follows:
 <pre class="copyable"><code class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
@@ -465,11 +517,19 @@ environment variables at build time.</p>
     value=&#34;-buildmode=default -tags=paketo&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h4 id="deprecated-with-buildpackyml" class="markup-heading"><a class="markup-heading__link" href="#deprecated-with-buildpackyml">Deprecated: With buildpack.yml</a></h4><p>Specifying the Go Build flags through buildpack.yml configuration will be
+<h4 id="deprecated-with-buildpackyml" class="markup-heading">
+    <a class="markup-heading__link" href="#deprecated-with-buildpackyml">
+        Deprecated: With buildpack.yml
+    </a>
+</h4><p>Specifying the Go Build flags through buildpack.yml configuration will be
 deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
 please set the <code>$BP_GO_BUILD_FLAGS</code> environment variable.</p>
 <p>The pack CLI will automatically detect the project file at build time.</p>
-<h2 id="build-non-default-packages" class="markup-heading"><a class="markup-heading__link" href="#build-non-default-packages">Build Non-Default Package(s)</a></h2><p>The Paketo Go Buildpack will compile the package in the app&rsquo;s root directory
+<h2 id="build-non-default-packages" class="markup-heading">
+    <a class="markup-heading__link" href="#build-non-default-packages">
+        Build Non-Default Package(s)
+    </a>
+</h2><p>The Paketo Go Buildpack will compile the package in the app&rsquo;s root directory
 by default. It is possible to build a non-default package (or packages) by
 setting the <code>BP_GO_TARGETS</code> environment variable at build time.</p>
 <p>The following examples will build the <code>second</code> package in an app source directory with the structure:</p>
@@ -480,12 +540,20 @@ setting the <code>BP_GO_TARGETS</code> environment variable at build time.</p>
 │   └── main.go
 └── third
     └── main.go
-</code></pre><h4 id="with-pack-and-a-command-line-flag-3" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-3">With pack and a Command-Line Flag</a></h4><p>When building with the pack CLI, set <code>BP_GO_TARGETS</code> at build time with the <code>--env</code> flag.</p>
+</code></pre><h4 id="with-pack-and-a-command-line-flag-3" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-3">
+        With pack and a Command-Line Flag
+    </a>
+</h4><p>When building with the pack CLI, set <code>BP_GO_TARGETS</code> at build time with the <code>--env</code> flag.</p>
 <pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_GO_TARGETS=&#34;./second&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h4 id="with-pack-and-a-projecttoml-3" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-projecttoml-3">With pack and a <code>project.toml</code></a></h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_TARGETS</code> at build time.
+<h4 id="with-pack-and-a-projecttoml-3" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-projecttoml-3">
+        With pack and a <code>project.toml</code>
+    </a>
+</h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_TARGETS</code> at build time.
 <pre class="copyable"><code class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
@@ -494,18 +562,34 @@ setting the <code>BP_GO_TARGETS</code> environment variable at build time.</p>
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
 <p>The pack CLI will automatically detect the project file at build time.</p>
-<h4 id="deprecated-with-buildpackyml-1" class="markup-heading"><a class="markup-heading__link" href="#deprecated-with-buildpackyml-1">Deprecated: With buildpack.yml</a></h4><p>Specifying the Go Build targets through buildpack.yml configuration will be
+<h4 id="deprecated-with-buildpackyml-1" class="markup-heading">
+    <a class="markup-heading__link" href="#deprecated-with-buildpackyml-1">
+        Deprecated: With buildpack.yml
+    </a>
+</h4><p>Specifying the Go Build targets through buildpack.yml configuration will be
 deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
 please set the <code>$BP_GO_TARGETS</code> environment variable.</p>
-<h3 id="build-multiple-packages-in-one-app-image" class="markup-heading"><a class="markup-heading__link" href="#build-multiple-packages-in-one-app-image">Build Multiple Packages In One App Image</a></h3><p>The <code>BP_GO_TARGETS</code> evironment variable can accept a colon-delimited list of
+<h3 id="build-multiple-packages-in-one-app-image" class="markup-heading">
+    <a class="markup-heading__link" href="#build-multiple-packages-in-one-app-image">
+        Build Multiple Packages In One App Image
+    </a>
+</h3><p>The <code>BP_GO_TARGETS</code> evironment variable can accept a colon-delimited list of
 target packages. Each binary will be set as a <a href="https://buildpacks.io/docs/app-developer-guide/run-an-app/">launch process</a> of the same name in
 the app image. The following examples will build <em>both</em> the <code>first</code> and <code>second</code> packages in the same multi-package app directory as <a href="#build-non-default-packages">above</a>.</p>
-<h4 id="with-pack-and-a-command-line-flag-4" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-4">With pack and a Command-Line Flag</a></h4><p>When building with the pack CLI, set <code>BP_GO_TARGETS</code> at build time with the <code>--env</code> flag.</p>
+<h4 id="with-pack-and-a-command-line-flag-4" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-4">
+        With pack and a Command-Line Flag
+    </a>
+</h4><p>When building with the pack CLI, set <code>BP_GO_TARGETS</code> at build time with the <code>--env</code> flag.</p>
 <pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_GO_TARGETS=&#34;./first:./second&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h4 id="with-pack-and-a-projecttoml-4" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-projecttoml-4">With pack and a <code>project.toml</code></a></h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_TARGETS</code> at build time.
+<h4 id="with-pack-and-a-projecttoml-4" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-projecttoml-4">
+        With pack and a <code>project.toml</code>
+    </a>
+</h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_TARGETS</code> at build time.
 <pre class="copyable"><code class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
@@ -513,10 +597,18 @@ the app image. The following examples will build <em>both</em> the <code>first</
     value=&#34;./first:./second&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h4 id="deprecated-with-buildpackyml-2" class="markup-heading"><a class="markup-heading__link" href="#deprecated-with-buildpackyml-2">Deprecated: With buildpack.yml</a></h4><p>Specifying the Go Build targets through buildpack.yml configuration will be
+<h4 id="deprecated-with-buildpackyml-2" class="markup-heading">
+    <a class="markup-heading__link" href="#deprecated-with-buildpackyml-2">
+        Deprecated: With buildpack.yml
+    </a>
+</h4><p>Specifying the Go Build targets through buildpack.yml configuration will be
 deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
 please set the <code>$BP_GO_TARGETS</code> environment variable.</p>
-<h2 id="build-an-app-that-imports-its-own-sub-packages" class="markup-heading"><a class="markup-heading__link" href="#build-an-app-that-imports-its-own-sub-packages">Build an App that Imports Its Own Sub-Packages</a></h2><p>If you are building a <code>$GOPATH</code> application that imports its own sub-packages,
+<h2 id="build-an-app-that-imports-its-own-sub-packages" class="markup-heading">
+    <a class="markup-heading__link" href="#build-an-app-that-imports-its-own-sub-packages">
+        Build an App that Imports Its Own Sub-Packages
+    </a>
+</h2><p>If you are building a <code>$GOPATH</code> application that imports its own sub-packages,
 you will need to specify the import paths for those sub-packages. The Paketo Go Buildpack supports setting these import paths with the <code>$BP_GO_BUILD_IMPORT_PATH</code>
 environment variable at build time.</p>
 <p>The following examples will configure the buildpack to build an app whose
@@ -529,12 +621,20 @@ directory structure looks like:</p>
 <div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">import</span> <span class="p">(</span>
 	<span class="s">&#34;github.com/app-developer/app-directory/handlers&#34;</span>
 <span class="p">)</span>
-</code></pre></div><h4 id="with-pack-and-a-command-line-flag-5" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-5">With pack and a Command-Line Flag</a></h4><p>When building with the pack CLI, set <code>$BP_GO_BUILD_IMPORT_PATH</code> at build time with the <code>--env</code> flag.</p>
+</code></pre></div><h4 id="with-pack-and-a-command-line-flag-5" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-5">
+        With pack and a Command-Line Flag
+    </a>
+</h4><p>When building with the pack CLI, set <code>$BP_GO_BUILD_IMPORT_PATH</code> at build time with the <code>--env</code> flag.</p>
 <pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_GO_BUILD_IMPORT_PATH=&#34;github.com/app-developer/app-directory&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h4 id="with-pack-and-a-projecttoml-5" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-projecttoml-5">With pack and a <code>project.toml</code></a></h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>$BP_GO_BUILD_IMPORT_PATH</code> at build time.
+<h4 id="with-pack-and-a-projecttoml-5" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-projecttoml-5">
+        With pack and a <code>project.toml</code>
+    </a>
+</h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>$BP_GO_BUILD_IMPORT_PATH</code> at build time.
 <pre class="copyable"><code class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
@@ -542,21 +642,37 @@ directory structure looks like:</p>
     value=&#34;github.com/app-developer/app-directory&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h4 id="deprecated-with-buildpackyml-3" class="markup-heading"><a class="markup-heading__link" href="#deprecated-with-buildpackyml-3">Deprecated: With buildpack.yml</a></h4><p>Specifying the Go Build import path through buildpack.yml configuration will be
+<h4 id="deprecated-with-buildpackyml-3" class="markup-heading">
+    <a class="markup-heading__link" href="#deprecated-with-buildpackyml-3">
+        Deprecated: With buildpack.yml
+    </a>
+</h4><p>Specifying the Go Build import path through buildpack.yml configuration will be
 deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
 please set the <code>$BP_GO_BUILD_IMPORT_PATH</code> environment variable.</p>
-<h2 id="prevent-source-files-from-being-deleted" class="markup-heading"><a class="markup-heading__link" href="#prevent-source-files-from-being-deleted">Prevent Source Files From Being Deleted</a></h2><p>By default, the Paketo Go Buildpack deletes the contents of your app source directory (except for built artifacts). To preserve certain static assets that
+<h2 id="prevent-source-files-from-being-deleted" class="markup-heading">
+    <a class="markup-heading__link" href="#prevent-source-files-from-being-deleted">
+        Prevent Source Files From Being Deleted
+    </a>
+</h2><p>By default, the Paketo Go Buildpack deletes the contents of your app source directory (except for built artifacts). To preserve certain static assets that
 are needed in the app image, you can set the <code>BP_KEEP_FILES</code> environment
 variable at build time.</p>
 <p>The following examples configure the buildpack to prevent the <code>assets/</code> and
 <code>public/</code> directories from being removed in the app image.</p>
-<h4 id="with-pack-and-a-command-line-flag-6" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-6">With pack and a Command-Line Flag</a></h4><p>When building with the pack CLI, set <code>$BP_KEEP_FILES</code> at build time with the
+<h4 id="with-pack-and-a-command-line-flag-6" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-6">
+        With pack and a Command-Line Flag
+    </a>
+</h4><p>When building with the pack CLI, set <code>$BP_KEEP_FILES</code> at build time with the
 <code>--env</code> flag.</p>
 <pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_KEEP_FILES=&#34;assets/*:public/*&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h4 id="with-pack-and-a-projecttoml-6" class="markup-heading"><a class="markup-heading__link" href="#with-pack-and-a-projecttoml-6">With pack and a <code>project.toml</code></a></h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>$BP_KEEP_FILES</code> at build time.
+<h4 id="with-pack-and-a-projecttoml-6" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-projecttoml-6">
+        With pack and a <code>project.toml</code>
+    </a>
+</h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>$BP_KEEP_FILES</code> at build time.
 <pre class="copyable"><code class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
@@ -564,19 +680,35 @@ variable at build time.</p>
     value=&#34;assets/*:public/*&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h2 id="install-a-custom-ca-certificate" class="markup-heading"><a class="markup-heading__link" href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></h2><p>Go buildpack users can provide their own CA certificates and have them
+<h2 id="install-a-custom-ca-certificate" class="markup-heading">
+    <a class="markup-heading__link" href="#install-a-custom-ca-certificate">
+        Install a Custom CA Certificate
+    </a>
+</h2><p>Go buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
 following the instructions outlined in the <a href="https://paketo.io/docs/reference/configuration/#ca-certificates">CA
 Certificates</a>
 section of our configuration docs.</p>
-<h2 id="override-the-start-process-set-by-the-buildpack" class="markup-heading"><a class="markup-heading__link" href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></h2><p>Go buildpack users can set custom start processes for their app image by
+<h2 id="override-the-start-process-set-by-the-buildpack" class="markup-heading">
+    <a class="markup-heading__link" href="#override-the-start-process-set-by-the-buildpack">
+        Override the Start Process Set by the Buildpack
+    </a>
+</h2><p>Go buildpack users can set custom start processes for their app image by
 following the instructions in the
 <a href="https://paketo.io/docs/reference/configuration/#procfiles">Procfiles</a> section
 of our configuration docs.</p>
-<h2 id="set-environment-variables-for-app-launch-time" class="markup-heading"><a class="markup-heading__link" href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></h2><p>Go buildpack users can embed launch-time environment variables in their
+<h2 id="set-environment-variables-for-app-launch-time" class="markup-heading">
+    <a class="markup-heading__link" href="#set-environment-variables-for-app-launch-time">
+        Set Environment Variables for App Launch Time
+    </a>
+</h2><p>Go buildpack users can embed launch-time environment variables in their
 app image by following the documentation for the <a href="https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md">Environment Variables
 Buildpack</a>.</p>
-<h2 id="add-custom-labels-to-the-app-image" class="markup-heading"><a class="markup-heading__link" href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></h2><p>Go buildpack users can add labels to their app image by following the
+<h2 id="add-custom-labels-to-the-app-image" class="markup-heading">
+    <a class="markup-heading__link" href="#add-custom-labels-to-the-app-image">
+        Add Custom Labels to the App Image
+    </a>
+</h2><p>Go buildpack users can add labels to their app image by following the
 instructions in the <a href="https://paketo.io/docs/reference/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
@@ -598,7 +730,7 @@ section of our configuration docs.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> July 19, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 23, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -678,6 +810,9 @@ section of our configuration docs.</p>
     </div>
 </footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
 
+    <div id="footer-skip-link" class="screenreader-container">
+    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
+</div>
 
 </body>
 

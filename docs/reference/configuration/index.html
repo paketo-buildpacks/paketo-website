@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/reference/configuration/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.c58411b93ef938103ca39dd21f9d9c13817bff0cf25ea851ff662c6f57973bce.css">
+<link rel="stylesheet" href="/css/main-v1.min.7a9a3fb621d1aafddddeee0bff82cae4463214bd78ad0dd0fe0ef5781ee7a41e.css">
 </head>
 
 <body>
@@ -31,6 +31,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
+
+    <div id="header-skip-link" class="screenreader-container">
+    <a href="#title" class="screenreader-text">Skip to Content</a>
+</div>
 
     
 
@@ -336,7 +340,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 class="">Configuring Paketo Buildpacks</h1>
+            <h1 id="title">Configuring Paketo Buildpacks</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
@@ -364,7 +368,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
             <div class="docs-body__markdown">
-                <h2 id="about-the-examples" class="markup-heading"><a class="markup-heading__link" href="#about-the-examples">About the Examples</a></h2><p>Configuration examples will use the Paketo <a href="https://github.com/paketo-buildpacks/samples">sample applications</a>.</p>
+                <h2 id="about-the-examples" class="markup-heading">
+    <a class="markup-heading__link" href="#about-the-examples">
+        About the Examples
+    </a>
+</h2><p>Configuration examples will use the Paketo <a href="https://github.com/paketo-buildpacks/samples">sample applications</a>.</p>
 <p>Examples assume that the root of this repository is the working directory:
 <pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples
@@ -375,14 +383,26 @@ cd samples
 <pre class="copyable"><code class="copyable__code">pack config default-builder paketobuildpacks/builder:base
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h2 id="types-of-configuration" class="markup-heading"><a class="markup-heading__link" href="#types-of-configuration">Types of Configuration</a></h2><p>Paketo buildpacks can be configured via the following mechanisms:</p>
+<h2 id="types-of-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#types-of-configuration">
+        Types of Configuration
+    </a>
+</h2><p>Paketo buildpacks can be configured via the following mechanisms:</p>
 <ul>
 <li><a href="#environment-variables">Environment Variables</a> - used for generic configuration at both <strong>build-time</strong> and <strong>runtime</strong>.</li>
 <li><a href="#buildpackyml">buildpack.yml</a> - used for generic configuration at <strong>build-time</strong>.</li>
 <li><a href="#bindings">Bindings</a> - used for <strong>secret</strong> configuration at both <strong>build-time</strong> and <strong>runtime</strong>.</li>
 <li><a href="#procfiles">Procfiles</a> - used to provide custom <strong>process types</strong> at <strong>build-time</strong>.</li>
 </ul>
-<h3 id="environment-variables" class="markup-heading"><a class="markup-heading__link" href="#environment-variables">Environment Variables</a></h3><h4 id="build-time-environment-variables" class="markup-heading"><a class="markup-heading__link" href="#build-time-environment-variables">Build-time Environment Variables</a></h4><p>Users may configure the build by setting variables in the buildpack environment. The names of variables accepted by the Paketo buildpacks at build-time are either prefixed with <code>BP_</code> or have well-known conventional meanings outside of Paketo (e.g. <code>http_proxy</code>).</p>
+<h3 id="environment-variables" class="markup-heading">
+    <a class="markup-heading__link" href="#environment-variables">
+        Environment Variables
+    </a>
+</h3><h4 id="build-time-environment-variables" class="markup-heading">
+    <a class="markup-heading__link" href="#build-time-environment-variables">
+        Build-time Environment Variables
+    </a>
+</h4><p>Users may configure the build by setting variables in the buildpack environment. The names of variables accepted by the Paketo buildpacks at build-time are either prefixed with <code>BP_</code> or have well-known conventional meanings outside of Paketo (e.g. <code>http_proxy</code>).</p>
 <p>The following example uses an environment variable to configure the JVM version installed by the Java Buildpack.</p>
 <pre class="copyable"><code class="copyable__code">pack build samples/java  \
   --path java/jar \
@@ -395,14 +415,22 @@ cd samples
   --env &#34;MAVEN_OPTS=-Xms256m -Xmx512m&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h4 id="runtime-environment-variables" class="markup-heading"><a class="markup-heading__link" href="#runtime-environment-variables">Runtime Environment Variables</a></h4><p>Users may configure runtime features of the app image by setting environment variables in the app container.  The names of variables accepted by buildpack-provided runtime components (e.g. profile scripts and processes types) are prefixed with <code>BPL_</code> or have well-known conventional meanings outside of Paketo (e.g <code>JAVA_TOOL_OPTIONS</code>).</p>
+<h4 id="runtime-environment-variables" class="markup-heading">
+    <a class="markup-heading__link" href="#runtime-environment-variables">
+        Runtime Environment Variables
+    </a>
+</h4><p>Users may configure runtime features of the app image by setting environment variables in the app container.  The names of variables accepted by buildpack-provided runtime components (e.g. profile scripts and processes types) are prefixed with <code>BPL_</code> or have well-known conventional meanings outside of Paketo (e.g <code>JAVA_TOOL_OPTIONS</code>).</p>
 <p>The following example uses <code>JAVA_TOOL_OPTIONS</code> to set the server port of the sample application:
 <pre class="copyable"><code class="copyable__code">docker run --rm --publish 8082:8082 --env &#34;JAVA_TOOL_OPTIONS=-Dserver.port=8082&#34; samples/java
 curl -s http://localhost:8082/actuator/health
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
 <p>Programs invoked at runtime, including the application itself, will accept environment as they would normally.</p>
-<h4 id="image-embedded-environment-variables" class="markup-heading"><a class="markup-heading__link" href="#image-embedded-environment-variables">Image Embedded Environment Variables</a></h4><p>Users may embed environment variables into the images created by using the <a href="https://github.com/paketo-buildpacks/environment-variables">Environment Variables buildpack</a>. The Environment Variables buildpack looks for environment variables matching the pattern <code>$BPE_*</code>. When detected, the buildpack will modify the launch environment to adjust the specified variables. This is a good way to set non-sensitive configuration values such as defaults or modify environment variables that you do not need users to set.</p>
+<h4 id="image-embedded-environment-variables" class="markup-heading">
+    <a class="markup-heading__link" href="#image-embedded-environment-variables">
+        Image Embedded Environment Variables
+    </a>
+</h4><p>Users may embed environment variables into the images created by using the <a href="https://github.com/paketo-buildpacks/environment-variables">Environment Variables buildpack</a>. The Environment Variables buildpack looks for environment variables matching the pattern <code>$BPE_*</code>. When detected, the buildpack will modify the launch environment to adjust the specified variables. This is a good way to set non-sensitive configuration values such as defaults or modify environment variables that you do not need users to set.</p>
 <p>The buildpack supports the following actions on environment variables:</p>
 <table>
 <thead>
@@ -437,7 +465,11 @@ curl -s http://localhost:8082/actuator/health
 <p>For more details on actions, you can refer to the <a href="https://github.com/buildpacks/spec/blob/main/buildpack.md#environment-variable-modification-rules">environment variable modification rules from the buildpacks spec</a>.</p>
 <p>You can also change the delimiter used when appending or prepending by setting <code>$BPE_DELIM_&lt;NAME&gt;</code> for a particular variable name. It will default to an empty string (i.e. no delimiter). An example of using this would be to append to PATH or LD_LIBRARY_PATH, which are colon delimited.</p>
 <p><strong>DO NOT</strong> embed sensitive credentials or information using the environment variables buildpack. This information is added to the image generated by your build tool, so anyone with access to the image can see what you embed using this buildpack.</p>
-<h3 id="buildpackyml" class="markup-heading"><a class="markup-heading__link" href="#buildpackyml">buildpack.yml</a></h3><p>Many Paketo buildpacks accept configuration from a <code>buildpack.yml</code> file if one is present at the root of the application directory.</p>
+<h3 id="buildpackyml" class="markup-heading">
+    <a class="markup-heading__link" href="#buildpackyml">
+        buildpack.yml
+    </a>
+</h3><p>Many Paketo buildpacks accept configuration from a <code>buildpack.yml</code> file if one is present at the root of the application directory.</p>
 <p>For example, to configure the NodeJS version installed by the NodeJS Buildpack, create a file named <code>buildpack.yml</code> in the <code>nodejs/yarn</code> directory in the <a href="https://github.com/paketo-buildpacks/samples">samples repo</a>.
 <pre class="copyable"><code class="copyable__code">nodejs:
   version: 12.12.0
@@ -447,7 +479,15 @@ curl -s http://localhost:8082/actuator/health
 <pre class="copyable"><code class="copyable__code">pack build samples/nodejs --path nodejs/yarn
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h3 id="bindings" class="markup-heading"><a class="markup-heading__link" href="#bindings">Bindings</a></h3><h4 id="why-bindings" class="markup-heading"><a class="markup-heading__link" href="#why-bindings">Why bindings?</a></h4><p>Some Paketo Buildpacks and components installed by the Paketo Buildpacks accept credentials and other secrets using bindings at build and runtime. Commonly, bindings provide the location and credentials needed to connect to external services.</p>
+<h3 id="bindings" class="markup-heading">
+    <a class="markup-heading__link" href="#bindings">
+        Bindings
+    </a>
+</h3><h4 id="why-bindings" class="markup-heading">
+    <a class="markup-heading__link" href="#why-bindings">
+        Why bindings?
+    </a>
+</h4><p>Some Paketo Buildpacks and components installed by the Paketo Buildpacks accept credentials and other secrets using bindings at build and runtime. Commonly, bindings provide the location and credentials needed to connect to external services.</p>
 <p>Some categories of external services one might want to bind at build-time include:</p>
 <ul>
 <li>Private artifact repositories.</li>
@@ -461,7 +501,11 @@ curl -s http://localhost:8082/actuator/health
 <li>OAuth2 providers.</li>
 </ul>
 <p>For example, the Spring Boot Buildpack will install <a href="https://github.com/spring-cloud/spring-cloud-bindings">Spring Cloud Bindings</a> which is capable of auto-configuring Spring Boot application configuration properties to connect the application to a variety of external services, when a binding is provided at runtime.</p>
-<h4 id="what-is-a-binding" class="markup-heading"><a class="markup-heading__link" href="#what-is-a-binding">What is a binding?</a></h4><p>A Binding contains:</p>
+<h4 id="what-is-a-binding" class="markup-heading">
+    <a class="markup-heading__link" href="#what-is-a-binding">
+        What is a binding?
+    </a>
+</h4><p>A Binding contains:</p>
 <ol>
 <li>A <strong>name</strong>. Indentifies a particular binding. The name typically does not affect build or runtime behavior but may be used to reference a specific binding in output such as log messages.</li>
 <li>A <strong>type</strong> or <strong>kind</strong>. Indicates what type of credentials the binding contains. For example, a binding of type <code>ApplicationInsights</code> contains the credentials needed to connect to Azure Application Insights.</li>
@@ -493,7 +537,11 @@ or
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
 on the filesystem, where either the <code>type</code> or <code>kind</code> file contains the string <code>maven</code>.</p>
-<h4 id="how-to-use-bindings" class="markup-heading"><a class="markup-heading__link" href="#how-to-use-bindings">How to use bindings?</a></h4><p>The workflow for creating a binding and providing it to a build will depend on the chosen platform. For example, <code>pack</code> users should use the <code>--volume</code> flag to mount a binding directory into the build or app containers. Users of the <code>kpack</code> platform should store key value pairs in a Kubernetes Secret and provide that secret and associated metadata to an Image as described in the <a href="https://github.com/pivotal/kpack/blob/master/docs/servicebindings.md#service-bindings">kpack documentation</a>.</p>
+<h4 id="how-to-use-bindings" class="markup-heading">
+    <a class="markup-heading__link" href="#how-to-use-bindings">
+        How to use bindings?
+    </a>
+</h4><p>The workflow for creating a binding and providing it to a build will depend on the chosen platform. For example, <code>pack</code> users should use the <code>--volume</code> flag to mount a binding directory into the build or app containers. Users of the <code>kpack</code> platform should store key value pairs in a Kubernetes Secret and provide that secret and associated metadata to an Image as described in the <a href="https://github.com/pivotal/kpack/blob/master/docs/servicebindings.md#service-bindings">kpack documentation</a>.</p>
 <p><strong>Example:</strong>  Providing a Binding to <code>pack build</code></p>
 <p>Given a directory containing a build-time binding, <code>pack</code> users can provide this binding to a Paketo buildpack using the <code>--volume</code> flag.
 <pre class="copyable"><code class="copyable__code">pack build --volume &lt;absolute-path-to-binding&gt;:/platform/bindings/&lt;binding-name&gt; &lt;image-name&gt;
@@ -504,7 +552,11 @@ on the filesystem, where either the <code>type</code> or <code>kind</code> file 
 <pre class="copyable"><code class="copyable__code">docker run --env SERVICE_BINDING_ROOT=/bindings --volume &lt;absolute-path-to-binding&gt;:/bindings/&lt;binding-name&gt; &lt;image-name&gt;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h3 id="procfiles" class="markup-heading"><a class="markup-heading__link" href="#procfiles">Procfiles</a></h3><p>Paketo users may override buildpack-provided types or augment the app-image with additional process types using a <code>Procfile</code>.  <code>Procfile</code> support is provided by the <a href="https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a>. The Procfile Buildpack will search for a file named <code>Procfile</code> at the root of the application. <code>Procfiles</code> should adhere to the following schema:</p>
+<h3 id="procfiles" class="markup-heading">
+    <a class="markup-heading__link" href="#procfiles">
+        Procfiles
+    </a>
+</h3><p>Paketo users may override buildpack-provided types or augment the app-image with additional process types using a <code>Procfile</code>.  <code>Procfile</code> support is provided by the <a href="https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a>. The Procfile Buildpack will search for a file named <code>Procfile</code> at the root of the application. <code>Procfiles</code> should adhere to the following schema:</p>
 <div class="highlight"><pre class="chroma"><code class="language-plain" data-lang="plain">&lt;type&gt;: &lt;command&gt;
 </code></pre></div><p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Procfile Buildpack it can be explicitly appended at runtime.</p>
 <p><strong>Example</strong>: A Hello World Procfile</p>
@@ -518,8 +570,20 @@ pack build samples/nodejs \
 docker run samples/nodejs # should print &#34;hello world&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h2 id="building-behind-a-firewall" class="markup-heading"><a class="markup-heading__link" href="#building-behind-a-firewall">Building Behind a Firewall</a></h2><h3 id="proxy-configuration" class="markup-heading"><a class="markup-heading__link" href="#proxy-configuration">Proxy Configuration</a></h3><p>Paketo Buildpacks can be configured to route traffic through a proxy using the <code>http_proxy</code>, <code>https_proxy</code>, and <code>no_proxy</code> environment variables. <code>pack</code> will set these environment variables in the build container if they are set in the host environment.</p>
-<h3 id="dependency-mappings" class="markup-heading"><a class="markup-heading__link" href="#dependency-mappings">Dependency Mappings</a></h3><p>Paketo Buildpacks may download dependencies from the internet. For example, the Java Buildpack with download the BellSoft Liberica JRE will from the Liberica <a href="https://github.com/bell-sw/Liberica/releases">github releases</a> by default.</p>
+<h2 id="building-behind-a-firewall" class="markup-heading">
+    <a class="markup-heading__link" href="#building-behind-a-firewall">
+        Building Behind a Firewall
+    </a>
+</h2><h3 id="proxy-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#proxy-configuration">
+        Proxy Configuration
+    </a>
+</h3><p>Paketo Buildpacks can be configured to route traffic through a proxy using the <code>http_proxy</code>, <code>https_proxy</code>, and <code>no_proxy</code> environment variables. <code>pack</code> will set these environment variables in the build container if they are set in the host environment.</p>
+<h3 id="dependency-mappings" class="markup-heading">
+    <a class="markup-heading__link" href="#dependency-mappings">
+        Dependency Mappings
+    </a>
+</h3><p>Paketo Buildpacks may download dependencies from the internet. For example, the Java Buildpack with download the BellSoft Liberica JRE will from the Liberica <a href="https://github.com/bell-sw/Liberica/releases">github releases</a> by default.</p>
 <p>If a dependency URI is inaccessible from the build environment, a <a href="#bindings">binding</a> can be used to map a new URI to a given dependency. This allows organizations to upload a copies of vetted dependencies to an accessible location and provide developers and CI/CD pipelines with configuration pointing the buildpack at the accessible dependencies.</p>
 <p>The URI mappings can be configured with one or more bindings of <code>type</code> <code>dependency-mapping</code>. Each key value pair in the binding should map the <code>sha256</code> of a dependency to a URI. Information about the dependencies a buildpack may download (including the <code>sha256</code> and the current default <code>uri</code>) can be found in the <code>buildpack.toml</code> of each component buildpack.</p>
 <p><strong>Example</strong> Mapping the JRE to an internal URI</p>
@@ -540,7 +604,11 @@ docker run samples/nodejs # should print &#34;hello world&#34;
 </li>
 <li>Configure all builds with this binding.</li>
 </ol>
-<h2 id="ca-certificates" class="markup-heading"><a class="markup-heading__link" href="#ca-certificates">CA Certificates</a></h2><p>Additional CA certificates may be added to the system truststore using the <a href="https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Buildpack</a>.</p>
+<h2 id="ca-certificates" class="markup-heading">
+    <a class="markup-heading__link" href="#ca-certificates">
+        CA Certificates
+    </a>
+</h2><p>Additional CA certificates may be added to the system truststore using the <a href="https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Buildpack</a>.</p>
 <p>CA certificates can be provided at both build and runtime with a <a href="#bindings">binding</a> of <code>type</code> <code>ca-certficates</code>. Each key value pair in the binding should map a certficate name to a single PEM encoded CA Certficates</p>
 <div class="highlight"><pre class="chroma"><code class="language-plain" data-lang="plain">&lt;binding-name&gt;
 ├── &lt;cert file name&gt;
@@ -568,7 +636,11 @@ can be provided dynamically at runtime.</p>
 environment variable can be set to <code>false</code> at build-time. This will disable the
 ability to set certificates at runtime. The CA Certificates Buildpack will then
 only detect if a certificate binding is provided at build-time.</p>
-<h2 id="applying-custom-labels" class="markup-heading"><a class="markup-heading__link" href="#applying-custom-labels">Applying Custom Labels</a></h2><p>Paketo users may add labels to the application image using the <a href="https://github.com/paketo-buildpacks/image-labels">Image Labels Buildpack</a>.</p>
+<h2 id="applying-custom-labels" class="markup-heading">
+    <a class="markup-heading__link" href="#applying-custom-labels">
+        Applying Custom Labels
+    </a>
+</h2><p>Paketo users may add labels to the application image using the <a href="https://github.com/paketo-buildpacks/image-labels">Image Labels Buildpack</a>.</p>
 <p>Environment variables prefixed with <code>BP_OCI_</code> can be used to set <a href="https://github.com/opencontainers/image-spec/blob/master/annotations.md#pre-defined-annotation-keys">OCI-specific</a>. For example, if <code>BP_OCI_AUTHORS</code> is set at build-time, the Image Labels Buildpack will add a label to the image with key <code>org.opencontainers.image.authors</code> and value equal to the value of <code>$BP_OCI_AUTHORS</code>.</p>
 <p>Users may contribute arbitrary labels by providing a collection of space-delimited key-value pairs with the <code>BP_IMAGE_LABELS</code> environment variable. Values containing spaces can be quoted.</p>
 <p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Image Labels Buildpack it can be explicitly appended at runtime.</p>
@@ -583,7 +655,11 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;org.opencontainer
 docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.example&#34;]&#39; # should print &#34;Adding Custom Labels&#34;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h2 id="configuring-locale" class="markup-heading"><a class="markup-heading__link" href="#configuring-locale">Configuring Locale</a></h2><p>By default, an image created using Paketo buildpacks will not have a specific locale set. If you run <code>locale</code>, you&rsquo;ll end up with these settings:</p>
+<h2 id="configuring-locale" class="markup-heading">
+    <a class="markup-heading__link" href="#configuring-locale">
+        Configuring Locale
+    </a>
+</h2><p>By default, an image created using Paketo buildpacks will not have a specific locale set. If you run <code>locale</code>, you&rsquo;ll end up with these settings:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">LANG</span><span class="o">=</span>
 <span class="nv">LANGUAGE</span><span class="o">=</span>
 <span class="nv">LC_CTYPE</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
@@ -622,7 +698,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> July 19, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 23, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -688,6 +764,9 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </div>
 </footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
 
+    <div id="footer-skip-link" class="screenreader-container">
+    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
+</div>
 
 </body>
 

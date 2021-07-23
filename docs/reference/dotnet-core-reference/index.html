@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/reference/dotnet-core-reference/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.c58411b93ef938103ca39dd21f9d9c13817bff0cf25ea851ff662c6f57973bce.css">
+<link rel="stylesheet" href="/css/main-v1.min.7a9a3fb621d1aafddddeee0bff82cae4463214bd78ad0dd0fe0ef5781ee7a41e.css">
 </head>
 
 <body>
@@ -31,6 +31,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
+
+    <div id="header-skip-link" class="screenreader-container">
+    <a href="#title" class="screenreader-text">Skip to Content</a>
+</div>
 
     
 
@@ -336,7 +340,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 class="">.NET Core Buildpack Reference</h1>
+            <h1 id="title">.NET Core Buildpack Reference</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
@@ -376,20 +380,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 and configuration options of the
 <a href="https://github.com/paketo-buildpacks/dotnet-core">Paketo .NET Core Buildpack</a>. For explanations of how to use the buildpack for several common use-cases, see
 the  Paketo .NET Core Buildpack  How To <a href="/docs/howto/dotnet-core">documentation</a>.</p>
-<h2 id="supported-dependencies" class="markup-heading"><a class="markup-heading__link" href="#supported-dependencies">Supported Dependencies</a></h2><p>The .Net Core Paketo Buildpack supports several versions of the .Net Core Framework.
+<h2 id="supported-dependencies" class="markup-heading">
+    <a class="markup-heading__link" href="#supported-dependencies">
+        Supported Dependencies
+    </a>
+</h2><p>The .Net Core Paketo Buildpack supports several versions of the .Net Core Framework.
 For more details on the specific versions supported in a given buildpack
 version, see the <a href="https://github.com/paketo-buildpacks/dotnet-core/releases">release
 notes</a>.</p>
-<h3 id="net-core-framework-version-selection" class="markup-heading"><a class="markup-heading__link" href="#net-core-framework-version-selection">.Net Core Framework Version Selection</a></h3><p>When detecting what version of the .NET runtime to install, the .Net Core Buildpack uses the
+<h3 id="net-core-framework-version-selection" class="markup-heading">
+    <a class="markup-heading__link" href="#net-core-framework-version-selection">
+        .Net Core Framework Version Selection
+    </a>
+</h3><p>When detecting what version of the .NET runtime to install, the .Net Core Buildpack uses the
 same version selection policy that Microsoft has put together for .Net Core Framework.
 If you would like to know more about the policy please refer to this
 <a href="https://docs.microsoft.com/en-us/dotnet/core/versions/selection">documentation</a>
 provided by Microsoft.</p>
-<h2 id="application-types" class="markup-heading"><a class="markup-heading__link" href="#application-types">Application Types</a></h2><p>The .Net Core Buildpack supports several types of application source code that
+<h2 id="application-types" class="markup-heading">
+    <a class="markup-heading__link" href="#application-types">
+        Application Types
+    </a>
+</h2><p>The .Net Core Buildpack supports several types of application source code that
 can be built into a container image. Developers can provide raw source code, or
 built artifacts like Framework-Dependent Deployments/Executables or
 Self-Contained Deployments when building their application.</p>
-<h3 id="source-applications" class="markup-heading"><a class="markup-heading__link" href="#source-applications">Source Applications</a></h3><p>The .Net Core Build Buildpack is capable of building application source code
+<h3 id="source-applications" class="markup-heading">
+    <a class="markup-heading__link" href="#source-applications">
+        Source Applications
+    </a>
+</h3><p>The .Net Core Build Buildpack is capable of building application source code
 into Framework-Dependent Deployments (FDD) or Executables (FDE).  This is
 achieved using the <code>dotnet publish</code> command. For .Net Core Framework 2.x
 applications, <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli#framework-dependent-deployment">an FDD is
@@ -397,52 +417,92 @@ produced</a>
 as the default build artifact, while <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli#framework-dependent-executable">an FDE is
 produced</a>
 when the application source is for .Net Core Framework 3.x.</p>
-<h3 id="framework-dependent-deployments-or-framework-dependent-executables" class="markup-heading"><a class="markup-heading__link" href="#framework-dependent-deployments-or-framework-dependent-executables">Framework-Dependent Deployments or Framework-Dependent Executables</a></h3><p>When building an application that has already been published as a
+<h3 id="framework-dependent-deployments-or-framework-dependent-executables" class="markup-heading">
+    <a class="markup-heading__link" href="#framework-dependent-deployments-or-framework-dependent-executables">
+        Framework-Dependent Deployments or Framework-Dependent Executables
+    </a>
+</h3><p>When building an application that has already been published as a
 Framework-Dependent Deployment or Framework-Dependent Executable, the buildpack
 will include the required .Net Core Framework dependencies and set the start
 command.</p>
-<h3 id="self-contained-deployment" class="markup-heading"><a class="markup-heading__link" href="#self-contained-deployment">Self-Contained Deployment</a></h3><p>When building an application as a <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli#self-contained-deployment">Self-Contained
+<h3 id="self-contained-deployment" class="markup-heading">
+    <a class="markup-heading__link" href="#self-contained-deployment">
+        Self-Contained Deployment
+    </a>
+</h3><p>When building an application as a <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli#self-contained-deployment">Self-Contained
 Deployment</a> (SCD),
 the buildpack will ensure the correct start command will be used to run your
 app. No .Net Core Framework dependencies will be included in the built image as
 they are already included in the SCD artifact.</p>
-<h2 id="buildpack-set-environment-variables" class="markup-heading"><a class="markup-heading__link" href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a></h2><h3 id="dotnet_root" class="markup-heading"><a class="markup-heading__link" href="#dotnet_root">DOTNET_ROOT</a></h3><p>The <code>DOTNET_ROOT</code> environment variable specifies the path to the directory where .Net Runtimes and SDKs are installed.</p>
+<h2 id="buildpack-set-environment-variables" class="markup-heading">
+    <a class="markup-heading__link" href="#buildpack-set-environment-variables">
+        Buildpack-Set Environment Variables
+    </a>
+</h2><h3 id="dotnet_root" class="markup-heading">
+    <a class="markup-heading__link" href="#dotnet_root">
+        DOTNET_ROOT
+    </a>
+</h3><p>The <code>DOTNET_ROOT</code> environment variable specifies the path to the directory where .Net Runtimes and SDKs are installed.</p>
 <ul>
 <li>Set by: <code>dotnet-core-runtime</code>, <code>dotnet-core-sdk</code>, <code>dotnet-core-aspnet</code> buildpacks</li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
 <li>Value: path to the .Net root directory</li>
 </ul>
-<h3 id="runtime_version" class="markup-heading"><a class="markup-heading__link" href="#runtime_version">RUNTIME_VERSION</a></h3><p>The <code>RUNTIME_VERSION</code> environment variable specifies the version of the .Net Core Runtime installed by the .Net Core Runtime Buildpack.</p>
+<h3 id="runtime_version" class="markup-heading">
+    <a class="markup-heading__link" href="#runtime_version">
+        RUNTIME_VERSION
+    </a>
+</h3><p>The <code>RUNTIME_VERSION</code> environment variable specifies the version of the .Net Core Runtime installed by the .Net Core Runtime Buildpack.</p>
 <ul>
 <li>Set by: <code>dotnet-core-runtime</code></li>
 <li>Phases: <code>build</code></li>
 <li>Value: installed version of the .Net Core Runtime</li>
 </ul>
-<h3 id="sdk_location" class="markup-heading"><a class="markup-heading__link" href="#sdk_location">SDK_LOCATION</a></h3><p>The <code>SDK_LOCATION</code> environment variable specifies the file path location of the installed .Net Core SDK.</p>
+<h3 id="sdk_location" class="markup-heading">
+    <a class="markup-heading__link" href="#sdk_location">
+        SDK_LOCATION
+    </a>
+</h3><p>The <code>SDK_LOCATION</code> environment variable specifies the file path location of the installed .Net Core SDK.</p>
 <ul>
 <li>Set by: <code>dotnet-core-sdk</code></li>
 <li>Phases: <code>build</code></li>
 <li>Value: path to the .Net Core SDK installation</li>
 </ul>
-<h3 id="path" class="markup-heading"><a class="markup-heading__link" href="#path">PATH</a></h3><p>The <code>PATH</code> environment variable is modified to enable the <code>dotnet</code> CLI to be found during subsequent <code>build</code> and <code>launch</code> phases.</p>
+<h3 id="path" class="markup-heading">
+    <a class="markup-heading__link" href="#path">
+        PATH
+    </a>
+</h3><p>The <code>PATH</code> environment variable is modified to enable the <code>dotnet</code> CLI to be found during subsequent <code>build</code> and <code>launch</code> phases.</p>
 <ul>
 <li>Set by: <code>dotnet-core-sdk</code></li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
 <li>Value: path the directory containing the <code>dotnet</code> executable</li>
 </ul>
-<h2 id="launch-process" class="markup-heading"><a class="markup-heading__link" href="#launch-process">Launch Process</a></h2><p>The .Net Core Conf Buildpack will ensure that your application image is built
+<h2 id="launch-process" class="markup-heading">
+    <a class="markup-heading__link" href="#launch-process">
+        Launch Process
+    </a>
+</h2><p>The .Net Core Conf Buildpack will ensure that your application image is built
 with a valid launch process command. These commands differ slightly depending
 upon the type of built artifact produced during the build process.</p>
 <p>For more information about which built artifact is produced for a Source
 Application, see <a href="#application-types">this section</a>.</p>
-<h3 id="framework-dependent-deployments-and-source-applications" class="markup-heading"><a class="markup-heading__link" href="#framework-dependent-deployments-and-source-applications">Framework-Dependent Deployments and Source Applications</a></h3><p>For Framework-Dependent Deployments (FDD), the <code>dotnet</code> CLI will be invoked to
+<h3 id="framework-dependent-deployments-and-source-applications" class="markup-heading">
+    <a class="markup-heading__link" href="#framework-dependent-deployments-and-source-applications">
+        Framework-Dependent Deployments and Source Applications
+    </a>
+</h3><p>For Framework-Dependent Deployments (FDD), the <code>dotnet</code> CLI will be invoked to
 start your application. The application will be given configuration to help it
 bind to a port inside the container. The default port is 8080, but can be
 overridden using the <code>$PORT</code> environment variable.</p>
 <pre class="copyable"><code class="copyable__code">dotnet myapp.dll --urls http://0.0.0.0:${PORT:-8080}
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h3 id="self-contained-deployment-and-framework-dependent-executables" class="markup-heading"><a class="markup-heading__link" href="#self-contained-deployment-and-framework-dependent-executables">Self-Contained Deployment and Framework-Dependent Executables</a></h3><p>For Self-Contained Deployments and Framework-Dependent Executables, the
+<h3 id="self-contained-deployment-and-framework-dependent-executables" class="markup-heading">
+    <a class="markup-heading__link" href="#self-contained-deployment-and-framework-dependent-executables">
+        Self-Contained Deployment and Framework-Dependent Executables
+    </a>
+</h3><p>For Self-Contained Deployments and Framework-Dependent Executables, the
 executable will be invoked directly to start your application. The application
 will be given configuration to help it bind to a port inside the container. The
 default port is 8080, but can be overridden using the <code>$PORT</code> environment
@@ -467,7 +527,7 @@ variable.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> July 19, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 23, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -541,6 +601,9 @@ variable.</p>
     </div>
 </footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
 
+    <div id="footer-skip-link" class="screenreader-container">
+    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
+</div>
 
 </body>
 

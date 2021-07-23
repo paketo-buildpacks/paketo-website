@@ -23,7 +23,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/reference/ruby-reference/" />
 <meta name="twitter:card" content="" />
-<link rel="stylesheet" href="/css/main-v1.min.c58411b93ef938103ca39dd21f9d9c13817bff0cf25ea851ff662c6f57973bce.css">
+<link rel="stylesheet" href="/css/main-v1.min.7a9a3fb621d1aafddddeee0bff82cae4463214bd78ad0dd0fe0ef5781ee7a41e.css">
 </head>
 
 <body>
@@ -31,6 +31,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
+
+    <div id="header-skip-link" class="screenreader-container">
+    <a href="#title" class="screenreader-text">Skip to Content</a>
+</div>
 
     
 
@@ -336,7 +340,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 class="">Ruby Buildpack Reference</h1>
+            <h1 id="title">Ruby Buildpack Reference</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
@@ -365,41 +369,77 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 and configuration options of the
 <a href="https://github.com/paketo-buildpacks/ruby">Paketo Ruby Buildpack</a>. For explanations of how to use the buildpack for several common use-cases, see
 the  Paketo Ruby Buildpack  How To <a href="/docs/howto/ruby">documentation</a>.</p>
-<h2 id="supported-dependencies" class="markup-heading"><a class="markup-heading__link" href="#supported-dependencies">Supported Dependencies</a></h2><p>The Ruby Paketo Buildpack supports several versions of
+<h2 id="supported-dependencies" class="markup-heading">
+    <a class="markup-heading__link" href="#supported-dependencies">
+        Supported Dependencies
+    </a>
+</h2><p>The Ruby Paketo Buildpack supports several versions of
 <a href="https://www.ruby-lang.org">MRI</a>, <a href="https://bundler.io/">Bundler</a>, and common
 Ruby webservers and task runners.  For more details on the specific versions
 supported in a given buildpack version, see the <a href="https://github.com/paketo-buildpacks/ruby/releases/latest">release
 notes</a>.</p>
-<h2 id="package-management" class="markup-heading"><a class="markup-heading__link" href="#package-management">Package Management</a></h2><p>The Ruby Buildpack uses <a href="https://bundler.io/">Bundler</a> to install and manage
+<h2 id="package-management" class="markup-heading">
+    <a class="markup-heading__link" href="#package-management">
+        Package Management
+    </a>
+</h2><p>The Ruby Buildpack uses <a href="https://bundler.io/">Bundler</a> to install and manage
 the gems needed to run your application. Including a <code>Gemfile</code> in your app
 source code instructs the <a href="https://github.com/paketo-buildpacks/bundle-install"><code>bundle-install</code>
 buildpack</a> to vendor your
 dependencies using <code>bundle install</code>.</p>
-<h2 id="webservers--task-runners" class="markup-heading"><a class="markup-heading__link" href="#webservers--task-runners">Webservers &amp; Task Runners</a></h2><p>The Ruby Buildpack supports a number of webservers and task runners that are
+<h2 id="webservers--task-runners" class="markup-heading">
+    <a class="markup-heading__link" href="#webservers--task-runners">
+        Webservers &amp; Task Runners
+    </a>
+</h2><p>The Ruby Buildpack supports a number of webservers and task runners that are
 useful for running Ruby applications. If your application uses one of these
 tools, it will be automatically detected and a start command for your
 application will be assigned when building your application container.</p>
-<h3 id="webservers" class="markup-heading"><a class="markup-heading__link" href="#webservers">Webservers</a></h3><ul>
+<h3 id="webservers" class="markup-heading">
+    <a class="markup-heading__link" href="#webservers">
+        Webservers
+    </a>
+</h3><ul>
 <li><a href="http://github.com/paketo-buildpacks/passenger">Passenger</a></li>
 <li><a href="http://github.com/paketo-buildpacks/puma">Puma</a></li>
 <li><a href="http://github.com/paketo-buildpacks/rackup">Rackup</a></li>
 <li><a href="http://github.com/paketo-buildpacks/thin">Thin</a></li>
 <li><a href="http://github.com/paketo-buildpacks/unicorn">Unicorn</a></li>
 </ul>
-<h3 id="task-runners" class="markup-heading"><a class="markup-heading__link" href="#task-runners">Task Runners</a></h3><ul>
+<h3 id="task-runners" class="markup-heading">
+    <a class="markup-heading__link" href="#task-runners">
+        Task Runners
+    </a>
+</h3><ul>
 <li><a href="http://github.com/paketo-buildpacks/rake">Rake</a></li>
 </ul>
-<h2 id="rails-asset-pipeline" class="markup-heading"><a class="markup-heading__link" href="#rails-asset-pipeline">Rails Asset Pipeline</a></h2><p>The <a href="http://github.com/paketo-buildpacks/rails-assets">Paketo Rails Assets Buildpack</a> is a <a href="/docs/concepts/buildpacks/#component-buildpacks">component buildpack</a> included in the Ruby Buildpack. It supports Rails apps (Rails version &gt;= 5.0) that need asset precompilation.</p>
+<h2 id="rails-asset-pipeline" class="markup-heading">
+    <a class="markup-heading__link" href="#rails-asset-pipeline">
+        Rails Asset Pipeline
+    </a>
+</h2><p>The <a href="http://github.com/paketo-buildpacks/rails-assets">Paketo Rails Assets Buildpack</a> is a <a href="/docs/concepts/buildpacks/#component-buildpacks">component buildpack</a> included in the Ruby Buildpack. It supports Rails apps (Rails version &gt;= 5.0) that need asset precompilation.</p>
 <p>The buildpack runs bundle exec rails assets:precompile for the app, and works with any of the supported Ruby webservers listed above.</p>
-<h2 id="buildpack-set-environment-variables" class="markup-heading"><a class="markup-heading__link" href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a></h2><p>The Ruby CNB sets a few environment variables during the <code>build</code> and <code>launch</code>
+<h2 id="buildpack-set-environment-variables" class="markup-heading">
+    <a class="markup-heading__link" href="#buildpack-set-environment-variables">
+        Buildpack-Set Environment Variables
+    </a>
+</h2><p>The Ruby CNB sets a few environment variables during the <code>build</code> and <code>launch</code>
 phases of the app lifecycle. The sections below describe each environment
 variable and its impact on your app.</p>
-<h3 id="gem_path" class="markup-heading"><a class="markup-heading__link" href="#gem_path"><code>GEM_PATH</code></a></h3><ul>
+<h3 id="gem_path" class="markup-heading">
+    <a class="markup-heading__link" href="#gem_path">
+        <code>GEM_PATH</code>
+    </a>
+</h3><ul>
 <li>Set by: <code>mri</code>, <code>bundler</code></li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
 <li>Value: location of the directory gems will be installed for each respective dependency</li>
 </ul>
-<h3 id="bundle_path" class="markup-heading"><a class="markup-heading__link" href="#bundle_path"><code>BUNDLE_PATH</code></a></h3><ul>
+<h3 id="bundle_path" class="markup-heading">
+    <a class="markup-heading__link" href="#bundle_path">
+        <code>BUNDLE_PATH</code>
+    </a>
+</h3><ul>
 <li>Set by: <code>bundle-install</code></li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
 <li>Value: location where all gems in your bundle will be located</li>
@@ -421,7 +461,7 @@ variable and its impact on your app.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> July 19, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 23, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -484,6 +524,9 @@ variable and its impact on your app.</p>
     </div>
 </footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
 
+    <div id="footer-skip-link" class="screenreader-container">
+    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
+</div>
 
 </body>
 
