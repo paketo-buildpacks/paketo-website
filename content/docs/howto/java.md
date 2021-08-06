@@ -418,8 +418,8 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 [bp/azul-zulu]:https://github.com/paketo-buildpacks/azul-zulu
 [bp/eclipse-openj9]:https://github.com/paketo-buildpacks/eclipse-openj9
 [bp/graalvm]:https://github.com/paketo-buildpacks/graalvm
-[bp/dragonwell]:https://github.com/paketo-buildpacks/graalvm
-[bp/microsoft]:https://github.com/paketo-buildpacks/graalvm
+[bp/dragonwell]:https://github.com/paketo-buildpacks/alibaba-dragonwell
+[bp/microsoft]:https://github.com/paketo-buildpacks/microsoft-openjdk
 [bp/sap-machine]:https://github.com/paketo-buildpacks/sap-machine
 [bp/ca-certificates]:https://github.com/paketo-buildpacks/ca-certificates
 [bp/debug]:https://github.com/paketo-buildpacks/debug
