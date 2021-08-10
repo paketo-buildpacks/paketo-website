@@ -1,0 +1,780 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PN39N8V');</script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Node.js Buildpack Reference - Paketo Buildpacks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+<meta name="og:site_name" content="Paketo Buildpacks">
+<meta name="og:title" content="Node.js Buildpack Reference">
+<meta name="og:url" content="https://paketo.io/docs/reference/nodejs-reference/">
+<meta name="twitter:title" content="Paketo Buildpacks" />
+<meta name="twitter:url" content="https://paketo.io/docs/reference/nodejs-reference/" />
+<meta name="twitter:card" content="" />
+<link rel="stylesheet" href="/css/main-v1.min.7a9a3fb621d1aafddddeee0bff82cae4463214bd78ad0dd0fe0ef5781ee7a41e.css">
+</head>
+
+<body>
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+
+    <div id="header-skip-link" class="screenreader-container">
+    <a href="#title" class="screenreader-text">Skip to Content</a>
+</div>
+
+    
+
+
+
+<header class="header ">
+    <a class="paketo-logo" href="/">
+        <img class="paketo-logo__image" src="/v2/images/logo-paketo-light.svg" alt="Paketo Buildpacks Homepage">
+    </a>
+    <div id="navigation" class="right-overlay">
+        <div class="nav-opener">
+            <span class="nav-opener__bar nav-opener__bar-top"></span>
+            <span class="nav-opener__bar nav-opener__bar-middle"></span>
+            <span class="nav-opener__bar nav-opener__bar-bottom"></span>
+        </div>
+        <div class="nav-container" id="nav-container">
+            <nav class="nav" id="nav-tray" >
+                <div class="nav__linkarea">
+                    <a class="nav-link " href="/docs">docs</a>
+                    <a class="nav-link " href="/community">community</a>
+                    <a class="nav-link " href="https://blog.paketo.io">blog</a>
+                    <a class="nav-link " href="https://github.com/paketo-buildpacks">github</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="desktop-nav">
+        
+        
+        
+        <a class="nav-link nav-link--active" href="/docs">docs</a>
+        
+        <a class="nav-link " href="/community">community</a>
+        <a class="nav-link " href="https://blog.paketo.io">blog</a>
+        <a class="nav-link " href="https://github.com/paketo-buildpacks">github</a>
+    </div>
+</header>
+
+
+    <div class="docs">
+    <div class="docs-sidebar">
+        
+<nav class="docs-menu">
+    <h4 class="docs-menu__title">PAKETO DOCS</h4>
+    <ul class="docs-menu__top-level-list">
+        
+        
+            
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/" class="docs-menu__link ">
+                
+                <span>Getting Started</span>
+            </a>
+        </li>
+    
+        
+            
+    
+        <li class="docs-menu__parent">
+            
+            <div class="docs-menu__section-header">
+                
+                <span>How To</span>
+            </div>
+            
+            <ul class="docs-menu__children-list">
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/dotnet-core/" class="docs-menu__link ">
+                
+                <span>.NET Core</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/go/" class="docs-menu__link ">
+                
+                <span>Go</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/web-servers/" class="docs-menu__link ">
+                
+                <span>Web Servers</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/java-native-image/" class="docs-menu__link ">
+                
+                <span>Java Native Image</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/java/" class="docs-menu__link ">
+                
+                <span>Java</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/nodejs/" class="docs-menu__link ">
+                
+                <span>Node.js</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/php/" class="docs-menu__link ">
+                
+                <span>PHP</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/ruby/" class="docs-menu__link ">
+                
+                <span>Ruby</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/create-paketo-buildpack/" class="docs-menu__link ">
+                
+                <span>Create a Paketo Buildpack</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+            
+    
+        <li class="docs-menu__parent">
+            
+            <div class="docs-menu__section-header">
+                
+                <span>Concepts</span>
+            </div>
+            
+            <ul class="docs-menu__children-list">
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/buildpacks/" class="docs-menu__link ">
+                
+                <span>Buildpacks</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/builders/" class="docs-menu__link ">
+                
+                <span>Builders</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/stacks/" class="docs-menu__link ">
+                
+                <span>Stacks</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+            
+    
+        <li class="docs-menu__parent">
+            
+            <div class="docs-menu__section-header">
+                
+                <span>Reference</span>
+            </div>
+            
+            <ul class="docs-menu__children-list">
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/configuration/" class="docs-menu__link ">
+                
+                <span>Configuring Paketo Buildpacks</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/httpd-reference/" class="docs-menu__link ">
+                
+                <span>HTTPD Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/dotnet-core-reference/" class="docs-menu__link ">
+                
+                <span>.NET Core Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/go-reference/" class="docs-menu__link ">
+                
+                <span>Go Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/nginx-reference/" class="docs-menu__link ">
+                
+                <span>NGINX Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/nodejs-reference/" class="docs-menu__link docs-menu__link--active">
+                
+                <span>Node.js Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/ruby-reference/" class="docs-menu__link ">
+                
+                <span>Ruby Buildpack</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+        
+    </ul>
+</nav>
+
+
+
+    </div>
+    <div class="docs-body">
+        <div class="docs-body__container">
+            
+
+
+
+
+
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/nodejs-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
+    </div>
+</a>
+
+            <h1 id="title">Node.js Buildpack Reference</h1>
+            
+<div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+      <ul>
+        <li><a href="#memory_available">MEMORY_AVAILABLE</a></li>
+        <li><a href="#node_env">NODE_ENV</a></li>
+        <li><a href="#node_home">NODE_HOME</a></li>
+        <li><a href="#node_verbose">NODE_VERBOSE</a></li>
+        <li><a href="#npm_config_loglevel">NPM_CONFIG_LOGLEVEL</a></li>
+        <li><a href="#npm_config_production">NPM_CONFIG_PRODUCTION</a></li>
+        <li><a href="#path">PATH</a></li>
+      </ul>
+    </li>
+    <li><a href="#package-management-with-npm">Package Management with NPM</a>
+      <ul>
+        <li><a href="#npm-installation-process">NPM Installation Process</a></li>
+        <li><a href="#determining-node-modules-layer-reuse">Determining Node Modules Layer Reuse</a></li>
+      </ul>
+    </li>
+    <li><a href="#package-management-with-yarn">Package Management with Yarn</a>
+      <ul>
+        <li><a href="#yarn-installation-process">Yarn Installation Process</a></li>
+        <li><a href="#yarn-start-command">Yarn Start Command</a></li>
+      </ul>
+    </li>
+    <li><a href="#determing-the-start-command">Determing the Start Command</a></li>
+    <li><a href="#projects-without-package-management">Projects Without Package Management</a>
+      <ul>
+        <li><a href="#start-command">Start Command</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+
+            <div class="docs-body__markdown">
+                <p>This reference documentation offers an in-depth description of the behavior
+and configuration options of the
+<a href="https://github.com/paketo-buildpacks/nodejs">Paketo Node.js Buildpack</a>.
+For explanations of how to use the buildpack for several common use-cases, see
+the Node.js How To <a href="/docs/howto/nodejs">documentation</a>.</p>
+<h2 id="supported-dependencies" class="markup-heading">
+    <a class="markup-heading__link" href="#supported-dependencies">
+        Supported Dependencies
+    </a>
+</h2><p>The Node.js buildpack supports several versions of Node.js.
+For more details on the specific versions supported in a given buildpack
+version, see the <a href="https://github.com/paketo-buildpacks/nodejs/releases">release
+notes</a>.</p>
+<h2 id="buildpack-set-environment-variables" class="markup-heading">
+    <a class="markup-heading__link" href="#buildpack-set-environment-variables">
+        Buildpack-Set Environment Variables
+    </a>
+</h2><p>The Node.js buildpack sets a number of environment variables during the <code>build</code> and
+<code>launch</code> phases of the app lifecycle. The sections below describe each
+environment variable and its impact on your app.</p>
+<h3 id="memory_available" class="markup-heading">
+    <a class="markup-heading__link" href="#memory_available">
+        MEMORY_AVAILABLE
+    </a>
+</h3><p>The <code>MEMORY_AVAILABLE</code> environment variable reports the total amount of memory
+available to the app. The Node.js buildpack calculates this value from the limits
+specified by the operating system in
+<code>/sys/fs/cgroup/memory/memory.limit_in_bytes</code>.</p>
+<ul>
+<li>Set by: <code>profile.d</code></li>
+<li>Phases: <code>launch</code></li>
+<li>Value: non-negative integer</li>
+</ul>
+<h3 id="node_env" class="markup-heading">
+    <a class="markup-heading__link" href="#node_env">
+        NODE_ENV
+    </a>
+</h3><p>The <code>NODE_ENV</code> environment variable specifies the environment in which the app
+runs.</p>
+<ul>
+<li>Set by: <code>node-engine</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: production</li>
+</ul>
+<h3 id="node_home" class="markup-heading">
+    <a class="markup-heading__link" href="#node_home">
+        NODE_HOME
+    </a>
+</h3><p>The <code>NODE_HOME</code> environment variable sets the path to the <code>node</code> installation.</p>
+<ul>
+<li>Set by: <code>node-engine</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: path to the <code>node</code> installation</li>
+</ul>
+<h3 id="node_verbose" class="markup-heading">
+    <a class="markup-heading__link" href="#node_verbose">
+        NODE_VERBOSE
+    </a>
+</h3><p>The <code>NODE_VERBOSE</code> environment variable adjusts the amount of logging output
+from NPM during installs.</p>
+<ul>
+<li>Set by: <code>node-engine</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: false</li>
+</ul>
+<h3 id="npm_config_loglevel" class="markup-heading">
+    <a class="markup-heading__link" href="#npm_config_loglevel">
+        NPM_CONFIG_LOGLEVEL
+    </a>
+</h3><p>The <code>NPM_CONFIG_LOGLEVEL</code> environment variable adjusts the level of logging NPM
+uses.</p>
+<ul>
+<li>Set by: <code>npm-install</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: &ldquo;error&rdquo;</li>
+</ul>
+<h3 id="npm_config_production" class="markup-heading">
+    <a class="markup-heading__link" href="#npm_config_production">
+        NPM_CONFIG_PRODUCTION
+    </a>
+</h3><p>The <code>NPM_CONFIG_PRODUCTION</code> environment variable installs only production
+dependencies if NPM install is used.</p>
+<ul>
+<li>Set by: <code>npm-install</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: false</li>
+</ul>
+<h3 id="path" class="markup-heading">
+    <a class="markup-heading__link" href="#path">
+        PATH
+    </a>
+</h3><p>The <code>node_modules/.bin</code> directory is appended onto the <code>PATH</code> environment variable</p>
+<ul>
+<li>Set by: <code>yarn-install</code> or <code>npm-install</code> buildpacks</li>
+<li>Phases: <code>build</code></li>
+<li>Value: path to the <code>node_modules/.bin</code> directory</li>
+</ul>
+<h2 id="package-management-with-npm" class="markup-heading">
+    <a class="markup-heading__link" href="#package-management-with-npm">
+        Package Management with NPM
+    </a>
+</h2><p>Many Node.js apps require a number of third-party libraries to perform common
+tasks and behaviors. NPM is an option for managing these third-party
+dependencies that the Node.js buildpack fully supports. Including a <code>package.json</code>
+file in your app source code triggers the NPM installation process. The sections
+below describe the NPM installation process run by the buildpack.</p>
+<h3 id="npm-installation-process" class="markup-heading">
+    <a class="markup-heading__link" href="#npm-installation-process">
+        NPM Installation Process
+    </a>
+</h3><p>NPM supports several distinct methods for installing your package dependencies.
+Specifically, the Node.js buildpack runs either the <a href="https://docs.npmjs.com/cli-commands/install"><code>npm install</code></a>, <a href="https://docs.npmjs.com/cli-commands/rebuild.html"><code>npm rebuild</code></a>, or <a href="https://docs.npmjs.com/cli-commands/ci.html"><code>npm ci</code></a> commands to build your app
+with the right set of dependencies. When deciding which installation process to
+use, the Node.js buildpack consults your app source code, looking for the presence of
+specific files or directories. The installation process used also determines
+how the Node.js buildpack will reuse layers when rebuilding your app.</p>
+<p>The table below shows the process the Node.js buildpack uses to determine an
+installation process for NPM packages. When a combination of the files and
+directories listed in the table below are present in your app source code,
+the Node.js buildpack uses an installation process that ensures the
+correct third-party dependencies are installed during the build process.</p>
+<table>
+<thead>
+<tr>
+<th><code>package-lock.json</code></th>
+<th><code>node_modules</code></th>
+<th><code>npm-cache</code></th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td><code>npm install</code></td>
+</tr>
+<tr>
+<td>X</td>
+<td>X</td>
+<td>✓</td>
+<td><code>npm install</code></td>
+</tr>
+<tr>
+<td>X</td>
+<td>✓</td>
+<td>X</td>
+<td><code>npm rebuild</code></td>
+</tr>
+<tr>
+<td>X</td>
+<td>✓</td>
+<td>✓</td>
+<td><code>npm rebuild</code></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>X</td>
+<td>X</td>
+<td><code>npm ci</code></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>X</td>
+<td>✓</td>
+<td><code>npm ci</code></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>✓</td>
+<td>X</td>
+<td><code>npm rebuild</code></td>
+</tr>
+<tr>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td><code>npm ci</code></td>
+</tr>
+</tbody>
+</table>
+<p>The following sections give more information about the files listed in the
+table above, including how to generate them, if desired.</p>
+<h4 id="package-lockjson" class="markup-heading">
+    <a class="markup-heading__link" href="#package-lockjson">
+        package-lock.json
+    </a>
+</h4><p>The <code>package-lock.json</code> file is generated by running <code>npm install</code>.  For
+more information, see
+<a href="https://docs.npmjs.com/files/package-lock.json">npm-package-lock.json</a> in the
+NPM documentation.</p>
+<h4 id="node_modules" class="markup-heading">
+    <a class="markup-heading__link" href="#node_modules">
+        node_modules
+    </a>
+</h4><p>The <code>node_modules</code> directory contains vendored copies of all the packages
+installed by the <code>npm install</code> process. For more information, see the <a href="https://docs.npmjs.com/files/folders.html#node-modules">Node
+Modules</a> section of the
+<em>npm-folders</em> topic in the NPM documentation.</p>
+<h4 id="npm-cache" class="markup-heading">
+    <a class="markup-heading__link" href="#npm-cache">
+        npm-cache
+    </a>
+</h4><p>The <code>npm-cache</code> directory contains a content-addressable cache that stores all
+HTTP-request- and package-related data. Additionally, including a cache ensures
+that the app can be built entirely offline.</p>
+<p>To populate an <code>npm-cache</code> directory:</p>
+<ol>
+<li>Navigate to your source code directory.</li>
+<li>Run:
+<pre class="copyable"><code class="copyable__code">npm ci --cache npm-cache
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+</li>
+</ol>
+<p>For more information about the NPM cache, see
+<a href="https://docs.npmjs.com/cli/cache">npm-cache</a> in the NPM documentation.</p>
+<h3 id="determining-node-modules-layer-reuse" class="markup-heading">
+    <a class="markup-heading__link" href="#determining-node-modules-layer-reuse">
+        Determining Node Modules Layer Reuse
+    </a>
+</h3><p>To improve build times for apps, the Node.js buildpack has a method for reusing the build
+results from previous builds. When the CNB determines that a portion of the
+build process can be reused from a previous build, the CNB uses the previous
+result. Each installation process uses a different method for determining
+whether the CNB can reuse a previous build result.</p>
+<p>For <code>npm install</code>, the CNB never reuses a <code>node_modules</code> directory from previous builds.</p>
+<p>For <code>npm rebuild</code>, the CNB can reuse a <code>node_modules</code> directory from a previous
+build if the included <code>node_modules</code> directory in the app source code has not
+changed since the prior build.</p>
+<p>For <code>npm ci</code>, the CNB can reuse a <code>node_modules</code> directory from a previous
+build if the <code>package-lock.json</code> file included in the app source code has not
+changed since the prior build.</p>
+<h2 id="package-management-with-yarn" class="markup-heading">
+    <a class="markup-heading__link" href="#package-management-with-yarn">
+        Package Management with Yarn
+    </a>
+</h2><p>Many Node.js apps require a number of third-party libraries to perform common
+tasks and behaviors. Yarn is an alternative option to NPM for managing these
+third-party dependencies. Including <code>package.json</code> and <code>yarn.lock</code> files in
+your app source code triggers the Yarn installation process.</p>
+<h3 id="yarn-installation-process" class="markup-heading">
+    <a class="markup-heading__link" href="#yarn-installation-process">
+        Yarn Installation Process
+    </a>
+</h3><p>The Node.js buildpack runs <code>yarn install</code> and <code>yarn check</code> to ensure that third-party
+dependencies are properly installed.
+The <code>yarn.lock</code> file contains a fully resolved set of package dependencies that
+Yarn manages. For more information, see
+<a href="https://yarnpkg.com/lang/en/docs/yarn-lock/">yarn.lock</a> in the Yarn
+documentation.</p>
+<h3 id="yarn-start-command" class="markup-heading">
+    <a class="markup-heading__link" href="#yarn-start-command">
+        Yarn Start Command
+    </a>
+</h3><p>As part of the build process, the Node.js buildpack determines a start command for
+your app. The start command differs depending on which package management
+tooling the Node.js buildpack uses. If the Node.js buildpack uses <code>yarn</code> to install
+packages, the start command is <code>yarn start</code>.</p>
+<h2 id="determing-the-start-command" class="markup-heading">
+    <a class="markup-heading__link" href="#determing-the-start-command">
+        Determing the Start Command
+    </a>
+</h2><p>As part of the build process, the Node.js buildpack determines a start command for
+your app. The start command differs depending on which package management
+tooling the Node.js buildpack uses. If the Node.js buildpack uses <code>npm</code> or <code>yarn</code> to
+install packages, the start command is generated from the contents of
+<code>package.json</code>.</p>
+<h2 id="projects-without-package-management" class="markup-heading">
+    <a class="markup-heading__link" href="#projects-without-package-management">
+        Projects Without Package Management
+    </a>
+</h2><p>The Node.js buildpack also supports simple apps that do not require third-party packages.</p>
+<h3 id="start-command" class="markup-heading">
+    <a class="markup-heading__link" href="#start-command">
+        Start Command
+    </a>
+</h3><p>If no package manager is detected, the Node.js buildpack will look for four generic entrypoint JavaScript
+files, in this order:</p>
+<ul>
+<li><code>server.js</code></li>
+<li><code>app.js</code></li>
+<li><code>main.js</code></li>
+<li><code>index.js</code></li>
+</ul>
+<p>When the buildpack finds one of these, it will consider that the app&rsquo;s entrypoint and set the
+app image&rsquo;s start command to <code>node &lt;entrypoint filename&gt;</code>.</p>
+
+            </div>
+            
+
+
+
+
+
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/nodejs-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
+    </div>
+</a>
+
+            <p class="docs-mod-time"><strong>Last modified:</strong> August 10, 2021</p>
+        </div>
+        
+<div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+      <ul>
+        <li><a href="#memory_available">MEMORY_AVAILABLE</a></li>
+        <li><a href="#node_env">NODE_ENV</a></li>
+        <li><a href="#node_home">NODE_HOME</a></li>
+        <li><a href="#node_verbose">NODE_VERBOSE</a></li>
+        <li><a href="#npm_config_loglevel">NPM_CONFIG_LOGLEVEL</a></li>
+        <li><a href="#npm_config_production">NPM_CONFIG_PRODUCTION</a></li>
+        <li><a href="#path">PATH</a></li>
+      </ul>
+    </li>
+    <li><a href="#package-management-with-npm">Package Management with NPM</a>
+      <ul>
+        <li><a href="#npm-installation-process">NPM Installation Process</a></li>
+        <li><a href="#determining-node-modules-layer-reuse">Determining Node Modules Layer Reuse</a></li>
+      </ul>
+    </li>
+    <li><a href="#package-management-with-yarn">Package Management with Yarn</a>
+      <ul>
+        <li><a href="#yarn-installation-process">Yarn Installation Process</a></li>
+        <li><a href="#yarn-start-command">Yarn Start Command</a></li>
+      </ul>
+    </li>
+    <li><a href="#determing-the-start-command">Determing the Start Command</a></li>
+    <li><a href="#projects-without-package-management">Projects Without Package Management</a>
+      <ul>
+        <li><a href="#start-command">Start Command</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</div>
+
+    </div>
+</div>
+
+
+    <footer class="footer text--light">
+    <div class="footer-social-links-container">
+        <a class="footer-social-link" href="https://twitter.com/Paketo_io">
+            <div class="footer-social-link__image-container">
+                <img class="footer-social-link__image-container__image" src="/v2/images/logo-twitter.svg" alt="Blue Twitter bird logo"/>
+            </div>
+            <div class="text--light">
+                Twitter
+            </div>
+        </a>
+        <a class="footer-social-link" href="https://slack.paketo.io/">
+            <div class="footer-social-link__image-container">
+                <img class="footer-social-link__image-container__image" src="/v2/images/logo-slack.svg" alt="Slack logo"/>
+            </div>
+            <div class="text--light">
+                Slack
+            </div>
+        </a>
+        <a class="footer-social-link" href="https://github.com/paketo-buildpacks">
+            <div class="footer-social-link__image-container">
+                <img src="/v2/images/logo-github.svg" alt="GitHub Octocat logo"/>
+            </div>
+            <div class="text--light">
+                GitHub
+            </div>
+        </a>
+    </div>
+    <div class="footer-privacy-policy">
+        <div class="footer-text--small">Paketo Buildpacks is a <a class="text--light" href="https://www.cloudfoundry.org/">Cloud Foundry</a> Project</div>
+        <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
+        <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
+    </div>
+</footer><script src="/js/main.bdf8c7d2f9a1646cf0a78c52a0a869a3323a3f810afca6042260f94774f4b9fe.js"></script>
+
+    <div id="footer-skip-link" class="screenreader-container">
+    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
+</div>
+
+</body>
+
+</html>
