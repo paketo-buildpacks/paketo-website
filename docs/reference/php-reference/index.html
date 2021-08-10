@@ -11,17 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Ruby Buildpack Reference - Paketo Buildpacks</title>
+<title>PHP Buildpack Reference - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="Ruby Buildpack Reference">
-<meta name="og:url" content="https://paketo.io/docs/reference/ruby-reference/">
+<meta name="og:title" content="PHP Buildpack Reference">
+<meta name="og:url" content="https://paketo.io/docs/reference/php-reference/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
-<meta name="twitter:url" content="https://paketo.io/docs/reference/ruby-reference/" />
+<meta name="twitter:url" content="https://paketo.io/docs/reference/php-reference/" />
 <meta name="twitter:card" content="" />
 <link rel="stylesheet" href="/css/main-v1.min.f36f7568949f2bf44f5e1c5f20a73666f02ea21a9ddceb93eb778e2fc277d1cc.css">
 </head>
@@ -316,7 +316,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/reference/php-reference/" class="docs-menu__link ">
+            <a href="/docs/reference/php-reference/" class="docs-menu__link docs-menu__link--active">
                 
                 <span>PHP Buildpack</span>
             </a>
@@ -326,7 +326,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/reference/ruby-reference/" class="docs-menu__link docs-menu__link--active">
+            <a href="/docs/reference/ruby-reference/" class="docs-menu__link ">
                 
                 <span>Ruby Buildpack</span>
             </a>
@@ -351,7 +351,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/ruby-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/php-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -360,24 +360,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">Ruby Buildpack Reference</h1>
+            <h1 id="title">PHP Buildpack Reference</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#package-management">Package Management</a></li>
-    <li><a href="#webservers--task-runners">Webservers &amp; Task Runners</a>
-      <ul>
-        <li><a href="#webservers">Webservers</a></li>
-        <li><a href="#task-runners">Task Runners</a></li>
-      </ul>
-    </li>
-    <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
       <ul>
-        <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
-        <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
+        <li><a href="#app_root">APP_ROOT</a></li>
+        <li><a href="#server_root">SERVER_ROOT</a></li>
+        <li><a href="#mibdirs">MIBDIRS</a></li>
+        <li><a href="#path">PATH</a></li>
+        <li><a href="#php_api">PHP_API</a></li>
+        <li><a href="#php_extension_dir">PHP_EXTENSION_DIR</a></li>
+        <li><a href="#php_home">PHP_HOME</a></li>
+        <li><a href="#php_ini_scan_dir">PHP_INI_SCAN_DIR</a></li>
       </ul>
     </li>
   </ul>
@@ -387,82 +385,94 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="docs-body__markdown">
                 <p>This reference documentation offers an in-depth description of the behavior
 and configuration options of the
-<a href="https://github.com/paketo-buildpacks/ruby">Paketo Ruby Buildpack</a>. For explanations of how to use the buildpack for several common use-cases, see
-the  Paketo Ruby Buildpack  How To <a href="/docs/howto/ruby">documentation</a>.</p>
+<a href="https://github.com/paketo-buildpacks/php">Paketo PHP Buildpack</a>. For explanations of how to use the buildpack for several common use-cases, see
+the  Paketo PHP Buildpack  How To <a href="/docs/howto/php">documentation</a>.</p>
 <h2 id="supported-dependencies" class="markup-heading">
     <a class="markup-heading__link" href="#supported-dependencies">
         Supported Dependencies
     </a>
-</h2><p>The Ruby Paketo Buildpack supports several versions of
-<a href="https://www.ruby-lang.org">MRI</a>, <a href="https://bundler.io/">Bundler</a>, and common
-Ruby webservers and task runners.  For more details on the specific versions
-supported in a given buildpack version, see the <a href="https://github.com/paketo-buildpacks/ruby/releases/latest">release
+</h2><p>The PHP Paketo Buildpack supports several versions of PHP.
+For more details on the specific versions supported in a given buildpack
+version, see the <a href="https://github.com/paketo-buildpacks/php/releases">release
 notes</a>.</p>
-<h2 id="package-management" class="markup-heading">
-    <a class="markup-heading__link" href="#package-management">
-        Package Management
-    </a>
-</h2><p>The Ruby Buildpack uses <a href="https://bundler.io/">Bundler</a> to install and manage
-the gems needed to run your application. Including a <code>Gemfile</code> in your app
-source code instructs the <a href="https://github.com/paketo-buildpacks/bundle-install"><code>bundle-install</code>
-buildpack</a> to vendor your
-dependencies using <code>bundle install</code>.</p>
-<h2 id="webservers--task-runners" class="markup-heading">
-    <a class="markup-heading__link" href="#webservers--task-runners">
-        Webservers &amp; Task Runners
-    </a>
-</h2><p>The Ruby Buildpack supports a number of webservers and task runners that are
-useful for running Ruby applications. If your application uses one of these
-tools, it will be automatically detected and a start command for your
-application will be assigned when building your application container.</p>
-<h3 id="webservers" class="markup-heading">
-    <a class="markup-heading__link" href="#webservers">
-        Webservers
-    </a>
-</h3><ul>
-<li><a href="http://github.com/paketo-buildpacks/passenger">Passenger</a></li>
-<li><a href="http://github.com/paketo-buildpacks/puma">Puma</a></li>
-<li><a href="http://github.com/paketo-buildpacks/rackup">Rackup</a></li>
-<li><a href="http://github.com/paketo-buildpacks/thin">Thin</a></li>
-<li><a href="http://github.com/paketo-buildpacks/unicorn">Unicorn</a></li>
-</ul>
-<h3 id="task-runners" class="markup-heading">
-    <a class="markup-heading__link" href="#task-runners">
-        Task Runners
-    </a>
-</h3><ul>
-<li><a href="http://github.com/paketo-buildpacks/rake">Rake</a></li>
-</ul>
-<h2 id="rails-asset-pipeline" class="markup-heading">
-    <a class="markup-heading__link" href="#rails-asset-pipeline">
-        Rails Asset Pipeline
-    </a>
-</h2><p>The <a href="http://github.com/paketo-buildpacks/rails-assets">Paketo Rails Assets Buildpack</a> is a <a href="/docs/concepts/buildpacks/#component-buildpacks">component buildpack</a> included in the Ruby Buildpack. It supports Rails apps (Rails version &gt;= 5.0) that need asset precompilation.</p>
-<p>The buildpack runs bundle exec rails assets:precompile for the app, and works with any of the supported Ruby webservers listed above.</p>
 <h2 id="buildpack-set-environment-variables" class="markup-heading">
     <a class="markup-heading__link" href="#buildpack-set-environment-variables">
         Buildpack-Set Environment Variables
     </a>
-</h2><p>The Ruby CNB sets a few environment variables during the <code>build</code> and <code>launch</code>
-phases of the app lifecycle. The sections below describe each environment
-variable and its impact on your app.</p>
-<h3 id="gem_path" class="markup-heading">
-    <a class="markup-heading__link" href="#gem_path">
-        <code>GEM_PATH</code>
+</h2><p>The PHP CNB sets a number of environment variables during the <code>build</code> and
+<code>launch</code> phases of the app lifecycle. The sections below describe each
+environment variable and its impact on your app.</p>
+<h3 id="app_root" class="markup-heading">
+    <a class="markup-heading__link" href="#app_root">
+        APP_ROOT
     </a>
 </h3><ul>
-<li>Set by: <code>mri</code>, <code>bundler</code></li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: location of the directory gems will be installed for each respective dependency</li>
+<li>Set by: <code>httpd</code> buildpack</li>
+<li>Phases: <code>launch</code></li>
+<li>Value: path of app source</li>
 </ul>
-<h3 id="bundle_path" class="markup-heading">
-    <a class="markup-heading__link" href="#bundle_path">
-        <code>BUNDLE_PATH</code>
+<h3 id="server_root" class="markup-heading">
+    <a class="markup-heading__link" href="#server_root">
+        SERVER_ROOT
     </a>
 </h3><ul>
-<li>Set by: <code>bundle-install</code></li>
+<li>Set by: <code>httpd</code> buildpack</li>
+<li>Phases: <code>launch</code></li>
+<li>Value: path of the httpd installation</li>
+</ul>
+<h3 id="mibdirs" class="markup-heading">
+    <a class="markup-heading__link" href="#mibdirs">
+        MIBDIRS
+    </a>
+</h3><ul>
+<li>Set by: <code>php-dist</code> buildpack</li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: location where all gems in your bundle will be located</li>
+<li>Value: See <a href="https://www.php.net/manual/en/snmp.installation.php">php documentation</a></li>
+</ul>
+<h3 id="path" class="markup-heading">
+    <a class="markup-heading__link" href="#path">
+        PATH
+    </a>
+</h3><ul>
+<li>Set by: <code>php-dist</code> buildpack</li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: path to the php executable</li>
+</ul>
+<h3 id="php_api" class="markup-heading">
+    <a class="markup-heading__link" href="#php_api">
+        PHP_API
+    </a>
+</h3><ul>
+<li>Set by: <code>php-dist</code> buildpack</li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: internl api version (YYYYMMDD)</li>
+</ul>
+<h3 id="php_extension_dir" class="markup-heading">
+    <a class="markup-heading__link" href="#php_extension_dir">
+        PHP_EXTENSION_DIR
+    </a>
+</h3><ul>
+<li>Set by: <code>php-dist</code> buildpack</li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: location of directory with dynamic libraries for extensions</li>
+</ul>
+<h3 id="php_home" class="markup-heading">
+    <a class="markup-heading__link" href="#php_home">
+        PHP_HOME
+    </a>
+</h3><ul>
+<li>Set by: <code>php-dist</code> buildpack</li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: location of php installation</li>
+</ul>
+<h3 id="php_ini_scan_dir" class="markup-heading">
+    <a class="markup-heading__link" href="#php_ini_scan_dir">
+        PHP_INI_SCAN_DIR
+    </a>
+</h3><ul>
+<li>Set by: <code>php-web</code> buildpack</li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: <code>&lt;APP-ROOT&gt;/.php.ini.d</code></li>
 </ul>
 
             </div>
@@ -472,7 +482,7 @@ variable and its impact on your app.</p>
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/ruby-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/php-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -488,18 +498,16 @@ variable and its impact on your app.</p>
     <nav id="TableOfContents">
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#package-management">Package Management</a></li>
-    <li><a href="#webservers--task-runners">Webservers &amp; Task Runners</a>
-      <ul>
-        <li><a href="#webservers">Webservers</a></li>
-        <li><a href="#task-runners">Task Runners</a></li>
-      </ul>
-    </li>
-    <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
       <ul>
-        <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
-        <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
+        <li><a href="#app_root">APP_ROOT</a></li>
+        <li><a href="#server_root">SERVER_ROOT</a></li>
+        <li><a href="#mibdirs">MIBDIRS</a></li>
+        <li><a href="#path">PATH</a></li>
+        <li><a href="#php_api">PHP_API</a></li>
+        <li><a href="#php_extension_dir">PHP_EXTENSION_DIR</a></li>
+        <li><a href="#php_home">PHP_HOME</a></li>
+        <li><a href="#php_ini_scan_dir">PHP_INI_SCAN_DIR</a></li>
       </ul>
     </li>
   </ul>

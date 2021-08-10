@@ -11,14 +11,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>PHP Buildpack - Paketo Buildpacks</title>
+<title>How to Build PHP Apps with Paketo Buildpacks - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="PHP Buildpack">
+<meta name="og:title" content="How to Build PHP Apps with Paketo Buildpacks">
 <meta name="og:url" content="https://paketo.io/docs/howto/php/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/howto/php/" />
@@ -316,6 +316,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
+            <a href="/docs/reference/php-reference/" class="docs-menu__link ">
+                
+                <span>PHP Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
             <a href="/docs/reference/ruby-reference/" class="docs-menu__link ">
                 
                 <span>Ruby Buildpack</span>
@@ -350,42 +360,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">PHP Buildpack</h1>
+            <h1 id="title">How to Build PHP Apps with Paketo Buildpacks</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#specifying-a-php-version">Specifying a PHP Version</a>
+    <li><a href="#build-a-sample-app">Build a Sample App</a></li>
+    <li><a href="#install-a-specific-php-version">Install a Specific PHP Version</a>
       <ul>
         <li><a href="#using-buildpackyml">Using buildpack.yml</a></li>
         <li><a href="#using-composerjson">Using composer.json</a></li>
       </ul>
     </li>
-    <li><a href="#composer-configuration">Composer Configuration</a></li>
-    <li><a href="#web-server-configuration">Web Server Configuration</a></li>
-    <li><a href="#vendoring-composer-packages">Vendoring composer packages</a></li>
-    <li><a href="#configuring-custom-ini-files">Configuring custom .ini files</a></li>
-    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
-      <ul>
-        <li><a href="#app_root">APP_ROOT</a></li>
-        <li><a href="#server_root">SERVER_ROOT</a></li>
-        <li><a href="#mibdirs">MIBDIRS</a></li>
-        <li><a href="#path">PATH</a></li>
-        <li><a href="#php_api">PHP_API</a></li>
-        <li><a href="#php_extension_dir">PHP_EXTENSION_DIR</a></li>
-        <li><a href="#php_home">PHP_HOME</a></li>
-        <li><a href="#php_ini_scan_dir">PHP_INI_SCAN_DIR</a></li>
-      </ul>
-    </li>
+    <li><a href="#configure-composer">Configure Composer</a></li>
+    <li><a href="#select-a-web-server">Select a Web Server</a></li>
+    <li><a href="#vendor-composer-packages">Vendor composer packages</a></li>
+    <li><a href="#configure-custom-ini-files">Configure custom .ini files</a></li>
+    <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
+    <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
+    <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
+    <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
   </ul>
 </nav>
 </div>
 
             <div class="docs-body__markdown">
-                <p>The <a href="https://github.com/paketo-buildpacks/php">PHP Paketo Buildpack</a> enables developers to build
-PHP-based applications.</p>
-<p>To build a sample app locally with this CNB using the <code>pack</code> CLI, run</p>
+                <p>This documentation explains how to use the
+<a href="https://github.com/paketo-buildpacks/php">Paketo PHP Buildpack</a>
+to build applications for several common use-cases. For more in-depth
+description of the buildpack&rsquo;s behavior and configuration see the  Paketo PHP Buildpack
+Reference <a href="/docs/reference/php-reference">documentation</a>.</p>
+<h2 id="build-a-sample-app" class="markup-heading">
+    <a class="markup-heading__link" href="#build-a-sample-app">
+        Build a Sample App
+    </a>
+</h2><p>To build a sample app locally with this CNB using the <code>pack</code> CLI, run</p>
 <pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples/php/webserver
 pack build my-app --buildpack gcr.io/paketo-buildpacks/php \
@@ -396,17 +405,9 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/php \
 for how to run the app.</p>
 <p><strong>NOTE: The Paketo Full builder is required because PHP relies on operating
 system libraries only present in the Full builder.</strong></p>
-<h2 id="supported-dependencies" class="markup-heading">
-    <a class="markup-heading__link" href="#supported-dependencies">
-        Supported Dependencies
-    </a>
-</h2><p>The PHP Paketo Buildpack supports several versions of PHP.
-For more details on the specific versions supported in a given buildpack
-version, see the <a href="https://github.com/paketo-buildpacks/php/releases">release
-notes</a>.</p>
-<h2 id="specifying-a-php-version" class="markup-heading">
-    <a class="markup-heading__link" href="#specifying-a-php-version">
-        Specifying a PHP Version
+<h2 id="install-a-specific-php-version" class="markup-heading">
+    <a class="markup-heading__link" href="#install-a-specific-php-version">
+        Install a Specific PHP Version
     </a>
 </h2><p>The PHP Dist CNB allows you to specify a version of PHP to use during
 deployment. This version can be specified in a number of ways, including
@@ -445,9 +446,9 @@ app, include the values below in your <code>composer.json</code> file:</p>
 
 <p>If your app has a <code>composer.lock</code> file, the buildpack will use
 the php version defined there.</p>
-<h2 id="composer-configuration" class="markup-heading">
-    <a class="markup-heading__link" href="#composer-configuration">
-        Composer Configuration
+<h2 id="configure-composer" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-composer">
+        Configure Composer
     </a>
 </h2><p>The following options are configurable in the app&rsquo;s <code>buildpack.yml</code></p>
 <pre class="copyable"><code class="copyable__code">composer:
@@ -470,9 +471,9 @@ the php version defined there.</p>
   install_global: [&#34;list&#34;, &#34;of&#34;, &#34;install&#34;, &#34;options&#34;]
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h2 id="web-server-configuration" class="markup-heading">
-    <a class="markup-heading__link" href="#web-server-configuration">
-        Web Server Configuration
+<h2 id="select-a-web-server" class="markup-heading">
+    <a class="markup-heading__link" href="#select-a-web-server">
+        Select a Web Server
     </a>
 </h2><p>The PHP buildpack supports the use of 3 different web servers:</p>
 <ul>
@@ -489,7 +490,8 @@ the php version defined there.</p>
 <p>If you&rsquo;re using <code>httpd</code> or <code>nginx</code>, a suitable <code>httpd.conf</code> or <code>nginx.conf</code>
 will be generated for you by the buildpack.</p>
 <p>You can also provide additional configurations like follows:</p>
-<pre class="copyable"><code class="copyable__code">php:
+<pre class="copyable"><code class="copyable__code"># buildpack.yml
+php:
   # directory where web app code is stored
   # default: htdocs
   webdirectory: htdocs
@@ -506,101 +508,54 @@ will be generated for you by the buildpack.</p>
   serveradmin: admin@localhost
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h2 id="vendoring-composer-packages" class="markup-heading">
-    <a class="markup-heading__link" href="#vendoring-composer-packages">
-        Vendoring composer packages
+<h2 id="vendor-composer-packages" class="markup-heading">
+    <a class="markup-heading__link" href="#vendor-composer-packages">
+        Vendor composer packages
     </a>
 </h2><p>If your php app that uses <code>composer</code> has a valid <code>vendor</code> directory, then
 the buildpack will not download those packages. It will instead use the the
 packages location in the <code>vendor</code> directory.</p>
-<h2 id="configuring-custom-ini-files" class="markup-heading">
-    <a class="markup-heading__link" href="#configuring-custom-ini-files">
-        Configuring custom .ini files
+<h2 id="configure-custom-ini-files" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-custom-ini-files">
+        Configure custom .ini files
     </a>
 </h2><p>If you like to configure custom .ini files in addition to the <code>php.ini</code>
 provided by the buildpack, you can create a directory named <code>.php.ini.d</code> at the
 root of your app and put your custom ini files there. See
 <a href="https://paketo.io/docs/buildpacks/language-family-buildpacks/php/#php_ini_scan_dir"><code>PHP_INI_SCAN_DIR</code></a>
 in the Variables section below.</p>
-<h2 id="buildpack-set-environment-variables" class="markup-heading">
-    <a class="markup-heading__link" href="#buildpack-set-environment-variables">
-        Buildpack-Set Environment Variables
+<h2 id="install-a-custom-ca-certificate" class="markup-heading">
+    <a class="markup-heading__link" href="#install-a-custom-ca-certificate">
+        Install a Custom CA Certificate
     </a>
-</h2><p>The PHP CNB sets a number of environment variables during the <code>build</code> and
-<code>launch</code> phases of the app lifecycle. The sections below describe each
-environment variable and its impact on your app.</p>
-<h3 id="app_root" class="markup-heading">
-    <a class="markup-heading__link" href="#app_root">
-        APP_ROOT
+</h2><p>PHP buildpack users can provide their own CA certificates and have them
+included in the container root truststore at build-time and runtime by
+following the instructions outlined in the <a href="/docs/reference/configuration/#ca-certificates">CA
+Certificates</a>
+section of our configuration docs.</p>
+<h2 id="override-the-start-process-set-by-the-buildpack" class="markup-heading">
+    <a class="markup-heading__link" href="#override-the-start-process-set-by-the-buildpack">
+        Override the Start Process Set by the Buildpack
     </a>
-</h3><ul>
-<li>Set by: <code>httpd</code> buildpack</li>
-<li>Phases: <code>launch</code></li>
-<li>Value: path of app source</li>
-</ul>
-<h3 id="server_root" class="markup-heading">
-    <a class="markup-heading__link" href="#server_root">
-        SERVER_ROOT
+</h2><p>PHP buildpack users can set custom start processes for their app image by
+following the instructions in the
+<a href="/docs/reference/configuration/#procfiles">Procfiles</a> section
+of our configuration docs.</p>
+<h2 id="set-environment-variables-for-app-launch-time" class="markup-heading">
+    <a class="markup-heading__link" href="#set-environment-variables-for-app-launch-time">
+        Set Environment Variables for App Launch Time
     </a>
-</h3><ul>
-<li>Set by: <code>httpd</code> buildpack</li>
-<li>Phases: <code>launch</code></li>
-<li>Value: path of the httpd installation</li>
-</ul>
-<h3 id="mibdirs" class="markup-heading">
-    <a class="markup-heading__link" href="#mibdirs">
-        MIBDIRS
+</h2><p>PHP buildpack users can embed launch-time environment variables in their
+app image by following the documentation for the <a href="https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md">Environment Variables
+Buildpack</a>.</p>
+<h2 id="add-custom-labels-to-the-app-image" class="markup-heading">
+    <a class="markup-heading__link" href="#add-custom-labels-to-the-app-image">
+        Add Custom Labels to the App Image
     </a>
-</h3><ul>
-<li>Set by: <code>php-dist</code> buildpack</li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: See <a href="https://www.php.net/manual/en/snmp.installation.php">php documentation</a></li>
-</ul>
-<h3 id="path" class="markup-heading">
-    <a class="markup-heading__link" href="#path">
-        PATH
-    </a>
-</h3><ul>
-<li>Set by: <code>php-dist</code> buildpack</li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: path to the php executable</li>
-</ul>
-<h3 id="php_api" class="markup-heading">
-    <a class="markup-heading__link" href="#php_api">
-        PHP_API
-    </a>
-</h3><ul>
-<li>Set by: <code>php-dist</code> buildpack</li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: internl api version (YYYYMMDD)</li>
-</ul>
-<h3 id="php_extension_dir" class="markup-heading">
-    <a class="markup-heading__link" href="#php_extension_dir">
-        PHP_EXTENSION_DIR
-    </a>
-</h3><ul>
-<li>Set by: <code>php-dist</code> buildpack</li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: location of directory with dynamic libraries for extensions</li>
-</ul>
-<h3 id="php_home" class="markup-heading">
-    <a class="markup-heading__link" href="#php_home">
-        PHP_HOME
-    </a>
-</h3><ul>
-<li>Set by: <code>php-dist</code> buildpack</li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: location of php installation</li>
-</ul>
-<h3 id="php_ini_scan_dir" class="markup-heading">
-    <a class="markup-heading__link" href="#php_ini_scan_dir">
-        PHP_INI_SCAN_DIR
-    </a>
-</h3><ul>
-<li>Set by: <code>php-web</code> buildpack</li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: <code>&lt;APP-ROOT&gt;/.php.ini.d</code></li>
-</ul>
+</h2><p>PHP buildpack users can add labels to their app image by following the
+instructions in the <a href="/docs/reference/configuration/#applying-custom-labels">Applying Custom
+Labels</a>
+section of our configuration docs.</p>
 
             </div>
             
@@ -624,29 +579,21 @@ environment variable and its impact on your app.</p>
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#specifying-a-php-version">Specifying a PHP Version</a>
+    <li><a href="#build-a-sample-app">Build a Sample App</a></li>
+    <li><a href="#install-a-specific-php-version">Install a Specific PHP Version</a>
       <ul>
         <li><a href="#using-buildpackyml">Using buildpack.yml</a></li>
         <li><a href="#using-composerjson">Using composer.json</a></li>
       </ul>
     </li>
-    <li><a href="#composer-configuration">Composer Configuration</a></li>
-    <li><a href="#web-server-configuration">Web Server Configuration</a></li>
-    <li><a href="#vendoring-composer-packages">Vendoring composer packages</a></li>
-    <li><a href="#configuring-custom-ini-files">Configuring custom .ini files</a></li>
-    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
-      <ul>
-        <li><a href="#app_root">APP_ROOT</a></li>
-        <li><a href="#server_root">SERVER_ROOT</a></li>
-        <li><a href="#mibdirs">MIBDIRS</a></li>
-        <li><a href="#path">PATH</a></li>
-        <li><a href="#php_api">PHP_API</a></li>
-        <li><a href="#php_extension_dir">PHP_EXTENSION_DIR</a></li>
-        <li><a href="#php_home">PHP_HOME</a></li>
-        <li><a href="#php_ini_scan_dir">PHP_INI_SCAN_DIR</a></li>
-      </ul>
-    </li>
+    <li><a href="#configure-composer">Configure Composer</a></li>
+    <li><a href="#select-a-web-server">Select a Web Server</a></li>
+    <li><a href="#vendor-composer-packages">Vendor composer packages</a></li>
+    <li><a href="#configure-custom-ini-files">Configure custom .ini files</a></li>
+    <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
+    <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
+    <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
+    <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
   </ul>
 </nav>
 </div>
