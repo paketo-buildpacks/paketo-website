@@ -47,9 +47,14 @@ The Java Buildpack can build from source using any of the following build tools:
 * [Maven][maven] - Support provided by the [Maven Buildpack][bp/maven]
 * [SBT][sbt] - Support provided by the [SBT Buildpack][bp/sbt]
 
-The correct build tool to use will be detected based on the contents of the application directory.
+The correct build tool to use will be detected based on the contents of the
+application directory.
 
-The build should produce one the of [supported artifact formats](#building-from-a-compiled-artifact). After building, the buildpack will replace provided application source code with the exploded archive. The build will proceed as described in [Building from a Compiled Artifact](#building-from-a-compiled-artifact).
+The build should produce one the of [supported artifact
+formats][build-from-compiled-artifact]. After building, the buildpack
+will replace provided application source code with the exploded archive. The
+build will proceed as described in [Building from a Compiled
+Artifact][build-from-compiled-artifact].
 
 **Example**: Building with Maven
 
@@ -139,7 +144,12 @@ If a WAR is detect the Java Buildpack will install [Apache Tomcat][apache tomcat
 
 The component buildpack for the provided artifact format will contribute a start command to the image.
 
-*Note*: All three of the [Apache Tomcat Buildpack][bp/apache-tomcat], [Executable Jar Buildpack][bp/executable-jar], and [DistZip Buildpack][bp/dist-zip] may opt-in during detection. However, only one of these buildpacks will actually contribute to the final image. This happens because the artifact type may be unknown during detection, if for example a previous buildpack [compiles the artifact](#building-from-source).
+*Note*: All three of the [Apache Tomcat Buildpack][bp/apache-tomcat],
+[Executable Jar Buildpack][bp/executable-jar], and [DistZip
+Buildpack][bp/dist-zip] may opt-in during detection. However, only one of these
+buildpacks will actually contribute to the final image. This happens because
+the artifact type may be unknown during detection, if for example a previous
+buildpack [compiles the artifact][building-from-source].
 
 **Example**: Building from an Executable JAR
 
@@ -343,13 +353,22 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 ## Build an App as a GraalVM Native Image Application
 The [Paketo Java Native Image Buildpack][bp/java-native-image] allows users to create an image containing a [GraalVM][graalvm] [native image][graalvm native image] application.
 
-The Java Native Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of it's [components](#components). The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages of the component buildpacks.
+The Java Native Buildpack is a [composite buildpack][composite buildpack] and
+each step in a build is handled by one of its [components][components]. The
+following docs describe common build configurations. For a full set of
+configuration options and capabilities see the homepages of the component
+buildpacks.
 
 ### Build From Source
 
-The Java Native Image Buildpack supports the same [build tools and configuration options][java/building from source] as the [Java Buildpack][bp/java]. The build must produce an [executable jar][executable jar].
+The Java Native Image Buildpack supports the same [build tools and
+configuration options][java/building from source] as the [Java
+Buildpack][bp/java]. The build must produce an [executable jar][executable
+jar].
 
-After compiling and packaging, the buildpack will replace provided application source code with the exploded JAR and proceed as described in [Building from an Executable Jar](#building-from-an-executable-jar).
+After compiling and packaging, the buildpack will replace provided application
+source code with the exploded JAR and proceed as described in [Building from an
+Executable Jar][building-from-an-executable-jar].
 
 **Example**: Building a Native image with Maven
 
@@ -408,44 +427,44 @@ pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buil
 {{< /code/copyable >}}
 
 <!-- buildpacks -->
+[bp/amazon-corretto]:https://github.com/paketo-buildpacks/amazon-corretto
 [bp/apache-tomcat]:https://github.com/paketo-buildpacks/apache-tomcat
+[bp/azul-zulu]:https://github.com/paketo-buildpacks/azul-zulu
 [bp/azure-application-insights]:https://github.com/paketo-buildpacks/azure-application-insights
 [bp/bellsoft-liberica]:https://github.com/paketo-buildpacks/bellsoft-liberica
-[bp/amazon-corretto]:https://github.com/paketo-buildpacks/amazon-corretto
-[bp/azul-zulu]:https://github.com/paketo-buildpacks/azul-zulu
-[bp/eclipse-openj9]:https://github.com/paketo-buildpacks/eclipse-openj9
-[bp/graalvm]:https://github.com/paketo-buildpacks/graalvm
-[bp/dragonwell]:https://github.com/paketo-buildpacks/alibaba-dragonwell
-[bp/microsoft]:https://github.com/paketo-buildpacks/microsoft-openjdk
-[bp/sap-machine]:https://github.com/paketo-buildpacks/sap-machine
 [bp/ca-certificates]:https://github.com/paketo-buildpacks/ca-certificates
 [bp/debug]:https://github.com/paketo-buildpacks/debug
 [bp/dist-zip]:https://github.com/paketo-buildpacks/dist-zip
+[bp/dragonwell]:https://github.com/paketo-buildpacks/alibaba-dragonwell
+[bp/eclipse-openj9]:https://github.com/paketo-buildpacks/eclipse-openj9
 [bp/environment-variables]:https://github.com/paketo-buildpacks/environment-variables
+[bp/environment-variables]:https://github.com/paketo-buildpacks/environment-variables
+[bp/executable-jar]:https://github.com/paketo-buildpacks/executable-jar
 [bp/executable-jar]:https://github.com/paketo-buildpacks/executable-jar
 [bp/google-stackdriver]:https://github.com/paketo-buildpacks/google-stackdriver
+[bp/graalvm]:https://github.com/paketo-buildpacks/graalvm
+[bp/graalvm]:https://github.com/paketo-buildpacks/graalvm
+[bp/gradle]:https://github.com/paketo-buildpacks/gradle
 [bp/gradle]:https://github.com/paketo-buildpacks/gradle
 [bp/image-labels]:https://github.com/paketo-buildpacks/image-labels
-[bp/java]:https://github.com/paketo-buildpacks/java
-[bp/jmx]:https://github.com/paketo-buildpacks/jmx
-[bp/leiningen]:https://github.com/paketo-buildpacks/leiningen
-[bp/maven]:https://github.com/paketo-buildpacks/maven
-[bp/procfile]:https://github.com/paketo-buildpacks/procfile
-[bp/sbt]:https://github.com/paketo-buildpacks/sbt
-[bp/spring-boot]:https://github.com/paketo-buildpacks/spring-boot
-[bp/graalvm]:https://github.com/paketo-buildpacks/graalvm
-[bp/environment-variables]:https://github.com/paketo-buildpacks/environment-variables
-[bp/executable-jar]:https://github.com/paketo-buildpacks/executable-jar
-[bp/gradle]:https://github.com/paketo-buildpacks/gradle
 [bp/image-labels]:https://github.com/paketo-buildpacks/image-labels
 [bp/java-native-image]:https://github.com/paketo-buildpacks/java-native-image
+[bp/java]:https://github.com/paketo-buildpacks/java
 [bp/java]:https://github.com/paketo-buildpacks/java]
+[bp/jmx]:https://github.com/paketo-buildpacks/jmx
+[bp/leiningen]:https://github.com/paketo-buildpacks/leiningen
 [bp/leiningen]:https://github.com/paketo-buildpacks/leiningen
 [bp/maven]:https://github.com/paketo-buildpacks/maven
+[bp/maven]:https://github.com/paketo-buildpacks/maven
+[bp/microsoft]:https://github.com/paketo-buildpacks/microsoft-openjdk
+[bp/native-image]:https://github.com/paketo-buildpacks/spring-boot-native-image
 [bp/procfile]:https://github.com/paketo-buildpacks/procfile
+[bp/procfile]:https://github.com/paketo-buildpacks/procfile
+[bp/sap-machine]:https://github.com/paketo-buildpacks/sap-machine
+[bp/sbt]:https://github.com/paketo-buildpacks/sbt
 [bp/sbt]:https://github.com/paketo-buildpacks/sbt
 [bp/spring-boot]:https://github.com/paketo-buildpacks/spring-boot
-[bp/native-image]:https://github.com/paketo-buildpacks/spring-boot-native-image
+[bp/spring-boot]:https://github.com/paketo-buildpacks/spring-boot
 
 <!-- paketo references -->
 [bp/java/releases]:https://github.com/paketo-buildpacks/java/releases
@@ -454,12 +473,14 @@ pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buil
 <!-- paketo docs references -->
 [base builder]:{{< ref "/docs/concepts/builders#base" >}}
 [bindings]:{{< ref "/docs/reference/configuration#bindings" >}}
+[build-from-compiled-artifact]:{{< relref "#build-from-a-compiled-artifact" >}}
+[building-from-source]:{{< relref "#build-from-source" >}}
+[components]:{{< ref "/docs/reference/java-native-image-reference#components" >}}
 [composite buildpack]:{{< ref "/docs/concepts/buildpacks#composite-buildpacks" >}}
 [java/building from source]:{{< ref "/docs/howto/java#building-from-source" >}}
 [java/spring boot applications]:{{< ref "/docs/howto/java#spring-boot-applications" >}}
-[reference/java]:{{< ref "/docs/reference/java-reference" >}}
 [reference/java-native-image]:{{< ref "/docs/reference/java-native-image-reference" >}}
-
+[reference/java]:{{< ref "/docs/reference/java-reference" >}}
 
 <!-- cnb references -->
 [pack]:https://github.com/buildpacks/pack
@@ -473,7 +494,12 @@ pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buil
 [bash pattern matching]:https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html
 [dist-zip]:https://docs.gradle.org/current/userguide/distribution_plugin.html
 [executable jar]:https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files
+[executable jar]:https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files
 [google stackdriver]:https://cloud.google.com/products/operations
+[graalvm feature]:https://www.graalvm.org/sdk/javadoc/org/graalvm/nativeimage/hosted/Feature.html
+[graalvm native image]:https://www.graalvm.org/reference-manual/native-image/
+[graalvm substrate vm]:https://www.graalvm.org/reference-manual/native-image/SubstrateVM/
+[graalvm]:https://www.graalvm.org/docs/introduction/
 [gradle]:https://gradle.org/
 [java]:https://github.com/paketo-buildpacks/java
 [jconsole]:https://openjdk.java.net/tools/svc/jconsole/
@@ -488,17 +514,12 @@ pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buil
 [spring boot actuator endpoints]:https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints
 [spring boot configuration metadata]:https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-configuration-metadata.html
 [spring boot gradle plugin]:https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#build-image
-[spring boot maven plugin]:https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#build-image
-[spring cloud bindings]:https://github.com/spring-cloud/spring-cloud-bindings
-[war]:https://en.wikipedia.org/wiki/WAR_(file_format)
-[graalvm]:https://www.graalvm.org/docs/introduction/
-[graalvm native image]:https://www.graalvm.org/reference-manual/native-image/
-[graalvm substrate vm]:https://www.graalvm.org/reference-manual/native-image/SubstrateVM/
-[graalvm feature]:https://www.graalvm.org/sdk/javadoc/org/graalvm/nativeimage/hosted/Feature.html
-[executable jar]:https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files
 [spring boot gradle plugin]:https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#build-image
 [spring boot maven plugin]:https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#build-image
-[spring native]:https://github.com/spring-projects-experimental/spring-native
-[spring native releases]:https://github.com/spring-projects-experimental/spring-native/releases
+[spring boot maven plugin]:https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#build-image
+[spring cloud bindings]:https://github.com/spring-cloud/spring-cloud-bindings
 [spring native prerequisites]:https://repo.spring.io/milestone/org/springframework/experimental/spring-graalvm-native-docs/0.8.5/spring-graalvm-native-docs-0.8.5.zip!/reference/index.html#_prerequisites
+[spring native releases]:https://github.com/spring-projects-experimental/spring-native/releases
+[spring native]:https://github.com/spring-projects-experimental/spring-native
+[war]:https://en.wikipedia.org/wiki/WAR_(file_format)
 
