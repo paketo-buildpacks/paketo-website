@@ -9,7 +9,7 @@ menu:
 
 {{% reference_exec_summary bp_name="Paketo Java Buildpack" bp_repo="https://github.com/paketo-buildpacks/java" howto_docs_path="/docs/howto/java" %}}
 
-The [Paketo Java Buildpack][java] allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
+The [Paketo Java Buildpack][bp/java] allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
 
 The Java Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of its [components](#components). For a full set of configuration options and capabilities see the homepages for the component buildpacks.
 
@@ -96,3 +96,8 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 [bp/procfile]:https://github.com/paketo-buildpacks/procfile
 [bp/sbt]:https://github.com/paketo-buildpacks/sbt
 [bp/spring-boot]:https://github.com/paketo-buildpacks/spring-boot
+
+
+<!-- other references -->
+[liberica]:https://bell-sw.com/
+[composite buildpack]:{{< ref "docs/concepts/buildpacks#component-buildpacks" >}}
