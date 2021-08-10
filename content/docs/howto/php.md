@@ -149,25 +149,25 @@ root of your app and put your custom ini files there. See
 in the Variables section below.
 
 ## Install a Custom CA Certificate
-.Net Core Buildpack users can provide their own CA certificates and have them
+PHP buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
 following the instructions outlined in the [CA
 Certificates](/docs/reference/configuration/#ca-certificates)
 section of our configuration docs.
 
 ## Override the Start Process Set by the Buildpack
-.Net Core Buildpack users can set custom start processes for their app image by
+PHP buildpack users can set custom start processes for their app image by
 following the instructions in the
 [Procfiles](/docs/reference/configuration/#procfiles) section
 of our configuration docs.
 
 ## Set Environment Variables for App Launch Time
-.Net Core Buildpack users can embed launch-time environment variables in their
+PHP buildpack users can embed launch-time environment variables in their
 app image by following the documentation for the [Environment Variables
 Buildpack](https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md).
 
 ## Add Custom Labels to the App Image
-.Net Core Buildpack users can add labels to their app image by following the
+PHP buildpack users can add labels to their app image by following the
 instructions in the [Applying Custom
 Labels](/docs/reference/configuration/#applying-custom-labels)
 section of our configuration docs.
