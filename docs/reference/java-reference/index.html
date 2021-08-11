@@ -11,17 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>HTTPD Buildpack Reference - Paketo Buildpacks</title>
+<title>Java Buildpack Reference - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="HTTPD Buildpack Reference">
-<meta name="og:url" content="https://paketo.io/docs/reference/httpd-reference/">
+<meta name="og:title" content="Java Buildpack Reference">
+<meta name="og:url" content="https://paketo.io/docs/reference/java-reference/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
-<meta name="twitter:url" content="https://paketo.io/docs/reference/httpd-reference/" />
+<meta name="twitter:url" content="https://paketo.io/docs/reference/java-reference/" />
 <meta name="twitter:card" content="" />
 <link rel="stylesheet" href="/css/main-v1.min.f36f7568949f2bf44f5e1c5f20a73666f02ea21a9ddceb93eb778e2fc277d1cc.css">
 </head>
@@ -256,7 +256,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/reference/httpd-reference/" class="docs-menu__link docs-menu__link--active">
+            <a href="/docs/reference/httpd-reference/" class="docs-menu__link ">
                 
                 <span>HTTPD Buildpack</span>
             </a>
@@ -286,7 +286,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/reference/java-reference/" class="docs-menu__link ">
+            <a href="/docs/reference/java-reference/" class="docs-menu__link docs-menu__link--active">
                 
                 <span>Java Buildpack</span>
             </a>
@@ -361,7 +361,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/httpd-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/java-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -370,13 +370,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">HTTPD Buildpack Reference</h1>
+            <h1 id="title">Java Buildpack Reference</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#behavior">Behavior</a></li>
+    <li><a href="#about-the-jvm">About the JVM</a></li>
+    <li><a href="#memory-calculator">Memory Calculator</a></li>
+    <li><a href="#spring-boot-applications">Spring Boot Applications</a>
+      <ul>
+        <li><a href="#additional-metadata">Additional Metadata</a></li>
+        <li><a href="#optimizations">Optimizations</a></li>
+      </ul>
+    </li>
+    <li><a href="#components">Components</a></li>
   </ul>
 </nav>
 </div>
@@ -384,36 +391,153 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="docs-body__markdown">
                 <p>This reference documentation offers an in-depth description of the behavior
 and configuration options of the
-<a href="https://github.com/paketo-buildpacks/httpd">Paketo HTTPD Buildpack</a>. For explanations of how to use the buildpack for several common use-cases, see
-the  Paketo HTTPD Buildpack  How To <a href="/docs/howto/web-servers/#httpd">documentation</a>.</p>
-<p>The HTTPD Paketo Buildpack supports the installation of the
-Apache HTTP Server binary distribution
-onto the <code>$PATH</code> inside a container. This makes it available to subsequent
-buildpacks.</p>
-<h2 id="supported-dependencies" class="markup-heading">
-    <a class="markup-heading__link" href="#supported-dependencies">
-        Supported Dependencies
+<a href="https://github.com/paketo-buildpacks/java">Paketo Java Buildpack</a>. For explanations of how to use the buildpack for several common use-cases, see
+the  Paketo Java Buildpack  How To <a href="/docs/howto/java">documentation</a>.</p>
+<p>The <a href="https://github.com/paketo-buildpacks/java">Paketo Java Buildpack</a> allows users to create an image containing a JVM application from a precompiled artifact or directly from source.</p>
+<p>The Java Buildpack is a <a href="https://paketo.io/docs/concepts/buildpacks/#component-buildpacks">composite buildpack</a> and each step in a build is handled by one of its <a href="#components">components</a>. For a full set of configuration options and capabilities see the homepages for the component buildpacks.</p>
+<h2 id="about-the-jvm" class="markup-heading">
+    <a class="markup-heading__link" href="#about-the-jvm">
+        About the JVM
     </a>
-</h2><p>The HTTPD Paketo Buildpack supports several versions of Apache HTTP Server.
-For more details on the specific versions supported in a given buildpack
-version, see the <a href="https://github.com/paketo-buildpacks/httpd/releases">release
-notes</a>.</p>
-<h2 id="behavior" class="markup-heading">
-    <a class="markup-heading__link" href="#behavior">
-        Behavior
+</h2><p>The Java Buildpack uses the <a href="https://bell-sw.com/">BellSoft Liberica</a> implementations of the JRE and JDK. JVM installation is handled by the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">BellSoft Liberica Buildpack</a>. The JDK will be installed in the build container but only the JRE will be contributed to the application image.</p>
+<p>See the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">homepage</a> for the Bellsoft Liberica Buildpack for a full set of configuration options.</p>
+<h2 id="memory-calculator" class="markup-heading">
+    <a class="markup-heading__link" href="#memory-calculator">
+        Memory Calculator
     </a>
-</h2><p>When the HTTPD Buildpack participates in a build, it will contribute in one of two ways:</p>
-<ol>
-<li>
-<p>When an <code>httpd.conf</code> file <strong>is present</strong> in your app&rsquo;s source code, the
-buildpack will set up an Apache HTTP server with that config.</p>
-</li>
-<li>
-<p>When the <code>httpd.conf</code> <strong>is not present</strong> in the app&rsquo;s source code, the
-buildpack simply provides the Apache HTTP Server dependency to subsequent
-buildpacks without actually setting up a server.</p>
-</li>
-</ol>
+</h2><p>The Java Buildpack installs a component called the Memory Calculator which will configure JVM memory based on the resources available to the container at runtime. The calculated flags will be appended to <code>JAVA_TOOL_OPTIONS</code>.</p>
+<h2 id="spring-boot-applications" class="markup-heading">
+    <a class="markup-heading__link" href="#spring-boot-applications">
+        Spring Boot Applications
+    </a>
+</h2><p>If the application uses Spring Boot the <a href="https://github.com/paketo-buildpacks/spring-boot">Spring Boot Buildpack</a> will enhance the resulting image by adding additional metadata to the image config,
+applying Boot-specific performance optimizations, and enabling runtime auto-configuration.</p>
+<h3 id="additional-metadata" class="markup-heading">
+    <a class="markup-heading__link" href="#additional-metadata">
+        Additional Metadata
+    </a>
+</h3><p>The Spring Boot Buildpack adds the following additional image labels:</p>
+<ul>
+<li><code>org.opencontainers.image.title</code> - set to the value of <code>Implementation-Title</code> from  <code>MANIFEST.MF</code>.</li>
+<li><code>org.opencontainers.image.version</code> - set to the values of <code>Implementation-Version</code> from <code>MANIFEST.MF</code>.</li>
+<li><code>org.springframework.boot.version</code> - set to the value of <code>Spring-Boot-Version</code> from <code>MANIFEST.MF</code>.</li>
+<li><code>org.springframework.cloud.dataflow.spring-configuration-metadata.json</code> - containing [configuration metadata][spring boot configuration metadata].</li>
+<li><code>org.springframework.cloud.dataflow.spring-configuration-metadata.json</code> - containing <code>dataflow-configuration-metadata.properties</code>, if present.</li>
+</ul>
+<p>In addition, the buildpack will add an entry with name <code>dependencies</code> to the Bill-of-Materials listing the application dependencies.</p>
+<h3 id="optimizations" class="markup-heading">
+    <a class="markup-heading__link" href="#optimizations">
+        Optimizations
+    </a>
+</h3><p>The Spring Boot Buildpack can apply domain-specific knowledge to optimize the performance of Spring Boot applications. For example, if the buildpack detects that the application is a reactive web application the thread count will be reduced to <code>50</code> from a default of <code>250</code>.</p>
+<h2 id="components" class="markup-heading">
+    <a class="markup-heading__link" href="#components">
+        Components
+    </a>
+</h2><p>The following component buildpacks compose the Java Buildpack. Buildpacks are listed in the order they are executed.</p>
+<table>
+<thead>
+<tr>
+<th>Buildpack</th>
+<th>Required/Optional</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Buildpack</a></td>
+<td>Optional</td>
+<td>Adds CA certificates to the system truststore at build and runtime.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/bellsoft-liberica">Paketo BellSoft Liberica Buildpack</a></td>
+<td><strong>Required</strong></td>
+<td>Provides the JDK and/or JRE.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/gradle">Paketo Gradle Buildpack</a></td>
+<td>Optional</td>
+<td>Builds Gradle-based applications from source.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/leiningen">Paketo Leiningen Buildpack</a></td>
+<td>Optional</td>
+<td>Builds Leiningen-based applications from source.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/maven">Paketo Maven Buildpack</a></td>
+<td>Optional</td>
+<td>Builds Maven-based applications from source.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/sbt">Paketo SBT Buildpack</a></td>
+<td>Optional</td>
+<td>Builds SBT-based applications from source.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/executable-jar">Paketo Executable JAR Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes a process Type that launches an executable JAR.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/apache-tomcat">Paketo Apache Tomcat Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes Apache Tomcat and a process type that launches a WAR with Tomcat.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/dist-zip">Paketo DistZip Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes a process type that launches a DistZip-style application.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/spring-boot">Paketo Spring Boot Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes configuration and metadata to Spring Boot applications.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a></td>
+<td>Optional</td>
+<td>Allows the application to define or redefine process types with a [Procfile][procfiles]</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/azure-application-insights">Paketo Azure Application Insights Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes the Application Insights Agent and configures it to connect to the service.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/debug">Paketo Debug Buildpack</a></td>
+<td>Optional</td>
+<td>Configures debugging for JVM applications.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/google-stackdriver">Paketo Google Stackdriver Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes Stackdriver agents and configures them to connect to the service.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/jmx">Paketo JMX Buildpack</a></td>
+<td>Optional</td>
+<td>Configures JMX for JVM applications.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/encrypt-at-rest">Paketo Encrypt At Rest Buildpack</a></td>
+<td>Optional</td>
+<td>Encrypts an application layer and contributes a profile script that decrypts it at launch time.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/environment-variables">Paketo Environment Variables Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes arbitrary user-provided environment variables to the image.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/image-labels">Paketo Image Labels Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes OCI-specific and arbitrary user-provided labels to the image.</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
             </div>
             
@@ -422,7 +546,7 @@ buildpacks without actually setting up a server.</p>
 
 
 
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/httpd-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/java-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -437,8 +561,15 @@ buildpacks without actually setting up a server.</p>
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#behavior">Behavior</a></li>
+    <li><a href="#about-the-jvm">About the JVM</a></li>
+    <li><a href="#memory-calculator">Memory Calculator</a></li>
+    <li><a href="#spring-boot-applications">Spring Boot Applications</a>
+      <ul>
+        <li><a href="#additional-metadata">Additional Metadata</a></li>
+        <li><a href="#optimizations">Optimizations</a></li>
+      </ul>
+    </li>
+    <li><a href="#components">Components</a></li>
   </ul>
 </nav>
 </div>

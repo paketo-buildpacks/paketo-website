@@ -11,14 +11,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Java Buildpack - Paketo Buildpacks</title>
+<title>How to Build Java Apps with Paketo Buildpacks - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="Java Buildpack">
+<meta name="og:title" content="How to Build Java Apps with Paketo Buildpacks">
 <meta name="og:url" content="https://paketo.io/docs/howto/java/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
 <meta name="twitter:url" content="https://paketo.io/docs/howto/java/" />
@@ -129,16 +129,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <a href="/docs/howto/web-servers/" class="docs-menu__link ">
                 
                 <span>Web Servers</span>
-            </a>
-        </li>
-    
-                
-                    
-    
-        <li class="docs-menu__leaf">
-            <a href="/docs/howto/java-native-image/" class="docs-menu__link ">
-                
-                <span>Java Native Image</span>
             </a>
         </li>
     
@@ -296,6 +286,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
+            <a href="/docs/reference/java-reference/" class="docs-menu__link ">
+                
+                <span>Java Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/java-native-image-reference/" class="docs-menu__link ">
+                
+                <span>Java Native Image Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
             <a href="/docs/reference/nginx-reference/" class="docs-menu__link ">
                 
                 <span>NGINX Buildpack</span>
@@ -360,50 +370,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">Java Buildpack</h1>
+            <h1 id="title">How to Build Java Apps with Paketo Buildpacks</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#about-the-examples">About the Examples</a></li>
-    <li><a href="#building-from-source">Building from Source</a>
+    <li><a href="#build-from-source">Build from Source</a>
       <ul>
-        <li><a href="#configuring-the-build-tool">Configuring the Build Tool</a></li>
+        <li><a href="#configure-the-build-tool">Configure the Build Tool</a></li>
       </ul>
     </li>
-    <li><a href="#building-from-a-compiled-artifact">Building from a Compiled Artifact</a></li>
-    <li><a href="#about-the-jvm">About the JVM</a>
+    <li><a href="#build-from-a-compiled-artifact">Build from a Compiled Artifact</a></li>
+    <li><a href="#inspect-the-jvm-version">Inspect the JVM Version</a></li>
+    <li><a href="#install-a-specific-jvm-version">Install a Specific JVM Version</a></li>
+    <li><a href="#configure-the-jvm-at-runtime">Configure the JVM at Runtime</a></li>
+    <li><a href="#use-an-alternative-jvm">Use an Alternative JVM</a></li>
+    <li><a href="#build-a-spring-boot-application">Build a Spring Boot Application</a>
       <ul>
-        <li><a href="#the-jvm-version">The JVM Version</a></li>
-        <li><a href="#runtime-jvm-configuration">Runtime JVM Configuration</a></li>
-        <li><a href="#using-alternative-jvms">Using Alternative JVMs</a></li>
+        <li><a href="#inspect-spring-boot-application-dependencies">Inspect Spring Boot Application Dependencies</a></li>
+        <li><a href="#disable-spring-boot-auto-configuration">Disable Spring Boot Auto-Configuration</a></li>
       </ul>
     </li>
-    <li><a href="#spring-boot-applications">Spring Boot Applications</a>
+    <li><a href="#connect-to-an-apm">Connect to an APM</a></li>
+    <li><a href="#enable-remote-debugging">Enable Remote Debugging</a></li>
+    <li><a href="#enable-jmx">Enable JMX</a></li>
+    <li><a href="#append-arguments-to-the-apps-start-command">Append Arguments to the App&rsquo;s Start Command</a></li>
+    <li><a href="#provide-a-custom-start-command-at-launch">Provide a Custom Start Command at Launch</a>
       <ul>
-        <li><a href="#additional-metadata">Additional Metadata</a></li>
-        <li><a href="#runtime-auto-configuration">Runtime Auto-Configuration</a></li>
-        <li><a href="#optimizations">Optimizations</a></li>
+        <li><a href="#execute-a-custom-command-in-the-buildpack-provided-environment">Execute a Custom Command in the Buildpack-Provided Environment</a></li>
       </ul>
     </li>
-    <li><a href="#connecting-to-an-apm">Connecting to an APM</a></li>
-    <li><a href="#debugging">Debugging</a></li>
-    <li><a href="#enabling-jmx">Enabling JMX</a></li>
-    <li><a href="#selecting-a-process">Selecting a Process</a>
+    <li><a href="#build-an-app-as-a-graalvm-native-image-application">Build an App as a GraalVM Native Image Application</a>
       <ul>
-        <li><a href="#providing-additional-arguments">Providing Additional Arguments</a></li>
-        <li><a href="#executing-a-custom-command">Executing a Custom Command</a></li>
-        <li><a href="#executing-a-custom-command-in-the-buildpack-provided-environment">Executing a Custom Command in the Buildpack-Provided Environment</a></li>
+        <li><a href="#build-from-source-1">Build From Source</a></li>
+        <li><a href="#build-from-an-executable-jar">Build From an Executable JAR</a></li>
+        <li><a href="#inspect-the-jvm-version-1">Inspect the JVM Version</a></li>
+        <li><a href="#configure-the-graalvm-version">Configure the GraalVM Version</a></li>
       </ul>
     </li>
-    <li><a href="#components">Components</a></li>
   </ul>
 </nav>
 </div>
 
             <div class="docs-body__markdown">
-                <p>The <a href="https://github.com/paketo-buildpacks/java">Paketo Java Buildpack</a> allows users to create an image containing a JVM application from a precompiled artifact or directly from source.</p>
-<p>The Java Buildpack is a <a href="https://paketo.io/docs/concepts/buildpacks/#composite-buildpacks">composite buildpack</a> and each step in a build is handled by one of it&rsquo;s <a href="#components">components</a>. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages for the component buildpacks.</p>
+                <p>This documentation explains how to use the Paketo buildpacks
+to build Java applications for several common use-cases. For more in-depth
+description of the buildpacks' behavior and configuration see the <a href="https://paketo.io/docs/reference/java-reference/">Paketo Java Buildpack</a> and <a href="https://paketo.io/docs/reference/java-native-image-reference/">Paketo Java Native Image Buildpack</a> reference documentation.</p>
 <h2 id="about-the-examples" class="markup-heading">
     <a class="markup-heading__link" href="#about-the-examples">
         About the Examples
@@ -424,33 +437,38 @@ cd samples
 curl -s http://localhost:8080/actuator/health | jq .
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h2 id="building-from-source" class="markup-heading">
-    <a class="markup-heading__link" href="#building-from-source">
-        Building from Source
+<h2 id="build-from-source" class="markup-heading">
+    <a class="markup-heading__link" href="#build-from-source">
+        Build from Source
     </a>
 </h2><p>The Java Buildpack can build from source using any of the following build tools:</p>
 <ul>
 <li><a href="https://gradle.org/">Gradle</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/gradle">Gradle Buildpack</a></li>
 <li><a href="https://leiningen.org/">Leiningen</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/leiningen">Leiningen Buildpack</a></li>
 <li><a href="https://maven.apache.org/">Maven</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/maven">Maven Buildpack</a></li>
-<li><a href="https://www.scala-sbt.org/index.html">SBT</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/sbt">SBT Buildpack</a>)</li>
+<li><a href="https://www.scala-sbt.org/index.html">SBT</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/sbt">SBT Buildpack</a></li>
 </ul>
-<p>The correct build tool to use will be detected based on the contents of the application directory.</p>
-<p>The build should produce one the of <a href="#building-from-a-compiled-artifact">supported artifact formats</a>. After building, the buildpack will replace provided application source code with the exploded archive. The build will proceed as described in <a href="#building-from-a-compiled-artifact">Building from a Compiled Artifact</a>.</p>
+<p>The correct build tool to use will be detected based on the contents of the
+application directory.</p>
+<p>The build should produce one the of <a href="#build-from-a-compiled-artifact">supported artifact
+formats</a>. After building, the buildpack
+will replace provided application source code with the exploded archive. The
+build will proceed as described in <a href="#build-from-a-compiled-artifact">Building from a Compiled
+Artifact</a>.</p>
 <p><strong>Example</strong>: Building with Maven</p>
 <p>The following command creates an image from source with <code>maven</code>.</p>
 <pre class="copyable"><code class="copyable__code">pack build samples/java \
   --path java/maven
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h3 id="configuring-the-build-tool" class="markup-heading">
-    <a class="markup-heading__link" href="#configuring-the-build-tool">
-        Configuring the Build Tool
+<h3 id="configure-the-build-tool" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-the-build-tool">
+        Configure the Build Tool
     </a>
 </h3><p><strong>Note</strong>: The following set of configuration options are not comprehensive, see the homepage for the relevant component buildpacks for a full-set of configuration options.</p>
-<h4 id="selecting-a-module-or-artifact" class="markup-heading">
-    <a class="markup-heading__link" href="#selecting-a-module-or-artifact">
-        Selecting a Module or Artifact
+<h4 id="select-a-module-or-artifact" class="markup-heading">
+    <a class="markup-heading__link" href="#select-a-module-or-artifact">
+        Select a Module or Artifact
     </a>
 </h4><p>For a given build <code>&lt;TOOL&gt;</code>, where <code>&lt;TOOL&gt;</code> is one of <code>MAVEN</code>, <code>GRADLE</code>, <code>LEIN</code> or <code>SBT</code>, the selected artifact can be configured with one of the following environment variable at build-time:</p>
 <ul>
@@ -470,9 +488,9 @@ curl -s http://localhost:8080/actuator/health | jq .
 </ul>
 </li>
 </ul>
-<h4 id="specifying-the-build-command" class="markup-heading">
-    <a class="markup-heading__link" href="#specifying-the-build-command">
-        Specifying the Build Command
+<h4 id="specify-the-build-command" class="markup-heading">
+    <a class="markup-heading__link" href="#specify-the-build-command">
+        Specify the Build Command
     </a>
 </h4><p>For a given build <code>&lt;TOOL&gt;</code>, where <code>&lt;TOOL&gt;</code> is one of <code>MAVEN</code>, <code>GRADLE</code>, <code>LEIN</code> or <code>SBT</code>, the build command can be configured with the following environment variable at build-time:</p>
 <ul>
@@ -484,9 +502,9 @@ curl -s http://localhost:8080/actuator/health | jq .
 </ul>
 </li>
 </ul>
-<h4 id="connecting-to-a-private-maven-repository" class="markup-heading">
-    <a class="markup-heading__link" href="#connecting-to-a-private-maven-repository">
-        Connecting to a Private Maven Repository
+<h4 id="connect-to-a-private-maven-repository" class="markup-heading">
+    <a class="markup-heading__link" href="#connect-to-a-private-maven-repository">
+        Connect to a Private Maven Repository
     </a>
 </h4><p>A <a href="https://paketo.io/docs/reference/configuration/#bindings">binding</a> with type <code>maven</code> and key <code>settings.xml</code> can be used to provide custom <a href="http://maven.apache.org/settings.html">Maven settings</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-plain" data-lang="plain">&lt;binding-name&gt;
@@ -523,9 +541,9 @@ curl -s http://localhost:8080/actuator/health | jq .
 </p>
 </li>
 </ol>
-<h2 id="building-from-a-compiled-artifact" class="markup-heading">
-    <a class="markup-heading__link" href="#building-from-a-compiled-artifact">
-        Building from a Compiled Artifact
+<h2 id="build-from-a-compiled-artifact" class="markup-heading">
+    <a class="markup-heading__link" href="#build-from-a-compiled-artifact">
+        Build from a Compiled Artifact
     </a>
 </h2><p>An application developer may build an image from following archive formats:</p>
 <ul>
@@ -536,7 +554,12 @@ curl -s http://localhost:8080/actuator/health | jq .
 <p>The Java Buildpack expects the application directory to contain the extracted contents of the archive (e.g. an exploded JAR). Most platforms will automatically extract any provided archives.</p>
 <p>If a WAR is detect the Java Buildpack will install <a href="http://tomcat.apache.org">Apache Tomcat</a>. For exact set of supported Tomcat versions can be found in the Java Buildpack <a href="https://github.com/paketo-buildpacks/java/releases">releases notes</a>. For tomcat configuration options see the <a href="https://github.com/paketo-buildpacks/apache-tomcat">Apache Tomcat Buildpack</a>.</p>
 <p>The component buildpack for the provided artifact format will contribute a start command to the image.</p>
-<p><em>Note</em>: All three of the <a href="https://github.com/paketo-buildpacks/apache-tomcat">Apache Tomcat Buildpack</a>, <a href="https://github.com/paketo-buildpacks/executable-jar">Executable Jar Buildpack</a>, and <a href="https://github.com/paketo-buildpacks/dist-zip">DistZip Buildpack</a> may opt-in during detection. However, only one of these buildpacks will actually contribute to the final image. This happens because the artifact type may be unknown during detection, if for example a previous buildpack <a href="#building-from-source">compiles the artifact</a>.</p>
+<p><em>Note</em>: All three of the <a href="https://github.com/paketo-buildpacks/apache-tomcat">Apache Tomcat Buildpack</a>,
+<a href="https://github.com/paketo-buildpacks/executable-jar">Executable Jar Buildpack</a>, and <a href="https://github.com/paketo-buildpacks/dist-zip">DistZip
+Buildpack</a> may opt-in during detection. However, only one of these
+buildpacks will actually contribute to the final image. This happens because
+the artifact type may be unknown during detection, if for example a previous
+buildpack <a href="#build-from-source">compiles the artifact</a>.</p>
 <p><strong>Example</strong>: Building from an Executable JAR</p>
 <p>The following command uses Maven to compile an executable JAR and then uses <code>pack</code> to build an image from the JAR.</p>
 <pre class="copyable"><code class="copyable__code">cd java/maven
@@ -546,32 +569,21 @@ pack build samples/java \
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
 <p>The resulting application image will be identical to that built in the Building with Maven example.</p>
-<h2 id="about-the-jvm" class="markup-heading">
-    <a class="markup-heading__link" href="#about-the-jvm">
-        About the JVM
+<h2 id="inspect-the-jvm-version" class="markup-heading">
+    <a class="markup-heading__link" href="#inspect-the-jvm-version">
+        Inspect the JVM Version
     </a>
-</h2><p>The Java Buildpack uses the <a href="https://bell-sw.com/">BellSoft Liberica</a> implementations of the JRE and JDK. JVM installation is handled by the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">BellSoft Liberica Buildpack</a>. The JDK will be installed in the build container but only the JRE will be contributed to the application image.</p>
-<p>See the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">homepage</a> for the Bellsoft Liberica Buildpack for a full set of configuration options.</p>
-<h3 id="the-jvm-version" class="markup-heading">
-    <a class="markup-heading__link" href="#the-jvm-version">
-        The JVM Version
-    </a>
-</h3><p>The Bellsoft Liberica Buildpack provides support for the latest patch release of all version lines supported at the time of buildpack release. The exact set of JDK/JRE versions support by a given buildpack version can be found in the Java Buildpack <a href="https://github.com/paketo-buildpacks/java/releases">release notes</a>.</p>
-<h4 id="inspecting-the-jvm-version" class="markup-heading">
-    <a class="markup-heading__link" href="#inspecting-the-jvm-version">
-        Inspecting the JVM Version
-    </a>
-</h4><p>The exact JRE version that was contributed to a given image can be read from the Bill-of-Materials.</p>
+</h2><p>The exact JRE version that was contributed to a given image can be read from the Bill-of-Materials.</p>
 <p><strong>Example</strong> Inspecting the JRE Version</p>
 <p>Given an image named <code>samples/java</code> built from one of examples above, the following command should print the exact version of the installed JRE.
 <pre class="copyable"><code class="copyable__code">pack inspect-image samples/app --bom | jq &#39;.local[] | select(.name==&#34;jre&#34;) | .metadata.version&#39;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h4 id="configuring-the-jvm-version" class="markup-heading">
-    <a class="markup-heading__link" href="#configuring-the-jvm-version">
-        Configuring the JVM Version
+<h2 id="install-a-specific-jvm-version" class="markup-heading">
+    <a class="markup-heading__link" href="#install-a-specific-jvm-version">
+        Install a Specific JVM Version
     </a>
-</h4><p>The following environment variable configures the JVM version at build-time.</p>
+</h2><p>The following environment variable configures the JVM version at build-time.</p>
 <ul>
 <li><code>BP_JVM_VERSION</code>
 <ul>
@@ -581,21 +593,12 @@ pack build samples/java \
 </ul>
 </li>
 </ul>
-<h3 id="runtime-jvm-configuration" class="markup-heading">
-    <a class="markup-heading__link" href="#runtime-jvm-configuration">
-        Runtime JVM Configuration
+<h2 id="configure-the-jvm-at-runtime" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-the-jvm-at-runtime">
+        Configure the JVM at Runtime
     </a>
-</h3><p>The Java Buildpack configures the JVM by setting <code>JAVA_TOOL_OPTIONS</code> in the JVM environment.</p>
-<h4 id="memory-calculator" class="markup-heading">
-    <a class="markup-heading__link" href="#memory-calculator">
-        Memory Calculator
-    </a>
-</h4><p>The Java Buildpack installs a component called the Memory Calculator which will configure JVM memory based on the resources available to the container at runtime. The calculated flags will be appended to <code>JAVA_TOOL_OPTIONS</code>.</p>
-<h4 id="configuring-jvm-at-runtime" class="markup-heading">
-    <a class="markup-heading__link" href="#configuring-jvm-at-runtime">
-        Configuring JVM at Runtime
-    </a>
-</h4><p>The runtime JVM can be configured in two ways:</p>
+</h2><p>The Java Buildpack configures the JVM by setting <code>JAVA_TOOL_OPTIONS</code> in the JVM environment.</p>
+<p>The runtime JVM can be configured in two ways:</p>
 <ol>
 <li>Buildpack-provided runtime components including the Memory Calculator accept semantically named environment variables which are then used to derive <code>JAVA_TOOL_OPTIONS</code> flags. Examples include:
 <ul>
@@ -607,11 +610,11 @@ pack build samples/java \
 <li>Flags can be set directly at runtime with the <code>JAVA_TOOL_OPTIONS</code> environment variable. User-provided flags will be appended to buildpack-provided flags. If the user and a buildpack set the same flag, user-provided flags take precedence.</li>
 </ol>
 <p>See the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">homepage</a> for the Bellsoft Liberica Buildpack for a full set of configuration options.</p>
-<h3 id="using-alternative-jvms" class="markup-heading">
-    <a class="markup-heading__link" href="#using-alternative-jvms">
-        Using Alternative JVMs
+<h2 id="use-an-alternative-jvm" class="markup-heading">
+    <a class="markup-heading__link" href="#use-an-alternative-jvm">
+        Use an Alternative JVM
     </a>
-</h3><p>By default, the <a href="https://github.com/paketo-buildpacks/java">Paketo Java buildpack</a> will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implemenations in place of Liberica&rsquo;s JVM.</p>
+</h2><p>By default, the <a href="https://github.com/paketo-buildpacks/java">Paketo Java buildpack</a> will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implemenations in place of Liberica&rsquo;s JVM.</p>
 <table>
 <thead>
 <tr>
@@ -666,50 +669,33 @@ pack build samples/java \
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
 <p>It does not hurt to use this command for all situations, it is just more verbose and most users can get away without specifying the CA certificates buildpack to be first.</p>
-<h2 id="spring-boot-applications" class="markup-heading">
-    <a class="markup-heading__link" href="#spring-boot-applications">
-        Spring Boot Applications
+<h2 id="build-a-spring-boot-application" class="markup-heading">
+    <a class="markup-heading__link" href="#build-a-spring-boot-application">
+        Build a Spring Boot Application
     </a>
-</h2><p>If the application uses Spring Boot the <a href="https://github.com/paketo-buildpacks/spring-boot">Spring Boot Buildpack</a> will enhance the resulting image by adding additional metadata to the image config,
-applying Boot-specific performance optimizations, and enabling runtime auto-configuration.</p>
-<h3 id="additional-metadata" class="markup-heading">
-    <a class="markup-heading__link" href="#additional-metadata">
-        Additional Metadata
+</h2><h3 id="inspect-spring-boot-application-dependencies" class="markup-heading">
+    <a class="markup-heading__link" href="#inspect-spring-boot-application-dependencies">
+        Inspect Spring Boot Application Dependencies
     </a>
-</h3><p>The Spring Boot Buildpack adds the following additional image labels:</p>
-<ul>
-<li><code>org.opencontainers.image.title</code> - set to the value of <code>Implementation-Title</code> from  <code>MANIFEST.MF</code>.</li>
-<li><code>org.opencontainers.image.version</code> - set to the values of <code>Implementation-Version</code> from <code>MANIFEST.MF</code>.</li>
-<li><code>org.springframework.boot.version</code> - set to the value of <code>Spring-Boot-Version</code> from <code>MANIFEST.MF</code>.</li>
-<li><code>org.springframework.cloud.dataflow.spring-configuration-metadata.json</code> - containing <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-configuration-metadata.html">configuration metadata</a>.</li>
-<li><code>org.springframework.cloud.dataflow.spring-configuration-metadata.json</code> - containing <code>dataflow-configuration-metadata.properties</code>, if present.</li>
-</ul>
-<p>In addition, the buildpack will add an entry with name <code>dependencies</code> to the Bill-of-Materials listing the application dependencies.</p>
-<p><strong>Example</strong>: Inspecting Application Dependencies</p>
-<p>The following command uses <code>pack</code> to list every dependency of a sample application.
+</h3><p>The following command uses <code>pack</code> to list every dependency of a sample application.
 <pre class="copyable"><code class="copyable__code">pack inspect-image samples/java --bom | jq &#39;.local[] | select(.name==&#34;dependencies&#34;) | .metadata.dependencies[].name&#39;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h3 id="runtime-auto-configuration" class="markup-heading">
-    <a class="markup-heading__link" href="#runtime-auto-configuration">
-        Runtime Auto-Configuration
+<h3 id="disable-spring-boot-auto-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#disable-spring-boot-auto-configuration">
+        Disable Spring Boot Auto-Configuration
     </a>
 </h3><p>The Spring Boot Buildpack adds <a href="https://github.com/spring-cloud/spring-cloud-bindings">Spring Cloud Bindings</a> to the application class path. Spring Cloud Bindings will auto-configure the application to connect to an external service when a binding of a supported type provides credentials and connection information at runtime. Runtime auto-configuration is enabled by default but can be disabled with the <code>BPL_SPRING_CLOUD_BINDINGS_ENABLED</code> environment variable.</p>
-<h3 id="optimizations" class="markup-heading">
-    <a class="markup-heading__link" href="#optimizations">
-        Optimizations
-    </a>
-</h3><p>The Spring Boot Buildpack can apply domain-specific knowledge to optimize the performance of Spring Boot applications. For example, if the buildpack detects that the application is a reactive web application the thread count will be reduced to <code>50</code> from a default of <code>250</code>.</p>
-<h2 id="connecting-to-an-apm" class="markup-heading">
-    <a class="markup-heading__link" href="#connecting-to-an-apm">
-        Connecting to an APM
+<h2 id="connect-to-an-apm" class="markup-heading">
+    <a class="markup-heading__link" href="#connect-to-an-apm">
+        Connect to an APM
     </a>
 </h2><p>The Java Buildpack supports the following <a href="https://en.wikipedia.org/wiki/Application_performance_management">APM</a> integrations:</p>
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview">Azure Application Insights</a> - support provided by the <a href="https://github.com/paketo-buildpacks/azure-application-insights">Azure Application Insights Buildpack</a></li>
 <li><a href="https://cloud.google.com/products/operations">Google Stackdriver</a> - support provided by the <a href="https://github.com/paketo-buildpacks/google-stackdriver">Google Stackdriver Buildpack</a></li>
 </ul>
-<p>APM integration are enabled with <a href="https://paketo.io/docs/reference/configuration/#bindings">bindings</a>. If a binding of the correct <code>type</code> is provided at build-time the corresponding java agent will be contributed to the application image. Connection credentials will be read from the binding at runtime.</p>
+<p>APM integrations are enabled with <a href="https://paketo.io/docs/reference/configuration/#bindings">bindings</a>. If a binding of the correct <code>type</code> is provided at build-time the corresponding java agent will be contributed to the application image. Connection credentials will be read from the binding at runtime.</p>
 <p><strong>Example</strong>: Connecting to Azure Application Insights</p>
 <p>The following command builds an image with the Azure Application Insights Java Agent
 <pre class="copyable"><code class="copyable__code">pack build samples/java --volume &#34;$(pwd)/java/application-insights/binding:/platform/bindings/application-insights&#34;
@@ -723,9 +709,9 @@ docker run --rm --tty \
   samples/java
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h2 id="debugging" class="markup-heading">
-    <a class="markup-heading__link" href="#debugging">
-        Debugging
+<h2 id="enable-remote-debugging" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-remote-debugging">
+        Enable Remote Debugging
     </a>
 </h2><p>If <code>BP_DEBUG_ENABLED</code> is set at build-time and <code>BPL_DEBUG_ENABLED</code> is set at runtime the <a href="https://github.com/paketo-buildpacks/debug">Debug Buildpack</a> will configure the application to accept debugger connections. The debug port defaults to <code>8000</code> and can be configured with <code>BPL_DEBUG_PORT</code> at runtime. If <code>BPL_DEBUG_SUSPEND</code> is set at runtime, the JVM will suspend execution until a debugger has attached.</p>
 <p><strong>Example</strong>: Remote Debugging</p>
@@ -741,9 +727,9 @@ docker run --rm --tty \
 </p>
 <p>Connect your IDE debugger to connect to the published port.
 <img src="/images/debug-eclipse.png" alt="Eclipse Remote Debug Configuration"></p>
-<h2 id="enabling-jmx" class="markup-heading">
-    <a class="markup-heading__link" href="#enabling-jmx">
-        Enabling JMX
+<h2 id="enable-jmx" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-jmx">
+        Enable JMX
     </a>
 </h2><p>If <code>BP_JMX_ENABLED</code> is set at build-time and <code>BPL_JMX_ENABLED</code> is set at runtime, the <a href="https://github.com/paketo-buildpacks/jmx">JMX Buildpack</a> will enable <a href="https://en.wikipedia.org/wiki/Java_Management_Extensions#:~:text=Java%20Management%20Extensions%20(JMX)%20is,MBeans%20(for%20Managed%20Bean)">JMX</a>. The JMX connector will listen on port <code>5000</code> by default. The port can be configured with the <code>BPL_JMX_PORT</code> environment variable at runtime.</p>
 <p><strong>Example</strong>: Enabling JMX</p>
@@ -759,41 +745,30 @@ docker run --rm --tty \
 </p>
 <p>Connect <a href="https://openjdk.java.net/tools/svc/jconsole/">JConsole</a> to the published port.
 <img src="/images/jconsole.png" alt="JConsole"></p>
-<h2 id="selecting-a-process" class="markup-heading">
-    <a class="markup-heading__link" href="#selecting-a-process">
-        Selecting a Process
+<h2 id="append-arguments-to-the-apps-start-command" class="markup-heading">
+    <a class="markup-heading__link" href="#append-arguments-to-the-apps-start-command">
+        Append Arguments to the App&rsquo;s Start Command
     </a>
-</h2><p>The Java buildpack will contribute a default process type that starts the application.</p>
-<p><strong>Example</strong>: Running the default process</p>
-<p>Execute the following commands to start the default process type using a <code>samples/java</code> image built from any previous example command.
-<pre class="copyable"><code class="copyable__code">docker run  --rm --publish 8080:8080 samples/java
-curl -s http://localhost:8080/actuator/health
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
-<h3 id="providing-additional-arguments" class="markup-heading">
-    <a class="markup-heading__link" href="#providing-additional-arguments">
-        Providing Additional Arguments
-    </a>
-</h3><p>Additional arguments can be provided to the application using the container <a href="https://github.com/opencontainers/image-spec/blob/master/config.md#properties"><code>CMD</code></a>. In Kubernetes set <code>CMD</code> using the <code>args</code> field on the <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#container-v1-core">container</a> resource.</p>
+</h2><p>Additional arguments can be provided to the application using the container <a href="https://github.com/opencontainers/image-spec/blob/master/config.md#properties"><code>CMD</code></a>. In Kubernetes set <code>CMD</code> using the <code>args</code> field on the <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#container-v1-core">container</a> resource.</p>
 <p><strong>Example</strong>: Setting the Server Port</p>
 <p>Execute the following command passes an additional argument to application start command, setting the port to <code>8081</code>.
 <pre class="copyable"><code class="copyable__code">docker run --rm --publish 8081:8081 samples/java --server.port=8081
 curl -s http://localhost:8081/actuator/health
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h3 id="executing-a-custom-command" class="markup-heading">
-    <a class="markup-heading__link" href="#executing-a-custom-command">
-        Executing a Custom Command
+<h2 id="provide-a-custom-start-command-at-launch" class="markup-heading">
+    <a class="markup-heading__link" href="#provide-a-custom-start-command-at-launch">
+        Provide a Custom Start Command at Launch
     </a>
-</h3><p>To override the buildpack-provided start command with a custom command, set the container <a href="https://github.com/opencontainers/image-spec/blob/master/config.md#properties"><code>ENTRYPOINT</code></a></p>
+</h2><p>To override the buildpack-provided start command with a custom command, set the container <a href="https://github.com/opencontainers/image-spec/blob/master/config.md#properties"><code>ENTRYPOINT</code></a></p>
 <p><strong>Example</strong>: Starting an Interactive Shell</p>
 <p>The following command runs Bash interactively:
 <pre class="copyable"><code class="copyable__code">docker run --rm --entrypoint bash samples/java
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h3 id="executing-a-custom-command-in-the-buildpack-provided-environment" class="markup-heading">
-    <a class="markup-heading__link" href="#executing-a-custom-command-in-the-buildpack-provided-environment">
-        Executing a Custom Command in the Buildpack-Provided Environment
+<h3 id="execute-a-custom-command-in-the-buildpack-provided-environment" class="markup-heading">
+    <a class="markup-heading__link" href="#execute-a-custom-command-in-the-buildpack-provided-environment">
+        Execute a Custom Command in the Buildpack-Provided Environment
     </a>
 </h3><p>Every buildpack-generated image contains an executable called the <code>launcher</code> which can be used to execute a custom command in an environment containing buildpack-provided environment variables. The <code>launcher</code> will execute any buildpack provided profile scripts before running to provided command, in order to set environment variables with values that should be calculated dynamically at runtime.</p>
 <p>To run a custom start command in the buildpack-provided environment set the <code>ENTRYPOINT</code> to <code>launcher</code> and provide the command using the container <code>CMD</code>.</p>
@@ -803,112 +778,87 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
 <p>Each argument provided to the launcher will be evaluated by the shell prior to execution and the original tokenization will be preserved. Note that, in the example above <code>'JAVA_TOOL_OPTIONS: $JAVA_TOOL_OPTIONS'</code> is single quoted so that <code>$JAVA_TOOL_OPTIONS</code> is evaluated in the container, rather than by the host shell.</p>
-<h2 id="components" class="markup-heading">
-    <a class="markup-heading__link" href="#components">
-        Components
+<h2 id="build-an-app-as-a-graalvm-native-image-application" class="markup-heading">
+    <a class="markup-heading__link" href="#build-an-app-as-a-graalvm-native-image-application">
+        Build an App as a GraalVM Native Image Application
     </a>
-</h2><p>The following component buildpacks compose the Java Buildpack. Buildpacks are listed in the order they are executed.</p>
+</h2><p>The <a href="https://github.com/paketo-buildpacks/java-native-image">Paketo Java Native Image Buildpack</a> allows users to create an image containing a <a href="https://www.graalvm.org/docs/introduction/">GraalVM</a> <a href="https://www.graalvm.org/reference-manual/native-image/">native image</a> application.</p>
+<p>The Java Native Buildpack is a <a href="https://paketo.io/docs/concepts/buildpacks/#composite-buildpacks">composite buildpack</a> and
+each step in a build is handled by one of its <a href="https://paketo.io/docs/reference/java-native-image-reference/#components">components</a>. The
+following docs describe common build configurations. For a full set of
+configuration options and capabilities see the homepages of the component
+buildpacks.</p>
+<h3 id="build-from-source-1" class="markup-heading">
+    <a class="markup-heading__link" href="#build-from-source-1">
+        Build From Source
+    </a>
+</h3><p>The Java Native Image Buildpack supports the same <a href="https://paketo.io/docs/howto/java/#building-from-source">build tools and
+configuration options</a> as the <a href="https://github.com/paketo-buildpacks/java">Java
+Buildpack</a>. The build must produce an <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable jar</a><a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable
+jar</a>.</p>
+<p>After compiling and packaging, the buildpack will replace provided application
+source code with the exploded JAR and proceed as described in [Building from an
+Executable Jar][building-from-an-executable-jar].</p>
+<p><strong>Example</strong>: Building a Native image with Maven</p>
+<p>The following command creates an image from source with <code>maven</code>.</p>
+<pre class="copyable"><code class="copyable__code">pack build samples/java-native \
+  --env BP_NATIVE_IMAGE=true
+  --path java/native-image/java-native-image-sample
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<h3 id="build-from-an-executable-jar" class="markup-heading">
+    <a class="markup-heading__link" href="#build-from-an-executable-jar">
+        Build From an Executable JAR
+    </a>
+</h3><p>An application developer may build an image from an exploded <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable JAR</a>. Most platforms will automatically extract provided archives.</p>
+<p><strong>Example</strong>: Building a Native image from an Executable JAR</p>
+<p>The following command uses Maven directly to compile an executable JAR and then uses the <code>pack</code> CLI to build an image from the JAR.</p>
+<pre class="copyable"><code class="copyable__code">cd samples/java/native-image
+./mvnw package
+pack build samples/java-native \
+  --env BP_NATIVE_IMAGE=true
+  --path java/native-image/java-native-image-sample/target/demo-0.0.1-SNAPSHOT.jar
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>The resulting application image will be identical to that built in the &ldquo;Building a Native image with Maven&rdquo; example.</p>
+<h3 id="inspect-the-jvm-version-1" class="markup-heading">
+    <a class="markup-heading__link" href="#inspect-the-jvm-version-1">
+        Inspect the JVM Version
+    </a>
+</h3><p>The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.</p>
+<p><strong>Example</strong> Inspecting the JRE Version</p>
+<p>Given an image named <code>samples/java-native</code> built from one of examples above, the following command will print the exact version of the installed substrate VM.
+<pre class="copyable"><code class="copyable__code">pack inspect-image samples/java-native --bom | jq &#39;.local[] | select(.name==&#34;native-image-svm&#34;) | .metadata.version&#39;
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+</p>
+<h3 id="configure-the-graalvm-version" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-the-graalvm-version">
+        Configure the GraalVM Version
+    </a>
+</h3><p>Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a sepecific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.</p>
+<p>The following table documents the versions available.</p>
 <table>
 <thead>
 <tr>
-<th>Buildpack</th>
-<th>Required/Optional</th>
-<th>Responsibility</th>
+<th>GraalVM Version</th>
+<th>Java Native Image Buildpack Version</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Buildpack</a></td>
-<td>Optional</td>
-<td>Adds CA certificates to the system truststore at build and runtime.</td>
+<td>21.1</td>
+<td>5.4.0</td>
 </tr>
 <tr>
-<td><a href="https://github.com/paketo-buildpacks/bellsoft-liberica">Paketo BellSoft Liberica Buildpack</a></td>
-<td><strong>Required</strong></td>
-<td>Provides the JDK and/or JRE.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/gradle">Paketo Gradle Buildpack</a></td>
-<td>Optional</td>
-<td>Builds Gradle-based applications from source.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/leiningen">Paketo Leiningen Buildpack</a></td>
-<td>Optional</td>
-<td>Builds Leiningen-based applications from source.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/maven">Paketo Maven Buildpack</a></td>
-<td>Optional</td>
-<td>Builds Maven-based applications from source.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/sbt">Paketo SBT Buildpack</a></td>
-<td>Optional</td>
-<td>Builds SBT-based applications from source.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/executable-jar">Paketo Executable JAR Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes a process Type that launches an executable JAR.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/apache-tomcat">Paketo Apache Tomcat Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes Apache Tomcat and a process type that launches a WAR with Tomcat.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/dist-zip">Paketo DistZip Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes a process type that launches a DistZip-style application.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/spring-boot">Paketo Spring Boot Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes configuration and metadata to Spring Boot applications.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a></td>
-<td>Optional</td>
-<td>Allows the application to define or redefine process types with a <a href="https://paketo.io/docs/reference/configuration/#procfiles">Procfile</a></td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/azure-application-insights">Paketo Azure Application Insights Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes the Application Insights Agent and configures it to connect to the service.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/debug">Paketo Debug Buildpack</a></td>
-<td>Optional</td>
-<td>Configures debugging for JVM applications.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/google-stackdriver">Paketo Google Stackdriver Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes Stackdriver agents and configures them to connect to the service.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/jmx">Paketo JMX Buildpack</a></td>
-<td>Optional</td>
-<td>Configures JMX for JVM applications.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/encrypt-at-rest">Paketo Encrypt At Rest Buildpack</a></td>
-<td>Optional</td>
-<td>Encrypts an application layer and contributes a profile script that decrypts it at launch time.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/environment-variables">Paketo Environment Variables Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes arbitrary user-provided environment variables to the image.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/image-labels">Paketo Image Labels Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes OCI-specific and arbitrary user-provided labels to the image.</td>
+<td>21.0</td>
+<td>5.3.0</td>
 </tr>
 </tbody>
 </table>
+<p>For example, to select GraalVM 21.0:</p>
+<pre class="copyable"><code class="copyable__code">pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/java-native-image:5.3.0
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
@@ -931,44 +881,46 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> August 10, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> August 11, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#about-the-examples">About the Examples</a></li>
-    <li><a href="#building-from-source">Building from Source</a>
+    <li><a href="#build-from-source">Build from Source</a>
       <ul>
-        <li><a href="#configuring-the-build-tool">Configuring the Build Tool</a></li>
+        <li><a href="#configure-the-build-tool">Configure the Build Tool</a></li>
       </ul>
     </li>
-    <li><a href="#building-from-a-compiled-artifact">Building from a Compiled Artifact</a></li>
-    <li><a href="#about-the-jvm">About the JVM</a>
+    <li><a href="#build-from-a-compiled-artifact">Build from a Compiled Artifact</a></li>
+    <li><a href="#inspect-the-jvm-version">Inspect the JVM Version</a></li>
+    <li><a href="#install-a-specific-jvm-version">Install a Specific JVM Version</a></li>
+    <li><a href="#configure-the-jvm-at-runtime">Configure the JVM at Runtime</a></li>
+    <li><a href="#use-an-alternative-jvm">Use an Alternative JVM</a></li>
+    <li><a href="#build-a-spring-boot-application">Build a Spring Boot Application</a>
       <ul>
-        <li><a href="#the-jvm-version">The JVM Version</a></li>
-        <li><a href="#runtime-jvm-configuration">Runtime JVM Configuration</a></li>
-        <li><a href="#using-alternative-jvms">Using Alternative JVMs</a></li>
+        <li><a href="#inspect-spring-boot-application-dependencies">Inspect Spring Boot Application Dependencies</a></li>
+        <li><a href="#disable-spring-boot-auto-configuration">Disable Spring Boot Auto-Configuration</a></li>
       </ul>
     </li>
-    <li><a href="#spring-boot-applications">Spring Boot Applications</a>
+    <li><a href="#connect-to-an-apm">Connect to an APM</a></li>
+    <li><a href="#enable-remote-debugging">Enable Remote Debugging</a></li>
+    <li><a href="#enable-jmx">Enable JMX</a></li>
+    <li><a href="#append-arguments-to-the-apps-start-command">Append Arguments to the App&rsquo;s Start Command</a></li>
+    <li><a href="#provide-a-custom-start-command-at-launch">Provide a Custom Start Command at Launch</a>
       <ul>
-        <li><a href="#additional-metadata">Additional Metadata</a></li>
-        <li><a href="#runtime-auto-configuration">Runtime Auto-Configuration</a></li>
-        <li><a href="#optimizations">Optimizations</a></li>
+        <li><a href="#execute-a-custom-command-in-the-buildpack-provided-environment">Execute a Custom Command in the Buildpack-Provided Environment</a></li>
       </ul>
     </li>
-    <li><a href="#connecting-to-an-apm">Connecting to an APM</a></li>
-    <li><a href="#debugging">Debugging</a></li>
-    <li><a href="#enabling-jmx">Enabling JMX</a></li>
-    <li><a href="#selecting-a-process">Selecting a Process</a>
+    <li><a href="#build-an-app-as-a-graalvm-native-image-application">Build an App as a GraalVM Native Image Application</a>
       <ul>
-        <li><a href="#providing-additional-arguments">Providing Additional Arguments</a></li>
-        <li><a href="#executing-a-custom-command">Executing a Custom Command</a></li>
-        <li><a href="#executing-a-custom-command-in-the-buildpack-provided-environment">Executing a Custom Command in the Buildpack-Provided Environment</a></li>
+        <li><a href="#build-from-source-1">Build From Source</a></li>
+        <li><a href="#build-from-an-executable-jar">Build From an Executable JAR</a></li>
+        <li><a href="#inspect-the-jvm-version-1">Inspect the JVM Version</a></li>
+        <li><a href="#configure-the-graalvm-version">Configure the GraalVM Version</a></li>
       </ul>
     </li>
-    <li><a href="#components">Components</a></li>
   </ul>
 </nav>
 </div>

@@ -61,25 +61,14 @@ HTTPD  This documentation explains how to use the Paketo HTTPD Buildpack to buil
     </item>
     
     <item>
-      <title>Java Native Image Buildpack</title>
-      <link>https://paketo.io/docs/howto/java-native-image/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://paketo.io/docs/howto/java-native-image/</guid>
-      <description>The Paketo Java Native Image Buildpack allows users to create an image containing a GraalVM native image application.
-The Java Native Buildpack is a composite buildpack and each step in a build is handled by one of it&amp;rsquo;s components. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages of the component buildpacks.
-About the Examples  All Java Native Image Buildpack examples will use the Paketo sample applications.</description>
-    </item>
-    
-    <item>
-      <title>Java Buildpack</title>
+      <title>How to Build Java Apps with Paketo Buildpacks</title>
       <link>https://paketo.io/docs/howto/java/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/howto/java/</guid>
-      <description>The Paketo Java Buildpack allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
-The Java Buildpack is a composite buildpack and each step in a build is handled by one of it&amp;rsquo;s components. The following docs describe common build configurations. For a full set of configuration options and capabilities see the homepages for the component buildpacks.
-About the Examples  All Java Buildpack examples will use the Paketo sample applications.</description>
+      <description>This documentation explains how to use the Paketo buildpacks to build Java applications for several common use-cases. For more in-depth description of the buildpacks&#39; behavior and configuration see the Paketo Java Buildpack and Paketo Java Native Image Buildpack reference documentation.
+About the Examples  All Java Buildpack examples will use the Paketo sample applications.
+Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied!</description>
     </item>
     
     <item>
@@ -176,6 +165,27 @@ Supported Dependencies  The .Net Core Paketo Buildpack supports several versions
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Go Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Go Buildpack How To documentation.
 Supported Dependencies  The Go Paketo Buildpack supports several versions of Go. For more details on the specific versions supported in a given buildpack version, see the release notes.
 Behavior  The Paketo Go Buildpack is a composite buildpack designed to build applications written in Go.</description>
+    </item>
+    
+    <item>
+      <title>Java Buildpack Reference</title>
+      <link>https://paketo.io/docs/reference/java-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/reference/java-reference/</guid>
+      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Java Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Java Buildpack How To documentation.
+The Paketo Java Buildpack allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
+The Java Buildpack is a composite buildpack and each step in a build is handled by one of its components.</description>
+    </item>
+    
+    <item>
+      <title>Java Native Image Buildpack Reference</title>
+      <link>https://paketo.io/docs/reference/java-native-image-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/reference/java-native-image-reference/</guid>
+      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Java Native Image Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Java Native Image Buildpack How To documentation.
+The [Paketo Java Native Image Buildpack][bp/java-native-image] allows users to create an image containing a GraalVM native image application. The Java Native Image Buildpack supports the same build tools and configuration options as the Java Buildpack.</description>
     </item>
     
     <item>
