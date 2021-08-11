@@ -392,6 +392,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
     </li>
     <li><a href="#build-an-app-from-source-in-a-subdirectory">Build an App From Source in a Subdirectory</a></li>
+    <li><a href="#specifying-scripts-to-run-during-build-phase">Specifying Scripts to Run During Build Phase</a></li>
     <li><a href="#build-an-app-that-uses-npm">Build an App that Uses NPM</a>
       <ul>
         <li><a href="#configure-npm-during-the-build">Configure NPM During the Build</a></li>
@@ -564,7 +565,29 @@ This could be useful if your app is a part of a monorepo.</p>
     └── package.json
 </code></pre><p>you could then set the following at build time.</p>
 <pre><code>$BP_NODE_PROJECT_PATH=node-app
-</code></pre><h2 id="build-an-app-that-uses-npm" class="markup-heading">
+</code></pre><h2 id="specifying-scripts-to-run-during-build-phase" class="markup-heading">
+    <a class="markup-heading__link" href="#specifying-scripts-to-run-during-build-phase">
+        Specifying Scripts to Run During Build Phase
+    </a>
+</h2><p>To specify a script or series of scripts to run during build phase, please use the
+<code>BP_NODE_RUN_SCRIPTS</code> environment variable at build time either directly or through a
+<a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor"><code>project.toml</code></a>. This
+could be useful if your app uses a framework like Angular, React, or Vue where you need to run
+scripts to build your app into a production state.</p>
+<p>For example, if your project&rsquo;s <code>package.json</code> has the following scripts:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span> 
+    <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;react-scripts start&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;react-scripts build&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;test&#34;</span><span class="p">:</span> <span class="s2">&#34;react-scripts test&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;lint&#34;</span><span class="p">:</span> <span class="s2">&#34;eslint src/**/*.js src/**/*.jsx&#34;</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>and your environment variable was set:</p>
+<pre><code>$BP_NODE_RUN_SCRIPTS=lint,build
+</code></pre><p>then the <code>lint</code> and then <code>build</code> scripts would be run via npm or yarn, during build phase. Note that the
+value for <code>BP_NODE_RUN_SCRIPTS</code> must be a comma separated list of script names.</p>
+<h2 id="build-an-app-that-uses-npm" class="markup-heading">
     <a class="markup-heading__link" href="#build-an-app-that-uses-npm">
         Build an App that Uses NPM
     </a>
@@ -709,6 +732,7 @@ section of our configuration docs.</p>
       </ul>
     </li>
     <li><a href="#build-an-app-from-source-in-a-subdirectory">Build an App From Source in a Subdirectory</a></li>
+    <li><a href="#specifying-scripts-to-run-during-build-phase">Specifying Scripts to Run During Build Phase</a></li>
     <li><a href="#build-an-app-that-uses-npm">Build an App that Uses NPM</a>
       <ul>
         <li><a href="#configure-npm-during-the-build">Configure NPM During the Build</a></li>
