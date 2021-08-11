@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    {{ partial "v2/head.html" . }}
+    {{ partial "head.html" . }}
 </head>
 
 <body>
-    {{ partial "v2/header.html" (dict "headerTheme" "dark" "context" . ) }}
+    {{ partial "header.html" (dict "headerTheme" "dark" "context" . ) }}
     <main>
         <section class="homepage-section homepage-section--dark">
             <div class="section-content">
@@ -114,7 +114,7 @@
                         gather the required dependencies, and build it into an image.
                     </p>
                     <div class="how-it-works-animation">
-                        {{ partial "v2/how-it-works-animation.html" . }}
+                        {{ partial "how-it-works-animation.html" . }}
                     </div>
                 </div>
             </section>
@@ -214,7 +214,7 @@
             </section>
         </div>
     </main>
-    {{ partial "v2/footer.html" . }}
+    {{ partial "footer.html" . }}
 </body>
 
 </html>

@@ -6,13 +6,13 @@
         <div class="docs-body__container">
             {{ partial "github-edit.html" . }}
             <h1 id="title">{{ .Title }}</h1>
-            {{ partial "v2/docs-table-of-contents.html" (dict "context" . "viewer" "mobile") }}
+            {{ partial "docs-table-of-contents.html" (dict "context" . "viewer" "mobile") }}
             <div class="docs-body__markdown">
                 {{ .Content }}
             </div>
             {{ partial "github-edit.html" . }}
             <p class="docs-mod-time"><strong>Last modified:</strong> {{ .Lastmod.Format "January 2, 2006" }}</p>
         </div>
-        {{ partial "v2/docs-table-of-contents.html" (dict "context" . "viewer" "desktop") }}
+        {{ partial "docs-table-of-contents.html" (dict "context" . "viewer" "desktop") }}
     </div>
 </div>

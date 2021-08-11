@@ -11,15 +11,15 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
-    {{ partial "v2/header-skip-link.html" . }}
-    {{ partial "v2/header.html" (dict "headerTheme" "dark" "context" . ) }}
+    {{ partial "header-skip-link.html" . }}
+    {{ partial "header.html" (dict "headerTheme" "dark" "context" . ) }}
 
     <div class="docs single">
         {{ .Content }}
     </div>
 
-    {{ partial "v2/footer.html" .}}
-    {{ partial "v2/footer-skip-link.html" . }}
+    {{ partial "footer.html" .}}
+    {{ partial "footer-skip-link.html" . }}
 </body>
 
 </html>
