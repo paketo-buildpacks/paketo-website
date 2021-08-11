@@ -156,6 +156,31 @@ you could then set the following at build time.
 $BP_NODE_PROJECT_PATH=node-app
 ```
 
+## Specifying Scripts to Run During Build Phase
+To specify a script or series of scripts to run during build phase, please use the 
+`BP_NODE_RUN_SCRIPTS` environment variable at build time either directly or through a 
+[`project.toml`](https://buildpacks.io/docs/app-developer-guide/using-project-descriptor). This 
+could be useful if your app uses a framework like Angular, React, or Vue where you need to run 
+scripts to build your app into a production state.
+
+For example, if your project's `package.json` has the following scripts:
+```json
+{
+  "scripts": { 
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "lint": "eslint src/**/*.js src/**/*.jsx",
+  }
+}
+```
+and your environment variable was set:
+```
+$BP_NODE_RUN_SCRIPTS=lint,build
+```
+then the `lint` and then `build` scripts would be run via npm or yarn, during build phase. Note that the 
+value for `BP_NODE_RUN_SCRIPTS` must be a comma separated list of script names.
+
 ## Build an App that Uses NPM
 The Node.js buildpack can detect automatically if an app requires `npm`.
 
