@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "paketo-staging",
+    "site": "paketo-buildpacks-staging",
     "public": "public",
     "ignore": [
       "firebase.json",
