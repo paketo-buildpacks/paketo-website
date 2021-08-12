@@ -444,15 +444,17 @@ func Build() packit.BuildFunc {
 		uri := m.Metadata.Dependencies[0].URI
 		fmt.Printf("URI -> %s", uri)
 
-		nodeLayer, err := context.Layers.Get("node", packit.LaunchLayer)
+		nodeLayer, err := context.Layers.Get("node")
 		if err != nil {
 			return packit.BuildResult{}, err
 		}
 
-		err = nodeLayer.Reset()
+		nodeLayer, err = nodeLayer.Reset()
 		if err != nil {
 			return packit.BuildResult{}, err
 		}
+
+		nodeLayer.Launch = true
 
 		return packit.BuildResult{}, fmt.Errorf("always fail")
 	}
@@ -460,23 +462,19 @@ func Build() packit.BuildFunc {
 {{< /code/copyable >}}
 
 Let's talk about the `context.Layers.Get()` function and the
-`nodeLayer.Reset()` function individually. On the
-[`packit.BuildContext`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#BuildContext)
-object there is a field `Layers` which is a
-[`packit.Layers`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layers)
-type. The
+`nodeLayer.Reset()` function individually. The
 [`packit.Layers.Get()`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layers.Get)
-function takes in the name of a layer and
-[`packit.LayerTypes`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#LayerType)
-and returns a
+function takes in the name of a layer and returns a
 [`packit.Layer`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layer) object
 that has been populated with any metadata that exists from previous builds of
 your app. This metadata can be useful in determining whether or not a layer can
 be reused from cache but we don't need to worry about that for now. The
 [`packit.Layer.Reset()`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layer.Reset)
-function  clears all of the metadata and existing files restored from cache for
-the given layer, giving a clean slate to work with. Now that we have our layers
-set up, let's download our dependency and untar it on the layer.
+function clears all of the metadata and existing files restored from cache for
+the given layer, giving a clean slate to work with. Finally,
+[`nodeLayer.Launch = true`](https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layer)
+lets the lifecycle know that this layer needs to be available during the launch phase. Now that
+we have our layers set up, let's download our dependency and untar it onto the layer.
 
 {{< code/copyable >}}
 package node
@@ -514,15 +512,17 @@ func Build() packit.BuildFunc {
 		uri := m.Metadata.Dependencies[0].URI
 		fmt.Printf("URI -> %s\n", uri)
 
-		nodeLayer, err := context.Layers.Get("node", packit.LaunchLayer)
+		nodeLayer, err := context.Layers.Get("node")
 		if err != nil {
 			return packit.BuildResult{}, err
 		}
 
-		err = nodeLayer.Reset()
+		nodeLayer, err = nodeLayer.Reset()
 		if err != nil {
 			return packit.BuildResult{}, err
 		}
+
+		nodeLayer.Launch = true
 
 		downloadDir, err := ioutil.TempDir("", "downloadDir")
 		if err != nil {
