@@ -811,15 +811,17 @@ func Build() packit.BuildFunc {
 		uri := m.Metadata.Dependencies[0].URI
 		fmt.Printf(&#34;URI -&gt; %s&#34;, uri)
 
-		nodeLayer, err := context.Layers.Get(&#34;node&#34;, packit.LaunchLayer)
+		nodeLayer, err := context.Layers.Get(&#34;node&#34;)
 		if err != nil {
 			return packit.BuildResult{}, err
 		}
 
-		err = nodeLayer.Reset()
+		nodeLayer, err = nodeLayer.Reset()
 		if err != nil {
 			return packit.BuildResult{}, err
 		}
+
+		nodeLayer.Launch = true
 
 		return packit.BuildResult{}, fmt.Errorf(&#34;always fail&#34;)
 	}
@@ -827,23 +829,19 @@ func Build() packit.BuildFunc {
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
 <p>Let&rsquo;s talk about the <code>context.Layers.Get()</code> function and the
-<code>nodeLayer.Reset()</code> function individually. On the
-<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#BuildContext"><code>packit.BuildContext</code></a>
-object there is a field <code>Layers</code> which is a
-<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layers"><code>packit.Layers</code></a>
-type. The
+<code>nodeLayer.Reset()</code> function individually. The
 <a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layers.Get"><code>packit.Layers.Get()</code></a>
-function takes in the name of a layer and
-<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#LayerType"><code>packit.LayerTypes</code></a>
-and returns a
+function takes in the name of a layer and returns a
 <a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layer"><code>packit.Layer</code></a> object
 that has been populated with any metadata that exists from previous builds of
 your app. This metadata can be useful in determining whether or not a layer can
 be reused from cache but we don&rsquo;t need to worry about that for now. The
 <a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layer.Reset"><code>packit.Layer.Reset()</code></a>
-function  clears all of the metadata and existing files restored from cache for
-the given layer, giving a clean slate to work with. Now that we have our layers
-set up, let&rsquo;s download our dependency and untar it on the layer.</p>
+function clears all of the metadata and existing files restored from cache for
+the given layer, giving a clean slate to work with. Finally,
+<a href="https://pkg.go.dev/github.com/paketo-buildpacks/packit#Layer"><code>nodeLayer.Launch = true</code></a>
+lets the lifecycle know that this layer needs to be available during the launch phase. Now that
+we have our layers set up, let&rsquo;s download our dependency and untar it onto the layer.</p>
 <pre class="copyable"><code class="copyable__code">package node
 
 import (
@@ -879,15 +877,17 @@ func Build() packit.BuildFunc {
 		uri := m.Metadata.Dependencies[0].URI
 		fmt.Printf(&#34;URI -&gt; %s\n&#34;, uri)
 
-		nodeLayer, err := context.Layers.Get(&#34;node&#34;, packit.LaunchLayer)
+		nodeLayer, err := context.Layers.Get(&#34;node&#34;)
 		if err != nil {
 			return packit.BuildResult{}, err
 		}
 
-		err = nodeLayer.Reset()
+		nodeLayer, err = nodeLayer.Reset()
 		if err != nil {
 			return packit.BuildResult{}, err
 		}
+
+		nodeLayer.Launch = true
 
 		downloadDir, err := ioutil.TempDir(&#34;&#34;, &#34;downloadDir&#34;)
 		if err != nil {
@@ -984,7 +984,7 @@ browser. Either way you should expect to see &ldquo;hello world&rdquo; as your o
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> August 11, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> August 12, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
