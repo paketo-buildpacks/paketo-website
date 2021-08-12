@@ -48,5 +48,3 @@ jobs:
         script: |
             const deploy = require('./deploy.js')
             await deploy({ expires: '72h' })
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
