@@ -26,21 +26,23 @@ For Spring Boot applications, it is required that:
 
 The following component buildpacks compose the Paketo Java Native Image Buildpack.
 
-| Buildpack                                                          | Required/Optional | Responsibility                                                                                                                |
-| ------------------------------------------------------------------ | ----------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Buildpack                                                          | Required/Optional | Responsibility                                                                                                    |
+| ------------------------------------------------------------------ | ----------------- | ----------------------------------------------------------------------------------------------------------------- |
+| [Paketo CA Certificates Buildpack][bp/ca-certificates]             | Optional          | Adds CA certificates to the system truststore at build and runtime.                                               |
 | [Paketo GraalVM Buildpack][bp/graalvm]                             | **Required**      | Provides the GraalVM JDK and Native Image [Substrate VM](https://www.graalvm.org/reference-manual/native-image/). |
-| [Paketo Gradle Buildpack][bp/gradle]                               | Optional          | Builds Gradle-based applications from source.                                                                                 |
-| [Paketo Leiningen Buildpack][bp/leiningen]                         | Optional          | Builds Leiningen-based applications from source.                                                                              |
-| [Paketo Maven Buildpack][bp/maven]                                 | Optional          | Builds Maven-based applications from source.                                                                                  |
-| [Paketo SBT Buildpack][bp/sbt]                                     | Optional          | Builds SBT-based applications from source.                                                                                    |
-| [Paketo Executable JAR Buildpack][bp/executable-jar]               | Optional          | Contributes a process Type that launches an executable JAR.                                                                   |
-| [Paketo Spring Boot Buildpack][bp/spring-boot]                     | Optional          | Contributes configuration and metadata to Spring Boot applications.                                                           |
-| [Paketo Native Image Buildpack][bp/native-image]                   | **Required**      | Creates a native image from a JVM application.                                                                                |
-| [Paketo Procfile Buildpack][bp/procfile]                           | Optional          | Allows the application to define or redefine process types with a [Procfile][procfiles]                                       |
-| [Paketo Environment Variables Buildpack][bp/environment-variables] | Optional          | Contributes arbitrary user-provided environment variables to the image.                                                       |
-| [Paketo Image Labels Buildpack][bp/image-labels]                   | Optional          | Contributes OCI-specific and arbitrary user-provided labels to the image.                                                     |
+| [Paketo Gradle Buildpack][bp/gradle]                               | Optional          | Builds Gradle-based applications from source.                                                                     |
+| [Paketo Leiningen Buildpack][bp/leiningen]                         | Optional          | Builds Leiningen-based applications from source.                                                                  |
+| [Paketo Maven Buildpack][bp/maven]                                 | Optional          | Builds Maven-based applications from source.                                                                      |
+| [Paketo SBT Buildpack][bp/sbt]                                     | Optional          | Builds SBT-based applications from source.                                                                        |
+| [Paketo Executable JAR Buildpack][bp/executable-jar]               | Optional          | Contributes a process Type that launches an executable JAR.                                                       |
+| [Paketo Spring Boot Buildpack][bp/spring-boot]                     | Optional          | Contributes configuration and metadata to Spring Boot applications.                                               |
+| [Paketo Native Image Buildpack][bp/native-image]                   | **Required**      | Creates a native image from a JVM application.                                                                    |
+| [Paketo Procfile Buildpack][bp/procfile]                           | Optional          | Allows the application to define or redefine process types with a [Procfile][procfiles]                           |
+| [Paketo Environment Variables Buildpack][bp/environment-variables] | Optional          | Contributes arbitrary user-provided environment variables to the image.                                           |
+| [Paketo Image Labels Buildpack][bp/image-labels]                   | Optional          | Contributes OCI-specific and arbitrary user-provided labels to the image.                                         |
 
 <!-- buildpacks -->
+[bp/ca-certificates]:https://github.com/paketo-buildpacks/ca-certificates
 [bp/graalvm]:https://github.com/paketo-buildpacks/graalvm
 [bp/environment-variables]:https://github.com/paketo-buildpacks/environment-variables
 [bp/executable-jar]:https://github.com/paketo-buildpacks/executable-jar
