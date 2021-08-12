@@ -8,45 +8,76 @@ aliases:
 toc: false
 ---
 
-This section gets you started with Paketo Buildpacks using Paketo **Builders**, the **Pack** CLI, and **Docker**.
+These guides get you started with Paketo Buildpacks using Paketo [**Builders**][builders], the **pack** CLI, and **Docker**.
 
-Let's use the `base` Paketo Builder and the **Pack** CLI to build a Node.js app
-as a runnable container image. App source code is available
-[here](https://github.com/paketo-buildpacks/samples/tree/main/demo-apps/app-source).
+### [Node.js][node-guide]
+### [.NET Core][dotnet-guide]
 
-**Prerequisites** - Install Pack and Docker
-Follow [these instructions](https://buildpacks.io/docs/install-pack/) to get all set up.
+## Node.js
+Let's use the `base` Paketo Builder and the **pack** CLI to build a Node.js app
+as a runnable container image. 
 
-And we're good to go! Let's build our app into a container image using the `pack build` command.
+### Prerequisites
+1. Install Docker by following this [guide][install-docker].
+1. Install the pack CLI by following this [guide][install-pack].
+
+### Build the App Image From Source Code
+Clone the Paketo samples repository and navigate to the source code for the sample Node.js app.
 
 {{< code/copyable >}}
-git clone https://github.com/paketo-buildpacks/samples
-cd samples/demo-apps/app-source
+git clone https://github.com/paketo-buildpacks/samples \
+&& cd samples/demo-apps/app-source
+{{< /code/copyable >}}
+
+From the sample app directory, use the pack CLI to build an app image.
+
+{{< code/copyable >}}
 pack build paketo-demo-app --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
 {{< code/output >}}
-......................
 ===> DETECTING
-paketo-buildpacks/node-engine 0.1.1
-paketo-buildpacks/npm-install 0.2.0
-paketo-buildpacks/npm-start   0.0.2
+4 of 8 buildpacks participating
+paketo-buildpacks/ca-certificates 2.3.2
+paketo-buildpacks/node-engine     0.6.2
+paketo-buildpacks/npm-install     0.4.0
+paketo-buildpacks/npm-start       0.3.0
 ===> ANALYZING
-Restoring metadata for "paketo-buildpacks/node-engine:node" from app image
+Previous image with name "paketo-demo-app" not found
 ===> RESTORING
-Restoring data for "paketo-buildpacks/node-engine:node" from cache
 ===> BUILDING
-Paketo Node Engine Buildpack 0.1.1
+
+Paketo CA Certificates Buildpack 2.3.2
+  https://github.com/paketo-buildpacks/ca-certificates
+  Launch Helper: Contributing to layer
+    Creating /layers/paketo-buildpacks_ca-certificates/helper/exec.d/ca-certificates-helper
+Paketo Node Engine Buildpack 0.6.2
   Resolving Node Engine version
     Candidate version sources (in priority order):
-      package.json -> "~10"
-      <unknown>    -> "*"
+      package.json -> ">10"
+      <unknown>    -> ""
 
-    Selected Node Engine version (using package.json): 10.22.0
+    Selected Node Engine version (using package.json): 16.6.2
 
-  Reusing cached layer /layers/paketo-buildpacks_node-engine/node
+  Executing build process
+    Installing Node Engine 16.6.2
+      Completed in 4.372s
 
-Paketo NPM Install Buildpack 0.2.0
+  Configuring build environment
+    NODE_ENV     -> "production"
+    NODE_HOME    -> "/layers/paketo-buildpacks_node-engine/node"
+    NODE_VERBOSE -> "false"
+
+  Configuring launch environment
+    NODE_ENV     -> "production"
+    NODE_HOME    -> "/layers/paketo-buildpacks_node-engine/node"
+    NODE_VERBOSE -> "false"
+
+    Writing profile.d/0_memory_available.sh
+      Calculates available memory based on container limits at launch time.
+      Made available in the MEMORY_AVAILABLE environment variable.
+
+Paketo NPM Install Buildpack 0.4.0
   Resolving installation process
     Process inputs:
       node_modules      -> "Not found"
@@ -57,39 +88,56 @@ Paketo NPM Install Buildpack 0.2.0
 
   Executing build process
     Running 'npm install --unsafe-perm --cache /layers/paketo-buildpacks_npm-install/npm-cache'
-      Completed in 1.348s
+      Completed in 2.519s
 
-  Configuring environment
-    NPM_CONFIG_LOGLEVEL   -> "error"
-    NPM_CONFIG_PRODUCTION -> "true"
-    PATH                  -> "$PATH:/layers/paketo-buildpacks_npm-install/modules/node_modules/.bin"
+  Configuring launch environment
+    NPM_CONFIG_LOGLEVEL -> "error"
 
-Paketo NPM Start Buildpack 0.0.2
+  Configuring environment shared by build and launch
+    PATH -> "$PATH:/layers/paketo-buildpacks_npm-install/modules/node_modules/.bin"
+
+
+Paketo NPM Start Buildpack 0.3.0
   Assigning launch processes
     web: node server.js
+
 ===> EXPORTING
-Reusing layer 'paketo-buildpacks/node-engine:node'
+Adding layer 'paketo-buildpacks/ca-certificates:helper'
+Adding layer 'paketo-buildpacks/node-engine:node'
 Adding layer 'paketo-buildpacks/npm-install:modules'
 Adding layer 'paketo-buildpacks/npm-install:npm-cache'
 Adding 1/1 app layer(s)
-Reusing layer 'launcher'
+Adding layer 'launcher'
 Adding layer 'config'
-Reusing layer 'process-types'
+Adding layer 'process-types'
 Adding label 'io.buildpacks.lifecycle.metadata'
 Adding label 'io.buildpacks.build.metadata'
 Adding label 'io.buildpacks.project.metadata'
 Setting default process type 'web'
-......................
+Saving paketo-demo-app...
+*** Images (1a770ae9a065):
+      paketo-demo-app
+Reusing cache layer 'paketo-buildpacks/node-engine:node'
+Reusing cache layer 'paketo-buildpacks/npm-install:modules'
+Adding cache layer 'paketo-buildpacks/npm-install:npm-cache'
 Successfully built image paketo-demo-app
 {{< /code/output >}}
 
-We've successfully created an image called **paketo-demo-app**. Now let's run our app image and validate that everything is working.
+Once the build finishes, you'll see that the resulting image is on your Docker daemon.
+
+### Run the App
+Let's start an instance of our app and interact with it.
+
+Run the app image with Docker. It will receive incoming requests `localhost:8080`.
 
 {{< code/copyable >}}
 docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
 {{< /code/copyable >}}
 
 Wait a few seconds for your app to start.
+
+
+Wait a few moments for the app to start. Then, use `curl` to make a request.
 
 {{< code/copyable >}}
 curl http://localhost:8080/greeting
@@ -99,8 +147,187 @@ curl http://localhost:8080/greeting
 Hello from your application image
 {{< /code/output >}}
 
-Awesome! Our app is now running on `localhost:8080`.
+You've done it! As you can see, Paketo buildpacks do most of the hard work for you.
 
 Check out more [sample apps](https://github.com/paketo-buildpacks/samples) that work with Paketo Buildpacks.
 
 Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.
+
+## .NET Core
+
+Let's use the `base` Paketo Builder and the **pack** CLI to build an ASP.NET app
+as a runnable container image. 
+### Prerequisites
+1. Install Docker by following this [guide][install-docker].
+1. Install the pack CLI by following this [guide][install-pack].
+
+### Build the App Image From Source Code
+Clone the Paketo samples repository and navigate to the source code for the sample ASP.NET app.
+
+{{< code/copyable >}}
+git clone https://github.com/paketo-buildpacks/samples \
+&& cd samples/dotnet-core/aspnet
+{{< /code/copyable >}}
+
+From the sample app directory, use the pack CLI to build an app image.
+
+{{< code/copyable >}}
+pack build paketo-demo-app --builder paketobuildpacks/builder:base
+{{< /code/copyable >}}
+
+{{< code/output >}}
+===> DETECTING
+7 of 11 buildpacks participating
+paketo-buildpacks/ca-certificates     2.3.2
+paketo-buildpacks/dotnet-core-runtime 0.1.12
+paketo-buildpacks/dotnet-core-aspnet  0.1.12
+paketo-buildpacks/dotnet-core-sdk     0.1.10
+paketo-buildpacks/icu                 0.0.102
+paketo-buildpacks/dotnet-publish      0.3.0
+paketo-buildpacks/dotnet-execute      0.4.0
+===> ANALYZING
+Previous image with name "paketo-demo-app" not found
+===> RESTORING
+===> BUILDING
+
+Paketo CA Certificates Buildpack 2.3.2
+  https://github.com/paketo-buildpacks/ca-certificates
+  Launch Helper: Contributing to layer
+    Creating /layers/paketo-buildpacks_ca-certificates/helper/exec.d/ca-certificates-helper
+Paketo .NET Core Runtime Buildpack 0.1.12
+  Resolving Dotnet Core Runtime version
+    Candidate version sources (in priority order):
+      aspnet.csproj -> "3.1.0"
+      <unknown>     -> ""
+
+    No exact version match found; attempting version roll-forward
+
+    Selected dotnet-runtime version (using aspnet.csproj): 3.1.16
+
+  Executing build process
+    Installing Dotnet Core Runtime 3.1.16
+      Completed in 7.304s
+
+  Configuring environment for build and launch
+    DOTNET_ROOT -> "/workspace/.dotnet_root"
+
+  Configuring environment for build
+    RUNTIME_VERSION -> "3.1.16"
+
+Paketo ASP.NET Core Buildpack 0.1.12
+  Resolving Dotnet Core ASPNet version
+    Candidate version sources (in priority order):
+      RUNTIME_VERSION -> "3.1.16"
+      aspnet.csproj   -> "3.1.0"
+      <unknown>       -> ""
+
+    Selected dotnet-aspnetcore version (using RUNTIME_VERSION): 3.1.16
+
+  Executing build process
+    Installing Dotnet Core ASPNet 3.1.16
+      Completed in 2.582s
+
+  Configuring environment
+    DOTNET_ROOT -> "/workspace/.dotnet_root"
+
+Paketo .NET Core SDK Buildpack 0.1.10
+  Resolving .NET Core SDK version
+    Candidate version sources (in priority order):
+      RUNTIME_VERSION -> "3.1.410"
+      <unknown>       -> "*"
+      aspnet.csproj   -> "3.1.*"
+
+    Selected .NET Core SDK version (using RUNTIME_VERSION): 3.1.410
+
+  Executing build process
+    Installing .NET Core SDK 3.1.410
+      Completed in 14.08s
+
+  Configuring environment
+    DOTNET_ROOT -> "/workspace/.dotnet_root"
+    PATH        -> "/workspace/.dotnet_root:$PATH"
+
+Paketo ICU Buildpack 0.0.102
+  Executing build process
+    Installing ICU
+      Completed in 2.56s
+
+Paketo .NET Publish Buildpack 0.3.0
+  Executing build process
+    Running 'dotnet publish /workspace --configuration Release --runtime ubuntu.18.04-x64 --self-contained false --output /tmp/dotnet-publish-output295991778'
+      Completed in 5.2121426s
+
+  Removing source code
+
+Paketo .NET Execute Buildpack 0.4.0
+  Assigning launch processes
+    web: /workspace/aspnet --urls http://0.0.0.0:${PORT:-8080}
+
+===> EXPORTING
+Adding layer 'paketo-buildpacks/ca-certificates:helper'
+Adding layer 'paketo-buildpacks/dotnet-core-runtime:dotnet-core-runtime'
+Adding layer 'paketo-buildpacks/dotnet-core-aspnet:dotnet-core-aspnet'
+Adding layer 'paketo-buildpacks/dotnet-core-sdk:dotnet-env-var'
+Adding layer 'paketo-buildpacks/icu:icu'
+Adding 1/1 app layer(s)
+Adding layer 'launcher'
+Adding layer 'config'
+Adding layer 'process-types'
+Adding label 'io.buildpacks.lifecycle.metadata'
+Adding label 'io.buildpacks.build.metadata'
+Adding label 'io.buildpacks.project.metadata'
+Setting default process type 'web'
+Saving paketo-demo-app...
+*** Images (4c1b1f739e63):
+      paketo-demo-app
+Adding cache layer 'paketo-buildpacks/dotnet-core-runtime:dotnet-core-runtime'
+Adding cache layer 'paketo-buildpacks/dotnet-core-aspnet:dotnet-core-aspnet'
+Adding cache layer 'paketo-buildpacks/dotnet-core-sdk:dotnet-core-sdk'
+Adding cache layer 'paketo-buildpacks/icu:icu'
+Successfully built image paketo-demo-app
+{{< /code/output >}}
+
+Once the build finishes, you'll see that the resulting image is on your Docker daemon.
+
+### Run the App
+Let's start an instance of our app and interact with it.
+
+Run the app image with Docker. It will receive incoming requests `localhost:8080`.
+
+{{< code/copyable >}}
+docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
+{{< /code/copyable >}}
+
+Wait a few moments for the app to start. Then, use `curl` to make a request.
+
+{{< code/copyable >}}
+curl http://localhost:8080
+{{< /code/copyable >}}
+
+{{< code/output >}}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Powered By Paketo Buildpacks</title>
+  </head>
+  <body>
+    <img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="https://paketo.io/images/paketo-logo-full-color.png"></img>
+  </body>
+</html>%
+{{< /code/output >}}
+
+You can also visit [http://localhost:8080](http://localhost:8080) with your browser to see the app's homepage.
+
+You've done it! As you can see, Paketo buildpacks do most of the hard work for you.
+
+Check out more [sample apps](https://github.com/paketo-buildpacks/samples) that work with Paketo Buildpacks.
+
+Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.
+
+<!-- References -->
+[node-guide]:{{< relref "#nodejs">}}
+[dotnet-guide]:{{< relref "#net-core">}}
+[builders]:{{< ref "docs/concepts/builders" >}}
+
+[install-docker]:https://docs.docker.com/get-docker/
+[install-pack]:https://buildpacks.io/docs/install-pack/
