@@ -8,7 +8,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>{{ .Title }} - {{ .Site.Title }}</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1 viewport-fit=cover">
 {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
 {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
 {{ with .Site.LanguageCode }}<meta http-equiv="content-language" content="{{ . }}" />{{ end }}
@@ -21,5 +21,5 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="twitter:card" content="" />
 {{ end }}
 
-{{- $css := resources.Get "css/main-v1.scss" | toCSS | minify | fingerprint -}}
+{{ $css := resources.Get "css/main.scss" | toCSS | minify | fingerprint }}
 <link rel="stylesheet" href="{{ $css.RelPermalink }}">
