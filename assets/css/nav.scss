@@ -60,10 +60,23 @@
     width: fit-content;
     height: -moz-fit-content;
     height: fit-content;
+
+    border-bottom: 0px solid $light-text-color
 }
 
-.nav-link--active {
-    border-bottom: 2px solid $light-text-color
+.nav-link--desktop {
+    font-size: 24px;
+    font-weight: bold;
+    color: $light-text-color;
+}
+
+.nav-link--desktop--dark {
+    color: $dark-text-color;
+    border-bottom-color: $dark-text-color
+}
+
+.nav-link--desktop--active {
+    border-bottom-width: 2px
 }
 
 .nav-opener {
@@ -170,12 +183,6 @@
 
     .nav {
         display: none;
-    }
-
-    .nav-link {
-        font-size: 24px;
-        font-weight: bold;
-        color: $light-text-color;
     }
 
     .desktop-nav {

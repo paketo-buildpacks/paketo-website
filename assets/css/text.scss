@@ -1,10 +1,18 @@
 body {
-	background: $light-background-color;
-	font-family: "Avenir Next", sans-serif;
-	font-weight: 400;
-	font-size: 1.1em;
-	line-height: 1.5em;
+    font-family: $default-font-family;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: left;
 	color: $dark-text-color;
+
+    @media (min-width: $mobile-breakpoint) {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 24px;
+    }
 }
 img {
 	height: auto;
@@ -14,30 +22,66 @@ p {
 	padding: 0.7em 0;
 }
 h1, h2, h3, h4, h5, h6 {
+	font-family: $default-font-family;
 	line-height: 1.5em;
 	color: $dark-text-color;
 	-webkit-font-smoothing: subpixel-antialiased;
 	letter-spacing: -0.025em;
 }
 h1 {
-	font-size: 3rem;
+	font-size: 20px;
+	font-style: normal;
 	font-weight: 600;
+	line-height: 27px;
+	letter-spacing: 0px;
+	text-align: left;
+
+	@media (min-width: $mobile-breakpoint) {
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 49px;
+	}
 }
+
 h2 {
-	font-size: 2.5rem;
-	font-weight: 400;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 24px;
+	letter-spacing: 0px;
+	text-align: left;
 	padding-top: 20px;
+
+	@media (min-width: $mobile-breakpoint) {
+		font-size: 32px;
+		line-height: 44px;
+	}
 }
+
 h3 {
-	font-size: 1.4rem;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 22px;
+	letter-spacing: 0px;
+	text-align: left;
 	padding-top: 20px;
+
+	@media (min-width: $mobile-breakpoint) {
+		font-size: 24px;
+		font-weight: 500;
+		line-height: 33px;
+	}
 }
+
 h4 {
 	font-weight: bold;
 	font-size: 1.1em;
 	line-height: 23px;
 	letter-spacing: 0.05em;
+	padding-top: 10px;
 }
+
 ul {
 	list-style: disc;
 	padding: 0 2em;
@@ -137,12 +181,23 @@ table {
     text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
 }
 
+.text--shadow-mobile {
+	text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+	@media (min-width: $mobile-breakpoint) {
+		text-shadow: none;
+	}
+}
+
 .text--600 {
     font-weight: 600;
 }
 
 .text--500 {
     font-weight: 500;
+}
+
+.text--400 {
+	font-weight: 400;
 }
 
 .text-line-height--24 {
@@ -160,3 +215,4 @@ table {
 .text-size--14 {
     font-size: 14px;
 }
+

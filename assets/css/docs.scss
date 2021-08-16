@@ -1,13 +1,4 @@
 /* docs */
-body {
-	background: $light-background-color;
-	font-family: "Avenir Next", sans-serif;
-	font-weight: 400;
-	font-size: 1.1em;
-	line-height: 1.5em;
-	color: $dark-text-color;
-}
-
 .docs {
     display: block;
     background: $light-background-color;
@@ -128,13 +119,6 @@ body {
     padding-right: 40px;
     padding-top: 40px;
     padding-bottom: 40px;
-
-    font-family: "Avenir Next", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 24px;
-    color: $dark-text-color;
 
     @media (min-width: $header-hamburger-breakpoint) {
         width: calc(100% - 380px);
