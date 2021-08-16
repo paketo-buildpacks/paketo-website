@@ -417,13 +417,14 @@ The following table documents the versions available.
 
 | GraalVM Version | Java Native Image Buildpack Version |
 | --------------- | ----------------------------------- |
+| 21.2            | 5.5.0                               |
 | 21.1            | 5.4.0                               |
 | 21.0            | 5.3.0                               |
 
-For example, to select GraalVM 21.0:
+For example, to select GraalVM 21.1:
 
 {{< code/copyable >}}
-pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/java-native-image:5.3.0
+pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/java-native-image:5.4.0
 {{< /code/copyable >}}
 
 <!-- buildpacks -->
