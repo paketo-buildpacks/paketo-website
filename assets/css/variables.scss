@@ -3,6 +3,7 @@ $mobile-breakpoint : 480px;
 $mobile-breakpoint-footer: 800px;
 $header-hamburger-breakpoint: 800px;
 $table-of-contents-breakpoint: 1200px;
+$action-buttons-breakpoint: 650px;
 
 /* color variables */
 $light-text-color : #ffffff;
@@ -17,5 +18,6 @@ $light-background-color: #ffffff;
 $dark-background-color: #4B5259;
 
 $homepage-button-gradient: linear-gradient(194.93deg, #9DDCB2 10.52%, #08A69B 97.9%);
+$action-button-color: rgba(196, 196, 196, 0.1);
 
 $default-font-family: "Avenir Next", sans-serif;
