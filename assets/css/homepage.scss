@@ -171,7 +171,7 @@ a:hover {
     margin-bottom: 70px;
 }
 
-.what-are-buildpacks-element__image {
+.what-are-buildpacks-element__equation {
     margin-top: 10px;
     width: 100%;
 
@@ -189,43 +189,13 @@ a:hover {
     margin-bottom: 18px;
 }
 
-.what-are-buildpacks-element__imageset__container {
+.what-are-buildpacks-element__image {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 15px;
-    width: 110px;
-    height: 110px;
-}
-
-.what-are-buildpacks-element__logo-cloud {
-    width: 90px;
-}
-
-.what-are-buildpacks-element__logo-docker {
     width: 80px;
-}
-
-.what-are-buildpacks-element__logo-k8s {
-    width: 64px;
-}
-
-.what-are-buildpacks-element__logo-azure-devops {
-    width: 110px;
-}
-
-.what-are-buildpacks-element__logo-jenkins {
     height: 80px;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.what-are-buildpacks-element__logo-circleci {
-    width: 110px;
-}
-
-.what-are-buildpacks-element__logo-azure-devops {
-    width: 110px;
+    margin: 20px;
 }
 
 .how-it-works-animation {
@@ -235,3 +205,98 @@ a:hover {
     padding-bottom: 21px;
 }
 
+.icon-cloud {
+    width: 100%;
+}
+
+.icon-cloud__image {
+    width: 100%;
+}
+
+.logo-docker {
+    width: 100%;
+}
+
+.logo-docker__image {
+    width: 100%;
+}
+
+.logo-kubernetes {
+    width: 100%;
+}
+
+.logo-kubernetes__image {
+    width: 100%;
+}
+
+.logo-buildpacks {
+    width: 100%;
+}
+
+.logo-buildpacks__image {
+    width: 100%;
+}
+
+.logo-spring {
+    width: 100%;
+}
+
+.logo-spring__image {
+    width: 100%;
+}
+
+.logo-tilt {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin-left: -20%;
+    margin-right: -20%;
+}
+
+.logo-tilt__image {
+    height: 100%;
+}
+
+.logo-waypoint {
+    width: 100%;
+}
+
+.logo-waypoint__image {
+    width: 100%;
+}
+
+.logo-tbs {
+    width: 100%;
+}
+
+.logo-tbs__image {
+    width: 100%;
+}
+
+.logo-jenkins {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo-jenkins__image {
+    width: 100%;
+}
+
+.logo-circleCI {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.logo-circleCI__image {
+    width: 90%;
+}
+
+.logo-azure-devops {
+    width: 100%;
+}
+
+.logo-azure-devops__image {
+    width: 100%;
+}
