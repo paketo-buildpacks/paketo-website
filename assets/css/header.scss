@@ -16,10 +16,6 @@
     }
 }
 
-.header--light {
-    background: $light-background-color !important;
-}
-
 .header {
     background: $dark-background-color;
     box-shadow: none;
@@ -35,6 +31,10 @@
         flex-direction: row;
         justify-content: space-between;
     }
+}
+
+.header--light {
+    background: $light-background-color;
 }
 
 /* Skip links */

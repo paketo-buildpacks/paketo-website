@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+
+<head>
+    {{ partial "head.html" . }}
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    {{ partial "header-skip-link.html" . }}
+    {{ partial "header.html" (dict "headerTheme" "light" "context" . ) }}
+
+    <section class="homepage-section homepage-section--left-align">
+        <h1 class="text--dark text--shadow-mobile">Join the Paketo Community!</h1>
+        <h3>There are a few good ways to keep up with developments within the Paketo Buildpacks community:</h3>
+    </section>
+    <section class="homepage-section homepage-section--dark community-action-section">
+        <div class="community-action-container">
+            <a class="action-button" href="https://slack.paketo.io/">
+                <div class="action-button__content">
+                    <div class="action-button__image-container">
+                        <div class="logo-slack">
+                            <img class="logo-slack__image" src="/v2/images/logo-slack.svg" alt="Slack logo">
+                        </div>
+                    </div>
+                    <div class="action-button__text">
+                        Reach out to us on Slack
+                    </div>
+                </div>
+            </a>
+            <a class="action-button" href="https://twitter.com/intent/tweet?text=%40Paketo_io">
+                <div class="action-button__content">
+                    <div class="action-button__image-container">
+                        <div class="logo-twitter">
+                            <img class="logo-twitter__image" src="/v2/images/logo-twitter.svg" alt="Blue Twitter bird logo">
+                        </div>
+                    </div>
+                    <div class="action-button__text">
+                        Tweet at us
+                    </div>
+                </div>
+            </a>
+            <a class="action-button" href="https://github.com/paketo-buildpacks/community#working-group-meetings">
+                <div class="action-button__content">
+                    <div class="action-button__image-container">
+                        <div class="logo-github">
+                            <img class="logo-github__image"  src="/v2/images/logo-github-cropped.svg" alt="GitHub Octocat logo"/>
+                        </div>
+                    </div>
+                    <div class="action-button__text">
+                        Join our working group meetings
+                    </div>
+                </div>
+            </a>
+            <a class="action-button" href="https://github.com/paketo-buildpacks/.github/blob/main/CONTRIBUTING.md">
+                <div class="action-button__content">
+                    <div class="action-button__image-container">
+                        <div class="icon-pr">
+                            <img class="icon-pr__image" src="/v2/images/icon-pr.svg" alt="Github Pull Request Icon">
+                        </div>
+                    </div>
+                    <div class="action-button__text">
+                        Make a contribution
+                    </div>
+                </div>
+            </a>
+        </div>
+        
+
+    </section>
+    <section class="homepage-section">
+        <div class="text-container">
+            <h2>Contributing</h2>
+            <p class="body">
+                Check out our <a href="https://github.com/paketo-buildpacks/.github/blob/main/CONTRIBUTING.md">contribution guide</a> for an idea of where to begin.
+            </p>
+            <h2>RFCs</h2>
+            <p class="body">
+                If you’d like to learn more about the buildpacks' architecture and the design decisions being made,
+                it may be helpful to read through some of our past and present
+                <a href="https://github.com/paketo-buildpacks/rfcs">Requests For Comments (RFCs)</a>. These are documents
+                written by members of the Paketo community to propose technical changes to the project or one of its buildpacks.
+            </p>
+            <h2>Discussions</h2>
+            <p class="body">
+                Do you have ideas for the future of the project? Well, we’d certainly like to hear them!
+                Check out our <a href="https://github.com/paketo-buildpacks/feedback/discussions">Discussions portal</a> to weigh in on ongoing conversations or to start a new one.
+            </p>
+            <h2>Signing the CLA</h2>
+            <p class="body">
+                In order to contribute code, you will need to complete the CFF Contributor License Agreement. When opening a pull request, our CLA bot will prompt you to sign it, or you can sign it through this link.
+            </p>
+            <p class="body">
+                The agreement documents that are signed with the above process can be found below:
+                <ul>
+                    <li><a href="https://paketo.io/ccla.pdf">Corporate CLA</a></li>
+                    <li><a href="https://paketo.io/icla.pdf">Individual CLA</a></li>
+                </ul>
+            </p>
+            <h2>Working Groups</h2>
+            <p class="body">
+                Check out what’s going on in the Paketo Buildpacks community by joining
+                a Working Group <a href="https://github.com/paketo-buildpacks/community#working-group-meetings">meeting.</a>
+                Join discussions about RFCs. See how others are using buildpacks in their environments.
+                Or, BYOB (bring your own buildpacks!) to share, discuss, and get feedback from the community.
+            </p>
+        </div>
+    </section>
+
+    {{ partial "footer.html" .}}
+    {{ partial "footer-skip-link.html" . }}
+</body>
+
+</html>

@@ -43,17 +43,14 @@
 }
 
 .footer-social-link__image-container{
-    width: 70px;
+    width: 50px;
+    height: 50px;
     margin-left: 10px;
     margin-right: 12px;
 
     @media(min-width: $mobile-breakpoint-footer) {
-        width: 50px;
+        width: 40px;
     }
-}
-
-.footer-social-link__image-container__image {
-    width: 100%;
 }
 
 .footer-text--small {
