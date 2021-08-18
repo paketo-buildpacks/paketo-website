@@ -35,28 +35,8 @@
 
 .action-button__image-container {
     width: 50px;
-    margin-left: 15px;
-    margin-right: 15px;
-}
-
-.action-button__image-container--github {
-    width: 70px;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.action-button__image-container--pr {
-    width: auto;
     height: 50px;
-}
-
-.action-button__image {
-    width: 100%;
-}
-
-.action-button__image--pr {
-    width: auto;
-    height: 100%;
+    margin: 10px;
 }
 
 .action-button__text {
@@ -91,17 +71,7 @@
 
     .action-button__image-container {
         margin-top: 10px;
-        margin-bottom: 5px;
-    }
-
-    .action-button__image-container--twitter {
-        margin-top: 15px;
         margin-bottom: 10px;
-    }
-
-    .action-button__image-container--github {
-        margin-top: 0px;
-        margin-bottom: 0px;
     }
 
     .action-button__text {
