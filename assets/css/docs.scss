@@ -44,9 +44,14 @@
 }
 
 .docs-menu__children-list {
+    display: none;
     list-style: inherit;
     padding-left: 20px;
 	position: relative;
+}
+
+.docs-menu__children-list--opened {
+    display: block;
 }
 
 .docs-menu__leaf {
@@ -66,6 +71,10 @@
     text-decoration: none;
     opacity: 1;
     color: $light-text-color;
+}
+
+.docs-menu__section-header--opened {
+    font-weight: 700;
 }
 
 .docs-menu__link {

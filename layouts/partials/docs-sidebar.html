@@ -16,7 +16,7 @@
     {{ if $entry.HasChildren }}
         <li class="docs-menu__parent">
             {{ if isset $entry.Params "class" }}
-            <div class="{{ $entry.Params.class }}">
+            <div class="{{ $entry.Params.class }} {{ if $currentPage.HasMenuCurrent "main" $entry }}{{ $entry.Params.class }}--opened{{ end }}">
                 {{ $entry.Pre }}
                 <span>{{ $entry.Name }}</span>
             </div>
@@ -26,7 +26,7 @@
                 <span>{{ $entry.Name }}</span>
             </a>
             {{ end }}
-            <ul class="docs-menu__children-list">
+            <ul class="docs-menu__children-list {{ if $currentPage.HasMenuCurrent "main" $entry }}docs-menu__children-list--opened{{ end }}">
                 {{ range $entry.Children }}
                     {{ template "docs-menu-entry"  dict "currentPage" $currentPage "entry" . }}
                 {{ end }}
