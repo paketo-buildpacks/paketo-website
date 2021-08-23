@@ -27,7 +27,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.3782092f8b9404de288ec740e7071bf3f2caf70bda82a72de61ee475d3a71b6d.css">
+<link rel="stylesheet" href="/css/main.min.f9810dadf62820ea60b94cc57d4354332ebd7393e675acacde202b208f9e9bfc.css">
 </head>
 
 <body>
@@ -87,39 +87,39 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
                     
                     <a class="languages__item" href="docs/buildpacks/language-family-buildpacks/java">
-                        <img class="logo logo--java" src="/v2/images/logo-java.svg" alt="java logo">
+                        <img class="languages__logo languages__logo--java" src="/v2/images/logo-java.svg" alt="java logo">
                     </a>
                     
                     <a class="languages__item" href="docs/buildpacks/language-family-buildpacks/java-native-image">
-                        <img class="logo logo--graalvm" src="/v2/images/logo-GraalVM.svg" alt="GraalVM logo">
+                        <img class="languages__logo languages__logo--graalvm" src="/v2/images/logo-GraalVM.svg" alt="GraalVM logo">
                     </a>
                     
                     <a class="languages__item" href="docs/buildpacks/language-family-buildpacks/go">
-                        <img class="logo logo--go" src="/v2/images/logo-go.svg" alt="go logo">
+                        <img class="languages__logo languages__logo--go" src="/v2/images/logo-go.svg" alt="go logo">
                     </a>
                     
                     <a class="languages__item" href="docs/buildpacks/language-family-buildpacks/dotnet-core">
-                        <img class="logo logo--dotnet-core" src="/v2/images/logo-dotnet-core.svg" alt=".net core logo">
+                        <img class="languages__logo languages__logo--dotnet-core" src="/v2/images/logo-dotnet-core.svg" alt=".net core logo">
                     </a>
                     
                     <a class="languages__item" href="docs/buildpacks/language-family-buildpacks/nginx">
-                        <img class="logo logo--nginx" src="/v2/images/logo-nginx.svg" alt="nginx logo">
+                        <img class="languages__logo languages__logo--nginx" src="/v2/images/logo-nginx.svg" alt="nginx logo">
                     </a>
                     
                     <a class="languages__item" href="docs/buildpacks/language-family-buildpacks/nodejs">
-                        <img class="logo logo--nodejs" src="/v2/images/logo-nodejs.svg" alt="nodejs logo">
+                        <img class="languages__logo languages__logo--nodejs" src="/v2/images/logo-nodejs.svg" alt="nodejs logo">
                     </a>
                     
                     <a class="languages__item" href="docs/buildpacks/language-family-buildpacks/php">
-                        <img class="logo logo--php" src="/v2/images/logo-php.svg" alt="php logo">
+                        <img class="languages__logo languages__logo--php" src="/v2/images/logo-php.svg" alt="php logo">
                     </a>
                     
                     <a class="languages__item" href="docs/buildpacks/language-family-buildpacks/httpd">
-                        <img class="logo logo--httpd" src="/v2/images/logo-httpd.svg" alt="httpd logo">
+                        <img class="languages__logo languages__logo--httpd" src="/v2/images/logo-httpd.svg" alt="httpd logo">
                     </a>
                     
                     <a class="languages__item" href="docs/buildpacks/language-family-buildpacks/ruby">
-                        <img class="logo logo--ruby" src="/v2/images/logo-ruby.svg" alt="ruby logo">
+                        <img class="languages__logo languages__logo--ruby" src="/v2/images/logo-ruby.svg" alt="ruby logo">
                     </a>
                     
                     
@@ -131,7 +131,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div class="section-content">
                     <h2 class="text__section-header text--light text--shadow">What are Paketo Buildpacks?</h2>
                     <div class="what-are-buildpacks-element">
-                        <ul class="text--light body list--disc">
+                        <ul class="text--light list--disc">
                             <li class="list__element">
                                 Buildpacks transform your application source code into container images
                             </li>
@@ -147,55 +147,91 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             </li>
                         </ul>
                         <div class="what-are-buildpacks-element__imageset">
-                            <img class="what-are-buildpacks-element__image" src="/v2/images/buildpack-equation.svg"
+                            <img class="what-are-buildpacks-element__equation" src="/v2/images/buildpack-equation.svg"
                                 alt="Buildpacks transform your source code into OCI images">
                         </div>
                     </div>
                     <div class="what-are-buildpacks-element">
-                        <div class="body text--light">
+                        <div class="text--light">
                             Paketo Buildpacks can run on any platform that supports container images, including Docker
                             and Kubernetes!
                         </div>
                         <div class="what-are-buildpacks-element__imageset">
-                            <div class="what-are-buildpacks-element__imageset__container">
-                                <img class="what-are-buildpacks-element__logo-cloud" src="/v2/images/icon-cloud.svg"
-                                    alt="Cloud platforms">
+                            <div class="what-are-buildpacks-element__image">
+                                <div class="logo">
+                                    <img class="logo__image" src="/v2/images/icon-cloud.svg" alt="Fluffy cloud icon" >
+                                </div>
                             </div>
-                            <div class="what-are-buildpacks-element__imageset__container">
-                                <img class="what-are-buildpacks-element__logo-docker" src="/v2/images/logo-docker.svg"
-                                    alt="Docker">
+                            <div class="what-are-buildpacks-element__image">
+                                <div class="logo">
+                                    <img class="logo__image" src="/v2/images/logo-docker.svg" alt="Docker whale logo" >
+                                </div>
                             </div>
-                            <div class="what-are-buildpacks-element__imageset__container">
-                                <img class="what-are-buildpacks-element__logo-k8s" src="/v2/images/logo-kubernetes.svg"
-                                    alt="Kubernetes">
+                            <div class="what-are-buildpacks-element__image">
+                                <div class="logo">
+                                    <img class="logo__image" src="/v2/images/logo-kubernetes.svg" alt="Kubernetes">
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="what-are-buildpacks-element">
-                        <div class="body text--light">
+                        <div class="text--light">
                             Compatible with CI/CD integrations around containers such as CircleCI, Gitlab, Tekton, and
                             much more!
                         </div>
                         <div class="what-are-buildpacks-element__imageset">
-                            <div class="what-are-buildpacks-element__imageset__container">
-                                <img class="what-are-buildpacks-element__logo-jenkins" src="/v2/images/logo-jenkins.png"
-                                    alt="Jenkins">
-                            </div>
-                            <div>
-                                <img class="what-are-buildpacks-element__logo-circleci"
+                            <div class="what-are-buildpacks-element__image">
+                                <div class="logo">
+                                    <img class="logo__image logo__image--circleCI"
                                     src="/v2/images/logo-circleCI.png" alt="CircleCI">
+                                </div>
                             </div>
-                            <div>
-                                <img class="what-are-buildpacks-element__logo-azure-devops"
-                                    src="/v2/images/logo-azure-devops.png" alt="Azure DevOps">
+                            <div class="what-are-buildpacks-element__image">
+                                <div class="logo">
+                                    <img class="logo__image"
+                                    src="/v2/images/logo-gitlab.svg" alt="Gitlab fox logo">
+                                </div>
+                            </div>
+                            <div class="what-are-buildpacks-element__image">
+                                <div class="logo">
+                                    <img class="logo__image"
+                                    src="/v2/images/logo-tekton.svg" alt="Tekton logo">
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="what-are-buildpacks-element">
-                        <div class="body text--light">
+                        <div class="text--light">
                             Paketo Buildpacks are leveraged by many application platforms and local development tools
                             including Hashicorp Waypoint, the Pack CLI, Spring Boot, Tilt, and VMware Tanzu Build
                             Service.
+                        </div>
+                        <div class="what-are-buildpacks-element__imageset">
+                            <div class="what-are-buildpacks-element__image what-are-buildpacks-element__image--smaller">
+                                <div class="logo">
+                                    <img class="logo__image" src="/v2/images/logo-waypoint.svg" alt="Hashicorp Waypoint logo">
+                                </div>
+                            </div>
+                            <div class="what-are-buildpacks-element__image what-are-buildpacks-element__image--smaller">
+                                <div class="logo">
+                                    <img class="logo__image" src="/v2/images/logo-buildpacks.svg" alt="Cloud Native Buildpacks logo">
+                                </div>
+                            </div>
+                            <div class="what-are-buildpacks-element__image what-are-buildpacks-element__image--smaller">
+                                <div class="logo">
+                                    <img class="logo__image" src="/v2/images/logo-spring.svg" alt="Spring leaf logo">
+                                </div>
+                            </div>
+                            <div class="what-are-buildpacks-element__image what-are-buildpacks-element__image--smaller">
+                                <div class="logo logo--tilt">
+                                    <img class="logo__image" src="/v2/images/logo-tilt.svg" alt="Tilt logo">
+                                </div>
+                            </div>
+                            <div class="what-are-buildpacks-element__image what-are-buildpacks-element__image--smaller">
+                                <div class="logo">
+                                    <img class="logo__image" src="/v2/images/logo-tanzu-build-service.svg" alt="Tanzu Build Service logo">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -203,7 +239,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <section class="homepage-section">
                 <div class="section-content">
                     <h2 class="text__section-header text--dark">Here's how it works</h2>
-                    <p class="text--dark body">
+                    <p class="text--dark text--400">
                         Just bring your app and Paketo Buildpacks will detect what language your app is using,
                         gather the required dependencies, and build it into an image.
                     </p>
@@ -344,7 +380,7 @@ if(document.location.search.substr(1).split('&').indexOf('global=paused')>=0)ks.
                             </div>
                             <h3 class="text--light">Fast rebuilds through built-in caching</h3>
                         </div>
-                        <div class="text--light text--500 body">
+                        <div class="text--light text--500">
                             Quickly rebuild your apps without advanced customization of your build tooling
                         </div>
                     </div>
@@ -355,7 +391,7 @@ if(document.location.search.substr(1).split('&').indexOf('global=paused')>=0)ks.
                             </div>
                             <h3 class="text--light">Easy customization</h3>
                         </div>
-                        <div class="text--light text--500 body">
+                        <div class="text--light text--500">
                             Paketo Buildpacks are modular and can easily be composed to suit your app’s needs.
                             If your use case isn’t supported yet, leverage our tooling to build a buildpack,
                             and contribute it to the community - or file a feature request :)
@@ -369,7 +405,7 @@ if(document.location.search.substr(1).split('&').indexOf('global=paused')>=0)ks.
                             </div>
                             <h3 class="text--light">Containers you can trust</h3>
                         </div>
-                        <div class="text--light text--500 body">
+                        <div class="text--light text--500">
                             Gain visibility into your software supply chain through an extensive bill of materials
                             provided by buildpacks
                         </div>
@@ -381,7 +417,7 @@ if(document.location.search.substr(1).split('&').indexOf('global=paused')>=0)ks.
                             </div>
                             <h3 class="text--light">Patch OS-Level vulnerabilities, fast</h3>
                         </div>
-                        <div class="text--light text--500 body">
+                        <div class="text--light text--500">
                             With buildpacks in your CI you can patch the OS layer of your app images without
                             rebuilding your source code
                         </div>
@@ -393,7 +429,7 @@ if(document.location.search.substr(1).split('&').indexOf('global=paused')>=0)ks.
                             </div>
                             <h3 class="text--light">Compliance and security that scales with your organization</h3>
                         </div>
-                        <div class="text--light text--500 body">
+                        <div class="text--light text--500">
                             With buildpacks, you have full control over the OSes, languages, and package management
                             your teams can use - no matter the size of your org
                         </div>
@@ -403,24 +439,24 @@ if(document.location.search.substr(1).split('&').indexOf('global=paused')>=0)ks.
             <section class="homepage-section homepage-section--padded">
                 <div class="section-content">
                     <h2 class="text__section-header text--dark">Ready to contribute?</h2>
-                    <a class="text__homepage-link body" href="contribute/">
+                    <a class="text__homepage-link" href="contribute/">
                         Check out our community page to learn more!
                     </a>
                     <h3 class="text__section-header text--dark">About the Paketo project</h3>
                     <ul class="list--disc margin-bottom70">
-                        <li class="body text--dark list__element">
+                        <li class="text--dark list__element">
                             Our buildpacks are based on the learnings from years of building and maintaining buildpacks
                             for Cloud Foundry (for VMs). Paketo Buildpacks work great with Spring and are the
                             recommended way to build containers with Spring Boot
                         </li>
-                        <li class="body text--dark list__element">
+                        <li class="text--dark list__element">
                             Buildpacks power the productivity of tens of thousands of developers and operators daily
                         </li>
-                        <li class="body text--dark list__element">
+                        <li class="text--dark list__element">
                             Paketo is a community-driven project with active project maintainers and contributors that
                             are driving the long term success of Paketo
                         </li>
-                        <li class="body text--dark list__element">
+                        <li class="text--dark list__element">
                             Vendor-neutral governance through the Cloud Foundry Foundation
                         </li>
                     </ul>
@@ -434,8 +470,8 @@ if(document.location.search.substr(1).split('&').indexOf('global=paused')>=0)ks.
     <div class="footer-social-links-container">
         <a class="footer-social-link" href="https://twitter.com/Paketo_io">
             <div class="footer-social-link__image-container">
-                <div class="logo-twitter">
-                    <img class="logo-twitter__image" src="/v2/images/logo-twitter.svg" alt="Blue Twitter bird logo">
+                <div class="logo">
+                    <img class="logo__image" src="/v2/images/logo-twitter.svg" alt="Blue Twitter bird logo">
                 </div>
             </div>
             <div class="text--light text--400">
@@ -444,8 +480,8 @@ if(document.location.search.substr(1).split('&').indexOf('global=paused')>=0)ks.
         </a>
         <a class="footer-social-link" href="https://slack.paketo.io/">
             <div class="footer-social-link__image-container">
-                <div class="logo-slack">
-                    <img class="logo-slack__image" src="/v2/images/logo-slack.svg" alt="Slack logo">
+                <div class="logo">
+                    <img class="logo__image" src="/v2/images/logo-slack.svg" alt="Slack logo">
                 </div>
             </div>
             <div class="text--light text--400">
@@ -454,8 +490,8 @@ if(document.location.search.substr(1).split('&').indexOf('global=paused')>=0)ks.
         </a>
         <a class="footer-social-link" href="https://github.com/paketo-buildpacks">
             <div class="footer-social-link__image-container">
-                <div class="logo-github">
-                    <img class="logo-github__image"  src="/v2/images/logo-github-cropped.svg" alt="GitHub Octocat logo"/>
+                <div class="logo logo--github">
+                    <img class="logo__image"  src="/v2/images/logo-github-cropped.svg" alt="GitHub Octocat logo"/>
                 </div>
             </div>
             <div class="text--light text--400">
