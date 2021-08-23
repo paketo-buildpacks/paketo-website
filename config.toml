@@ -27,55 +27,55 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
             img = "logo-java.svg"
             alt = "java logo"
             docs= "java"
-            css_class = "logo--java"
+            css_class = "languages__logo--java"
 
         [[params.hero.logos.item]]
             img = "logo-GraalVM.svg"
             alt = "GraalVM logo"
             docs= "java-native-image"
-            css_class = "logo--graalvm"
+            css_class = "languages__logo--graalvm"
 
         [[params.hero.logos.item]]
             img = "logo-go.svg"
             alt = "go logo"
             docs= "go"
-            css_class = "logo--go"
+            css_class = "languages__logo--go"
 
         [[params.hero.logos.item]]
             img = "logo-dotnet-core.svg"
             alt = ".net core logo"
             docs= "dotnet-core"
-            css_class = "logo--dotnet-core"
+            css_class = "languages__logo--dotnet-core"
 
         [[params.hero.logos.item]]
             img = "logo-nginx.svg"
             alt = "nginx logo"
             docs= "nginx"
-            css_class = "logo--nginx"
+            css_class = "languages__logo--nginx"
 
         [[params.hero.logos.item]]
             img = "logo-nodejs.svg"
             alt = "nodejs logo"
             docs= "nodejs"
-            css_class = "logo--nodejs"
+            css_class = "languages__logo--nodejs"
 
         [[params.hero.logos.item]]
             img = "logo-php.svg"
             alt = "php logo"
             docs= "php"
-            css_class = "logo--php"
+            css_class = "languages__logo--php"
 
         [[params.hero.logos.item]]
             img = "logo-httpd.svg"
             alt = "httpd logo"
             docs= "httpd"
-            css_class = "logo--httpd"
+            css_class = "languages__logo--httpd"
 
         [[params.hero.logos.item]]
             img = "logo-ruby.svg"
             alt = "ruby logo"
             docs= "ruby"
-            css_class = "logo--ruby"
+            css_class = "languages__logo--ruby"
 
 [params.what_are_buildpacks]
   headline = "What are Buildpacks?"

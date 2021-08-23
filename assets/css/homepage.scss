@@ -3,11 +3,6 @@
 .homepage-content {
     display: flex;
     flex-direction: column;
-
-    font-family: "Avenir Next", sans-serif;
-    font-style: normal;
-    font-size: 18px;
-    line-height: 24px;
 }
 
 .section-content {
@@ -56,33 +51,33 @@
     margin: 10px;
 }
 
-.logo {
+.languages__logo {
     height: 35px;
 }
 
-.logo--java {
+.languages__logo--java {
     height: 80px;
     margin-left: 12px;
     margin-right: 12px;
 }
 
-.logo--graalvm {
+.languages__logo--graalvm {
     height: 25px;
 }
 
-.logo--go {
+.languages__logo--go {
     height: 56px;
 }
 
-.logo--nginx {
+.languages__logo--nginx {
     height: 45px;
 }
 
-.logo--php {
+.languages__logo--php {
     height: 45px;
 }
 
-.logo--httpd {
+.languages__logo--httpd {
     height: 66px;
     margin-left: 20px;
     margin-right: 20px;
@@ -127,18 +122,6 @@ h3 {
     @media (min-width: $mobile-breakpoint) {
         font-size: 24px;
         line-height: 33px;
-    }
-}
-
-.body {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 24px;
-
-    @media (min-width: 480px) {
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 24px;
     }
 }
 
@@ -193,9 +176,12 @@ a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 80px;
-    margin: 20px;
+    width: 16%;
+    margin: 2%;
+}
+
+.what-are-buildpacks-element__image--smaller {
+    width: 14%;
 }
 
 .how-it-works-animation {
@@ -203,100 +189,4 @@ a:hover {
 }
 .how-it-works-animation__animation {
     padding-bottom: 21px;
-}
-
-.icon-cloud {
-    width: 100%;
-}
-
-.icon-cloud__image {
-    width: 100%;
-}
-
-.logo-docker {
-    width: 100%;
-}
-
-.logo-docker__image {
-    width: 100%;
-}
-
-.logo-kubernetes {
-    width: 100%;
-}
-
-.logo-kubernetes__image {
-    width: 100%;
-}
-
-.logo-buildpacks {
-    width: 100%;
-}
-
-.logo-buildpacks__image {
-    width: 100%;
-}
-
-.logo-spring {
-    width: 100%;
-}
-
-.logo-spring__image {
-    width: 100%;
-}
-
-.logo-tilt {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    margin-left: -20%;
-    margin-right: -20%;
-}
-
-.logo-tilt__image {
-    height: 100%;
-}
-
-.logo-waypoint {
-    width: 100%;
-}
-
-.logo-waypoint__image {
-    width: 100%;
-}
-
-.logo-tbs {
-    width: 100%;
-}
-
-.logo-tbs__image {
-    width: 100%;
-}
-
-.logo-jenkins {
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.logo-jenkins__image {
-    width: 100%;
-}
-
-.logo-circleCI {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.logo-circleCI__image {
-    width: 90%;
-}
-
-.logo-azure-devops {
-    width: 100%;
-}
-
-.logo-azure-devops__image {
-    width: 100%;
 }
