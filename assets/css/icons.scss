@@ -1,36 +1,31 @@
-.logo-slack {
+.logo {
     width: 100%;
-    height: auto;
-}
-
-.logo-slack__image {
-    width: 100%;
-}
-
-.logo-twitter {
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.logo-twitter__image {
-    height: 100%;
-}
-
-.logo-github {
+.logo--github {
     width: 116%;
     margin-left: -8%;
     margin-right: -8%;
 }
 
-.logo-github__image {
-    height: 100%;
+.logo--tilt {
+    margin-left: -20%;
+    margin-right: -20%;
 }
 
-.icon-pr {
-    height: 100%;
-    display: flex;
-    justify-content: center;
+.logo__image {
+    width: 100%;
 }
 
-.icon-pr__image {
+.logo__image--circleCI {
+    width: 90%;
+}
+
+.logo__image--pr {
     height: 100%;
+    width: auto;
 }
