@@ -101,8 +101,12 @@
     border-style: none;
 }
 
-.expander-button:hover, .expander-button:focus {
+.expander-button:hover {
     opacity: .8;
+}
+
+.expander-button--opened, .expander-button--opened:hover {
+    opacity: .6;
 }
 
 .expander-button__triangle--opened {
