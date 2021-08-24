@@ -36,11 +36,18 @@
     padding: 0;
 }
 
+.docs-menu__item {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 33px;
+}
+
 .docs-menu__parent {
     list-style: inherit;
     position: relative;
     padding: 0px;
     padding-right: 5px;
+
 }
 
 .docs-menu__children-list {
