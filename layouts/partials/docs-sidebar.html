@@ -1,6 +1,5 @@
 <!-- sidebar start -->
 <nav class="docs-menu">
-    <h4 class="docs-menu__title">{{ .Site.Params.docs_menu.title }}</h4>
     <ul class="docs-menu__top-level-list">
         {{ $currentPage := . }}
         {{ range .Site.Menus.main }}
@@ -19,6 +18,12 @@
             <div class="{{ $entry.Params.class }} {{ if $currentPage.HasMenuCurrent "main" $entry }}{{ $entry.Params.class }}--opened{{ end }}">
                 {{ $entry.Pre }}
                 <span>{{ $entry.Name }}</span>
+                <button class="expander-button docs-menu__expander-button">
+                    <svg class="expander-button__triangle" width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.140625" width="37.0257" height="34" rx="8" fill="#888888" fill-opacity="0.25"/>
+                        <path d="M28.1604 13H8.14648L18.6538 22.5L28.1604 13Z" fill="#FEFCFC"/>
+                        </svg>
+                </button>
             </div>
             {{ else }}
             <a href="{{ $entry.URL }}"  class="docs-menu__item docs-menu__link {{ if $currentPage.IsMenuCurrent "main" $entry }}docs-menu__link--active{{ end }}">

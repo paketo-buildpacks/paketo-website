@@ -16,9 +16,10 @@
     }
 }
 
-.header {
+header {
     background: $dark-background-color;
     box-shadow: none;
+    height: 120px;
     padding-top: 20px;
     padding-left: 28px;
     padding-bottom: 34px;
@@ -27,6 +28,7 @@
     flex-direction: column;
 
     @media (min-width: $mobile-breakpoint) {
+        height: 200px;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -35,6 +37,14 @@
 
 .header--light {
     background: $light-background-color;
+}
+
+.header--narrow {
+    height: 80px;
+
+    @media (min-width: $mobile-breakpoint) {
+        height: 145px;
+    }
 }
 
 /* Skip links */
