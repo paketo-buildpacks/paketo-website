@@ -1,5 +1,5 @@
 ---
-title: "Accessing the Bill of Materials"
+title: "How to Access the Bill of Materials"
 weight: 345
 menu:
   main:
@@ -8,23 +8,31 @@ aliases:
   - /docs/tutorials/how-to-bom/
 ---
 
+This documentation explains how to access the bill of materials on an app image built using Paketo buildpacks. For more in-depth field definitions and details check out the [Bill of Materials concept page]({{< ref "docs/concepts/bom" >}}).
 
-## Accessing the Bill of Materials
-The BOM can be accessed via `pack` on the Node.js `paketo-demo-app` from the [Getting Started tutorial](/docs#nodejs):
 
+## Access the Bill of Materials on a Sample Node Application
+
+You can access the bill of materials in the metadata of any app image created with Paketo Buildpacks. However, at this time the only buildpacks that support the **full set** of BOM fields defined in the [concepts docs]({{< ref "docs/concepts/bom" >}}) are Node.js and Java. There is an ongoing effort build out the full BOM in all of our buildpacks, and the related documentation will be updated as new buildpacks are included.
+
+1. Follow the [Node.JS Getting Started tutorial](/docs#nodejs) to build the Node.js `paketo-demo-app` image.
+
+2. Use the pack CLI to inspect the app image metadata. Use the `--bom` flag to specifically retrieve the bill of materials metadata.
 {{< code/copyable >}}
 pack inspect-image paketo-demo-app --bom
 {{< /code/copyable >}}
-
 {{< code/output >}}
-
 {
   "remote": null,
   "local": [
     {
       "name": "Node Engine",
       "metadata": {
-        "cpe": "cpe:2.3:a:nodejs:node.js:16.6.1:*:*:*:*:*:*:*",
+        "checksum": {
+          "algorithm": "SHA-256",
+          "hash": "a50ee095f936b51fffe5c032a7377a156723145c1ab0291ccc882f04719f1b54"
+        },
+        "cpe": "cpe:2.3:a:nodejs:node.js:16.7.0:*:*:*:*:*:*:*",
         "deprecation-date": "2024-04-30T00:00:00Z",
         "licenses": [
           "0BSD",
@@ -38,19 +46,21 @@ pack inspect-image paketo-demo-app --bom
           "MIT-0",
           "Unicode-TOU"
         ],
-        "purl": "pkg:generic/node@v16.6.1?checksum=36467b8a4e7e3bacc2f4f1709a83b0506429d1999bc461e5e363bc91d3437c09&download_url=https://nodejs.org/dist/v16.6.1/node-v16.6.1.tar.gz",
-        "sha256": "41d0fdadd629aff419b1e284fb12397ccfa100e15eaab3b39e57f61ed381d90c",
+        "purl": "pkg:generic/node@v16.7.0?checksum=0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&download_url=https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz",
         "source": {
-          "sha256": "36467b8a4e7e3bacc2f4f1709a83b0506429d1999bc461e5e363bc91d3437c09",
-          "uri": "https://nodejs.org/dist/v16.6.1/node-v16.6.1.tar.gz"
+          "checksum": {
+            "algorithm": "SHA-256",
+            "hash": "0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690"
+          },
+          "uri": "https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz"
         },
         "stacks": [
           "io.buildpacks.stacks.bionic"
         ],
-        "uri": "https://deps.paketo.io/node/node_v16.6.1_linux_x64_bionic_41d0fdad.tgz",
-        "version": "16.6.1"
+        "uri": "https://deps.paketo.io/node/node_v16.7.0_linux_x64_bionic_a50ee095.tgz",
+        "version": "16.7.0"
       },
-      "buildpack": {
+      "buildpacks": {
         "id": "paketo-buildpacks/node-engine",
         "version": "1.2.3"
       }
@@ -60,9 +70,9 @@ pack inspect-image paketo-demo-app --bom
       "metadata": {
         "build": true
       },
-      "buildpack": {
+      "buildpacks": {
         "id": "paketo-buildpacks/npm-install",
-        "version": "1.2.3"
+        "version": "0.4.0"
       }
     },
     {
@@ -70,9 +80,9 @@ pack inspect-image paketo-demo-app --bom
       "metadata": {
         "launch": true
       },
-      "buildpack": {
+      "buildpacks": {
         "id": "paketo-buildpacks/npm-install",
-        "version": "1.2.3"
+        "version": "0.4.0"
       }
     },
     {
@@ -84,7 +94,7 @@ pack inspect-image paketo-demo-app --bom
         "purl": "pkg:npm/httpdispatcher@2.1.2",
         "version": "2.1.2"
       },
-      "buildpack": {
+      "buildpacks": {
         "id": "paketo-buildpacks/node-module-bom",
         "version": "1.2.3"
       }
@@ -98,12 +108,12 @@ pack inspect-image paketo-demo-app --bom
         "purl": "pkg:npm/mime-types@2.1.32",
         "version": "2.1.32"
       },
-      "buildpack": {
+      "buildpacks": {
         "id": "paketo-buildpacks/node-module-bom",
         "version": "1.2.3"
       }
     },
-    {
+     {
       "name": "mime-db",
       "metadata": {
         "licenses": [
@@ -112,7 +122,7 @@ pack inspect-image paketo-demo-app --bom
         "purl": "pkg:npm/mime-db@1.49.0",
         "version": "1.49.0"
       },
-      "buildpack": {
+      "buildpacks": {
         "id": "paketo-buildpacks/node-module-bom",
         "version": "1.2.3"
       }
@@ -126,7 +136,7 @@ pack inspect-image paketo-demo-app --bom
         "purl": "pkg:npm/leftpad@0.0.1",
         "version": "0.0.1"
       },
-      "buildpack": {
+      "buildpacks": {
         "id": "paketo-buildpacks/node-module-bom",
         "version": "1.2.3"
       }
@@ -134,65 +144,12 @@ pack inspect-image paketo-demo-app --bom
   ]
 }
 {{< /code/output >}}
+*Note: It may be easier to read and parse the output if you pipe the output to [jq](https://stedolan.github.io/jq/). The full command would then be:*
+{{< code/copyable >}}
+pack inspect-image paketo-demo-app --bom | jq -r
+{{< /code/copyable >}}
 
-If you are looking for definitions of the fields you can check out the [Bill of Materials concept page]({{< ref "docs/concepts/bom" >}}). 
+## See Build-Time Dependencies in the BOM
+The bill of materials from the example above contains entries for every dependency on the final application image. However, it does not contain any dependencies that may have been used in the image build process but are not on the final image.
 
-## What does it include?
-Looking at the full BOM output can be overwhelming due to the large number of dependencies and information about each one. Let's break down what's actually present in the bill of materials in the Node.js `paketo-demo-app`.
-
-It is worth a quick note that the only buildpacks that support the full set of BOM fields at this time are [Node.js]({{< ref "docs/reference/nodejs-reference" >}}) and [Java]({{< ref "docs/reference/java-reference" >}}). However, there is an ongoing effort to try and ensure that all of our buildpacks have the richest BOM possible.
-### Buildpack Entries
-```plain
-"name": "Node Engine",
-"metadata": {
-  "cpe": "cpe:2.3:a:nodejs:node.js:16.6.1:*:*:*:*:*:*:*",
-  "deprecation-date": "2024-04-30T00:00:00Z",
-  "licenses": [
-    "0BSD",
-    "Apache-2.0",
-    "Artistic-2.0",
-    "BSD-2-Clause",
-    "BSD-3-Clause",
-    "BSD-3-Clause-Clear",
-    "CC0-1.0",
-    "MIT",
-    "MIT-0",
-    "Unicode-TOU"
-  ],
-  "purl": "pkg:generic/node@v16.6.1?checksum=36467b8a4e7e3bacc2f4f1709a83b0506429d1999bc461e5e363bc91d3437c09&download_url=https://nodejs.org/dist/v16.6.1/node-v16.6.1.tar.gz",
-  "sha256": "41d0fdadd629aff419b1e284fb12397ccfa100e15eaab3b39e57f61ed381d90c",
-  "source": {
-    "sha256": "36467b8a4e7e3bacc2f4f1709a83b0506429d1999bc461e5e363bc91d3437c09",
-    "uri": "https://nodejs.org/dist/v16.6.1/node-v16.6.1.tar.gz"
-  },
-  "stacks": [
-    "io.buildpacks.stacks.bionic"
-  ],
-  "uri": "https://deps.paketo.io/node/node_v16.6.1_linux_x64_bionic_41d0fdad.tgz",
-  "version": "16.6.1"
-},
-"buildpack": {
-  "id": "paketo-buildpacks/node-engine",
-  "version": "1.2.3"
-}
-```
-Above is an example of what the BOM entry for a dependency that is directly provided by a Paketo buildpack looks like, in this case its the `node-engine` dependency installed by the `Node Engine` buildpack. Other examples of these type of entries would be those that appear when the `Yarn` buildpack is used, or the `JVM` buildpack is used. These entries are built by the buildpacks using metadata obtained during the contstruction of the dependency itself.
-
-### Language Module Entries
-```plain
-{
-  "name": "httpdispatcher",
-  "metadata": {
-    "licenses": [
-      "MIT"
-    ],
-    "purl": "pkg:npm/httpdispatcher@2.1.2",
-    "version": "2.1.2"
-  },
-  "buildpack": {
-    "id": "paketo-buildpacks/node-module-bom",
-    "version": "1.2.3"
-  }
-}
-```
-Above is an example of what the BOM entry for a language module dependency looks like, in this case it's a `node module` entry installed as a part of the `NPM Install` buildpack. These BOM entries include things such as Node Modules and Maven Packages. They are constructed from metadata gleaned from these packages after they have been installed on the container.
+Bill of materials entries are collected for build-time dependencies, but there is currently no way to access these entries. This will be available in future iterations of the bill of materials.
