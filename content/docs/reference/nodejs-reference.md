@@ -205,8 +205,8 @@ When the buildpack finds one of these, it will consider that the app's entrypoin
 app image's start command to `node <entrypoint filename>`.
 
 ##  Bill of Materials
-The Node.js buildpack supports the full [bill of materials]({{< ref "docs/concepts/bom" >}}). For Node applications, the bill of materials contains:
-* metadata about the buildpack installed dependencies such as `node engine`, as well as
-* entries for each `node module` that is either vendored in or installed via NPM or Yarn.
+The Node.js buildpack supports the full [bill of materials]({{< ref "docs/concepts/bom" >}}) (BOM). For Node applications, the BOM contains:
+* [buildpack entries]({{< ref "docs/concepts/bom#buildpack-entries" >}}) for dependencies such as `node engine`,
+* [language module entries]({{< ref "docs/concepts/bom#language-module-entries" >}}) for each `node module` that is either vendored in or installed via NPM or Yarn.
 
-The `node module` bill of materials entries provide a full picture of the packages on the final app image. The `purl` field is especially helpful to locate where on the NPM Registry a module came from. Check out the  [Accessing the Bill of Materials docs]({{< ref "docs/howto/bom" >}}) for more information about how to retrieve the bill of materials for your Node.js app image.
+The `node module` BOM entries provide a full picture of the packages on the final app image. The `purl` field is especially helpful to locate where on the NPM Registry a module came from. Check out the [Access the Bill of Materials docs]({{< ref "docs/howto/bom" >}}) for more information about how to retrieve the BOM for your Node.js app image.

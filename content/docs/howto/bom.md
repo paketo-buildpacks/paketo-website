@@ -4,18 +4,21 @@ weight: 345
 menu:
   main:
     parent: "howto"
+    name: "Access the Bill of Materials"
 ---
 
-This documentation explains how to access the bill of materials on an app image built using Paketo buildpacks. For more in-depth field definitions and details check out the [Bill of Materials concept page]({{< ref "docs/concepts/bom" >}}).
+This documentation explains how to access the bill of materials (BOM) on an app image built using Paketo buildpacks. For more in-depth field definitions and details check out the [bill of materials concept page][concepts/bom].
 
 
 ## Access the Bill of Materials on a Sample Node Application
 
-You can access the bill of materials in the metadata of any app image created with Paketo Buildpacks. However, at this time the only buildpacks that support the **full set** of BOM fields defined in the [concepts docs]({{< ref "docs/concepts/bom" >}}) are Node.js and Java. There is an ongoing effort build out the full BOM in all of our buildpacks, and the related documentation will be updated as new buildpacks are included.
+You can access the bill of materials in the metadata of any app image created with Paketo Buildpacks.
 
-1. Follow the [Node.JS Getting Started tutorial](/docs#nodejs) to build the Node.js `paketo-demo-app` image.
+**Note:** At this time, only the Node.js and Java buildpacks support for the full set of bill of materials fields described in the [BOM concepts docs][concepts/bom]. There is an ongoing effort to build out the full BOM in all of our buildpacks, and the related documentation will be updated as new buildpacks are included.
 
-2. Use the pack CLI to inspect the app image metadata. Use the `--bom` flag to specifically retrieve the bill of materials metadata.
+1. Follow the [Node.JS Getting Started tutorial][tutorial/nodejs] to build the Node.js `paketo-demo-app` image.
+
+2. Use the pack CLI to inspect the app image metadata. Use the `--bom` flag to retrieve the bill of materials metadata.
 {{< code/copyable >}}
 pack inspect-image paketo-demo-app --bom
 {{< /code/copyable >}}
@@ -142,12 +145,13 @@ pack inspect-image paketo-demo-app --bom
   ]
 }
 {{< /code/output >}}
-*Note: It may be easier to read and parse the output if you pipe the output to [jq](https://stedolan.github.io/jq/). The full command would then be:*
-{{< code/copyable >}}
-pack inspect-image paketo-demo-app --bom | jq -r
-{{< /code/copyable >}}
 
 ## See Build-Time Dependencies in the BOM
 The bill of materials from the example above contains entries for every dependency on the final application image. However, it does not contain any dependencies that may have been used in the image build process but are not on the final image.
 
 Bill of materials entries are collected for build-time dependencies, but there is currently no way to access these entries. This will be available in future iterations of the bill of materials.
+
+<!-- References -->
+
+[concepts/bom]:{{< ref "docs/concepts/bom" >}}
+[tutorial/nodejs]:{{< ref "docs#nodejs" >}}
