@@ -4,8 +4,6 @@ weight: 440
 menu:
   main:
     parent: "concepts"
-aliases:
-  - /docs/bom/
 ---
 
 In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. Once you have the final app image, you can access metadata about all of the dependencies present in the final app image with the bill of materials. At this time, the Node.js and Java buildpack families are the only buildpacks that have support for the full set of bill of materials fields.

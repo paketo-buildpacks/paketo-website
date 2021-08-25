@@ -4,8 +4,6 @@ weight: 345
 menu:
   main:
     parent: "howto"
-aliases:
-  - /docs/tutorials/how-to-bom/
 ---
 
 This documentation explains how to access the bill of materials on an app image built using Paketo buildpacks. For more in-depth field definitions and details check out the [Bill of Materials concept page]({{< ref "docs/concepts/bom" >}}).
