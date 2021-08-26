@@ -44,32 +44,34 @@ The licenses in the Paketo BOM are obtained from license scanning tools. Due to 
 
 ## What is the output format of a Paketo BOM?
 
-Buildpacks provide a bill of materials by adding metadata to each app image they build. Paketo Buildpacks generate `JSON` metadata with the following schema:
+Buildpacks provide a bill of materials by adding metadata to the app image when it is built. Paketo buildpacks add entries to the bill of materials as `JSON` objects with the following schema:
 
 ```plain
-"name": <name of the dependency>,
-"metadata": {
-  "checksum": {
-    "algorithm": <CycloneDX-supported hash algorithm ('MD5', 'SHA-1', 'SHA-256', 'SHA-384', 'SHA-512', 'SHA3-256', 'SHA3-384', 'SHA3-512', 'BLAKE2b-256', 'BLAKE2b-384', 'BLAKE2b-512', 'BLAKE3')>,
-    "hash": <hash of the dependency>
-  },
-  "cpe": <dependency/version specific common platform enumeration>,
-  "deprecation-date": <date of package deprecation>,
-  "licenses": <[list of all licensesn SPDX format]>,
-  "purl": <dependency/version specific package URL>,
-  "source": {
+{
+  "name": <name of the dependency>,
+  "metadata": {
     "checksum": {
       "algorithm": <CycloneDX-supported hash algorithm ('MD5', 'SHA-1', 'SHA-256', 'SHA-384', 'SHA-512', 'SHA3-256', 'SHA3-384', 'SHA3-512', 'BLAKE2b-256', 'BLAKE2b-384', 'BLAKE2b-512', 'BLAKE3')>,
       "hash": <hash of the dependency>
     },
-    "uri": <package upstream source URI>
-  },
-  "uri": "<compiled package URI>",
-  "version": <dependency version>
+    "cpe": <dependency/version specific common platform enumeration>,
+    "deprecation-date": <date of package deprecation>,
+    "licenses": <[list of all licensesn SPDX format]>,
+    "purl": <dependency/version specific package URL>,
+    "source": {
+      "checksum": {
+        "algorithm": <CycloneDX-supported hash algorithm ('MD5', 'SHA-1', 'SHA-256', 'SHA-384', 'SHA-512', 'SHA3-256', 'SHA3-384', 'SHA3-512', 'BLAKE2b-256', 'BLAKE2b-384', 'BLAKE2b-512', 'BLAKE3')>,
+        "hash": <hash of the dependency>
+      },
+      "uri": <package upstream source URI>
+    },
+    "uri": "<compiled package URI>",
+    "version": <dependency version>
+  }
 }
 ```
 
-Paketo Buildpacks generate two main types of BOM entries: _buildpack entries_ and _language module entries_. To help explain these types, we will use as an example the bill of materials of the app in the [How to Access the Bill of Materials guide][howto/access-bom].
+Paketo buildpacks generate two main types of BOM entries: _buildpack entries_ and _language module entries_. To help explain these types, we will use as an example the bill of materials of the app in the [How to Access the Bill of Materials guide][howto/access-bom].
 
 ### Buildpack Entries
 
@@ -79,44 +81,46 @@ A buildpack entry contains the version, vulnerability identifiers (CPE and pURL)
 
 Below, see an example of the buildpack entry for the Node.js runtime installed by the [Paketo Node Engine buildpack][bp/node-engine].
 
-```plain
-"name": "Node Engine",
-"metadata": {
-  "checksum": {
-    "algorithm": "SHA-256",
-    "hash": "a50ee095f936b51fffe5c032a7377a156723145c1ab0291ccc882f04719f1b54"
-  },
-  "cpe": "cpe:2.3:a:nodejs:node.js:16.7.0:*:*:*:*:*:*:*",
-  "deprecation-date": "2024-04-30T00:00:00Z",
-  "licenses": [
-    "0BSD",
-    "Apache-2.0",
-    "Artistic-2.0",
-    "BSD-2-Clause",
-    "BSD-3-Clause",
-    "BSD-3-Clause-Clear",
-    "CC0-1.0",
-    "MIT",
-    "MIT-0",
-    "Unicode-TOU"
-  ],
-  "purl": "pkg:generic/node@v16.7.0?checksum=0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&download_url=https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz",
-  "source": {
+```json
+{
+  "name": "Node Engine",
+  "metadata": {
     "checksum": {
       "algorithm": "SHA-256",
-      "hash": "0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690"
+      "hash": "a50ee095f936b51fffe5c032a7377a156723145c1ab0291ccc882f04719f1b54"
     },
-    "uri": "https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz"
+    "cpe": "cpe:2.3:a:nodejs:node.js:16.7.0:*:*:*:*:*:*:*",
+    "deprecation-date": "2024-04-30T00:00:00Z",
+    "licenses": [
+      "0BSD",
+      "Apache-2.0",
+      "Artistic-2.0",
+      "BSD-2-Clause",
+      "BSD-3-Clause",
+      "BSD-3-Clause-Clear",
+      "CC0-1.0",
+      "MIT",
+      "MIT-0",
+      "Unicode-TOU"
+    ],
+    "purl": "pkg:generic/node@v16.7.0?checksum=0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&download_url=https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz",
+    "source": {
+      "checksum": {
+        "algorithm": "SHA-256",
+        "hash": "0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690"
+      },
+      "uri": "https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz"
+    },
+    "stacks": [
+      "io.buildpacks.stacks.bionic"
+    ],
+    "uri": "https://deps.paketo.io/node/node_v16.7.0_linux_x64_bionic_a50ee095.tgz",
+    "version": "16.7.0"
   },
-  "stacks": [
-    "io.buildpacks.stacks.bionic"
-  ],
-  "uri": "https://deps.paketo.io/node/node_v16.7.0_linux_x64_bionic_a50ee095.tgz",
-  "version": "16.7.0"
-},
-"buildpacks": {
-  "id": "paketo-buildpacks/node-engine",
-  "version": "1.2.3"
+  "buildpacks": {
+    "id": "paketo-buildpacks/node-engine",
+    "version": "1.2.3"
+  }
 }
 ```
 
@@ -127,7 +131,7 @@ A language module entry contains the version, vulnerability identifiers (pURL), 
 
 Below, see an example of a language module entry for a Node.js module.
 
-```plain
+```json
 {
   "name": "httpdispatcher",
   "metadata": {
@@ -144,7 +148,7 @@ Below, see an example of a language module entry for a Node.js module.
 }
 ```
 ##
-**Note:** The metadata that Paketo Buildpacks generate does not conform to a specific industry-standard bill of materials format. Some industry-standard formats include [CycloneDX][format/cyclonedx] and [SPDX][format/spdx], both of which can be presented as `JSON` files. While the Paketo bill of materials doesn't currently conform to one of these formats, the goal is to eventually support both.
+**Note:** The metadata that Paketo buildpacks generate does not conform to a specific industry-standard bill of materials format. Some industry-standard formats include [CycloneDX][format/cyclonedx] and [SPDX][format/spdx], both of which can be presented as `JSON` files. While the Paketo bill of materials doesn't currently conform to one of these formats, the goal is to eventually support both.
 
 <!-- References -->
 [CPE]:{{< relref "#cpes" >}}
