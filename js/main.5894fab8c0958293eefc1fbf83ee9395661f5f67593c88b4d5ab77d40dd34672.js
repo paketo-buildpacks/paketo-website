@@ -160,8 +160,8 @@
               }
             }
             function _defineProperties(target, props) {
-              for (var i2 = 0; i2 < props.length; i2++) {
-                var descriptor = props[i2];
+              for (var i = 0; i < props.length; i++) {
+                var descriptor = props[i];
                 descriptor.enumerable = descriptor.enumerable || false;
                 descriptor.configurable = true;
                 if ("value" in descriptor)
@@ -376,17 +376,17 @@
                 }
               };
             }
-            function delegate(elements2, selector, type, callback, useCapture) {
-              if (typeof elements2.addEventListener === "function") {
+            function delegate(elements, selector, type, callback, useCapture) {
+              if (typeof elements.addEventListener === "function") {
                 return _delegate.apply(null, arguments);
               }
               if (typeof type === "function") {
                 return _delegate.bind(null, document).apply(null, arguments);
               }
-              if (typeof elements2 === "string") {
-                elements2 = document.querySelectorAll(elements2);
+              if (typeof elements === "string") {
+                elements = document.querySelectorAll(elements);
               }
-              return Array.prototype.map.call(elements2, function(element) {
+              return Array.prototype.map.call(elements, function(element) {
                 return _delegate(element, selector, type, callback, useCapture);
               });
             }
@@ -521,10 +521,10 @@
               emit: function(name) {
                 var data = [].slice.call(arguments, 1);
                 var evtArr = ((this.e || (this.e = {}))[name] || []).slice();
-                var i2 = 0;
+                var i = 0;
                 var len = evtArr.length;
-                for (i2; i2 < len; i2++) {
-                  evtArr[i2].fn.apply(evtArr[i2].ctx, data);
+                for (i; i < len; i++) {
+                  evtArr[i].fn.apply(evtArr[i].ctx, data);
                 }
                 return this;
               },
@@ -533,9 +533,9 @@
                 var evts = e[name];
                 var liveEvents = [];
                 if (evts && callback) {
-                  for (var i2 = 0, len = evts.length; i2 < len; i2++) {
-                    if (evts[i2].fn !== callback && evts[i2].fn._ !== callback)
-                      liveEvents.push(evts[i2]);
+                  for (var i = 0, len = evts.length; i < len; i++) {
+                    if (evts[i].fn !== callback && evts[i].fn._ !== callback)
+                      liveEvents.push(evts[i]);
                   }
                 }
                 liveEvents.length ? e[name] = liveEvents : delete e[name];
@@ -695,7 +695,7 @@
       new code_snippet_default({element});
     }
     for (const element of document.querySelectorAll(".docs-menu__parent")) {
-      new docs_sidebar_default({element: elements[i]});
+      new docs_sidebar_default({element});
     }
   });
 })();
