@@ -13,11 +13,11 @@ In the Getting Started tutorial, you used the Paketo builder to build a Node.js 
 A bill of materials (BOM) is an industry standard mechanism of surfacing metadata about dependencies in images or applications. The metadata consists of various fields such as:
 * `version`: the dependency version
 * `uri`: URI to compiled dependency
-* `checksum`: hash algorithm (such as SHA256) and value of the dependency
+* `checksum`: a CycloneDX-supported hash algorithm (such as SHA-256) and value of the dependency
 * [`licenses`][LICENSE]: dependency licenses in SPDX format
 * `deprecation-date`: dependency deprecation date
 * `source uri`: URI to upstream source dependency
-* `source checksum`: hash algorithm and value of the upstream source dependency
+* `source checksum`: a CycloneDX-supported hash algorithm and value of the upstream source dependency
 * [`CPE`][CPE]: common platform enumeration
 * [`pURL`][PURL]: package URL
 
@@ -46,7 +46,28 @@ The licenses in the Paketo BOM are obtained from license scanning tools. Due to 
 
 Buildpacks provide a bill of materials by adding metadata to each app image they build. Paketo Buildpacks generate `JSON` metadata with the following schema:
 
-TODO: Add the schema here
+```plain
+"name": <name of the dependency>,
+"metadata": {
+  "checksum": {
+    "algorithm": <CycloneDX-supported hash algorithm ('MD5', 'SHA-1', 'SHA-256', 'SHA-384', 'SHA-512', 'SHA3-256', 'SHA3-384', 'SHA3-512', 'BLAKE2b-256', 'BLAKE2b-384', 'BLAKE2b-512', 'BLAKE3')>,
+    "hash": <hash of the dependency>
+  },
+  "cpe": <dependency/version specific common platform enumeration>,
+  "deprecation-date": <date of package deprecation>,
+  "licenses": <[list of all licensesn SPDX format]>,
+  "purl": <dependency/version specific package URL>,
+  "source": {
+    "checksum": {
+      "algorithm": <CycloneDX-supported hash algorithm ('MD5', 'SHA-1', 'SHA-256', 'SHA-384', 'SHA-512', 'SHA3-256', 'SHA3-384', 'SHA3-512', 'BLAKE2b-256', 'BLAKE2b-384', 'BLAKE2b-512', 'BLAKE3')>,
+      "hash": <hash of the dependency>
+    },
+    "uri": <package upstream source URI>
+  },
+  "uri": "<compiled package URI>",
+  "version": <dependency version>
+}
+```
 
 Paketo Buildpacks generate two main types of BOM entries: _buildpack entries_ and _language module entries_. To help explain these types, we will use as an example the bill of materials of the app in the [How to Access the Bill of Materials guide][howto/access-bom].
 
