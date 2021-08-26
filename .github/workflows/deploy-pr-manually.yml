@@ -1,22 +1,25 @@
-name: Deploy PR to Firebase
+name: Manually Deploy PR to Firebase
 
 on:
-  pull_request:
-    types:
-    - opened
-    - synchronize
+  workflow_dispatch:
+    inputs:
+      prNumber:
+        description: 'Number of the PR to deploy'
+        required: true
 
 jobs:
-  deploy-dev-pr:
+  deploy-fork-pr:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/setup-node@v2
       with:
         node-version: 16
         check-latest: true
-    - uses: actions/checkout@v1
-      with:
-        submodules: false
+
+    - name: Checkout PR
+      run: |
+        gh pr checkout ${{ github.event.inputs.prNumber }}
+        echo "GITHUB_HEAD_REF=pr-${{ github.event.inputs.prNumber }}" >> $GITHUB_ENV
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
@@ -51,6 +54,7 @@ jobs:
     - name: Comment with Staging Link
       uses: marocchino/sticky-pull-request-comment@v2
       with:
+        number: ${{ github.event.inputs.prNumber }}
         message: |
           PR deployed to: ${{ steps.deploy.outputs.staging_url }}
           Expires at: ${{ steps.deploy.outputs.expiration }}
