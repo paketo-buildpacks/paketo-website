@@ -8,7 +8,7 @@ on:
         required: true
 
 jobs:
-  deploy-fork-pr:
+  manually-deploy-pr:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/setup-node@v2
@@ -20,6 +20,8 @@ jobs:
       run: |
         gh pr checkout ${{ github.event.inputs.prNumber }}
         echo "GITHUB_HEAD_REF=pr-${{ github.event.inputs.prNumber }}" >> $GITHUB_ENV
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
