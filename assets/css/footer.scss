@@ -2,7 +2,7 @@
 
 .footer {
     background: $dark-background-color;
-    padding-left: 28px;
+    padding-left: unquote('max(28px, env(safe-area-inset-left))');
     padding-top: 34px;
     padding-bottom: 34px;
     padding-right: 30px;
