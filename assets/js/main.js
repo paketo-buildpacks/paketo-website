@@ -18,6 +18,6 @@ window.addEventListener('load', (event) => {
   }
 
   for (const element of document.querySelectorAll('.docs-menu__parent')) {
-    new DocsSidebarExpander({ element: elements[i] })
+    new DocsSidebarExpander({ element: element })
   }
 });
