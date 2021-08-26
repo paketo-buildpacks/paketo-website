@@ -1,9 +1,9 @@
 
 .homepage-section {
-    padding-left: 28px;
+    padding-left: unquote('max(28px, env(safe-area-inset-left))');
     padding-top: 34px;
     padding-bottom: 34px;
-    padding-right: 30px;
+    padding-right: unquote('max(30px, env(safe-area-inset-right))');
     display: flex;
     flex-direction: column;
     align-items: center;

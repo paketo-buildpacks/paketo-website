@@ -1,5 +1,8 @@
 .community-action-section {
-    padding: 13px 10px 13px 10px;
+    padding-top: 13px;
+    padding-right: unquote('max(10px, env(safe-area-inset-right))');
+    padding-bottom: 13px;
+    padding-left: unquote('max(10px, env(safe-area-inset-left))');
 }
 
 .community-action-container {

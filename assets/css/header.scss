@@ -20,8 +20,8 @@ header {
     background: $dark-background-color;
     box-shadow: none;
     height: 120px;
-    padding-top: 20px;
-    padding-left: 28px;
+    padding-top: unquote('max(20px, env(safe-area-inset-top))');
+    padding-left: unquote('max(28px, env(safe-area-inset-left))');
     padding-bottom: 34px;
     padding-right: 30px;
     display: flex;
