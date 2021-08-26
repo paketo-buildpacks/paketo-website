@@ -17,9 +17,7 @@ window.addEventListener('load', (event) => {
     new CodeSnippet({ element: element });
   }
 
-  var elements = document.getElementsByClassName("docs-menu__parent");
-
-  for (var i = 0; i < elements.length; i++) {
+  for (const element of document.querySelectorAll('.docs-menu__parent')) {
     new DocsSidebarExpander({ element: elements[i] })
   }
 });
