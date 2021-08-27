@@ -192,6 +192,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </li>
     
                 
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/bom/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Access the Bill of Materials</span>
+            </a>
+        </li>
+    
+                
             </ul>
         </li>
     
@@ -239,6 +249,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <a href="/docs/concepts/stacks/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Stacks</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/bom/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Bill of Materials</span>
             </a>
         </li>
     
@@ -421,6 +441,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#start-command">Start Command</a></li>
       </ul>
     </li>
+    <li><a href="#bill-of-materials">Bill of Materials</a></li>
   </ul>
 </nav>
 </div>
@@ -712,6 +733,16 @@ files, in this order:</p>
 </ul>
 <p>When the buildpack finds one of these, it will consider that the app&rsquo;s entrypoint and set the
 app image&rsquo;s start command to <code>node &lt;entrypoint filename&gt;</code>.</p>
+<h2 id="bill-of-materials" class="markup-heading">
+    <a class="markup-heading__link" href="#bill-of-materials">
+        Bill of Materials
+    </a>
+</h2><p>The Node.js buildpack supports the full <a href="https://paketo.io/docs/concepts/bom/">bill of materials</a> (BOM). For Node applications, the BOM contains:</p>
+<ul>
+<li><a href="https://paketo.io/docs/concepts/bom/#buildpack-entries">buildpack entries</a> for dependencies such as <code>node engine</code>,</li>
+<li><a href="https://paketo.io/docs/concepts/bom/#language-module-entries">language module entries</a> for each <code>node module</code> that is either vendored in or installed via NPM or Yarn.</li>
+</ul>
+<p>The <code>node module</code> BOM entries provide a full picture of the packages on the final app image. The <code>purl</code> field is especially helpful to locate where on the NPM Registry a module came from. Check out the <a href="https://paketo.io/docs/howto/bom/">Access the Bill of Materials guide</a> for more information about how to retrieve the BOM for your Node.js app image.</p>
 
             </div>
             
@@ -724,7 +755,7 @@ app image&rsquo;s start command to <code>node &lt;entrypoint filename&gt;</code>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> August 26, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> August 27, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -760,6 +791,7 @@ app image&rsquo;s start command to <code>node &lt;entrypoint filename&gt;</code>
         <li><a href="#start-command">Start Command</a></li>
       </ul>
     </li>
+    <li><a href="#bill-of-materials">Bill of Materials</a></li>
   </ul>
 </nav>
 </div>

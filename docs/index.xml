@@ -115,6 +115,17 @@ This tutorial&amp;rsquo;s goal is to take you from nothing to a buildpack that p
     </item>
     
     <item>
+      <title>How to Access the Bill of Materials</title>
+      <link>https://paketo.io/docs/howto/bom/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/howto/bom/</guid>
+      <description>This documentation explains how to access the bill of materials (BOM) on an app image built using Paketo buildpacks. For more in-depth field definitions and details check out the bill of materials concept page.
+Access the Bill of Materials on a Sample Node Application  You can access the bill of materials in the metadata of any app image created with Paketo buildpacks.
+  Follow the Node.js Getting Started tutorial to build the Node.</description>
+    </item>
+    
+    <item>
       <title>Buildpacks</title>
       <link>https://paketo.io/docs/concepts/buildpacks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -144,6 +155,16 @@ What is a builder?  A builder is an image that contains three components:
       <description>In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. One of the core pieces to Buildpacks and Builders are Stack Images. Stacks provide the buildpack lifecycle with build-time and run-time environments in the form of images.
 What is a stack?  A stack consists of two images:
  build image: the environment in which your app is built run image: the OS layer for your app image  For more information about stacks, see buildpacks.</description>
+    </item>
+    
+    <item>
+      <title>Bill of Materials</title>
+      <link>https://paketo.io/docs/concepts/bom/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/concepts/bom/</guid>
+      <description>In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. Once you have an app image, you can access metadata about all of the dependencies present in the final app image using the bill of materials.
+What is the bill of materials?  A bill of materials (BOM) is an industry standard mechanism of surfacing metadata about dependencies in images or applications. The metadata consists of various fields such as:</description>
     </item>
     
     <item>
