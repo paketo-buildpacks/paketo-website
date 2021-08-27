@@ -6,6 +6,12 @@ on:
     - opened
     - synchronize
 
+  workflow_dispatch:
+    inputs:
+      prNumber:
+        description: 'Number of the PR to deploy'
+        required: true
+
 jobs:
   deploy-dev-pr:
     runs-on: ubuntu-latest
