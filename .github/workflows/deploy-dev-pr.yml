@@ -14,9 +14,17 @@ jobs:
       with:
         node-version: 16
         check-latest: true
+
     - uses: actions/checkout@v2.3.4
       with:
         submodules: false
+
+    - name: Checkout PR
+      if: ${{ github.event_name == "workflow_dispatch" }}
+      run: |
+        gh pr checkout ${{ github.event.inputs.prNumber }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAKETO_BOT_GITHUB_TOKEN }}
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
@@ -48,6 +56,7 @@ jobs:
         script: |
             const deploy = require('./deploy.js')
             await deploy({ expires: '72h' })
+
     - name: Comment with Staging Link
       uses: marocchino/sticky-pull-request-comment@v2
       with:
