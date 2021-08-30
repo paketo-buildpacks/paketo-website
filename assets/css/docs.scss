@@ -19,17 +19,12 @@
         width: 380px;
         padding-top: 50px;
         padding-left: 50px;
+        padding-right: 20px;
     }
 }
 
-.algolia-autocomplete {
-    width: 220px;
-
-    @media (min-width: $mobile-breakpoint) {
-        width: 300px;
-    }
-}
 .algolia-autocomplete__search-bar {
+    width: 220px;
     height: 45px;
     padding-left: 40px;
     border: 2px solid $light-background-color;
@@ -41,6 +36,10 @@
     font-size: 18px;
     font-weight: 500;
     line-height: 24px;
+
+    @media (min-width: $mobile-breakpoint) {
+        width: 305px;
+    }
 }
 
 .algolia-autocomplete__search-bar:focus, .algolia-autocomplete__search-bar:focus {
@@ -121,7 +120,11 @@
 
 .docs-menu__expander-button {
     position: absolute;
-    right: 30px;
+    right: 20px;
+
+    @media (min-width: $header-hamburger-breakpoint) {
+        right: 0px;
+    }
 }
 
 .expander-button {
