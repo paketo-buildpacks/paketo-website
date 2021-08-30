@@ -22,7 +22,39 @@
     }
 }
 
+.algolia-autocomplete {
+    width: 220px;
+
+    @media (min-width: $mobile-breakpoint) {
+        width: 300px;
+    }
+}
+.algolia-autocomplete__search-bar {
+    height: 45px;
+    padding-left: 40px;
+    border: 2px solid $light-background-color;
+    border-radius: 8px;
+    background-image: url('/v2/images/icon-search.svg');
+    background-position: 5px 6px;
+    background-repeat: no-repeat;
+    font-family: $default-font-family;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.algolia-autocomplete__search-bar:focus, .algolia-autocomplete__search-bar:focus {
+    outline: none;
+    border-color: $link-text-dark-background-color;
+}
+
+.algolia-autocomplete .ds-dropdown-menu {
+    width: 80vw;
+    min-width: 256px !important; // Necessary because algolia element comes with styling
+}
+
 .docs-menu {
+    padding-top: 30px;
     padding-bottom: 50px;
 }
 
