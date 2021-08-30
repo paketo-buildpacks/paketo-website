@@ -1,5 +1,6 @@
 @import 'common/reset';
 @import 'variables'; // Needs to be before imports that use these variables
+@import 'plugins/docsearch';
 
 @import 'docs';
 @import 'footer';

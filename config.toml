@@ -113,6 +113,10 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
 [params.docs_menu]
   title = "PAKETO DOCS"
 
+[params.docs_search]
+  api_key = "bf2d426728685665ceaf22fac947f10f"
+  index = "paketo"
+
 [menu]
   [[ menu.main ]]
     identifier = "reference"
