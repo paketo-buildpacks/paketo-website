@@ -55,6 +55,10 @@ jobs:
     - name: Build
       run: hugo
 
+    - name: Switch Back to Original Branch  # Built contents in /public is unaffected
+      if: github.event_name == 'workflow_dispatch'
+      run: git checkout -
+
     - name: Deploy
       id: deploy
       uses: actions/github-script@v4
