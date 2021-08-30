@@ -2,11 +2,16 @@ import Navigation from './components/navigation.js';
 import OpenExternalLinksInNewTab from './components/links.js';
 import CodeSnippet from './components/code_snippet.js';
 import DocsSidebarExpander from './components/docs-sidebar.js'
+import Search from './components/search.js';
 
 window.addEventListener('load', (event) => {
   new Navigation({
     element: document.querySelector('#navigation'),
   });
+
+  Search({
+    element: document.querySelector('#docs-search'),
+  })
 
   OpenExternalLinksInNewTab({
     links: document.getElementsByTagName('a'),

@@ -38,5 +38,5 @@
     </div>
 </footer>
 
-{{- $js := resources.Get "js/main.js" | js.Build | fingerprint -}}
+{{- $js := resources.Get "js/main.js" | js.Build ( dict "inject" ( slice "js/shims.js" ) ) | fingerprint -}}
 <script src="{{ $js.RelPermalink }}"></script>
