@@ -5,16 +5,11 @@ module.exports = async ({ expires } = { expires: '1h'}) => {
 
   var channelID = "pr";
 
-  console.log(`channelID: ${channelID}`);
-  console.log(`GH_HEAD_REF: ${GITHUB_HEAD_REF}`);
-
   if (GITHUB_HEAD_REF) {
     channelID = GITHUB_HEAD_REF.split('/')
       .filter(item => item.trim().length > 0)
       .pop();
   }
-
-  console.log(`channelID: ${channelID}`);
 
   firebase
     .hosting
