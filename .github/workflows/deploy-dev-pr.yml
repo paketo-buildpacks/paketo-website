@@ -67,7 +67,17 @@ jobs:
             const deploy = require('./deploy.js')
             await deploy({ expires: '72h' })
 
+    - name: Comment with Staging Link (by PR number)
+      if: github.event_name == 'workflow_dispatch'
+      uses: marocchino/sticky-pull-request-comment@v2
+      with:
+        number: ${{ github.event.inputs.prNumber }}
+        message: |
+          PR deployed to: ${{ steps.deploy.outputs.staging_url }}
+          Expires at: ${{ steps.deploy.outputs.expiration }}
+
     - name: Comment with Staging Link
+      if: github.event_name != 'workflow_dispatch'
       uses: marocchino/sticky-pull-request-comment@v2
       with:
         message: |
