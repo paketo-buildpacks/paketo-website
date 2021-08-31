@@ -196,7 +196,7 @@
     width: 100%;
     position: relative;
     padding-left: 31px;
-    padding-right: 40px;
+    padding-right: unquote('max(40px, env(safe-area-inset-right))');
     padding-top: 40px;
     padding-bottom: 40px;
 
@@ -204,7 +204,6 @@
         width: calc(100% - 380px);
         display: flex;
         flex-direction: row;
-        padding-right: 30px;
     }
 
     @media (min-width: $mobile-breakpoint) {
