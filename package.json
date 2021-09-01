@@ -2,7 +2,7 @@
   "dependencies": {
     "clipboard": "zenorocha/clipboard.js#44df750",
     "docsearch.js": "^2.6.3",
-    "firebase-tools": "^9.16.6"
+    "firebase-tools": "^9.17.0"
   },
   "scripts": {
     "deploy": "node -e \"const deploy = require('./deploy.js'); deploy({expires: '8h'});\""
