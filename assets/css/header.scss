@@ -1,4 +1,4 @@
-.paketo-logo {
+.paketo-logo, .paketo-p-logo {
     width: -moz-fit-content;
     width: fit-content;
     margin-bottom: 46px;
@@ -13,6 +13,14 @@
 
     @media (min-width: $mobile-breakpoint) {
         width: 245px;
+    }
+}
+
+.paketo-p-logo__image {
+    width: 32px;
+
+    @media (min-width: $mobile-breakpoint) {
+        width: auto;
     }
 }
 
