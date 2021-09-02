@@ -184,9 +184,41 @@ a:hover {
     width: 14%;
 }
 
+.background-layers {
+    align-self: flex-end;
+    height: 1px;
+    margin-right: -25px;
+
+    @media (min-width: $mobile-breakpoint) {
+        display: none;
+    }
+}
+
+.background-layers__image {
+    width: 200px;
+    height: 347px;
+}
+
 .how-it-works-animation {
     width: 100%;
 }
 .how-it-works-animation__animation {
     padding-bottom: 21px;
+}
+
+.background-p {
+    align-self: center;
+    height: 1px;
+    margin-left: -30px;
+    margin-right: -30px;
+
+    @media (min-width: $mobile-breakpoint) {
+        display: none;
+    }
+}
+
+.background-p__image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
 }
