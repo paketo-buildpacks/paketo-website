@@ -187,16 +187,25 @@ a:hover {
 .background-layers {
     align-self: flex-end;
     height: 1px;
-    margin-right: -25px;
+    margin-right: -20px;
 
     @media (min-width: $mobile-breakpoint) {
-        display: none;
+        align-self: flex-end;
+        width: 60%;
+        margin-top: -50px;
+        height: 50px;
     }
 }
 
 .background-layers__image {
     width: 200px;
     height: 347px;
+
+    @media (min-width: $mobile-breakpoint) {
+        width: 100%;
+        height: auto;
+        max-width: 750px;
+    }
 }
 
 .how-it-works-animation {
@@ -206,19 +215,24 @@ a:hover {
     padding-bottom: 21px;
 }
 
-.background-p {
+.background-large-p {
     align-self: center;
     height: 1px;
     margin-left: -30px;
     margin-right: -30px;
 
     @media (min-width: $mobile-breakpoint) {
-        display: none;
+        margin-top: -20px;
+        height: 20px;
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 100%;
+        padding-left: 50%;
     }
 }
 
-.background-p__image {
+.background-large-p__image {
     width: 100%;
-    max-width: 500px;
     height: auto;
+    max-width: 545px;
 }
