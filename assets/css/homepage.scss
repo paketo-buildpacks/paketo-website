@@ -185,6 +185,7 @@ a:hover {
 }
 
 .background-layers {
+    pointer-events: none;
     align-self: flex-end;
     height: 1px;
     margin-right: -20px;
@@ -216,6 +217,7 @@ a:hover {
 }
 
 .background-large-p {
+    pointer-events: none;
     align-self: center;
     height: 1px;
     margin-left: -30px;
