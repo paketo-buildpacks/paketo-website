@@ -11,17 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>How to Access the Bill of Materials - Paketo Buildpacks</title>
+<title>How to Build Python Apps with Paketo Buildpacks - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1 viewport-fit=cover">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="How to Access the Bill of Materials">
-<meta name="og:url" content="https://paketo.io/docs/howto/bom/">
+<meta name="og:title" content="How to Build Python Apps with Paketo Buildpacks">
+<meta name="og:url" content="https://paketo.io/docs/howto/python/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
-<meta name="twitter:url" content="https://paketo.io/docs/howto/bom/" />
+<meta name="twitter:url" content="https://paketo.io/docs/howto/python/" />
 <meta name="twitter:card" content="" />
 
 
@@ -169,7 +169,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/python/" class="docs-menu__item docs-menu__link ">
+            <a href="/docs/howto/python/" class="docs-menu__item docs-menu__link docs-menu__link--active">
                 
                 <span>Python</span>
             </a>
@@ -209,7 +209,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/bom/" class="docs-menu__item docs-menu__link docs-menu__link--active">
+            <a href="/docs/howto/bom/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Access the Bill of Materials</span>
             </a>
@@ -421,7 +421,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="docs-body">
         <div class="docs-body__container">
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/bom.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/python.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -430,175 +430,158 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">How to Access the Bill of Materials</h1>
+            <h1 id="title">How to Build Python Apps with Paketo Buildpacks</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#access-the-bill-of-materials-on-a-sample-node-application">Access the Bill of Materials on a Sample Node Application</a></li>
-    <li><a href="#see-build-time-dependencies-in-the-bom">See Build-Time Dependencies in the BOM</a></li>
+    <li><a href="#build-a-sample-app">Build a Sample App</a></li>
+    <li><a href="#install-a-specific-cpython-version">Install a Specific CPython Version</a></li>
+    <li><a href="#use-a-package-manager">Use a Package Manager</a>
+      <ul>
+        <li><a href="#pip">Pip</a></li>
+        <li><a href="#pipenv">Pipenv</a></li>
+        <li><a href="#miniconda">Miniconda</a></li>
+      </ul>
+    </li>
+    <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
+    <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
+    <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
+    <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
   </ul>
 </nav>
 </div>
 
             <div class="docs-body__markdown">
-                <p>This documentation explains how to access the bill of materials (BOM) on an app image built using Paketo buildpacks. For more in-depth field definitions and details check out the <a href="https://paketo.io/docs/concepts/bom/">bill of materials concept page</a>.</p>
-<h2 id="access-the-bill-of-materials-on-a-sample-node-application" class="markup-heading">
-    <a class="markup-heading__link" href="#access-the-bill-of-materials-on-a-sample-node-application">
-        Access the Bill of Materials on a Sample Node Application
+                <p>This documentation explains how to use the
+<a href="https://github.com/paketo-buildpacks/python">Paketo Python Buildpack</a>
+to build applications for several common use-cases. For more in-depth
+description of the buildpack&rsquo;s behavior and configuration see the  Paketo Python Buildpack
+Reference <a href="/docs/reference/python-reference">documentation</a>.</p>
+<h2 id="build-a-sample-app" class="markup-heading">
+    <a class="markup-heading__link" href="#build-a-sample-app">
+        Build a Sample App
     </a>
-</h2><p>You can access the bill of materials in the metadata of any app image created with Paketo buildpacks.</p>
-<ol>
-<li>
-<p>Follow the <a href="https://paketo.io/docs/#nodejs">Node.js Getting Started tutorial</a> to build the Node.js <code>paketo-demo-app</code> image.</p>
-</li>
-<li>
-<p>Use the pack CLI retrieve the bill of materials metadata.
-<pre class="copyable"><code class="copyable__code">pack inspect-image paketo-demo-app --bom
+</h2><p>To build a sample app locally with this buildpack using the pack CLI, run</p>
+<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/python
+cd samples/python/pip
+pack build my-app --buildpack gcr.io/paketo-buildpacks/python \
+  --builder paketobuildpacks/builder:base
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<div class="code-output">
-    <div class="btn code-output__btn code-output__btn">View Output</div>
-    <pre class="code-output__output-container">
-        <code class="code-output__output">{
-  &#34;remote&#34;: null,
-  &#34;local&#34;: [
-    {
-      &#34;name&#34;: &#34;Node Engine&#34;,
-      &#34;metadata&#34;: {
-        &#34;checksum&#34;: {
-          &#34;algorithm&#34;: &#34;SHA-256&#34;,
-          &#34;hash&#34;: &#34;a50ee095f936b51fffe5c032a7377a156723145c1ab0291ccc882f04719f1b54&#34;
-        },
-        &#34;cpe&#34;: &#34;cpe:2.3:a:nodejs:node.js:16.7.0:*:*:*:*:*:*:*&#34;,
-        &#34;deprecation-date&#34;: &#34;2024-04-30T00:00:00Z&#34;,
-        &#34;licenses&#34;: [
-          &#34;0BSD&#34;,
-          &#34;Apache-2.0&#34;,
-          &#34;Artistic-2.0&#34;,
-          &#34;BSD-2-Clause&#34;,
-          &#34;BSD-3-Clause&#34;,
-          &#34;BSD-3-Clause-Clear&#34;,
-          &#34;CC0-1.0&#34;,
-          &#34;MIT&#34;,
-          &#34;MIT-0&#34;,
-          &#34;Unicode-TOU&#34;
-        ],
-        &#34;purl&#34;: &#34;pkg:generic/node@v16.7.0?checksum=0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&amp;download_url=https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz&#34;,
-        &#34;source&#34;: {
-          &#34;checksum&#34;: {
-            &#34;algorithm&#34;: &#34;SHA-256&#34;,
-            &#34;hash&#34;: &#34;0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&#34;
-          },
-          &#34;uri&#34;: &#34;https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz&#34;
-        },
-        &#34;stacks&#34;: [
-          &#34;io.buildpacks.stacks.bionic&#34;
-        ],
-        &#34;uri&#34;: &#34;https://deps.paketo.io/node/node_v16.7.0_linux_x64_bionic_a50ee095.tgz&#34;,
-        &#34;version&#34;: &#34;16.7.0&#34;
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/node-engine&#34;,
-        &#34;version&#34;: &#34;1.2.3&#34;
-      }
-    },
-    {
-      &#34;name&#34;: &#34;node_modules&#34;,
-      &#34;metadata&#34;: {
-        &#34;build&#34;: true
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/npm-install&#34;,
-        &#34;version&#34;: &#34;0.4.0&#34;
-      }
-    },
-    {
-      &#34;name&#34;: &#34;node_modules&#34;,
-      &#34;metadata&#34;: {
-        &#34;launch&#34;: true
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/npm-install&#34;,
-        &#34;version&#34;: &#34;0.4.0&#34;
-      }
-    },
-    {
-      &#34;name&#34;: &#34;httpdispatcher&#34;,
-      &#34;metadata&#34;: {
-        &#34;licenses&#34;: [
-          &#34;MIT&#34;
-        ],
-        &#34;purl&#34;: &#34;pkg:npm/httpdispatcher@2.1.2&#34;,
-        &#34;version&#34;: &#34;2.1.2&#34;
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/node-module-bom&#34;,
-        &#34;version&#34;: &#34;1.2.3&#34;
-      }
-    },
-    {
-      &#34;name&#34;: &#34;mime-types&#34;,
-      &#34;metadata&#34;: {
-        &#34;licenses&#34;: [
-          &#34;MIT&#34;
-        ],
-        &#34;purl&#34;: &#34;pkg:npm/mime-types@2.1.32&#34;,
-        &#34;version&#34;: &#34;2.1.32&#34;
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/node-module-bom&#34;,
-        &#34;version&#34;: &#34;1.2.3&#34;
-      }
-    },
-     {
-      &#34;name&#34;: &#34;mime-db&#34;,
-      &#34;metadata&#34;: {
-        &#34;licenses&#34;: [
-          &#34;MIT&#34;
-        ],
-        &#34;purl&#34;: &#34;pkg:npm/mime-db@1.49.0&#34;,
-        &#34;version&#34;: &#34;1.49.0&#34;
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/node-module-bom&#34;,
-        &#34;version&#34;: &#34;1.2.3&#34;
-      }
-    },
-    {
-      &#34;name&#34;: &#34;leftpad&#34;,
-      &#34;metadata&#34;: {
-        &#34;licenses&#34;: [
-          &#34;BSD-3-Clause&#34;
-        ],
-        &#34;purl&#34;: &#34;pkg:npm/leftpad@0.0.1&#34;,
-        &#34;version&#34;: &#34;0.0.1&#34;
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/node-module-bom&#34;,
-        &#34;version&#34;: &#34;1.2.3&#34;
-      }
-    }
-  ]
-}
-</code>
-    </pre>
-</div>
-</p>
-</li>
-</ol>
-<p><strong>Note:</strong> At this time, only the Node.js and Java buildpacks support for the full set of bill of materials fields described in the <a href="https://paketo.io/docs/concepts/bom/">BOM concepts docs</a>. There is an ongoing effort to build out the full BOM in all of our buildpacks, and the related documentation will be updated as new buildpacks are included.</p>
-<h2 id="see-build-time-dependencies-in-the-bom" class="markup-heading">
-    <a class="markup-heading__link" href="#see-build-time-dependencies-in-the-bom">
-        See Build-Time Dependencies in the BOM
+<p>See
+<a href="https://github.com/paketo-buildpacks/python/tree/main/samples/python/pip">samples</a>
+for how to run the app.</p>
+<p>The Paketo Python Buildpack supports several popular configurations for Python apps.</p>
+<h2 id="install-a-specific-cpython-version" class="markup-heading">
+    <a class="markup-heading__link" href="#install-a-specific-cpython-version">
+        Install a Specific CPython Version
     </a>
-</h2><p>The bill of materials from the example above contains entries for every dependency on the final application image. However, it does not contain any dependencies that may have been used in the image build process but are not on the final image.</p>
-<p>Bill of materials entries are collected for build-time dependencies, but there is currently no way to access these entries. This will be available in future iterations of the bill of materials.</p>
-<!-- raw HTML omitted -->
+</h2><p>The Python Cloud Native Buildpack allows you to specify a version of CPython 3
+(reference implementation of Python 3) to use during deployment. This version
+can be specified via the <code>BP_CPYTHON_VERSION</code> environment variable during
+build. When specifying a version of CPython, you must choose a version that is
+available within the buildpack. The supported versions can be found in the
+<a href="https://github.com/paketo-buildpacks/python/releases/latest">release notes</a>.</p>
+<p>You may set <code>BP_CPYTHON_VERSION</code> using a platfrom-specific option, or using
+a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor"><code>project.toml</code></a>
+as shown in the following example:</p>
+<pre class="copyable"><code class="copyable__code">[build]
+  [[build.env]]
+    name = &#34;BP_CPYTHON_VERSION&#34;
+    value = &#34;3.6.*&#34; # any valid semver constraints (e.g. 3.6.7, 3.*) are acceptable
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>Specifying a version of CPython is not required. In the case this is not
+specified, the buildpack will provide the default version, which can be seen in
+the <code>buildpack.toml</code> file.</p>
+<h2 id="use-a-package-manager" class="markup-heading">
+    <a class="markup-heading__link" href="#use-a-package-manager">
+        Use a Package Manager
+    </a>
+</h2><p>With the Python CNB, there are three options available for package management
+depending on your application:</p>
+<ul>
+<li>Using <a href="https://pip.pypa.io">Pip</a></li>
+<li>Using <a href="https://pypi.org/project/pipenv">Pipenv</a></li>
+<li>Using <a href="https://docs.conda.io/en/latest/miniconda.html">Miniconda</a></li>
+</ul>
+<p>You can find specific information for each option below.</p>
+<h3 id="pip" class="markup-heading">
+    <a class="markup-heading__link" href="#pip">
+        Pip
+    </a>
+</h3><p>Pip is a popular option for managing third-party application dependencies for
+Python apps.  Including a valid <code>requirements.txt</code> file at the root of your app
+source code triggers the pip installation process by the buildpack. The
+buildpack will install the application packages and make it available to the
+app.</p>
+<p>The buidpack allows you to configure the version of Pip to be used in the
+installation process. You can set this using the <code>$BP_PIP_VERSION</code> variable
+during build. When specifying a version of Pip, you must choose a version that
+is available within the buildpack. The supported versions can be found in the
+<a href="https://github.com/paketo-buildpacks/python/releases/latest">release notes</a>.</p>
+<h3 id="pipenv" class="markup-heading">
+    <a class="markup-heading__link" href="#pipenv">
+        Pipenv
+    </a>
+</h3><p>Pipenv is another common option for managing dependencies. Including a valid
+<code>Pipfile</code> file at the root of your app source code triggers the pipenv
+installation process by the buildpack. The buildpack will install the
+application packages and make it available to the app.</p>
+<p>The buidpack allows you to configure the version of Pipenv to be used in the
+installation process. You can set this using the <code>$BP_PIPENV_VERSION</code> variable
+during build. When specifying a version of Pipenv, you must choose a version
+that is available within the buildpack. The supported versions can be found in the
+<a href="https://github.com/paketo-buildpacks/python/releases/latest">release notes</a>.</p>
+<p>The buildpack also takes into consideration the Python version requirement
+specified by <code>Pipfile.lock</code>, but <code>BP_CPYTHON_VERSION</code> takes precedence over
+this as discussed in <a href="#install-a-specific-cpython-version">this section above</a>.</p>
+<h3 id="miniconda" class="markup-heading">
+    <a class="markup-heading__link" href="#miniconda">
+        Miniconda
+    </a>
+</h3><p>Miniconda is a package management and environment management system supported
+by the Python buildpack. The builpack will create or update a conda environment
+from an <code>environment.yml</code> file or a <code>package-list.txt</code> file located at the root
+of the app source code.</p>
+<p>Configuring a version of miniconda is not supported.</p>
+<h2 id="install-a-custom-ca-certificate" class="markup-heading">
+    <a class="markup-heading__link" href="#install-a-custom-ca-certificate">
+        Install a Custom CA Certificate
+    </a>
+</h2><p>Python Buildpack users can provide their own CA certificates and have them
+included in the container root truststore at build-time and runtime by
+following the instructions outlined in the <a href="https://paketo.io/docs/reference/configuration/#ca-certificates">CA
+Certificates</a>
+section of our configuration docs.</p>
+<h2 id="override-the-start-process-set-by-the-buildpack" class="markup-heading">
+    <a class="markup-heading__link" href="#override-the-start-process-set-by-the-buildpack">
+        Override the Start Process Set by the Buildpack
+    </a>
+</h2><p>Python Buildpack users can set custom start processes for their app image by
+following the instructions in the
+<a href="https://paketo.io/docs/reference/configuration/#procfiles">Procfiles</a> section
+of our configuration docs.</p>
+<h2 id="set-environment-variables-for-app-launch-time" class="markup-heading">
+    <a class="markup-heading__link" href="#set-environment-variables-for-app-launch-time">
+        Set Environment Variables for App Launch Time
+    </a>
+</h2><p>Python Buildpack users can embed launch-time environment variables in their
+app image by following the documentation for the <a href="https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md">Environment Variables
+Buildpack</a>.</p>
+<h2 id="add-custom-labels-to-the-app-image" class="markup-heading">
+    <a class="markup-heading__link" href="#add-custom-labels-to-the-app-image">
+        Add Custom Labels to the App Image
+    </a>
+</h2><p>Python Buildpack users can add labels to their app image by following the
+instructions in the <a href="https://paketo.io/docs/reference/configuration/#applying-custom-labels">Applying Custom
+Labels</a>
+section of our configuration docs.</p>
 
             </div>
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/bom.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/python.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -613,8 +596,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#access-the-bill-of-materials-on-a-sample-node-application">Access the Bill of Materials on a Sample Node Application</a></li>
-    <li><a href="#see-build-time-dependencies-in-the-bom">See Build-Time Dependencies in the BOM</a></li>
+    <li><a href="#build-a-sample-app">Build a Sample App</a></li>
+    <li><a href="#install-a-specific-cpython-version">Install a Specific CPython Version</a></li>
+    <li><a href="#use-a-package-manager">Use a Package Manager</a>
+      <ul>
+        <li><a href="#pip">Pip</a></li>
+        <li><a href="#pipenv">Pipenv</a></li>
+        <li><a href="#miniconda">Miniconda</a></li>
+      </ul>
+    </li>
+    <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
+    <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
+    <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
+    <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
   </ul>
 </nav>
 </div>

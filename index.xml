@@ -83,6 +83,17 @@ git clone https://github.com/paketo-buildpacks/samples cd samples/nodejs/npm pac
     </item>
     
     <item>
+      <title>How to Build Python Apps with Paketo Buildpacks</title>
+      <link>https://paketo.io/docs/howto/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/howto/python/</guid>
+      <description>This documentation explains how to use the Paketo Python Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Python Buildpack Reference documentation.
+Build a Sample App  To build a sample app locally with this buildpack using the pack CLI, run
+git clone https://github.com/paketo-buildpacks/python cd samples/python/pip pack build my-app --buildpack gcr.io/paketo-buildpacks/python \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
+    </item>
+    
+    <item>
       <title>How to Build PHP Apps with Paketo Buildpacks</title>
       <link>https://paketo.io/docs/howto/php/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -240,6 +251,17 @@ Buildpack-Set Environment Variables  The Node.js buildpack sets a number of envi
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo PHP Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo PHP Buildpack How To documentation.
 Supported Dependencies  The PHP Paketo Buildpack supports several versions of PHP. For more details on the specific versions supported in a given buildpack version, see the release notes.
 Buildpack-Set Environment Variables  The PHP CNB sets a number of environment variables during the build and launch phases of the app lifecycle.</description>
+    </item>
+    
+    <item>
+      <title>Python Buildpack Reference</title>
+      <link>https://paketo.io/docs/reference/python-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/reference/python-reference/</guid>
+      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Python Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Python Buildpack How To documentation.
+Supported Dependencies  The Python buildpack supports several versions of CPython, Pip and Pipenv. For more details on the specific versions supported in a given buildpack version, see the release notes.
+Buildpack-Set Environment Variables  The Python Buildpack sets a few environment variables during the build and launch phases of the app lifecycle.</description>
     </item>
     
     <item>

@@ -11,17 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>How to Access the Bill of Materials - Paketo Buildpacks</title>
+<title>Python Buildpack Reference - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1 viewport-fit=cover">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="How to Access the Bill of Materials">
-<meta name="og:url" content="https://paketo.io/docs/howto/bom/">
+<meta name="og:title" content="Python Buildpack Reference">
+<meta name="og:url" content="https://paketo.io/docs/reference/python-reference/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
-<meta name="twitter:url" content="https://paketo.io/docs/howto/bom/" />
+<meta name="twitter:url" content="https://paketo.io/docs/reference/python-reference/" />
 <meta name="twitter:card" content="" />
 
 
@@ -103,18 +103,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
         <li class="docs-menu__item docs-menu__parent">
             
-            <div class="docs-menu__section-header docs-menu__section-header--opened">
+            <div class="docs-menu__section-header ">
                 
                 <span>How To</span>
-                <button class="expander-button expander-button--opened docs-menu__expander-button">
-                    <svg class="expander-button__triangle expander-button__triangle--opened" width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button class="expander-button  docs-menu__expander-button">
+                    <svg class="expander-button__triangle " width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.140625" width="37.0257" height="34" rx="8" fill="#888888" fill-opacity="0.25"/>
                         <path d="M28.1604 13H8.14648L18.6538 22.5L28.1604 13Z" fill="#FEFCFC"/>
                         </svg>
                 </button>
             </div>
             
-            <ul class="docs-menu__children-list docs-menu__children-list--opened">
+            <ul class="docs-menu__children-list ">
                 
                     
     
@@ -209,7 +209,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/bom/" class="docs-menu__item docs-menu__link docs-menu__link--active">
+            <a href="/docs/howto/bom/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Access the Bill of Materials</span>
             </a>
@@ -285,18 +285,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
         <li class="docs-menu__item docs-menu__parent">
             
-            <div class="docs-menu__section-header ">
+            <div class="docs-menu__section-header docs-menu__section-header--opened">
                 
                 <span>Reference</span>
-                <button class="expander-button  docs-menu__expander-button">
-                    <svg class="expander-button__triangle " width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button class="expander-button expander-button--opened docs-menu__expander-button">
+                    <svg class="expander-button__triangle expander-button__triangle--opened" width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.140625" width="37.0257" height="34" rx="8" fill="#888888" fill-opacity="0.25"/>
                         <path d="M28.1604 13H8.14648L18.6538 22.5L28.1604 13Z" fill="#FEFCFC"/>
                         </svg>
                 </button>
             </div>
             
-            <ul class="docs-menu__children-list ">
+            <ul class="docs-menu__children-list docs-menu__children-list--opened">
                 
                     
     
@@ -391,7 +391,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/reference/python-reference/" class="docs-menu__item docs-menu__link ">
+            <a href="/docs/reference/python-reference/" class="docs-menu__item docs-menu__link docs-menu__link--active">
                 
                 <span>Python Buildpack</span>
             </a>
@@ -421,7 +421,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="docs-body">
         <div class="docs-body__container">
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/bom.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/python-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -430,175 +430,81 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">How to Access the Bill of Materials</h1>
+            <h1 id="title">Python Buildpack Reference</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#access-the-bill-of-materials-on-a-sample-node-application">Access the Bill of Materials on a Sample Node Application</a></li>
-    <li><a href="#see-build-time-dependencies-in-the-bom">See Build-Time Dependencies in the BOM</a></li>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+      <ul>
+        <li><a href="#pythonpath">PYTHONPATH</a></li>
+        <li><a href="#pythonuserbase">PYTHONUSERBASE</a></li>
+        <li><a href="#start-command">Start Command</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div>
 
             <div class="docs-body__markdown">
-                <p>This documentation explains how to access the bill of materials (BOM) on an app image built using Paketo buildpacks. For more in-depth field definitions and details check out the <a href="https://paketo.io/docs/concepts/bom/">bill of materials concept page</a>.</p>
-<h2 id="access-the-bill-of-materials-on-a-sample-node-application" class="markup-heading">
-    <a class="markup-heading__link" href="#access-the-bill-of-materials-on-a-sample-node-application">
-        Access the Bill of Materials on a Sample Node Application
+                <p>This reference documentation offers an in-depth description of the behavior
+and configuration options of the
+<a href="https://github.com/paketo-buildpacks/python">Paketo Python Buildpack</a>. For explanations of how to use the buildpack for several common use-cases, see
+the  Paketo Python Buildpack  How To <a href="/docs/howto/python">documentation</a>.</p>
+<h2 id="supported-dependencies" class="markup-heading">
+    <a class="markup-heading__link" href="#supported-dependencies">
+        Supported Dependencies
     </a>
-</h2><p>You can access the bill of materials in the metadata of any app image created with Paketo buildpacks.</p>
-<ol>
-<li>
-<p>Follow the <a href="https://paketo.io/docs/#nodejs">Node.js Getting Started tutorial</a> to build the Node.js <code>paketo-demo-app</code> image.</p>
-</li>
-<li>
-<p>Use the pack CLI retrieve the bill of materials metadata.
-<pre class="copyable"><code class="copyable__code">pack inspect-image paketo-demo-app --bom
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
-<div class="code-output">
-    <div class="btn code-output__btn code-output__btn">View Output</div>
-    <pre class="code-output__output-container">
-        <code class="code-output__output">{
-  &#34;remote&#34;: null,
-  &#34;local&#34;: [
-    {
-      &#34;name&#34;: &#34;Node Engine&#34;,
-      &#34;metadata&#34;: {
-        &#34;checksum&#34;: {
-          &#34;algorithm&#34;: &#34;SHA-256&#34;,
-          &#34;hash&#34;: &#34;a50ee095f936b51fffe5c032a7377a156723145c1ab0291ccc882f04719f1b54&#34;
-        },
-        &#34;cpe&#34;: &#34;cpe:2.3:a:nodejs:node.js:16.7.0:*:*:*:*:*:*:*&#34;,
-        &#34;deprecation-date&#34;: &#34;2024-04-30T00:00:00Z&#34;,
-        &#34;licenses&#34;: [
-          &#34;0BSD&#34;,
-          &#34;Apache-2.0&#34;,
-          &#34;Artistic-2.0&#34;,
-          &#34;BSD-2-Clause&#34;,
-          &#34;BSD-3-Clause&#34;,
-          &#34;BSD-3-Clause-Clear&#34;,
-          &#34;CC0-1.0&#34;,
-          &#34;MIT&#34;,
-          &#34;MIT-0&#34;,
-          &#34;Unicode-TOU&#34;
-        ],
-        &#34;purl&#34;: &#34;pkg:generic/node@v16.7.0?checksum=0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&amp;download_url=https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz&#34;,
-        &#34;source&#34;: {
-          &#34;checksum&#34;: {
-            &#34;algorithm&#34;: &#34;SHA-256&#34;,
-            &#34;hash&#34;: &#34;0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&#34;
-          },
-          &#34;uri&#34;: &#34;https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz&#34;
-        },
-        &#34;stacks&#34;: [
-          &#34;io.buildpacks.stacks.bionic&#34;
-        ],
-        &#34;uri&#34;: &#34;https://deps.paketo.io/node/node_v16.7.0_linux_x64_bionic_a50ee095.tgz&#34;,
-        &#34;version&#34;: &#34;16.7.0&#34;
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/node-engine&#34;,
-        &#34;version&#34;: &#34;1.2.3&#34;
-      }
-    },
-    {
-      &#34;name&#34;: &#34;node_modules&#34;,
-      &#34;metadata&#34;: {
-        &#34;build&#34;: true
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/npm-install&#34;,
-        &#34;version&#34;: &#34;0.4.0&#34;
-      }
-    },
-    {
-      &#34;name&#34;: &#34;node_modules&#34;,
-      &#34;metadata&#34;: {
-        &#34;launch&#34;: true
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/npm-install&#34;,
-        &#34;version&#34;: &#34;0.4.0&#34;
-      }
-    },
-    {
-      &#34;name&#34;: &#34;httpdispatcher&#34;,
-      &#34;metadata&#34;: {
-        &#34;licenses&#34;: [
-          &#34;MIT&#34;
-        ],
-        &#34;purl&#34;: &#34;pkg:npm/httpdispatcher@2.1.2&#34;,
-        &#34;version&#34;: &#34;2.1.2&#34;
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/node-module-bom&#34;,
-        &#34;version&#34;: &#34;1.2.3&#34;
-      }
-    },
-    {
-      &#34;name&#34;: &#34;mime-types&#34;,
-      &#34;metadata&#34;: {
-        &#34;licenses&#34;: [
-          &#34;MIT&#34;
-        ],
-        &#34;purl&#34;: &#34;pkg:npm/mime-types@2.1.32&#34;,
-        &#34;version&#34;: &#34;2.1.32&#34;
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/node-module-bom&#34;,
-        &#34;version&#34;: &#34;1.2.3&#34;
-      }
-    },
-     {
-      &#34;name&#34;: &#34;mime-db&#34;,
-      &#34;metadata&#34;: {
-        &#34;licenses&#34;: [
-          &#34;MIT&#34;
-        ],
-        &#34;purl&#34;: &#34;pkg:npm/mime-db@1.49.0&#34;,
-        &#34;version&#34;: &#34;1.49.0&#34;
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/node-module-bom&#34;,
-        &#34;version&#34;: &#34;1.2.3&#34;
-      }
-    },
-    {
-      &#34;name&#34;: &#34;leftpad&#34;,
-      &#34;metadata&#34;: {
-        &#34;licenses&#34;: [
-          &#34;BSD-3-Clause&#34;
-        ],
-        &#34;purl&#34;: &#34;pkg:npm/leftpad@0.0.1&#34;,
-        &#34;version&#34;: &#34;0.0.1&#34;
-      },
-      &#34;buildpacks&#34;: {
-        &#34;id&#34;: &#34;paketo-buildpacks/node-module-bom&#34;,
-        &#34;version&#34;: &#34;1.2.3&#34;
-      }
-    }
-  ]
-}
-</code>
-    </pre>
-</div>
-</p>
-</li>
-</ol>
-<p><strong>Note:</strong> At this time, only the Node.js and Java buildpacks support for the full set of bill of materials fields described in the <a href="https://paketo.io/docs/concepts/bom/">BOM concepts docs</a>. There is an ongoing effort to build out the full BOM in all of our buildpacks, and the related documentation will be updated as new buildpacks are included.</p>
-<h2 id="see-build-time-dependencies-in-the-bom" class="markup-heading">
-    <a class="markup-heading__link" href="#see-build-time-dependencies-in-the-bom">
-        See Build-Time Dependencies in the BOM
+</h2><p>The Python buildpack supports several versions of CPython, Pip and Pipenv.  For
+more details on the specific versions supported in a given buildpack version,
+see the <a href="https://github.com/paketo-buildpacks/python/releases">release notes</a>.</p>
+<h2 id="buildpack-set-environment-variables" class="markup-heading">
+    <a class="markup-heading__link" href="#buildpack-set-environment-variables">
+        Buildpack-Set Environment Variables
     </a>
-</h2><p>The bill of materials from the example above contains entries for every dependency on the final application image. However, it does not contain any dependencies that may have been used in the image build process but are not on the final image.</p>
-<p>Bill of materials entries are collected for build-time dependencies, but there is currently no way to access these entries. This will be available in future iterations of the bill of materials.</p>
-<!-- raw HTML omitted -->
+</h2><p>The Python Buildpack sets a few environment variables during the <code>build</code> and
+<code>launch</code> phases of the app lifecycle. The sections below describe each
+environment variable and its impact on your app.</p>
+<h3 id="pythonpath" class="markup-heading">
+    <a class="markup-heading__link" href="#pythonpath">
+        PYTHONPATH
+    </a>
+</h3><p>The <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH"><code>PYTHONPATH</code></a>
+environment variable is used to add directories where python will look for
+modules.</p>
+<ul>
+<li>Set by: <code>CPython</code>, <code>Pip</code> and <code>Pipenv</code></li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+</ul>
+<p>The CPython buildpack sets the <code>PYTHONPATH</code> value to its installation location,
+and the Pip, Pipenv buildpack prepends their <code>site-packages</code> location to it.
+<code>site-packages</code> is the target directory where packages are installed to.</p>
+<h3 id="pythonuserbase" class="markup-heading">
+    <a class="markup-heading__link" href="#pythonuserbase">
+        PYTHONUSERBASE
+    </a>
+</h3><p>The <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUSERBASE"><code>PYTHONUSERBASE</code></a>
+environment variable is used to set the user base directory.</p>
+<ul>
+<li>Set by: <code>Pip Install</code> and <code>Pipenv Install</code></li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+</ul>
+<p>The value of <code>PYTHONUSERBASE</code> is set to the location where these buildapcks install
+the application packages so that it can be consumed by the app source code.</p>
+<h3 id="start-command" class="markup-heading">
+    <a class="markup-heading__link" href="#start-command">
+        Start Command
+    </a>
+</h3><p>The Python Buildpack sets the default start command <code>python</code>. This starts the Python
+REPL (read-eval-print loop) at launch.</p>
+<p>The Python Buildpack comes with support for
+<a href="https://paketo.io/docs/reference/configuration/#procfiles"><code>Procfile</code></a>
+that lets users set custom start commands easily.</p>
 
             </div>
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/bom.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/python-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -613,8 +519,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#access-the-bill-of-materials-on-a-sample-node-application">Access the Bill of Materials on a Sample Node Application</a></li>
-    <li><a href="#see-build-time-dependencies-in-the-bom">See Build-Time Dependencies in the BOM</a></li>
+    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+      <ul>
+        <li><a href="#pythonpath">PYTHONPATH</a></li>
+        <li><a href="#pythonuserbase">PYTHONUSERBASE</a></li>
+        <li><a href="#start-command">Start Command</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div>
