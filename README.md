@@ -9,11 +9,14 @@ Website for [Paketo Buildpacks](https://paketo.io)
 * [npm](https://docs.npmjs.com/getting-started/configuring-your-local-environment)
 
 ### Navigating this repo
-* HTML lives in [`layouts/`](/layouts), including [partials](https://gohugo.io/templates/partials/)
-(HTML snippets) that are reused across multiple pages.
+* HTML lives in [`layouts/`](/layouts), including
+  [partials](https://gohugo.io/templates/partials/) (HTML snippets) that are
+  reused across multiple pages.
 * SCSS and Javascript live in [`assets/`](/assets)
-* Much of the CSS uses the [BEM naming methodology](https://en.bem.info/methodology/quick-start/). 
-* Hugo automatically compiles our SCSS into CSS. This is a feature of Hugo extended version.
+* Much of the CSS uses the [BEM naming
+  methodology](https://en.bem.info/methodology/quick-start/).
+* Hugo automatically compiles our SCSS into CSS. This is a feature of Hugo
+  extended version.
 
 ### Serving Locally
 
@@ -24,10 +27,20 @@ npm install && hugo server
 
 ### Contributing
 * Open a PR against the main branch if you'd like to make a change to the site.
-    * When you open a PR, a GHA will automatically deploy an ephemeral version of the staging site based on your PR branch. Check the GHA logs for the URL to your staging site
-* Join website-related conversations in the [#website](https://paketobuildpacks.slack.com/archives/C0229DVMFM5) channel of the [Paketo slack instance](https://slack.paketo.io/).
+    * If you're already a
+      [Contributor](https://github.com/orgs/paketo-buildpacks/teams/content-contributors),
+      when you open a PR, a GHA will automatically deploy an ephemeral version
+      of the staging site based on your PR branch. A bot will comment on your
+      PR with the staging URL.
+    * Otherwise, a
+      [Maintainer](https://github.com/orgs/paketo-buildpacks/teams/content-maintainers)
+      can manually trigger a deploy of your PR. A bot will comment with the
+      staging URL.
+* Join website-related conversations in the
+  [#website](https://paketobuildpacks.slack.com/archives/C0229DVMFM5) channel
+  of the [Paketo slack instance](https://slack.paketo.io/).
 
 ## Deployment
-This repo uses a GHA workflow to automatically deploy commits on `main` to the [Paketo site](https://paketo.io) using GitHub Pages.
+This repo uses a GHA workflow to automatically deploy commits on `main` to the
+[Paketo site](https://paketo.io) using GitHub Pages.
 
-This repo uses a GHA workflow to automatically deploy commits on `develop` to the [permanent staging site](https://paketo-staging.web.app/). For large UX changes, consider opening your pull request against `develop` instead of `main` to allow more time to test the feature before deploying to prod.
