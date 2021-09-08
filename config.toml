@@ -16,12 +16,6 @@ menu_exclusion = [
 lastmod = ["lastmod", ":fileModTime", ":default"]
 
 [params.hero]
-    headline = "Paketo Buildpacks"
-    subheadline = "Your app, in your favorite language, ready to run in the cloud"
-
-    cta_text = "GET STARTED"
-    cta_link = "/docs/"
-
     [[params.hero.logos]]
         [[params.hero.logos.item]]
             img = "logo-java.svg"
@@ -82,39 +76,6 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
             alt = "python logo"
             docs= "python"
             css_class = "languages__logo--python"
-
-[params.what_are_buildpacks]
-  headline = "What are Buildpacks?"
-  description = "Buildpacks transform your application source code to images that can run on any cloud. Paketo Buildpacks provide language runtime support for applications. They leverage the Cloud Native Buildpacks framework to make image builds easy, performant, and secure."
-  cta_text = "More about the Cloud Native Buildpacks project"
-  cta_link = "https://buildpacks.io"
-
-
-[params.why_paketo]
-    headline = "Why Paketo Buildpacks?"
-    copy = ""
-
-  [[params.why_paketo.item]]
-    title = "Secure"
-    description = "The Paketo project ensures that upstream languages, runtimes, and frameworks are continuously patched in response to vulnerabilities and updates."
-    image = "images/secure.svg"
-
-  [[params.why_paketo.item]]
-    title = "Standardized"
-    description = "Paketo Buildpacks implement the Cloud Native Buildpacks specification, an emerging standard for building app container images. You can use Paketo Buildpacks with tools such as the CNB pack CLI, kpack, Tekton, and Skaffold, in addition to a number of cloud platforms."
-    image = "images/standardized.svg"
-    reverse_class = "reverse"
-
-  [[params.why_paketo.item]]
-    title = "Community-Driven"
-    description = "The Paketo Buildpacks project lives within the Cloud Foundry Foundation and is dedicated to maintaining a vendor-neutral governance process."
-    image = "images/community.svg"
-
-[params.get_started]
-  [[params.get_started.item]]
-    icon = "paketo-documentation.svg"
-    text = "Get Started"
-    link = "/docs/"
 
 [params.docs_menu]
   title = "PAKETO DOCS"
