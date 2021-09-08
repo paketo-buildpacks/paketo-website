@@ -20,22 +20,16 @@ jobs:
       with:
         branch: automation/hugo-modules/update
 
-    - name: Install Hugo
-      run: |
-        mkdir -p .bin
-        curl "https://github.com/gohugoio/hugo/releases/download/v0.82.0/hugo_extended_0.82.0_Linux-64bit.tar.gz"\
-          --silent \
-          --location \
-          --output /tmp/hugo.tar.gz
-        tar -xOzvf /tmp/hugo.tar.gz 'hugo' > .bin/hugo
-        chmod +x .bin/hugo
-        rm /tmp/hugo.tar.gz
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: '0.84.0'
+        extended: true
 
     - name: Update Modules
       run: |
-        .bin/hugo mod get -u ./...
-        .bin/hugo mod tidy
-        rm -rf .bin/
+        hugo mod get -u ./...
+        hugo mod tidy
 
     - name: Commit
       id: commit
