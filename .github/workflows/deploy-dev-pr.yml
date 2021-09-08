@@ -16,14 +16,15 @@ jobs:
   deploy-dev-pr:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2.3.4
+      with:
+        submodules: false
+
     - uses: actions/setup-node@v2
       with:
         node-version: 16
         check-latest: true
-
-    - uses: actions/checkout@v2.3.4
-      with:
-        submodules: false
+        cache: 'npm'
 
     - name: Checkout PR
       if: github.event_name == 'workflow_dispatch'

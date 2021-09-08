@@ -22,14 +22,24 @@ jobs:
         ref: main
         path: build-environment
 
+    - uses: actions/setup-node@v2
+      with:
+        node-version: 16
+        check-latest: true
+
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
       with:
         hugo-version: '0.84.0'
         extended: true
 
+    - run: cd build-environment
+
+    - name: Install node modules
+      run: npm install
+
     - name: Build
-      run: cd build-environment && npm install && hugo
+      run: hugo
 
     - name: Update
       run: |
