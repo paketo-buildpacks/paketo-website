@@ -44,7 +44,7 @@
     })(exports, function() {
       return function() {
         var __webpack_modules__ = {
-          747: function(__unused_webpack_module, __webpack_exports__, __webpack_require__2) {
+          686: function(__unused_webpack_module, __webpack_exports__, __webpack_require__2) {
             "use strict";
             __webpack_require__2.d(__webpack_exports__, {
               default: function() {
@@ -71,7 +71,7 @@
               command("cut");
               return selectedText;
             };
-            var clipboard_action_cut = ClipboardActionCut;
+            var actions_cut = ClipboardActionCut;
             ;
             function createFakeElement(value) {
               var isRTL = document.documentElement.getAttribute("dir") === "rtl";
@@ -106,7 +106,7 @@
               }
               return selectedText;
             };
-            var clipboard_action_copy = ClipboardActionCopy;
+            var actions_copy = ClipboardActionCopy;
             ;
             function _typeof(obj) {
               "@babel/helpers - typeof";
@@ -140,17 +140,17 @@
                 }
               }
               if (text) {
-                return clipboard_action_copy(text, {
+                return actions_copy(text, {
                   container
                 });
               }
               if (target) {
-                return action === "cut" ? clipboard_action_cut(target) : clipboard_action_copy(target, {
+                return action === "cut" ? actions_cut(target) : actions_copy(target, {
                   container
                 });
               }
             };
-            var clipboard_action_default = ClipboardActionDefault;
+            var actions_default = ClipboardActionDefault;
             ;
             function clipboard_typeof(obj) {
               "@babel/helpers - typeof";
@@ -262,8 +262,6 @@
                 var _this;
                 _classCallCheck(this, Clipboard3);
                 _this = _super.call(this);
-                _this.ClipboardActionCut = clipboard_action_cut.bind(_assertThisInitialized(_this));
-                _this.ClipboardActionCopy = clipboard_action_copy.bind(_assertThisInitialized(_this));
                 _this.resolveOptions(options);
                 _this.listenClick(trigger);
                 return _this;
@@ -289,7 +287,7 @@
                 key: "onClick",
                 value: function onClick(e) {
                   var trigger = e.delegateTarget || e.currentTarget;
-                  var selectedText = clipboard_action_default({
+                  var selectedText = actions_default({
                     action: this.action(trigger),
                     container: this.container,
                     target: this.target(trigger),
@@ -337,12 +335,12 @@
                   var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {
                     container: document.body
                   };
-                  return clipboard_action_copy(target, options);
+                  return actions_copy(target, options);
                 }
               }, {
                 key: "cut",
                 value: function cut(target) {
-                  return clipboard_action_cut(target);
+                  return actions_cut(target);
                 }
               }, {
                 key: "isSupported",
@@ -593,7 +591,7 @@
             return Object.prototype.hasOwnProperty.call(obj, prop);
           };
         }();
-        return __webpack_require__(747);
+        return __webpack_require__(686);
       }().default;
     });
   });
