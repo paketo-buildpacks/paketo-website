@@ -51,6 +51,9 @@
     @media (min-width: $mobile-breakpoint) {
         position: static;
         width: 100%;
+        top: auto;
+        height: auto;
+        overflow: auto;
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
         z-index: auto;
