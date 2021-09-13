@@ -37,6 +37,7 @@
 .docs-sidebar {
     position: fixed;
     top: 20%;
+    left: -100%;
     height: 75%;
     width: 90%;
     z-index: 300;
@@ -46,18 +47,19 @@
     background: $dark-background-color;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
-    display: none;
+    transition: transform 0.3s cubic-bezier(.22, .61, .36, 1);
+    display: block;
 
     @media (min-width: $mobile-breakpoint) {
         position: static;
         width: 100%;
         top: auto;
+        left: auto;
         height: auto;
         overflow: auto;
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
         z-index: auto;
-        display: block;
     }
 
     @media (min-width: $docs-sidebar-breakpoint) {
@@ -69,7 +71,12 @@
 }
 
 .docs-sidebar--showing {
-    display: block;
+    transform: translateX(110%);
+
+    @media (min-width: $mobile-breakpoint) {
+        transform: none;
+        transition: none;
+    }
 }
 
 .algolia-autocomplete__search-bar {
