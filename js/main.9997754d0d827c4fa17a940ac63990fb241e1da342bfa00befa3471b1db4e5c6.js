@@ -7391,6 +7391,20 @@
     });
   }
 
+  // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/docs_nav.js
+  init_shims();
+  var DocsNav = class {
+    constructor({element}) {
+      this.toggle = element.querySelector(".docs-mobile-tab");
+      this.sidebar = element.querySelector(".docs-menu-container");
+      this.toggle.addEventListener("click", this.handleClick.bind(this));
+    }
+    handleClick(event) {
+      this.sidebar.classList.toggle("docs-menu-container--showing");
+    }
+  };
+  var docs_nav_default = DocsNav;
+
   // <stdin>
   window.addEventListener("load", (event) => {
     new navigation_default({
@@ -7398,6 +7412,9 @@
     });
     Search({
       element: document.querySelector("#docs-search")
+    });
+    new docs_nav_default({
+      element: document.querySelector(".docs")
     });
     OpenExternalLinksInNewTab({
       links: document.getElementsByTagName("a"),
