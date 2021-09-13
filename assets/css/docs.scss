@@ -17,12 +17,9 @@
     width: 28px;
     height: 62px;
     right: 0px;
-    top: 200px;
+    top: 25%;
     background: $dark-background-color;
     color: $light-background-color;
-    font-size: 3em;
-    writing-mode: vertical-lr;
-    text-orientation: sideways;
     align-items: center;
     text-align: center;
     justify-content: center;
@@ -30,6 +27,7 @@
 
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+
     @media (min-width: $mobile-breakpoint) {
         display: none;
     }
@@ -37,10 +35,27 @@
 
 /* docs nav */
 .docs-sidebar {
-    width: 100%;
+    position: fixed;
+    top: 20%;
+    height: 75%;
+    width: 90%;
+    z-index: 300;
+    overflow: scroll;
     padding-left: 34px;
     padding-top: 28px;
     background: $dark-background-color;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: none;
+
+    @media (min-width: $mobile-breakpoint) {
+        position: static;
+        width: 100%;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        z-index: auto;
+        display: block;
+    }
 
     @media (min-width: $docs-sidebar-breakpoint) {
         width: 380px;
@@ -48,6 +63,10 @@
         padding-left: 50px;
         padding-right: 20px;
     }
+}
+
+.docs-sidebar--showing {
+    display: block;
 }
 
 .algolia-autocomplete__search-bar {
@@ -71,17 +90,6 @@
     @media (min-width: $mobile-breakpoint) {
         display: block;
     }
-}
-
-.docs-sidebar--showing {
-    position: absolute;
-    width: 90%;
-    height: 100%;
-    display: block;
-    z-index: 300;
-    overflow: auto;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
 }
 
 .algolia-autocomplete__search-bar:focus, .algolia-autocomplete__search-bar:focus {
