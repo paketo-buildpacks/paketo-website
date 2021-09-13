@@ -8,6 +8,32 @@
     }
 }
 
+/* docs mobile tab */
+
+.docs-mobile-tab {
+    display: flex;
+    position: fixed;
+    float: right;
+    width: 28px;
+    height: 62px;
+    right: 0px;
+    top: 200px;
+    background: $dark-background-color;
+    color: $light-background-color;
+    font-size: 3em;
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    @media (min-width: $mobile-breakpoint) {
+        display: none;
+    }
+}
+
 /* docs nav */
 .docs-sidebar {
     width: 100%;
@@ -354,7 +380,7 @@
 }
 
 /* copyable code blocks */
-.copyable {	
+.copyable {
     position: relative;
 	display: block;
 	background-color: $light-background-color;
@@ -480,7 +506,7 @@
 
     .code-output__output-container {
         display: block;
-        
+
     }
 }
 
