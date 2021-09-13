@@ -26,6 +26,7 @@
     align-items: center;
     text-align: center;
     justify-content: center;
+    z-index: 100;
 
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
@@ -40,7 +41,7 @@
     padding-left: 34px;
     padding-top: 28px;
     background: $dark-background-color;
-    
+
     @media (min-width: $docs-sidebar-breakpoint) {
         width: 380px;
         padding-top: 50px;
@@ -66,6 +67,21 @@
     @media (min-width: $mobile-breakpoint) {
         width: 305px;
     }
+
+    @media (min-width: $mobile-breakpoint) {
+        display: block;
+    }
+}
+
+.docs-sidebar--showing {
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    display: block;
+    z-index: 300;
+    overflow: auto;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .algolia-autocomplete__search-bar:focus, .algolia-autocomplete__search-bar:focus {

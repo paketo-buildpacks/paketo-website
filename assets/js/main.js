@@ -3,6 +3,7 @@ import OpenExternalLinksInNewTab from './components/links.js';
 import CodeSnippet from './components/code_snippet.js';
 import DocsSidebarExpander from './components/docs-sidebar.js'
 import Search from './components/search.js';
+import DocsNav from './components/docs_nav.js';
 
 window.addEventListener('load', (event) => {
   new Navigation({
@@ -12,6 +13,10 @@ window.addEventListener('load', (event) => {
   Search({
     element: document.querySelector('#docs-search'),
   })
+
+  new DocsNav({
+    element: document.querySelector('.docs'),
+  });
 
   OpenExternalLinksInNewTab({
     links: document.getElementsByTagName('a'),
