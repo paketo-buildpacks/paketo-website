@@ -47,12 +47,14 @@
     background: $dark-background-color;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+    box-shadow: 2px -3px 4px rgba(0, 0, 0, 0.25);
     transition: transform 0.3s cubic-bezier(.22, .61, .36, 1);
     display: block;
 
     @media (min-width: $mobile-breakpoint) {
         position: static;
         width: 100%;
+        box-shadow: none;
         top: auto;
         left: auto;
         height: auto;
