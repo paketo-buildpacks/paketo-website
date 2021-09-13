@@ -8,19 +8,47 @@
     }
 }
 
+/* docs mobile tab */
+
+.docs-mobile-tab {
+    display: flex;
+    position: fixed;
+    float: right;
+    width: 28px;
+    height: 62px;
+    right: 0px;
+    top: 30%;
+    background: $dark-background-color;
+    color: $light-background-color;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    z-index: 100;
+
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+
+    @media (min-width: $mobile-breakpoint) {
+        display: none;
+    }
+}
+
 /* docs nav */
 .docs-sidebar {
-    width: 100%;
+    background-color: $dark-background-color;
     padding-left: 34px;
-    padding-top: 28px;
-    background: $dark-background-color;
-    
+
     @media (min-width: $docs-sidebar-breakpoint) {
-        width: 380px;
-        padding-top: 50px;
         padding-left: 50px;
         padding-right: 20px;
+        width: 380px;
     }
+}
+
+.docs-search-container {
+    background: $dark-background-color;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .algolia-autocomplete__search-bar {
@@ -40,6 +68,10 @@
     @media (min-width: $mobile-breakpoint) {
         width: 305px;
     }
+
+    @media (min-width: $mobile-breakpoint) {
+        display: block;
+    }
 }
 
 .algolia-autocomplete__search-bar:focus, .algolia-autocomplete__search-bar:focus {
@@ -48,8 +80,52 @@
 }
 
 .algolia-autocomplete .ds-dropdown-menu {
-    width: 80vw;
-    min-width: 256px !important; // Necessary because algolia element comes with styling
+    width: 75vw;
+    min-width: 245px !important; // Necessary because algolia element comes with styling
+    height: 100%;
+}
+.docs-menu-container {
+    position: fixed;
+    top: 20%;
+    left: -100%;
+    height: 75%;
+    width: 90vw;
+    z-index: 300;
+    overflow: scroll;
+    padding-left: 34px;
+    padding-top: 28px;
+    background: $dark-background-color;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 2px -3px 4px rgba(0, 0, 0, 0.25);
+    transition: transform 0.3s cubic-bezier(.22, .61, .36, 1);
+    display: block;
+
+    @media (min-width: $mobile-breakpoint) {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        top: auto;
+        left: auto;
+        overflow: visible;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        z-index: auto;
+        padding-left: 0px;
+    }
+
+    @media (min-width: $docs-sidebar-breakpoint) {
+        padding-top: 50px;
+    }
+}
+
+.docs-menu-container--showing {
+    transform: translateX(110%);
+
+    @media (min-width: $mobile-breakpoint) {
+        transform: none;
+        transition: none;
+    }
 }
 
 .docs-menu {
@@ -354,7 +430,7 @@
 }
 
 /* copyable code blocks */
-.copyable {	
+.copyable {
     position: relative;
 	display: block;
 	background-color: $light-background-color;
@@ -480,7 +556,7 @@
 
     .code-output__output-container {
         display: block;
-        
+
     }
 }
 

@@ -1,14 +1,17 @@
 <!-- sidebar start -->
-<input type="text" id="docs-search" class="algolia-autocomplete__search-bar" placeholder="Search docs..." data-api-key="{{ .Site.Params.docs_search.api_key }}" data-index="{{ .Site.Params.docs_search.index }}"/>
-<nav class="docs-menu">
-    <ul class="docs-menu__top-level-list">
-        {{ $currentPage := . }}
-        {{ range .Site.Menus.main }}
-            {{ template "docs-menu-entry" dict "currentPage" $currentPage "entry" .}}
-        {{ end }}
-    </ul>
-</nav>
-
+<div class="docs-search-container">
+    <input type="text" id="docs-search" class="algolia-autocomplete__search-bar" placeholder="Search docs..." data-api-key="{{ .Site.Params.docs_search.api_key }}" data-index="{{ .Site.Params.docs_search.index }}"/>
+</div>
+<div class="docs-menu-container">
+    <nav class="docs-menu">
+        <ul class="docs-menu__top-level-list">
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+                {{ template "docs-menu-entry" dict "currentPage" $currentPage "entry" .}}
+            {{ end }}
+        </ul>
+    </nav>
+</div>
 <!-- templates -->
 {{- define "docs-menu-entry" }}
     {{- $currentPage := .currentPage }}
