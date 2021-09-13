@@ -39,7 +39,7 @@
     top: 20%;
     left: -100%;
     height: 75%;
-    width: 90%;
+    width: 90vw;
     z-index: 300;
     overflow: scroll;
     padding-left: 34px;
@@ -108,8 +108,9 @@
 }
 
 .algolia-autocomplete .ds-dropdown-menu {
-    width: 80vw;
-    min-width: 256px !important; // Necessary because algolia element comes with styling
+    width: 75vw;
+    min-width: 245px !important; // Necessary because algolia element comes with styling
+    height: 100%;
 }
 
 .docs-menu {
