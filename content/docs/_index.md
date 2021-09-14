@@ -189,7 +189,7 @@ Successfully built image paketo-demo-app
 ### Run the App
 Let's start an instance of our app and interact with it.
 
-Run the app image with Docker. It will receive incoming requests `localhost:8080`.
+Run the app image with Docker. It will receive incoming requests on `localhost:8080`.
 
 {{< code/copyable >}}
 docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
@@ -329,7 +329,7 @@ Once the build finishes, you'll see that the resulting image is on your Docker d
 ### Run the App
 Let's start an instance of our app and interact with it.
 
-Run the app image with Docker. It will receive incoming requests `localhost:8080`.
+Run the app image with Docker. It will receive incoming requests on `localhost:8080`.
 
 {{< code/copyable >}}
 docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
@@ -490,7 +490,7 @@ Once the build finishes, you'll see that the resulting image is on your Docker d
 ### Run the App
 Let's start an instance of our app and interact with it.
 
-Run the app image with Docker. It will receive incoming requests `localhost:8080`.
+Run the app image with Docker. It will receive incoming requests on `localhost:8080`.
 
 {{< code/copyable >}}
 docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
@@ -652,7 +652,7 @@ Once the build finishes, you'll see that the resulting image is on your Docker d
 ### Run the App
 Let's start an instance of our app and interact with it.
 
-Run the app image with Docker. It will receive incoming requests `localhost:8080`.
+Run the app image with Docker. It will receive incoming requests on `localhost:8080`.
 
 {{< code/copyable >}}
 docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
