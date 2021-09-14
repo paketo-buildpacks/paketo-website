@@ -456,6 +456,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a class="markup-heading__link" href="#net-coredotnet-guide">
         <a href="#net-core">.NET Core</a>
     </a>
+</h3><h3 id="pythonpython-guide" class="markup-heading">
+    <a class="markup-heading__link" href="#pythonpython-guide">
+        <a href="#python">Python</a>
+    </a>
 </h3><h2 id="java" class="markup-heading">
     <a class="markup-heading__link" href="#java">
         Java
@@ -641,7 +645,7 @@ Successfully built image paketo-demo-app
         Run the App
     </a>
 </h3><p>Let&rsquo;s start an instance of our app and interact with it.</p>
-<p>Run the app image with Docker. It will receive incoming requests <code>localhost:8080</code>.</p>
+<p>Run the app image with Docker. It will receive incoming requests on <code>localhost:8080</code>.</p>
 <pre class="copyable"><code class="copyable__code">docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
@@ -787,7 +791,7 @@ Successfully built image paketo-demo-app
         Run the App
     </a>
 </h3><p>Let&rsquo;s start an instance of our app and interact with it.</p>
-<p>Run the app image with Docker. It will receive incoming requests <code>localhost:8080</code>.</p>
+<p>Run the app image with Docker. It will receive incoming requests on <code>localhost:8080</code>.</p>
 <pre class="copyable"><code class="copyable__code">docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
@@ -955,7 +959,7 @@ Successfully built image paketo-demo-app
         Run the App
     </a>
 </h3><p>Let&rsquo;s start an instance of our app and interact with it.</p>
-<p>Run the app image with Docker. It will receive incoming requests <code>localhost:8080</code>.</p>
+<p>Run the app image with Docker. It will receive incoming requests on <code>localhost:8080</code>.</p>
 <pre class="copyable"><code class="copyable__code">docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
@@ -983,6 +987,174 @@ Successfully built image paketo-demo-app
 <p>You&rsquo;ve done it! As you can see, Paketo buildpacks do most of the hard work for you.</p>
 <p>Check out more <a href="https://github.com/paketo-buildpacks/samples">sample apps</a> that work with Paketo Buildpacks.</p>
 <p>Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.</p>
+<h2 id="python" class="markup-heading">
+    <a class="markup-heading__link" href="#python">
+        Python
+    </a>
+</h2><p>Let&rsquo;s use the <code>base</code> Paketo Builder and the <strong>pack</strong> CLI to build a Python app
+as a runnable container image.</p>
+<h3 id="prerequisites-3" class="markup-heading">
+    <a class="markup-heading__link" href="#prerequisites-3">
+        Prerequisites
+    </a>
+</h3><ol>
+<li>Install Docker by following this <a href="https://docs.docker.com/get-docker/">guide</a>.</li>
+<li>Install the pack CLI by following this <a href="https://buildpacks.io/docs/install-pack/">guide</a>.</li>
+</ol>
+<h3 id="build-the-app-image-from-source-code-3" class="markup-heading">
+    <a class="markup-heading__link" href="#build-the-app-image-from-source-code-3">
+        Build the App Image From Source Code
+    </a>
+</h3><p>Clone the Paketo samples repository and navigate to the source code for the sample Python app.</p>
+<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples \
+&amp;&amp; cd samples/python/pipenv
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>From the sample app directory, use the pack CLI to build an app image.</p>
+<pre class="copyable"><code class="copyable__code">pack build paketo-demo-app --builder paketobuildpacks/builder:base
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<div class="code-output">
+    <div class="btn code-output__btn code-output__btn">View Output</div>
+    <pre class="code-output__output-container">
+        <code class="code-output__output">===&gt; DETECTING
+7 of 9 buildpacks participating
+paketo-buildpacks/ca-certificates 2.4.0
+paketo-buildpacks/cpython         0.7.2
+paketo-buildpacks/pip             0.5.1
+paketo-buildpacks/pipenv          0.2.1
+paketo-buildpacks/pipenv-install  0.2.3
+paketo-buildpacks/python-start    0.6.2
+paketo-buildpacks/procfile        4.3.0
+===&gt; ANALYZING
+Previous image with name &#34;paketo-demo-app&#34; not found
+===&gt; RESTORING
+===&gt; BUILDING
+
+Paketo CA Certificates Buildpack 2.4.0
+  https://github.com/paketo-buildpacks/ca-certificates
+  Launch Helper: Contributing to layer
+    Creating /layers/paketo-buildpacks_ca-certificates/helper/exec.d/ca-certificates-helper
+Paketo CPython Buildpack 0.7.2
+  Resolving CPython version
+    Candidate version sources (in priority order):
+                -&gt; &#34;&#34;
+      &lt;unknown&gt; -&gt; &#34;&#34;
+
+    Selected CPython version (using ): 3.8.12
+
+  Executing build process
+    Installing CPython 3.8.12
+      Completed in 2.884s
+
+  Configuring environment
+    PYTHONPATH -&gt; &#34;/layers/paketo-buildpacks_cpython/cpython&#34;
+
+Paketo Pip Buildpack 0.5.1
+  Resolving Pip version
+    Candidate version sources (in priority order):
+       -&gt; &#34;&#34;
+
+    Selected Pip version (using ): 21.2.4
+
+  Executing build process
+    Installing Pip 21.2.4
+      Completed in 7.743s
+
+  Configuring environment
+    PYTHONPATH -&gt; &#34;/layers/paketo-buildpacks_pip/pip/lib/python3.8/site-packages:$PYTHONPATH&#34;
+
+Paketo Pipenv Buildpack 0.2.1
+  Resolving Pipenv version
+    Candidate version sources (in priority order):
+       -&gt; &#34;&#34;
+
+    Selected Pipenv version (using ): 2021.5.29
+
+  Executing build process
+    Installing Pipenv 2021.5.29
+      Completed in 5.895s
+
+  Configuring environment
+    PYTHONPATH -&gt; &#34;/layers/paketo-buildpacks_pipenv/pipenv/lib/python3.8/site-packages:$PYTHONPATH&#34;
+
+Paketo Pipenv Install Buildpack 0.2.3
+  Executing build process
+    Running &#39;pipenv install --deploy&#39;
+    Running &#39;pipenv clean&#39;
+  Configuring environment
+    PATH           -&gt; &#34;/layers/paketo-buildpacks_pipenv-install/packages/workspace-dqq3IVyd/bin:$PATH&#34;
+    PYTHONUSERBASE -&gt; &#34;/layers/paketo-buildpacks_pipenv-install/packages/workspace-dqq3IVyd&#34;
+
+      Completed in 5.511s
+
+Paketo Python Start Buildpack 0.6.2
+  Assigning launch process
+    web: python
+
+Paketo Procfile Buildpack 4.3.0
+  https://github.com/paketo-buildpacks/procfile
+  Process types:
+    web: gunicorn server:app
+===&gt; EXPORTING
+Adding layer &#39;paketo-buildpacks/ca-certificates:helper&#39;
+Adding layer &#39;paketo-buildpacks/cpython:cpython&#39;
+Adding layer &#39;paketo-buildpacks/pipenv-install:packages&#39;
+Adding 1/1 app layer(s)
+Adding layer &#39;launcher&#39;
+Adding layer &#39;config&#39;
+Adding layer &#39;process-types&#39;
+Adding label &#39;io.buildpacks.lifecycle.metadata&#39;
+Adding label &#39;io.buildpacks.build.metadata&#39;
+Adding label &#39;io.buildpacks.project.metadata&#39;
+Setting default process type &#39;web&#39;
+Saving paketo-demo-app...
+*** Images (2aa4026c4df4):
+      paketo-demo-app
+Adding cache layer &#39;paketo-buildpacks/cpython:cpython&#39;
+Adding cache layer &#39;paketo-buildpacks/pip:pip&#39;
+Adding cache layer &#39;paketo-buildpacks/pipenv:pipenv&#39;
+Adding cache layer &#39;paketo-buildpacks/pipenv-install:cache&#39;
+Adding cache layer &#39;paketo-buildpacks/pipenv-install:packages&#39;
+Successfully built image &#39;paketo-demo-app&#39;
+</code>
+    </pre>
+</div>
+
+<p>Once the build finishes, you&rsquo;ll see that the resulting image is on your Docker daemon.</p>
+<h3 id="run-the-app-3" class="markup-heading">
+    <a class="markup-heading__link" href="#run-the-app-3">
+        Run the App
+    </a>
+</h3><p>Let&rsquo;s start an instance of our app and interact with it.</p>
+<p>Run the app image with Docker. It will receive incoming requests on <code>localhost:8080</code>.</p>
+<pre class="copyable"><code class="copyable__code">docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>Wait a few moments for the app to start. Then, use <code>curl</code> to make a request.</p>
+<pre class="copyable"><code class="copyable__code">curl http://localhost:8080/
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<div class="code-output">
+    <div class="btn code-output__btn code-output__btn">View Output</div>
+    <pre class="code-output__output-container">
+        <code class="code-output__output">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Powered By Paketo Buildpacks&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;img style=&#34;display: block; margin-left: auto; margin-right: auto; width: 50%;&#34; src=&#34;https://paketo.io/images/paketo-logo-full-color.png&#34;&gt;&lt;/img&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code>
+    </pre>
+</div>
+
+<p>You can also visit <a href="http://localhost:8080">http://localhost:8080</a> with your browser to see the app&rsquo;s homepage.</p>
+<p>You&rsquo;ve done it! As you can see, Paketo buildpacks do most of the hard work for you.</p>
+<p>Check out more <a href="https://github.com/paketo-buildpacks/samples">sample apps</a> that work with Paketo Buildpacks.</p>
+<p>Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.</p>
 <!-- raw HTML omitted -->
 
             </div>
@@ -996,7 +1168,7 @@ Successfully built image paketo-demo-app
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> September 13, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> September 14, 2021</p>
         </div>
         
     </div>
