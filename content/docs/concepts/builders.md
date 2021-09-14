@@ -17,10 +17,8 @@ A `builder` is an image that contains three components:
 * a `stack`, which provides the OS layer for your app image
 * the [CNB lifecycle](https://buildpacks.io/docs/concepts/components/lifecycle/), which puts everything together to produce your final app image
 
-
 For more information about `builders`, see [buildpacks.io](https://buildpacks.io/docs/concepts/components/builder/).
 
-#
 ## What Paketo builders are available?
 The Paketo project releases several builder images to choose from depending on your application needs. These are:
 

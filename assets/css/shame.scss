@@ -1,74 +1,70 @@
-/* a home for css hacks needed to make things look okay during refactor */
+/* shame.scss, a home for css hacks needed to make things look okay
 
-// Needed to prevent the edit on github actiion button image to have a border
-// because .docs img{} styling in paketo scss is aggressive
+
+If you add something to this file, please add a comment explaining why
+the hack is needed, and **sign with your name and the date** so it's
+easy to keep track of who has context on it.
+*/
+
+
+/* Needed to prevent the edit on github actiion button image 
+from having a border because .docs img{} styling in paketo scss
+is aggressive
+Frankie GJ 9/13/21 */
 :root .github-edit__logo {
 	border: none;
 	width: 100%;
 }
 
-// Makes docs-sidebar look ok before refactor
-.docs-menu-container {
-    font-family: "Avenir Next", sans-serif;
-}
-
-// Needed to override some styles on .docs img
-// that shouldn't apply to the click to copy clipboard 
+/* Needed to override some styles on .docs img
+that shouldn't apply to the click to copy clipboard
+Frankie GJ 9/13/21  */
 :root .copyable__clipboard {
 	display: block;
 	border: none;
 }
-// Since the above uses :root, these ones also have to
-// so that the click-to-copy JS can update the classes and 
-// make a visible impact
+
+/* Since the above uses :root, these ones also have to
+so that the click-to-copy JS can update the classes and 
+make a visible impact
+Frankie GJ 9/13/21  */
 :root .copyable--clicked .copyable__clipboard {
 	display: none;
 }
-
 :root .copyable--clicked:hover .copyable__clipboard {
 	display: none;
 }
 
-// The class that Hugo automatically gives to <pre> elements that wrap
-// things in ``` ``` blocks in markdown
-// A better solution would be to configure the markdown renderer to make all
-// ``` ``` blocks be <div class="copyable"> automatically
-.chroma {
-	position: relative;
-	display: block;
-	background-color: $light-background-color;
-	font-family: monospace;
-	padding: 0.35em 0.6em;
-	border: 1px solid #E4E4E4;
-	overflow: auto;
-	overflow-wrap: break-word;
-}
-
-// Without this, the docs-menu__link hover state color overrides
-// docs-menu__link--active hover state color. This color is
-// needed because it complies with accessibility contrast
-// requirements against the light background of active nav
-// elements
+/* Without this, the docs-menu__link hover state color overrides
+docs-menu__link--active hover state color. This color is
+needed because it complies with accessibility contrast
+requirements against the light background of active nav
+elements
+Frankie GJ 9/13/21 */
 .docs-menu__link--active:hover.docs-menu__link--active:hover {
     color: $link-text-color;
 }
 
-// Remove Community page reliance on v1 css
-.pad50 {
-	padding: 50px;
-}
-
-.text-col {
-	max-width: 1000px;
-	overflow: auto;
-}
-
-// Not sure exactly what this does, but without it, elements like
-// the docs sidebar render in a wonky way where its size changes
-// depending on which element is active
-
+/* Not sure exactly what this does, but without it, elements like
+the docs sidebar render in a wonky way where its size changes
+depending on which element is active
+Frankie GJ 9/13/21 */
 *, *:before, *:after {
 	-moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+}
+
+
+/* A hack to prevent inline-code elements from having huge spaces between words.
+The first selector applies to _all_ code elements (including inside blocks),
+the second applies only to code blocks; it re-sets the word spacing to the monospace
+default
+Frankie GJ 9/13/21 */
+code {
+	word-spacing: -.25em;
+}
+
+pre code {
+	word-spacing: normal;
 }

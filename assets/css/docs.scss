@@ -392,22 +392,14 @@
     display: none;
 
     margin-top: 16px;
-	border: 1px solid $dark-background-color;
-	border-radius: 5px;
-	background: $light-background-color;
+	border-radius: 8px;
+	background: $docs-expander-button-color;
 	width: 75px;
 	float: right;
 
     @media (min-width: $mobile-breakpoint) {
         display: block;
     }
-}
-
-.github-edit:hover {
-	opacity: 0.8 !important;
-	border: 1px solid #4a516d;
-	background: white;
-	color: #4a516d;
 }
 
 .github-edit__content {
@@ -429,13 +421,18 @@
 	font-size: 12px;
 }
 
-/* copyable code blocks */
-.copyable {
-    position: relative;
+/* code blocks */
+
+// chroma is class that Hugo automatically gives to <pre> elements that wrap
+// things in ``` ``` blocks in markdown
+.chroma, .copyable {
+	position: relative;
 	display: block;
 	background-color: $light-background-color;
+	font-family: monospace;
 	padding: 0.35em 0.6em;
 	border: 1px solid #E4E4E4;
+    border-radius: 5px;
 	overflow: auto;
 }
 
@@ -546,6 +543,7 @@
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-bottom: 0.7em;
 }
 
 .code-output__output {
