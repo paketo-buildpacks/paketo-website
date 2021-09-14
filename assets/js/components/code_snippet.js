@@ -12,10 +12,10 @@ export default class CodeSnippet {
       });
     }
 
-    if (element.nextElementSibling && element.nextElementSibling.classList.contains('code-output')) {
+    if (element.classList.contains('code-output')) {
       new Output({
-        element: element.nextElementSibling,
-        button: element.nextElementSibling.querySelector('.code-output__btn'),
+        element: element,
+        button: element.querySelector('.code-output__btn'),
       });
     }
   }

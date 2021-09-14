@@ -524,6 +524,11 @@
 
 /* view output expander */
 
+.code-output {
+   white-space: normal;
+   font-family: $default-font-family;
+}
+
 .code-output__btn {
     width: 80px;
     background: $docs-output-expander-color; // TODO: Check contrast
@@ -546,6 +551,7 @@
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    white-space: pre;
 }
 
 .code-output__output {
