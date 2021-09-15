@@ -7325,15 +7325,8 @@
           code: this.element.querySelector(".copyable__code").innerText
         });
       }
-      if (element.nextElementSibling && element.nextElementSibling.classList.contains("code-output")) {
-        new Output({
-          element: element.nextElementSibling,
-          button: element.nextElementSibling.querySelector(".code-output__btn")
-        });
-      }
     }
   };
-  var code_snippet_default = CodeSnippet;
   var Clipboard = class {
     constructor({element, button, code}) {
       this.element = element;
@@ -7348,7 +7341,8 @@
   var Output = class {
     constructor({element, button}) {
       this.element = element;
-      button.addEventListener("click", this.handleClick.bind(this));
+      this.button = element.querySelector(".code-output__btn");
+      this.button.addEventListener("click", this.handleClick.bind(this));
     }
     handleClick() {
       this.element.classList.toggle("code-output--opened");
@@ -7421,7 +7415,10 @@
       hostname: window.location.hostname
     });
     for (const element of document.querySelectorAll(".docs pre")) {
-      new code_snippet_default({element});
+      new CodeSnippet({element});
+    }
+    for (const element of document.querySelectorAll(".docs .code-output")) {
+      new Output({element});
     }
     for (const element of document.querySelectorAll(".docs-menu__parent")) {
       new docs_sidebar_default({element});
