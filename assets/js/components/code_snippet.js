@@ -1,6 +1,6 @@
 import ClipboardJS from 'clipboard';
 
-export default class CodeSnippet {
+export class CodeSnippet {
   constructor({ element }) {
     this.element = element;
 
@@ -9,13 +9,6 @@ export default class CodeSnippet {
         element: this.element,
         button: this.element.querySelector('.copyable__clipboard'),
         code: this.element.querySelector('.copyable__code').innerText,
-      });
-    }
-
-    if (element.classList.contains('code-output')) {
-      new Output({
-        element: element,
-        button: element.querySelector('.code-output__btn'),
       });
     }
   }
@@ -35,11 +28,12 @@ class Clipboard {
   }
 }
 
-class Output {
+export class Output {
   constructor({ element, button }) {
     this.element = element;
+    this.button = element.querySelector('.code-output__btn')
 
-    button.addEventListener('click', this.handleClick.bind(this));
+    this.button.addEventListener('click', this.handleClick.bind(this));
   }
 
   handleClick() {
