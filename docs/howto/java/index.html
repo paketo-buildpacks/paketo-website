@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.7bba6fd399841792b6ae0ae590a38ba72245bc5dd64babb90f4bdc95e9c4fb09.css">
+<link rel="stylesheet" href="/css/main.min.1db61bae92e65352c329e72b7d78c479a8f197e99312ed44f67609807cd23e28.css">
 
 </head>
 
@@ -695,11 +695,18 @@ pack build samples/java \
 </thead>
 <tbody>
 <tr>
-<td><a href="http://dragonwell-jdk.io/">Alibaba Dragonwell</a></td>
+<td><a href="https://adoptium.net/">Adoptium</a> <span class="sup">1</span>
+</td>
+<td><a href="https://github.com/paketo-buildpacks/adoptium">Paketo Adoptium Buildpack</a></td>
+</tr>
+<tr>
+<td><a href="http://dragonwell-jdk.io/">Alibaba Dragonwell</a> <span class="sup">2</span>
+</td>
 <td><a href="https://github.com/paketo-buildpacks/alibaba-dragonwell">Paketo Alibaba Dragonwell Buildpack</a></td>
 </tr>
 <tr>
-<td><a href="https://aws.amazon.com/corretto/">Amazon Corretto</a></td>
+<td><a href="https://aws.amazon.com/corretto/">Amazon Corretto</a> <span class="sup">2</span>
+</td>
 <td><a href="https://github.com/paketo-buildpacks/amazon-corretto">Paketo Amazon Corretto Buildpack</a></td>
 </tr>
 <tr>
@@ -715,11 +722,13 @@ pack build samples/java \
 <td><a href="https://github.com/paketo-buildpacks/eclipse-openj9">Paketo Eclipse OpenJ9 Buildpack</a></td>
 </tr>
 <tr>
-<td><a href="https://www.graalvm.org/">GraalVM</a></td>
+<td><a href="https://www.graalvm.org/">GraalVM</a> <span class="sup">2</span>
+</td>
 <td><a href="https://github.com/paketo-buildpacks/graalvm">Paketo GraalVM Buildpack</a></td>
 </tr>
 <tr>
-<td><a href="https://www.microsoft.com/openjdk">Microsoft OpenJDK</a></td>
+<td><a href="https://www.microsoft.com/openjdk">Microsoft OpenJDK</a> <span class="sup">2</span>
+</td>
 <td><a href="https://github.com/paketo-buildpacks/microsoft-openjdk">Paketo Microsoft OpenJDK Buildpack</a></td>
 </tr>
 <tr>
@@ -728,6 +737,12 @@ pack build samples/java \
 </tr>
 </tbody>
 </table>
+<ol>
+<li><em><span class="sub">Only provides JRE and JDK releases for Java 8 and 11, Java 16+ is JDK only</span>
+</em></li>
+<li><em><span class="sub">Only provides JDK releases</span>
+</em></li>
+</ol>
 <p>To use an alternative JVM, you will need to set two <code>--buildpack</code> arguments to <code>pack build</code>, one for the alternative JVM buildpack you&rsquo;d like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you&rsquo;re specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.</p>
 <p>This example will switch in the Azul Zulu buildpack:</p>
 <pre class="copyable"><code class="copyable__code">pack build samples/jar --buildpack gcr.io/paketo-buildpacks/azul-zulu --buildpack paketo-buildpacks/java`
@@ -982,7 +997,7 @@ pack build samples/java-native \
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> September 15, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> September 16, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
