@@ -38,7 +38,9 @@ docker run --rm --tty --publish 8080:8080 samples/java
 curl -s http://localhost:8080/actuator/health | jq .
 {{< /code/copyable >}}
 
-## Build from Source
+## Build an App as a Traditional Java WAR or JAR
+
+### Build from Source
 
 The Java Buildpack can build from source using any of the following build tools:
 
@@ -65,11 +67,11 @@ pack build samples/java \
   --path java/maven
 {{< /code/copyable >}}
 
-### Configure the Build Tool
+#### Configure the Build Tool
 
 **Note**: The following set of configuration options are not comprehensive, see the homepage for the relevant component buildpacks for a full-set of configuration options.
 
-#### Select a Module or Artifact
+##### Select a Module or Artifact
 
 For a given build `<TOOL>`, where `<TOOL>` is one of `MAVEN`, `GRADLE`, `LEIN` or `SBT`, the selected artifact can be configured with one of the following environment variable at build-time:
 
@@ -83,7 +85,7 @@ For a given build `<TOOL>`, where `<TOOL>` is one of `MAVEN`, `GRADLE`, `LEIN` o
   * Supercedes `BP_<TOOL>_BUILT_MODULE` if set to a non-default value.
   * *Example*: Given `BP_MAVEN_BUILT_ARTIFACT=out/api-*.jar`, the Paketo Maven Buildpack will select a file with name `out/api-1.0.0.jar`.
 
-#### Specify the Build Command
+##### Specify the Build Command
 
 For a given build `<TOOL>`, where `<TOOL>` is one of `MAVEN`, `GRADLE`, `LEIN` or `SBT`, the build command can be configured with the following environment variable at build-time:
 
@@ -92,7 +94,7 @@ For a given build `<TOOL>`, where `<TOOL>` is one of `MAVEN`, `GRADLE`, `LEIN` o
   * Configures the arguments to pass to the build tool.
   * *Example*: Given `BP_GRADLE_BUILD_ARGUMENTS=war`, the Paketo Gradle Buildpack will execute `./gradlew war` or `gradle war` (depending on the presence of the gradle wrapper).
 
-#### Connect to a Private Maven Repository
+##### Connect to a Private Maven Repository
 
 A [binding][bindings] with type `maven` and key `settings.xml` can be used to provide custom [Maven settings][maven settings].
 
@@ -130,7 +132,7 @@ pack build samples/java \
    --volume $(pwd)/java/maven/binding:/platform/bindings/my-maven-settings
 {{< /code/copyable >}}
 
-## Build from a Compiled Artifact
+### Build from a Compiled Artifact
 
 An application developer may build an image from following archive formats:
 
@@ -164,7 +166,7 @@ pack build samples/java \
 
 The resulting application image will be identical to that built in the Building with Maven example.
 
-## Inspect the JVM Version
+### Inspect the JVM Version
 
 The exact JRE version that was contributed to a given image can be read from the Bill-of-Materials.
 
@@ -175,7 +177,7 @@ Given an image named `samples/java` built from one of examples above, the follow
 pack inspect-image samples/app --bom | jq '.local[] | select(.name=="jre") | .metadata.version'
 {{< /code/copyable >}}
 
-## Install a Specific JVM Version
+### Install a Specific JVM Version
 
 The following environment variable configures the JVM version at build-time.
 
@@ -184,7 +186,7 @@ The following environment variable configures the JVM version at build-time.
   * Configures a specific JDK or JRE version.
   * *Example*: Given `BP_JVM_VERSION=8` or `BP_JVM_VERSION=8.*` the buildpack will install the latest patch releases of the Java 8 JDK and JRE.
 
-## Configure the JVM at Runtime
+### Configure the JVM at Runtime
 
 The Java Buildpack configures the JVM by setting `JAVA_TOOL_OPTIONS` in the JVM environment.
 
@@ -198,7 +200,7 @@ The runtime JVM can be configured in two ways:
 
 See the [homepage][bp/bellsoft-liberica] for the Bellsoft Liberica Buildpack for a full set of configuration options.
 
-## Use an Alternative JVM
+### Use an Alternative JVM
 
 By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implemenations in place of Liberica's JVM.
 
@@ -237,7 +239,85 @@ pack build samples/jar --buildpack paketo-buildpacks/ca-certificates --buildpack
 
 It does not hurt to use this command for all situations, it is just more verbose and most users can get away without specifying the CA certificates buildpack to be first.
 
-## Use an Alternative Java Native Image Toolkit
+## Build an App as a GraalVM Native Image Application
+
+The [Paketo Java Native Image Buildpack][bp/java-native-image] allows users to create an image containing a [GraalVM][graalvm] [native image][graalvm native image] application.
+
+The Java Native Buildpack is a [composite buildpack][composite buildpack] and
+each step in a build is handled by one of its [components][components]. The
+following docs describe common build configurations. For a full set of
+configuration options and capabilities see the homepages of the component
+buildpacks.
+
+### Build From Source
+
+The Java Native Image Buildpack supports the same [build tools and
+configuration options][java/building from source] as the [Java
+Buildpack][bp/java]. The build must produce an [executable jar][executable
+jar].
+
+After compiling and packaging, the buildpack will replace provided application
+source code with the exploded JAR and proceed as described in [Building from an
+Executable Jar][building-from-an-executable-jar].
+
+**Example**: Building a Native image with Maven
+
+The following command creates an image from source with `maven`.
+
+{{< code/copyable >}}
+pack build samples/java-native \
+  --env BP_NATIVE_IMAGE=true
+  --path java/native-image/java-native-image-sample
+{{< /code/copyable >}}
+
+### Build From an Executable JAR
+
+An application developer may build an image from an exploded [executable JAR][executable jar]. Most platforms will automatically extract provided archives.
+
+**Example**: Building a Native image from an Executable JAR
+
+The following command uses Maven directly to compile an executable JAR and then uses the `pack` CLI to build an image from the JAR.
+
+{{< code/copyable >}}
+cd samples/java/native-image
+./mvnw package
+pack build samples/java-native \
+  --env BP_NATIVE_IMAGE=true
+  --path java/native-image/java-native-image-sample/target/demo-0.0.1-SNAPSHOT.jar
+{{< /code/copyable >}}
+
+The resulting application image will be identical to that built in the "Building a Native image with Maven" example.
+
+### Inspect the Native Image Tools Version
+
+The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.
+
+**Example** Inspecting the JRE Version
+
+Given an image named `samples/java-native` built from one of examples above, the following command will print the exact version of the installed substrate VM.
+{{< code/copyable >}}
+pack inspect-image samples/java-native --bom | jq '.local[] | select(.name=="native-image-svm") | .metadata.version'
+{{< /code/copyable >}}
+
+### Configure the GraalVM Version
+
+Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a sepecific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.
+
+The following table documents the versions available.
+
+| GraalVM Version | Java Native Image Buildpack Version |
+| --------------- | ----------------------------------- |
+| 21.2            | 5.5.0                               |
+| 21.1            | 5.4.0                               |
+| 21.0            | 5.3.0                               |
+
+For example, to select GraalVM 21.1:
+
+{{< code/copyable >}}
+pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/java-native-image:5.4.0
+{{< /code/copyable >}}
+
+### Use an Alternative Java Native Image Toolkit
 
 By default, the [Paketo Java Native Image buildpack][bp/java-native-image] will use the GraalVM Native Image Toolkit. The following Paketo JVM buildpacks may be used to substitute alternate Native Image Toolkit implemenations in place of the default.
 
@@ -381,83 +461,6 @@ docker run --rm --entrypoint launcher samples/java echo 'JAVA_TOOL_OPTIONS: $JAV
 {{< /code/copyable >}}
 
 Each argument provided to the launcher will be evaluated by the shell prior to execution and the original tokenization will be preserved. Note that, in the example above `'JAVA_TOOL_OPTIONS: $JAVA_TOOL_OPTIONS'` is single quoted so that `$JAVA_TOOL_OPTIONS` is evaluated in the container, rather than by the host shell.
-
-## Build an App as a GraalVM Native Image Application
-The [Paketo Java Native Image Buildpack][bp/java-native-image] allows users to create an image containing a [GraalVM][graalvm] [native image][graalvm native image] application.
-
-The Java Native Buildpack is a [composite buildpack][composite buildpack] and
-each step in a build is handled by one of its [components][components]. The
-following docs describe common build configurations. For a full set of
-configuration options and capabilities see the homepages of the component
-buildpacks.
-
-### Build From Source
-
-The Java Native Image Buildpack supports the same [build tools and
-configuration options][java/building from source] as the [Java
-Buildpack][bp/java]. The build must produce an [executable jar][executable
-jar].
-
-After compiling and packaging, the buildpack will replace provided application
-source code with the exploded JAR and proceed as described in [Building from an
-Executable Jar][building-from-an-executable-jar].
-
-**Example**: Building a Native image with Maven
-
-The following command creates an image from source with `maven`.
-
-{{< code/copyable >}}
-pack build samples/java-native \
-  --env BP_NATIVE_IMAGE=true
-  --path java/native-image/java-native-image-sample
-{{< /code/copyable >}}
-
-### Build From an Executable JAR
-
-An application developer may build an image from an exploded [executable JAR][executable jar]. Most platforms will automatically extract provided archives.
-
-**Example**: Building a Native image from an Executable JAR
-
-The following command uses Maven directly to compile an executable JAR and then uses the `pack` CLI to build an image from the JAR.
-
-{{< code/copyable >}}
-cd samples/java/native-image
-./mvnw package
-pack build samples/java-native \
-  --env BP_NATIVE_IMAGE=true
-  --path java/native-image/java-native-image-sample/target/demo-0.0.1-SNAPSHOT.jar
-{{< /code/copyable >}}
-
-The resulting application image will be identical to that built in the "Building a Native image with Maven" example.
-
-### Inspect the JVM Version
-
-The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.
-
-**Example** Inspecting the JRE Version
-
-Given an image named `samples/java-native` built from one of examples above, the following command will print the exact version of the installed substrate VM.
-{{< code/copyable >}}
-pack inspect-image samples/java-native --bom | jq '.local[] | select(.name=="native-image-svm") | .metadata.version'
-{{< /code/copyable >}}
-
-### Configure the GraalVM Version
-
-Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a sepecific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.
-
-The following table documents the versions available.
-
-| GraalVM Version | Java Native Image Buildpack Version |
-| --------------- | ----------------------------------- |
-| 21.2            | 5.5.0                               |
-| 21.1            | 5.4.0                               |
-| 21.0            | 5.3.0                               |
-
-For example, to select GraalVM 21.1:
-
-{{< code/copyable >}}
-pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/java-native-image:5.4.0
-{{< /code/copyable >}}
 
 <!-- buildpacks -->
 [bp/adoptium]:https://github.com/paketo-buildpacks/adoptium
