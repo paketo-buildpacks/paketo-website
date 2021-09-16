@@ -167,6 +167,16 @@ table {
     white-space: nowrap;
 }
 
+.sub {
+    vertical-align: sub;
+    font-size: medium;
+}
+
+.sup {
+    vertical-align:super;
+    font-size: medium;
+}
+
 .text--light {
     color: $light-text-color;
 }
