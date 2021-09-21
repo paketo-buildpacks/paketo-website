@@ -9,7 +9,7 @@ aliases:
 ---
 
 If the entire Cloud Native Buildpack experience is new to you, you may want to
-stop and take some time to read about [authoring a a Cloud Native
+stop and take some time to read about [authoring a Cloud Native
 Buildpack](https://buildpacks.io/docs/buildpack-author-guide/create-buildpack/)
 (CNB). Packit is a Go library that is an abstraction that conforms to the [CNB
 specification](https://github.com/buildpacks/spec) that takes a minimal
