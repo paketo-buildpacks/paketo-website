@@ -144,16 +144,6 @@ check_links() {
     skipTLS="--skip-tls-verification" # our local server doesn't present a cert
   fi
 
-  util::print::info "Ignoring link fragments..."
-  "${BIN_DIR}"/muffet --buffer-size 8192 \
-                      --timeout=20 \
-                      --ignore-fragments \
-                      ${skipTLS} \
-                      ${excludeGithub} \
-                      ${limitConnections} \
-                      ${rateLimit} \
-                      "${address}${port:+:$port}";
-
   util::print::info "Including link fragments (except excludelist)..."
   "${BIN_DIR}"/muffet --buffer-size 8192 \
                       --timeout=20 \
