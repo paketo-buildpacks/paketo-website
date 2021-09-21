@@ -1,19 +1,35 @@
 #!/usr/bin/env bash
 
-set -eu
+set -e
+set -u
 set -o pipefail
 
-readonly PROGDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-readonly SITEDIR="$(cd "${PROGDIR}/.." && pwd)"
-readonly CONTENTDIR="$(cd ${SITEDIR}/content && pwd)"
+# shellcheck source=SCRIPTDIR/.util/print.sh
+source "$(dirname "${BASH_SOURCE[0]}")/.util/print.sh"
+
+# shellcheck source=SCRIPTDIR/.util/tools.sh
+source "$(dirname "${BASH_SOURCE[0]}")/.util/tools.sh"
+
+readonly ROOT_DIR="$(cd "$(dirname "${0}")/.." && pwd)"
+readonly BIN_DIR="${ROOT_DIR}/.bin"
 
 function main() {
+  local address port
   while [[ "${#}" != 0 ]]; do
     case "${1}" in
-      --help|-h)
+      --address)
+        address="${2}"
+        shift 2
+        ;;
+
+      --port)
+        port="${2}"
+        shift 2
+        ;;
+
+      --quick)
+        quick=true
         shift 1
-        usage
-        exit 0
         ;;
 
       "")
@@ -22,52 +38,58 @@ function main() {
         ;;
 
       *)
-        printf "unknown argument \"${1}\""
-        exit 1
+        util::print::error "unknown argument \"${1}\""
     esac
   done
+  util::tools::hugo::install --directory "${BIN_DIR}"
+  util::tools::muffet::install --directory "${BIN_DIR}"
 
-  clean=0
+  check_links "${address:-"127.0.0.1"}" "${port:-"1313"}" ${quick}
+}
 
-  refMessage="Internal links not wrapped in {{< ref >}} found:"
-  relrefMessage="Anchor links not wrapped in {{< relref >}} found:"
+function check_links() {
+  local address port quick clean
 
-  if grep -irn "paketo.io" "${CONTENTDIR}" | grep -v "deps.paketo.io" | grep -qv "paketo.io/images" ; then
-    echo "${refMessage}";
-    grep -irn "paketo.io" "${CONTENTDIR}" | grep -v "deps.paketo.io" | grep -v "paketo.io/images";
-    printf "\n\n"
-    clean=1;
+  address="${1}"
+  port="${2}"
+  quick="${3}"
+
+  util::print::title "Spinning up a local server..."
+  "${BIN_DIR}"/hugo server --bind "${address}" --port "${port}" &
+  hugoPID=$!
+  trap "echo 'Shutting down server...'; kill ${hugoPID}; exit" SIGHUP SIGINT SIGTERM
+
+  sleep 3
+
+  util::print::title "Checking links across rendered site..."
+  set +e
+
+  if $quick ; then
+    util::print::info "Using quick search..."
+    "${BIN_DIR}"/muffet  --buffer-size 8192 \
+                        --skip-tls-verification \
+                        --exclude="localhost" \
+                        --exclude='example\.com' \
+                        --exclude='(github\.com).*#' \
+                        --exclude='(github\.com)' \
+                        "http://${address}:${port}";
+  else
+    util::print::info "Using complete search..."
+    "${BIN_DIR}"/muffet  --buffer-size 8192 \
+                        --skip-tls-verification \
+                        --exclude="localhost" \
+                        --exclude='example\.com' \
+                        --exclude='(github\.com).*#' \
+                        --max-connections=1 \
+                        "http://${address}:${port}";
   fi
+  clean=$?
 
-  if grep -irnq "(/docs" "${CONTENTDIR}" || grep -irnq "(docs" ; then
-    echo "${refMessage}";
-    grep -irn "(/docs" "${CONTENTDIR}"
-    grep -irn "(docs" "${CONTENTDIR}"
-    printf "\n\n"
-    clean=1
-  fi
-
-  if grep -irnq "(#" "${CONTENTDIR}" || grep -irnq ":#" "${CONTENTDIR}"; then
-    echo "${relrefMessage}";
-    grep -irn "(#" "${CONTENTDIR}"
-    grep -irn ":#" "${CONTENTDIR}"
-    printf "\n\n"
-    clean=1
-  fi
+  util::print::title "Shutting down server..."
+  kill "${hugoPID}"
 
   exit $clean
 }
 
-
-function usage() {
-  cat <<-USAGE
-check-links.sh [OPTIONS]
-
-Checks for internal links to docs pages that do not use a {{< ref }} or {{< relref >}}.
-
-OPTIONS
-  --help  -h  prints the command usage
-USAGE
-}
-
 main "${@:-}"
+
