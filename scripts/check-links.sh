@@ -14,10 +14,9 @@ readonly ROOT_DIR="$(cd "$(dirname "${0}")/.." && pwd)"
 readonly BIN_DIR="${ROOT_DIR}/.bin"
 
 function main() {
-  local address port quick live strip
+  local address port quick live
   quick="false"
   live="false"
-  strip="false"
   while [[ "${#}" != 0 ]]; do
     case "${1}" in
       --address)
@@ -40,11 +39,6 @@ function main() {
         shift 1
         ;;
 
-      --strip-fragments)
-        strip="true"
-        shift 1
-        ;;
-
       --help|-h)
         shift 1
         usage
@@ -63,12 +57,16 @@ function main() {
 
   util::tools::muffet::install --directory "${BIN_DIR}"
 
+  clean=0
+
   if [ "${live}" = "true" ] ; then
-    check_links_live "${quick}" "${strip}";
+    check_links_live "${quick}";
   else
     util::tools::hugo::install --directory "${BIN_DIR}"
-    check_links_local "${port:-"1313"}" "${quick}" "${strip}";
+    check_links_local "${port:-"1313"}" "${quick}";
   fi
+
+  exit "${clean}"
 }
 
 function usage() {
@@ -81,81 +79,90 @@ OPTIONS
   --port <port number>               port on which the hugo server will serve the site (default: 1313)
   --live                             checks links on paketo.io instead of a locally served instance
   --quick                            checks links concurrently, but SKIPS all github.com links (to avoid rate-limiting)
-  --strip-fragments                  strip fragments from URLs before checking (e.g. anchor tags, querys)
   --help                 -h          prints the command usage
 USAGE
 }
 
 function check_links_live() {
-  local quick strip
+  local quick
 
   quick="${1}"
-  strip="${2}"
 
   util::print::title "Checking links across paketo.io..."
 
-  check_links "https://paketo.io" "" "${quick}" "${strip}";
+  check_links "https://paketo.io" "" "${quick}";
 
   exit "${clean}"
 }
 
 function check_links_local() {
-  local quick port address strip
+  local quick port address
 
   port="${1}"
   quick="${2}"
-  strip="${3}"
   address="127.0.0.1"
 
   util::print::title "Spinning up a local server..."
 
   "${BIN_DIR}"/hugo server --bind "${address}" --port "${port}" &
   hugoPID=$!
-  trap "echo 'Shutting down server...'; kill ${hugoPID}; exit" SIGHUP SIGINT SIGTERM
+  trap "echo 'Shutting down server...'; kill ${hugoPID}; exit 1" SIGHUP SIGINT SIGTERM
 
   sleep 3
 
   util::print::title "Checking links across local site..."
 
-  check_links "http://${address}" "${port}" "${quick}" "${strip}";
+  check_links "http://${address}" "${port}" "${quick}";
 
   util::print::title "Shutting down server..."
   kill "${hugoPID}"
-
-  exit "${clean}"
 }
 
 check_links() {
-    local address port quick strip ignoreFragments excludeGithub limitConnections
+    local address port quick excludeGithub limitConnections skipTLS
 
   address="${1}"
   port="${2}"
   quick="${3}"
-  strip="${4}"
 
-  ignoreFragments=""
+  # A list of URL patterns that we know are correct but fail to be scraped
+  excludeList=( "github\\.com.*#" "maven\\.apache\\.org.*#" "docs\\.npmjs\\.com.*#" )
+
   excludeGithub=""
   limitConnections="--max-connections=1"
-
-  if [ "${strip}" = "true" ]; then
-    ignoreFragments="--ignore-fragments";
-  fi
+  skipTLS=""
 
   if [ "${quick}" = "true" ]; then
-    excludeGithub="--exclude='github\.com'";
+    excludeGithub="--exclude github.com";
     limitConnections=""
   fi
 
+  if [ "${address}" = "http://127.0.0.1" ]; then
+    skipTLS="--skip-tls-verification" # our local server doesn't present a cert
+  fi
+
   set +e
+  # ignore fragments
+  util::print::info "Ignoring link fragments..."
   "${BIN_DIR}"/muffet --buffer-size 8192 \
-                      --skip-tls-verification \
                       --timeout=20 \
-                      --exclude="localhost" \
+                      --ignore-fragments \
+                      ${skipTLS} \
                       ${excludeGithub} \
                       ${limitConnections} \
-                      ${ignoreFragments} \
                       "${address}${port:+:$port}";
-  clean=$?
+  clean=$(( $? | ${clean} ))
+
+  # include fragments except excludelist
+  util::print::info "Including link fragments (except excludelist)..."
+  "${BIN_DIR}"/muffet --buffer-size 8192 \
+                      --timeout=20 \
+                      ${excludeList[@]/#/--exclude } \
+                      ${skipTLS} \
+                      ${excludeGithub} \
+                      ${limitConnections} \
+                      "${address}${port:+:$port}";
+  clean=$(( $? | ${clean} ))
 }
 
 main "${@:-}"
