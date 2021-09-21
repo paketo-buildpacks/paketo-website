@@ -5,9 +5,7 @@
 2021-08-12T18:22:25Z
 APM
 ASPNET
-ASPNet
 Alibaba
-Applicaiton
 Azul
 BOM
 BPL_[A-Z_]*(=.*)?
@@ -26,7 +24,6 @@ CPEs
 CPython
 CVE
 CVEs
-Certficates
 Corretto
 CycloneDX
 CycloneDX\-[a-z]+
@@ -270,7 +267,6 @@ subdirectory
 tags=paketo
 templated
 tmp
-toc
 tokenization
 toml
 toolchain
