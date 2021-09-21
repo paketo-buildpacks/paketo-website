@@ -446,17 +446,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <nav id="TableOfContents">
   <ul>
     <li><a href="#about-the-examples">About the Examples</a></li>
-    <li><a href="#build-from-source">Build from Source</a>
+    <li><a href="#build-an-app-as-a-traditional-java-war-or-jar">Build an App as a Traditional Java WAR or JAR</a>
       <ul>
-        <li><a href="#configure-the-build-tool">Configure the Build Tool</a></li>
+        <li><a href="#build-from-source">Build from Source</a></li>
+        <li><a href="#build-from-a-compiled-artifact">Build from a Compiled Artifact</a></li>
+        <li><a href="#inspect-the-jvm-version">Inspect the JVM Version</a></li>
+        <li><a href="#install-a-specific-jvm-version">Install a Specific JVM Version</a></li>
+        <li><a href="#configure-the-jvm-at-runtime">Configure the JVM at Runtime</a></li>
+        <li><a href="#use-an-alternative-jvm">Use an Alternative JVM</a></li>
       </ul>
     </li>
-    <li><a href="#build-from-a-compiled-artifact">Build from a Compiled Artifact</a></li>
-    <li><a href="#inspect-the-jvm-version">Inspect the JVM Version</a></li>
-    <li><a href="#install-a-specific-jvm-version">Install a Specific JVM Version</a></li>
-    <li><a href="#configure-the-jvm-at-runtime">Configure the JVM at Runtime</a></li>
-    <li><a href="#use-an-alternative-jvm">Use an Alternative JVM</a></li>
-    <li><a href="#use-an-alternative-java-native-image-toolkit">Use an Alternative Java Native Image Toolkit</a></li>
+    <li><a href="#build-an-app-as-a-graalvm-native-image-application">Build an App as a GraalVM Native Image Application</a>
+      <ul>
+        <li><a href="#build-from-source-1">Build From Source</a></li>
+        <li><a href="#build-from-an-executable-jar">Build From an Executable JAR</a></li>
+        <li><a href="#inspect-the-native-image-tools-version">Inspect the Native Image Tools Version</a></li>
+        <li><a href="#configure-the-graalvm-version">Configure the GraalVM Version</a></li>
+        <li><a href="#use-an-alternative-java-native-image-toolkit">Use an Alternative Java Native Image Toolkit</a></li>
+      </ul>
+    </li>
     <li><a href="#build-a-spring-boot-application">Build a Spring Boot Application</a>
       <ul>
         <li><a href="#inspect-spring-boot-application-dependencies">Inspect Spring Boot Application Dependencies</a></li>
@@ -470,14 +478,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#provide-a-custom-start-command-at-launch">Provide a Custom Start Command at Launch</a>
       <ul>
         <li><a href="#execute-a-custom-command-in-the-buildpack-provided-environment">Execute a Custom Command in the Buildpack-Provided Environment</a></li>
-      </ul>
-    </li>
-    <li><a href="#build-an-app-as-a-graalvm-native-image-application">Build an App as a GraalVM Native Image Application</a>
-      <ul>
-        <li><a href="#build-from-source-1">Build From Source</a></li>
-        <li><a href="#build-from-an-executable-jar">Build From an Executable JAR</a></li>
-        <li><a href="#inspect-the-jvm-version-1">Inspect the JVM Version</a></li>
-        <li><a href="#configure-the-graalvm-version">Configure the GraalVM Version</a></li>
       </ul>
     </li>
   </ul>
@@ -508,11 +508,15 @@ cd samples
 curl -s http://localhost:8080/actuator/health | jq .
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h2 id="build-from-source" class="markup-heading">
+<h2 id="build-an-app-as-a-traditional-java-war-or-jar" class="markup-heading">
+    <a class="markup-heading__link" href="#build-an-app-as-a-traditional-java-war-or-jar">
+        Build an App as a Traditional Java WAR or JAR
+    </a>
+</h2><h3 id="build-from-source" class="markup-heading">
     <a class="markup-heading__link" href="#build-from-source">
         Build from Source
     </a>
-</h2><p>The Java Buildpack can build from source using any of the following build tools:</p>
+</h3><p>The Java Buildpack can build from source using any of the following build tools:</p>
 <ul>
 <li><a href="https://gradle.org/">Gradle</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/gradle">Gradle Buildpack</a></li>
 <li><a href="https://leiningen.org/">Leiningen</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/leiningen">Leiningen Buildpack</a></li>
@@ -532,16 +536,16 @@ Artifact</a>.</p>
   --path java/maven
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
-<h3 id="configure-the-build-tool" class="markup-heading">
+<h4 id="configure-the-build-tool" class="markup-heading">
     <a class="markup-heading__link" href="#configure-the-build-tool">
         Configure the Build Tool
     </a>
-</h3><p><strong>Note</strong>: The following set of configuration options are not comprehensive, see the homepage for the relevant component buildpacks for a full-set of configuration options.</p>
-<h4 id="select-a-module-or-artifact" class="markup-heading">
+</h4><p><strong>Note</strong>: The following set of configuration options are not comprehensive, see the homepage for the relevant component buildpacks for a full-set of configuration options.</p>
+<h5 id="select-a-module-or-artifact" class="markup-heading">
     <a class="markup-heading__link" href="#select-a-module-or-artifact">
         Select a Module or Artifact
     </a>
-</h4><p>For a given build <code>&lt;TOOL&gt;</code>, where <code>&lt;TOOL&gt;</code> is one of <code>MAVEN</code>, <code>GRADLE</code>, <code>LEIN</code> or <code>SBT</code>, the selected artifact can be configured with one of the following environment variable at build-time:</p>
+</h5><p>For a given build <code>&lt;TOOL&gt;</code>, where <code>&lt;TOOL&gt;</code> is one of <code>MAVEN</code>, <code>GRADLE</code>, <code>LEIN</code> or <code>SBT</code>, the selected artifact can be configured with one of the following environment variable at build-time:</p>
 <ul>
 <li><code>BP_&lt;TOOL&gt;_BUILT_MODULE</code>
 <ul>
@@ -559,11 +563,11 @@ Artifact</a>.</p>
 </ul>
 </li>
 </ul>
-<h4 id="specify-the-build-command" class="markup-heading">
+<h5 id="specify-the-build-command" class="markup-heading">
     <a class="markup-heading__link" href="#specify-the-build-command">
         Specify the Build Command
     </a>
-</h4><p>For a given build <code>&lt;TOOL&gt;</code>, where <code>&lt;TOOL&gt;</code> is one of <code>MAVEN</code>, <code>GRADLE</code>, <code>LEIN</code> or <code>SBT</code>, the build command can be configured with the following environment variable at build-time:</p>
+</h5><p>For a given build <code>&lt;TOOL&gt;</code>, where <code>&lt;TOOL&gt;</code> is one of <code>MAVEN</code>, <code>GRADLE</code>, <code>LEIN</code> or <code>SBT</code>, the build command can be configured with the following environment variable at build-time:</p>
 <ul>
 <li><code>BP_&lt;TOOL&gt;_BUILD_ARGUMENTS</code>
 <ul>
@@ -573,11 +577,11 @@ Artifact</a>.</p>
 </ul>
 </li>
 </ul>
-<h4 id="connect-to-a-private-maven-repository" class="markup-heading">
+<h5 id="connect-to-a-private-maven-repository" class="markup-heading">
     <a class="markup-heading__link" href="#connect-to-a-private-maven-repository">
         Connect to a Private Maven Repository
     </a>
-</h4><p>A <a href="https://paketo.io/docs/reference/configuration/#bindings">binding</a> with type <code>maven</code> and key <code>settings.xml</code> can be used to provide custom <a href="http://maven.apache.org/settings.html">Maven settings</a>.</p>
+</h5><p>A <a href="https://paketo.io/docs/reference/configuration/#bindings">binding</a> with type <code>maven</code> and key <code>settings.xml</code> can be used to provide custom <a href="http://maven.apache.org/settings.html">Maven settings</a>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-plain" data-lang="plain">&lt;binding-name&gt;
 ├── settings.xml
 └── type
@@ -612,11 +616,11 @@ Artifact</a>.</p>
 </p>
 </li>
 </ol>
-<h2 id="build-from-a-compiled-artifact" class="markup-heading">
+<h3 id="build-from-a-compiled-artifact" class="markup-heading">
     <a class="markup-heading__link" href="#build-from-a-compiled-artifact">
         Build from a Compiled Artifact
     </a>
-</h2><p>An application developer may build an image from following archive formats:</p>
+</h3><p>An application developer may build an image from following archive formats:</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">Executable JAR</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/executable-jar">Executable Jar Buildpack</a></li>
 <li><a href="https://en.wikipedia.org/wiki/WAR_(file_format)">WAR</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/apache-tomcat">Apache Tomcat Buildpack</a></li>
@@ -640,21 +644,21 @@ pack build samples/java \
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
 <p>The resulting application image will be identical to that built in the Building with Maven example.</p>
-<h2 id="inspect-the-jvm-version" class="markup-heading">
+<h3 id="inspect-the-jvm-version" class="markup-heading">
     <a class="markup-heading__link" href="#inspect-the-jvm-version">
         Inspect the JVM Version
     </a>
-</h2><p>The exact JRE version that was contributed to a given image can be read from the Bill-of-Materials.</p>
+</h3><p>The exact JRE version that was contributed to a given image can be read from the Bill-of-Materials.</p>
 <p><strong>Example</strong> Inspecting the JRE Version</p>
 <p>Given an image named <code>samples/java</code> built from one of examples above, the following command should print the exact version of the installed JRE.
 <pre class="copyable"><code class="copyable__code">pack inspect-image samples/app --bom | jq &#39;.local[] | select(.name==&#34;jre&#34;) | .metadata.version&#39;
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<h2 id="install-a-specific-jvm-version" class="markup-heading">
+<h3 id="install-a-specific-jvm-version" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-specific-jvm-version">
         Install a Specific JVM Version
     </a>
-</h2><p>The following environment variable configures the JVM version at build-time.</p>
+</h3><p>The following environment variable configures the JVM version at build-time.</p>
 <ul>
 <li><code>BP_JVM_VERSION</code>
 <ul>
@@ -664,11 +668,11 @@ pack build samples/java \
 </ul>
 </li>
 </ul>
-<h2 id="configure-the-jvm-at-runtime" class="markup-heading">
+<h3 id="configure-the-jvm-at-runtime" class="markup-heading">
     <a class="markup-heading__link" href="#configure-the-jvm-at-runtime">
         Configure the JVM at Runtime
     </a>
-</h2><p>The Java Buildpack configures the JVM by setting <code>JAVA_TOOL_OPTIONS</code> in the JVM environment.</p>
+</h3><p>The Java Buildpack configures the JVM by setting <code>JAVA_TOOL_OPTIONS</code> in the JVM environment.</p>
 <p>The runtime JVM can be configured in two ways:</p>
 <ol>
 <li>Buildpack-provided runtime components including the Memory Calculator accept semantically named environment variables which are then used to derive <code>JAVA_TOOL_OPTIONS</code> flags. Examples include:
@@ -681,11 +685,11 @@ pack build samples/java \
 <li>Flags can be set directly at runtime with the <code>JAVA_TOOL_OPTIONS</code> environment variable. User-provided flags will be appended to buildpack-provided flags. If the user and a buildpack set the same flag, user-provided flags take precedence.</li>
 </ol>
 <p>See the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">homepage</a> for the Bellsoft Liberica Buildpack for a full set of configuration options.</p>
-<h2 id="use-an-alternative-jvm" class="markup-heading">
+<h3 id="use-an-alternative-jvm" class="markup-heading">
     <a class="markup-heading__link" href="#use-an-alternative-jvm">
         Use an Alternative JVM
     </a>
-</h2><p>By default, the <a href="https://github.com/paketo-buildpacks/java">Paketo Java buildpack</a> will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implemenations in place of Liberica&rsquo;s JVM.</p>
+</h3><p>By default, the <a href="https://github.com/paketo-buildpacks/java">Paketo Java buildpack</a> will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implemenations in place of Liberica&rsquo;s JVM.</p>
 <table>
 <thead>
 <tr>
@@ -755,11 +759,96 @@ pack build samples/java \
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
 <p>It does not hurt to use this command for all situations, it is just more verbose and most users can get away without specifying the CA certificates buildpack to be first.</p>
-<h2 id="use-an-alternative-java-native-image-toolkit" class="markup-heading">
+<h2 id="build-an-app-as-a-graalvm-native-image-application" class="markup-heading">
+    <a class="markup-heading__link" href="#build-an-app-as-a-graalvm-native-image-application">
+        Build an App as a GraalVM Native Image Application
+    </a>
+</h2><p>The <a href="https://github.com/paketo-buildpacks/java-native-image">Paketo Java Native Image Buildpack</a> allows users to create an image containing a <a href="https://www.graalvm.org/docs/introduction/">GraalVM</a> <a href="https://www.graalvm.org/reference-manual/native-image/">native image</a> application.</p>
+<p>The Java Native Buildpack is a <a href="https://paketo.io/docs/concepts/buildpacks/#composite-buildpacks">composite buildpack</a> and
+each step in a build is handled by one of its <a href="https://paketo.io/docs/reference/java-native-image-reference/#components">components</a>. The
+following docs describe common build configurations. For a full set of
+configuration options and capabilities see the homepages of the component
+buildpacks.</p>
+<h3 id="build-from-source-1" class="markup-heading">
+    <a class="markup-heading__link" href="#build-from-source-1">
+        Build From Source
+    </a>
+</h3><p>The Java Native Image Buildpack supports the same <a href="https://paketo.io/docs/howto/java/#building-from-source">build tools and
+configuration options</a> as the <a href="https://github.com/paketo-buildpacks/java">Java
+Buildpack</a>. The build must produce an <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable jar</a><a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable
+jar</a>.</p>
+<p>After compiling and packaging, the buildpack will replace provided application
+source code with the exploded JAR and proceed as described in [Building from an
+Executable Jar][building-from-an-executable-jar].</p>
+<p><strong>Example</strong>: Building a Native image with Maven</p>
+<p>The following command creates an image from source with <code>maven</code>.</p>
+<pre class="copyable"><code class="copyable__code">pack build samples/java-native \
+  --env BP_NATIVE_IMAGE=true
+  --path java/native-image/java-native-image-sample
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<h3 id="build-from-an-executable-jar" class="markup-heading">
+    <a class="markup-heading__link" href="#build-from-an-executable-jar">
+        Build From an Executable JAR
+    </a>
+</h3><p>An application developer may build an image from an exploded <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable JAR</a>. Most platforms will automatically extract provided archives.</p>
+<p><strong>Example</strong>: Building a Native image from an Executable JAR</p>
+<p>The following command uses Maven directly to compile an executable JAR and then uses the <code>pack</code> CLI to build an image from the JAR.</p>
+<pre class="copyable"><code class="copyable__code">cd samples/java/native-image
+./mvnw package
+pack build samples/java-native \
+  --env BP_NATIVE_IMAGE=true
+  --path java/native-image/java-native-image-sample/target/demo-0.0.1-SNAPSHOT.jar
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>The resulting application image will be identical to that built in the &ldquo;Building a Native image with Maven&rdquo; example.</p>
+<h3 id="inspect-the-native-image-tools-version" class="markup-heading">
+    <a class="markup-heading__link" href="#inspect-the-native-image-tools-version">
+        Inspect the Native Image Tools Version
+    </a>
+</h3><p>The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.</p>
+<p><strong>Example</strong> Inspecting the JRE Version</p>
+<p>Given an image named <code>samples/java-native</code> built from one of examples above, the following command will print the exact version of the installed substrate VM.
+<pre class="copyable"><code class="copyable__code">pack inspect-image samples/java-native --bom | jq &#39;.local[] | select(.name==&#34;native-image-svm&#34;) | .metadata.version&#39;
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+</p>
+<h3 id="configure-the-graalvm-version" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-the-graalvm-version">
+        Configure the GraalVM Version
+    </a>
+</h3><p>Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a sepecific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.</p>
+<p>The following table documents the versions available.</p>
+<table>
+<thead>
+<tr>
+<th>GraalVM Version</th>
+<th>Java Native Image Buildpack Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>21.2</td>
+<td>5.5.0</td>
+</tr>
+<tr>
+<td>21.1</td>
+<td>5.4.0</td>
+</tr>
+<tr>
+<td>21.0</td>
+<td>5.3.0</td>
+</tr>
+</tbody>
+</table>
+<p>For example, to select GraalVM 21.1:</p>
+<pre class="copyable"><code class="copyable__code">pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/java-native-image:5.4.0
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<h3 id="use-an-alternative-java-native-image-toolkit" class="markup-heading">
     <a class="markup-heading__link" href="#use-an-alternative-java-native-image-toolkit">
         Use an Alternative Java Native Image Toolkit
     </a>
-</h2><p>By default, the <a href="https://github.com/paketo-buildpacks/java-native-image">Paketo Java Native Image buildpack</a> will use the GraalVM Native Image Toolkit. The following Paketo JVM buildpacks may be used to substitute alternate Native Image Toolkit implemenations in place of the default.</p>
+</h3><p>By default, the <a href="https://github.com/paketo-buildpacks/java-native-image">Paketo Java Native Image buildpack</a> will use the GraalVM Native Image Toolkit. The following Paketo JVM buildpacks may be used to substitute alternate Native Image Toolkit implemenations in place of the default.</p>
 <table>
 <thead>
 <tr>
@@ -895,91 +984,6 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
 <p>Each argument provided to the launcher will be evaluated by the shell prior to execution and the original tokenization will be preserved. Note that, in the example above <code>'JAVA_TOOL_OPTIONS: $JAVA_TOOL_OPTIONS'</code> is single quoted so that <code>$JAVA_TOOL_OPTIONS</code> is evaluated in the container, rather than by the host shell.</p>
-<h2 id="build-an-app-as-a-graalvm-native-image-application" class="markup-heading">
-    <a class="markup-heading__link" href="#build-an-app-as-a-graalvm-native-image-application">
-        Build an App as a GraalVM Native Image Application
-    </a>
-</h2><p>The <a href="https://github.com/paketo-buildpacks/java-native-image">Paketo Java Native Image Buildpack</a> allows users to create an image containing a <a href="https://www.graalvm.org/docs/introduction/">GraalVM</a> <a href="https://www.graalvm.org/reference-manual/native-image/">native image</a> application.</p>
-<p>The Java Native Buildpack is a <a href="https://paketo.io/docs/concepts/buildpacks/#composite-buildpacks">composite buildpack</a> and
-each step in a build is handled by one of its <a href="https://paketo.io/docs/reference/java-native-image-reference/#components">components</a>. The
-following docs describe common build configurations. For a full set of
-configuration options and capabilities see the homepages of the component
-buildpacks.</p>
-<h3 id="build-from-source-1" class="markup-heading">
-    <a class="markup-heading__link" href="#build-from-source-1">
-        Build From Source
-    </a>
-</h3><p>The Java Native Image Buildpack supports the same <a href="https://paketo.io/docs/howto/java/#building-from-source">build tools and
-configuration options</a> as the <a href="https://github.com/paketo-buildpacks/java">Java
-Buildpack</a>. The build must produce an <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable jar</a><a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable
-jar</a>.</p>
-<p>After compiling and packaging, the buildpack will replace provided application
-source code with the exploded JAR and proceed as described in [Building from an
-Executable Jar][building-from-an-executable-jar].</p>
-<p><strong>Example</strong>: Building a Native image with Maven</p>
-<p>The following command creates an image from source with <code>maven</code>.</p>
-<pre class="copyable"><code class="copyable__code">pack build samples/java-native \
-  --env BP_NATIVE_IMAGE=true
-  --path java/native-image/java-native-image-sample
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
-<h3 id="build-from-an-executable-jar" class="markup-heading">
-    <a class="markup-heading__link" href="#build-from-an-executable-jar">
-        Build From an Executable JAR
-    </a>
-</h3><p>An application developer may build an image from an exploded <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable JAR</a>. Most platforms will automatically extract provided archives.</p>
-<p><strong>Example</strong>: Building a Native image from an Executable JAR</p>
-<p>The following command uses Maven directly to compile an executable JAR and then uses the <code>pack</code> CLI to build an image from the JAR.</p>
-<pre class="copyable"><code class="copyable__code">cd samples/java/native-image
-./mvnw package
-pack build samples/java-native \
-  --env BP_NATIVE_IMAGE=true
-  --path java/native-image/java-native-image-sample/target/demo-0.0.1-SNAPSHOT.jar
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
-<p>The resulting application image will be identical to that built in the &ldquo;Building a Native image with Maven&rdquo; example.</p>
-<h3 id="inspect-the-jvm-version-1" class="markup-heading">
-    <a class="markup-heading__link" href="#inspect-the-jvm-version-1">
-        Inspect the JVM Version
-    </a>
-</h3><p>The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.</p>
-<p><strong>Example</strong> Inspecting the JRE Version</p>
-<p>Given an image named <code>samples/java-native</code> built from one of examples above, the following command will print the exact version of the installed substrate VM.
-<pre class="copyable"><code class="copyable__code">pack inspect-image samples/java-native --bom | jq &#39;.local[] | select(.name==&#34;native-image-svm&#34;) | .metadata.version&#39;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
-<h3 id="configure-the-graalvm-version" class="markup-heading">
-    <a class="markup-heading__link" href="#configure-the-graalvm-version">
-        Configure the GraalVM Version
-    </a>
-</h3><p>Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a sepecific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.</p>
-<p>The following table documents the versions available.</p>
-<table>
-<thead>
-<tr>
-<th>GraalVM Version</th>
-<th>Java Native Image Buildpack Version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>21.2</td>
-<td>5.5.0</td>
-</tr>
-<tr>
-<td>21.1</td>
-<td>5.4.0</td>
-</tr>
-<tr>
-<td>21.0</td>
-<td>5.3.0</td>
-</tr>
-</tbody>
-</table>
-<p>For example, to select GraalVM 21.1:</p>
-<pre class="copyable"><code class="copyable__code">pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/java-native-image:5.4.0
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
@@ -997,24 +1001,32 @@ pack build samples/java-native \
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> September 16, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> September 21, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#about-the-examples">About the Examples</a></li>
-    <li><a href="#build-from-source">Build from Source</a>
+    <li><a href="#build-an-app-as-a-traditional-java-war-or-jar">Build an App as a Traditional Java WAR or JAR</a>
       <ul>
-        <li><a href="#configure-the-build-tool">Configure the Build Tool</a></li>
+        <li><a href="#build-from-source">Build from Source</a></li>
+        <li><a href="#build-from-a-compiled-artifact">Build from a Compiled Artifact</a></li>
+        <li><a href="#inspect-the-jvm-version">Inspect the JVM Version</a></li>
+        <li><a href="#install-a-specific-jvm-version">Install a Specific JVM Version</a></li>
+        <li><a href="#configure-the-jvm-at-runtime">Configure the JVM at Runtime</a></li>
+        <li><a href="#use-an-alternative-jvm">Use an Alternative JVM</a></li>
       </ul>
     </li>
-    <li><a href="#build-from-a-compiled-artifact">Build from a Compiled Artifact</a></li>
-    <li><a href="#inspect-the-jvm-version">Inspect the JVM Version</a></li>
-    <li><a href="#install-a-specific-jvm-version">Install a Specific JVM Version</a></li>
-    <li><a href="#configure-the-jvm-at-runtime">Configure the JVM at Runtime</a></li>
-    <li><a href="#use-an-alternative-jvm">Use an Alternative JVM</a></li>
-    <li><a href="#use-an-alternative-java-native-image-toolkit">Use an Alternative Java Native Image Toolkit</a></li>
+    <li><a href="#build-an-app-as-a-graalvm-native-image-application">Build an App as a GraalVM Native Image Application</a>
+      <ul>
+        <li><a href="#build-from-source-1">Build From Source</a></li>
+        <li><a href="#build-from-an-executable-jar">Build From an Executable JAR</a></li>
+        <li><a href="#inspect-the-native-image-tools-version">Inspect the Native Image Tools Version</a></li>
+        <li><a href="#configure-the-graalvm-version">Configure the GraalVM Version</a></li>
+        <li><a href="#use-an-alternative-java-native-image-toolkit">Use an Alternative Java Native Image Toolkit</a></li>
+      </ul>
+    </li>
     <li><a href="#build-a-spring-boot-application">Build a Spring Boot Application</a>
       <ul>
         <li><a href="#inspect-spring-boot-application-dependencies">Inspect Spring Boot Application Dependencies</a></li>
@@ -1028,14 +1040,6 @@ pack build samples/java-native \
     <li><a href="#provide-a-custom-start-command-at-launch">Provide a Custom Start Command at Launch</a>
       <ul>
         <li><a href="#execute-a-custom-command-in-the-buildpack-provided-environment">Execute a Custom Command in the Buildpack-Provided Environment</a></li>
-      </ul>
-    </li>
-    <li><a href="#build-an-app-as-a-graalvm-native-image-application">Build an App as a GraalVM Native Image Application</a>
-      <ul>
-        <li><a href="#build-from-source-1">Build From Source</a></li>
-        <li><a href="#build-from-an-executable-jar">Build From an Executable JAR</a></li>
-        <li><a href="#inspect-the-jvm-version-1">Inspect the JVM Version</a></li>
-        <li><a href="#configure-the-graalvm-version">Configure the GraalVM Version</a></li>
       </ul>
     </li>
   </ul>
