@@ -13,4 +13,4 @@ jobs:
       with:
         submodules: false
     - name: Crawl live site for broken links
-      run: scripts/check-links.sh --live
+      run: scripts/check-links.sh --live --strip-fragments
