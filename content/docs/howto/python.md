@@ -15,14 +15,14 @@ aliases:
 To build a sample app locally with this buildpack using the pack CLI, run
 
 {{< code/copyable >}}
-git clone https://github.com/paketo-buildpacks/python
+git clone https://github.com/paketo-buildpacks/samples
 cd samples/python/pip
 pack build my-app --buildpack gcr.io/paketo-buildpacks/python \
   --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
 See
-[samples](https://github.com/paketo-buildpacks/python/tree/main/samples/python/pip)
+[samples](https://github.com/paketo-buildpacks/samples/tree/main/python/pip)
 for how to run the app.
 
 The Paketo Python Buildpack supports several popular configurations for Python apps.
