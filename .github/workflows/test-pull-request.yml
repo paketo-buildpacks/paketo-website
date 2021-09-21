@@ -24,11 +24,7 @@ jobs:
     - name: Check For Internal Links without Shortcodes
       run: scripts/check-internal-links.sh
 
-    - name: Check Links (quick)
-      if: always()
-      run: scripts/check-links.sh --quick
-
-    - name: Check Links (complete)
+    - name: Check Links
       run: scripts/check-links.sh
 
   check-spelling:
