@@ -514,7 +514,7 @@ curl http://localhost:8080
 </html>%
 {{< /code/output >}}
 
-You can also visit [http://localhost:8080](http://localhost:8080) with your browser to see the app's homepage.
+You can also visit `http://localhost:8080` with your browser to see the app's homepage.
 
 You've done it! As you can see, Paketo buildpacks do most of the hard work for you.
 
