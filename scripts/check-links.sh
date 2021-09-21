@@ -119,7 +119,7 @@ function check_links_local() {
 }
 
 check_links() {
-  local address port quick excludeGithub limitConnections skipTLS
+  local address port quick excludeGithub limitConnections rateLimit skipTLS
 
   address="${1}"
   port="${2}"
@@ -131,11 +131,13 @@ check_links() {
 
   excludeGithub=""
   limitConnections="--max-connections=1"
+  rateLimit="--rate-limit=20"
   skipTLS=""
 
   if [ "${quick}" = "true" ]; then
     excludeGithub="--exclude github.com";
     limitConnections=""
+    rateLimit=""
   fi
 
   if [ "${address}" = "http://127.0.0.1" ]; then
@@ -149,6 +151,7 @@ check_links() {
                       ${skipTLS} \
                       ${excludeGithub} \
                       ${limitConnections} \
+                      ${rateLimit} \
                       "${address}${port:+:$port}";
 
   util::print::info "Including link fragments (except excludelist)..."
@@ -158,6 +161,7 @@ check_links() {
                       ${skipTLS} \
                       ${excludeGithub} \
                       ${limitConnections} \
+                      ${rateLimit} \
                       "${address}${port:+:$port}";
 }
 
