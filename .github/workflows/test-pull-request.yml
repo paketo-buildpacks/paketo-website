@@ -6,7 +6,8 @@ on:
     - main
 
 jobs:
-  check-internal-links:
+  check-links:
+    name: Check Links
     runs-on: ubuntu-latest
     steps:
     - uses: actions/setup-node@v2
