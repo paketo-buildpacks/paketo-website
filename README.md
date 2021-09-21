@@ -1,6 +1,8 @@
 # paketo-website
 Website for [Paketo Buildpacks](https://paketo.io)
 
+Every day at 0500, a [cron job](/.github/workflows/check-live-links.yml) runs to check for broken links on the deployed Paketo site.
+![Link Check](https://github.com/paketo-buildpacks/paketo-website/actions/workflows/check-live-links.yml/badge.svg)
 ## Development
 
 ### Prerequisites
