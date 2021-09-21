@@ -32,7 +32,8 @@ function main() {
   npm install &> /dev/null
   ./node_modules/.bin/spellchecker ./content/**/** \
                                    --no-suggestions \
-                                   --dictionaries "${SITEDIR}"/scripts/.util/spellcheck-dictionary.txt
+                                   --dictionaries ./scripts/.util/spellcheck-dictionary.txt \
+                                   --plugins frontmatter
 
 }
 

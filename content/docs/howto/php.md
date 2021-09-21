@@ -90,7 +90,7 @@ composer:
   # default is app root
   json_path: composer
 
-  # if included, will run `composer global` with with specified arguments
+  # if included, will run `composer global` with specified arguments
   install_global: ["list", "of", "install", "options"]
 {{< /code/copyable >}}
 
@@ -137,7 +137,7 @@ php:
 ## Vendor composer packages
 
 If your php app that uses `composer` has a valid `vendor` directory, then
-the buildpack will not download those packages. It will instead use the the
+the buildpack will not download those packages. It will instead use the
 packages location in the `vendor` directory.
 
 ## Configure custom .ini files
