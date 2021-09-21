@@ -602,7 +602,7 @@ curl http://localhost:8080
 hello world
 {{< /code/output >}}
 
-or visiting [`http://localhost:8080`](http://localhost:8080) in your web
+or visiting `http://localhost:8080` in your web
 browser. Either way you should expect to see "hello world" as your output.
 
 
