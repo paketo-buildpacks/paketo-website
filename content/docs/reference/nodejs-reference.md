@@ -7,11 +7,8 @@ menu:
     name: "Node.js Buildpack"
 ---
 
-This reference documentation offers an in-depth description of the behavior
-and configuration options of the
-[Paketo Node.js Buildpack](https://github.com/paketo-buildpacks/nodejs).
-For explanations of how to use the buildpack for several common use-cases, see
-the Node.js How To [documentation](/docs/howto/nodejs).
+{{% reference_exec_summary bp_name="Paketo Node.js Buildpack" bp_repo="https://github.com/paketo-buildpacks/nodejs" howto_docs_path="/docs/howto/nodejs" %}}
+
 
 ## Supported Dependencies
 The Node.js buildpack supports several versions of Node.js.

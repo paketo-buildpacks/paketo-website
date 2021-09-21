@@ -45,7 +45,7 @@ application will be assigned when building your application container.
 * [Rake](http://github.com/paketo-buildpacks/rake)
 
 ## Rails Asset Pipeline
-The [Paketo Rails Assets Buildpack](http://github.com/paketo-buildpacks/rails-assets) is a [component buildpack](/docs/concepts/buildpacks/#component-buildpacks) included in the Ruby Buildpack. It supports Rails apps (Rails version >= 5.0) that need asset precompilation.
+The [Paketo Rails Assets Buildpack](http://github.com/paketo-buildpacks/rails-assets) is a [component buildpack]({{< ref "/docs/concepts/buildpacks#component-buildpacks" >}}) included in the Ruby Buildpack. It supports Rails apps (Rails version >= 5.0) that need asset precompilation.
 
 The buildpack runs bundle exec rails assets:precompile for the app, and works with any of the supported Ruby webservers listed above.
 

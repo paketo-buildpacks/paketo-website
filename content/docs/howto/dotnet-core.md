@@ -195,13 +195,13 @@ v1.0.0. To migrate from using `buildpack.yml`, please set the
 .Net Core Buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
 following the instructions outlined in the [CA
-Certificates](/docs/reference/configuration/#ca-certificates)
+Certificates]({{< ref "/docs/reference/configuration#ca-certificates" >}})
 section of our configuration docs.
 
 ## Override the Start Process Set by the Buildpack
 .Net Core Buildpack users can set custom start processes for their app image by
 following the instructions in the
-[Procfiles](/docs/reference/configuration/#procfiles) section
+[Procfiles]({{< ref "/docs/reference/configuration#procfiles" >}}) section
 of our configuration docs.
 
 ## Set Environment Variables for App Launch Time
@@ -212,5 +212,5 @@ Buildpack](https://github.com/paketo-buildpacks/environment-variables/blob/main/
 ## Add Custom Labels to the App Image
 .Net Core Buildpack users can add labels to their app image by following the
 instructions in the [Applying Custom
-Labels](/docs/reference/configuration/#applying-custom-labels)
+Labels]({{< ref "/docs/reference/configuration#applying-custom-labels" >}})
 section of our configuration docs.

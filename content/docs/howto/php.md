@@ -145,20 +145,20 @@ packages location in the `vendor` directory.
 If you like to configure custom .ini files in addition to the `php.ini`
 provided by the buildpack, you can create a directory named `.php.ini.d` at the
 root of your app and put your custom ini files there. See
-[`PHP_INI_SCAN_DIR`](https://paketo.io/docs/buildpacks/language-family-buildpacks/php/#php_ini_scan_dir)
+[`PHP_INI_SCAN_DIR`]({{< ref "docs/reference/php-reference#php_ini_scan_dir" >}})
 in the Variables section below.
 
 ## Install a Custom CA Certificate
 PHP buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
 following the instructions outlined in the [CA
-Certificates](/docs/reference/configuration/#ca-certificates)
+Certificates]({{< ref "/docs/reference/configuration#ca-certificates" >}})
 section of our configuration docs.
 
 ## Override the Start Process Set by the Buildpack
 PHP buildpack users can set custom start processes for their app image by
 following the instructions in the
-[Procfiles](/docs/reference/configuration/#procfiles) section
+[Procfiles]({{< ref "/docs/reference/configuration#procfiles" >}}) section
 of our configuration docs.
 
 ## Set Environment Variables for App Launch Time
@@ -169,5 +169,5 @@ Buildpack](https://github.com/paketo-buildpacks/environment-variables/blob/main/
 ## Add Custom Labels to the App Image
 PHP buildpack users can add labels to their app image by following the
 instructions in the [Applying Custom
-Labels](/docs/reference/configuration/#applying-custom-labels)
+Labels]({{< ref "/docs/reference/configuration#applying-custom-labels" >}})
 section of our configuration docs.

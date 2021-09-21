@@ -97,7 +97,7 @@ when they detect that they are needed.
 
 ## How do Paketo Buildpacks work together?
 The Paketo language family buildpacks are [composite
-buildpacks](#composite-buildpacks) that provide easy out-of-the-box support the
+buildpacks]({{< relref "#composite-buildpacks" >}}) that provide easy out-of-the-box support the
 most popular language runtimes and app configurations. These buildpacks combine
 multiple component buildpacks into ordered groupings. The groupings satisfy
 each buildpack's requirements (mentioned in the  `detect` section).

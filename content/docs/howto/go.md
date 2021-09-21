@@ -101,7 +101,7 @@ When building with the pack CLI, create a [project.toml][cnb/project-file] file 
 The pack CLI will automatically detect the project file at build time.
 
 ###  Set Other Flags for `go build`
-Setting `BP_GO_BUILD_FLAGS` will add to the Paketo Go buildpack's default flagset. Any value that you set for a given flag will override the value set by the buildpack. See reference [documentation](/docs/reference/go-reference) for information about default configuration.
+Setting `BP_GO_BUILD_FLAGS` will add to the Paketo Go buildpack's default flagset. Any value that you set for a given flag will override the value set by the buildpack. See reference [documentation]({{< ref "/docs/reference/go-reference" >}}) for information about default configuration.
 
 #### With pack and a Command-Line Flag
 When building with the pack CLI, set `BP_GO_BUILD_FLAGS` at build time with the `--env` flag. For example, to add `-buildmode=default -tags=paketo` to the build flagset, set the environment variable as follows:

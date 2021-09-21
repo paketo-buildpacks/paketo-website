@@ -9,10 +9,7 @@ aliases:
   - /docs/buildpacks/language-family-buildpacks/nodejs/
 ---
 
-This documentation explains how to use the [Paketo Node.js Buildpack](https://github.com/paketo-buildpacks/nodejs)
-to build applications for several common use-cases. For more in-depth
-description of the buildpack's behavior and configuration see the Node.js
-Buildpack Reference [documentation](/docs/reference/nodejs-reference).
+{{% howto_exec_summary bp_name="Paketo Node.js Buildpack" bp_repo="https://github.com/paketo-buildpacks/nodejs" reference_docs_path="/docs/reference/nodejs-reference" %}}
 
 ## Build a Sample App
 To build a sample app locally with this buildpack using the pack CLI, run
@@ -243,13 +240,13 @@ as its start command.
 Node.js Buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
 following the instructions outlined in the [CA
-Certificates](docs/reference/configuration/#ca-certificates)
+Certificates]({{< ref "/docs/reference/configuration#ca-certificates" >}})
 section of our configuration docs.
 
 ## Override the Start Process Set by the Buildpack
 Node.js Buildpack users can set custom start processes for their app image by
 following the instructions in the
-[Procfiles](https://paketo.io/docs/reference/configuration/#procfiles) section
+[Procfiles]({{< ref "/docs/reference/configuration#procfiles" >}}) section
 of our configuration docs.
 
 ## Set Environment Variables for App Launch Time
@@ -260,6 +257,6 @@ Buildpack](https://github.com/paketo-buildpacks/environment-variables/blob/main/
 ## Add Custom Labels to the App Image
 Node.js Buildpack users can add labels to their app image by following the
 instructions in the [Applying Custom
-Labels](/docs/reference/configuration/#applying-custom-labels)
+Labels]({{< ref "/docs/reference/configuration#applying-custom-labels" >}})
 section of our configuration docs.
 

@@ -30,10 +30,10 @@ pack config default-builder paketobuildpacks/builder:base
 
 Paketo buildpacks can be configured via the following mechanisms:
 
-* [Environment Variables](#environment-variables) - used for generic configuration at both **build-time** and **runtime**.
-* [buildpack.yml](#buildpackyml) - used for generic configuration at **build-time**.
-* [Bindings](#bindings) - used for **secret** configuration at both **build-time** and **runtime**.
-* [Procfiles](#procfiles) - used to provide custom **process types** at **build-time**.
+* [Environment Variables]({{< relref "#environment-variables" >}}) - used for generic configuration at both **build-time** and **runtime**.
+* [buildpack.yml]({{< relref "#buildpackyml" >}}) - used for generic configuration at **build-time**.
+* [Bindings]({{< relref "#bindings" >}}) - used for **secret** configuration at both **build-time** and **runtime**.
+* [Procfiles]({{< relref "#procfiles" >}}) - used to provide custom **process types** at **build-time**.
 
 ### Environment Variables
 
@@ -212,7 +212,7 @@ Paketo Buildpacks can be configured to route traffic through a proxy using the `
 
 Paketo Buildpacks may download dependencies from the internet. For example, the Java Buildpack with download the BellSoft Liberica JRE will from the Liberica [github releases][liberica releases] by default.
 
-If a dependency URI is inaccessible from the build environment, a [binding](#bindings) can be used to map a new URI to a given dependency. This allows organizations to upload a copies of vetted dependencies to an accessible location and provide developers and CI/CD pipelines with configuration pointing the buildpack at the accessible dependencies.
+If a dependency URI is inaccessible from the build environment, a [binding]({{< relref "#bindings" >}}) can be used to map a new URI to a given dependency. This allows organizations to upload a copies of vetted dependencies to an accessible location and provide developers and CI/CD pipelines with configuration pointing the buildpack at the accessible dependencies.
 
 The URI mappings can be configured with one or more bindings of `type` `dependency-mapping`. Each key value pair in the binding should map the `sha256` of a dependency to a URI. Information about the dependencies a buildpack may download (including the `sha256` and the current default `uri`) can be found in the `buildpack.toml` of each component buildpack.
 
@@ -233,7 +233,7 @@ For example, to make the Bellsoft Liberica JRE dependency accessible available t
 
 Additional CA certificates may be added to the system truststore using the [Paketo CA Certificates Buildpack][bp/ca-certificates].
 
-CA certificates can be provided at both build and runtime with a [binding](#bindings) of `type` `ca-certficates`. Each key value pair in the binding should map a certficate name to a single PEM encoded CA Certficates
+CA certificates can be provided at both build and runtime with a [binding]({{< relref "#bindings" >}}) of `type` `ca-certficates`. Each key value pair in the binding should map a certficate name to a single PEM encoded CA Certficates
 
 ```plain
 <binding-name>
