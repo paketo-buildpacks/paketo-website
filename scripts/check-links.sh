@@ -14,7 +14,8 @@ readonly ROOT_DIR="$(cd "$(dirname "${0}")/.." && pwd)"
 readonly BIN_DIR="${ROOT_DIR}/.bin"
 
 function main() {
-  local address port
+  local address port quick
+  quick=false
   while [[ "${#}" != 0 ]]; do
     case "${1}" in
       --address)
@@ -32,6 +33,12 @@ function main() {
         shift 1
         ;;
 
+      --help|-h)
+        shift 1
+        usage
+        exit 0
+        ;;
+
       "")
         # skip if the argument is empty
         shift 1
@@ -41,10 +48,23 @@ function main() {
         util::print::error "unknown argument \"${1}\""
     esac
   done
+
   util::tools::hugo::install --directory "${BIN_DIR}"
   util::tools::muffet::install --directory "${BIN_DIR}"
 
   check_links "${address:-"127.0.0.1"}" "${port:-"1313"}" ${quick}
+}
+
+function usage() {
+  cat <<-USAGE
+check-links.sh [--quick]
+
+Checks all links in the rendered static site to ensure they point to a valid location.
+
+OPTIONS
+  --help               -h            prints the command usage
+  --quick                            checks links concurrently, but SKIPS all github.com links (to avoid rate-limiting)
+USAGE
 }
 
 function check_links() {
