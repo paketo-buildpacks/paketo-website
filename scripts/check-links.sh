@@ -14,9 +14,10 @@ readonly ROOT_DIR="$(cd "$(dirname "${0}")/.." && pwd)"
 readonly BIN_DIR="${ROOT_DIR}/.bin"
 
 function main() {
-  local address port quick live
+  local address port quick live strip
   quick="false"
   live="false"
+  strip="false"
   while [[ "${#}" != 0 ]]; do
     case "${1}" in
       --address)
@@ -39,6 +40,11 @@ function main() {
         shift 1
         ;;
 
+      --strip-fragments)
+        strip="true"
+        shift 1
+        ;;
+
       --help|-h)
         shift 1
         usage
@@ -58,10 +64,10 @@ function main() {
   util::tools::muffet::install --directory "${BIN_DIR}"
 
   if [ "${live}" = "true" ] ; then
-    check_links_live ${quick};
+    check_links_live "${quick}" "${strip}";
   else
     util::tools::hugo::install --directory "${BIN_DIR}"
-    check_links_local "${port:-"1313"}" ${quick};
+    check_links_local "${port:-"1313"}" "${quick}" "${strip}";
   fi
 }
 
@@ -75,31 +81,30 @@ OPTIONS
   --port <port number>               port on which the hugo server will serve the site (default: 1313)
   --live                             checks links on paketo.io instead of a locally served instance
   --quick                            checks links concurrently, but SKIPS all github.com links (to avoid rate-limiting)
+  --strip-fragments                  strip fragments from URLs before checking (e.g. anchor tags, querys)
   --help                 -h          prints the command usage
 USAGE
 }
 
 function check_links_live() {
-  local quick
+  local quick strip
 
   quick="${1}"
+  strip="${2}"
 
   util::print::title "Checking links across paketo.io..."
 
-  if [ "${quick}" = "true" ] ; then
-    check_links_quick "https://paketo.io" "";
-  else
-    check_links_full "https://paketo.io" "";
-  fi
+  check_links "https://paketo.io" "" "${quick}" "${strip}";
 
   exit "${clean}"
 }
 
 function check_links_local() {
-  local quick port address
+  local quick port address strip
 
   port="${1}"
   quick="${2}"
+  strip="${3}"
   address="127.0.0.1"
 
   util::print::title "Spinning up a local server..."
@@ -112,11 +117,7 @@ function check_links_local() {
 
   util::print::title "Checking links across local site..."
 
-  if [ "${quick}" = "true" ] ; then
-    check_links_quick "http://${address}" "${port}";
-  else
-    check_links_full "http://${address}" "${port}";
-  fi
+  check_links "http://${address}" "${port}" "${quick}" "${strip}";
 
   util::print::title "Shutting down server..."
   kill "${hugoPID}"
@@ -124,38 +125,38 @@ function check_links_local() {
   exit "${clean}"
 }
 
-check_links_quick() {
-  local address port
+check_links() {
+    local address port quick strip ignoreFragments excludeGithub limitConnections
 
-  address=${1}
-  port=${2}
+  address="${1}"
+  port="${2}"
+  quick="${3}"
+  strip="${4}"
 
-  util::print::info "Using quick search..."
+  ignoreFragments=""
+  excludeGithub=""
+  limitConnections="--max-connections=1"
+
+  if [ "${strip}" = "true" ]; then
+    ignoreFragments="--ignore-fragments";
+  fi
+
+  if [ "${quick}" = "true" ]; then
+    excludeGithub="--exclude='github\.com'";
+    limitConnections=""
+  fi
+
   set +e
-  "${BIN_DIR}"/muffet  --buffer-size 8192 \
+  "${BIN_DIR}"/muffet --buffer-size 8192 \
                       --skip-tls-verification \
+                      --timeout=20 \
                       --exclude="localhost" \
-                      --exclude='(github\.com).*#' \
-                      --exclude='(github\.com)' \
+                      ${excludeGithub} \
+                      ${limitConnections} \
+                      ${ignoreFragments} \
                       "${address}${port:+:$port}";
   clean=$?
 }
 
-check_links_full() {
-  local address port
-
-  address=${1}
-  port=${2}
-
-  util::print::info "Using complete search..."
-  set +e
-  "${BIN_DIR}"/muffet  --buffer-size 8192 \
-                      --skip-tls-verification \
-                      --exclude="localhost" \
-                      --exclude='(github\.com).*#' \
-                      --max-connections=1 \
-                      "${address}${port:+:$port}";
-  clean=$?
-}
 main "${@:-}"
 
