@@ -50,7 +50,7 @@ scripts/check-links.sh
 ### Checking spelling
 The site uses the
 [spellchecker-cli](https://github.com/tbroadley/spellchecker-cli) to check
-spelling in documentation content. To quickly spellcheck the entire `/content`
+spelling in documentation markdown. To quickly spellcheck the entire `/content`
 directory, run
 ```bash
 scripts/check-spelling.sh
@@ -60,6 +60,12 @@ This repo contains a dictionary of custom regular expressions to add to the
 default spellcheck dictionary. It is in
 [scripts/.util/spellcheck-dictionary.txt](/scripts/.util/spellcheck-dictionary.txt).
 Items are case sensitive. See spellchecker's documentation for more details.
+
+#### Excluding part of a document
+If part of the docs is failing the spellcheck, it can be
+wrapped in an [exclude
+block](https://github.com/tbroadley/spellchecker-cli#exclude-blocks). Adding to the custom
+dictionary is usually preferred.
 
 ### Contributing
 * Open a PR against the main branch if you'd like to make a change to the site.
