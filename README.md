@@ -45,6 +45,20 @@ To run a more complete link check (including Github links), run
 scripts/check-links.sh
 ```
 
+### Checking spelling
+The site uses the
+[spellchecker-cli](https://github.com/tbroadley/spellchecker-cli) to check
+spelling in documentation content. To quickly spellcheck the entire `/content`
+directory, run
+```bash
+scripts/check-spelling.sh
+```
+#### Custom dictionary
+This repo contains a dictionary of custom regular expressions to add to the
+default spellcheck dictionary. It is in
+[scripts/.util/spellcheck-dictionary.txt](/scripts/.util/spellcheck-dictionary.txt).
+Items are case sensitive. See spellchecker's documentation for more details.
+
 ### Contributing
 * Open a PR against the main branch if you'd like to make a change to the site.
     * If you're already a
