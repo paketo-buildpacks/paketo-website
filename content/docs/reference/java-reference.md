@@ -11,7 +11,7 @@ menu:
 
 The [Paketo Java Buildpack][bp/java] allows users to create an image containing a JVM application from a precompiled artifact or directly from source.
 
-The Java Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of its [components](#components). For a full set of configuration options and capabilities see the homepages for the component buildpacks.
+The Java Buildpack is a [composite buildpack][composite buildpack] and each step in a build is handled by one of its [components]({{< relref "#components" >}}). For a full set of configuration options and capabilities see the homepages for the component buildpacks.
 
 ## About the JVM
 

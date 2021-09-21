@@ -5,6 +5,7 @@ pygmentsUseClasses = true
 pygmentsCodefences = true
 
 enableRobotsTXT = true
+refLinksErrorLevel = "ERROR"
 
 # path name excluded from documentation menu
 menu_exclusion = [
