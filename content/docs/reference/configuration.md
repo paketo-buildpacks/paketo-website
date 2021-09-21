@@ -4,7 +4,7 @@ weight: 300
 menu:
   main:
     parent: reference
-    indentifier: configuration
+    identifier: configuration
 aliases:
   - /docs/buildpacks/configuration/
 ---
@@ -247,7 +247,7 @@ If a given [language family buildpack][language family buildpacks] does not cont
 
 The samples repository contains a simple Golang application that will make a `HEAD` request to a provided URL.
 
-Given a file `<your-ca.pem>` containing a single PEM encoded CA certificate needed to verify a TLS connection to an https URL `<url>`, add the CA certificate to the binding.
+Given a file `<your-ca.pem>` containing a single PEM encoded CA certificate needed to verify a TLS connection to <!-- spellchecker-disable --> an https<!-- spellchecker-enable --> URL `<url>`, add the CA certificate to the binding.
 
 ```bash
 cp <your-ca.pem> ca-certificates/binding/
