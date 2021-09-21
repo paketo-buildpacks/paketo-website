@@ -53,7 +53,7 @@ function util::tools::hugo::install() {
     version="$(jq -r .hugo "$(dirname "${BASH_SOURCE[0]}")/tools.json")"
 
     util::print::title "Installing hugo ${version}"
-    curl "https://github.com/gohugoio/hugo/releases/download/${version}/hugo_${version#v}_${os}.tar.gz" \
+    curl "https://github.com/gohugoio/hugo/releases/download/${version}/hugo_extended_${version#v}_${os}.tar.gz" \
       --silent \
       --location \
       --output /tmp/hugo.tgz
