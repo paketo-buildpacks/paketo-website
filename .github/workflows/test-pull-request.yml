@@ -10,12 +10,13 @@ jobs:
     name: Check Links
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2.3.4
+
     - uses: actions/setup-node@v2
       with:
         node-version: 16
         check-latest: true
-
-    - uses: actions/checkout@v2.3.4
+        cache: 'npm'
 
     - name: Install node Modules
       run: npm install
