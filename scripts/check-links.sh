@@ -13,6 +13,8 @@ source "$(dirname "${BASH_SOURCE[0]}")/.util/tools.sh"
 readonly ROOT_DIR="$(cd "$(dirname "${0}")/.." && pwd)"
 readonly BIN_DIR="${ROOT_DIR}/.bin"
 
+exitCount=0
+
 function main() {
   local address port quick live
   quick="false"
@@ -57,16 +59,12 @@ function main() {
 
   util::tools::muffet::install --directory "${BIN_DIR}"
 
-  clean=0
-
   if [ "${live}" = "true" ] ; then
     check_links_live "${quick}";
   else
     util::tools::hugo::install --directory "${BIN_DIR}"
     check_links_local "${port:-"1313"}" "${quick}";
   fi
-
-  exit "${clean}"
 }
 
 function usage() {
@@ -91,8 +89,14 @@ function check_links_live() {
   util::print::title "Checking links across paketo.io..."
 
   check_links "https://paketo.io" "" "${quick}";
+}
 
-  exit "${clean}"
+function cleanupServer() {
+  if [ "${exitCount}" -eq 0 ]; then
+    util::print::title "Shutting down server..."
+    kill "${hugoPID}"
+  fi
+  exitCount=$((exitCount+1))
 }
 
 function check_links_local() {
@@ -103,29 +107,26 @@ function check_links_local() {
   address="127.0.0.1"
 
   util::print::title "Spinning up a local server..."
-
   "${BIN_DIR}"/hugo server --bind "${address}" --port "${port}" &
   hugoPID=$!
-  trap "echo 'Shutting down server...'; kill ${hugoPID}; exit 1" SIGHUP SIGINT SIGTERM
+
+  trap cleanupServer EXIT SIGHUP SIGINT SIGTERM
 
   sleep 3
 
   util::print::title "Checking links across local site..."
-
   check_links "http://${address}" "${port}" "${quick}";
-
-  util::print::title "Shutting down server..."
-  kill "${hugoPID}"
 }
 
 check_links() {
-    local address port quick excludeGithub limitConnections skipTLS
+  local address port quick excludeGithub limitConnections skipTLS
 
   address="${1}"
   port="${2}"
   quick="${3}"
 
   # A list of URL patterns that we know are correct but fail to be scraped
+  # These are usually sites where anchor links are rendered by Javascript in-browser
   excludeList=( "github\\.com.*#" "maven\\.apache\\.org.*#" "docs\\.npmjs\\.com.*#" )
 
   excludeGithub=""
@@ -141,8 +142,6 @@ check_links() {
     skipTLS="--skip-tls-verification" # our local server doesn't present a cert
   fi
 
-  set +e
-  # ignore fragments
   util::print::info "Ignoring link fragments..."
   "${BIN_DIR}"/muffet --buffer-size 8192 \
                       --timeout=20 \
@@ -151,9 +150,7 @@ check_links() {
                       ${excludeGithub} \
                       ${limitConnections} \
                       "${address}${port:+:$port}";
-  clean=$(( $? | ${clean} ))
 
-  # include fragments except excludelist
   util::print::info "Including link fragments (except excludelist)..."
   "${BIN_DIR}"/muffet --buffer-size 8192 \
                       --timeout=20 \
@@ -162,7 +159,6 @@ check_links() {
                       ${excludeGithub} \
                       ${limitConnections} \
                       "${address}${port:+:$port}";
-  clean=$(( $? | ${clean} ))
 }
 
 main "${@:-}"
