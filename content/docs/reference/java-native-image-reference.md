@@ -63,7 +63,7 @@ The following component buildpacks compose the Paketo Java Native Image Buildpac
 
 <!-- paketo docs references -->
 [procfiles]:{{< ref "/docs/reference/configuration#procfiles" >}}
-[java/building from source]:{{< ref "/docs/howto/java#building-from-source" >}}
+[java/building from source]:{{< ref "/docs/howto/java#build-from-source" >}}
 
 <!-- other references -->
 [graalvm]:https://www.graalvm.org/docs/introduction/

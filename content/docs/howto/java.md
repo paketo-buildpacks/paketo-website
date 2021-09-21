@@ -514,7 +514,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [building-from-source]:{{< relref "#build-from-source" >}}
 [components]:{{< ref "/docs/reference/java-native-image-reference#components" >}}
 [composite buildpack]:{{< ref "/docs/concepts/buildpacks#composite-buildpacks" >}}
-[java/building from source]:{{< ref "/docs/howto/java#building-from-source" >}}
+[java/building from source]:{{< ref "/docs/howto/java#build-from-source" >}}
 [java/spring boot applications]:{{< ref "/docs/howto/java#spring-boot-applications" >}}
 [reference/java-native-image]:{{< ref "/docs/reference/java-native-image-reference" >}}
 [reference/java]:{{< ref "/docs/reference/java-reference" >}}
