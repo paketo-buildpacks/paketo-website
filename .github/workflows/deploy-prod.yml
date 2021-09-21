@@ -27,10 +27,16 @@ jobs:
         node-version: 16
         check-latest: true
 
+    - name: Get Hugo Version
+      id: hugo-version
+      run: |
+        version=$(jq -r .hugo "scripts/.util/tools.json")
+        echo "::set-output name=version::${version#v}"
+
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: '0.84.0'
+        hugo-version: ${{ steps.hugo-version.outputs.version }}
         extended: true
 
     - name: Build
