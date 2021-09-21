@@ -3,3 +3,4 @@
 /resources
 .firebase/
 .DS_Store
+.bin/
