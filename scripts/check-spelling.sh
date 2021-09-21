@@ -3,6 +3,9 @@
 set -eu
 set -o pipefail
 
+# shellcheck source=SCRIPTDIR/.util/print.sh
+source "$(dirname "${BASH_SOURCE[0]}")/.util/print.sh"
+
 readonly PROGDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 readonly SITEDIR="$(cd "${PROGDIR}/.." && pwd)"
 
@@ -21,8 +24,7 @@ function main() {
         ;;
 
       *)
-        printf "unknown argument \"${1}\""
-        exit 1
+        util::print::error "unknown argument \"${1}\""
     esac
   done
 

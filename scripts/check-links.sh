@@ -92,7 +92,7 @@ function check_links_live() {
     check_links_full "https://paketo.io" "";
   fi
 
-  exit ${clean}
+  exit "${clean}"
 }
 
 function check_links_local() {
@@ -121,7 +121,7 @@ function check_links_local() {
   util::print::title "Shutting down server..."
   kill "${hugoPID}"
 
-  exit ${clean}
+  exit "${clean}"
 }
 
 check_links_quick() {
