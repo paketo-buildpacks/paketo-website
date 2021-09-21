@@ -25,6 +25,26 @@ To Serve docs at http://localhost:1313:
 npm install && hugo server
 ```
 
+### Testing links
+
+To ensure that documentation cross-referencing is done correctly (i.e. no links are broken), we use built in Hugo shortcodes `{{< ref >}}` and `{{< relref >}}` in our documentation. (See [Hugo docs](https://gohugo.io/content-management/cross-references/)). As a heuristic check for non-shortcoded internal links in the docs markdown, run
+```bash
+scripts/check-internal-links.sh
+```
+
+We also check whether external links on the site (e.g. a link to buildpacks.io) are valid, using a link checker called [muffet](https://github.com/raviqqe/muffet). It's written in Golang!
+
+To quickly check most links on the rendered site, run
+```bash
+scripts/check-links.sh --quick
+```
+This uses the power of goroutines to check our external links at lightning speed -- but avoids Github links to escape rate limiting.
+
+To run a more complete link check (including Github links), run
+```bash
+scripts/check-links.sh
+```
+
 ### Contributing
 * Open a PR against the main branch if you'd like to make a change to the site.
     * If you're already a
