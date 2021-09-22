@@ -62,7 +62,7 @@ The following component buildpacks compose the Paketo Java Native Image Buildpac
 [platforms]:https://buildpacks.io/docs/concepts/components/platform/
 
 <!-- paketo docs references -->
-[procfiles]:{{< ref "/docs/reference/configuration#procfiles" >}}
+[procfiles]:{{< ref "/docs/howto/configuration#procfiles" >}}
 [java/building from source]:{{< ref "/docs/howto/java#build-from-source" >}}
 
 <!-- other references -->
