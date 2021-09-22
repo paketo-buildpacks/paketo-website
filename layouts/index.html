@@ -24,7 +24,7 @@
                     {{ with .Site.Params.hero}}
                     {{ range .logos }}
                     {{ range .item }}
-                    <a class="languages__item" href="docs/buildpacks/language-family-buildpacks/{{ .docs }}">
+                    <a class="languages__item" href="{{ .docs_path }}">
                         <img class="languages__logo {{ .css_class }}" src="/v2/images/{{ .img  }}" alt="{{ .alt }}">
                     </a>
                     {{ end }}

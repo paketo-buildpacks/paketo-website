@@ -21,61 +21,61 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
         [[params.hero.logos.item]]
             img = "logo-java.svg"
             alt = "java logo"
-            docs= "java"
+            docs_path= "/docs/howto/java"
             css_class = "languages__logo--java"
 
         [[params.hero.logos.item]]
             img = "logo-GraalVM.svg"
             alt = "GraalVM logo"
-            docs= "java-native-image"
+            docs_path= "/docs/howto/java#build-an-app-as-a-graalvm-native-image-application"
             css_class = "languages__logo--graalvm"
 
         [[params.hero.logos.item]]
             img = "logo-go.svg"
             alt = "go logo"
-            docs= "go"
+            docs_path= "/docs/howto/go"
             css_class = "languages__logo--go"
 
         [[params.hero.logos.item]]
             img = "logo-dotnet-core.svg"
             alt = ".net core logo"
-            docs= "dotnet-core"
+            docs_path= "/docs/howto/dotnet-core"
             css_class = "languages__logo--dotnet-core"
 
         [[params.hero.logos.item]]
             img = "logo-nginx.svg"
             alt = "nginx logo"
-            docs= "nginx"
+            docs_path= "/docs/howto/web-servers#nginx"
             css_class = "languages__logo--nginx"
 
         [[params.hero.logos.item]]
             img = "logo-nodejs.svg"
             alt = "nodejs logo"
-            docs= "nodejs"
+            docs_path= "/docs/howto/nodejs"
             css_class = "languages__logo--nodejs"
 
         [[params.hero.logos.item]]
             img = "logo-php.svg"
             alt = "php logo"
-            docs= "php"
+            docs_path= "/docs/howto/php"
             css_class = "languages__logo--php"
 
         [[params.hero.logos.item]]
             img = "logo-httpd.svg"
             alt = "httpd logo"
-            docs= "httpd"
+            docs_path= "/docs/howto/web-servers#httpd"
             css_class = "languages__logo--httpd"
 
         [[params.hero.logos.item]]
             img = "logo-ruby.svg"
             alt = "ruby logo"
-            docs= "ruby"
+            docs_path= "/docs/howto/ruby"
             css_class = "languages__logo--ruby"
 
         [[params.hero.logos.item]]
             img = "logo-python.svg"
             alt = "python logo"
-            docs= "python"
+            docs_path= "/docs/howto/python"
             css_class = "languages__logo--python"
 
 [params.docs_menu]
