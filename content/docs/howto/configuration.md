@@ -1,12 +1,14 @@
 ---
-title: "Configuring Paketo Buildpacks"
-weight: 300
+title: "How To Configure Paketo Buildpacks"
+weight: 340
 menu:
   main:
-    parent: reference
+    parent: howto
     identifier: configuration
+    name: "Configure Paketo Buildpacks"
 aliases:
   - /docs/buildpacks/configuration/
+  - /docs/reference/configuration/
 ---
 
 ## About the Examples
