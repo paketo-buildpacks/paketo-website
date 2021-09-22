@@ -50,5 +50,5 @@ The Python Buildpack sets the default start command `python`. This starts the Py
 REPL (read-eval-print loop) at launch.
 
 The Python Buildpack comes with support for
-[`Procfile`]({{< ref "docs/reference/configuration#procfiles" >}})
+[`Procfile`]({{< ref "docs/howto/configuration#procfiles" >}})
 that lets users set custom start commands easily.

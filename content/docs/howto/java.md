@@ -1,6 +1,6 @@
 ---
 title: "How to Build Java Apps with Paketo Buildpacks"
-weight: 316
+weight: 100
 menu:
   main:
     parent: "howto"
@@ -509,7 +509,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 
 <!-- paketo docs references -->
 [base builder]:{{< ref "/docs/concepts/builders#base" >}}
-[bindings]:{{< ref "/docs/reference/configuration#bindings" >}}
+[bindings]:{{< ref "/docs/howto/configuration#bindings" >}}
 [build-from-compiled-artifact]:{{< relref "#build-from-a-compiled-artifact" >}}
 [building-from-source]:{{< relref "#build-from-source" >}}
 [components]:{{< ref "/docs/reference/java-native-image-reference#components" >}}

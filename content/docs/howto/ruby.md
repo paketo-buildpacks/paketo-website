@@ -141,7 +141,7 @@ See this Paketo sample [app](https://github.com/paketo-buildpacks/samples/tree/m
 for a working example.
 
 ### Run a Non-Default Rake Task
-To configure the app image to run a rake task called `non_default` on launch, use a [Procfile]({{< ref "/docs/reference/configuration#procfiles" >}}) with contents as follows to set the start command:
+To configure the app image to run a rake task called `non_default` on launch, use a [Procfile]({{< ref "/docs/howto/configuration#procfiles" >}}) with contents as follows to set the start command:
 
 {{< code/copyable >}}
 web: bundle exec rake non_default
