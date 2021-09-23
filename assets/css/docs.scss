@@ -574,3 +574,34 @@
 .markup-heading__link {
     text-decoration: none;
 }
+
+.getting-started__note {
+	display: none;
+}
+
+.getting-started__note.getting-started__note--selected {
+		display: block;
+}
+
+.getting-started__btn-container {
+	background-color: $subtle-background-color;
+	padding: 15px;
+}
+
+.getting-started__btn {
+	border: none;
+	background-color: $iso-button-background-color;
+	color: $dark-text-color;
+	padding: 10px;
+	margin: 5px;
+	font-family: $default-font-family;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 16px;
+	line-height: 22px;
+}
+
+.getting-started__btn.getting-started__btn--selected {
+	background-color: $dark-background-color;
+	color: $light-text-color;
+}
