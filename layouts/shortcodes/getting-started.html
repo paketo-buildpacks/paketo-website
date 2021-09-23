@@ -1,0 +1,22 @@
+{{ $reusablePages := where .Site.Pages "Section" "getting-started-languages" }}
+
+<div class="getting-started">
+    <div class="getting-started__btn-container">
+        {{ range $reusablePages }}
+            {{ if ne .Title "Getting-started-languages" }}
+                <button type="button"
+                        class="getting-started__btn {{ if eq .Title "Java" }}getting-started__btn--selected{{ end }}"> {{ .Title }} </button>
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <div class="getting-started__note-container">
+        {{ range $reusablePages }}
+            {{ if ne .Title "Getting-started-languages"}}
+                <div class="getting-started__note {{ if eq .Title "Java" }}getting-started__note--selected{{ end }}">
+                    {{ .Content }}
+                </div>
+            {{end}}
+        {{ end }}
+    </div>
+</div>

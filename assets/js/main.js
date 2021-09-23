@@ -4,6 +4,7 @@ import { CodeSnippet, Output } from './components/code_snippet.js';
 import DocsSidebarExpander from './components/docs-sidebar.js'
 import Search from './components/search.js';
 import DocsNav from './components/docs_nav.js';
+import GettingStarted from './components/docs_getting_started.js';
 
 window.addEventListener('load', (event) => {
   new Navigation({
@@ -33,5 +34,9 @@ window.addEventListener('load', (event) => {
 
   for (const element of document.querySelectorAll('.docs-menu__parent')) {
     new DocsSidebarExpander({ element: element })
+  }
+
+  for (const element of document.querySelectorAll('.getting-started')) {
+    new GettingStarted({ element: element })
   }
 });
