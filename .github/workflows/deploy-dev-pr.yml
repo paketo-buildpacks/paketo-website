@@ -68,7 +68,7 @@ jobs:
 
     - name: Deploy
       id: deploy
-      uses: actions/github-script@v4
+      uses: actions/github-script@v5
       with:
         script: |
             const deploy = require('./deploy.js')
