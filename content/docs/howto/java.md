@@ -384,6 +384,78 @@ docker run --rm --tty \
   samples/java
 {{< /code/copyable >}}
 
+## Enable Process Reloading
+
+By default, Java will be the only process running in your container. This prohibits one from restarting Java within the container. If you need to be able to restart Java but not the whole container, perhaps to facilitate a shorter ‘inner loop’ for development, for quickly testing configuration changes or in conjunction with a tool like Tilt you may do so using the process reloading support.
+
+To enable, set `BP_LIVE_RELOAD_ENABLED=true`. If `BP_LIVE_RELOAD_ENABLED` is true at build-time then the [Executable Jar Buildpack][bp/executable-jar] or the [Dist Zip Buildpack][bp/dist-zip] will request that [`watchexec`](https://github.com/watchexec/watchexec/) is installed and they will contribute a default process type named `reload`. This process type will use `watchexec` as the primary process and Java as a child process of `watchexec`.
+
+**Example**: Reloadable Process
+
+The following commands build an image with a default reloadable process type.
+
+{{< code/copyable >}}
+pack build samples/java \
+  --path java/jar \
+  --env BP_LIVE_RELOAD_ENABLED=true
+{{< /code/copyable >}}
+
+The output will confirm a `reload` process type has been added.
+
+{{< code/copyable >}}
+Paketo Executable JAR Buildpack v5.4.0
+  https://github.com/paketo-buildpacks/executable-jar
+  Class Path: Contributing to layer
+    Writing env/CLASSPATH.delim
+    Writing env/CLASSPATH.prepend
+  Process types:
+    executable-jar: java org.springframework.boot.loader.JarLauncher (direct)
+    reload:         watchexec -r java org.springframework.boot.loader.JarLauncher (direct)
+    task:           java org.springframework.boot.loader.JarLauncher (direct)
+    web:            java org.springframework.boot.loader.JarLauncher (direct)
+{{< /code/copyable >}}
+
+You may also run `pack inspect samples/java` which will show you the process types.
+
+### Using Tilt with Paketo Buildpacks
+
+You can use [Tilt](https://tilt.dev/) with the Paketo Java Buildpacks. It requires a custom build command in your `Tiltfile`. The example below shows the custom build command and how to configure watched files.
+
+**Example**: Tilt
+
+1. Clone the official Tilt examples: `git clone https://github.com/tilt-dev/tilt-example-java`
+2. `cd tilt-example-java/0-base`
+3. Modify your `Tiltfile` to look like this:
+
+    {{< code/copyable >}}
+    custom_build(
+        'example-java-image',
+        'pack build --pull-policy=if-not-present -e BP_LIVE_RELOAD_ENABLED=true example-java-image:dev',
+        ['pom.xml', 'bin/main'],
+        live_update = [
+            sync('./bin/main', '/workspace/BOOT-INF/classes'),
+        ],
+        tag="dev"
+
+    )
+    k8s_yaml('kubernetes.yaml')
+    k8s_resource('example-java', port_forwards=8000)
+    {{< /code/copyable >}}
+
+4. Execute `tilt up`.
+
+5. You should now be able to view your application running on your Kubernetes cluster by going to `http://localhost:8000` in your browser. In addition, if you edit files in your IDE, save and rebuild you should see those change live-reloaded into the application.
+
+#### Explanation and Notes
+
+The `Tiltfile` above will configure Tilt to perform a custom build that will execute `pack build`. We are specifically *not* using `$EXPECTED_REF` as the image name, because Tilt will change the expected ref every time you `tilt up` and this causes pack to perform a full build every time, bypassing all the buildpack caching and is thus very slow.
+
+In addition, we configure Tilt to watch `pom.xml` and `bin/main`. These files when modified will trigger an update in the container. The `live_update` block indicates which files locally will update and where they will be placed in the live container. We are instructing everything under `bin/main` to be added into `/workspace/BOOT-INF/classes` when an update is triggered. This takes classes and resources compiled locally by an IDE and injects them into the location where application classes are stored.
+
+Please note that the locations in the example are specific to your IDE and your application, and may vary. The example was created using Visual Studio Code with the Java and Gradle extensions and the `0-base` example application.
+
+This functionality presently depends on the support of [`watchexec`](https://github.com/watchexec/watchexec/). It is recommend that you read the section [Enable Process Reloading](#enable-process-reloading) for further details.
+
 ## Enable Remote Debugging
 
 If `BP_DEBUG_ENABLED` is set at build-time and `BPL_DEBUG_ENABLED` is set at runtime the [Debug Buildpack][bp/debug] will configure the application to accept debugger connections. The debug port defaults to `8000` and can be configured with `BPL_DEBUG_PORT` at runtime. If `BPL_DEBUG_SUSPEND` is set at runtime, the JVM will suspend execution until a debugger has attached.
