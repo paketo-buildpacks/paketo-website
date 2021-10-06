@@ -30,7 +30,7 @@ jobs:
     - name: Get Hugo Version
       id: hugo-version
       run: |
-        version=$(jq -r .hugo "scripts/.util/tools.json")
+        version=$(jq -r .hugo "build-environment/scripts/.util/tools.json")
         echo "::set-output name=version::${version#v}"
 
     - name: Setup Hugo
