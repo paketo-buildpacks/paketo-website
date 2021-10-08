@@ -122,6 +122,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
+            <a href="/docs/howto/java/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Java</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/nodejs/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Node.js</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
             <a href="/docs/howto/dotnet-core/" class="docs-menu__item docs-menu__link ">
                 
                 <span>.NET Core</span>
@@ -152,26 +172,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/java/" class="docs-menu__item docs-menu__link ">
-                
-                <span>Java</span>
-            </a>
-        </li>
-    
-                
-                    
-    
-        <li class="docs-menu__leaf">
-            <a href="/docs/howto/nodejs/" class="docs-menu__item docs-menu__link ">
-                
-                <span>Node.js</span>
-            </a>
-        </li>
-    
-                
-                    
-    
-        <li class="docs-menu__leaf">
             <a href="/docs/howto/python/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Python</span>
@@ -195,6 +195,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <a href="/docs/howto/ruby/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Ruby</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/configuration/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Configure Paketo Buildpacks</span>
             </a>
         </li>
     
@@ -300,16 +310,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             
             <ul class="docs-menu__children-list ">
-                
-                    
-    
-        <li class="docs-menu__leaf">
-            <a href="/docs/reference/configuration/" class="docs-menu__item docs-menu__link ">
-                
-                <span>Configuring Paketo Buildpacks</span>
-            </a>
-        </li>
-    
                 
                     
     
@@ -431,7 +431,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="docs-body">
         <div class="docs-body__container">
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/go.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/go.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -595,7 +595,7 @@ environment variables at build time.</p>
     <a class="markup-heading__link" href="#set-other-flags-for-go-build">
         Set Other Flags for <code>go build</code>
     </a>
-</h3><p>Setting <code>BP_GO_BUILD_FLAGS</code> will add to the Paketo Go buildpack&rsquo;s default flagset. Any value that you set for a given flag will override the value set by the buildpack. See reference <a href="/docs/reference/go-reference">documentation</a> for information about default configuration.</p>
+</h3><p>Setting <code>BP_GO_BUILD_FLAGS</code> will add to the Paketo Go buildpack&rsquo;s default flagset. Any value that you set for a given flag will override the value set by the buildpack. See reference <a href="https://paketo.io/docs/reference/go-reference/">documentation</a> for information about default configuration.</p>
 <h4 id="with-pack-and-a-command-line-flag-2" class="markup-heading">
     <a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-2">
         With pack and a Command-Line Flag
@@ -633,7 +633,7 @@ please set the <code>$BP_GO_BUILD_FLAGS</code> environment variable.</p>
 by default. It is possible to build a non-default package (or packages) by
 setting the <code>BP_GO_TARGETS</code> environment variable at build time.</p>
 <p>The following examples will build the <code>second</code> package in an app source directory with the structure:</p>
-<pre><code>app-directory
+<pre tabindex="0"><code>app-directory
 ├── first
 │   └── main.go
 ├── second
@@ -713,12 +713,12 @@ you will need to specify the import paths for those sub-packages. The Paketo Go 
 environment variable at build time.</p>
 <p>The following examples will configure the buildpack to build an app whose
 directory structure looks like:</p>
-<pre><code>app-directory
+<pre tabindex="0"><code>app-directory
 ├── handlers
 │   └── details.go
 └── main.go
 </code></pre><p>and whose <code>main.go</code> imports:</p>
-<div class="highlight"><pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">import</span> <span class="p">(</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="kn">import</span> <span class="p">(</span>
 	<span class="s">&#34;github.com/app-developer/app-directory/handlers&#34;</span>
 <span class="p">)</span>
 </code></pre></div><h4 id="with-pack-and-a-command-line-flag-5" class="markup-heading">
@@ -786,7 +786,7 @@ variable at build time.</p>
     </a>
 </h2><p>Go buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
-following the instructions outlined in the <a href="https://paketo.io/docs/reference/configuration/#ca-certificates">CA
+following the instructions outlined in the <a href="https://paketo.io/docs/howto/configuration/#ca-certificates">CA
 Certificates</a>
 section of our configuration docs.</p>
 <h2 id="override-the-start-process-set-by-the-buildpack" class="markup-heading">
@@ -795,7 +795,7 @@ section of our configuration docs.</p>
     </a>
 </h2><p>Go buildpack users can set custom start processes for their app image by
 following the instructions in the
-<a href="https://paketo.io/docs/reference/configuration/#procfiles">Procfiles</a> section
+<a href="https://paketo.io/docs/howto/configuration/#procfiles">Procfiles</a> section
 of our configuration docs.</p>
 <h2 id="set-environment-variables-for-app-launch-time" class="markup-heading">
     <a class="markup-heading__link" href="#set-environment-variables-for-app-launch-time">
@@ -809,14 +809,14 @@ Buildpack</a>.</p>
         Add Custom Labels to the App Image
     </a>
 </h2><p>Go buildpack users can add labels to their app image by following the
-instructions in the <a href="https://paketo.io/docs/reference/configuration/#applying-custom-labels">Applying Custom
+instructions in the <a href="https://paketo.io/docs/howto/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
 <!-- raw HTML omitted -->
 
             </div>
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/go.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/go.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -825,7 +825,7 @@ section of our configuration docs.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> September 21, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 8, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -909,7 +909,7 @@ section of our configuration docs.</p>
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.f272972ad5ea82d3d207948a51023b7f6405c2c73c0650ef6ba5a63639d9500a.js"></script>
+</footer><script src="/js/main.685184b532ac2141c678af4155c6cf46098634e074c489c463c03fd54387e7ff.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

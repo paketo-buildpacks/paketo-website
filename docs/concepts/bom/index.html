@@ -122,6 +122,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
+            <a href="/docs/howto/java/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Java</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/nodejs/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Node.js</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
             <a href="/docs/howto/dotnet-core/" class="docs-menu__item docs-menu__link ">
                 
                 <span>.NET Core</span>
@@ -152,26 +172,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/java/" class="docs-menu__item docs-menu__link ">
-                
-                <span>Java</span>
-            </a>
-        </li>
-    
-                
-                    
-    
-        <li class="docs-menu__leaf">
-            <a href="/docs/howto/nodejs/" class="docs-menu__item docs-menu__link ">
-                
-                <span>Node.js</span>
-            </a>
-        </li>
-    
-                
-                    
-    
-        <li class="docs-menu__leaf">
             <a href="/docs/howto/python/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Python</span>
@@ -195,6 +195,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <a href="/docs/howto/ruby/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Ruby</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/configuration/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Configure Paketo Buildpacks</span>
             </a>
         </li>
     
@@ -300,16 +310,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             
             <ul class="docs-menu__children-list ">
-                
-                    
-    
-        <li class="docs-menu__leaf">
-            <a href="/docs/reference/configuration/" class="docs-menu__item docs-menu__link ">
-                
-                <span>Configuring Paketo Buildpacks</span>
-            </a>
-        </li>
-    
                 
                     
     
@@ -431,7 +431,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="docs-body">
         <div class="docs-body__container">
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/concepts/bom.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/concepts/bom.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -517,7 +517,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         What is the output format of a Paketo BOM?
     </a>
 </h2><p>Buildpacks provide a bill of materials by adding metadata to the app image when it is built. Paketo buildpacks add entries to the bill of materials as <code>JSON</code> objects with the following schema:</p>
-<div class="highlight"><pre class="chroma"><code class="language-plain" data-lang="plain">{
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain">{
   &#34;name&#34;: &lt;name of the dependency&gt;,
   &#34;metadata&#34;: {
     &#34;checksum&#34;: {
@@ -548,7 +548,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>A buildpack entry contains the version, vulnerability identifiers (CPE and pURL), all potential licenses, checksums for both the source and the compiled dependency, source information, and the name of the buildpack that installed the dependency.</p>
 <p>Below, see an example of the buildpack entry for the Node.js runtime installed by the <a href="
 https://github.com/paketo-buildpacks/node-engine">Paketo Node Engine buildpack</a>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Node Engine&#34;</span><span class="p">,</span>
   <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&#34;checksum&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -595,7 +595,7 @@ https://github.com/paketo-buildpacks/node-engine">Paketo Node Engine buildpack</
 </h3><p>A language module entry is an entry for a dependency that a Paketo buildpack installs using a dependency manager (e.g. Node.js module, Maven package). The buildpacks generate these entries by gathering metadata about packages after they have been installed.</p>
 <p>A language module entry contains the version, vulnerability identifiers (pURL), all potential licenses, and the name of the buildpack that generated the entry.</p>
 <p>Below, see an example of a language module entry for a Node.js module.</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;httpdispatcher&#34;</span><span class="p">,</span>
   <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&#34;licenses&#34;</span><span class="p">:</span> <span class="p">[</span>
@@ -618,7 +618,7 @@ https://github.com/paketo-buildpacks/node-engine">Paketo Node Engine buildpack</
 
             </div>
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/concepts/bom.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/concepts/bom.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -627,7 +627,7 @@ https://github.com/paketo-buildpacks/node-engine">Paketo Node Engine buildpack</
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> September 21, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 8, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -693,7 +693,7 @@ https://github.com/paketo-buildpacks/node-engine">Paketo Node Engine buildpack</
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.f272972ad5ea82d3d207948a51023b7f6405c2c73c0650ef6ba5a63639d9500a.js"></script>
+</footer><script src="/js/main.685184b532ac2141c678af4155c6cf46098634e074c489c463c03fd54387e7ff.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

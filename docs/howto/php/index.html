@@ -122,6 +122,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
+            <a href="/docs/howto/java/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Java</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/nodejs/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Node.js</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
             <a href="/docs/howto/dotnet-core/" class="docs-menu__item docs-menu__link ">
                 
                 <span>.NET Core</span>
@@ -152,26 +172,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/java/" class="docs-menu__item docs-menu__link ">
-                
-                <span>Java</span>
-            </a>
-        </li>
-    
-                
-                    
-    
-        <li class="docs-menu__leaf">
-            <a href="/docs/howto/nodejs/" class="docs-menu__item docs-menu__link ">
-                
-                <span>Node.js</span>
-            </a>
-        </li>
-    
-                
-                    
-    
-        <li class="docs-menu__leaf">
             <a href="/docs/howto/python/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Python</span>
@@ -195,6 +195,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <a href="/docs/howto/ruby/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Ruby</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/configuration/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Configure Paketo Buildpacks</span>
             </a>
         </li>
     
@@ -300,16 +310,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             
             <ul class="docs-menu__children-list ">
-                
-                    
-    
-        <li class="docs-menu__leaf">
-            <a href="/docs/reference/configuration/" class="docs-menu__item docs-menu__link ">
-                
-                <span>Configuring Paketo Buildpacks</span>
-            </a>
-        </li>
-    
                 
                     
     
@@ -431,7 +431,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="docs-body">
         <div class="docs-body__container">
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/php.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/php.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -547,7 +547,7 @@ the php version defined there.</p>
   # default is app root
   json_path: composer
 
-  # if included, will run `composer global` with with specified arguments
+  # if included, will run `composer global` with specified arguments
   install_global: [&#34;list&#34;, &#34;of&#34;, &#34;install&#34;, &#34;options&#34;]
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
@@ -593,7 +593,7 @@ php:
         Vendor composer packages
     </a>
 </h2><p>If your php app that uses <code>composer</code> has a valid <code>vendor</code> directory, then
-the buildpack will not download those packages. It will instead use the the
+the buildpack will not download those packages. It will instead use the
 packages location in the <code>vendor</code> directory.</p>
 <h2 id="configure-custom-ini-files" class="markup-heading">
     <a class="markup-heading__link" href="#configure-custom-ini-files">
@@ -602,7 +602,7 @@ packages location in the <code>vendor</code> directory.</p>
 </h2><p>If you like to configure custom .ini files in addition to the <code>php.ini</code>
 provided by the buildpack, you can create a directory named <code>.php.ini.d</code> at the
 root of your app and put your custom ini files there. See
-<a href="https://paketo.io/docs/buildpacks/language-family-buildpacks/php/#php_ini_scan_dir"><code>PHP_INI_SCAN_DIR</code></a>
+<a href="https://paketo.io/docs/reference/php-reference/#php_ini_scan_dir"><code>PHP_INI_SCAN_DIR</code></a>
 in the Variables section below.</p>
 <h2 id="install-a-custom-ca-certificate" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-custom-ca-certificate">
@@ -610,7 +610,7 @@ in the Variables section below.</p>
     </a>
 </h2><p>PHP buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
-following the instructions outlined in the <a href="/docs/reference/configuration/#ca-certificates">CA
+following the instructions outlined in the <a href="https://paketo.io/docs/howto/configuration/#ca-certificates">CA
 Certificates</a>
 section of our configuration docs.</p>
 <h2 id="override-the-start-process-set-by-the-buildpack" class="markup-heading">
@@ -619,7 +619,7 @@ section of our configuration docs.</p>
     </a>
 </h2><p>PHP buildpack users can set custom start processes for their app image by
 following the instructions in the
-<a href="/docs/reference/configuration/#procfiles">Procfiles</a> section
+<a href="https://paketo.io/docs/howto/configuration/#procfiles">Procfiles</a> section
 of our configuration docs.</p>
 <h2 id="set-environment-variables-for-app-launch-time" class="markup-heading">
     <a class="markup-heading__link" href="#set-environment-variables-for-app-launch-time">
@@ -633,13 +633,13 @@ Buildpack</a>.</p>
         Add Custom Labels to the App Image
     </a>
 </h2><p>PHP buildpack users can add labels to their app image by following the
-instructions in the <a href="/docs/reference/configuration/#applying-custom-labels">Applying Custom
+instructions in the <a href="https://paketo.io/docs/howto/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
 
             </div>
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/php.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/php.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -648,7 +648,7 @@ section of our configuration docs.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> September 21, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 8, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -715,7 +715,7 @@ section of our configuration docs.</p>
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.f272972ad5ea82d3d207948a51023b7f6405c2c73c0650ef6ba5a63639d9500a.js"></script>
+</footer><script src="/js/main.685184b532ac2141c678af4155c6cf46098634e074c489c463c03fd54387e7ff.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

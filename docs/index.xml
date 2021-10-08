@@ -6,25 +6,25 @@
     <description>Recent content in Getting Started on Paketo Buildpacks</description>
     <generator>Hugo -- gohugo.io</generator><atom:link href="https://paketo.io/docs/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Configuring Paketo Buildpacks</title>
-      <link>https://paketo.io/docs/reference/configuration/</link>
+      <title>How to Build Java Apps with Paketo Buildpacks</title>
+      <link>https://paketo.io/docs/howto/java/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://paketo.io/docs/reference/configuration/</guid>
-      <description>About the Examples  Configuration examples will use the Paketo sample applications.
-Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied! The pack CLI is used throughout the examples. pack is just one of several Cloud Native Buildpack platforms than can execute builds with Paketo Buildpacks.
-Examples assume that the Paketo Base builder is the default builder: pack config default-builder paketobuildpacks/builder:base Copied!</description>
+      <guid>https://paketo.io/docs/howto/java/</guid>
+      <description>This documentation explains how to use the Paketo buildpacks to build Java applications for several common use-cases. For more in-depth description of the buildpacks&#39; behavior and configuration see the Paketo Java Buildpack and Paketo Java Native Image Buildpack reference documentation.
+About the Examples  All Java Buildpack examples will use the Paketo sample applications.
+Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied!</description>
     </item>
     
     <item>
-      <title>HTTPD Buildpack Reference</title>
-      <link>https://paketo.io/docs/reference/httpd-reference/</link>
+      <title>How to Build Node.js Apps with Paketo Buildpacks</title>
+      <link>https://paketo.io/docs/howto/nodejs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://paketo.io/docs/reference/httpd-reference/</guid>
-      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo HTTPD Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo HTTPD Buildpack How To documentation.
-The HTTPD Paketo Buildpack supports the installation of the Apache HTTP Server binary distribution onto the $PATH inside a container. This makes it available to subsequent buildpacks.
-Supported Dependencies  The HTTPD Paketo Buildpack supports several versions of Apache HTTP Server.</description>
+      <guid>https://paketo.io/docs/howto/nodejs/</guid>
+      <description>This documentation explains how to use the Paketo Node.js Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Node.js Buildpack Reference documentation.
+Build a Sample App  To build a sample app locally with this buildpack using the pack CLI, run
+git clone https://github.com/paketo-buildpacks/samples cd samples/nodejs/npm pack build my-app --buildpack gcr.io/paketo-buildpacks/nodejs \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
     </item>
     
     <item>
@@ -36,6 +36,17 @@ Supported Dependencies  The HTTPD Paketo Buildpack supports several versions of 
       <description>This documentation explains how to use the Paketo .NET Core Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo .NET Core Buildpack Reference documentation.
 Build a Sample App  To build your app locally with the buildpack using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples cd samples/dotnet-core/aspnet pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
+    </item>
+    
+    <item>
+      <title>HTTPD Buildpack Reference</title>
+      <link>https://paketo.io/docs/reference/httpd-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/reference/httpd-reference/</guid>
+      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo HTTPD Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo HTTPD Buildpack How To documentation.
+The HTTPD Paketo Buildpack supports the installation of the Apache HTTP Server binary distribution onto the $PATH inside a container. This makes it available to subsequent buildpacks.
+Supported Dependencies  The HTTPD Paketo Buildpack supports several versions of Apache HTTP Server.</description>
     </item>
     
     <item>
@@ -61,28 +72,6 @@ HTTPD  This documentation explains how to use the Paketo HTTPD Buildpack to buil
     </item>
     
     <item>
-      <title>How to Build Java Apps with Paketo Buildpacks</title>
-      <link>https://paketo.io/docs/howto/java/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://paketo.io/docs/howto/java/</guid>
-      <description>This documentation explains how to use the Paketo buildpacks to build Java applications for several common use-cases. For more in-depth description of the buildpacks&#39; behavior and configuration see the Paketo Java Buildpack and Paketo Java Native Image Buildpack reference documentation.
-About the Examples  All Java Buildpack examples will use the Paketo sample applications.
-Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied!</description>
-    </item>
-    
-    <item>
-      <title>How to Build Node.js Apps with Paketo Buildpacks</title>
-      <link>https://paketo.io/docs/howto/nodejs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://paketo.io/docs/howto/nodejs/</guid>
-      <description>This documentation explains how to use the Paketo Node.js Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Node.js Buildpack Reference documentation.
-Build a Sample App  To build a sample app locally with this buildpack using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/samples cd samples/nodejs/npm pack build my-app --buildpack gcr.io/paketo-buildpacks/nodejs \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
-    </item>
-    
-    <item>
       <title>How to Build Python Apps with Paketo Buildpacks</title>
       <link>https://paketo.io/docs/howto/python/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -90,7 +79,7 @@ git clone https://github.com/paketo-buildpacks/samples cd samples/nodejs/npm pac
       <guid>https://paketo.io/docs/howto/python/</guid>
       <description>This documentation explains how to use the Paketo Python Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Python Buildpack Reference documentation.
 Build a Sample App  To build a sample app locally with this buildpack using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/python cd samples/python/pip pack build my-app --buildpack gcr.io/paketo-buildpacks/python \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
+git clone https://github.com/paketo-buildpacks/samples cd samples/python/pip pack build my-app --buildpack gcr.io/paketo-buildpacks/python \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
     </item>
     
     <item>
@@ -116,12 +105,23 @@ git clone &amp;lt;https://github.com/paketo-buildpacks/samples&amp;gt; cd sample
     </item>
     
     <item>
+      <title>How To Configure Paketo Buildpacks</title>
+      <link>https://paketo.io/docs/howto/configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/howto/configuration/</guid>
+      <description>About the Examples  Configuration examples will use the Paketo sample applications.
+Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied! The pack CLI is used throughout the examples. pack is just one of several Cloud Native Buildpack platforms than can execute builds with Paketo Buildpacks.
+Examples assume that the Paketo Base builder is the default builder: pack config default-builder paketobuildpacks/builder:base Copied!</description>
+    </item>
+    
+    <item>
       <title>Create a Paketo Buildpack</title>
       <link>https://paketo.io/docs/howto/create-paketo-buildpack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/howto/create-paketo-buildpack/</guid>
-      <description>If the entire Cloud Native Buildpack experience is new to you, you may want to stop and take some time to read about authoring a a Cloud Native Buildpack (CNB). Packit is a Go library that is an abstraction that conforms to the CNB specification that takes a minimal approach in terms of the features that are implemented giving a lot of fine control to the buildpack author.
+      <description>If the entire Cloud Native Buildpack experience is new to you, you may want to stop and take some time to read about authoring a Cloud Native Buildpack (CNB). Packit is a Go library that is an abstraction that conforms to the CNB specification that takes a minimal approach in terms of the features that are implemented giving a lot of fine control to the buildpack author.
 This tutorial&amp;rsquo;s goal is to take you from nothing to a buildpack that puts a dependency on the filesystem as fast as possible, so with that let&amp;rsquo;s get started!</description>
     </item>
     
@@ -237,9 +237,9 @@ Supported Dependencies  The NGINX Paketo Buildpack supports several versions of 
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/reference/nodejs-reference/</guid>
-      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Node.js Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Node.js How To documentation.
+      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Node.js Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Node.js Buildpack How To documentation.
 Supported Dependencies  The Node.js buildpack supports several versions of Node.js. For more details on the specific versions supported in a given buildpack version, see the release notes.
-Buildpack-Set Environment Variables  The Node.js buildpack sets a number of environment variables during the build and launch phases of the app lifecycle.</description>
+Buildpack-Set Environment Variables  The Node.</description>
     </item>
     
     <item>

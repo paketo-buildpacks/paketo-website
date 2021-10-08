@@ -122,6 +122,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
+            <a href="/docs/howto/java/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Java</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/nodejs/" class="docs-menu__item docs-menu__link docs-menu__link--active">
+                
+                <span>Node.js</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
             <a href="/docs/howto/dotnet-core/" class="docs-menu__item docs-menu__link ">
                 
                 <span>.NET Core</span>
@@ -152,26 +172,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/java/" class="docs-menu__item docs-menu__link ">
-                
-                <span>Java</span>
-            </a>
-        </li>
-    
-                
-                    
-    
-        <li class="docs-menu__leaf">
-            <a href="/docs/howto/nodejs/" class="docs-menu__item docs-menu__link docs-menu__link--active">
-                
-                <span>Node.js</span>
-            </a>
-        </li>
-    
-                
-                    
-    
-        <li class="docs-menu__leaf">
             <a href="/docs/howto/python/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Python</span>
@@ -195,6 +195,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <a href="/docs/howto/ruby/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Ruby</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/configuration/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Configure Paketo Buildpacks</span>
             </a>
         </li>
     
@@ -300,16 +310,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             
             <ul class="docs-menu__children-list ">
-                
-                    
-    
-        <li class="docs-menu__leaf">
-            <a href="/docs/reference/configuration/" class="docs-menu__item docs-menu__link ">
-                
-                <span>Configuring Paketo Buildpacks</span>
-            </a>
-        </li>
-    
                 
                     
     
@@ -431,7 +431,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="docs-body">
         <div class="docs-body__container">
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/nodejs.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/nodejs.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -492,10 +492,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
             <div class="docs-body__markdown">
-                <p>This documentation explains how to use the <a href="https://github.com/paketo-buildpacks/nodejs">Paketo Node.js Buildpack</a>
+                <p>This documentation explains how to use the
+<a href="https://github.com/paketo-buildpacks/nodejs">Paketo Node.js Buildpack</a>
 to build applications for several common use-cases. For more in-depth
-description of the buildpack&rsquo;s behavior and configuration see the Node.js
-Buildpack Reference <a href="/docs/reference/nodejs-reference">documentation</a>.</p>
+description of the buildpack&rsquo;s behavior and configuration see the  Paketo Node.js Buildpack
+Reference <a href="/docs/reference/nodejs-reference">documentation</a>.</p>
 <h2 id="build-a-sample-app" class="markup-heading">
     <a class="markup-heading__link" href="#build-a-sample-app">
         Build a Sample App
@@ -625,7 +626,7 @@ mentioned above.</p>
 through a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor"><code>project.toml</code></a>.
 This could be useful if your app is a part of a monorepo.</p>
 <p>For example, if your project has the following structure:</p>
-<pre><code>.
+<pre tabindex="0"><code>.
 ├── go-app
 │   ├── go.mod
 │   └── main.go
@@ -634,7 +635,7 @@ This could be useful if your app is a part of a monorepo.</p>
     ├── index.js
     └── package.json
 </code></pre><p>you could then set the following at build time.</p>
-<pre><code>$BP_NODE_PROJECT_PATH=node-app
+<pre tabindex="0"><code>$BP_NODE_PROJECT_PATH=node-app
 </code></pre><h2 id="specifying-scripts-to-run-during-build-phase" class="markup-heading">
     <a class="markup-heading__link" href="#specifying-scripts-to-run-during-build-phase">
         Specifying Scripts to Run During Build Phase
@@ -645,7 +646,7 @@ This could be useful if your app is a part of a monorepo.</p>
 could be useful if your app uses a framework like Angular, React, or Vue where you need to run
 scripts to build your app into a production state.</p>
 <p>For example, if your project&rsquo;s <code>package.json</code> has the following scripts:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;scripts&#34;</span><span class="p">:</span> <span class="p">{</span> 
     <span class="nt">&#34;start&#34;</span><span class="p">:</span> <span class="s2">&#34;react-scripts start&#34;</span><span class="p">,</span>
     <span class="nt">&#34;build&#34;</span><span class="p">:</span> <span class="s2">&#34;react-scripts build&#34;</span><span class="p">,</span>
@@ -654,7 +655,7 @@ scripts to build your app into a production state.</p>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div><p>and your environment variable was set:</p>
-<pre><code>$BP_NODE_RUN_SCRIPTS=lint,build
+<pre tabindex="0"><code>$BP_NODE_RUN_SCRIPTS=lint,build
 </code></pre><p>then the <code>lint</code> and then <code>build</code> scripts would be run via npm or yarn, during build phase. Note that the
 value for <code>BP_NODE_RUN_SCRIPTS</code> must be a comma separated list of script names.</p>
 <h2 id="build-an-app-that-uses-npm" class="markup-heading">
@@ -689,7 +690,7 @@ Yarn documentation</a>.</p>
         Compile Native Extensions with <code>node-gyp</code>
     </a>
 </h2><p>If your app requires compilation of native extensions using <code>node-gyp</code>, the Node.js buildpack requires that
-you use the Paketo Full Builder. This is because <code>node-gyp</code> requires <code>python</code> which is excluded from the
+you use the Paketo Full Builder. This is because <code>node-gyp</code> requires <code>python</code> which is excluded from
 the Paketo Base Builder&rsquo;s stack, and the module may require other shared objects.</p>
 <h3 id="with-pack-and-a-command-line-flag" class="markup-heading">
     <a class="markup-heading__link" href="#with-pack-and-a-command-line-flag">
@@ -736,7 +737,7 @@ as its start command.</p>
     </a>
 </h2><p>Node.js Buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
-following the instructions outlined in the <a href="docs/reference/configuration/#ca-certificates">CA
+following the instructions outlined in the <a href="https://paketo.io/docs/howto/configuration/#ca-certificates">CA
 Certificates</a>
 section of our configuration docs.</p>
 <h2 id="override-the-start-process-set-by-the-buildpack" class="markup-heading">
@@ -745,7 +746,7 @@ section of our configuration docs.</p>
     </a>
 </h2><p>Node.js Buildpack users can set custom start processes for their app image by
 following the instructions in the
-<a href="https://paketo.io/docs/reference/configuration/#procfiles">Procfiles</a> section
+<a href="https://paketo.io/docs/howto/configuration/#procfiles">Procfiles</a> section
 of our configuration docs.</p>
 <h2 id="set-environment-variables-for-app-launch-time" class="markup-heading">
     <a class="markup-heading__link" href="#set-environment-variables-for-app-launch-time">
@@ -759,13 +760,13 @@ Buildpack</a>.</p>
         Add Custom Labels to the App Image
     </a>
 </h2><p>Node.js Buildpack users can add labels to their app image by following the
-instructions in the <a href="/docs/reference/configuration/#applying-custom-labels">Applying Custom
+instructions in the <a href="https://paketo.io/docs/howto/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
 
             </div>
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/nodejs.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/nodejs.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -774,7 +775,7 @@ section of our configuration docs.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> September 21, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 8, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -868,7 +869,7 @@ section of our configuration docs.</p>
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.f272972ad5ea82d3d207948a51023b7f6405c2c73c0650ef6ba5a63639d9500a.js"></script>
+</footer><script src="/js/main.685184b532ac2141c678af4155c6cf46098634e074c489c463c03fd54387e7ff.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

@@ -122,6 +122,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
+            <a href="/docs/howto/java/" class="docs-menu__item docs-menu__link docs-menu__link--active">
+                
+                <span>Java</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/nodejs/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Node.js</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
             <a href="/docs/howto/dotnet-core/" class="docs-menu__item docs-menu__link ">
                 
                 <span>.NET Core</span>
@@ -152,26 +172,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/java/" class="docs-menu__item docs-menu__link docs-menu__link--active">
-                
-                <span>Java</span>
-            </a>
-        </li>
-    
-                
-                    
-    
-        <li class="docs-menu__leaf">
-            <a href="/docs/howto/nodejs/" class="docs-menu__item docs-menu__link ">
-                
-                <span>Node.js</span>
-            </a>
-        </li>
-    
-                
-                    
-    
-        <li class="docs-menu__leaf">
             <a href="/docs/howto/python/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Python</span>
@@ -195,6 +195,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <a href="/docs/howto/ruby/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Ruby</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/configuration/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Configure Paketo Buildpacks</span>
             </a>
         </li>
     
@@ -300,16 +310,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
             
             <ul class="docs-menu__children-list ">
-                
-                    
-    
-        <li class="docs-menu__leaf">
-            <a href="/docs/reference/configuration/" class="docs-menu__item docs-menu__link ">
-                
-                <span>Configuring Paketo Buildpacks</span>
-            </a>
-        </li>
-    
                 
                     
     
@@ -431,7 +431,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="docs-body">
         <div class="docs-body__container">
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/java.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/java.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -472,6 +472,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
     </li>
     <li><a href="#connect-to-an-apm">Connect to an APM</a></li>
+    <li><a href="#enable-process-reloading">Enable Process Reloading</a>
+      <ul>
+        <li><a href="#using-tilt-with-paketo-buildpacks">Using Tilt with Paketo Buildpacks</a></li>
+      </ul>
+    </li>
     <li><a href="#enable-remote-debugging">Enable Remote Debugging</a></li>
     <li><a href="#enable-jmx">Enable JMX</a></li>
     <li><a href="#append-arguments-to-the-apps-start-command">Append Arguments to the App&rsquo;s Start Command</a></li>
@@ -503,7 +508,7 @@ cd samples
 <pre class="copyable"><code class="copyable__code">pack config default-builder paketobuildpacks/builder:base
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
-<p>All java example images should return <code>{&quot;status&quot;:&quot;UP&quot;}</code> from the <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints">actuator health endpoint</a>.
+<p>All java example images should return <code>{&quot;status&quot;:&quot;UP&quot;}</code> from the <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints">actuator health endpoint</a>.
 <pre class="copyable"><code class="copyable__code">docker run --rm --tty --publish 8080:8080 samples/java
 curl -s http://localhost:8080/actuator/health | jq .
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
@@ -581,8 +586,8 @@ Artifact</a>.</p>
     <a class="markup-heading__link" href="#connect-to-a-private-maven-repository">
         Connect to a Private Maven Repository
     </a>
-</h5><p>A <a href="https://paketo.io/docs/reference/configuration/#bindings">binding</a> with type <code>maven</code> and key <code>settings.xml</code> can be used to provide custom <a href="http://maven.apache.org/settings.html">Maven settings</a>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-plain" data-lang="plain">&lt;binding-name&gt;
+</h5><p>A <a href="https://paketo.io/docs/howto/configuration/#bindings">binding</a> with type <code>maven</code> and key <code>settings.xml</code> can be used to provide custom <a href="http://maven.apache.org/settings.html">Maven settings</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain">&lt;binding-name&gt;
 ├── settings.xml
 └── type
 </code></pre></div><p>The value of <code>settings.xml</code> file may contain the credentials needed to connect to a private Maven repository.</p>
@@ -773,7 +778,7 @@ buildpacks.</p>
     <a class="markup-heading__link" href="#build-from-source-1">
         Build From Source
     </a>
-</h3><p>The Java Native Image Buildpack supports the same <a href="https://paketo.io/docs/howto/java/#building-from-source">build tools and
+</h3><p>The Java Native Image Buildpack supports the same <a href="https://paketo.io/docs/howto/java/#build-from-source">build tools and
 configuration options</a> as the <a href="https://github.com/paketo-buildpacks/java">Java
 Buildpack</a>. The build must produce an <a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable jar</a><a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">executable
 jar</a>.</p>
@@ -901,7 +906,7 @@ pack build samples/java-native \
 <li><a href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview">Azure Application Insights</a> - support provided by the <a href="https://github.com/paketo-buildpacks/azure-application-insights">Azure Application Insights Buildpack</a></li>
 <li><a href="https://cloud.google.com/products/operations">Google Stackdriver</a> - support provided by the <a href="https://github.com/paketo-buildpacks/google-stackdriver">Google Stackdriver Buildpack</a></li>
 </ul>
-<p>APM integrations are enabled with <a href="https://paketo.io/docs/reference/configuration/#bindings">bindings</a>. If a binding of the correct <code>type</code> is provided at build-time the corresponding java agent will be contributed to the application image. Connection credentials will be read from the binding at runtime.</p>
+<p>APM integrations are enabled with <a href="https://paketo.io/docs/howto/configuration/#bindings">bindings</a>. If a binding of the correct <code>type</code> is provided at build-time the corresponding java agent will be contributed to the application image. Connection credentials will be read from the binding at runtime.</p>
 <p><strong>Example</strong>: Connecting to Azure Application Insights</p>
 <p>The following command builds an image with the Azure Application Insights Java Agent
 <pre class="copyable"><code class="copyable__code">pack build samples/java --volume &#34;$(pwd)/java/application-insights/binding:/platform/bindings/application-insights&#34;
@@ -915,6 +920,78 @@ docker run --rm --tty \
   samples/java
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
+<h2 id="enable-process-reloading" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-process-reloading">
+        Enable Process Reloading
+    </a>
+</h2><p>By default, Java will be the only process running in your container. This prohibits one from restarting Java within the container. If you need to be able to restart Java but not the whole container, perhaps to facilitate a shorter ‘inner loop’ for development, for quickly testing configuration changes or in conjunction with a tool like Tilt you may do so using the process reloading support.</p>
+<p>To enable, set <code>BP_LIVE_RELOAD_ENABLED=true</code>. If <code>BP_LIVE_RELOAD_ENABLED</code> is true at build-time then the <a href="https://github.com/paketo-buildpacks/executable-jar">Executable Jar Buildpack</a> or the <a href="https://github.com/paketo-buildpacks/dist-zip">Dist Zip Buildpack</a> will request that <a href="https://github.com/watchexec/watchexec/"><code>watchexec</code></a> is installed and they will contribute a default process type named <code>reload</code>. This process type will use <code>watchexec</code> as the primary process and Java as a child process of <code>watchexec</code>.</p>
+<p><strong>Example</strong>: Reloadable Process</p>
+<p>The following commands build an image with a default reloadable process type.</p>
+<pre class="copyable"><code class="copyable__code">pack build samples/java \
+  --path java/jar \
+  --env BP_LIVE_RELOAD_ENABLED=true
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>The output will confirm a <code>reload</code> process type has been added.</p>
+<pre class="copyable"><code class="copyable__code">Paketo Executable JAR Buildpack v5.4.0
+  https://github.com/paketo-buildpacks/executable-jar
+  Class Path: Contributing to layer
+    Writing env/CLASSPATH.delim
+    Writing env/CLASSPATH.prepend
+  Process types:
+    executable-jar: java org.springframework.boot.loader.JarLauncher (direct)
+    reload:         watchexec -r java org.springframework.boot.loader.JarLauncher (direct)
+    task:           java org.springframework.boot.loader.JarLauncher (direct)
+    web:            java org.springframework.boot.loader.JarLauncher (direct)
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>You may also run <code>pack inspect samples/java</code> which will show you the process types.</p>
+<h3 id="using-tilt-with-paketo-buildpacks" class="markup-heading">
+    <a class="markup-heading__link" href="#using-tilt-with-paketo-buildpacks">
+        Using Tilt with Paketo Buildpacks
+    </a>
+</h3><p>You can use <a href="https://tilt.dev/">Tilt</a> with the Paketo Java Buildpacks. It requires a custom build command in your <code>Tiltfile</code>. The example below shows the custom build command and how to configure watched files.</p>
+<p><strong>Example</strong>: Tilt</p>
+<ol>
+<li>
+<p>Clone the official Tilt examples: <code>git clone https://github.com/tilt-dev/tilt-example-java</code></p>
+</li>
+<li>
+<p><code>cd tilt-example-java/0-base</code></p>
+</li>
+<li>
+<p>Modify your <code>Tiltfile</code> to look like this:</p>
+<pre class="copyable"><code class="copyable__code">    custom_build(
+        &#39;example-java-image&#39;,
+        &#39;pack build --pull-policy=if-not-present -e BP_LIVE_RELOAD_ENABLED=true example-java-image:dev&#39;,
+        [&#39;pom.xml&#39;, &#39;bin/main&#39;],
+        live_update = [
+            sync(&#39;./bin/main&#39;, &#39;/workspace/BOOT-INF/classes&#39;),
+        ],
+        tag=&#34;dev&#34;
+
+    )
+    k8s_yaml(&#39;kubernetes.yaml&#39;)
+    k8s_resource(&#39;example-java&#39;, port_forwards=8000)
+    </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+</li>
+<li>
+<p>Execute <code>tilt up</code>.</p>
+</li>
+<li>
+<p>You should now be able to view your application running on your Kubernetes cluster by going to <code>http://localhost:8000</code> in your browser. In addition, if you edit files in your IDE, save and rebuild you should see those change live-reloaded into the application.</p>
+</li>
+</ol>
+<h4 id="explanation-and-notes" class="markup-heading">
+    <a class="markup-heading__link" href="#explanation-and-notes">
+        Explanation and Notes
+    </a>
+</h4><p>The <code>Tiltfile</code> above will configure Tilt to perform a custom build that will execute <code>pack build</code>. We are specifically <em>not</em> using <code>$EXPECTED_REF</code> as the image name, because Tilt will change the expected ref every time you <code>tilt up</code> and this causes pack to perform a full build every time, bypassing all the buildpack caching and is thus very slow.</p>
+<p>In addition, we configure Tilt to watch <code>pom.xml</code> and <code>bin/main</code>. These files when modified will trigger an update in the container. The <code>live_update</code> block indicates which files locally will update and where they will be placed in the live container. We are instructing everything under <code>bin/main</code> to be added into <code>/workspace/BOOT-INF/classes</code> when an update is triggered. This takes classes and resources compiled locally by an IDE and injects them into the location where application classes are stored.</p>
+<p>Please note that the locations in the example are specific to your IDE and your application, and may vary. The example was created using Visual Studio Code with the Java and Gradle extensions and the <code>0-base</code> example application.</p>
+<p>This functionality presently depends on the support of <a href="https://github.com/watchexec/watchexec/"><code>watchexec</code></a>. It is recommend that you read the section <a href="#enable-process-reloading">Enable Process Reloading</a> for further details.</p>
 <h2 id="enable-remote-debugging" class="markup-heading">
     <a class="markup-heading__link" href="#enable-remote-debugging">
         Enable Remote Debugging
@@ -937,7 +1014,7 @@ docker run --rm --tty \
     <a class="markup-heading__link" href="#enable-jmx">
         Enable JMX
     </a>
-</h2><p>If <code>BP_JMX_ENABLED</code> is set at build-time and <code>BPL_JMX_ENABLED</code> is set at runtime, the <a href="https://github.com/paketo-buildpacks/jmx">JMX Buildpack</a> will enable <a href="https://en.wikipedia.org/wiki/Java_Management_Extensions#:~:text=Java%20Management%20Extensions%20(JMX)%20is,MBeans%20(for%20Managed%20Bean)">JMX</a>. The JMX connector will listen on port <code>5000</code> by default. The port can be configured with the <code>BPL_JMX_PORT</code> environment variable at runtime.</p>
+</h2><p>If <code>BP_JMX_ENABLED</code> is set at build-time and <code>BPL_JMX_ENABLED</code> is set at runtime, the <a href="https://github.com/paketo-buildpacks/jmx">JMX Buildpack</a> will enable <a href="https://en.wikipedia.org/wiki/Java_Management_Extensions">JMX</a>. The JMX connector will listen on port <code>5000</code> by default. The port can be configured with the <code>BPL_JMX_PORT</code> environment variable at runtime.</p>
 <p><strong>Example</strong>: Enabling JMX</p>
 <p>The following commands builds a JMX enabled image.
 <pre class="copyable"><code class="copyable__code">pack build samples/java \
@@ -992,7 +1069,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
 
             </div>
             
-  <a href="http://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/java.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/java.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -1001,7 +1078,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> September 21, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 8, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1034,6 +1111,11 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
       </ul>
     </li>
     <li><a href="#connect-to-an-apm">Connect to an APM</a></li>
+    <li><a href="#enable-process-reloading">Enable Process Reloading</a>
+      <ul>
+        <li><a href="#using-tilt-with-paketo-buildpacks">Using Tilt with Paketo Buildpacks</a></li>
+      </ul>
+    </li>
     <li><a href="#enable-remote-debugging">Enable Remote Debugging</a></li>
     <li><a href="#enable-jmx">Enable JMX</a></li>
     <li><a href="#append-arguments-to-the-apps-start-command">Append Arguments to the App&rsquo;s Start Command</a></li>
@@ -1088,7 +1170,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.f272972ad5ea82d3d207948a51023b7f6405c2c73c0650ef6ba5a63639d9500a.js"></script>
+</footer><script src="/js/main.685184b532ac2141c678af4155c6cf46098634e074c489c463c03fd54387e7ff.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
