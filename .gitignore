@@ -1,6 +1,7 @@
 /public
 /node_modules
 /resources
+.history/
 .firebase/
 .DS_Store
 .bin/
