@@ -186,6 +186,14 @@ The following environment variable configures the JVM version at build-time.
   * Configures a specific JDK or JRE version.
   * *Example*: Given `BP_JVM_VERSION=8` or `BP_JVM_VERSION=8.*` the buildpack will install the latest patch releases of the Java 8 JDK and JRE.
 
+### Install a Specific JVM Type
+
+The following environment variable configures whether a JDK or a JRE is installed at runtime.
+
+* `BP_JVM_TYPE`
+  * Defaults to `JRE` - a JDK will be used at build-time and a JRE will be used at runtime. If no JRE dependency is found, a `JDK` will be installed for use as the JRE.
+  * If `JDK` is specified, the buildpack will attempt to install a JDK for use at runtime. The security implications of using a JDK at runtime should be considered. 
+
 ### Configure the JVM at Runtime
 
 The Java Buildpack configures the JVM by setting `JAVA_TOOL_OPTIONS` in the JVM environment.
@@ -386,18 +394,11 @@ docker run --rm --tty \
 
 ## Enable Remote Debugging
 
-If `BP_DEBUG_ENABLED` is set at build-time and `BPL_DEBUG_ENABLED` is set at runtime the [Debug Buildpack][bp/debug] will configure the application to accept debugger connections. The debug port defaults to `8000` and can be configured with `BPL_DEBUG_PORT` at runtime. If `BPL_DEBUG_SUSPEND` is set at runtime, the JVM will suspend execution until a debugger has attached.
+If `BPL_DEBUG_ENABLED` is set to `true` at runtime the application will be configured to accept debugger connections. The debug port defaults to `8000` and can be configured with `BPL_DEBUG_PORT` at runtime. If `BPL_DEBUG_SUSPEND` is set at runtime, the JVM will suspend execution until a debugger has attached.
 
 **Example**: Remote Debugging
 
-The following commands builds a debug-enabled image.
-{{< code/copyable >}}
-pack build samples/java \
-  --path java/jar \
-  --env BP_DEBUG_ENABLED=true
-{{< /code/copyable >}}
-
-To run the image with the debug port published:
+To run an image with the debug port published:
 {{< code/copyable >}}
 docker run --env BPL_DEBUG_ENABLED=true --publish 8000:8000 samples/java
 {{< /code/copyable >}}
@@ -407,24 +408,50 @@ Connect your IDE debugger to connect to the published port.
 
 ## Enable JMX
 
-If `BP_JMX_ENABLED` is set at build-time and `BPL_JMX_ENABLED` is set at runtime, the [JMX Buildpack][bp/jmx] will enable [JMX][jmx]. The JMX connector will listen on port `5000` by default. The port can be configured with the `BPL_JMX_PORT` environment variable at runtime.
+If `BPL_JMX_ENABLED` is set at runtime, the application will be configured to accept [JMX][jmx] connections. The JMX connector will listen on port `5000` by default. The port can be configured with the `BPL_JMX_PORT` environment variable at runtime.
 
 **Example**: Enabling JMX
 
-The following commands builds a JMX enabled image.
-{{< code/copyable >}}
-pack build samples/java \
-  --path java/jar \
-  --env BP_JMX_ENABLED=true
-{{< /code/copyable >}}
-
-To run the image with the JMX port published:
+To run an image with the JMX port published:
 {{< code/copyable >}}
 docker run --env BPL_JMX_ENABLED=true --publish 5000:5000 samples/java
 {{< /code/copyable >}}
 
 Connect [JConsole][jconsole] to the published port.
 ![JConsole](/images/jconsole.png)
+  
+## Enable Java Native Memory Tracking (NMT)
+
+By default, the JVM will be configured track internal memory usage. The JVM will print its last memory usage data when it exits, the level of detail can be configured at runtime by setting the environment variable `BPL_JAVA_NMT_LEVEL`, which supports both `summary` (default) and `detail`. Since there is a small amount of overhead required to support NMT, it can be disabled by setting the environment variable `BPL_JAVA_NMT_ENABLED` to `false`.
+  
+**Example**: Capturing NMT output
+
+To capture NMT data using the JDK tool `jcmd`, first ensure that you have a JDK installed at runtime (see [Install a Specific JVM Type][install-jvm-type]). Then run the following from within the container: 
+
+{{< code/copyable >}}
+jcmd 1 VM.native_memory summary
+{{< /code/copyable >}}
+
+The first argument should be the JVM PID, in the case of the Paketo Java buildpack, this will be `1`.
+
+## Enable Java Flight Recorder (JFR)
+
+If `BPL_JFR_ENABLED` is set to `true` at runtime, Java Flight Recording features will be enabled by the JVM. To configure JFR via it's supported arguments, add them to the optional environment variable `BPL_JFR_ARGS` at runtime.
+
+Two default arguments are configured for JFR as follows:
+
+* `dumponexit` - this is set to `true` to write the recording data to a file when the JVM exits
+* `filename` - this is set to `<system-temp-dir>/recording.jfr` (i.e. `/tmp/recording.jfr`) and is the location where the recording data will be written on JVM exit
+
+If any args are provided via `BPL_JFR_ARGS`, these defaults will not be configured. 
+
+**Example**: Enabling & configuring JFR
+
+To run an image with JFR enabled and optionally configure it with custom arguments:
+
+{{< code/copyable >}}
+docker run --env BPL_JFR_ENABLED=true --env BPL_JFR_ARGS=filename=/tmp/my-recording.jfr,duration=60s samples/java
+{{< /code/copyable >}}
 
 ## Append Arguments to the App's Start Command
 Additional arguments can be provided to the application using the container [`CMD`][oci config]. In Kubernetes set `CMD` using the `args` field on the [container][kubernetes container resource] resource.
@@ -512,6 +539,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [bindings]:{{< ref "/docs/howto/configuration#bindings" >}}
 [build-from-compiled-artifact]:{{< relref "#build-from-a-compiled-artifact" >}}
 [building-from-source]:{{< relref "#build-from-source" >}}
+[install-jvm-type]:{{< relref "#install-a-specific-jvm-type" >}}
 [components]:{{< ref "/docs/reference/java-native-image-reference#components" >}}
 [composite buildpack]:{{< ref "/docs/concepts/buildpacks#composite-buildpacks" >}}
 [java/building from source]:{{< ref "/docs/howto/java#build-from-source" >}}
