@@ -419,6 +419,13 @@ If `BPL_JMX_ENABLED` is set at runtime, the application will be configured to ac
 
 **Example**: Enabling JMX
 
+The following command builds a JMX-enabled image.
+
+{{< code/copyable >}}
+pack build samples/java \
+  --path java/jar 
+{{< /code/copyable >}}
+
 To run an image with the JMX port published:
 {{< code/copyable >}}
 docker run --env BPL_JMX_ENABLED=true --publish 5000:5000 samples/java
