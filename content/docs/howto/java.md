@@ -512,7 +512,15 @@ By default, the JVM will be configured to track internal memory usage. The JVM w
   
 **Example**: Capturing NMT output
 
-To capture NMT data using the JDK tool `jcmd`, first ensure that you have a JDK installed at runtime (see [Install a Specific JVM Type][install-jvm-type]). Then run the following from within the container: 
+To capture NMT data using the JDK tool `jcmd`, first ensure that you have a JDK installed at runtime (see [Install a Specific JVM Type][install-jvm-type]). 
+
+Then run the following to start a bash session on a running container, with `jcmd` available on the $PATH variable: 
+
+{{< code/copyable >}}
+docker exec -it <container-id> /cnb/lifecycle/launcher /bin/bash
+{{< /code/copyable >}}
+
+From inside the new bash session, you can run the following to view the NMT data:
 
 {{< code/copyable >}}
 jcmd 1 VM.native_memory summary
@@ -522,7 +530,7 @@ The first argument should be the JVM PID, in the case of the Paketo Java buildpa
 
 ## Enable Java Flight Recorder (JFR)
 
-If `BPL_JFR_ENABLED` is set to `true` at runtime, Java Flight Recording features will be enabled by the JVM. To configure JFR via it's supported arguments, add them to the optional environment variable `BPL_JFR_ARGS` at runtime.
+If `BPL_JFR_ENABLED` is set to `true` at runtime, Java Flight Recording features will be enabled by the JVM. To configure JFR via [its supported arguments](https://docs.oracle.com/javacomponents/jmc-5-4/jfr-runtime-guide/run.htm#JFRUH178), add them to the optional environment variable `BPL_JFR_ARGS` at runtime.
 
 Two default arguments are configured for JFR as follows:
 
