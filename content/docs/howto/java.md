@@ -461,6 +461,13 @@ If any args are provided via `BPL_JFR_ARGS`, these defaults will not be configur
 
 **Example**: Enabling & configuring JFR
 
+The following command builds a JFR-enabled image.
+
+{{< code/copyable >}}
+pack build samples/java \
+  --path java/jar
+{{< /code/copyable >}}
+
 To run an image with JFR enabled and optionally configure it with custom arguments:
 
 {{< code/copyable >}}
