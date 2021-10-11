@@ -436,7 +436,7 @@ Connect [JConsole][jconsole] to the published port.
   
 ## Enable Java Native Memory Tracking (NMT)
 
-By default, the JVM will be configured track internal memory usage. The JVM will print its last memory usage data when it exits, the level of detail can be configured at runtime by setting the environment variable `BPL_JAVA_NMT_LEVEL`, which supports both `summary` (default) and `detail`. Since there is a small amount of overhead required to support NMT, it can be disabled by setting the environment variable `BPL_JAVA_NMT_ENABLED` to `false`.
+By default, the JVM will be configured to track internal memory usage. The JVM will print its last memory usage data when it exits, the level of detail can be configured at runtime by setting the environment variable `BPL_JAVA_NMT_LEVEL`, which supports both `summary` (default) and `detail`. Since there is a small amount of overhead required to support NMT, it can be disabled by setting the environment variable `BPL_JAVA_NMT_ENABLED` to `false`.
   
 **Example**: Capturing NMT output
 
