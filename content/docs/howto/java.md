@@ -470,6 +470,13 @@ If `BPL_DEBUG_ENABLED` is set to `true` at runtime the application will be confi
 
 **Example**: Remote Debugging
 
+The following command builds a debug-enabled image.
+
+{{< code/copyable >}}
+pack build samples/java \
+  --path java/jar
+{{< /code/copyable >}}
+
 To run an image with the debug port published:
 {{< code/copyable >}}
 docker run --env BPL_DEBUG_ENABLED=true --publish 8000:8000 samples/java
