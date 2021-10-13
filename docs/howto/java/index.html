@@ -452,6 +452,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#build-from-a-compiled-artifact">Build from a Compiled Artifact</a></li>
         <li><a href="#inspect-the-jvm-version">Inspect the JVM Version</a></li>
         <li><a href="#install-a-specific-jvm-version">Install a Specific JVM Version</a></li>
+        <li><a href="#install-a-specific-jvm-type">Install a Specific JVM Type</a></li>
         <li><a href="#configure-the-jvm-at-runtime">Configure the JVM at Runtime</a></li>
         <li><a href="#use-an-alternative-jvm">Use an Alternative JVM</a></li>
       </ul>
@@ -479,6 +480,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </li>
     <li><a href="#enable-remote-debugging">Enable Remote Debugging</a></li>
     <li><a href="#enable-jmx">Enable JMX</a></li>
+    <li><a href="#enable-java-native-memory-tracking-nmt">Enable Java Native Memory Tracking (NMT)</a></li>
+    <li><a href="#enable-java-flight-recorder-jfr">Enable Java Flight Recorder (JFR)</a></li>
     <li><a href="#append-arguments-to-the-apps-start-command">Append Arguments to the App&rsquo;s Start Command</a></li>
     <li><a href="#provide-a-custom-start-command-at-launch">Provide a Custom Start Command at Launch</a>
       <ul>
@@ -670,6 +673,19 @@ pack build samples/java \
 <li>Defaults to the latest LTS version at the time of release.</li>
 <li>Configures a specific JDK or JRE version.</li>
 <li><em>Example</em>: Given <code>BP_JVM_VERSION=8</code> or <code>BP_JVM_VERSION=8.*</code> the buildpack will install the latest patch releases of the Java 8 JDK and JRE.</li>
+</ul>
+</li>
+</ul>
+<h3 id="install-a-specific-jvm-type" class="markup-heading">
+    <a class="markup-heading__link" href="#install-a-specific-jvm-type">
+        Install a Specific JVM Type
+    </a>
+</h3><p>The following environment variable configures whether a JDK or a JRE is installed at runtime.</p>
+<ul>
+<li><code>BP_JVM_TYPE</code>
+<ul>
+<li>Defaults to <code>JRE</code> - a JDK will be used at build-time and a JRE will be used at runtime. If no JRE dependency is found, a <code>JDK</code> will be installed for use as the JRE.</li>
+<li>If <code>JDK</code> is specified, the buildpack will attempt to install a JDK for use at runtime. The security implications of using a JDK at runtime should be considered.</li>
 </ul>
 </li>
 </ul>
@@ -996,15 +1012,14 @@ docker run --rm --tty \
     <a class="markup-heading__link" href="#enable-remote-debugging">
         Enable Remote Debugging
     </a>
-</h2><p>If <code>BP_DEBUG_ENABLED</code> is set at build-time and <code>BPL_DEBUG_ENABLED</code> is set at runtime the <a href="https://github.com/paketo-buildpacks/debug">Debug Buildpack</a> will configure the application to accept debugger connections. The debug port defaults to <code>8000</code> and can be configured with <code>BPL_DEBUG_PORT</code> at runtime. If <code>BPL_DEBUG_SUSPEND</code> is set at runtime, the JVM will suspend execution until a debugger has attached.</p>
+</h2><p>If <code>BPL_DEBUG_ENABLED</code> is set to <code>true</code> at runtime the application will be configured to accept debugger connections. The debug port defaults to <code>8000</code> and can be configured with <code>BPL_DEBUG_PORT</code> at runtime. If <code>BPL_DEBUG_SUSPEND</code> is set at runtime, the JVM will suspend execution until a debugger has attached.</p>
 <p><strong>Example</strong>: Remote Debugging</p>
-<p>The following commands builds a debug-enabled image.
+<p>The following command builds a debug-enabled image.</p>
 <pre class="copyable"><code class="copyable__code">pack build samples/java \
-  --path java/jar \
-  --env BP_DEBUG_ENABLED=true
+  --path java/jar
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
-<p>To run the image with the debug port published:
+
+<p>To run an image with the debug port published:
 <pre class="copyable"><code class="copyable__code">docker run --env BPL_DEBUG_ENABLED=true --publish 8000:8000 samples/java
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
@@ -1014,20 +1029,56 @@ docker run --rm --tty \
     <a class="markup-heading__link" href="#enable-jmx">
         Enable JMX
     </a>
-</h2><p>If <code>BP_JMX_ENABLED</code> is set at build-time and <code>BPL_JMX_ENABLED</code> is set at runtime, the <a href="https://github.com/paketo-buildpacks/jmx">JMX Buildpack</a> will enable <a href="https://en.wikipedia.org/wiki/Java_Management_Extensions">JMX</a>. The JMX connector will listen on port <code>5000</code> by default. The port can be configured with the <code>BPL_JMX_PORT</code> environment variable at runtime.</p>
+</h2><p>If <code>BPL_JMX_ENABLED</code> is set at runtime, the application will be configured to accept <a href="https://en.wikipedia.org/wiki/Java_Management_Extensions">JMX</a> connections. The JMX connector will listen on port <code>5000</code> by default. The port can be configured with the <code>BPL_JMX_PORT</code> environment variable at runtime.</p>
 <p><strong>Example</strong>: Enabling JMX</p>
-<p>The following commands builds a JMX enabled image.
+<p>The following command builds a JMX-enabled image.</p>
 <pre class="copyable"><code class="copyable__code">pack build samples/java \
-  --path java/jar \
-  --env BP_JMX_ENABLED=true
+  --path java/jar 
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
-<p>To run the image with the JMX port published:
+
+<p>To run an image with the JMX port published:
 <pre class="copyable"><code class="copyable__code">docker run --env BPL_JMX_ENABLED=true --publish 5000:5000 samples/java
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 </p>
 <p>Connect <a href="https://openjdk.java.net/tools/svc/jconsole/">JConsole</a> to the published port.
 <img src="/images/jconsole.png" alt="JConsole"></p>
+<h2 id="enable-java-native-memory-tracking-nmt" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-java-native-memory-tracking-nmt">
+        Enable Java Native Memory Tracking (NMT)
+    </a>
+</h2><p>By default, the JVM will be configured to track internal memory usage. The JVM will print its last memory usage data when it exits, the level of detail can be configured at runtime by setting the environment variable <code>BPL_JAVA_NMT_LEVEL</code>, which supports both <code>summary</code> (default) and <code>detail</code>. Since there is a small amount of overhead required to support NMT, it can be disabled by setting the environment variable <code>BPL_JAVA_NMT_ENABLED</code> to <code>false</code>.</p>
+<p><strong>Example</strong>: Capturing NMT output</p>
+<p>To capture NMT data using the JDK tool <code>jcmd</code>, first ensure that you have a JDK installed at runtime (see <a href="#install-a-specific-jvm-type">Install a Specific JVM Type</a>).</p>
+<p>Then run the following to start a bash session on a running container, with <code>jcmd</code> available on the $PATH variable:</p>
+<pre class="copyable"><code class="copyable__code">docker exec -it &lt;container-id&gt; /cnb/lifecycle/launcher /bin/bash
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>From inside the new bash session, you can run the following to view the NMT data:</p>
+<pre class="copyable"><code class="copyable__code">jcmd 1 VM.native_memory summary
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>The first argument should be the JVM PID, in the case of the Paketo Java buildpack, this will be <code>1</code>.</p>
+<h2 id="enable-java-flight-recorder-jfr" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-java-flight-recorder-jfr">
+        Enable Java Flight Recorder (JFR)
+    </a>
+</h2><p>If <code>BPL_JFR_ENABLED</code> is set to <code>true</code> at runtime, Java Flight Recording features will be enabled by the JVM. To configure JFR via <a href="https://docs.oracle.com/javacomponents/jmc-5-4/jfr-runtime-guide/run.htm#JFRUH178">its supported arguments</a>, add them to the optional environment variable <code>BPL_JFR_ARGS</code> at runtime.</p>
+<p>Two default arguments are configured for JFR as follows:</p>
+<ul>
+<li><code>dumponexit</code> - this is set to <code>true</code> to write the recording data to a file when the JVM exits</li>
+<li><code>filename</code> - this is set to <code>&lt;system-temp-dir&gt;/recording.jfr</code> (i.e. <code>/tmp/recording.jfr</code>) and is the location where the recording data will be written on JVM exit</li>
+</ul>
+<p>If any args are provided via <code>BPL_JFR_ARGS</code>, these defaults will not be configured.</p>
+<p><strong>Example</strong>: Enabling &amp; configuring JFR</p>
+<p>The following command builds a JFR-enabled image.</p>
+<pre class="copyable"><code class="copyable__code">pack build samples/java \
+  --path java/jar
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>To run an image with JFR enabled and optionally configure it with custom arguments:</p>
+<pre class="copyable"><code class="copyable__code">docker run --env BPL_JFR_ENABLED=true --env BPL_JFR_ARGS=filename=/tmp/my-recording.jfr,duration=60s samples/java
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
 <h2 id="append-arguments-to-the-apps-start-command" class="markup-heading">
     <a class="markup-heading__link" href="#append-arguments-to-the-apps-start-command">
         Append Arguments to the App&rsquo;s Start Command
@@ -1078,7 +1129,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> October 11, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 13, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1091,6 +1142,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
         <li><a href="#build-from-a-compiled-artifact">Build from a Compiled Artifact</a></li>
         <li><a href="#inspect-the-jvm-version">Inspect the JVM Version</a></li>
         <li><a href="#install-a-specific-jvm-version">Install a Specific JVM Version</a></li>
+        <li><a href="#install-a-specific-jvm-type">Install a Specific JVM Type</a></li>
         <li><a href="#configure-the-jvm-at-runtime">Configure the JVM at Runtime</a></li>
         <li><a href="#use-an-alternative-jvm">Use an Alternative JVM</a></li>
       </ul>
@@ -1118,6 +1170,8 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </li>
     <li><a href="#enable-remote-debugging">Enable Remote Debugging</a></li>
     <li><a href="#enable-jmx">Enable JMX</a></li>
+    <li><a href="#enable-java-native-memory-tracking-nmt">Enable Java Native Memory Tracking (NMT)</a></li>
+    <li><a href="#enable-java-flight-recorder-jfr">Enable Java Flight Recorder (JFR)</a></li>
     <li><a href="#append-arguments-to-the-apps-start-command">Append Arguments to the App&rsquo;s Start Command</a></li>
     <li><a href="#provide-a-custom-start-command-at-launch">Provide a Custom Start Command at Launch</a>
       <ul>
