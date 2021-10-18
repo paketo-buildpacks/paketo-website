@@ -192,7 +192,7 @@ The following environment variable configures whether a JDK or a JRE is installe
 
 * `BP_JVM_TYPE`
   * Defaults to `JRE` - a JDK will be used at build-time and a JRE will be used at runtime. If no JRE dependency is found, a `JDK` will be installed for use as the JRE.
-  * If `JDK` is specified, the buildpack will attempt to install a JDK for use at runtime. The security implications of using a JDK at runtime should be considered. 
+  * If `JDK` is specified, the buildpack will attempt to install a JDK for use at runtime. The security implications of using a JDK at runtime should be considered.
 
 ### Configure the JVM at Runtime
 
@@ -212,20 +212,22 @@ See the [homepage][bp/bellsoft-liberica] for the Bellsoft Liberica Buildpack for
 
 By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implemenations in place of Liberica's JVM.
 
-| JVM                                                                                       | Buildpack                                                            |
-| ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| [Adoptium](https://adoptium.net/) {{< text/sup >}}1{{< /text/sup >}}                      | [Paketo Adoptium Buildpack][bp/adoptium]                             |
-| [Alibaba Dragonwell](http://dragonwell-jdk.io/) {{< text/sup >}}2{{< /text/sup >}}        | [Paketo Alibaba Dragonwell Buildpack][bp/dragonwell]                 |
-| [Amazon Corretto](https://aws.amazon.com/corretto/) {{< text/sup >}}2{{< /text/sup >}}    | [Paketo Amazon Corretto Buildpack][bp/amazon-corretto]               |
-| [Azul Zulu](https://www.azul.com/downloads/zulu-community/)                               | [Paketo Azul Zulu Buildpack][bp/azul-zulu]                           |
-| [BellSoft Liberica](https://bell-sw.com/pages/libericajdk/)                               | [Paketo BellSoft Liberica Buildpack - Default][bp/bellsoft-liberica] |
-| [Eclipse OpenJ9](https://www.eclipse.org/openj9/)                                         | [Paketo Eclipse OpenJ9 Buildpack][bp/eclipse-openj9]                 |
-| [GraalVM](https://www.graalvm.org/) {{< text/sup >}}2{{< /text/sup >}}                    | [Paketo GraalVM Buildpack][bp/graalvm]                               |
-| [Microsoft OpenJDK](https://www.microsoft.com/openjdk) {{< text/sup >}}2{{< /text/sup >}} | [Paketo Microsoft OpenJDK Buildpack][bp/microsoft]                   |
-| [SapMachine](https://sap.github.io/SapMachine/)                                           | [Paketo SapMachine Buildpack][bp/sap-machine]                        |
+| JVM                                                                                                                                     | Buildpack                                                            |
+| --------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| [Adoptium](https://adoptium.net/) {{< text/sup >}}1{{< /text/sup >}}                                                                    | [Paketo Adoptium Buildpack][bp/adoptium]                             |
+| [Alibaba Dragonwell](http://dragonwell-jdk.io/) {{< text/sup >}}2{{< /text/sup >}}                                                      | [Paketo Alibaba Dragonwell Buildpack][bp/dragonwell]                 |
+| [Amazon Corretto](https://aws.amazon.com/corretto/) {{< text/sup >}}2{{< /text/sup >}}                                                  | [Paketo Amazon Corretto Buildpack][bp/amazon-corretto]               |
+| [Azul Zulu](https://www.azul.com/downloads/zulu-community/)                                                                             | [Paketo Azul Zulu Buildpack][bp/azul-zulu]                           |
+| [BellSoft Liberica](https://bell-sw.com/pages/libericajdk/)                                                                             | [Paketo BellSoft Liberica Buildpack - Default][bp/bellsoft-liberica] |
+| [Eclipse OpenJ9](https://www.eclipse.org/openj9/)                                                                                       | [Paketo Eclipse OpenJ9 Buildpack][bp/eclipse-openj9]                 |
+| [GraalVM](https://www.graalvm.org/) {{< text/sup >}}2{{< /text/sup >}}                                                                  | [Paketo GraalVM Buildpack][bp/graalvm]                               |
+| [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) {{< text/sup >}}2{{< /text/sup >}} {{< text/sup >}}3{{< /text/sup >}} | [Paketo Oracle Buildpack][bp/oracle]                                 |
+| [Microsoft OpenJDK](https://www.microsoft.com/openjdk) {{< text/sup >}}2{{< /text/sup >}}                                               | [Paketo Microsoft OpenJDK Buildpack][bp/microsoft]                   |
+| [SapMachine](https://sap.github.io/SapMachine/)                                                                                         | [Paketo SapMachine Buildpack][bp/sap-machine]                        |
 
 1. *{{< text/sub >}}Only provides JRE and JDK releases for Java 8 and 11, Java 16+ is JDK only{{< /text/sub >}}*
 2. *{{< text/sub >}}Only provides JDK releases{{< /text/sub >}}*
+3. *{{< text/sub >}}Only provides Java 17{{< /text/sub >}}*
 
 To use an alternative JVM, you will need to set two `--buildpack` arguments to `pack build`, one for the alternative JVM buildpack you'd like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you're specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.
 
@@ -366,7 +368,6 @@ pack inspect-image samples/java --bom | jq '.local[] | select(.name=="dependenci
 
 The Spring Boot Buildpack adds [Spring Cloud Bindings][spring cloud bindings] to the application class path. Spring Cloud Bindings will auto-configure the application to connect to an external service when a binding of a supported type provides credentials and connection information at runtime. Runtime auto-configuration is enabled by default but can be disabled with the `BPL_SPRING_CLOUD_BINDINGS_ENABLED` environment variable.
 
-
 ## Connect to an APM
 
 The Java Buildpack supports the following [APM][apm] integrations:
@@ -495,7 +496,7 @@ The following command builds a JMX-enabled image.
 
 {{< code/copyable >}}
 pack build samples/java \
-  --path java/jar 
+  --path java/jar
 {{< /code/copyable >}}
 
 To run an image with the JMX port published:
@@ -512,9 +513,9 @@ By default, the JVM will be configured to track internal memory usage. The JVM w
   
 **Example**: Capturing NMT output
 
-To capture NMT data using the JDK tool `jcmd`, first ensure that you have a JDK installed at runtime (see [Install a Specific JVM Type][install-jvm-type]). 
+To capture NMT data using the JDK tool `jcmd`, first ensure that you have a JDK installed at runtime (see [Install a Specific JVM Type][install-jvm-type]).
 
-Then run the following to start a bash session on a running container, with `jcmd` available on the $PATH variable: 
+Then run the following to start a bash session on a running container, with `jcmd` available on the $PATH variable:
 
 {{< code/copyable >}}
 docker exec -it <container-id> /cnb/lifecycle/launcher /bin/bash
@@ -537,7 +538,7 @@ Two default arguments are configured for JFR as follows:
 * `dumponexit` - this is set to `true` to write the recording data to a file when the JVM exits
 * `filename` - this is set to `<system-temp-dir>/recording.jfr` (i.e. `/tmp/recording.jfr`) and is the location where the recording data will be written on JVM exit
 
-If any args are provided via `BPL_JFR_ARGS`, these defaults will not be configured. 
+If any args are provided via `BPL_JFR_ARGS`, these defaults will not be configured.
 
 **Example**: Enabling & configuring JFR
 
@@ -555,6 +556,7 @@ docker run --env BPL_JFR_ENABLED=true --env BPL_JFR_ARGS=filename=/tmp/my-record
 {{< /code/copyable >}}
 
 ## Append Arguments to the App's Start Command
+
 Additional arguments can be provided to the application using the container [`CMD`][oci config]. In Kubernetes set `CMD` using the `args` field on the [container][kubernetes container resource] resource.
 
 **Example**: Setting the Server Port
@@ -603,32 +605,22 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [bp/dragonwell]:https://github.com/paketo-buildpacks/alibaba-dragonwell
 [bp/eclipse-openj9]:https://github.com/paketo-buildpacks/eclipse-openj9
 [bp/environment-variables]:https://github.com/paketo-buildpacks/environment-variables
-[bp/environment-variables]:https://github.com/paketo-buildpacks/environment-variables
-[bp/executable-jar]:https://github.com/paketo-buildpacks/executable-jar
 [bp/executable-jar]:https://github.com/paketo-buildpacks/executable-jar
 [bp/google-stackdriver]:https://github.com/paketo-buildpacks/google-stackdriver
 [bp/graalvm]:https://github.com/paketo-buildpacks/graalvm
-[bp/graalvm]:https://github.com/paketo-buildpacks/graalvm
 [bp/gradle]:https://github.com/paketo-buildpacks/gradle
-[bp/gradle]:https://github.com/paketo-buildpacks/gradle
-[bp/image-labels]:https://github.com/paketo-buildpacks/image-labels
 [bp/image-labels]:https://github.com/paketo-buildpacks/image-labels
 [bp/java-native-image]:https://github.com/paketo-buildpacks/java-native-image
 [bp/java]:https://github.com/paketo-buildpacks/java
-[bp/java]:https://github.com/paketo-buildpacks/java]
 [bp/jmx]:https://github.com/paketo-buildpacks/jmx
 [bp/leiningen]:https://github.com/paketo-buildpacks/leiningen
-[bp/leiningen]:https://github.com/paketo-buildpacks/leiningen
-[bp/maven]:https://github.com/paketo-buildpacks/maven
 [bp/maven]:https://github.com/paketo-buildpacks/maven
 [bp/microsoft]:https://github.com/paketo-buildpacks/microsoft-openjdk
 [bp/native-image]:https://github.com/paketo-buildpacks/spring-boot-native-image
-[bp/procfile]:https://github.com/paketo-buildpacks/procfile
+[bp/oracle]:https://github.com/paketo-buildpacks/oracle
 [bp/procfile]:https://github.com/paketo-buildpacks/procfile
 [bp/sap-machine]:https://github.com/paketo-buildpacks/sap-machine
 [bp/sbt]:https://github.com/paketo-buildpacks/sbt
-[bp/sbt]:https://github.com/paketo-buildpacks/sbt
-[bp/spring-boot]:https://github.com/paketo-buildpacks/spring-boot
 [bp/spring-boot]:https://github.com/paketo-buildpacks/spring-boot
 
 <!-- paketo references -->
@@ -660,7 +652,6 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [bash pattern matching]:https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html
 [dist-zip]:https://docs.gradle.org/current/userguide/distribution_plugin.html
 [executable jar]:https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files
-[executable jar]:https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files
 [google stackdriver]:https://cloud.google.com/products/operations
 [graalvm feature]:https://www.graalvm.org/sdk/javadoc/org/graalvm/nativeimage/hosted/Feature.html
 [graalvm native image]:https://www.graalvm.org/reference-manual/native-image/
@@ -680,12 +671,9 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [spring boot actuator endpoints]:https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints
 [spring boot configuration metadata]:https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-configuration-metadata.html
 [spring boot gradle plugin]:https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#build-image
-[spring boot gradle plugin]:https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#build-image
-[spring boot maven plugin]:https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#build-image
 [spring boot maven plugin]:https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#build-image
 [spring cloud bindings]:https://github.com/spring-cloud/spring-cloud-bindings
 [spring native prerequisites]:https://repo.spring.io/milestone/org/springframework/experimental/spring-graalvm-native-docs/0.8.5/spring-graalvm-native-docs-0.8.5.zip!/reference/index.html#_prerequisites
 [spring native releases]:https://github.com/spring-projects-experimental/spring-native/releases
 [spring native]:https://github.com/spring-projects-experimental/spring-native
 [war]:https://en.wikipedia.org/wiki/WAR_(file_format)
-
