@@ -427,7 +427,7 @@ You may also run `pack inspect samples/java` which will show you the process typ
 
 ### Using Tilt with Paketo Buildpacks
 
-You can use [Tilt](https://tilt.dev/) with the Paketo Java Buildpacks. It requires a custom build command in your `Tiltfile`. The example below shows the custom build command and how to configure watched files.
+You can use [Tilt](https://tilt.dev/) with the Paketo Java Buildpacks. This uses the [Pack Tilt extension](https://github.com/tilt-dev/tilt-extensions/tree/master/pack). The example below shows how to use the pack extension and how to configure watched files.
 
 **Example**: Tilt
 
@@ -436,15 +436,14 @@ You can use [Tilt](https://tilt.dev/) with the Paketo Java Buildpacks. It requir
 3. Modify your `Tiltfile` to look like this:
 
     {{< code/copyable >}}
-    custom_build(
+    load('ext://pack', 'pack')
+
+    pack(
         'example-java-image',
-        'pack build --pull-policy=if-not-present -e BP_LIVE_RELOAD_ENABLED=true example-java-image:dev',
-        ['pom.xml', 'bin/main'],
+        deps=['./bin/main'],
         live_update = [
             sync('./bin/main', '/workspace/BOOT-INF/classes'),
         ],
-        tag="dev"
-
     )
     k8s_yaml('kubernetes.yaml')
     k8s_resource('example-java', port_forwards=8000)
@@ -456,11 +455,11 @@ You can use [Tilt](https://tilt.dev/) with the Paketo Java Buildpacks. It requir
 
 #### Explanation and Notes
 
-The `Tiltfile` above will configure Tilt to perform a custom build that will execute `pack build`. We are specifically *not* using `$EXPECTED_REF` as the image name, because Tilt will change the expected ref every time you `tilt up` and this causes pack to perform a full build every time, bypassing all the buildpack caching and is thus very slow.
+The `Tiltfile` above will use the Pack Tile extension, which in turn will run `pack build` to create an image from your application.
 
-In addition, we configure Tilt to watch `pom.xml` and `bin/main`. These files when modified will trigger an update in the container. The `live_update` block indicates which files locally will update and where they will be placed in the live container. We are instructing everything under `bin/main` to be added into `/workspace/BOOT-INF/classes` when an update is triggered. This takes classes and resources compiled locally by an IDE and injects them into the location where application classes are stored.
+In addition, we configure Tilt to watch `./bin/main/**`. These files when modified will trigger an update in the container. The `live_update` block indicates which files locally will update and where they will be placed in the live container. We are instructing everything under `./bin/main` to be added into `/workspace/BOOT-INF/classes` when an update is triggered. This takes classes and resources compiled locally by an IDE and injects them into the location where application classes are stored in the container image.
 
-Please note that the locations in the example are specific to your IDE and your application, and may vary. The example was created using Visual Studio Code with the Java and Gradle extensions and the `0-base` example application.
+This example is tuned for use with Visual Studio Code and its Java and Gradle extensions. These will compile code changes on save and put the compiled output in `./bin/main`. If you use a different IDE or Gradle/Maven directly, you will need to adjust the `deps` and `live_update` directories accordingly.
 
 This functionality presently depends on the support of [`watchexec`](https://github.com/watchexec/watchexec/). It is recommend that you read the section [Enable Process Reloading](#enable-process-reloading) for further details.
 
