@@ -1,0 +1,274 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PN39N8V');</script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Node.js - Paketo Buildpacks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1 viewport-fit=cover">
+
+
+
+
+<meta name="og:site_name" content="Paketo Buildpacks">
+<meta name="og:title" content="Node.js">
+<meta name="og:url" content="https://paketo.io/getting-started-languages/nodejs/">
+<meta name="twitter:title" content="Paketo Buildpacks" />
+<meta name="twitter:url" content="https://paketo.io/getting-started-languages/nodejs/" />
+<meta name="twitter:card" content="" />
+
+
+
+<link rel="stylesheet" href="/css/main.min.38febe290482f928e9aed50acc5f843bcc0edbb6708bcf5a417d1f164fcefb72.css">
+
+</head>
+
+<body>
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+
+    <div id="header-skip-link" class="screenreader-container">
+    <a href="#title" class="screenreader-text">Skip to Content</a>
+</div>
+
+    
+
+
+
+
+<header class="">
+    
+    <a class="paketo-logo" href="/">
+        <img class="paketo-logo__image" src="/v2/images/logo-paketo-light.svg" alt="Paketo Buildpacks Homepage">
+    </a>
+    
+    <div id="navigation" class="right-overlay">
+        <div class="nav-opener">
+            <span class="nav-opener__bar nav-opener__bar-top"></span>
+            <span class="nav-opener__bar nav-opener__bar-middle"></span>
+            <span class="nav-opener__bar nav-opener__bar-bottom"></span>
+        </div>
+        <div class="nav-container" id="nav-container">
+            <nav class="nav" id="nav-tray" >
+                <div class="nav__linkarea text--400">
+                    <a class="nav-link" href="/docs">docs</a>
+                    <a class="nav-link" href="/community">community</a>
+                    <a class="nav-link" href="https://blog.paketo.io">blog</a>
+                    <a class="nav-link" href="https://github.com/paketo-buildpacks">github</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="desktop-nav">
+        
+        
+        
+        <a class="nav-link nav-link--desktop  " href="/docs">docs</a>
+        
+        <a class="nav-link nav-link--desktop   " href="/community">community</a>
+        <a class="nav-link nav-link--desktop " href="https://blog.paketo.io">blog</a>
+        <a class="nav-link nav-link--desktop " href="https://github.com/paketo-buildpacks">github</a>
+    </div>
+</header>
+
+
+    <div class="docs single">
+        <h2 id="nodejs" class="markup-heading">
+    <a class="markup-heading__link" href="#nodejs">
+        Node.js
+    </a>
+</h2><p>Let&rsquo;s use the <code>base</code> Paketo Builder and the <strong>pack</strong> CLI to build a Node.js app
+as a runnable container image.</p>
+<h3 id="prerequisites" class="markup-heading">
+    <a class="markup-heading__link" href="#prerequisites">
+        Prerequisites
+    </a>
+</h3><ol>
+<li>Install Docker by following this [guide][install-docker].</li>
+<li>Install the pack CLI by following this [guide][install-pack].</li>
+</ol>
+<h3 id="build-the-app-image-from-source-code" class="markup-heading">
+    <a class="markup-heading__link" href="#build-the-app-image-from-source-code">
+        Build the App Image From Source Code
+    </a>
+</h3><p>Clone the Paketo samples repository and navigate to the source code for the sample Node.js app.</p>
+<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples \
+&amp;&amp; cd samples/demo-apps/app-source
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>From the sample app directory, use the pack CLI to build an app image.</p>
+<pre class="copyable"><code class="copyable__code">pack build paketo-demo-app --builder paketobuildpacks/builder:base
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<div class="code-output">
+    <div class="btn code-output__btn code-output__btn">View Output</div>
+    <pre class="code-output__output-container"><code class="code-output__output">===&gt; DETECTING
+4 of 8 buildpacks participating
+paketo-buildpacks/ca-certificates 2.3.2
+paketo-buildpacks/node-engine     0.6.2
+paketo-buildpacks/npm-install     0.4.0
+paketo-buildpacks/npm-start       0.3.0
+===&gt; ANALYZING
+Previous image with name &#34;paketo-demo-app&#34; not found
+===&gt; RESTORING
+===&gt; BUILDING
+
+Paketo CA Certificates Buildpack 2.3.2
+  https://github.com/paketo-buildpacks/ca-certificates
+  Launch Helper: Contributing to layer
+    Creating /layers/paketo-buildpacks_ca-certificates/helper/exec.d/ca-certificates-helper
+Paketo Node Engine Buildpack 0.6.2
+  Resolving Node Engine version
+    Candidate version sources (in priority order):
+      package.json -&gt; &#34;&gt;10&#34;
+      &lt;unknown&gt;    -&gt; &#34;&#34;
+
+    Selected Node Engine version (using package.json): 16.6.2
+
+  Executing build process
+    Installing Node Engine 16.6.2
+      Completed in 4.372s
+
+  Configuring build environment
+    NODE_ENV     -&gt; &#34;production&#34;
+    NODE_HOME    -&gt; &#34;/layers/paketo-buildpacks_node-engine/node&#34;
+    NODE_VERBOSE -&gt; &#34;false&#34;
+
+  Configuring launch environment
+    NODE_ENV     -&gt; &#34;production&#34;
+    NODE_HOME    -&gt; &#34;/layers/paketo-buildpacks_node-engine/node&#34;
+    NODE_VERBOSE -&gt; &#34;false&#34;
+
+    Writing profile.d/0_memory_available.sh
+      Calculates available memory based on container limits at launch time.
+      Made available in the MEMORY_AVAILABLE environment variable.
+
+Paketo NPM Install Buildpack 0.4.0
+  Resolving installation process
+    Process inputs:
+      node_modules      -&gt; &#34;Not found&#34;
+      npm-cache         -&gt; &#34;Not found&#34;
+      package-lock.json -&gt; &#34;Not found&#34;
+
+    Selected NPM build process: &#39;npm install&#39;
+
+  Executing build process
+    Running &#39;npm install --unsafe-perm --cache /layers/paketo-buildpacks_npm-install/npm-cache&#39;
+      Completed in 2.519s
+
+  Configuring launch environment
+    NPM_CONFIG_LOGLEVEL -&gt; &#34;error&#34;
+
+  Configuring environment shared by build and launch
+    PATH -&gt; &#34;$PATH:/layers/paketo-buildpacks_npm-install/modules/node_modules/.bin&#34;
+
+
+Paketo NPM Start Buildpack 0.3.0
+  Assigning launch processes
+    web: node server.js
+
+===&gt; EXPORTING
+Adding layer &#39;paketo-buildpacks/ca-certificates:helper&#39;
+Adding layer &#39;paketo-buildpacks/node-engine:node&#39;
+Adding layer &#39;paketo-buildpacks/npm-install:modules&#39;
+Adding layer &#39;paketo-buildpacks/npm-install:npm-cache&#39;
+Adding 1/1 app layer(s)
+Adding layer &#39;launcher&#39;
+Adding layer &#39;config&#39;
+Adding layer &#39;process-types&#39;
+Adding label &#39;io.buildpacks.lifecycle.metadata&#39;
+Adding label &#39;io.buildpacks.build.metadata&#39;
+Adding label &#39;io.buildpacks.project.metadata&#39;
+Setting default process type &#39;web&#39;
+Saving paketo-demo-app...
+*** Images (1a770ae9a065):
+      paketo-demo-app
+Reusing cache layer &#39;paketo-buildpacks/node-engine:node&#39;
+Reusing cache layer &#39;paketo-buildpacks/npm-install:modules&#39;
+Adding cache layer &#39;paketo-buildpacks/npm-install:npm-cache&#39;
+Successfully built image paketo-demo-app
+</code></pre>
+</div>
+
+<p>Once the build finishes, you&rsquo;ll see that the resulting image is on your Docker daemon.</p>
+<h3 id="run-the-app" class="markup-heading">
+    <a class="markup-heading__link" href="#run-the-app">
+        Run the App
+    </a>
+</h3><p>Let&rsquo;s start an instance of our app and interact with it.</p>
+<p>Run the app image with Docker. It will receive incoming requests on <code>localhost:8080</code>.</p>
+<pre class="copyable"><code class="copyable__code">docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>Wait a few moments for the app to start. Then, use <code>curl</code> to make a request.</p>
+<pre class="copyable"><code class="copyable__code">curl http://localhost:8080/greeting
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<div class="code-output">
+    <div class="btn code-output__btn code-output__btn">View Output</div>
+    <pre class="code-output__output-container"><code class="code-output__output">Hello from your application image
+</code></pre>
+</div>
+
+<p>You&rsquo;ve done it! As you can see, Paketo buildpacks do most of the hard work for you.</p>
+<p>Check out more <a href="https://github.com/paketo-buildpacks/samples">sample apps</a> that work with Paketo Buildpacks.</p>
+<p>Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.</p>
+
+    </div>
+
+    <footer class="footer text--light">
+    <div class="footer-social-links-container">
+        <a class="footer-social-link" href="https://twitter.com/Paketo_io">
+            <div class="footer-social-link__image-container">
+                <div class="logo">
+                    <img class="logo__image" src="/v2/images/logo-twitter.svg" alt="Blue Twitter bird logo">
+                </div>
+            </div>
+            <div class="text--light text--400">
+                Twitter
+            </div>
+        </a>
+        <a class="footer-social-link" href="https://slack.paketo.io/">
+            <div class="footer-social-link__image-container">
+                <div class="logo">
+                    <img class="logo__image" src="/v2/images/logo-slack.svg" alt="Slack logo">
+                </div>
+            </div>
+            <div class="text--light text--400">
+                Slack
+            </div>
+        </a>
+        <a class="footer-social-link" href="https://github.com/paketo-buildpacks">
+            <div class="footer-social-link__image-container">
+                <div class="logo logo--github">
+                    <img class="logo__image"  src="/v2/images/logo-github-cropped.svg" alt="GitHub Octocat logo"/>
+                </div>
+            </div>
+            <div class="text--light text--400">
+                GitHub
+            </div>
+        </a>
+    </div>
+    <div class="footer-privacy-policy">
+        <div class="footer-text--small">Paketo Buildpacks is a <a class="text--light" href="https://www.cloudfoundry.org/">Cloud Foundry</a> Project</div>
+        <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
+        <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
+    </div>
+</footer><script src="/js/main.bec36d712db895df2db4c65d949324be3bf58b7aed718b899b74aed9407cac09.js"></script>
+
+    <div id="footer-skip-link" class="screenreader-container">
+    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
+</div>
+
+</body>
+
+</html>

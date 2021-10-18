@@ -7545,6 +7545,43 @@
     }
   };
 
+  // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/docs_getting_started.js
+  init_shims();
+  var GettingStarted = class {
+    constructor({ element }) {
+      this.buttons = element.querySelectorAll(".getting-started__btn");
+      this.notes = element.querySelectorAll(".getting-started__note");
+      this.selectedButton = element.querySelector(".getting-started__btn--selected");
+      this.selectedNote = element.querySelector(".getting-started__note--selected");
+      for (const button of this.buttons) {
+        button.addEventListener("click", this.handleClick.bind(this));
+      }
+    }
+    handleClick(event) {
+      if (event.target == this.selectedButton) {
+        return;
+      }
+      const noteIdx = this.getNoteIdx(event.target);
+      if (noteIdx == -1) {
+        return;
+      }
+      this.selectedButton.classList.toggle("getting-started__btn--selected");
+      this.selectedNote.classList.toggle("getting-started__note--selected");
+      event.target.classList.toggle("getting-started__btn--selected");
+      this.selectedButton = event.target;
+      this.notes[noteIdx].classList.toggle("getting-started__note--selected");
+      this.selectedNote = this.notes[noteIdx];
+    }
+    getNoteIdx(button) {
+      for (let i = 0; i < this.buttons.length; ++i) {
+        if (this.buttons[i] == button) {
+          return i;
+        }
+      }
+      return -1;
+    }
+  };
+
   // <stdin>
   window.addEventListener("load", (event) => {
     new Navigation({
@@ -7568,6 +7605,9 @@
     }
     for (const element of document.querySelectorAll(".docs-menu__parent")) {
       new DocsSidebarExpander({ element });
+    }
+    for (const element of document.querySelectorAll(".getting-started")) {
+      new GettingStarted({ element });
     }
   });
 })();

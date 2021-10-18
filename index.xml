@@ -179,6 +179,17 @@ What is the bill of materials?  A bill of materials (BOM) is an industry standar
     </item>
     
     <item>
+      <title>.NET Core</title>
+      <link>https://paketo.io/getting-started-languages/dotnet_core/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/getting-started-languages/dotnet_core/</guid>
+      <description>.NET Core  Let&amp;rsquo;s use the base Paketo Builder and the pack CLI to build an ASP.NET app as a runnable container image.
+Prerequisites   Install Docker by following this [guide][install-docker]. Install the pack CLI by following this [guide][install-pack].  Build the App Image From Source Code  Clone the Paketo samples repository and navigate to the source code for the sample ASP.NET app.
+git clone https://github.com/paketo-buildpacks/samples \ &amp;amp;&amp;amp; cd samples/dotnet-core/aspnet Copied!</description>
+    </item>
+    
+    <item>
       <title>.NET Core Buildpack Reference</title>
       <link>https://paketo.io/docs/reference/dotnet-core-reference/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -197,6 +208,17 @@ Supported Dependencies  The .Net Core Paketo Buildpack supports several versions
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Go Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Go Buildpack How To documentation.
 Supported Dependencies  The Go Paketo Buildpack supports several versions of Go. For more details on the specific versions supported in a given buildpack version, see the release notes.
 Behavior  The Paketo Go Buildpack is a composite buildpack designed to build applications written in Go.</description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://paketo.io/getting-started-languages/java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/getting-started-languages/java/</guid>
+      <description>Java  Let&amp;rsquo;s use the base Paketo Builder and the pack CLI to build a Java app as a runnable container image.
+Prerequisites   Install Docker by following this [guide][install-docker]. Install the pack CLI by following this [guide][install-pack].  Build the App Image From Source Code  Clone the Paketo samples repository and navigate to the source code for the sample Java app.
+git clone https://github.com/paketo-buildpacks/samples \ &amp;amp;&amp;amp; cd samples/java/maven Copied!</description>
     </item>
     
     <item>
@@ -232,6 +254,17 @@ Supported Dependencies  The NGINX Paketo Buildpack supports several versions of 
     </item>
     
     <item>
+      <title>Node.js</title>
+      <link>https://paketo.io/getting-started-languages/nodejs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/getting-started-languages/nodejs/</guid>
+      <description>Node.js  Let&amp;rsquo;s use the base Paketo Builder and the pack CLI to build a Node.js app as a runnable container image.
+Prerequisites   Install Docker by following this [guide][install-docker]. Install the pack CLI by following this [guide][install-pack].  Build the App Image From Source Code  Clone the Paketo samples repository and navigate to the source code for the sample Node.js app.
+git clone https://github.com/paketo-buildpacks/samples \ &amp;amp;&amp;amp; cd samples/demo-apps/app-source Copied!</description>
+    </item>
+    
+    <item>
       <title>Node.js Buildpack Reference</title>
       <link>https://paketo.io/docs/reference/nodejs-reference/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -251,6 +284,17 @@ Buildpack-Set Environment Variables  The Node.</description>
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo PHP Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo PHP Buildpack How To documentation.
 Supported Dependencies  The PHP Paketo Buildpack supports several versions of PHP. For more details on the specific versions supported in a given buildpack version, see the release notes.
 Buildpack-Set Environment Variables  The PHP CNB sets a number of environment variables during the build and launch phases of the app lifecycle.</description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://paketo.io/getting-started-languages/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/getting-started-languages/python/</guid>
+      <description>Python  Let&amp;rsquo;s use the base Paketo Builder and the pack CLI to build a Python app as a runnable container image.
+Prerequisites   Install Docker by following this [guide][install-docker]. Install the pack CLI by following this [guide][install-pack].  Build the App Image From Source Code  Clone the Paketo samples repository and navigate to the source code for the sample Python app.
+git clone https://github.com/paketo-buildpacks/samples \ &amp;amp;&amp;amp; cd samples/python/pipenv Copied!</description>
     </item>
     
     <item>

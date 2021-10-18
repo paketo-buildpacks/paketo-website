@@ -1,0 +1,307 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PN39N8V');</script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>.NET Core - Paketo Buildpacks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1 viewport-fit=cover">
+
+
+
+
+<meta name="og:site_name" content="Paketo Buildpacks">
+<meta name="og:title" content=".NET Core">
+<meta name="og:url" content="https://paketo.io/getting-started-languages/dotnet_core/">
+<meta name="twitter:title" content="Paketo Buildpacks" />
+<meta name="twitter:url" content="https://paketo.io/getting-started-languages/dotnet_core/" />
+<meta name="twitter:card" content="" />
+
+
+
+<link rel="stylesheet" href="/css/main.min.38febe290482f928e9aed50acc5f843bcc0edbb6708bcf5a417d1f164fcefb72.css">
+
+</head>
+
+<body>
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+
+    <div id="header-skip-link" class="screenreader-container">
+    <a href="#title" class="screenreader-text">Skip to Content</a>
+</div>
+
+    
+
+
+
+
+<header class="">
+    
+    <a class="paketo-logo" href="/">
+        <img class="paketo-logo__image" src="/v2/images/logo-paketo-light.svg" alt="Paketo Buildpacks Homepage">
+    </a>
+    
+    <div id="navigation" class="right-overlay">
+        <div class="nav-opener">
+            <span class="nav-opener__bar nav-opener__bar-top"></span>
+            <span class="nav-opener__bar nav-opener__bar-middle"></span>
+            <span class="nav-opener__bar nav-opener__bar-bottom"></span>
+        </div>
+        <div class="nav-container" id="nav-container">
+            <nav class="nav" id="nav-tray" >
+                <div class="nav__linkarea text--400">
+                    <a class="nav-link" href="/docs">docs</a>
+                    <a class="nav-link" href="/community">community</a>
+                    <a class="nav-link" href="https://blog.paketo.io">blog</a>
+                    <a class="nav-link" href="https://github.com/paketo-buildpacks">github</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="desktop-nav">
+        
+        
+        
+        <a class="nav-link nav-link--desktop  " href="/docs">docs</a>
+        
+        <a class="nav-link nav-link--desktop   " href="/community">community</a>
+        <a class="nav-link nav-link--desktop " href="https://blog.paketo.io">blog</a>
+        <a class="nav-link nav-link--desktop " href="https://github.com/paketo-buildpacks">github</a>
+    </div>
+</header>
+
+
+    <div class="docs single">
+        <h2 id="net-core" class="markup-heading">
+    <a class="markup-heading__link" href="#net-core">
+        .NET Core
+    </a>
+</h2><p>Let&rsquo;s use the <code>base</code> Paketo Builder and the <strong>pack</strong> CLI to build an ASP.NET app
+as a runnable container image.</p>
+<h3 id="prerequisites" class="markup-heading">
+    <a class="markup-heading__link" href="#prerequisites">
+        Prerequisites
+    </a>
+</h3><ol>
+<li>Install Docker by following this [guide][install-docker].</li>
+<li>Install the pack CLI by following this [guide][install-pack].</li>
+</ol>
+<h3 id="build-the-app-image-from-source-code" class="markup-heading">
+    <a class="markup-heading__link" href="#build-the-app-image-from-source-code">
+        Build the App Image From Source Code
+    </a>
+</h3><p>Clone the Paketo samples repository and navigate to the source code for the sample ASP.NET app.</p>
+<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples \
+&amp;&amp; cd samples/dotnet-core/aspnet
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>From the sample app directory, use the pack CLI to build an app image.</p>
+<pre class="copyable"><code class="copyable__code">pack build paketo-demo-app --builder paketobuildpacks/builder:base
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<div class="code-output">
+    <div class="btn code-output__btn code-output__btn">View Output</div>
+    <pre class="code-output__output-container"><code class="code-output__output">===&gt; DETECTING
+7 of 11 buildpacks participating
+paketo-buildpacks/ca-certificates     2.3.2
+paketo-buildpacks/dotnet-core-runtime 0.1.12
+paketo-buildpacks/dotnet-core-aspnet  0.1.12
+paketo-buildpacks/dotnet-core-sdk     0.1.10
+paketo-buildpacks/icu                 0.0.102
+paketo-buildpacks/dotnet-publish      0.3.0
+paketo-buildpacks/dotnet-execute      0.4.0
+===&gt; ANALYZING
+Previous image with name &#34;paketo-demo-app&#34; not found
+===&gt; RESTORING
+===&gt; BUILDING
+
+Paketo CA Certificates Buildpack 2.3.2
+  https://github.com/paketo-buildpacks/ca-certificates
+  Launch Helper: Contributing to layer
+    Creating /layers/paketo-buildpacks_ca-certificates/helper/exec.d/ca-certificates-helper
+Paketo .NET Core Runtime Buildpack 0.1.12
+  Resolving Dotnet Core Runtime version
+    Candidate version sources (in priority order):
+      aspnet.csproj -&gt; &#34;3.1.0&#34;
+      &lt;unknown&gt;     -&gt; &#34;&#34;
+
+    No exact version match found; attempting version roll-forward
+
+    Selected dotnet-runtime version (using aspnet.csproj): 3.1.16
+
+  Executing build process
+    Installing Dotnet Core Runtime 3.1.16
+      Completed in 7.304s
+
+  Configuring environment for build and launch
+    DOTNET_ROOT -&gt; &#34;/workspace/.dotnet_root&#34;
+
+  Configuring environment for build
+    RUNTIME_VERSION -&gt; &#34;3.1.16&#34;
+
+Paketo ASP.NET Core Buildpack 0.1.12
+  Resolving Dotnet Core ASPNet version
+    Candidate version sources (in priority order):
+      RUNTIME_VERSION -&gt; &#34;3.1.16&#34;
+      aspnet.csproj   -&gt; &#34;3.1.0&#34;
+      &lt;unknown&gt;       -&gt; &#34;&#34;
+
+    Selected dotnet-aspnetcore version (using RUNTIME_VERSION): 3.1.16
+
+  Executing build process
+    Installing Dotnet Core ASPNet 3.1.16
+      Completed in 2.582s
+
+  Configuring environment
+    DOTNET_ROOT -&gt; &#34;/workspace/.dotnet_root&#34;
+
+Paketo .NET Core SDK Buildpack 0.1.10
+  Resolving .NET Core SDK version
+    Candidate version sources (in priority order):
+      RUNTIME_VERSION -&gt; &#34;3.1.410&#34;
+      &lt;unknown&gt;       -&gt; &#34;*&#34;
+      aspnet.csproj   -&gt; &#34;3.1.*&#34;
+
+    Selected .NET Core SDK version (using RUNTIME_VERSION): 3.1.410
+
+  Executing build process
+    Installing .NET Core SDK 3.1.410
+      Completed in 14.08s
+
+  Configuring environment
+    DOTNET_ROOT -&gt; &#34;/workspace/.dotnet_root&#34;
+    PATH        -&gt; &#34;/workspace/.dotnet_root:$PATH&#34;
+
+Paketo ICU Buildpack 0.0.102
+  Executing build process
+    Installing ICU
+      Completed in 2.56s
+
+Paketo .NET Publish Buildpack 0.3.0
+  Executing build process
+    Running &#39;dotnet publish /workspace --configuration Release --runtime ubuntu.18.04-x64 --self-contained false --output /tmp/dotnet-publish-output295991778&#39;
+      Completed in 5.2121426s
+
+  Removing source code
+
+Paketo .NET Execute Buildpack 0.4.0
+  Assigning launch processes
+    web: /workspace/aspnet --urls http://0.0.0.0:${PORT:-8080}
+
+===&gt; EXPORTING
+Adding layer &#39;paketo-buildpacks/ca-certificates:helper&#39;
+Adding layer &#39;paketo-buildpacks/dotnet-core-runtime:dotnet-core-runtime&#39;
+Adding layer &#39;paketo-buildpacks/dotnet-core-aspnet:dotnet-core-aspnet&#39;
+Adding layer &#39;paketo-buildpacks/dotnet-core-sdk:dotnet-env-var&#39;
+Adding layer &#39;paketo-buildpacks/icu:icu&#39;
+Adding 1/1 app layer(s)
+Adding layer &#39;launcher&#39;
+Adding layer &#39;config&#39;
+Adding layer &#39;process-types&#39;
+Adding label &#39;io.buildpacks.lifecycle.metadata&#39;
+Adding label &#39;io.buildpacks.build.metadata&#39;
+Adding label &#39;io.buildpacks.project.metadata&#39;
+Setting default process type &#39;web&#39;
+Saving paketo-demo-app...
+*** Images (4c1b1f739e63):
+      paketo-demo-app
+Adding cache layer &#39;paketo-buildpacks/dotnet-core-runtime:dotnet-core-runtime&#39;
+Adding cache layer &#39;paketo-buildpacks/dotnet-core-aspnet:dotnet-core-aspnet&#39;
+Adding cache layer &#39;paketo-buildpacks/dotnet-core-sdk:dotnet-core-sdk&#39;
+Adding cache layer &#39;paketo-buildpacks/icu:icu&#39;
+Successfully built image paketo-demo-app
+</code></pre>
+</div>
+
+<p>Once the build finishes, you&rsquo;ll see that the resulting image is on your Docker daemon.</p>
+<h3 id="run-the-app" class="markup-heading">
+    <a class="markup-heading__link" href="#run-the-app">
+        Run the App
+    </a>
+</h3><p>Let&rsquo;s start an instance of our app and interact with it.</p>
+<p>Run the app image with Docker. It will receive incoming requests on <code>localhost:8080</code>.</p>
+<pre class="copyable"><code class="copyable__code">docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>Wait a few moments for the app to start. Then, use <code>curl</code> to make a request.</p>
+<pre class="copyable"><code class="copyable__code">curl http://localhost:8080
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<div class="code-output">
+    <div class="btn code-output__btn code-output__btn">View Output</div>
+    <pre class="code-output__output-container"><code class="code-output__output">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Powered By Paketo Buildpacks&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;img style=&#34;display: block; margin-left: auto; margin-right: auto; width: 50%;&#34; src=&#34;https://paketo.io/images/paketo-logo-full-color.png&#34;&gt;&lt;/img&gt;
+  &lt;/body&gt;
+&lt;/html&gt;%
+</code></pre>
+</div>
+
+<p>You can also visit <code>http://localhost:8080</code> with your browser to see the app&rsquo;s homepage.</p>
+<p>You&rsquo;ve done it! As you can see, Paketo buildpacks do most of the hard work for you.</p>
+<p>Check out more <a href="https://github.com/paketo-buildpacks/samples">sample apps</a> that work with Paketo Buildpacks.</p>
+<p>Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.</p>
+
+    </div>
+
+    <footer class="footer text--light">
+    <div class="footer-social-links-container">
+        <a class="footer-social-link" href="https://twitter.com/Paketo_io">
+            <div class="footer-social-link__image-container">
+                <div class="logo">
+                    <img class="logo__image" src="/v2/images/logo-twitter.svg" alt="Blue Twitter bird logo">
+                </div>
+            </div>
+            <div class="text--light text--400">
+                Twitter
+            </div>
+        </a>
+        <a class="footer-social-link" href="https://slack.paketo.io/">
+            <div class="footer-social-link__image-container">
+                <div class="logo">
+                    <img class="logo__image" src="/v2/images/logo-slack.svg" alt="Slack logo">
+                </div>
+            </div>
+            <div class="text--light text--400">
+                Slack
+            </div>
+        </a>
+        <a class="footer-social-link" href="https://github.com/paketo-buildpacks">
+            <div class="footer-social-link__image-container">
+                <div class="logo logo--github">
+                    <img class="logo__image"  src="/v2/images/logo-github-cropped.svg" alt="GitHub Octocat logo"/>
+                </div>
+            </div>
+            <div class="text--light text--400">
+                GitHub
+            </div>
+        </a>
+    </div>
+    <div class="footer-privacy-policy">
+        <div class="footer-text--small">Paketo Buildpacks is a <a class="text--light" href="https://www.cloudfoundry.org/">Cloud Foundry</a> Project</div>
+        <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
+        <a class="footer-text--small text--light" href="https://www.linuxfoundation.org/privacy">Privacy Policy</a>
+    </div>
+</footer><script src="/js/main.bec36d712db895df2db4c65d949324be3bf58b7aed718b899b74aed9407cac09.js"></script>
+
+    <div id="footer-skip-link" class="screenreader-container">
+    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
+</div>
+
+</body>
+
+</html>
