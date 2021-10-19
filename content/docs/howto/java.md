@@ -455,7 +455,7 @@ You can use [Tilt](https://tilt.dev/) with the Paketo Java Buildpacks. This uses
 
 #### Explanation and Notes
 
-The `Tiltfile` above will use the Pack Tile extension, which in turn will run `pack build` to create an image from your application.
+The `Tiltfile` above will use the Pack Tilt extension, which in turn will run `pack build` to create an image from your application.
 
 In addition, we configure Tilt to watch `./bin/main/**`. These files when modified will trigger an update in the container. The `live_update` block indicates which files locally will update and where they will be placed in the live container. We are instructing everything under `./bin/main` to be added into `/workspace/BOOT-INF/classes` when an update is triggered. This takes classes and resources compiled locally by an IDE and injects them into the location where application classes are stored in the container image.
 
