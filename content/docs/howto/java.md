@@ -508,7 +508,7 @@ Connect [JConsole][jconsole] to the published port.
   
 ## Enable Java Native Memory Tracking (NMT)
 
-By default, the JVM will be configured to track internal memory usage. The JVM will print its last memory usage data when it exits, the level of detail can be configured at runtime by setting the environment variable `BPL_JAVA_NMT_LEVEL`, which supports both `summary` (default) and `detail`. Since there is a small amount of overhead required to support NMT, it can be disabled by setting the environment variable `BPL_JAVA_NMT_ENABLED` to `false`.
+By default for Java 11+, the JVM will be configured to track internal memory usage. The JVM will print its last memory usage data when it exits, the level of detail can be configured at runtime by setting the environment variable `BPL_JAVA_NMT_LEVEL`, which supports both `summary` (default) and `detail`. Since there is a small amount of overhead required to support NMT, it can be disabled by setting the environment variable `BPL_JAVA_NMT_ENABLED` to `false`.
   
 **Example**: Capturing NMT output
 
@@ -527,6 +527,25 @@ jcmd 1 VM.native_memory summary
 {{< /code/copyable >}}
 
 The first argument should be the JVM PID, in the case of the Paketo Java buildpack, this will be `1`.
+
+### Java NMT and Java 8
+
+At the moment, there is [a bug in Java 8](https://github.com/paketo-buildpacks/bellsoft-liberica/issues/131) that prevents Java NMT from being used. If you attempt to use it with Java 8, the JVM will crash on startup. The Java buildpack has disabled Java NMT when you are using Java 8 by default, so users are not impacted. If you attempt to force Java NMT to be enabled, it will result in the buildpack crashing.
+
+If using the Bellsoft Liberica as a JVM provider, starting with Paketo Java buildpack 5.20.0+, there is a fix for this issue. Java NMT is still defaulted to being off, but you may manually enable Java NMT and it will not crash the JVM. We expect other JVM providers to pull in this fix when it is available in OpenJDK. As soon as upstream vendors pull in this fix, we will update buildpacks to support it as well.
+
+### Java NMT and Reloadable Processes
+
+Java NMT support does not work with [Reloadable Processes](/#enable-process-reloading). This is because when using reloadable processes, the JVM PID is not 1 and not easily determinable by the buildpack Java NMT helper. Thus the helper cannot set the environment variables required by the JVM to enable Java NMT.
+
+If you attempt to enable Java NMT and are using Reloadable Processes, that's OK. The JVM will not enable Java NMT and it will output the following messages.
+
+{{< code/copyable >}}
+OpenJDK 64-Bit Server VM warning: Native Memory Tracking did not setup properly, using wrong launcher?
+OpenJDK 64-Bit Server VM warning: PrintNMTStatistics is disabled, because native memory tracking is not enabled
+{{< /code/copyable >}}
+
+Your application should continue to run, but with Java NMT disabled.
 
 ## Enable Java Flight Recorder (JFR)
 
