@@ -536,7 +536,7 @@ A fix for this issue has been submitted upstream to OpenJDK. It will take time f
 
 ### Java NMT and Reloadable Processes
 
-Java NMT support does not work with [Reloadable Processes](/#enable-process-reloading). This is because when using reloadable processes, the JVM PID is not 1 and not easily determinable by the buildpack Java NMT helper. Thus the helper cannot set the environment variables required by the JVM to enable Java NMT.
+Java NMT support does not work with [Reloadable Processes]({{< relref "#enable-process-reloading" >}}). This is because when using reloadable processes, the JVM PID is not 1 and not easily determinable by the buildpack Java NMT helper. Thus the helper cannot set the environment variables required by the JVM to enable Java NMT.
 
 If you attempt to enable Java NMT and are using Reloadable Processes, that's OK. The JVM will not enable Java NMT and it will output the following messages.
 
