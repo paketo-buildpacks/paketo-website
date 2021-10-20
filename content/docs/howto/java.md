@@ -532,7 +532,7 @@ The first argument should be the JVM PID, in the case of the Paketo Java buildpa
 
 At the moment, there is [a bug in Java 8](https://github.com/paketo-buildpacks/bellsoft-liberica/issues/131) that prevents Java NMT from being used. If you attempt to use it with Java 8 in a buildpack generated container, the JVM will crash on startup. The Java buildpack has disabled Java NMT when you are using Java 8, so users are not impacted by the bug. At the same time, it is not presently possible to enable Java NMT if you are running Java 8.
 
-If using the Bellsoft Liberica as a JVM provider, starting with Paketo Java buildpack 5.20.0+, there is a fix for this issue. Java NMT is still defaulted to being off, but you may manually enable Java NMT and it will not crash the JVM. We expect other JVM providers to pull in this fix when it is available in OpenJDK. As soon as upstream vendors pull in this fix, we will update buildpacks to support it as well.
+A fix for this issue has been submitted upstream to OpenJDK. It will take time for this fix to be accepted and picked up by all of the Java vendors. We are monitoring this situation, and as Java vendors pick up this fix we will re-enable Java NMT support for Java 8 users in the buildpack.
 
 ### Java NMT and Reloadable Processes
 
