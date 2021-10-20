@@ -461,7 +461,7 @@ In addition, we configure Tilt to watch `./bin/main/**`. These files when modifi
 
 This example is tuned for use with Visual Studio Code and its Java and Gradle extensions. These will compile code changes on save and put the compiled output in `./bin/main`. If you use a different IDE or Gradle/Maven directly, you will need to adjust the `deps` and `live_update` directories accordingly.
 
-This functionality presently depends on the support of [`watchexec`](https://github.com/watchexec/watchexec/). It is recommend that you read the section [Enable Process Reloading](#enable-process-reloading) for further details.
+This functionality presently depends on the support of [`watchexec`](https://github.com/watchexec/watchexec/). It is recommend that you read the section [Enable Process Reloading]({{< relref "#enable-process-reloading" >}}) for further details.
 
 ## Enable Remote Debugging
 
