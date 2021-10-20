@@ -480,7 +480,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </li>
     <li><a href="#enable-remote-debugging">Enable Remote Debugging</a></li>
     <li><a href="#enable-jmx">Enable JMX</a></li>
-    <li><a href="#enable-java-native-memory-tracking-nmt">Enable Java Native Memory Tracking (NMT)</a></li>
+    <li><a href="#enable-java-native-memory-tracking-nmt">Enable Java Native Memory Tracking (NMT)</a>
+      <ul>
+        <li><a href="#java-nmt-and-java-8">Java NMT and Java 8</a></li>
+        <li><a href="#java-nmt-and-reloadable-processes">Java NMT and Reloadable Processes</a></li>
+      </ul>
+    </li>
     <li><a href="#enable-java-flight-recorder-jfr">Enable Java Flight Recorder (JFR)</a></li>
     <li><a href="#append-arguments-to-the-apps-start-command">Append Arguments to the App&rsquo;s Start Command</a></li>
     <li><a href="#provide-a-custom-start-command-at-launch">Provide a Custom Start Command at Launch</a>
@@ -1053,7 +1058,7 @@ docker run --rm --tty \
     <a class="markup-heading__link" href="#enable-java-native-memory-tracking-nmt">
         Enable Java Native Memory Tracking (NMT)
     </a>
-</h2><p>By default, the JVM will be configured to track internal memory usage. The JVM will print its last memory usage data when it exits, the level of detail can be configured at runtime by setting the environment variable <code>BPL_JAVA_NMT_LEVEL</code>, which supports both <code>summary</code> (default) and <code>detail</code>. Since there is a small amount of overhead required to support NMT, it can be disabled by setting the environment variable <code>BPL_JAVA_NMT_ENABLED</code> to <code>false</code>.</p>
+</h2><p>By default for Java 11+, the JVM will be configured to track internal memory usage. The JVM will print its last memory usage data when it exits, the level of detail can be configured at runtime by setting the environment variable <code>BPL_JAVA_NMT_LEVEL</code>, which supports both <code>summary</code> (default) and <code>detail</code>. Since there is a small amount of overhead required to support NMT, it can be disabled by setting the environment variable <code>BPL_JAVA_NMT_ENABLED</code> to <code>false</code>.</p>
 <p><strong>Example</strong>: Capturing NMT output</p>
 <p>To capture NMT data using the JDK tool <code>jcmd</code>, first ensure that you have a JDK installed at runtime (see <a href="#install-a-specific-jvm-type">Install a Specific JVM Type</a>).</p>
 <p>Then run the following to start a bash session on a running container, with <code>jcmd</code> available on the $PATH variable:</p>
@@ -1065,6 +1070,23 @@ docker run --rm --tty \
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
 <p>The first argument should be the JVM PID, in the case of the Paketo Java buildpack, this will be <code>1</code>.</p>
+<h3 id="java-nmt-and-java-8" class="markup-heading">
+    <a class="markup-heading__link" href="#java-nmt-and-java-8">
+        Java NMT and Java 8
+    </a>
+</h3><p>At the moment, there is <a href="https://github.com/paketo-buildpacks/bellsoft-liberica/issues/131">a bug in Java 8</a> that prevents Java NMT from being used. If you attempt to use it with Java 8 in a buildpack generated container, the JVM will crash on startup. The Java buildpack has disabled Java NMT when you are using Java 8, so users are not impacted by the bug. At the same time, it is not presently possible to enable Java NMT if you are running Java 8.</p>
+<p>A fix for this issue has been submitted upstream to OpenJDK. It will take time for this fix to be accepted and picked up by all of the Java vendors. We are monitoring this situation, and as Java vendors pick up this fix we will re-enable Java NMT support for Java 8 users in the buildpack.</p>
+<h3 id="java-nmt-and-reloadable-processes" class="markup-heading">
+    <a class="markup-heading__link" href="#java-nmt-and-reloadable-processes">
+        Java NMT and Reloadable Processes
+    </a>
+</h3><p>Java NMT support does not work with <a href="#enable-process-reloading">Reloadable Processes</a>. This is because when using reloadable processes, the JVM PID is not 1 and not easily determinable by the buildpack Java NMT helper. Thus the helper cannot set the environment variables required by the JVM to enable Java NMT.</p>
+<p>If you attempt to enable Java NMT and are using Reloadable Processes, that&rsquo;s OK. The JVM will not enable Java NMT and it will output the following messages.</p>
+<pre class="copyable"><code class="copyable__code">OpenJDK 64-Bit Server VM warning: Native Memory Tracking did not setup properly, using wrong launcher?
+OpenJDK 64-Bit Server VM warning: PrintNMTStatistics is disabled, because native memory tracking is not enabled
+</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
+
+<p>Your application should continue to run, but with Java NMT disabled.</p>
 <h2 id="enable-java-flight-recorder-jfr" class="markup-heading">
     <a class="markup-heading__link" href="#enable-java-flight-recorder-jfr">
         Enable Java Flight Recorder (JFR)
@@ -1177,7 +1199,12 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </li>
     <li><a href="#enable-remote-debugging">Enable Remote Debugging</a></li>
     <li><a href="#enable-jmx">Enable JMX</a></li>
-    <li><a href="#enable-java-native-memory-tracking-nmt">Enable Java Native Memory Tracking (NMT)</a></li>
+    <li><a href="#enable-java-native-memory-tracking-nmt">Enable Java Native Memory Tracking (NMT)</a>
+      <ul>
+        <li><a href="#java-nmt-and-java-8">Java NMT and Java 8</a></li>
+        <li><a href="#java-nmt-and-reloadable-processes">Java NMT and Reloadable Processes</a></li>
+      </ul>
+    </li>
     <li><a href="#enable-java-flight-recorder-jfr">Enable Java Flight Recorder (JFR)</a></li>
     <li><a href="#append-arguments-to-the-apps-start-command">Append Arguments to the App&rsquo;s Start Command</a></li>
     <li><a href="#provide-a-custom-start-command-at-launch">Provide a Custom Start Command at Launch</a>
