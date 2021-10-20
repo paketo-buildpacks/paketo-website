@@ -752,6 +752,12 @@ pack build samples/java \
 <td><a href="https://github.com/paketo-buildpacks/graalvm">Paketo GraalVM Buildpack</a></td>
 </tr>
 <tr>
+<td><a href="https://www.oracle.com/java/technologies/downloads/">Oracle JDK</a> <span class="sup">2</span>
+ <span class="sup">3</span>
+</td>
+<td><a href="https://github.com/paketo-buildpacks/oracle">Paketo Oracle Buildpack</a></td>
+</tr>
+<tr>
 <td><a href="https://www.microsoft.com/openjdk">Microsoft OpenJDK</a> <span class="sup">2</span>
 </td>
 <td><a href="https://github.com/paketo-buildpacks/microsoft-openjdk">Paketo Microsoft OpenJDK Buildpack</a></td>
@@ -766,6 +772,8 @@ pack build samples/java \
 <li><em><span class="sub">Only provides JRE and JDK releases for Java 8 and 11, Java 16+ is JDK only</span>
 </em></li>
 <li><em><span class="sub">Only provides JDK releases</span>
+</em></li>
+<li><em><span class="sub">Only provides Java 17</span>
 </em></li>
 </ol>
 <p>To use an alternative JVM, you will need to set two <code>--buildpack</code> arguments to <code>pack build</code>, one for the alternative JVM buildpack you&rsquo;d like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you&rsquo;re specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.</p>
@@ -1032,7 +1040,7 @@ docker run --rm --tty \
 <p><strong>Example</strong>: Enabling JMX</p>
 <p>The following command builds a JMX-enabled image.</p>
 <pre class="copyable"><code class="copyable__code">pack build samples/java \
-  --path java/jar 
+  --path java/jar
 </code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
 
 <p>To run an image with the JMX port published:

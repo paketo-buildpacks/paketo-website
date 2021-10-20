@@ -525,14 +525,19 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
 <td>Provides the JDK and/or JRE.</td>
 </tr>
 <tr>
-<td><a href="https://github.com/paketo-buildpacks/gradle">Paketo Gradle Buildpack</a></td>
-<td>Optional</td>
-<td>Builds Gradle-based applications from source.</td>
-</tr>
-<tr>
 <td><a href="https://github.com/paketo-buildpacks/leiningen">Paketo Leiningen Buildpack</a></td>
 <td>Optional</td>
 <td>Builds Leiningen-based applications from source.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/clojure-tools">Paketo Clojure Tools Buildpack</a></td>
+<td>Optional</td>
+<td>Builds Clojure applications from source.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/gradle">Paketo Gradle Buildpack</a></td>
+<td>Optional</td>
+<td>Builds Gradle-based applications from source.</td>
 </tr>
 <tr>
 <td><a href="https://github.com/paketo-buildpacks/maven">Paketo Maven Buildpack</a></td>
@@ -543,6 +548,11 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
 <td><a href="https://github.com/paketo-buildpacks/sbt">Paketo SBT Buildpack</a></td>
 <td>Optional</td>
 <td>Builds SBT-based applications from source.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/watchexec">Paketo Watchexec Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes the <code>watchexec</code> binary for process reloading.</td>
 </tr>
 <tr>
 <td><a href="https://github.com/paketo-buildpacks/executable-jar">Paketo Executable JAR Buildpack</a></td>
@@ -575,19 +585,9 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
 <td>Contributes the Application Insights Agent and configures it to connect to the service.</td>
 </tr>
 <tr>
-<td><a href="https://github.com/paketo-buildpacks/debug">Paketo Debug Buildpack</a></td>
-<td>Optional</td>
-<td>Configures debugging for JVM applications.</td>
-</tr>
-<tr>
 <td><a href="https://github.com/paketo-buildpacks/google-stackdriver">Paketo Google Stackdriver Buildpack</a></td>
 <td>Optional</td>
 <td>Contributes Stackdriver agents and configures them to connect to the service.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/jmx">Paketo JMX Buildpack</a></td>
-<td>Optional</td>
-<td>Configures JMX for JVM applications.</td>
 </tr>
 <tr>
 <td><a href="https://github.com/paketo-buildpacks/encrypt-at-rest">Paketo Encrypt At Rest Buildpack</a></td>
