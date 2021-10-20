@@ -967,7 +967,7 @@ docker run --rm --tty \
     <a class="markup-heading__link" href="#using-tilt-with-paketo-buildpacks">
         Using Tilt with Paketo Buildpacks
     </a>
-</h3><p>You can use <a href="https://tilt.dev/">Tilt</a> with the Paketo Java Buildpacks. It requires a custom build command in your <code>Tiltfile</code>. The example below shows the custom build command and how to configure watched files.</p>
+</h3><p>You can use <a href="https://tilt.dev/">Tilt</a> with the Paketo Java Buildpacks. This uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack">Pack Tilt extension</a>. The example below shows how to use the pack extension and how to configure watched files.</p>
 <p><strong>Example</strong>: Tilt</p>
 <ol>
 <li>
@@ -978,15 +978,14 @@ docker run --rm --tty \
 </li>
 <li>
 <p>Modify your <code>Tiltfile</code> to look like this:</p>
-<pre class="copyable"><code class="copyable__code">    custom_build(
+<pre class="copyable"><code class="copyable__code">    load(&#39;ext://pack&#39;, &#39;pack&#39;)
+
+    pack(
         &#39;example-java-image&#39;,
-        &#39;pack build --pull-policy=if-not-present -e BP_LIVE_RELOAD_ENABLED=true example-java-image:dev&#39;,
-        [&#39;pom.xml&#39;, &#39;bin/main&#39;],
+        deps=[&#39;./bin/main&#39;],
         live_update = [
             sync(&#39;./bin/main&#39;, &#39;/workspace/BOOT-INF/classes&#39;),
         ],
-        tag=&#34;dev&#34;
-
     )
     k8s_yaml(&#39;kubernetes.yaml&#39;)
     k8s_resource(&#39;example-java&#39;, port_forwards=8000)
@@ -1004,9 +1003,9 @@ docker run --rm --tty \
     <a class="markup-heading__link" href="#explanation-and-notes">
         Explanation and Notes
     </a>
-</h4><p>The <code>Tiltfile</code> above will configure Tilt to perform a custom build that will execute <code>pack build</code>. We are specifically <em>not</em> using <code>$EXPECTED_REF</code> as the image name, because Tilt will change the expected ref every time you <code>tilt up</code> and this causes pack to perform a full build every time, bypassing all the buildpack caching and is thus very slow.</p>
-<p>In addition, we configure Tilt to watch <code>pom.xml</code> and <code>bin/main</code>. These files when modified will trigger an update in the container. The <code>live_update</code> block indicates which files locally will update and where they will be placed in the live container. We are instructing everything under <code>bin/main</code> to be added into <code>/workspace/BOOT-INF/classes</code> when an update is triggered. This takes classes and resources compiled locally by an IDE and injects them into the location where application classes are stored.</p>
-<p>Please note that the locations in the example are specific to your IDE and your application, and may vary. The example was created using Visual Studio Code with the Java and Gradle extensions and the <code>0-base</code> example application.</p>
+</h4><p>The <code>Tiltfile</code> above will use the Pack Tilt extension, which in turn will run <code>pack build</code> to create an image from your application.</p>
+<p>In addition, we configure Tilt to watch <code>./bin/main/**</code>. These files when modified will trigger an update in the container. The <code>live_update</code> block indicates which files locally will update and where they will be placed in the live container. We are instructing everything under <code>./bin/main</code> to be added into <code>/workspace/BOOT-INF/classes</code> when an update is triggered. This takes classes and resources compiled locally by an IDE and injects them into the location where application classes are stored in the container image.</p>
+<p>This example is tuned for use with Visual Studio Code and its Java and Gradle extensions. These will compile code changes on save and put the compiled output in <code>./bin/main</code>. If you use a different IDE or Gradle/Maven directly, you will need to adjust the <code>deps</code> and <code>live_update</code> directories accordingly.</p>
 <p>This functionality presently depends on the support of <a href="https://github.com/watchexec/watchexec/"><code>watchexec</code></a>. It is recommend that you read the section <a href="#enable-process-reloading">Enable Process Reloading</a> for further details.</p>
 <h2 id="enable-remote-debugging" class="markup-heading">
     <a class="markup-heading__link" href="#enable-remote-debugging">
@@ -1129,7 +1128,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> October 18, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 20, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
