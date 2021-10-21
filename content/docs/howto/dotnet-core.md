@@ -22,8 +22,7 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core \
 {{< /code/copyable >}}
 
 See
-[samples](https://github.com/paketo-buildpacks/samples/tree/main/dotnet-core/aspnet)
-for how to run the app.
+[samples][aspnet-sample] for how to run the app.
 
 **NOTE: Though the example above uses the Paketo Base builder, this buildpack is
 also compatible with the Paketo Full builder.**
@@ -37,9 +36,8 @@ version can be specified in several ways including through a
 variables. When specifying a version of the .Net Core Runtime and ASP.Net, you
 must choose a version that is available within these buildpacks. These versions
 can be found in the [.Net Core Runtime release
-notes](https://github.com/paketo-buildpacks/dotnet-core-runtime/releases) and
-[.Net Core ASP.Net release
-notes](https://github.com/paketo-buildpacks/dotnet-core-aspnet/releases).
+notes][bp/dotnet-core-runtime/releases] and [.Net Core ASP.Net release
+notes][bp/dotnet-core-aspnet/releases].
 
 .Net Core ASP.Net will only be included in the build process if your
 application declares its Runtime Framework as either `Microsoft.AspNetCore.App`
@@ -50,17 +48,16 @@ or `Microsoft.AspNetCore.All`.
 To configure the buildpack to use a certain version of the .Net Core Runtime
 and ASP.Net when deploying your app, set the `$BP_DOTNET_FRAMEWORK` environment
 variable at build time, either by passing a flag to the
-[platform](https://buildpacks.io/docs/concepts/components/platform/) or by
-adding it to your `project.toml`. See the Cloud Native Buildpacks
-[documentation](https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/)
-to learn more about `project.toml` files.
+[platform][definition/platform] or by adding it to your `project.toml`. See the
+Cloud Native Buildpacks [documentation][project-file] to learn more about
+`project.toml` files.
 
-**With a `pack build` flag**
+#### With a `pack build` flag
 {{< code/copyable >}}
 pack build myapp --env BP_DOTNET_FRAMEWORK_VERSION=5.0.4
 {{< /code/copyable >}}
 
-**In a `project.toml` file**
+#### In a `project.toml` file
 {{< code/copyable >}}
 [[ build.env ]]
   name = 'BP_DOTNET_FRAMEWORK_VERSION'
@@ -70,15 +67,15 @@ pack build myapp --env BP_DOTNET_FRAMEWORK_VERSION=5.0.4
 **Note**: If you specify a particular version using the above environment
 variable, the buildpack **will not** run runtime version roll-forward logic. To
 learn more about roll-forward logic, see the [Microsoft .Net Runtime
-documentation](https://docs.microsoft.com/en-us/dotnet/core/versions/selection#framework-dependent-apps-roll-forward).
+documentation][dotnet-core-runtime-docs].
 
 ### Using runtimeconfig.json
 
 If you are using a
-[`runtimeconfig.json`](https://docs.microsoft.com/en-us/dotnet/core/run-time-config/)
-file, you can specify the .Net Core Runtime version within that file. To
-configure the buildpack to use .Net Core Runtime v2.1.14 when deploying your
-app, include the values below in your `runtimeconfig.json` file:
+[`runtimeconfig.json`][runtime-config-json-docs] file, you can specify the .Net
+Core Runtime version within that file. To configure the buildpack to use .Net
+Core Runtime v2.1.14 when deploying your app, include the values below in your
+`runtimeconfig.json` file:
 
 {{< code/copyable >}}
 {
@@ -120,8 +117,7 @@ when deploying your app, include the values below in your Project file:
 {{< /code/copyable >}}
 
 For more details about specifying a .Net Core version using a Project file,
-please review the [Microsoft
-documentation](https://docs.microsoft.com/en-us/dotnet/core/versions/selection).
+please review the [Microsoft documentation][dotnet-version-selection-docs].
 
 ### Deprecated: Using buildpack.yml
 
@@ -135,7 +131,7 @@ Buildpacks v1.0.0.  To migrate from using `buildpack.yml`, please set the
 By default, the .Net Core SDK Buildpack installs the latest available patch
 version of the SDK that is compatible with the installed .Net Core runtime.
 The available SDK versions for each buildpack release can be found in the
-[release notes](https://github.com/paketo-buildpacks/dotnet-core-sdk/releases).
+[release notes][bp/dotnet-core-sdk/releases].
 
 However, the .Net Core SDK version can be explicitly set by specifying a
 version in a `buildpack.yml` file.
@@ -154,7 +150,7 @@ compatible with the selected .NET Core runtime version.
 
 ## Build an App from Source in a Subdirectory
 
-By default, the .Net Core Build Buildpack will consider the root directory of
+By default, the Paketo .NET buildpack will consider the root directory of
 your codebase to be the project directory. This directory should contain a C#,
 F#, or Visual Basic Project file. If your project directory is not located at
 the root of your source code you will need to set a custom project path.
@@ -163,26 +159,22 @@ the root of your source code you will need to set a custom project path.
 
 You can specify a project path by setting the `$BP_DOTNET_PROJECT_PATH`
 environment variable at build time, either by passing a flag to the
-[platform](https://buildpacks.io/docs/concepts/components/platform/) or by
-adding it to your `project.toml`. See the Cloud Native Buildpacks
-[documentation](https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/)
-to learn more about `project.toml` files.
+[platform][definition/platform] or by adding it to your `project.toml`. See the
+Cloud Native Buildpacks [documentation][project-file] to learn more about
+`project.toml` files.
 
-**With a `pack build` flag**
+#### With a `pack build` flag
 {{< code/copyable >}}
-pack build my-app --env BP_DOTNET_PROJECT_PATH=./src/my-app
+pack build my-app --env BP_DOTNET_PROJECT_PATH=./src
 {{< /code/copyable >}}
 
 
-**In a `project.toml` file**
+#### In a `project.toml` file
 {{< code/copyable >}}
 [[ build.env ]]
   name = 'BP_DOTNET_PROJECT_PATH'
-  value = './src/my-app'
+  value = './src'
 {{< /code/copyable >}}
-See the [Cloud Native Buildpacks
-documentation](https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/)
-to learn more about `project.toml` files.
 
 ### Deprecated: Using buildpack.yml
 
@@ -190,6 +182,73 @@ Specifying the project path through `buildpack.yml` configuration will be
 deprecated in Dotnet Publish Buildpack v1.0.0 & Dotnet Execute Buildpack
 v1.0.0. To migrate from using `buildpack.yml`, please set the
 `$BP_DOTNET_PROJECT_PATH` environment variable.
+
+## Enable Process Reloading
+By default, your .NET server will be the only process running in your app
+container at runtime. You can enable restarting the server process
+when files in the app's working directory change, which may facilitate a shorter
+feedback loop for iterating on code changes. This feature may be used in conjunction with
+a dev orchestrator like [Tilt][tilt].
+
+### Using `BP_LIVE_RELOAD_ENABLED`
+
+To enable reloadable processes, set the `$BP_LIVE_RELOAD_ENABLED` environment
+variable at build time, either by passing a flag to the
+[platform][definition/platform] or by
+adding it to your `project.toml`. See the Cloud Native Buildpacks
+[documentation][project-file] to learn more about `project.toml` files.
+
+#### With a `pack build` flag
+{{< code/copyable >}}
+pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
+{{< /code/copyable >}}
+
+#### In a `project.toml` file
+{{< code/copyable >}}
+[[ build.env ]]
+  name = 'BP_LIVE_RELOAD_ENABLED'
+  value = 'true'
+{{< /code/copyable >}}
+
+#### In a `Tiltfile` with the `pack` resource
+You can use the Paketo .NET Core buildpack with [Tilt][tilt]. This example
+uses the [`pack` extension][tilt/pack] for Tilt, and shows how to configure watched files.
+{{< code/copyable >}}
+pack(
+  'myapp',
+  env_vars=[
+    'BP_DOTNET_PROJECT_PATH="./src"',
+    'BP_LIVE_RELOAD_ENABLED=true'
+    ],
+  live_update=[
+    sync('./build', '/workspace/build'),
+    sync('./src', '/workspace/src'),
+    run('cp -rf /workspace/build/* /workspace/', trigger='./build')
+  ]
+)
+# (Re)build locally when source code changes
+local_resource(
+  'dotnet-publish',
+  cmd='rm -rf ./build && dotnet publish src --configuration Release --runtime ubuntu.18.04-x64 --self-contained false --output ./build',
+  deps=['src'],
+  ignore=[
+    'src/obj',
+    'src/bin'
+  ]
+)
+{{< /code/copyable >}}
+
+##### Notes
+- The .NET Paketo buildpack works best with Tilt and hot reloading when all of
+  your app's source code is in a subdirectory (`./src` in the above example).
+  Use [`BP_DOTNET_PROJECT_PATH`]({{< relref "#build-an-app-from-source-in-a-subdirectory" >}})
+  to indicate the location of the source code.
+- The .NET Paketo buildpack will not recompile your source code inside the
+  running app container. You must use a `local_resource` to rebuild your app
+  when source code changes, and copy the built artifacts into the container with
+  `sync` and `run` steps, as shown.
+- The `cmd` that is run as part of the `dotnet-publish` local resource matches
+  the command that the .NET Core buildpack runs to build the app.
 
 ## Install a Custom CA Certificate
 .Net Core Buildpack users can provide their own CA certificates and have them
@@ -214,3 +273,16 @@ Buildpack](https://github.com/paketo-buildpacks/environment-variables/blob/main/
 instructions in the [Applying Custom
 Labels]({{< ref "/docs/howto/configuration#applying-custom-labels" >}})
 section of our configuration docs.
+
+<!---> References <---!>
+[aspnet-sample]:https://github.com/paketo-buildpacks/samples/tree/main/dotnet-core/aspnet
+[bp/dotnet-core-aspnet/releases]:{{< bp_repo "dotnet-core-aspnet" >}}/releases
+[bp/dotnet-core-runtime/releases]:{{< bp_repo "dotnet-core-runtime" >}}/releases
+[bp/dotnet-core-sdk/releases]:{{< bp_repo "dotnet-core-sdk" >}}/releases
+[definition/platform]:https://buildpacks.io/docs/concepts/components/platform
+[dotnet-core-runtime-docs]:https://docs.microsoft.com/en-us/dotnet/core/versions/selection#framework-dependent-apps-roll-forward
+[dotnet-version-selection-docs]:https://docs.microsoft.com/en-us/dotnet/core/versions/selection
+[project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/
+[runtime-config-json-docs]:https://docs.microsoft.com/en-us/dotnet/core/run-time-config/
+[tilt/pack]:https://github.com/tilt-dev/tilt-extensions/tree/master/pack
+[tilt]:https://tilt.dev/
