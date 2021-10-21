@@ -34,18 +34,18 @@ application will be assigned when building your application container.
 
 ### Webservers
 
-* [Passenger](http://github.com/paketo-buildpacks/passenger)
-* [Puma](http://github.com/paketo-buildpacks/puma)
-* [Rackup](http://github.com/paketo-buildpacks/rackup)
-* [Thin](http://github.com/paketo-buildpacks/thin)
-* [Unicorn](http://github.com/paketo-buildpacks/unicorn)
+* [Passenger](https://github.com/paketo-buildpacks/passenger)
+* [Puma](https://github.com/paketo-buildpacks/puma)
+* [Rackup](https://github.com/paketo-buildpacks/rackup)
+* [Thin](https://github.com/paketo-buildpacks/thin)
+* [Unicorn](https://github.com/paketo-buildpacks/unicorn)
 
 ### Task Runners
 
-* [Rake](http://github.com/paketo-buildpacks/rake)
+* [Rake](https://github.com/paketo-buildpacks/rake)
 
 ## Rails Asset Pipeline
-The [Paketo Rails Assets Buildpack](http://github.com/paketo-buildpacks/rails-assets) is a [component buildpack]({{< ref "/docs/concepts/buildpacks#component-buildpacks" >}}) included in the Ruby Buildpack. It supports Rails apps (Rails version >= 5.0) that need asset precompilation.
+The [Paketo Rails Assets Buildpack](https://github.com/paketo-buildpacks/rails-assets) is a [component buildpack]({{< ref "/docs/concepts/buildpacks#component-buildpacks" >}}) included in the Ruby Buildpack. It supports Rails apps (Rails version >= 5.0) that need asset precompilation.
 
 The buildpack runs bundle exec rails assets:precompile for the app, and works with any of the supported Ruby webservers listed above.
 

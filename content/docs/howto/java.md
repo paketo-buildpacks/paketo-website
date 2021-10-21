@@ -215,7 +215,7 @@ By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The 
 | JVM                                                                                                                                     | Buildpack                                                            |
 | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | [Adoptium](https://adoptium.net/) {{< text/sup >}}1{{< /text/sup >}}                                                                    | [Paketo Adoptium Buildpack][bp/adoptium]                             |
-| [Alibaba Dragonwell](http://dragonwell-jdk.io/) {{< text/sup >}}2{{< /text/sup >}}                                                      | [Paketo Alibaba Dragonwell Buildpack][bp/dragonwell]                 |
+| [Alibaba Dragonwell](https://github.com/alibaba/dragonwell8) {{< text/sup >}}2{{< /text/sup >}}                                                      | [Paketo Alibaba Dragonwell Buildpack][bp/dragonwell]                 |
 | [Amazon Corretto](https://aws.amazon.com/corretto/) {{< text/sup >}}2{{< /text/sup >}}                                                  | [Paketo Amazon Corretto Buildpack][bp/amazon-corretto]               |
 | [Azul Zulu](https://www.azul.com/downloads/zulu-community/)                                                                             | [Paketo Azul Zulu Buildpack][bp/azul-zulu]                           |
 | [BellSoft Liberica](https://bell-sw.com/pages/libericajdk/)                                                                             | [Paketo BellSoft Liberica Buildpack - Default][bp/bellsoft-liberica] |
@@ -663,7 +663,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [platforms]:https://buildpacks.io/docs/concepts/components/platform/
 
 <!-- other references -->
-[apache tomcat]:http://tomcat.apache.org
+[apache tomcat]:https://tomcat.apache.org
 [apm]:https://en.wikipedia.org/wiki/Application_performance_management
 [azure application insights instrumentation key]:https://docs.microsoft.com/en-us/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key
 [azure application insights]:https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview
@@ -682,7 +682,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [kubernetes container resource]:https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#container-v1-core
 [leiningen]:https://leiningen.org/
 [liberica]:https://bell-sw.com/
-[maven settings]:http://maven.apache.org/settings.html
+[maven settings]:https://maven.apache.org/settings.html
 [maven]:https://maven.apache.org/
 [oci config]:https://github.com/opencontainers/image-spec/blob/master/config.md#properties
 [sbt]:https://www.scala-sbt.org/index.html

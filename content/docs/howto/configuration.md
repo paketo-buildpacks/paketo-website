@@ -357,7 +357,7 @@ This isn't always necessary but can impact output from your application. For exa
 [k8s service bindings]:https://github.com/k8s-service-bindings/spec
 [kpack service bindings]:https://github.com/pivotal/kpack/blob/master/docs/servicebindings.md#service-bindings
 [liberica releases]:https://github.com/bell-sw/Liberica/releases
-[maven settings]:http://maven.apache.org/settings.html
+[maven settings]:https://maven.apache.org/settings.html
 [maven opts]:https://maven.apache.org/configure.html#maven_opts-environment-variable
 [oci annotation keys]:https://github.com/opencontainers/image-spec/blob/master/annotations.md#pre-defined-annotation-keys
 [spring cloud bindings]:https://github.com/spring-cloud/spring-cloud-bindings
