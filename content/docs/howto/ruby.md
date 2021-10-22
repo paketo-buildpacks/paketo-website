@@ -41,7 +41,7 @@ pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
 also compatible with the Paketo Full Builder.*
 
 ## Override the Detected Ruby Version
-The Paketo Ruby buildpack will attempt to automatically detect the correct
+The Paketo Ruby Buildpack will attempt to automatically detect the correct
 version of Ruby to install based on the default version in the
 [`buildpack.toml`][bp/toml] file. It is possible to override this version by
 setting the `BP_MRI_VERSION` environment variable at build time, or via a
@@ -92,7 +92,7 @@ set the `$BP_MRI_VERSION` environment variable.
 
 ## Override the Detected Bundler Version
 
-The Paketo Ruby buildpack will also attempt to automatically detecy the correct
+The Paketo Ruby Buildpack will also attempt to automatically detecy the correct
 version of Bundler to use based on the default version in the
 [`buildpack.toml`][bundler/toml] file. It is possible to override this version
 by setting the `BP_BUNDLER_VERSION` environment variable at build time, or via
@@ -143,7 +143,7 @@ will be deprecated in Bundler Buildpack v1.0.0.
 
 ## Build an App With Vendored Gems
 In order to build apps that contain vendored gems with the Paketo Ruby
-buildpack, your app will need to have `.gem` files located in the
+Buildpack, your app will need to have `.gem` files located in the
 `cache_path`.
 
 #### With a Default Cache Location
