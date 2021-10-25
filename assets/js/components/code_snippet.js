@@ -23,8 +23,14 @@ class Clipboard {
   }
 
   handleClick() {
+    // Prevent spamming
+    if (this.element.classList.contains('copyable--clicked')) {
+      return;
+    }
+
     ClipboardJS.copy(this.code);
     this.element.classList.add('copyable--clicked');
+    setTimeout(() => { this.element.classList.toggle('copyable--clicked')}, 1900);
   }
 }
 

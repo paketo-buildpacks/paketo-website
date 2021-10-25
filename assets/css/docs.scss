@@ -433,11 +433,13 @@
 	padding: 0.35em 0.6em;
 	border: 1px solid #E4E4E4;
     border-radius: 5px;
-	overflow: auto;
 }
 
 .copyable__code {
     font-family: monospace;
+    word-spacing: normal;
+    color: #16819c;
+    overflow: auto;
 }
 
 .copyable__clipboard {
@@ -454,30 +456,14 @@
     display: block;
 }
 
-.copyable--clicked .copyable__clipboard {
-    display: none;
-}
-
-.copyable--clicked:hover .copyable__clipboard {
-    display: none;
-}
-
 .copyable__copied {
     visibility: hidden;
 	position: absolute;
-	top: 2px;
+	top: 25px;
 	right: 2px;
     background-color: $light-background-color;
     opacity: 100;
     font-family: $default-font-family;
-}
-
-.copyable--clicked .copyable__clipboard {
-    display: none;
-}
-
-.copyable--clicked:hover .copyable__clipboard {
-    display: none;
 }
 
 .copyable--clicked .copyable__copied {
@@ -504,7 +490,7 @@
     .copyable__copied {
         visibility: hidden;
         position: absolute;
-        top: 2px;
+        top: 25px;
         right: 2px;
         background-color: $light-background-color;
         opacity: 100;
