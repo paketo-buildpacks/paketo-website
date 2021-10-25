@@ -618,7 +618,7 @@ curl -s http://localhost:8082/actuator/health
 <li><a href="https://github.com/buildpacks/spec/blob/main/extensions/bindings.md">Cloud Native Buildpacks Bindings Specification</a>. The original buildpacks bindings specification; this specification is en route to <a href="https://github.com/buildpacks/rfcs/blob/main/text/0055-deprecate-service-bindings.md">deprecation</a></li>
 </ul>
 <p>Paketo Buildpacks will look for bindings in the <code>/platform/bindings</code> directory at build-time and in <code>$SERVICE_BINDING_ROOT</code> or <code>$CNB_BINDINGS</code> directory at runtime.</p>
-<p>For example, the Java Buildpack accepts a binding with <code>type</code> equal to <code>maven</code> containing a key named <code>settings.xml</code> containing <a href="http://maven.apache.org/settings.html">Maven settings</a>. In the build container, the Maven Buildpack will use <code>settings.xml</code> if it finds either
+<p>For example, the Java Buildpack accepts a binding with <code>type</code> equal to <code>maven</code> containing a key named <code>settings.xml</code> containing <a href="https://maven.apache.org/settings.html">Maven settings</a>. In the build container, the Maven Buildpack will use <code>settings.xml</code> if it finds either
 <pre class="copyable"><code class="copyable__code">/platform
 └── bindings
     └── &lt;name&gt;
@@ -793,7 +793,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> October 20, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 25, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">

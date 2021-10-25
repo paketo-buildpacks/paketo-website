@@ -594,7 +594,7 @@ Artifact</a>.</p>
     <a class="markup-heading__link" href="#connect-to-a-private-maven-repository">
         Connect to a Private Maven Repository
     </a>
-</h5><p>A <a href="https://paketo.io/docs/howto/configuration/#bindings">binding</a> with type <code>maven</code> and key <code>settings.xml</code> can be used to provide custom <a href="http://maven.apache.org/settings.html">Maven settings</a>.</p>
+</h5><p>A <a href="https://paketo.io/docs/howto/configuration/#bindings">binding</a> with type <code>maven</code> and key <code>settings.xml</code> can be used to provide custom <a href="https://maven.apache.org/settings.html">Maven settings</a>.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain">&lt;binding-name&gt;
 ├── settings.xml
 └── type
@@ -640,7 +640,7 @@ Artifact</a>.</p>
 <li><a href="https://docs.gradle.org/current/userguide/distribution_plugin.html">Distribution ZIP</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/dist-zip">DistZip Buildpack</a></li>
 </ul>
 <p>The Java Buildpack expects the application directory to contain the extracted contents of the archive (e.g. an exploded JAR). Most platforms will automatically extract any provided archives.</p>
-<p>If a WAR is detect the Java Buildpack will install <a href="http://tomcat.apache.org">Apache Tomcat</a>. For exact set of supported Tomcat versions can be found in the Java Buildpack <a href="https://github.com/paketo-buildpacks/java/releases">releases notes</a>. For tomcat configuration options see the <a href="https://github.com/paketo-buildpacks/apache-tomcat">Apache Tomcat Buildpack</a>.</p>
+<p>If a WAR is detect the Java Buildpack will install <a href="https://tomcat.apache.org">Apache Tomcat</a>. For exact set of supported Tomcat versions can be found in the Java Buildpack <a href="https://github.com/paketo-buildpacks/java/releases">releases notes</a>. For tomcat configuration options see the <a href="https://github.com/paketo-buildpacks/apache-tomcat">Apache Tomcat Buildpack</a>.</p>
 <p>The component buildpack for the provided artifact format will contribute a start command to the image.</p>
 <p><em>Note</em>: All three of the <a href="https://github.com/paketo-buildpacks/apache-tomcat">Apache Tomcat Buildpack</a>,
 <a href="https://github.com/paketo-buildpacks/executable-jar">Executable Jar Buildpack</a>, and <a href="https://github.com/paketo-buildpacks/dist-zip">DistZip
@@ -730,7 +730,7 @@ pack build samples/java \
 <td><a href="https://github.com/paketo-buildpacks/adoptium">Paketo Adoptium Buildpack</a></td>
 </tr>
 <tr>
-<td><a href="http://dragonwell-jdk.io/">Alibaba Dragonwell</a> <span class="sup">2</span>
+<td><a href="https://github.com/alibaba/dragonwell8">Alibaba Dragonwell</a> <span class="sup">2</span>
 </td>
 <td><a href="https://github.com/paketo-buildpacks/alibaba-dragonwell">Paketo Alibaba Dragonwell Buildpack</a></td>
 </tr>
@@ -1158,7 +1158,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> October 20, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 25, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
