@@ -24,7 +24,7 @@ window.addEventListener('load', (event) => {
     hostname: window.location.hostname,
   });
 
-  for (const element of document.querySelectorAll('.docs pre')) {
+  for (const element of document.querySelectorAll('.copyable')) {
     new CodeSnippet({ element: element });
   }
 

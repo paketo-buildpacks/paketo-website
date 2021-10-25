@@ -20,19 +20,7 @@ Frankie GJ 9/13/21 */
 that shouldn't apply to the click to copy clipboard
 Frankie GJ 9/13/21  */
 :root .copyable__clipboard {
-	display: block;
 	border: none;
-}
-
-/* Since the above uses :root, these ones also have to
-so that the click-to-copy JS can update the classes and 
-make a visible impact
-Frankie GJ 9/13/21  */
-:root .copyable--clicked .copyable__clipboard {
-	display: none;
-}
-:root .copyable--clicked:hover .copyable__clipboard {
-	display: none;
 }
 
 /* Without this, the docs-menu__link hover state color overrides
