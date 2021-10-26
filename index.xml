@@ -100,8 +100,9 @@ git clone https://github.com/paketo-buildpacks/samples cd samples/php/webserver 
       
       <guid>https://paketo.io/docs/howto/ruby/</guid>
       <description>This documentation explains how to use the Paketo Ruby Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Ruby Buildpack Reference documentation.
-Build a Sample App  To build a sample app locally with this buildpack using the pack CLI, run
-git clone &amp;lt;https://github.com/paketo-buildpacks/samples&amp;gt; cd samples/ruby/puma pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
+Build a Sample Ruby App  You can quickly build a sample Ruby app into a runnable OCI image on your local machine with Paketo buildpacks.
+Prerequisites
+ docker CLI pack CLI    Clone the Paketo samples and navigate to a Ruby sample app.</description>
     </item>
     
     <item>

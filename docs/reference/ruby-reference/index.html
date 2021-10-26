@@ -454,6 +454,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
     </li>
     <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
+    <li><a href="#vendored-gem-behavior">Vendored Gem Behavior</a></li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
       <ul>
         <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
@@ -518,7 +519,19 @@ application will be assigned when building your application container.</p>
         Rails Asset Pipeline
     </a>
 </h2><p>The <a href="https://github.com/paketo-buildpacks/rails-assets">Paketo Rails Assets Buildpack</a> is a <a href="https://paketo.io/docs/concepts/buildpacks/#component-buildpacks">component buildpack</a> included in the Ruby Buildpack. It supports Rails apps (Rails version &gt;= 5.0) that need asset precompilation.</p>
-<p>The buildpack runs bundle exec rails assets:precompile for the app, and works with any of the supported Ruby webservers listed above.</p>
+<p>The buildpack runs <code>bundle exec rails assets:precompile</code> for the app, and works
+with any of the supported Ruby webservers listed above. The Paketo Ruby
+Buildpack pulls in this buildpack, as well as the <a href="https://github.com/paketo-buildpacks/node-engine">Paketo Node Engine
+Buildpack</a> to support asset compilation.</p>
+<h2 id="vendored-gem-behavior" class="markup-heading">
+    <a class="markup-heading__link" href="#vendored-gem-behavior">
+        Vendored Gem Behavior
+    </a>
+</h2><p>Per the Ruby <a href="https://paketo.io/docs/howto/ruby/">How To Guide</a>, the Paketo Ruby
+Buildpack supports building apps with vendored gems. Behind the scenes,
+the presence of the cache path in the app source code indicates to the
+buildpack to run <code>bundle install</code> with the addition of the <code>--local</code> flag to
+prefer the use of local gems.</p>
 <h2 id="buildpack-set-environment-variables" class="markup-heading">
     <a class="markup-heading__link" href="#buildpack-set-environment-variables">
         Buildpack-Set Environment Variables
@@ -556,7 +569,7 @@ variable and its impact on your app.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> October 25, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 26, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -571,6 +584,7 @@ variable and its impact on your app.</p>
       </ul>
     </li>
     <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
+    <li><a href="#vendored-gem-behavior">Vendored Gem Behavior</a></li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
       <ul>
         <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
