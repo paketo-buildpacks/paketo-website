@@ -47,7 +47,17 @@ application will be assigned when building your application container.
 ## Rails Asset Pipeline
 The [Paketo Rails Assets Buildpack](https://github.com/paketo-buildpacks/rails-assets) is a [component buildpack]({{< ref "/docs/concepts/buildpacks#component-buildpacks" >}}) included in the Ruby Buildpack. It supports Rails apps (Rails version >= 5.0) that need asset precompilation.
 
-The buildpack runs bundle exec rails assets:precompile for the app, and works with any of the supported Ruby webservers listed above.
+The buildpack runs `bundle exec rails assets:precompile` for the app, and works
+with any of the supported Ruby webservers listed above. The Paketo Ruby
+Buildpack pulls in this buildpack, as well as the [Paketo Node Engine
+Buildpack](https://github.com/paketo-buildpacks/node-engine) to support asset compilation.
+
+## Vendored Gem Behavior
+Per the Ruby [How To Guide]({{< ref "docs/howto/ruby" >}}), the Paketo Ruby
+Buildpack supports building apps with vendored gems. Behind the scenes,
+the presence of the cache path in the app source code indicates to the
+buildpack to run `bundle install` with the addition of the `--local` flag to
+prefer the use of local gems.
 
 ## Buildpack-Set Environment Variables
 

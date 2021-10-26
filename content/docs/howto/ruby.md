@@ -11,159 +11,191 @@ aliases:
 
 {{% howto_exec_summary bp_name="Paketo Ruby Buildpack" bp_repo="https://github.com/paketo-buildpacks/ruby" reference_docs_path="/docs/reference/ruby-reference" %}}
 
-## Build a Sample App
-To build a sample app locally with this buildpack using the `pack` CLI, run
 
+## Build a Sample Ruby App
+
+You can quickly build a sample Ruby app into a runnable OCI image on your
+local machine with Paketo buildpacks.
+
+*Prerequisites*
+- docker CLI
+- pack CLI
+
+
+1. Clone the Paketo samples and navigate to a Ruby sample app.
 {{< code/copyable >}}
 git clone <https://github.com/paketo-buildpacks/samples>
 cd samples/ruby/puma
+{{< /code/copyable >}}
+
+
+1. Use the pack CLI with the Paketo Ruby Buildpack to build the sample app.
+{{< code/copyable >}}
 pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
   --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
-See [samples](https://github.com/paketo-buildpacks/samples/tree/main/ruby/thin)
-for how to run the app.
+1. Run the app using instructions found in its `README`.
 
-**NOTE: Though the example above uses the Paketo Base builder, this buildpack is
-also compatible with the Paketo Full builder.**
+*Note: Though the example above uses the Paketo Base Builder, this buildpack is
+also compatible with the Paketo Full Builder.*
 
-## Install a Specific Ruby Version
+## Override the Detected Ruby Version
+The Paketo Ruby Buildpack will attempt to automatically detect the correct
+version of Ruby to install based on the default version in the
+[`buildpack.toml`][bp/toml] file. It is possible to override this version by
+setting the `BP_MRI_VERSION` environment variable at build time, or via a
+`Gemfile` in the app source.
 
-The Ruby Buildpack allows you to specify a version of Ruby to use during
-deployment. This version can be specified via the `BP_MRI_VERSION` environment
-variable or a `Gemfile`. When specifying a version of Ruby, you must choose a version that is available
-within the buildpack. The supported versions can be found
-[here](https://github.com/paketo-buildpacks/mri/releases/latest).
-
-Please note that setting the Ruby version through a `buildpack.yml` file will
-be deprecated in MRI Buildpack v1.0.0.
+The version can be set to any valid semver version or version constraint (e.g.
+`2.7.4`, `2.7.*`). For the versions available in the buildpack, see the
+buildpack's [releases page][bp/releases]. Specifying a version of Ruby is not
+required. In the case that it is not specified, the buildpack will provide the
+default version, which can be seen in the `buildpack.toml` file.
 
 The buildpack prioritizes the versions specified in
 each possible configuration location with the following precedence, from
 highest to lowest: `BP_MRI_VERSION`, `Gemfile`.
 
-Specifying a version of Ruby is not required. In the case that is not
-specified, the buildpack will provide the default version, which can be seen in
-the [`buildpack.toml`
-](https://github.com/paketo-buildpacks/mri/blob/main/buildpack.toml) file.
-
-### Using BP_MRI_VERSION
-
-To configure the buildpack to use Ruby v2.7.1 when deploying your app, set the
-following environment variable at build time, either directly (ex. `pack build
-my-app --env BP_MRI_VERSION=2.7.1`) or through a
-[project.toml](https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md)
-file:
-
+#### With pack and a Command-Line Flag
+When building with the pack CLI, set `BP_MRI_VERSION` at build time with the `--env` flag.
 {{< code/copyable >}}
-BP_MRI_VERSION="2.7.1"
+pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
+  --env BP_MRI_VERSION="2.7.1"
 {{< /code/copyable >}}
 
-### Using a Gemfile
+#### With pack and a `project.toml`
+When building with the pack CLI, create a [project.toml][cnb/project-file] file
+in your app directory that sets `BP_MRI_VERSION` at build time.
+{{< code/copyable >}}
+# project.toml
+[ build ]
+  [[ build.env ]]
+    name="BP_MRI_VERSION"
+    value="2.7.1"
+{{< /code/copyable >}}
 
-To configure the buildpack to use Ruby v2.7.1 when deploying your app, include
-the values below in your `Gemfile`:
+The pack CLI will automatically detect the project file at build time.
 
+#### With a Gemfile
+When a Gemfile is present, include a version declaration line.
 {{< code/copyable >}}
 source 'https://rubygems.org'
 
 ruby '~> 2.7.1'
 {{< /code/copyable >}}
 
-### Deprecated: Using buildpack.yml
+#### Deprecated: With pack and a `buildpack.yml`
+Please note that setting the Ruby version through a `buildpack.yml` file will be
+deprecated in MRI Buildpack v1.0.0. To migrate from using `buildpack.yml` please
+set the `$BP_MRI_VERSION` environment variable.
 
-Specifying the Ruby version through `buildpack.yml` configuration will be deprecated in MRI Buildpack v1.0.0.
-To migrate from using `buildpack.yml` please set the `$BP_MRI_VERSION` environment variable.
+## Override the Detected Bundler Version
 
-## Install a Specific Bundler Version
+The Paketo Ruby Buildpack will also attempt to automatically detecy the correct
+version of Bundler to use based on the default version in the
+[`buildpack.toml`][bundler/toml] file. It is possible to override this version
+by setting the `BP_BUNDLER_VERSION` environment variable at build time, or via
+a `Gemfile.lock` created during dependency vendoring.
 
-The Ruby Buildpack allows you to specify a version of Bundler to use during
-deployment. This version can be specified via the `BP_BUNDLER_VERSION`
-environment variable or a `Gemfile.lock` created during dependency vendoring.
-When specifying a version of Bundler, you must choose a version that is
-available within the buildpack.  The supported versions can be found
-[here](https://github.com/paketo-buildpacks/bundler/releases/latest).
-
-Please note that setting the Bundler version through a `buildpack.yml` file
-will be deprecated in Bundler Buildpack v1.0.0.
+The version can be set to any valid semver version or version constraint (e.g.
+`2.2.29`, `2.2.*`). For the versions available in the buildpack, see the
+buildpack's [releases page][bundler/releases]. Specifying a version of Ruby is
+not required. In the case that it is not specified, the buildpack will provide
+the default version, which can be seen in the `buildpack.toml` file.
 
 The buildpack prioritizes the versions specified in each possible configuration
-location with the following precedence, from
-highest to lowest: `BP_BUNDLER_VERSION`, `Gemfile.lock`.
+location with the following precedence, from highest to lowest:
+`BP_BUNDLER_VERSION`, `Gemfile.lock`.
 
-Specifying a version of Bundler is not required. In the case that is not
-specified, the buildpack will provide the default version, which can be seen in
-the [`buildpack.toml`
-](https://github.com/paketo-buildpacks/bundler/blob/main/buildpack.toml) file.
-
-### Using BP_BUNDLER_VERSION
-
-To configure the buildpack to use Bundler v2.1.4 when deploying your app, set
-the following environment variable at build time, either directly (ex. `pack
-build my-app --env BP_BUNDLER_VERSION=2.1.4`) or through a
-[project.toml](https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md)
-file:
-
+#### With pack and a Command-Line Flag
+When building with the pack CLI, set `BP_BUNDLER_VERSION` at build time with the `--env` flag.
 {{< code/copyable >}}
-BP_BUNDLER_VERSION="2.1.4"
+pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
+  --env BP_BUNDLER_VERSION="2.1.4"
 {{< /code/copyable >}}
 
-### Using a Gemfile.lock
+#### With pack and a `project.toml`
+When building with the pack CLI, create a [project.toml][cnb/project-file] file
+in your app directory that sets `BP_BUNDLER_VERSION` at build time.
+{{< code/copyable >}}
+# project.toml
+[ build ]
+  [[ build.env ]]
+    name="BP_BUNDLER_VERSION"
+    value="2.1.4"
+{{< /code/copyable >}}
 
-To configure the buildpack to use Bundler v2.1.4 when deploying your app, run
-`bundle install` on your application source code using v2.1.4 of Bundler. This
-will result in a `Gemfile.lock` that includes the following snippet:
+The pack CLI will automatically detect the project file at build time.
 
+#### With a Gemfile.lock
+When configuring your app, run `bundle install` on the source code to configure
+the buildpack to use the version of Bundler that you bundled with. This will
+result in a `Gemfile.lock` file that includes a Bundler version declaration line.
 {{< code/copyable >}}
 BUNDLED WITH
    2.1.4
 {{< /code/copyable >}}
 
-### Deprecated: Using buildpack.yml
+#### Deprecated: With pack and a `buildpack.yml`
+Please note that setting the Bundler version through a `buildpack.yml` file
+will be deprecated in Bundler Buildpack v1.0.0.
 
-Specifying the Bundler version through `buildpack.yml` configuration will be deprecated in Bundler Buildpack v1.0.0.
-To migrate from using `buildpack.yml` please set the `$BP_BUNDLER_VERSION` environment variable.
+## Build an App With Vendored Gems
+In order to build apps that contain vendored gems with the Paketo Ruby
+Buildpack, your app will need to have `.gem` files located in the
+`cache_path`.
 
-## Build an App in an Offline Environment
-In order to build apps in an offline environment, the app will need to have the
-`.gem` files located in the `cache_path`. Bundler will copy the required gems
-into this location, typically `vendor/cache` when running the `bundle package`
-command. During the `bundle install` process, the buildpack will instruct
-Bundler to prefer gems in this cache over those on the RubyGems index by
-running `bundle install --local`.
+#### With a Default Cache Location
+Running the `bundle package` command on your app source code will
+copy the required gems into the cache location, typically `vendor/cache`. This
+will indicate to the buildpack to use gems in the cache over those on the
+RubyGems index. Check out the Ruby reference [documentation]({{< ref
+"docs/reference/ruby-reference" >}}) for more information about how this works.
+
+#### With a Non-Default Cache Location
+To vendor gems in a non-default location, put all `.gem` files into the
+directory inside app source code, such as `custom_dir/custom_cache`. In order
+to tell the buildpack where to look for the gems, create a `.bundle/config`
+file and set the `BUNDLE_CACHE_PATH`.
+
+{{< code/copyable >}}
+---
+BUNDLE_CACHE_PATH: "custom_dir/custom_cache"
+{{< /code/copyable >}}
 
 ## Build an App Image That Runs a Rake Task
 The Ruby Buildpack can build images that run a rake task
 at launch time. Simply include a valid `Rakefile` in your app source
 code. The buildpack will build an image that runs the default rake task
 at launch time.
-See this Paketo sample [app](https://github.com/paketo-buildpacks/samples/tree/main/ruby/rake)
-for a working example.
+See this Paketo sample [app][samples/rake] for a working example.
 
-### Run a Non-Default Rake Task
-To configure the app image to run a rake task called `non_default` on launch, use a [Procfile]({{< ref "/docs/howto/configuration#procfiles" >}}) with contents as follows to set the start command:
+#### With a Non-Default Rake Task
+To configure the app image to run a rake task called `non_default` on launch,
+use a [Procfile]({{< ref "/docs/howto/configuration#procfiles" >}}) with the
+start command set as the `web` process.
 
 {{< code/copyable >}}
 web: bundle exec rake non_default
 {{< /code/copyable >}}
 
-To start an app container with a rake task (instead of its default start command), start the app container with  `--entrypoint launcher` and add the desired rake start command at the end:
+Alternatively, start the app container with the rake task (instead of its default start
+command), by setting `--entrypoint launcher` when running the container, and
+add the desired rake start command at the end.
+
 {{< code/copyable >}}
 docker run --entrypoint launcher my-rake-app bundle exec rake non_default
 {{< /code/copyable >}}
 
-## Run a Ruby Application with a Webserver
-The Ruby Buildpack can automatically detect that a Ruby app needs to be run with
-several common web servers, and will configure the app image accordingly. The buildpack
-currently supports the following webservers:
-- Passenger
-- Puma
-- Rackup
-- Thin
-- Unicorn
+## Build an App With a Webserver
+The Paketo Ruby Buildpack has support for several common web servers and will
+configure the app image accordingly. Check out the Ruby reference [documentation]({{< ref
+"docs/reference/ruby-reference#webservers--task-runners" >}}) for more
+information about the supported web servers.
 
-To make the Ruby Buildpack automatically configure your app for a given webserver,
-include its gem in your app's `Gemfile`.
+To enable your app to run with a given webserver, include its gem in your app's
+`Gemfile`.
 
 For example, to use Rackup, include in your `Gemfile`:
 {{< code/copyable >}}
@@ -171,9 +203,19 @@ gem 'rack'
 {{< /code/copyable >}}
 
 ## Build a Rails App
-The Ruby Buildpack supports Rails apps (Rails version >= 5.0) that need
-asset precompilation.
+If you are building a Rails (version >= 5.0) app that needs asset compilation,
+you can build it with the Paketo Ruby Buildpack.
 
-To use this feature of the buildpack, 
+To use this feature:
 1. Include an `app/assets` directory in your app source code
 1. Add the `rails` gem to your `Gemfile`
+
+
+<!-- References -->
+[bp/releases]:https://github.com/paketo-buildpacks/mri/releases/latest
+[bp/toml]:https://github.com/paketo-buildpacks/mri/blob/main/buildpack.toml
+[bundler/toml]:https://github.com/paketo-buildpacks/bundler/blob/main/buildpack.toml
+[bundler/releases]:https://github.com/paketo-buildpacks/bundler/releases/latest
+[bundler/toml]:https://github.com/paketo-buildpacks/bundler/blob/main/buildpack.toml
+[cnb/project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor
+[samples/rake]:https://github.com/paketo-buildpacks/samples/tree/main/ruby/rake
