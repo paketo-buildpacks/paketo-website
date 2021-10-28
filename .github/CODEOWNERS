@@ -1,1 +1,26 @@
-* @paketo-buildpacks/content-maintainers
+*                                            @paketo-buildpacks/content-maintainers
+
+content/getting-started-languages/java.md    @paketo-buildpacks/java-buildpacks
+content/getting-started-languages/nodejs.md  @paketo-buildpacks/nodejs-maintainers
+content/getting-started-languages/python.md  @paketo-buildpacks/python-maintainers
+
+content/docs/howto/java.md                   @paketo-buildpacks/java-buildpacks
+content/docs/howto/nodejs.md                 @paketo-buildpacks/nodejs-maintainers
+content/docs/howto/python.md                 @paketo-buildpacks/python-maintainers
+content/docs/howto/ruby.md                   @paketo-buildpacks/ruby-maintainers
+content/docs/howto/php.md                    @paketo-buildpacks/php-maintainers
+content/docs/howto/web-servers.md            @paketo-buildpacks/php-maintainers
+content/docs/howto/go.md                     @paketo-buildpacks/go-maintainers
+content/docs/howto/dotnet-core.md            @paketo-buildpacks/dotnet-core-maintainers
+content/docs/howto/configuration.md          @paketo-buildpacks/utilities-maintainers
+
+content/docs/reference/java-reference.md               @paketo-buildpacks/java-buildpacks
+content/docs/reference/java-native-image-reference.md  @paketo-buildpacks/java-buildpacks
+content/docs/reference/nodejs-reference.md             @paketo-buildpacks/nodejs-maintainers
+content/docs/reference/python-reference.md             @paketo-buildpacks/python-maintainers
+content/docs/reference/ruby-reference.md               @paketo-buildpacks/ruby-maintainers
+content/docs/reference/php-reference.md                @paketo-buildpacks/php-maintainers
+content/docs/reference/nginx-reference.md              @paketo-buildpacks/php-maintainers
+content/docs/reference/httpd-reference.md              @paketo-buildpacks/php-maintainers
+content/docs/reference/go-reference.md                 @paketo-buildpacks/go-maintainers
+content/docs/reference/dotnet-core-reference.md        @paketo-buildpacks/dotnet-core-maintainers
