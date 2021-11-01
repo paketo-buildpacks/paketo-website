@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.38febe290482f928e9aed50acc5f843bcc0edbb6708bcf5a417d1f164fcefb72.css">
+<link rel="stylesheet" href="/css/main.min.56bbb2a34dcb1955daea98a1d6bf34cb269feb684ae74b3fc85ec1d69d096ec8.css">
 
 </head>
 
@@ -473,12 +473,15 @@ Reference <a href="/docs/reference/python-reference">documentation</a>.</p>
         Build a Sample App
     </a>
 </h2><p>To build a sample app locally with this buildpack using the pack CLI, run</p>
-<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
+<div class="copyable">
+    <pre class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples/python/pip
 pack build my-app --buildpack gcr.io/paketo-buildpacks/python \
   --builder paketobuildpacks/builder:base
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>See
 <a href="https://github.com/paketo-buildpacks/samples/tree/main/python/pip">samples</a>
 for how to run the app.</p>
@@ -496,12 +499,15 @@ available within the buildpack. The supported versions can be found in the
 <p>You may set <code>BP_CPYTHON_VERSION</code> using a platfrom-specific option, or using
 a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor"><code>project.toml</code></a>
 as shown in the following example:</p>
-<pre class="copyable"><code class="copyable__code">[build]
+<div class="copyable">
+    <pre class="copyable__code">[build]
   [[build.env]]
     name = &#34;BP_CPYTHON_VERSION&#34;
     value = &#34;3.6.*&#34; # any valid semver constraints (e.g. 3.6.7, 3.*) are acceptable
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>Specifying a version of CPython is not required. In the case this is not
 specified, the buildpack will provide the default version, which can be seen in
 the <code>buildpack.toml</code> file.</p>
@@ -665,7 +671,7 @@ section of our configuration docs.</p>
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.bec36d712db895df2db4c65d949324be3bf58b7aed718b899b74aed9407cac09.js"></script>
+</footer><script src="/js/main.fb00b1409d3fbff588ef82043ce586ffad37dce0ecff27dc069ba9aec83d10f4.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

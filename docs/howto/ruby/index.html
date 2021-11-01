@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.38febe290482f928e9aed50acc5f843bcc0edbb6708bcf5a417d1f164fcefb72.css">
+<link rel="stylesheet" href="/css/main.min.56bbb2a34dcb1955daea98a1d6bf34cb269feb684ae74b3fc85ec1d69d096ec8.css">
 
 </head>
 
@@ -492,17 +492,23 @@ local machine with Paketo buildpacks.</p>
 <ol>
 <li>
 <p>Clone the Paketo samples and navigate to a Ruby sample app.
-<pre class="copyable"><code class="copyable__code">git clone &lt;https://github.com/paketo-buildpacks/samples&gt;
+<div class="copyable">
+    <pre class="copyable__code">git clone &lt;https://github.com/paketo-buildpacks/samples&gt;
 cd samples/ruby/puma
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 </li>
 <li>
 <p>Use the pack CLI with the Paketo Ruby Buildpack to build the sample app.
-<pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
   --builder paketobuildpacks/builder:base
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 </li>
 <li>
 <p>Run the app using instructions found in its <code>README</code>.</p>
@@ -532,34 +538,43 @@ highest to lowest: <code>BP_MRI_VERSION</code>, <code>Gemfile</code>.</p>
         With pack and a Command-Line Flag
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_MRI_VERSION</code> at build time with the <code>--env</code> flag.
-<pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
   --env BP_MRI_VERSION=&#34;2.7.1&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h4 id="with-pack-and-a-projecttoml" class="markup-heading">
     <a class="markup-heading__link" href="#with-pack-and-a-projecttoml">
         With pack and a <code>project.toml</code>
     </a>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file
 in your app directory that sets <code>BP_MRI_VERSION</code> at build time.
-<pre class="copyable"><code class="copyable__code"># project.toml
+<div class="copyable">
+    <pre class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
     name=&#34;BP_MRI_VERSION&#34;
     value=&#34;2.7.1&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <p>The pack CLI will automatically detect the project file at build time.</p>
 <h4 id="with-a-gemfile" class="markup-heading">
     <a class="markup-heading__link" href="#with-a-gemfile">
         With a Gemfile
     </a>
 </h4><p>When a Gemfile is present, include a version declaration line.
-<pre class="copyable"><code class="copyable__code">source &#39;https://rubygems.org&#39;
+<div class="copyable">
+    <pre class="copyable__code">source &#39;https://rubygems.org&#39;
 
 ruby &#39;~&gt; 2.7.1&#39;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h4 id="deprecated-with-pack-and-a-buildpackyml" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-with-pack-and-a-buildpackyml">
         Deprecated: With pack and a <code>buildpack.yml</code>
@@ -589,23 +604,29 @@ location with the following precedence, from highest to lowest:
         With pack and a Command-Line Flag
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_BUNDLER_VERSION</code> at build time with the <code>--env</code> flag.
-<pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
   --env BP_BUNDLER_VERSION=&#34;2.1.4&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h4 id="with-pack-and-a-projecttoml-1" class="markup-heading">
     <a class="markup-heading__link" href="#with-pack-and-a-projecttoml-1">
         With pack and a <code>project.toml</code>
     </a>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file
 in your app directory that sets <code>BP_BUNDLER_VERSION</code> at build time.
-<pre class="copyable"><code class="copyable__code"># project.toml
+<div class="copyable">
+    <pre class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
     name=&#34;BP_BUNDLER_VERSION&#34;
     value=&#34;2.1.4&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <p>The pack CLI will automatically detect the project file at build time.</p>
 <h4 id="with-a-gemfilelock" class="markup-heading">
     <a class="markup-heading__link" href="#with-a-gemfilelock">
@@ -614,10 +635,13 @@ in your app directory that sets <code>BP_BUNDLER_VERSION</code> at build time.
 </h4><p>When configuring your app, run <code>bundle install</code> on the source code to configure
 the buildpack to use the version of Bundler that you bundled with. This will
 result in a <code>Gemfile.lock</code> file that includes a Bundler version declaration line.
-<pre class="copyable"><code class="copyable__code">BUNDLED WITH
+<div class="copyable">
+    <pre class="copyable__code">BUNDLED WITH
    2.1.4
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h4 id="deprecated-with-pack-and-a-buildpackyml-1" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-with-pack-and-a-buildpackyml-1">
         Deprecated: With pack and a <code>buildpack.yml</code>
@@ -647,10 +671,13 @@ RubyGems index. Check out the Ruby reference <a href="https://paketo.io/docs/ref
 directory inside app source code, such as <code>custom_dir/custom_cache</code>. In order
 to tell the buildpack where to look for the gems, create a <code>.bundle/config</code>
 file and set the <code>BUNDLE_CACHE_PATH</code>.</p>
-<pre class="copyable"><code class="copyable__code">---
+<div class="copyable">
+    <pre class="copyable__code">---
 BUNDLE_CACHE_PATH: &#34;custom_dir/custom_cache&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h2 id="build-an-app-image-that-runs-a-rake-task" class="markup-heading">
     <a class="markup-heading__link" href="#build-an-app-image-that-runs-a-rake-task">
         Build an App Image That Runs a Rake Task
@@ -667,15 +694,21 @@ See this Paketo sample <a href="https://github.com/paketo-buildpacks/samples/tre
 </h4><p>To configure the app image to run a rake task called <code>non_default</code> on launch,
 use a <a href="https://paketo.io/docs/howto/configuration/#procfiles">Procfile</a> with the
 start command set as the <code>web</code> process.</p>
-<pre class="copyable"><code class="copyable__code">web: bundle exec rake non_default
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">web: bundle exec rake non_default
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>Alternatively, start the app container with the rake task (instead of its default start
 command), by setting <code>--entrypoint launcher</code> when running the container, and
 add the desired rake start command at the end.</p>
-<pre class="copyable"><code class="copyable__code">docker run --entrypoint launcher my-rake-app bundle exec rake non_default
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">docker run --entrypoint launcher my-rake-app bundle exec rake non_default
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h2 id="build-an-app-with-a-webserver" class="markup-heading">
     <a class="markup-heading__link" href="#build-an-app-with-a-webserver">
         Build an App With a Webserver
@@ -686,9 +719,12 @@ information about the supported web servers.</p>
 <p>To enable your app to run with a given webserver, include its gem in your app&rsquo;s
 <code>Gemfile</code>.</p>
 <p>For example, to use Rackup, include in your <code>Gemfile</code>:
-<pre class="copyable"><code class="copyable__code">gem &#39;rack&#39;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+<div class="copyable">
+    <pre class="copyable__code">gem &#39;rack&#39;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="build-a-rails-app" class="markup-heading">
     <a class="markup-heading__link" href="#build-a-rails-app">
         Build a Rails App
@@ -788,7 +824,7 @@ you can build it with the Paketo Ruby Buildpack.</p>
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.bec36d712db895df2db4c65d949324be3bf58b7aed718b899b74aed9407cac09.js"></script>
+</footer><script src="/js/main.fb00b1409d3fbff588ef82043ce586ffad37dce0ecff27dc069ba9aec83d10f4.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

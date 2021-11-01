@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.38febe290482f928e9aed50acc5f843bcc0edbb6708bcf5a417d1f164fcefb72.css">
+<link rel="stylesheet" href="/css/main.min.56bbb2a34dcb1955daea98a1d6bf34cb269feb684ae74b3fc85ec1d69d096ec8.css">
 
 </head>
 
@@ -502,12 +502,15 @@ Reference <a href="/docs/reference/nodejs-reference">documentation</a>.</p>
         Build a Sample App
     </a>
 </h2><p>To build a sample app locally with this buildpack using the pack CLI, run</p>
-<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
+<div class="copyable">
+    <pre class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples/nodejs/npm
 pack build my-app --buildpack gcr.io/paketo-buildpacks/nodejs \
   --builder paketobuildpacks/builder:base
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/nodejs/npm">samples</a>
 for how to run the app.</p>
 <p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
@@ -534,9 +537,12 @@ highest to lowest: <code>BP_NODE_VERSION</code>, <code>package.json</code>, <cod
 following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_NODE_VERSION=12.12.0</code>) or through a
 <a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
 file:</p>
-<pre class="copyable"><code class="copyable__code">BP_NODE_VERSION=&#34;12.12.0&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">BP_NODE_VERSION=&#34;12.12.0&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h3 id="using-packagejson" class="markup-heading">
     <a class="markup-heading__link" href="#using-packagejson">
         Using package.json
@@ -545,13 +551,16 @@ file:</p>
 during deployment by configuring the <code>engines</code> field in the <code>package.json</code>
 file. To configure the buildpack to use Node.js v12.12.0 when deploying your
 app, include the values below in your <code>package.json</code> file:</p>
-<pre class="copyable"><code class="copyable__code">{
+<div class="copyable">
+    <pre class="copyable__code">{
   &#34;engines&#34;: {
     &#34;node&#34;: &#34;12.12.0&#34;
   }
 }
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>For more information about the <code>engines</code> configuration option in the
 <code>package.json</code> file, see the
 <a href="https://docs.npmjs.com/files/package.json#engines">engines</a> section of the
@@ -572,17 +581,26 @@ Node Version Manager repository on GitHub.</p>
 </h3><p><code>.node-version</code> is another common option that is compatible with Node.js version managers
 such as <code>asdf</code> and <code>nodenv</code>. You can use a <code>.node-version</code> file to set the Node.js version
 that your apps use during deployment, according to one of the following formats:</p>
-<pre class="copyable"><code class="copyable__code">12.12.0
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">12.12.0
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>OR</p>
-<pre class="copyable"><code class="copyable__code">v12.12.0
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">v12.12.0
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>OR</p>
-<pre class="copyable"><code class="copyable__code">12.12
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">12.12
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h3 id="deprecated-using-buildpackyml" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-using-buildpackyml">
         Deprecated: Using buildpack.yml
@@ -604,11 +622,14 @@ at run time, the heap of your Node.js app is limited to 768 MB.</p>
     </a>
 </h3><p>To enable memory optimization through the <code>BP_NODE_OPTIMIZE_MEMORY</code> environment
 variable, set it to <code>true</code>.</p>
-<pre class="copyable"><code class="copyable__code">pack build my-app \
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app \
   --buildpack gcr.io/paketo-buildpacks/nodejs \
   --env BP_NODE_OPTIMIZE_MEMORY=true
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h3 id="deprecated-using-buildpackyml-1" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-using-buildpackyml-1">
         Deprecated: Using buildpack.yml
@@ -698,9 +719,12 @@ the Paketo Base Builder&rsquo;s stack, and the module may require other shared o
     </a>
 </h3><p>When building with the pack CLI, specify the latest Paketo Full Builder at build time
 with the <code>--builder</code> flag.</p>
-<pre class="copyable"><code class="copyable__code">pack build my-app --builder paketobuildpacks/builder:full
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --builder paketobuildpacks/builder:full
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h2 id="build-an-app-without-package-management" class="markup-heading">
     <a class="markup-heading__link" href="#build-an-app-without-package-management">
         Build an App Without Package Management
@@ -726,9 +750,12 @@ environment variable at build time.</p>
         Using BP_LAUNCHPOINT
     </a>
 </h4><p><code>BP_LAUNCHPOINT</code> can be set as follows:</p>
-<pre class="copyable"><code class="copyable__code">BP_LAUNCHPOINT=&#34;./src/launchpoint.js&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">BP_LAUNCHPOINT=&#34;./src/launchpoint.js&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>The image produced by the build will run <code>node src/launchpoint.js</code>
 as its start command.</p>
 <h2 id="install-a-custom-ca-certificate" class="markup-heading">
@@ -869,7 +896,7 @@ section of our configuration docs.</p>
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.bec36d712db895df2db4c65d949324be3bf58b7aed718b899b74aed9407cac09.js"></script>
+</footer><script src="/js/main.fb00b1409d3fbff588ef82043ce586ffad37dce0ecff27dc069ba9aec83d10f4.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

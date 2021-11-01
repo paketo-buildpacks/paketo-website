@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.38febe290482f928e9aed50acc5f843bcc0edbb6708bcf5a417d1f164fcefb72.css">
+<link rel="stylesheet" href="/css/main.min.56bbb2a34dcb1955daea98a1d6bf34cb269feb684ae74b3fc85ec1d69d096ec8.css">
 
 </head>
 
@@ -501,17 +501,23 @@ local machine with Paketo buildpacks.</p>
 <ol>
 <li>
 <p>Clone the Paketo samples and navigate to a Go sample app.
-<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
+<div class="copyable">
+    <pre class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples/go/mod
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 </li>
 <li>
 <p>Use the pack CLI with the Paketo Go Buildpack to build the sample app.
-<pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --builder paketobuildpacks/builder:base
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 </li>
 <li>
 <p>Run the app using instructions found in its <code>README</code>.</p>
@@ -535,22 +541,28 @@ the buildpack will provide the default version, which can be seen in the
         With pack and a Command-Line Flag
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_GO_VERSION</code> at build time with the <code>--env</code> flag.
-<pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_GO_VERSION=&#34;1.14.1&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h4 id="with-pack-and-a-projecttoml" class="markup-heading">
     <a class="markup-heading__link" href="#with-pack-and-a-projecttoml">
         With pack and a <code>project.toml</code>
     </a>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_VERSION</code> at build time.
-<pre class="copyable"><code class="copyable__code"># project.toml
+<div class="copyable">
+    <pre class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
     name=&#34;BP_GO_VERSION&#34;
     value=&#34;1.41.1&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <p>The pack CLI will automatically detect the project file at build time.</p>
 <h4 id="deprecated-with-pack-and-a-buildpackyml" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-with-pack-and-a-buildpackyml">
@@ -574,22 +586,28 @@ environment variables at build time.</p>
         With pack and a Command-Line Flag
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_GO_BUILD_LDFLAGS</code> at build time with the <code>--env</code> flag. For example, to add <code>-ldflags=&quot;-X main.variable=some-value&quot;</code> to the build flagset, set the environment variable as follows:
-<pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_GO_BUILD_LDFLAGS=&#34;-X main.variable=some-value&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h4 id="with-pack-and-a-projecttoml-1" class="markup-heading">
     <a class="markup-heading__link" href="#with-pack-and-a-projecttoml-1">
         With pack and a <code>project.toml</code>
     </a>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_BUILD_LDFLAGS</code> at build time. For example, to add <code>-ldflags=&quot;-X main.variable=some-value&quot;</code> to the build flagset, set the environment variable as follows:
-<pre class="copyable"><code class="copyable__code"># project.toml
+<div class="copyable">
+    <pre class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
     name=&#34;BP_GO_BUILD_LDFLAGS&#34;
     value=&#34;-X main.variable=some-value&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <p>The pack CLI will automatically detect the project file at build time.</p>
 <h3 id="set-other-flags-for-go-build" class="markup-heading">
     <a class="markup-heading__link" href="#set-other-flags-for-go-build">
@@ -601,22 +619,28 @@ environment variables at build time.</p>
         With pack and a Command-Line Flag
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_GO_BUILD_FLAGS</code> at build time with the <code>--env</code> flag. For example, to add <code>-buildmode=default -tags=paketo</code> to the build flagset, set the environment variable as follows:
-<pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_GO_BUILD_FLAGS=&#34;-buildmode=default -tags=paketo&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h4 id="with-pack-and-a-projecttoml-2" class="markup-heading">
     <a class="markup-heading__link" href="#with-pack-and-a-projecttoml-2">
         With pack and a <code>project.toml</code>
     </a>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_BUILD_FLAGS</code> at build time. For example, to add <code>-buildmode=default -tags=paketo</code> to the build flagset, set the environment variable as follows:
-<pre class="copyable"><code class="copyable__code"># project.toml
+<div class="copyable">
+    <pre class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
     name=&#34;BP_GO_BUILD_FLAGS&#34;
     value=&#34;-buildmode=default -tags=paketo&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h4 id="deprecated-with-buildpackyml" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-with-buildpackyml">
         Deprecated: With buildpack.yml
@@ -645,22 +669,28 @@ setting the <code>BP_GO_TARGETS</code> environment variable at build time.</p>
         With pack and a Command-Line Flag
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_GO_TARGETS</code> at build time with the <code>--env</code> flag.</p>
-<pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_GO_TARGETS=&#34;./second&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h4 id="with-pack-and-a-projecttoml-3" class="markup-heading">
     <a class="markup-heading__link" href="#with-pack-and-a-projecttoml-3">
         With pack and a <code>project.toml</code>
     </a>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_TARGETS</code> at build time.
-<pre class="copyable"><code class="copyable__code"># project.toml
+<div class="copyable">
+    <pre class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
     name=&#34;BP_GO_TARGETS&#34;
     value=&#34;./second&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <p>The pack CLI will automatically detect the project file at build time.</p>
 <h4 id="deprecated-with-buildpackyml-1" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-with-buildpackyml-1">
@@ -681,22 +711,28 @@ the app image. The following examples will build <em>both</em> the <code>first</
         With pack and a Command-Line Flag
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_GO_TARGETS</code> at build time with the <code>--env</code> flag.</p>
-<pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_GO_TARGETS=&#34;./first:./second&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h4 id="with-pack-and-a-projecttoml-4" class="markup-heading">
     <a class="markup-heading__link" href="#with-pack-and-a-projecttoml-4">
         With pack and a <code>project.toml</code>
     </a>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_TARGETS</code> at build time.
-<pre class="copyable"><code class="copyable__code"># project.toml
+<div class="copyable">
+    <pre class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
     name=&#34;BP_GO_TARGETS&#34;
     value=&#34;./first:./second&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h4 id="deprecated-with-buildpackyml-2" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-with-buildpackyml-2">
         Deprecated: With buildpack.yml
@@ -726,22 +762,28 @@ directory structure looks like:</p>
         With pack and a Command-Line Flag
     </a>
 </h4><p>When building with the pack CLI, set <code>$BP_GO_BUILD_IMPORT_PATH</code> at build time with the <code>--env</code> flag.</p>
-<pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_GO_BUILD_IMPORT_PATH=&#34;github.com/app-developer/app-directory&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h4 id="with-pack-and-a-projecttoml-5" class="markup-heading">
     <a class="markup-heading__link" href="#with-pack-and-a-projecttoml-5">
         With pack and a <code>project.toml</code>
     </a>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>$BP_GO_BUILD_IMPORT_PATH</code> at build time.
-<pre class="copyable"><code class="copyable__code"># project.toml
+<div class="copyable">
+    <pre class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
     name=&#34;BP_GO_BUILD_IMPORT_PATH&#34;
     value=&#34;github.com/app-developer/app-directory&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h4 id="deprecated-with-buildpackyml-3" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-with-buildpackyml-3">
         Deprecated: With buildpack.yml
@@ -764,22 +806,28 @@ variable at build time.</p>
     </a>
 </h4><p>When building with the pack CLI, set <code>$BP_KEEP_FILES</code> at build time with the
 <code>--env</code> flag.</p>
-<pre class="copyable"><code class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
   --env BP_KEEP_FILES=&#34;assets/*:public/*&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h4 id="with-pack-and-a-projecttoml-6" class="markup-heading">
     <a class="markup-heading__link" href="#with-pack-and-a-projecttoml-6">
         With pack and a <code>project.toml</code>
     </a>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>$BP_KEEP_FILES</code> at build time.
-<pre class="copyable"><code class="copyable__code"># project.toml
+<div class="copyable">
+    <pre class="copyable__code"># project.toml
 [ build ]
   [[ build.env ]]
     name=&#34;BP_KEEP_FILES&#34;
     value=&#34;assets/*:public/*&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="install-a-custom-ca-certificate" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-custom-ca-certificate">
         Install a Custom CA Certificate
@@ -909,7 +957,7 @@ section of our configuration docs.</p>
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.bec36d712db895df2db4c65d949324be3bf58b7aed718b899b74aed9407cac09.js"></script>
+</footer><script src="/js/main.fb00b1409d3fbff588ef82043ce586ffad37dce0ecff27dc069ba9aec83d10f4.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

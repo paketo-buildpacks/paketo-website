@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.38febe290482f928e9aed50acc5f843bcc0edbb6708bcf5a417d1f164fcefb72.css">
+<link rel="stylesheet" href="/css/main.min.56bbb2a34dcb1955daea98a1d6bf34cb269feb684ae74b3fc85ec1d69d096ec8.css">
 
 </head>
 
@@ -485,12 +485,15 @@ Reference <a href="/docs/reference/httpd-reference">documentation</a>.</p>
         Build a Sample App
     </a>
 </h3><p>To build a sample app locally with this CNB using the <code>pack</code> CLI, run</p>
-<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
+<div class="copyable">
+    <pre class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples/httpd
 pack build my-app --buildpack gcr.io/paketo-buildpacks/httpd \
   --builder paketobuildpacks/builder:full
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/httpd">samples</a>
 for how to run the app.</p>
 <p><strong>NOTE: The Paketo Full builder is required because HTTPD relies on operating
@@ -515,9 +518,12 @@ notes.</p>
 following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_HTTPD_VERSION=2.4.*</code>) or through a
 <a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
 file:</p>
-<pre class="copyable"><code class="copyable__code">BP_HTTPD_VERSION=&#34;2.4.46&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">BP_HTTPD_VERSION=&#34;2.4.46&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h4 id="deprecated-using-buildpackyml" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-using-buildpackyml">
         Deprecated: Using buildpack.yml
@@ -546,12 +552,15 @@ Reference <a href="/docs/reference/nginx-reference">documentation</a>.</p>
         Build a Sample App
     </a>
 </h3><p>To build a sample app locally with this CNB using the <code>pack</code> CLI, run</p>
-<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
+<div class="copyable">
+    <pre class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples/nginx
 pack build my-app --buildpack gcr.io/paketo-buildpacks/nginx \
   --builder paketobuildpacks/builder:base
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/nginx">samples</a>
 for how to run the app.</p>
 <p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
@@ -576,9 +585,12 @@ notes.</p>
 following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_NGINX_VERSION=1.19.8</code>) or through a
 <a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
 file:</p>
-<pre class="copyable"><code class="copyable__code">BP_NGINX_VERSION=&#34;1.19.8&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">BP_NGINX_VERSION=&#34;1.19.8&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h4 id="deprecated-using-buildpackyml-1" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-using-buildpackyml-1">
         Deprecated: Using buildpack.yml
@@ -607,15 +619,21 @@ directory</a>.</p>
     </a>
 </h4><p>Use <code>{{port}}</code> to dynamically set the port at which the server will accepts requests. At launch time, the buildpack will read the value of <code>$PORT</code> to set the value of <code>{{port}}</code>.</p>
 <p>For example, to set an NGINX server to listen on <code>$PORT</code>, use the following in your <code>nginx.conf</code> file:</p>
-<pre class="copyable"><code class="copyable__code">server {
+<div class="copyable">
+    <pre class="copyable__code">server {
   listen {{port}};
 }
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>Then run the built image using the <code>PORT</code> variable set as follows:</p>
-<pre class="copyable"><code class="copyable__code">docker run --tty --env PORT=8080 --publish 8080:8080 my-nginx-image
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">docker run --tty --env PORT=8080 --publish 8080:8080 my-nginx-image
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h4 id="environment-variables" class="markup-heading">
     <a class="markup-heading__link" href="#environment-variables">
         Environment Variables
@@ -625,13 +643,19 @@ value of any environment variable <code>$FOOVAR</code> available at launch time,
 directive <code>{{env &quot;FOOVAR&quot;}}</code> in your <code>nginx.conf</code>.</p>
 <p>For example, include the following in your <code>nginx.conf</code> file to enable or
 disable gzipping of responses based on the value of <code>GZIP_DOWNLOADS</code>:</p>
-<pre class="copyable"><code class="copyable__code">gzip {{env &#34;GZIP_DOWNLOADS&#34;}};
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">gzip {{env &#34;GZIP_DOWNLOADS&#34;}};
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>Then run the built image using the <code>GZIP_DOWNLOADS</code> variable set as follows:</p>
-<pre class="copyable"><code class="copyable__code">docker run --tty --env PORT=8080 --env GZIP_DOWNLOADS=off --publish 8080:8080 my-nginx-image
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">docker run --tty --env PORT=8080 --env GZIP_DOWNLOADS=off --publish 8080:8080 my-nginx-image
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h3 id="use-dynamic-modules-at-app-launch-time" class="markup-heading">
     <a class="markup-heading__link" href="#use-dynamic-modules-at-app-launch-time">
         Use Dynamic Modules at App Launch Time
@@ -641,15 +665,21 @@ disable gzipping of responses based on the value of <code>GZIP_DOWNLOADS</code>:
 <p>To load a user-provided module named <code>ngx_foo_module</code>, provide a
 <code>modules/ngx_foo_module.so</code> file in your app directory and add the following
 to the top of your <code>nginx.conf</code> file:</p>
-<pre class="copyable"><code class="copyable__code">{{module &#34;ngx_foo_module&#34;}}
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">{{module &#34;ngx_foo_module&#34;}}
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>To load a buildpack-provided module like <code>ngx_stream_module</code>, add the
 following to the top of your <code>nginx.conf</code> file. You do not need to provide an
 <code>ngx_stream_module.so</code> file:</p>
-<pre class="copyable"><code class="copyable__code">{{module &#34;ngx_stream_module&#34;}}
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">{{module &#34;ngx_stream_module&#34;}}
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>See the <a href="https://nginx.org/en/docs/beginners_guide.html#conf_structure">NGINX
 docs</a> for more
 information about how to set up an <code>nginx.conf</code> file.</p>
@@ -733,7 +763,7 @@ information about how to set up an <code>nginx.conf</code> file.</p>
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.bec36d712db895df2db4c65d949324be3bf58b7aed718b899b74aed9407cac09.js"></script>
+</footer><script src="/js/main.fb00b1409d3fbff588ef82043ce586ffad37dce0ecff27dc069ba9aec83d10f4.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

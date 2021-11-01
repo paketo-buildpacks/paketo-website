@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.38febe290482f928e9aed50acc5f843bcc0edbb6708bcf5a417d1f164fcefb72.css">
+<link rel="stylesheet" href="/css/main.min.56bbb2a34dcb1955daea98a1d6bf34cb269feb684ae74b3fc85ec1d69d096ec8.css">
 
 </head>
 
@@ -474,15 +474,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </a>
 </h2><p>Configuration examples will use the Paketo <a href="https://github.com/paketo-buildpacks/samples">sample applications</a>.</p>
 <p>Examples assume that the root of this repository is the working directory:
-<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
+<div class="copyable">
+    <pre class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <p>The <a href="https://github.com/buildpacks/pack">pack CLI</a> is used throughout the examples. <code>pack</code> is just one of several Cloud Native Buildpack <a href="https://buildpacks.io/docs/concepts/components/platform/">platforms</a> than can execute builds with Paketo Buildpacks.</p>
 <p>Examples assume that the <a href="https://paketo.io/docs/concepts/builders/#base">Paketo Base builder</a> is the default builder:
-<pre class="copyable"><code class="copyable__code">pack config default-builder paketobuildpacks/builder:base
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+<div class="copyable">
+    <pre class="copyable__code">pack config default-builder paketobuildpacks/builder:base
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="types-of-configuration" class="markup-heading">
     <a class="markup-heading__link" href="#types-of-configuration">
         Types of Configuration
@@ -504,27 +510,36 @@ cd samples
     </a>
 </h4><p>Users may configure the build by setting variables in the buildpack environment. The names of variables accepted by the Paketo buildpacks at build-time are either prefixed with <code>BP_</code> or have well-known conventional meanings outside of Paketo (e.g. <code>http_proxy</code>).</p>
 <p>The following example uses an environment variable to configure the JVM version installed by the Java Buildpack.</p>
-<pre class="copyable"><code class="copyable__code">pack build samples/java  \
+<div class="copyable">
+    <pre class="copyable__code">pack build samples/java  \
   --path java/jar \
   --env BP_JVM_VERSION=8
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>During the build process, a buildpack may invoke other programs that accept configuration via the environment. Users may configure these tools as they would normally. For example, the command below configures the JVM memory settings for the JVM running Maven using <a href="https://maven.apache.org/configure.html#maven_opts-environment-variable"><code>MAVEN_OPTS</code></a>.</p>
-<pre class="copyable"><code class="copyable__code">pack build samples/java  \
+<div class="copyable">
+    <pre class="copyable__code">pack build samples/java  \
   --path java/maven \
   --env &#34;MAVEN_OPTS=-Xms256m -Xmx512m&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h4 id="runtime-environment-variables" class="markup-heading">
     <a class="markup-heading__link" href="#runtime-environment-variables">
         Runtime Environment Variables
     </a>
 </h4><p>Users may configure runtime features of the app image by setting environment variables in the app container.  The names of variables accepted by buildpack-provided runtime components (e.g. profile scripts and processes types) are prefixed with <code>BPL_</code> or have well-known conventional meanings outside of Paketo (e.g <code>JAVA_TOOL_OPTIONS</code>).</p>
 <p>The following example uses <code>JAVA_TOOL_OPTIONS</code> to set the server port of the sample application:
-<pre class="copyable"><code class="copyable__code">docker run --rm --publish 8082:8082 --env &#34;JAVA_TOOL_OPTIONS=-Dserver.port=8082&#34; samples/java
+<div class="copyable">
+    <pre class="copyable__code">docker run --rm --publish 8082:8082 --env &#34;JAVA_TOOL_OPTIONS=-Dserver.port=8082&#34; samples/java
 curl -s http://localhost:8082/actuator/health
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <p>Programs invoked at runtime, including the application itself, will accept environment as they would normally.</p>
 <h4 id="image-embedded-environment-variables" class="markup-heading">
     <a class="markup-heading__link" href="#image-embedded-environment-variables">
@@ -571,14 +586,20 @@ curl -s http://localhost:8082/actuator/health
     </a>
 </h3><p>Many Paketo buildpacks accept configuration from a <code>buildpack.yml</code> file if one is present at the root of the application directory.</p>
 <p>For example, to configure the NodeJS version installed by the NodeJS Buildpack, create a file named <code>buildpack.yml</code> in the <code>nodejs/yarn</code> directory in the <a href="https://github.com/paketo-buildpacks/samples">samples repo</a>.
-<pre class="copyable"><code class="copyable__code">nodejs:
+<div class="copyable">
+    <pre class="copyable__code">nodejs:
   version: 12.12.0
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <p>Next, execute the build as normal and observe the that the specified version of NodeJs is installed.
-<pre class="copyable"><code class="copyable__code">pack build samples/nodejs --path nodejs/yarn
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build samples/nodejs --path nodejs/yarn
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h3 id="bindings" class="markup-heading">
     <a class="markup-heading__link" href="#bindings">
         Bindings
@@ -619,23 +640,29 @@ curl -s http://localhost:8082/actuator/health
 </ul>
 <p>Paketo Buildpacks will look for bindings in the <code>/platform/bindings</code> directory at build-time and in <code>$SERVICE_BINDING_ROOT</code> or <code>$CNB_BINDINGS</code> directory at runtime.</p>
 <p>For example, the Java Buildpack accepts a binding with <code>type</code> equal to <code>maven</code> containing a key named <code>settings.xml</code> containing <a href="https://maven.apache.org/settings.html">Maven settings</a>. In the build container, the Maven Buildpack will use <code>settings.xml</code> if it finds either
-<pre class="copyable"><code class="copyable__code">/platform
+<div class="copyable">
+    <pre class="copyable__code">/platform
 └── bindings
     └── &lt;name&gt;
         ├── settings.xml
         └── type
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 or
-<pre class="copyable"><code class="copyable__code">/platform
+<div class="copyable">
+    <pre class="copyable__code">/platform
 └── bindings
     └──&lt;name&gt;
         └── metadata
         |   └── kind
         └── secret
             └── settings.xml
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 on the filesystem, where either the <code>type</code> or <code>kind</code> file contains the string <code>maven</code>.</p>
 <h4 id="how-to-use-bindings" class="markup-heading">
     <a class="markup-heading__link" href="#how-to-use-bindings">
@@ -644,14 +671,20 @@ on the filesystem, where either the <code>type</code> or <code>kind</code> file 
 </h4><p>The workflow for creating a binding and providing it to a build will depend on the chosen platform. For example, <code>pack</code> users should use the <code>--volume</code> flag to mount a binding directory into the build or app containers. Users of the <code>kpack</code> platform should store key value pairs in a Kubernetes Secret and provide that secret and associated metadata to an Image as described in the <a href="https://github.com/pivotal/kpack/blob/master/docs/servicebindings.md#service-bindings">kpack documentation</a>.</p>
 <p><strong>Example:</strong>  Providing a Binding to <code>pack build</code></p>
 <p>Given a directory containing a build-time binding, <code>pack</code> users can provide this binding to a Paketo buildpack using the <code>--volume</code> flag.
-<pre class="copyable"><code class="copyable__code">pack build --volume &lt;absolute-path-to-binding&gt;:/platform/bindings/&lt;binding-name&gt; &lt;image-name&gt;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build --volume &lt;absolute-path-to-binding&gt;:/platform/bindings/&lt;binding-name&gt; &lt;image-name&gt;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <p><strong>Example:</strong>  Providing a Binding to <code>docker run</code></p>
 <p>Given a directory containing a runtime binding, <code>docker</code> users can provide the binding to the app image using the <code>--volume</code> and <code>--env</code> flags
-<pre class="copyable"><code class="copyable__code">docker run --env SERVICE_BINDING_ROOT=/bindings --volume &lt;absolute-path-to-binding&gt;:/bindings/&lt;binding-name&gt; &lt;image-name&gt;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+<div class="copyable">
+    <pre class="copyable__code">docker run --env SERVICE_BINDING_ROOT=/bindings --volume &lt;absolute-path-to-binding&gt;:/bindings/&lt;binding-name&gt; &lt;image-name&gt;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h3 id="procfiles" class="markup-heading">
     <a class="markup-heading__link" href="#procfiles">
         Procfiles
@@ -661,15 +694,18 @@ on the filesystem, where either the <code>type</code> or <code>kind</code> file 
 </code></pre></div><p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Procfile Buildpack it can be explicitly appended at runtime.</p>
 <p><strong>Example</strong>: A Hello World Procfile</p>
 <p>The following adds a process with <code>type</code> equal to <code>hello</code> and makes it the default process.
-<pre class="copyable"><code class="copyable__code">echo &#34;hello: echo hello world&#34; &gt; nodejs/yarn/Procfile
+<div class="copyable">
+    <pre class="copyable__code">echo &#34;hello: echo hello world&#34; &gt; nodejs/yarn/Procfile
 pack build samples/nodejs \
   --path nodejs/yarn \
   --buildpack gcr.io/paketo-buildpacks/nodejs \
   --buildpack gcr.io/paketo-buildpacks/procfile \
   --default-process hello
 docker run samples/nodejs # should print &#34;hello world&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="building-behind-a-firewall" class="markup-heading">
     <a class="markup-heading__link" href="#building-behind-a-firewall">
         Building Behind a Firewall
@@ -745,7 +781,8 @@ only detect if a certificate binding is provided at build-time.</p>
 <p>Users may contribute arbitrary labels by providing a collection of space-delimited key-value pairs with the <code>BP_IMAGE_LABELS</code> environment variable. Values containing spaces can be quoted.</p>
 <p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Image Labels Buildpack it can be explicitly appended at runtime.</p>
 <p><strong>Example</strong>: Adding Custom Labels
-<pre class="copyable"><code class="copyable__code">pack build samples/nodejs \
+<div class="copyable">
+    <pre class="copyable__code">pack build samples/nodejs \
   --path nodejs/yarn \
   --buildpack  gcr.io/paketo-buildpacks/nodejs \
   --buildpack  gcr.io/paketo-buildpacks/image-labels \
@@ -753,8 +790,10 @@ only detect if a certificate binding is provided at build-time.</p>
   --env &#39;BP_IMAGE_LABELS=io.packeto.example=&#34;Adding Custom Labels&#34;&#39;
 docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;org.opencontainers.image.description&#34;]&#39; # should print &#34;Demo Application&#34;
 docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.example&#34;]&#39; # should print &#34;Adding Custom Labels&#34;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="configuring-locale" class="markup-heading">
     <a class="markup-heading__link" href="#configuring-locale">
         Configuring Locale
@@ -863,7 +902,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.bec36d712db895df2db4c65d949324be3bf58b7aed718b899b74aed9407cac09.js"></script>
+</footer><script src="/js/main.fb00b1409d3fbff588ef82043ce586ffad37dce0ecff27dc069ba9aec83d10f4.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

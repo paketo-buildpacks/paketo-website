@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.38febe290482f928e9aed50acc5f843bcc0edbb6708bcf5a417d1f164fcefb72.css">
+<link rel="stylesheet" href="/css/main.min.56bbb2a34dcb1955daea98a1d6bf34cb269feb684ae74b3fc85ec1d69d096ec8.css">
 
 </head>
 
@@ -101,14 +101,20 @@ as a runnable container image.</p>
         Build the App Image From Source Code
     </a>
 </h3><p>Clone the Paketo samples repository and navigate to the source code for the sample Java app.</p>
-<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples \
+<div class="copyable">
+    <pre class="copyable__code">git clone https://github.com/paketo-buildpacks/samples \
 &amp;&amp; cd samples/java/maven
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>From the sample app directory, use the pack CLI to build an app image.</p>
-<pre class="copyable"><code class="copyable__code">pack build paketo-demo-app --builder paketobuildpacks/builder:base
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">pack build paketo-demo-app --builder paketobuildpacks/builder:base
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <div class="code-output">
     <div class="btn code-output__btn code-output__btn">View Output</div>
     <pre class="code-output__output-container"><code class="code-output__output">===&gt; DETECTING
@@ -266,13 +272,19 @@ Successfully built image paketo-demo-app
     </a>
 </h3><p>Let&rsquo;s start an instance of our app and interact with it.</p>
 <p>Run the app image with Docker. It will receive incoming requests on <code>localhost:8080</code>.</p>
-<pre class="copyable"><code class="copyable__code">docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>Wait a few moments for the app to start. Then, use <code>curl</code> to check the status of the app.</p>
-<pre class="copyable"><code class="copyable__code">curl -s http://localhost:8080/actuator/health | jq .
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+<div class="copyable">
+    <pre class="copyable__code">curl -s http://localhost:8080/actuator/health | jq .
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <div class="code-output">
     <div class="btn code-output__btn code-output__btn">View Output</div>
     <pre class="code-output__output-container"><code class="code-output__output">{
@@ -325,7 +337,7 @@ Successfully built image paketo-demo-app
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.bec36d712db895df2db4c65d949324be3bf58b7aed718b899b74aed9407cac09.js"></script>
+</footer><script src="/js/main.fb00b1409d3fbff588ef82043ce586ffad37dce0ecff27dc069ba9aec83d10f4.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

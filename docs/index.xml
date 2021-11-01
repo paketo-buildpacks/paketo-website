@@ -13,7 +13,7 @@
       <guid>https://paketo.io/docs/howto/java/</guid>
       <description>This documentation explains how to use the Paketo buildpacks to build Java applications for several common use-cases. For more in-depth description of the buildpacks&#39; behavior and configuration see the Paketo Java Buildpack and Paketo Java Native Image Buildpack reference documentation.
 About the Examples  All Java Buildpack examples will use the Paketo sample applications.
-Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied!</description>
+Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples  Copied!</description>
     </item>
     
     <item>
@@ -24,7 +24,7 @@ Examples assume that the root of this repository is the working directory: git c
       <guid>https://paketo.io/docs/howto/nodejs/</guid>
       <description>This documentation explains how to use the Paketo Node.js Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Node.js Buildpack Reference documentation.
 Build a Sample App  To build a sample app locally with this buildpack using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/samples cd samples/nodejs/npm pack build my-app --buildpack gcr.io/paketo-buildpacks/nodejs \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
+git clone https://github.com/paketo-buildpacks/samples cd samples/nodejs/npm pack build my-app --buildpack gcr.io/paketo-buildpacks/nodejs \ --builder paketobuildpacks/builder:base  Copied!  See samples for how to run the app.</description>
     </item>
     
     <item>
@@ -35,7 +35,7 @@ git clone https://github.com/paketo-buildpacks/samples cd samples/nodejs/npm pac
       <guid>https://paketo.io/docs/howto/dotnet-core/</guid>
       <description>This documentation explains how to use the Paketo .NET Core Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo .NET Core Buildpack Reference documentation.
 Build a Sample App  To build your app locally with the buildpack using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/samples cd samples/dotnet-core/aspnet pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
+git clone https://github.com/paketo-buildpacks/samples cd samples/dotnet-core/aspnet pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core \ --builder paketobuildpacks/builder:base  Copied!  See samples for how to run the app.</description>
     </item>
     
     <item>
@@ -79,7 +79,7 @@ HTTPD  This documentation explains how to use the Paketo HTTPD Buildpack to buil
       <guid>https://paketo.io/docs/howto/python/</guid>
       <description>This documentation explains how to use the Paketo Python Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Python Buildpack Reference documentation.
 Build a Sample App  To build a sample app locally with this buildpack using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/samples cd samples/python/pip pack build my-app --buildpack gcr.io/paketo-buildpacks/python \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
+git clone https://github.com/paketo-buildpacks/samples cd samples/python/pip pack build my-app --buildpack gcr.io/paketo-buildpacks/python \ --builder paketobuildpacks/builder:base  Copied!  See samples for how to run the app.</description>
     </item>
     
     <item>
@@ -90,7 +90,7 @@ git clone https://github.com/paketo-buildpacks/samples cd samples/python/pip pac
       <guid>https://paketo.io/docs/howto/php/</guid>
       <description>This documentation explains how to use the Paketo PHP Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo PHP Buildpack Reference documentation.
 Build a Sample App  To build a sample app locally with this CNB using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/samples cd samples/php/webserver pack build my-app --buildpack gcr.io/paketo-buildpacks/php \ --builder paketobuildpacks/builder:full Copied! See samples for how to run the app.</description>
+git clone https://github.com/paketo-buildpacks/samples cd samples/php/webserver pack build my-app --buildpack gcr.io/paketo-buildpacks/php \ --builder paketobuildpacks/builder:full  Copied!  See samples for how to run the app.</description>
     </item>
     
     <item>
@@ -112,8 +112,9 @@ Prerequisites
       
       <guid>https://paketo.io/docs/howto/configuration/</guid>
       <description>About the Examples  Configuration examples will use the Paketo sample applications.
-Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied! The pack CLI is used throughout the examples. pack is just one of several Cloud Native Buildpack platforms than can execute builds with Paketo Buildpacks.
-Examples assume that the Paketo Base builder is the default builder: pack config default-builder paketobuildpacks/builder:base Copied!</description>
+Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples  Copied! 
+The pack CLI is used throughout the examples. pack is just one of several Cloud Native Buildpack platforms than can execute builds with Paketo Buildpacks.
+Examples assume that the Paketo Base builder is the default builder: pack config default-builder paketobuildpacks/builder:base  Copied!</description>
     </item>
     
     <item>

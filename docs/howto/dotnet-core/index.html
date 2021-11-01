@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.38febe290482f928e9aed50acc5f843bcc0edbb6708bcf5a417d1f164fcefb72.css">
+<link rel="stylesheet" href="/css/main.min.56bbb2a34dcb1955daea98a1d6bf34cb269feb684ae74b3fc85ec1d69d096ec8.css">
 
 </head>
 
@@ -489,12 +489,15 @@ Reference <a href="/docs/reference/dotnet-core-reference">documentation</a>.</p>
         Build a Sample App
     </a>
 </h2><p>To build your app locally with the buildpack using the <code>pack</code> CLI, run</p>
-<pre class="copyable"><code class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
+<div class="copyable">
+    <pre class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples/dotnet-core/aspnet
 pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core \
   --builder paketobuildpacks/builder:base
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>See
 <a href="https://github.com/paketo-buildpacks/samples/tree/main/dotnet-core/aspnet">samples</a> for how to run the app.</p>
 <p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
@@ -531,18 +534,24 @@ Cloud Native Buildpacks <a href="https://buildpacks.io/docs/app-developer-guide/
     <a class="markup-heading__link" href="#with-a-pack-build-flag">
         With a <code>pack build</code> flag
     </a>
-</h4><pre class="copyable"><code class="copyable__code">pack build myapp --env BP_DOTNET_FRAMEWORK_VERSION=5.0.4
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</h4><div class="copyable">
+    <pre class="copyable__code">pack build myapp --env BP_DOTNET_FRAMEWORK_VERSION=5.0.4
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h4 id="in-a-projecttoml-file" class="markup-heading">
     <a class="markup-heading__link" href="#in-a-projecttoml-file">
         In a <code>project.toml</code> file
     </a>
-</h4><pre class="copyable"><code class="copyable__code">[[ build.env ]]
+</h4><div class="copyable">
+    <pre class="copyable__code">[[ build.env ]]
   name = &#39;BP_DOTNET_FRAMEWORK_VERSION&#39;
   value = &#39;5.0.4&#39;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p><strong>Note</strong>: If you specify a particular version using the above environment
 variable, the buildpack <strong>will not</strong> run runtime version roll-forward logic. To
 learn more about roll-forward logic, see the <a href="https://docs.microsoft.com/en-us/dotnet/core/versions/selection#framework-dependent-apps-roll-forward">Microsoft .Net Runtime
@@ -556,15 +565,18 @@ documentation</a>.</p>
 Core Runtime version within that file. To configure the buildpack to use .Net
 Core Runtime v2.1.14 when deploying your app, include the values below in your
 <code>runtimeconfig.json</code> file:</p>
-<pre class="copyable"><code class="copyable__code">{
+<div class="copyable">
+    <pre class="copyable__code">{
   &#34;runtimeOptions&#34;: {
     &#34;framework&#34;: {
       &#34;version&#34;: &#34;2.1.14&#34;
     }
   }
 }
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h3 id="using-a-project-file" class="markup-heading">
     <a class="markup-heading__link" href="#using-a-project-file">
         Using a Project file
@@ -573,25 +585,31 @@ Core Runtime v2.1.14 when deploying your app, include the values below in your
 the .Net Core Runtime version within that file. To configure the buildpack to
 use .Net Core Runtime v2.1.14 when deploying your app, include the values below
 in your Project file:</p>
-<pre class="copyable"><code class="copyable__code">&lt;Project&gt;
+<div class="copyable">
+    <pre class="copyable__code">&lt;Project&gt;
   &lt;PropertyGroup&gt;
     &lt;RuntimeFrameworkVersion&gt;2.1.14&lt;/RuntimeFrameworkVersion&gt;
   &lt;/PropertyGroup&gt;
 &lt;/Project&gt;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>Alternatively, for applications that do not rely upon a specific .Net Core
 Runtime patch version, you can specify the Target Framework and the buildpack
 will choose the appropriate .Net Core Runtime version. To configure the
 buildpack to use a .Net Core Runtime version in the 2.1 .Net Core Target Framework
 when deploying your app, include the values below in your Project file:</p>
-<pre class="copyable"><code class="copyable__code">&lt;Project&gt;
+<div class="copyable">
+    <pre class="copyable__code">&lt;Project&gt;
   &lt;PropertyGroup&gt;
     &lt;TargetFramework&gt;netcoreapp2.1&lt;/TargetFramework&gt;
   &lt;/PropertyGroup&gt;
 &lt;/Project&gt;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <p>For more details about specifying a .Net Core version using a Project file,
 please review the <a href="https://docs.microsoft.com/en-us/dotnet/core/versions/selection">Microsoft documentation</a>.</p>
 <h3 id="deprecated-using-buildpackyml" class="markup-heading">
@@ -646,18 +664,24 @@ Cloud Native Buildpacks <a href="https://buildpacks.io/docs/app-developer-guide/
     <a class="markup-heading__link" href="#with-a-pack-build-flag-1">
         With a <code>pack build</code> flag
     </a>
-</h4><pre class="copyable"><code class="copyable__code">pack build my-app --env BP_DOTNET_PROJECT_PATH=./src
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</h4><div class="copyable">
+    <pre class="copyable__code">pack build my-app --env BP_DOTNET_PROJECT_PATH=./src
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h4 id="in-a-projecttoml-file-1" class="markup-heading">
     <a class="markup-heading__link" href="#in-a-projecttoml-file-1">
         In a <code>project.toml</code> file
     </a>
-</h4><pre class="copyable"><code class="copyable__code">[[ build.env ]]
+</h4><div class="copyable">
+    <pre class="copyable__code">[[ build.env ]]
   name = &#39;BP_DOTNET_PROJECT_PATH&#39;
   value = &#39;./src&#39;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h3 id="deprecated-using-buildpackyml-2" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-using-buildpackyml-2">
         Deprecated: Using buildpack.yml
@@ -688,25 +712,32 @@ adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
     <a class="markup-heading__link" href="#with-a-pack-build-flag-2">
         With a <code>pack build</code> flag
     </a>
-</h4><pre class="copyable"><code class="copyable__code">pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</h4><div class="copyable">
+    <pre class="copyable__code">pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h4 id="in-a-projecttoml-file-2" class="markup-heading">
     <a class="markup-heading__link" href="#in-a-projecttoml-file-2">
         In a <code>project.toml</code> file
     </a>
-</h4><pre class="copyable"><code class="copyable__code">[[ build.env ]]
+</h4><div class="copyable">
+    <pre class="copyable__code">[[ build.env ]]
   name = &#39;BP_LIVE_RELOAD_ENABLED&#39;
   value = &#39;true&#39;
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h4 id="in-a-tiltfile-with-the-pack-resource" class="markup-heading">
     <a class="markup-heading__link" href="#in-a-tiltfile-with-the-pack-resource">
         In a <code>Tiltfile</code> with the <code>pack</code> resource
     </a>
 </h4><p>You can use the Paketo .NET Core buildpack with <a href="https://tilt.dev/">Tilt</a>. This example
 uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt, and shows how to configure watched files.
-<pre class="copyable"><code class="copyable__code">pack(
+<div class="copyable">
+    <pre class="copyable__code">pack(
   &#39;myapp&#39;,
   env_vars=[
     &#39;BP_DOTNET_PROJECT_PATH=&#34;./src&#34;&#39;,
@@ -728,8 +759,10 @@ local_resource(
     &#39;src/bin&#39;
   ]
 )
-</code><img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" /><div class="copyable__copied copied">Copied!</div></pre>
-</p>
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h5 id="notes" class="markup-heading">
     <a class="markup-heading__link" href="#notes">
         Notes
@@ -872,7 +905,7 @@ section of our configuration docs.</p>
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.bec36d712db895df2db4c65d949324be3bf58b7aed718b899b74aed9407cac09.js"></script>
+</footer><script src="/js/main.fb00b1409d3fbff588ef82043ce586ffad37dce0ecff27dc069ba9aec83d10f4.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

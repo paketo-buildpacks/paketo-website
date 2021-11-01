@@ -7482,8 +7482,14 @@
       button.addEventListener("click", this.handleClick.bind(this));
     }
     handleClick() {
+      if (this.element.classList.contains("copyable--clicked")) {
+        return;
+      }
       import_clipboard.default.copy(this.code);
       this.element.classList.add("copyable--clicked");
+      setTimeout(() => {
+        this.element.classList.toggle("copyable--clicked");
+      }, 1900);
     }
   };
   var Output = class {
@@ -7597,7 +7603,7 @@
       links: document.getElementsByTagName("a"),
       hostname: window.location.hostname
     });
-    for (const element of document.querySelectorAll(".docs pre")) {
+    for (const element of document.querySelectorAll(".copyable")) {
       new CodeSnippet({ element });
     }
     for (const element of document.querySelectorAll(".docs .code-output")) {
