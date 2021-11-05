@@ -183,6 +183,29 @@ deprecated in Dotnet Publish Buildpack v1.0.0 & Dotnet Execute Buildpack
 v1.0.0. To migrate from using `buildpack.yml`, please set the
 `$BP_DOTNET_PROJECT_PATH` environment variable.
 
+## Configure the `dotnet publish` Command
+The Paketo .NET buildpack builds apps using the `dotnet publish` command, with certain opinionated flags by default. (See reference [documentation]({{< ref "docs/reference/dotnet-core-reference" >}}) for information about the default flagset.) It is possible to override or add to these defaults.
+
+### Using `BP_DOTNET_PUBLISH_FLAGS`
+Set the `BP_DOTNET_PUBLISH_FLAGS` environment variable at build time to provide additional flags to `dotnet publish` or override the default flagset.
+
+#### With pack and a Command-Line Flag
+When building with the pack CLI, set `BP_DOTNET_PUBLISH_FLAGS` at build time with the `--env` flag. For example, to add `--verbosity=normal` and `--self-contained=true` to the build flagset, set the environment variable as follows:
+{{< code/copyable >}}
+pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+  --env BP_DOTNET_PUBLISH_FLAGS="--verbosity=normal --self-contained=true"
+{{< /code/copyable >}}
+
+#### With pack and a `project.toml`
+When building with the pack CLI, create a [project.toml][cnb/project-file] file in your app directory that sets `BP_DOTNET_PUBLISH_FLAGS` at build time. For example, to add `--verbosity=normal` and `--self-contained=true` to the build flagset, set the environment variable as follows:
+{{< code/copyable >}}
+# project.toml
+[ build ]
+  [[ build.env ]]
+    name="BP_DOTNET_PUBLISH_FLAGS"
+    value="--verbosity=normal --self-contained=true"
+{{< /code/copyable >}}
+
 ## Enable Process Reloading
 By default, your .NET server will be the only process running in your app
 container at runtime. You can enable restarting the server process
