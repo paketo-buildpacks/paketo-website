@@ -106,7 +106,7 @@ with a valid launch process command. These commands differ slightly depending
 upon the type of built artifact produced during the build process.
 
 For more information about which built artifact is produced for a Source
-Application, see [this section]({{< relref "#application-types" >}}).
+Application, see [this section]({{< relref "#supported-application-types" >}}).
 
 ### Framework-Dependent Deployments and Source Applications
 
