@@ -465,6 +465,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#deprecated-using-buildpackyml-2">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
+    <li><a href="#configure-the-dotnet-publish-command">Configure the <code>dotnet publish</code> Command</a>
+      <ul>
+        <li><a href="#using-bp_dotnet_publish_flags">Using <code>BP_DOTNET_PUBLISH_FLAGS</code></a></li>
+      </ul>
+    </li>
     <li><a href="#enable-process-reloading">Enable Process Reloading</a>
       <ul>
         <li><a href="#using-bp_live_reload_enabled">Using <code>BP_LIVE_RELOAD_ENABLED</code></a></li>
@@ -690,6 +695,43 @@ Cloud Native Buildpacks <a href="https://buildpacks.io/docs/app-developer-guide/
 deprecated in Dotnet Publish Buildpack v1.0.0 &amp; Dotnet Execute Buildpack
 v1.0.0. To migrate from using <code>buildpack.yml</code>, please set the
 <code>$BP_DOTNET_PROJECT_PATH</code> environment variable.</p>
+<h2 id="configure-the-dotnet-publish-command" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-the-dotnet-publish-command">
+        Configure the <code>dotnet publish</code> Command
+    </a>
+</h2><p>The Paketo .NET buildpack builds apps using the <code>dotnet publish</code> command, with certain opinionated flags by default. (See reference <a href="https://paketo.io/docs/reference/dotnet-core-reference/">documentation</a> for information about the default flagset.) It is possible to override or add to these defaults.</p>
+<h3 id="using-bp_dotnet_publish_flags" class="markup-heading">
+    <a class="markup-heading__link" href="#using-bp_dotnet_publish_flags">
+        Using <code>BP_DOTNET_PUBLISH_FLAGS</code>
+    </a>
+</h3><p>Set the <code>BP_DOTNET_PUBLISH_FLAGS</code> environment variable at build time to provide additional flags to <code>dotnet publish</code> or override the default flagset.</p>
+<h4 id="with-pack-and-a-command-line-flag" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-command-line-flag">
+        With pack and a Command-Line Flag
+    </a>
+</h4><p>When building with the pack CLI, set <code>BP_DOTNET_PUBLISH_FLAGS</code> at build time with the <code>--env</code> flag. For example, to add <code>--verbosity=normal</code> and <code>--self-contained=true</code> to the build flagset, set the environment variable as follows:
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+  --env BP_DOTNET_PUBLISH_FLAGS=&#34;--verbosity=normal --self-contained=true&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+<h4 id="with-pack-and-a-projecttoml" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-projecttoml">
+        With pack and a <code>project.toml</code>
+    </a>
+</h4><p>When building with the pack CLI, create a [project.toml][cnb/project-file] file in your app directory that sets <code>BP_DOTNET_PUBLISH_FLAGS</code> at build time. For example, to add <code>--verbosity=normal</code> and <code>--self-contained=true</code> to the build flagset, set the environment variable as follows:
+<div class="copyable">
+    <pre class="copyable__code"># project.toml
+[ build ]
+  [[ build.env ]]
+    name=&#34;BP_DOTNET_PUBLISH_FLAGS&#34;
+    value=&#34;--verbosity=normal --self-contained=true&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="enable-process-reloading" class="markup-heading">
     <a class="markup-heading__link" href="#enable-process-reloading">
         Enable Process Reloading
@@ -824,7 +866,7 @@ section of our configuration docs.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> November 15, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> November 16, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -848,6 +890,11 @@ section of our configuration docs.</p>
       <ul>
         <li><a href="#using-bp_dotnet_project_path">Using <code>BP_DOTNET_PROJECT_PATH</code></a></li>
         <li><a href="#deprecated-using-buildpackyml-2">Deprecated: Using buildpack.yml</a></li>
+      </ul>
+    </li>
+    <li><a href="#configure-the-dotnet-publish-command">Configure the <code>dotnet publish</code> Command</a>
+      <ul>
+        <li><a href="#using-bp_dotnet_publish_flags">Using <code>BP_DOTNET_PUBLISH_FLAGS</code></a></li>
       </ul>
     </li>
     <li><a href="#enable-process-reloading">Enable Process Reloading</a>

@@ -197,8 +197,8 @@ git clone https://github.com/paketo-buildpacks/samples \ &amp;amp;&amp;amp; cd s
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/reference/dotnet-core-reference/</guid>
-      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo .NET Core Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo .NET Core Buildpack How To documentation.
-Supported Dependencies  The .Net Core Paketo Buildpack supports several versions of the .Net Core Framework. For more details on the specific versions supported in a given buildpack version, see the release notes.</description>
+      <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo .NET Core buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo .NET Core buildpack How To documentation.
+Supported Dependencies  The .NET Core Paketo buildpack supports several versions of the .NET Core Framework. For more details on the specific versions supported in a given buildpack version, see the release notes.</description>
     </item>
     
     <item>

@@ -447,11 +447,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a>
       <ul>
-        <li><a href="#net-core-framework-version-selection">.Net Core Framework Version Selection</a></li>
+        <li><a href="#net-core-framework-version-selection">.NET Core Framework Version Selection</a></li>
       </ul>
     </li>
-    <li><a href="#application-types">Application Types</a>
+    <li><a href="#behavior">Behavior</a>
       <ul>
+        <li><a href="#supported-application-types">Supported Application Types</a></li>
         <li><a href="#source-applications">Source Applications</a></li>
         <li><a href="#framework-dependent-deployments-or-framework-dependent-executables">Framework-Dependent Deployments or Framework-Dependent Executables</a></li>
         <li><a href="#self-contained-deployment">Self-Contained Deployment</a></li>
@@ -478,30 +479,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="docs-body__markdown">
                 <p>This reference documentation offers an in-depth description of the behavior
 and configuration options of the
-<a href="https://github.com/paketo-buildpacks/dotnet-core">Paketo .NET Core Buildpack</a>. For explanations of how to use the buildpack for several common use-cases, see
-the  Paketo .NET Core Buildpack  How To <a href="/docs/howto/dotnet-core">documentation</a>.</p>
+<a href="https://github.com/paketo-buildpacks/dotnet-core">Paketo .NET Core buildpack</a>. For explanations of how to use the buildpack for several common use-cases, see
+the  Paketo .NET Core buildpack  How To <a href="/docs/howto/dotnet-core">documentation</a>.</p>
 <h2 id="supported-dependencies" class="markup-heading">
     <a class="markup-heading__link" href="#supported-dependencies">
         Supported Dependencies
     </a>
-</h2><p>The .Net Core Paketo Buildpack supports several versions of the .Net Core Framework.
+</h2><p>The .NET Core Paketo buildpack supports several versions of the .NET Core Framework.
 For more details on the specific versions supported in a given buildpack
 version, see the <a href="https://github.com/paketo-buildpacks/dotnet-core/releases">release
 notes</a>.</p>
 <h3 id="net-core-framework-version-selection" class="markup-heading">
     <a class="markup-heading__link" href="#net-core-framework-version-selection">
-        .Net Core Framework Version Selection
+        .NET Core Framework Version Selection
     </a>
-</h3><p>When detecting what version of the .NET runtime to install, the .Net Core Buildpack uses the
-same version selection policy that Microsoft has put together for .Net Core Framework.
+</h3><p>When detecting what version of the .NET runtime to install, the .NET Core buildpack uses the
+same version selection policy that Microsoft has put together for .NET Core Framework.
 If you would like to know more about the policy please refer to this
 <a href="https://docs.microsoft.com/en-us/dotnet/core/versions/selection">documentation</a>
 provided by Microsoft.</p>
-<h2 id="application-types" class="markup-heading">
-    <a class="markup-heading__link" href="#application-types">
-        Application Types
+<h2 id="behavior" class="markup-heading">
+    <a class="markup-heading__link" href="#behavior">
+        Behavior
     </a>
-</h2><p>The .Net Core Buildpack supports several types of application source code that
+</h2><p>The Paketo .NET Core buildpack is a <a href="https://paketo.io/docs/concepts/buildpacks/#composite-buildpacks">composite buildpack</a> designed to build .NET Core applications in several different forms.</p>
+<h3 id="supported-application-types" class="markup-heading">
+    <a class="markup-heading__link" href="#supported-application-types">
+        Supported Application Types
+    </a>
+</h3><p>The .NET Core buildpack supports several types of application source code that
 can be built into a container image. Developers can provide raw source code, or
 built artifacts like Framework-Dependent Deployments/Executables or
 Self-Contained Deployments when building their application.</p>
@@ -509,21 +515,28 @@ Self-Contained Deployments when building their application.</p>
     <a class="markup-heading__link" href="#source-applications">
         Source Applications
     </a>
-</h3><p>The .Net Core Build Buildpack is capable of building application source code
+</h3><p>The .NET Core buildpack is capable of building application source code
 into Framework-Dependent Deployments (FDD) or Executables (FDE).  This is
-achieved using the <code>dotnet publish</code> command. For .Net Core Framework 2.x
+achieved using the <code>dotnet publish</code> command. For .NET Core Framework 2.x
 applications, <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli#framework-dependent-deployment">an FDD is
 produced</a>
 as the default build artifact, while <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli#framework-dependent-executable">an FDE is
 produced</a>
-when the application source is for .Net Core Framework 3.x.</p>
+when the application source is for .NET Core Framework 3.x. The buildpack sets the following <code>dotnet publish</code> flags by default:</p>
+<ul>
+<li><code>--configuration Release</code></li>
+<li><code>--runtime ubuntu.18.04-x64</code></li>
+<li><code>--self-contained false</code></li>
+<li><code>--output &lt;temp-directory&gt;</code></li>
+</ul>
+<p>See the dotnet CLI&rsquo;s <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish">documentation</a> for details about build configuration.</p>
 <h3 id="framework-dependent-deployments-or-framework-dependent-executables" class="markup-heading">
     <a class="markup-heading__link" href="#framework-dependent-deployments-or-framework-dependent-executables">
         Framework-Dependent Deployments or Framework-Dependent Executables
     </a>
 </h3><p>When building an application that has already been published as a
 Framework-Dependent Deployment or Framework-Dependent Executable, the buildpack
-will include the required .Net Core Framework dependencies and set the start
+will include the required .NET Core Framework dependencies and set the start
 command.</p>
 <h3 id="self-contained-deployment" class="markup-heading">
     <a class="markup-heading__link" href="#self-contained-deployment">
@@ -532,7 +545,7 @@ command.</p>
 </h3><p>When building an application as a <a href="https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli#self-contained-deployment">Self-Contained
 Deployment</a> (SCD),
 the buildpack will ensure the correct start command will be used to run your
-app. No .Net Core Framework dependencies will be included in the built image as
+app. No .NET Core Framework dependencies will be included in the built image as
 they are already included in the SCD artifact.</p>
 <h2 id="buildpack-set-environment-variables" class="markup-heading">
     <a class="markup-heading__link" href="#buildpack-set-environment-variables">
@@ -542,31 +555,31 @@ they are already included in the SCD artifact.</p>
     <a class="markup-heading__link" href="#dotnet_root">
         DOTNET_ROOT
     </a>
-</h3><p>The <code>DOTNET_ROOT</code> environment variable specifies the path to the directory where .Net Runtimes and SDKs are installed.</p>
+</h3><p>The <code>DOTNET_ROOT</code> environment variable specifies the path to the directory where .NET Runtimes and SDKs are installed.</p>
 <ul>
 <li>Set by: <code>dotnet-core-runtime</code>, <code>dotnet-core-sdk</code>, <code>dotnet-core-aspnet</code> buildpacks</li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: path to the .Net root directory</li>
+<li>Value: path to the .NET root directory</li>
 </ul>
 <h3 id="runtime_version" class="markup-heading">
     <a class="markup-heading__link" href="#runtime_version">
         RUNTIME_VERSION
     </a>
-</h3><p>The <code>RUNTIME_VERSION</code> environment variable specifies the version of the .Net Core Runtime installed by the .Net Core Runtime Buildpack.</p>
+</h3><p>The <code>RUNTIME_VERSION</code> environment variable specifies the version of the .NET Core Runtime installed by the .NET Core Runtime buildpack.</p>
 <ul>
 <li>Set by: <code>dotnet-core-runtime</code></li>
 <li>Phases: <code>build</code></li>
-<li>Value: installed version of the .Net Core Runtime</li>
+<li>Value: installed version of the .NET Core Runtime</li>
 </ul>
 <h3 id="sdk_location" class="markup-heading">
     <a class="markup-heading__link" href="#sdk_location">
         SDK_LOCATION
     </a>
-</h3><p>The <code>SDK_LOCATION</code> environment variable specifies the file path location of the installed .Net Core SDK.</p>
+</h3><p>The <code>SDK_LOCATION</code> environment variable specifies the file path location of the installed .NET Core SDK.</p>
 <ul>
 <li>Set by: <code>dotnet-core-sdk</code></li>
 <li>Phases: <code>build</code></li>
-<li>Value: path to the .Net Core SDK installation</li>
+<li>Value: path to the .NET Core SDK installation</li>
 </ul>
 <h3 id="path" class="markup-heading">
     <a class="markup-heading__link" href="#path">
@@ -582,11 +595,11 @@ they are already included in the SCD artifact.</p>
     <a class="markup-heading__link" href="#launch-process">
         Launch Process
     </a>
-</h2><p>The .Net Core Conf Buildpack will ensure that your application image is built
+</h2><p>The .NET Core buildpack will ensure that your application image is built
 with a valid launch process command. These commands differ slightly depending
 upon the type of built artifact produced during the build process.</p>
 <p>For more information about which built artifact is produced for a Source
-Application, see <a href="#application-types">this section</a>.</p>
+Application, see <a href="#supported-application-types">this section</a>.</p>
 <h3 id="framework-dependent-deployments-and-source-applications" class="markup-heading">
     <a class="markup-heading__link" href="#framework-dependent-deployments-and-source-applications">
         Framework-Dependent Deployments and Source Applications
@@ -616,6 +629,7 @@ variable.</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
+<!-- raw HTML omitted -->
 
             </div>
             
@@ -628,7 +642,7 @@ variable.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> November 15, 2021</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> November 16, 2021</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -636,11 +650,12 @@ variable.</p>
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a>
       <ul>
-        <li><a href="#net-core-framework-version-selection">.Net Core Framework Version Selection</a></li>
+        <li><a href="#net-core-framework-version-selection">.NET Core Framework Version Selection</a></li>
       </ul>
     </li>
-    <li><a href="#application-types">Application Types</a>
+    <li><a href="#behavior">Behavior</a>
       <ul>
+        <li><a href="#supported-application-types">Supported Application Types</a></li>
         <li><a href="#source-applications">Source Applications</a></li>
         <li><a href="#framework-dependent-deployments-or-framework-dependent-executables">Framework-Dependent Deployments or Framework-Dependent Executables</a></li>
         <li><a href="#self-contained-deployment">Self-Contained Deployment</a></li>
