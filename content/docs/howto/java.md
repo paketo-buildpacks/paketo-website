@@ -317,6 +317,7 @@ The following table documents the versions available.
 
 | GraalVM Version | Java Native Image Buildpack Version |
 | --------------- | ----------------------------------- |
+| 21.3            | 5.12.0                              |
 | 21.2            | 5.5.0                               |
 | 21.1            | 5.4.0                               |
 | 21.0            | 5.3.0                               |
