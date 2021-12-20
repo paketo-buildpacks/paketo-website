@@ -14,21 +14,21 @@
     throw new Error('Dynamic require of "' + x + '" is not supported');
   });
   var __esm = (fn, res) => function __init() {
-    return fn && (res = (0, fn[Object.keys(fn)[0]])(fn = 0)), res;
+    return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
   };
   var __commonJS = (cb, mod) => function __require2() {
-    return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+    return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
   };
-  var __reExport = (target, module, desc) => {
+  var __reExport = (target, module, copyDefault, desc) => {
     if (module && typeof module === "object" || typeof module === "function") {
       for (let key2 of __getOwnPropNames(module))
-        if (!__hasOwnProp.call(target, key2) && key2 !== "default")
+        if (!__hasOwnProp.call(target, key2) && (copyDefault || key2 !== "default"))
           __defProp(target, key2, { get: () => module[key2], enumerable: !(desc = __getOwnPropDesc(module, key2)) || desc.enumerable });
     }
     return target;
   };
-  var __toModule = (module) => {
-    return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", module && module.__esModule && "default" in module ? { get: () => module.default, enumerable: true } : { value: module, enumerable: true })), module);
+  var __toESM = (module, isNodeMode) => {
+    return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", !isNodeMode && module && module.__esModule ? { get: () => module.default, enumerable: true } : { value: module, enumerable: true })), module);
   };
 
   // assets/js/shims.js
@@ -614,8 +614,8 @@
   // node_modules/to-factory/to-factory.js
   var require_to_factory = __commonJS({
     "node_modules/to-factory/to-factory.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var _bind = Function.prototype.bind;
       function toFactory(Class) {
         var Factory = function Factory2() {
@@ -1276,8 +1276,8 @@
   // node_modules/algoliasearch/src/errors.js
   var require_errors = __commonJS({
     "node_modules/algoliasearch/src/errors.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var inherits = require_inherits_browser();
       function AlgoliaSearchError(message, extraProperties) {
         var forEach = require_foreach();
@@ -1439,8 +1439,8 @@
   // node_modules/object-keys/isArguments.js
   var require_isArguments = __commonJS({
     "node_modules/object-keys/isArguments.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var toStr = Object.prototype.toString;
       module.exports = function isArguments(value) {
         var str = toStr.call(value);
@@ -1456,8 +1456,8 @@
   // node_modules/object-keys/implementation.js
   var require_implementation = __commonJS({
     "node_modules/object-keys/implementation.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var keysShim;
       if (!Object.keys) {
         has = Object.prototype.hasOwnProperty;
@@ -1589,8 +1589,8 @@
   // node_modules/object-keys/index.js
   var require_object_keys = __commonJS({
     "node_modules/object-keys/index.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var slice = Array.prototype.slice;
       var isArgs = require_isArguments();
       var origKeys = Object.keys;
@@ -3323,8 +3323,8 @@
   // node_modules/querystring-es3/encode.js
   var require_encode = __commonJS({
     "node_modules/querystring-es3/encode.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var stringifyPrimitive = function(v) {
         switch (typeof v) {
           case "string":
@@ -3385,8 +3385,8 @@
   // node_modules/algoliasearch/src/browser/inline-headers.js
   var require_inline_headers = __commonJS({
     "node_modules/algoliasearch/src/browser/inline-headers.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       module.exports = inlineHeaders;
       var encode = require_encode();
       function inlineHeaders(url, headers) {
@@ -3403,8 +3403,8 @@
   // node_modules/algoliasearch/src/browser/jsonp-request.js
   var require_jsonp_request = __commonJS({
     "node_modules/algoliasearch/src/browser/jsonp-request.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       module.exports = jsonpRequest;
       var errors = require_errors();
       var JSONPCounter = 0;
@@ -3499,8 +3499,8 @@
   // node_modules/querystring-es3/decode.js
   var require_decode = __commonJS({
     "node_modules/querystring-es3/decode.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       function hasOwnProperty(obj, prop) {
         return Object.prototype.hasOwnProperty.call(obj, prop);
       }
@@ -3551,8 +3551,8 @@
   // node_modules/querystring-es3/index.js
   var require_querystring_es3 = __commonJS({
     "node_modules/querystring-es3/index.js"(exports) {
-      init_shims();
       "use strict";
+      init_shims();
       exports.decode = exports.parse = require_decode();
       exports.encode = exports.stringify = require_encode();
     }
@@ -3609,8 +3609,8 @@
   // node_modules/algoliasearch/src/version.js
   var require_version = __commonJS({
     "node_modules/algoliasearch/src/version.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       module.exports = "3.35.1";
     }
   });
@@ -3618,8 +3618,8 @@
   // node_modules/algoliasearch/src/browser/createAlgoliasearch.js
   var require_createAlgoliasearch = __commonJS({
     "node_modules/algoliasearch/src/browser/createAlgoliasearch.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var global2 = require_window();
       var Promise2 = global2.Promise || require_es6_promise().Promise;
       module.exports = function createAlgoliasearch(AlgoliaSearch, uaSuffix) {
@@ -3787,8 +3787,8 @@
   // node_modules/algoliasearch/src/browser/builds/algoliasearchLite.js
   var require_algoliasearchLite = __commonJS({
     "node_modules/algoliasearch/src/browser/builds/algoliasearchLite.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var AlgoliaSearchCore = require_AlgoliaSearchCore();
       var createAlgoliasearch = require_createAlgoliasearch();
       module.exports = createAlgoliasearch(AlgoliaSearchCore, "Browser (lite)");
@@ -4958,8 +4958,8 @@
   // node_modules/autocomplete.js/src/common/dom.js
   var require_dom = __commonJS({
     "node_modules/autocomplete.js/src/common/dom.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       module.exports = {
         element: null
       };
@@ -4969,8 +4969,8 @@
   // node_modules/autocomplete.js/src/common/utils.js
   var require_utils = __commonJS({
     "node_modules/autocomplete.js/src/common/utils.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var DOM = require_dom();
       function escapeRegExp(str) {
         return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
@@ -5095,8 +5095,8 @@
   // node_modules/autocomplete.js/src/autocomplete/event_bus.js
   var require_event_bus = __commonJS({
     "node_modules/autocomplete.js/src/autocomplete/event_bus.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var namespace = "autocomplete:";
       var _ = require_utils();
       var DOM = require_dom();
@@ -5127,8 +5127,8 @@
   // node_modules/immediate/lib/queueMicrotask.js
   var require_queueMicrotask = __commonJS({
     "node_modules/immediate/lib/queueMicrotask.js"(exports) {
-      init_shims();
       "use strict";
+      init_shims();
       exports.test = function() {
         return typeof global.queueMicrotask === "function";
       };
@@ -5143,8 +5143,8 @@
   // node_modules/immediate/lib/mutation.js
   var require_mutation = __commonJS({
     "node_modules/immediate/lib/mutation.js"(exports) {
-      init_shims();
       "use strict";
+      init_shims();
       var Mutation = global.MutationObserver || global.WebKitMutationObserver;
       exports.test = function() {
         return Mutation;
@@ -5166,8 +5166,8 @@
   // node_modules/immediate/lib/messageChannel.js
   var require_messageChannel = __commonJS({
     "node_modules/immediate/lib/messageChannel.js"(exports) {
-      init_shims();
       "use strict";
+      init_shims();
       exports.test = function() {
         if (global.setImmediate) {
           return false;
@@ -5187,8 +5187,8 @@
   // node_modules/immediate/lib/stateChange.js
   var require_stateChange = __commonJS({
     "node_modules/immediate/lib/stateChange.js"(exports) {
-      init_shims();
       "use strict";
+      init_shims();
       exports.test = function() {
         return "document" in global && "onreadystatechange" in global.document.createElement("script");
       };
@@ -5211,8 +5211,8 @@
   // node_modules/immediate/lib/timeout.js
   var require_timeout = __commonJS({
     "node_modules/immediate/lib/timeout.js"(exports) {
-      init_shims();
       "use strict";
+      init_shims();
       exports.test = function() {
         return true;
       };
@@ -5227,8 +5227,8 @@
   // node_modules/immediate/lib/index.js
   var require_lib = __commonJS({
     "node_modules/immediate/lib/index.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var types = [
         require_nextTick(),
         require_queueMicrotask(),
@@ -5327,8 +5327,8 @@
   // node_modules/autocomplete.js/src/autocomplete/event_emitter.js
   var require_event_emitter = __commonJS({
     "node_modules/autocomplete.js/src/autocomplete/event_emitter.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var immediate = require_lib();
       var splitter = /\s+/;
       module.exports = {
@@ -5409,8 +5409,8 @@
   // node_modules/autocomplete.js/src/autocomplete/input.js
   var require_input = __commonJS({
     "node_modules/autocomplete.js/src/autocomplete/input.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var specialKeyCodeMap;
       specialKeyCodeMap = {
         9: "tab",
@@ -5646,8 +5646,8 @@
   // node_modules/autocomplete.js/src/autocomplete/html.js
   var require_html = __commonJS({
     "node_modules/autocomplete.js/src/autocomplete/html.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       module.exports = {
         wrapper: '<span class="%ROOT%"></span>',
         dropdown: '<span class="%PREFIX%%DROPDOWN_MENU%"></span>',
@@ -5661,8 +5661,8 @@
   // node_modules/autocomplete.js/src/autocomplete/css.js
   var require_css = __commonJS({
     "node_modules/autocomplete.js/src/autocomplete/css.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var _ = require_utils();
       var css = {
         wrapper: {
@@ -5752,8 +5752,8 @@
   // node_modules/autocomplete.js/src/autocomplete/dataset.js
   var require_dataset = __commonJS({
     "node_modules/autocomplete.js/src/autocomplete/dataset.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var datasetKey = "aaDataset";
       var valueKey = "aaValue";
       var datumKey = "aaDatum";
@@ -5956,8 +5956,8 @@
   // node_modules/autocomplete.js/src/autocomplete/dropdown.js
   var require_dropdown = __commonJS({
     "node_modules/autocomplete.js/src/autocomplete/dropdown.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var _ = require_utils();
       var DOM = require_dom();
       var EventEmitter = require_event_emitter();
@@ -6247,8 +6247,8 @@
   // node_modules/autocomplete.js/src/common/parseAlgoliaClientVersion.js
   var require_parseAlgoliaClientVersion = __commonJS({
     "node_modules/autocomplete.js/src/common/parseAlgoliaClientVersion.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       module.exports = function parseAlgoliaClientVersion(agent) {
         var parsed = agent.match(/Algolia for vanilla JavaScript (\d+\.)(\d+\.)(\d+)/);
         if (parsed)
@@ -6261,8 +6261,8 @@
   // node_modules/autocomplete.js/src/sources/hits.js
   var require_hits = __commonJS({
     "node_modules/autocomplete.js/src/sources/hits.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var _ = require_utils();
       var version = require_version2();
       var parseAlgoliaClientVersion = require_parseAlgoliaClientVersion();
@@ -6289,8 +6289,8 @@
   // node_modules/autocomplete.js/src/sources/popularIn.js
   var require_popularIn = __commonJS({
     "node_modules/autocomplete.js/src/sources/popularIn.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var _ = require_utils();
       var version = require_version2();
       var parseAlgoliaClientVersion = require_parseAlgoliaClientVersion();
@@ -6363,8 +6363,8 @@
   // node_modules/autocomplete.js/src/sources/index.js
   var require_sources = __commonJS({
     "node_modules/autocomplete.js/src/sources/index.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       module.exports = {
         hits: require_hits(),
         popularIn: require_popularIn()
@@ -6375,8 +6375,8 @@
   // node_modules/autocomplete.js/src/autocomplete/typeahead.js
   var require_typeahead = __commonJS({
     "node_modules/autocomplete.js/src/autocomplete/typeahead.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var attrsKey = "aaAttrs";
       var _ = require_utils();
       var DOM = require_dom();
@@ -6837,8 +6837,8 @@
   // node_modules/autocomplete.js/src/standalone/index.js
   var require_standalone = __commonJS({
     "node_modules/autocomplete.js/src/standalone/index.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var zepto = require_zepto();
       var DOM = require_dom();
       DOM.element = zepto;
@@ -6919,8 +6919,8 @@
   // node_modules/autocomplete.js/index.js
   var require_autocomplete = __commonJS({
     "node_modules/autocomplete.js/index.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       module.exports = require_standalone();
     }
   });
@@ -6928,8 +6928,8 @@
   // node_modules/docsearch.js/dist/npm/src/lib/templates.js
   var require_templates = __commonJS({
     "node_modules/docsearch.js/dist/npm/src/lib/templates.js"(exports) {
-      init_shims();
       "use strict";
+      init_shims();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -6950,8 +6950,8 @@
   // node_modules/docsearch.js/dist/npm/src/lib/zepto.js
   var require_zepto2 = __commonJS({
     "node_modules/docsearch.js/dist/npm/src/lib/zepto.js"(exports) {
-      init_shims();
       "use strict";
+      init_shims();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -6967,8 +6967,8 @@
   // node_modules/docsearch.js/dist/npm/src/lib/utils.js
   var require_utils2 = __commonJS({
     "node_modules/docsearch.js/dist/npm/src/lib/utils.js"(exports) {
-      init_shims();
       "use strict";
+      init_shims();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -7081,8 +7081,8 @@
   // node_modules/docsearch.js/dist/npm/src/lib/version.js
   var require_version3 = __commonJS({
     "node_modules/docsearch.js/dist/npm/src/lib/version.js"(exports) {
-      init_shims();
       "use strict";
+      init_shims();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -7093,8 +7093,8 @@
   // node_modules/docsearch.js/dist/npm/src/lib/DocSearch.js
   var require_DocSearch = __commonJS({
     "node_modules/docsearch.js/dist/npm/src/lib/DocSearch.js"(exports) {
-      init_shims();
       "use strict";
+      init_shims();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -7395,8 +7395,8 @@
   // node_modules/docsearch.js/dist/npm/src/lib/main.js
   var require_main = __commonJS({
     "node_modules/docsearch.js/dist/npm/src/lib/main.js"(exports) {
-      init_shims();
       "use strict";
+      init_shims();
       Object.defineProperty(exports, "__esModule", {
         value: true
       });
@@ -7418,8 +7418,8 @@
   // node_modules/docsearch.js/dist/npm/index.js
   var require_npm = __commonJS({
     "node_modules/docsearch.js/dist/npm/index.js"(exports, module) {
-      init_shims();
       "use strict";
+      init_shims();
       var _main = require_main();
       var _main2 = _interopRequireDefault(_main);
       function _interopRequireDefault(obj) {
@@ -7464,7 +7464,7 @@
 
   // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/code_snippet.js
   init_shims();
-  var import_clipboard = __toModule(require_clipboard());
+  var import_clipboard = __toESM(require_clipboard());
   var CodeSnippet = class {
     constructor({ element }) {
       this.element = element;
@@ -7531,7 +7531,7 @@
 
   // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/search.js
   init_shims();
-  var import_docsearch = __toModule(require_npm());
+  var import_docsearch = __toESM(require_npm());
   function Search({ element }) {
     (0, import_docsearch.default)({
       inputSelector: `#${element.id}`,
