@@ -127,7 +127,8 @@ check_links() {
 
   # A list of URL patterns that we know are correct but fail to be scraped
   # These are usually sites where anchor links are rendered by Javascript in-browser
-  excludeList=( "github\\.com.*#" "maven\\.apache\\.org.*#"
+  excludeList=( "github\\.com.*#"
+    "maven\\.apache\\.org.*#"
     "docs\\.npmjs\\.com.*#"
     "github\\.com\\/paketo-buildpacks\\/paketo-website\\/edit"
     "www\\.php\\.net\\/manual\\/en"
