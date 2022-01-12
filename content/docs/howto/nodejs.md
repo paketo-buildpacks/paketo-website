@@ -236,6 +236,46 @@ BP_LAUNCHPOINT="./src/launchpoint.js"
 The image produced by the build will run `node src/launchpoint.js`
 as its start command.
 
+## Enable Process Reloading
+By default, your Node.js server will be the only process running in your app
+container at runtime. You can enable restarting the server process
+when files in the app's working directory change, which may facilitate a shorter
+feedback loop for iterating on code changes. This feature may be used in conjunction with
+a dev orchestrator like [Tilt][tilt].
+
+### Using `BP_LIVE_RELOAD_ENABLED`
+
+To enable reloadable processes, set the `$BP_LIVE_RELOAD_ENABLED` environment
+variable at build time, either by passing a flag to the
+[platform][definition/platform] or by
+adding it to your `project.toml`. See the Cloud Native Buildpacks
+[documentation][project-file] to learn more about `project.toml` files.
+
+#### With a `pack build` flag
+{{< code/copyable >}}
+pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
+{{< /code/copyable >}}
+
+#### In a `project.toml` file
+{{< code/copyable >}}
+[[ build.env ]]
+  name = 'BP_LIVE_RELOAD_ENABLED'
+  value = 'true'
+{{< /code/copyable >}}
+
+#### In a `Tiltfile` with the `pack` resource
+You can use the Paketo Node.js buildpack with [Tilt][tilt]. This example
+uses the [`pack` extension][tilt/pack] for Tilt.
+{{< code/copyable >}}
+pack('my-app',
+  buildpacks=["gcr.io/paketo-buildpacks/nodejs"],
+  env_vars=["BP_LIVE_RELOAD_ENABLED=true"],
+  live_update=[
+    sync('.', '/workspace'),
+  ]
+)
+{{< /code/copyable >}}
+
 ## Install a Custom CA Certificate
 Node.js Buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
@@ -260,3 +300,8 @@ instructions in the [Applying Custom
 Labels]({{< ref "/docs/howto/configuration#applying-custom-labels" >}})
 section of our configuration docs.
 
+<!-- References -->
+[tilt]:https://tilt.dev/
+[tilt/pack]:https://github.com/tilt-dev/tilt-extensions/tree/master/pack
+[definition/platform]:https://buildpacks.io/docs/concepts/components/platform
+[project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/
