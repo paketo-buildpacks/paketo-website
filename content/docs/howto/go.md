@@ -270,6 +270,68 @@ When building with the pack CLI, create a [project.toml][cnb/project-file] file 
     value="assets/*:public/*"
 {{< /code/copyable >}}
 
+## Enable Process Reloading
+By default, your Go server will be the only process running in your app
+container at runtime. You can enable restarting the server process
+when files in the app's working directory change, which may facilitate a shorter
+feedback loop for iterating on code changes. This feature may be used in conjunction with
+a dev orchestrator like [Tilt][tilt].
+
+### Using `BP_LIVE_RELOAD_ENABLED`
+
+To enable reloadable processes, set the `$BP_LIVE_RELOAD_ENABLED` environment
+variable at build time, either by passing a flag to the
+[platform][definition/platform] or by
+adding it to your `project.toml`. See the Cloud Native Buildpacks
+[documentation][project-file] to learn more about `project.toml` files.
+
+#### With a `pack build` flag
+{{< code/copyable >}}
+pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
+{{< /code/copyable >}}
+
+#### In a `project.toml` file
+{{< code/copyable >}}
+[[ build.env ]]
+  name = 'BP_LIVE_RELOAD_ENABLED'
+  value = 'true'
+{{< /code/copyable >}}
+
+#### In a `Tiltfile` with the `pack` resource
+You can use the Paketo Go buildpack with [Tilt][tilt]. This example
+uses the [`pack` extension][tilt/pack] for Tilt, and shows how to configure watched files.
+{{< code/copyable >}}
+pack('my-app',
+  buildpacks=["gcr.io/paketo-buildpacks/go"],
+  path='./src',
+  env_vars=["BP_LIVE_RELOAD_ENABLED=true"],
+  deps=['./src/build'],
+  live_update=[
+    sync('./src/build', '/workspace/build'),
+    run('cp -rf /workspace/build/* /layers/paketo-buildpacks_go-build/targets/bin', trigger=['./src/build']),
+  ])
+
+# (Re)build locally when source code changes
+local_resource('go-build',
+  cmd='GOOS=linux GOARCH=amd64 go build -o ./build/ -buildmode pie .',
+  deps=['./src'],
+  ignore=['./src/build'],
+  dir='./src'
+)
+{{< /code/copyable >}}
+
+##### Notes
+- The Go Paketo buildpack works best with Tilt and hot reloading when all of
+  your app's source code is in a subdirectory (`./src` in the above example). Use the `path`
+  parameter of the `pack()` resource to specify the location of the source code.
+- The Go Paketo buildpack will not recompile your source code inside the
+  running app container. You must use a `local_resource` to rebuild your app
+  when source code changes, and copy the built artifacts into the container with
+  `sync` and `run` steps, as shown.
+- The `cmd` that is run as part of the `go-build` local resource above matches
+  the command that the Go buildpack runs to build the app, including cross-compiling
+  the binary for the app container's operating system.
+
 ## Install a Custom CA Certificate
 Go buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
@@ -300,3 +362,7 @@ section of our configuration docs.
 [cnb/project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor
 
 [bp/releases]:https://github.com/paketo-buildpacks/go/releases/latest
+[tilt]:https://tilt.dev/
+[tilt/pack]:https://github.com/tilt-dev/tilt-extensions/tree/master/pack
+[definition/platform]:https://buildpacks.io/docs/concepts/components/platform
+[project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/
