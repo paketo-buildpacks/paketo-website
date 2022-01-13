@@ -206,6 +206,35 @@ When building with the pack CLI, create a [project.toml][cnb/project-file] file 
     value="--verbosity=normal --self-contained=true"
 {{< /code/copyable >}}
 
+## Provide NuGet Configurations
+A NuGet configuration file can be provided to the build process in two
+different ways. The provided file will have an effect on the `dotnet publish`
+command within the build process.
+
+#### Via Service Bindings
+Configuration can be provided to the build without explicitly including the
+file, which might contain credentials or other sensitive data, in the
+application directory. When building with the pack CLI, a service binding
+containing a `nuget.config` file can be provided. In addition to the
+`nuget.config` file, the binding must be of `type` `nugetconfig`. Check out the
+[service binding]({{< ref "docs/howto/configuration#bindings" >}})
+documentation for more details on service bindings.
+
+The binding will be made available as a "user-level" NuGet configuration at
+`$HOME/.nuget/NuGet/NuGet.Config` during the build process. The  configuration
+applies across all operations involving NuGet, but will be overriden by
+project-level configurations.
+
+The resulting command will look like:
+{{< code/copyable >}}
+pack build --env SERVICE_BINDING_ROOT=/bindings --volume <absolute-path-to-binding>:/bindings/nugetconfig <image-name>
+{{< /code/copyable >}}
+
+#### Via Application Source Code
+A NuGet configuration file can also be provided in the application source
+directory following .NET Core rules. The project-level configuration will take
+precedence over a NuGet configuration provided via service binding.
+
 ## Enable Process Reloading
 By default, your .NET server will be the only process running in your app
 container at runtime. You can enable restarting the server process
