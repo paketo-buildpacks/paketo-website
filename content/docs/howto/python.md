@@ -102,6 +102,58 @@ of the app source code.
 
 Configuring a version of miniconda is not supported.
 
+## Enable Process Reloading
+[`watchexec`][watchexec] is a tool that can watch files for changes
+and run a command whenever it detects modifications. The Python buildpack can
+install this tool in your app container so that you can restart your server
+process when files in the app's working directory change. This may facilitate
+a shorter feedback loop for iterating on code changes. This feature may be used
+in conjunction with a dev orchestrator like [Tilt][tilt].
+
+### Using `BP_LIVE_RELOAD_ENABLED`
+
+To make `watchexec` available in the app container, set the `$BP_LIVE_RELOAD_ENABLED` environment
+variable at build time, either by passing a flag to the
+[platform][definition/platform] or by
+adding it to your `project.toml`. See the Cloud Native Buildpacks
+[documentation][project-file] to learn more about `project.toml` files.
+
+#### With a `pack build` flag
+{{< code/copyable >}}
+pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
+{{< /code/copyable >}}
+
+#### In a `project.toml` file
+{{< code/copyable >}}
+[[ build.env ]]
+  name = 'BP_LIVE_RELOAD_ENABLED'
+  value = 'true'
+{{< /code/copyable >}}
+
+#### In a `Tiltfile` with the `pack` resource
+You can use the Paketo Python buildpack with [Tilt][tilt]. This example
+uses the [`pack` extension][tilt/pack] for Tilt.
+{{< code/copyable >}}
+pack('my-app',
+  buildpacks=["gcr.io/paketo-buildpacks/python"],
+  env_vars=["BP_LIVE_RELOAD_ENABLED=true"],
+  live_update=[
+    sync('.', '/workspace'),
+  ]
+)
+{{< /code/copyable >}}
+
+### Setting a reloadable start command
+You can then use a [Procfile][procfile] to set a start command for the app that
+uses `watchexec`. For instance, for an app whose entrypoint is `server.py`, you could
+use a Procfile as follows:
+{{< code/copyable >}}
+web: watchexec --verbose --restart --watch /workspace 'server.py'
+{{< /code/copyable >}}
+This will cause the server process to restart whenever changes in `/workspace` are
+detected. See `watchexec` [documentation][watchexec] for more about how to
+configure the tool.
+
 ## Install a Custom CA Certificate
 Python Buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
@@ -112,7 +164,7 @@ section of our configuration docs.
 ## Override the Start Process Set by the Buildpack
 Python Buildpack users can set custom start processes for their app image by
 following the instructions in the
-[Procfiles]({{< ref "docs/howto/configuration#procfiles" >}}) section
+[Procfiles][procfile] section
 of our configuration docs.
 
 ## Set Environment Variables for App Launch Time
@@ -125,3 +177,11 @@ Python Buildpack users can add labels to their app image by following the
 instructions in the [Applying Custom
 Labels]({{< ref "docs/howto/configuration#applying-custom-labels" >}})
 section of our configuration docs.
+
+<!-- References -->
+[watchexec]:https://github.com/watchexec/watchexec
+[tilt]:https://tilt.dev/
+[tilt/pack]:https://github.com/tilt-dev/tilt-extensions/tree/master/pack
+[definition/platform]:https://buildpacks.io/docs/concepts/components/platform
+[project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/
+[procfile]:{{< ref "docs/howto/configuration#procfiles" >}}
