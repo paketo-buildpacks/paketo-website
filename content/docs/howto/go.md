@@ -271,8 +271,8 @@ When building with the pack CLI, create a [project.toml][cnb/project-file] file 
 {{< /code/copyable >}}
 
 ## Enable Process Reloading
-By default, your Go server will be the only process running in your app
-container at runtime. You can enable restarting the server process
+By default, your Go binary will be the only process running in your app
+container at runtime. You can enable restarting the binary process
 when files in the app's working directory change, which may facilitate a shorter
 feedback loop for iterating on code changes. This feature may be used in conjunction with
 a dev orchestrator like [Tilt][tilt].
