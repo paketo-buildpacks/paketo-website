@@ -483,6 +483,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#specify-a-custom-entrypoint">Specify A Custom Entrypoint</a></li>
       </ul>
     </li>
+    <li><a href="#enable-process-reloading">Enable Process Reloading</a>
+      <ul>
+        <li><a href="#using-bp_live_reload_enabled">Using <code>BP_LIVE_RELOAD_ENABLED</code></a></li>
+      </ul>
+    </li>
     <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
@@ -758,6 +763,64 @@ environment variable at build time.</p>
 </div>
 <p>The image produced by the build will run <code>node src/launchpoint.js</code>
 as its start command.</p>
+<h2 id="enable-process-reloading" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-process-reloading">
+        Enable Process Reloading
+    </a>
+</h2><p>By default, your Node.js server will be the only process running in your app
+container at runtime. You can enable restarting the server process
+when files in the app&rsquo;s working directory change, which may facilitate a shorter
+feedback loop for iterating on code changes. This feature may be used in conjunction with
+a dev orchestrator like <a href="https://tilt.dev/">Tilt</a>.</p>
+<h3 id="using-bp_live_reload_enabled" class="markup-heading">
+    <a class="markup-heading__link" href="#using-bp_live_reload_enabled">
+        Using <code>BP_LIVE_RELOAD_ENABLED</code>
+    </a>
+</h3><p>To enable reloadable processes, set the <code>$BP_LIVE_RELOAD_ENABLED</code> environment
+variable at build time, either by passing a flag to the
+<a href="https://buildpacks.io/docs/concepts/components/platform">platform</a> or by
+adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
+<a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/">documentation</a> to learn more about <code>project.toml</code> files.</p>
+<h4 id="with-a-pack-build-flag" class="markup-heading">
+    <a class="markup-heading__link" href="#with-a-pack-build-flag">
+        With a <code>pack build</code> flag
+    </a>
+</h4><div class="copyable">
+    <pre class="copyable__code">pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h4 id="in-a-projecttoml-file" class="markup-heading">
+    <a class="markup-heading__link" href="#in-a-projecttoml-file">
+        In a <code>project.toml</code> file
+    </a>
+</h4><div class="copyable">
+    <pre class="copyable__code">[[ build.env ]]
+  name = &#39;BP_LIVE_RELOAD_ENABLED&#39;
+  value = &#39;true&#39;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h4 id="in-a-tiltfile-with-the-pack-resource" class="markup-heading">
+    <a class="markup-heading__link" href="#in-a-tiltfile-with-the-pack-resource">
+        In a <code>Tiltfile</code> with the <code>pack</code> resource
+    </a>
+</h4><p>You can use the Paketo Node.js buildpack with <a href="https://tilt.dev/">Tilt</a>. This example
+uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt.
+<div class="copyable">
+    <pre class="copyable__code">pack(&#39;my-app&#39;,
+  buildpacks=[&#34;gcr.io/paketo-buildpacks/nodejs&#34;],
+  env_vars=[&#34;BP_LIVE_RELOAD_ENABLED=true&#34;],
+  live_update=[
+    sync(&#39;.&#39;, &#39;/workspace&#39;),
+  ]
+)
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="install-a-custom-ca-certificate" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-custom-ca-certificate">
         Install a Custom CA Certificate
@@ -790,6 +853,7 @@ Buildpack</a>.</p>
 instructions in the <a href="https://paketo.io/docs/howto/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
+<!-- raw HTML omitted -->
 
             </div>
             
@@ -844,6 +908,11 @@ section of our configuration docs.</p>
     <li><a href="#build-an-app-without-package-management">Build an App Without Package Management</a>
       <ul>
         <li><a href="#specify-a-custom-entrypoint">Specify A Custom Entrypoint</a></li>
+      </ul>
+    </li>
+    <li><a href="#enable-process-reloading">Enable Process Reloading</a>
+      <ul>
+        <li><a href="#using-bp_live_reload_enabled">Using <code>BP_LIVE_RELOAD_ENABLED</code></a></li>
       </ul>
     </li>
     <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>

@@ -473,6 +473,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li></li>
       </ul>
     </li>
+    <li><a href="#enable-process-reloading">Enable Process Reloading</a>
+      <ul>
+        <li><a href="#using-bp_live_reload_enabled">Using <code>BP_LIVE_RELOAD_ENABLED</code></a></li>
+      </ul>
+    </li>
     <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
@@ -828,6 +833,90 @@ variable at build time.</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
+<h2 id="enable-process-reloading" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-process-reloading">
+        Enable Process Reloading
+    </a>
+</h2><p>By default, your Go binary will be the only process running in your app
+container at runtime. You can enable restarting the binary process
+when files in the app&rsquo;s working directory change, which may facilitate a shorter
+feedback loop for iterating on code changes. This feature may be used in conjunction with
+a dev orchestrator like <a href="https://tilt.dev/">Tilt</a>.</p>
+<h3 id="using-bp_live_reload_enabled" class="markup-heading">
+    <a class="markup-heading__link" href="#using-bp_live_reload_enabled">
+        Using <code>BP_LIVE_RELOAD_ENABLED</code>
+    </a>
+</h3><p>To enable reloadable processes, set the <code>$BP_LIVE_RELOAD_ENABLED</code> environment
+variable at build time, either by passing a flag to the
+<a href="https://buildpacks.io/docs/concepts/components/platform">platform</a> or by
+adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
+<a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/">documentation</a> to learn more about <code>project.toml</code> files.</p>
+<h4 id="with-a-pack-build-flag" class="markup-heading">
+    <a class="markup-heading__link" href="#with-a-pack-build-flag">
+        With a <code>pack build</code> flag
+    </a>
+</h4><div class="copyable">
+    <pre class="copyable__code">pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h4 id="in-a-projecttoml-file" class="markup-heading">
+    <a class="markup-heading__link" href="#in-a-projecttoml-file">
+        In a <code>project.toml</code> file
+    </a>
+</h4><div class="copyable">
+    <pre class="copyable__code">[[ build.env ]]
+  name = &#39;BP_LIVE_RELOAD_ENABLED&#39;
+  value = &#39;true&#39;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h4 id="in-a-tiltfile-with-the-pack-resource" class="markup-heading">
+    <a class="markup-heading__link" href="#in-a-tiltfile-with-the-pack-resource">
+        In a <code>Tiltfile</code> with the <code>pack</code> resource
+    </a>
+</h4><p>You can use the Paketo Go buildpack with <a href="https://tilt.dev/">Tilt</a>. This example
+uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt, and shows how to configure watched files.
+<div class="copyable">
+    <pre class="copyable__code">pack(&#39;my-app&#39;,
+  buildpacks=[&#34;gcr.io/paketo-buildpacks/go&#34;],
+  path=&#39;./src&#39;,
+  env_vars=[&#34;BP_LIVE_RELOAD_ENABLED=true&#34;],
+  deps=[&#39;./src/build&#39;],
+  live_update=[
+    sync(&#39;./src/build&#39;, &#39;/workspace/build&#39;),
+    run(&#39;cp -rf /workspace/build/* /layers/paketo-buildpacks_go-build/targets/bin&#39;, trigger=[&#39;./src/build&#39;]),
+  ])
+
+# (Re)build locally when source code changes
+local_resource(&#39;go-build&#39;,
+  cmd=&#39;GOOS=linux GOARCH=amd64 go build -o ./build/ -buildmode pie .&#39;,
+  deps=[&#39;./src&#39;],
+  ignore=[&#39;./src/build&#39;],
+  dir=&#39;./src&#39;
+)
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+<h5 id="notes" class="markup-heading">
+    <a class="markup-heading__link" href="#notes">
+        Notes
+    </a>
+</h5><ul>
+<li>The Go Paketo buildpack works best with Tilt and hot reloading when all of
+your app&rsquo;s source code is in a subdirectory (<code>./src</code> in the above example). Use the <code>path</code>
+parameter of the <code>pack()</code> resource to specify the location of the source code.</li>
+<li>The Go Paketo buildpack will not recompile your source code inside the
+running app container. You must use a <code>local_resource</code> to rebuild your app
+when source code changes, and copy the built artifacts into the container with
+<code>sync</code> and <code>run</code> steps, as shown.</li>
+<li>The <code>cmd</code> that is run as part of the <code>go-build</code> local resource above matches
+the command that the Go buildpack runs to build the app, including cross-compiling
+the binary for the app container&rsquo;s operating system.</li>
+</ul>
 <h2 id="install-a-custom-ca-certificate" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-custom-ca-certificate">
         Install a Custom CA Certificate
@@ -905,6 +994,11 @@ section of our configuration docs.</p>
     <li><a href="#prevent-source-files-from-being-deleted">Prevent Source Files From Being Deleted</a>
       <ul>
         <li></li>
+      </ul>
+    </li>
+    <li><a href="#enable-process-reloading">Enable Process Reloading</a>
+      <ul>
+        <li><a href="#using-bp_live_reload_enabled">Using <code>BP_LIVE_RELOAD_ENABLED</code></a></li>
       </ul>
     </li>
     <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>

@@ -454,6 +454,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#miniconda">Miniconda</a></li>
       </ul>
     </li>
+    <li><a href="#enable-process-reloading">Enable Process Reloading</a>
+      <ul>
+        <li><a href="#using-bp_live_reload_enabled">Using <code>BP_LIVE_RELOAD_ENABLED</code></a></li>
+        <li><a href="#setting-a-reloadable-start-command">Setting a reloadable start command</a></li>
+      </ul>
+    </li>
     <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
@@ -562,6 +568,81 @@ by the Python buildpack. The builpack will create or update a conda environment
 from an <code>environment.yml</code> file or a <code>package-list.txt</code> file located at the root
 of the app source code.</p>
 <p>Configuring a version of miniconda is not supported.</p>
+<h2 id="enable-process-reloading" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-process-reloading">
+        Enable Process Reloading
+    </a>
+</h2><p><a href="https://github.com/watchexec/watchexec"><code>watchexec</code></a> is a tool that can watch files for changes
+and run a command whenever it detects modifications. The Python buildpack can
+install this tool in your app container so that you can restart your server
+process when files in the app&rsquo;s working directory change. This may facilitate
+a shorter feedback loop for iterating on code changes. This feature may be used
+in conjunction with a dev orchestrator like <a href="https://tilt.dev/">Tilt</a>.</p>
+<h3 id="using-bp_live_reload_enabled" class="markup-heading">
+    <a class="markup-heading__link" href="#using-bp_live_reload_enabled">
+        Using <code>BP_LIVE_RELOAD_ENABLED</code>
+    </a>
+</h3><p>To make <code>watchexec</code> available in the app container, set the <code>$BP_LIVE_RELOAD_ENABLED</code> environment
+variable at build time, either by passing a flag to the
+<a href="https://buildpacks.io/docs/concepts/components/platform">platform</a> or by
+adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
+<a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/">documentation</a> to learn more about <code>project.toml</code> files.</p>
+<h4 id="with-a-pack-build-flag" class="markup-heading">
+    <a class="markup-heading__link" href="#with-a-pack-build-flag">
+        With a <code>pack build</code> flag
+    </a>
+</h4><div class="copyable">
+    <pre class="copyable__code">pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h4 id="in-a-projecttoml-file" class="markup-heading">
+    <a class="markup-heading__link" href="#in-a-projecttoml-file">
+        In a <code>project.toml</code> file
+    </a>
+</h4><div class="copyable">
+    <pre class="copyable__code">[[ build.env ]]
+  name = &#39;BP_LIVE_RELOAD_ENABLED&#39;
+  value = &#39;true&#39;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h4 id="in-a-tiltfile-with-the-pack-resource" class="markup-heading">
+    <a class="markup-heading__link" href="#in-a-tiltfile-with-the-pack-resource">
+        In a <code>Tiltfile</code> with the <code>pack</code> resource
+    </a>
+</h4><p>You can use the Paketo Python buildpack with <a href="https://tilt.dev/">Tilt</a>. This example
+uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt.
+<div class="copyable">
+    <pre class="copyable__code">pack(&#39;my-app&#39;,
+  buildpacks=[&#34;gcr.io/paketo-buildpacks/python&#34;],
+  env_vars=[&#34;BP_LIVE_RELOAD_ENABLED=true&#34;],
+  live_update=[
+    sync(&#39;.&#39;, &#39;/workspace&#39;),
+  ]
+)
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+<h3 id="setting-a-reloadable-start-command" class="markup-heading">
+    <a class="markup-heading__link" href="#setting-a-reloadable-start-command">
+        Setting a reloadable start command
+    </a>
+</h3><p>You can then use a <a href="https://paketo.io/docs/howto/configuration/#procfiles">Procfile</a> to set a start command for the app that
+uses <code>watchexec</code>. For instance, for an app whose entrypoint is <code>server.py</code>, you could
+use a Procfile as follows:
+<div class="copyable">
+    <pre class="copyable__code">web: watchexec --verbose --restart --watch /workspace &#39;server.py&#39;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+This will cause the server process to restart whenever changes in <code>/workspace</code> are
+detected. See <code>watchexec</code> <a href="https://github.com/watchexec/watchexec">documentation</a> for more about how to
+configure the tool.</p>
 <h2 id="install-a-custom-ca-certificate" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-custom-ca-certificate">
         Install a Custom CA Certificate
@@ -594,6 +675,7 @@ Buildpack</a>.</p>
 instructions in the <a href="https://paketo.io/docs/howto/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
+<!-- raw HTML omitted -->
 
             </div>
             
@@ -619,6 +701,12 @@ section of our configuration docs.</p>
         <li><a href="#pip">Pip</a></li>
         <li><a href="#pipenv">Pipenv</a></li>
         <li><a href="#miniconda">Miniconda</a></li>
+      </ul>
+    </li>
+    <li><a href="#enable-process-reloading">Enable Process Reloading</a>
+      <ul>
+        <li><a href="#using-bp_live_reload_enabled">Using <code>BP_LIVE_RELOAD_ENABLED</code></a></li>
+        <li><a href="#setting-a-reloadable-start-command">Setting a reloadable start command</a></li>
       </ul>
     </li>
     <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
