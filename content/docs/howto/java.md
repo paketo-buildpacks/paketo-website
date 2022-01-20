@@ -215,7 +215,7 @@ By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The 
 | JVM                                                                                                                                     | Buildpack                                                            |
 | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | [Adoptium](https://adoptium.net/) {{< text/sup >}}1{{< /text/sup >}}                                                                    | [Paketo Adoptium Buildpack][bp/adoptium]                             |
-| [Alibaba Dragonwell](https://github.com/alibaba/dragonwell8) {{< text/sup >}}2{{< /text/sup >}}                                                      | [Paketo Alibaba Dragonwell Buildpack][bp/dragonwell]                 |
+| [Alibaba Dragonwell](https://github.com/alibaba/dragonwell8) {{< text/sup >}}2{{< /text/sup >}}                                         | [Paketo Alibaba Dragonwell Buildpack][bp/dragonwell]                 |
 | [Amazon Corretto](https://aws.amazon.com/corretto/) {{< text/sup >}}2{{< /text/sup >}}                                                  | [Paketo Amazon Corretto Buildpack][bp/amazon-corretto]               |
 | [Azul Zulu](https://www.azul.com/downloads/zulu-community/)                                                                             | [Paketo Azul Zulu Buildpack][bp/azul-zulu]                           |
 | [BellSoft Liberica](https://bell-sw.com/pages/libericajdk/)                                                                             | [Paketo BellSoft Liberica Buildpack - Default][bp/bellsoft-liberica] |
@@ -268,7 +268,7 @@ jar].
 
 After compiling and packaging, the buildpack will replace provided application
 source code with the exploded JAR and proceed as described in [Building from an
-Executable Jar][building-from-an-executable-jar].
+Executable Jar]({{< relref "#build-from-an-executable-jar" >}}).
 
 **Example**: Building a Native image with Maven
 
