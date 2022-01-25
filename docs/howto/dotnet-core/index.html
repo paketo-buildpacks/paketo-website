@@ -470,6 +470,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#using-bp_dotnet_publish_flags">Using <code>BP_DOTNET_PUBLISH_FLAGS</code></a></li>
       </ul>
     </li>
+    <li><a href="#provide-nuget-configurations">Provide NuGet Configurations</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
     <li><a href="#enable-process-reloading">Enable Process Reloading</a>
       <ul>
         <li><a href="#using-bp_live_reload_enabled">Using <code>BP_LIVE_RELOAD_ENABLED</code></a></li>
@@ -732,6 +737,42 @@ v1.0.0. To migrate from using <code>buildpack.yml</code>, please set the
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
+<h2 id="provide-nuget-configurations" class="markup-heading">
+    <a class="markup-heading__link" href="#provide-nuget-configurations">
+        Provide NuGet Configurations
+    </a>
+</h2><p>A NuGet configuration file can be provided to the build process in two
+different ways. The provided file will have an effect on the <code>dotnet publish</code>
+command within the build process.</p>
+<h4 id="via-service-bindings" class="markup-heading">
+    <a class="markup-heading__link" href="#via-service-bindings">
+        Via Service Bindings
+    </a>
+</h4><p>Configuration can be provided to the build without explicitly including the
+file, which might contain credentials or other sensitive data, in the
+application directory. When building with the pack CLI, a service binding
+containing a <code>nuget.config</code> file can be provided. In addition to the
+<code>nuget.config</code> file, the binding must be of <code>type</code> <code>nugetconfig</code>. Check out the
+<a href="https://paketo.io/docs/howto/configuration/#bindings">service binding</a>
+documentation for more details on service bindings.</p>
+<p>The binding will be made available as a &ldquo;user-level&rdquo; NuGet configuration at
+<code>$HOME/.nuget/NuGet/NuGet.Config</code> during the build process. The  configuration
+applies across all operations involving NuGet, but will be overriden by
+project-level configurations.</p>
+<p>The resulting command will look like:
+<div class="copyable">
+    <pre class="copyable__code">pack build --env SERVICE_BINDING_ROOT=/bindings --volume &lt;absolute-path-to-binding&gt;:/bindings/nugetconfig &lt;image-name&gt;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+<h4 id="via-application-source-code" class="markup-heading">
+    <a class="markup-heading__link" href="#via-application-source-code">
+        Via Application Source Code
+    </a>
+</h4><p>A NuGet configuration file can also be provided in the application source
+directory following .NET Core rules. The project-level configuration will take
+precedence over a NuGet configuration provided via service binding.</p>
 <h2 id="enable-process-reloading" class="markup-heading">
     <a class="markup-heading__link" href="#enable-process-reloading">
         Enable Process Reloading
@@ -866,7 +907,7 @@ section of our configuration docs.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> January 20, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> January 25, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -895,6 +936,11 @@ section of our configuration docs.</p>
     <li><a href="#configure-the-dotnet-publish-command">Configure the <code>dotnet publish</code> Command</a>
       <ul>
         <li><a href="#using-bp_dotnet_publish_flags">Using <code>BP_DOTNET_PUBLISH_FLAGS</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#provide-nuget-configurations">Provide NuGet Configurations</a>
+      <ul>
+        <li></li>
       </ul>
     </li>
     <li><a href="#enable-process-reloading">Enable Process Reloading</a>
