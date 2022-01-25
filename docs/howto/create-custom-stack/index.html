@@ -11,17 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Ruby Buildpack Reference - Paketo Buildpacks</title>
+<title>How to Create a Custom Stack - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1 viewport-fit=cover">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="Ruby Buildpack Reference">
-<meta name="og:url" content="https://paketo.io/docs/reference/ruby-reference/">
+<meta name="og:title" content="How to Create a Custom Stack">
+<meta name="og:url" content="https://paketo.io/docs/howto/create-custom-stack/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
-<meta name="twitter:url" content="https://paketo.io/docs/reference/ruby-reference/" />
+<meta name="twitter:url" content="https://paketo.io/docs/howto/create-custom-stack/" />
 <meta name="twitter:card" content="" />
 
 
@@ -106,18 +106,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
         <li class="docs-menu__item docs-menu__parent">
             
-            <div class="docs-menu__section-header ">
+            <div class="docs-menu__section-header docs-menu__section-header--opened">
                 
                 <span>How To</span>
-                <button class="expander-button  docs-menu__expander-button">
-                    <svg class="expander-button__triangle " width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button class="expander-button expander-button--opened docs-menu__expander-button">
+                    <svg class="expander-button__triangle expander-button__triangle--opened" width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.140625" width="37.0257" height="34" rx="8" fill="#888888" fill-opacity="0.25"/>
                         <path d="M28.1604 13H8.14648L18.6538 22.5L28.1604 13Z" fill="#FEFCFC"/>
                         </svg>
                 </button>
             </div>
             
-            <ul class="docs-menu__children-list ">
+            <ul class="docs-menu__children-list docs-menu__children-list--opened">
                 
                     
     
@@ -232,7 +232,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/create-custom-stack/" class="docs-menu__item docs-menu__link ">
+            <a href="/docs/howto/create-custom-stack/" class="docs-menu__item docs-menu__link docs-menu__link--active">
                 
                 <span>Create a Custom Stack</span>
             </a>
@@ -308,18 +308,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
         <li class="docs-menu__item docs-menu__parent">
             
-            <div class="docs-menu__section-header docs-menu__section-header--opened">
+            <div class="docs-menu__section-header ">
                 
                 <span>Reference</span>
-                <button class="expander-button expander-button--opened docs-menu__expander-button">
-                    <svg class="expander-button__triangle expander-button__triangle--opened" width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button class="expander-button  docs-menu__expander-button">
+                    <svg class="expander-button__triangle " width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.140625" width="37.0257" height="34" rx="8" fill="#888888" fill-opacity="0.25"/>
                         <path d="M28.1604 13H8.14648L18.6538 22.5L28.1604 13Z" fill="#FEFCFC"/>
                         </svg>
                 </button>
             </div>
             
-            <ul class="docs-menu__children-list docs-menu__children-list--opened">
+            <ul class="docs-menu__children-list ">
                 
                     
     
@@ -414,7 +414,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/reference/ruby-reference/" class="docs-menu__item docs-menu__link docs-menu__link--active">
+            <a href="/docs/reference/ruby-reference/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Ruby Buildpack</span>
             </a>
@@ -441,7 +441,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="docs-body">
         <div class="docs-body__container">
             
-  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/ruby-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/create-custom-stack.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -450,127 +450,118 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">Ruby Buildpack Reference</h1>
+            <h1 id="title">How to Create a Custom Stack</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#package-management">Package Management</a></li>
-    <li><a href="#webservers--task-runners">Webservers &amp; Task Runners</a>
-      <ul>
-        <li><a href="#webservers">Webservers</a></li>
-        <li><a href="#task-runners">Task Runners</a></li>
-      </ul>
-    </li>
-    <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
-    <li><a href="#vendored-gem-behavior">Vendored Gem Behavior</a></li>
-    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
-      <ul>
-        <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
-        <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
-      </ul>
-    </li>
+    <li><a href="#preface">Preface</a></li>
+    <li><a href="#create-a-custom-stack-image-based-off-of-a-paketo-stack">Create a custom stack image based off of a Paketo Stack</a></li>
   </ul>
 </nav>
 </div>
 
             <div class="docs-body__markdown">
-                <p>This reference documentation offers an in-depth description of the behavior
-and configuration options of the
-<a href="https://github.com/paketo-buildpacks/ruby">Paketo Ruby Buildpack</a>. For explanations of how to use the buildpack for several common use-cases, see
-the  Paketo Ruby Buildpack  How To <a href="/docs/howto/ruby">documentation</a>.</p>
-<h2 id="supported-dependencies" class="markup-heading">
-    <a class="markup-heading__link" href="#supported-dependencies">
-        Supported Dependencies
+                <h2 id="preface" class="markup-heading">
+    <a class="markup-heading__link" href="#preface">
+        Preface
     </a>
-</h2><p>The Ruby Paketo Buildpack supports several versions of
-<a href="https://www.ruby-lang.org">MRI</a>, <a href="https://bundler.io/">Bundler</a>, and common
-Ruby webservers and task runners.  For more details on the specific versions
-supported in a given buildpack version, see the <a href="https://github.com/paketo-buildpacks/ruby/releases/latest">release
-notes</a>.</p>
-<h2 id="package-management" class="markup-heading">
-    <a class="markup-heading__link" href="#package-management">
-        Package Management
+</h2><p>This documentation explains how to create a custom stack based off of the
+existing Paketo stacks. Check out the <a href="https://paketo.io/docs/concepts/stacks/">stacks concept page</a>
+for more information about what a stack is and the Paketo offerings.</p>
+<p><strong>It&rsquo;s recommended to use an existent Paketo stack offering, over creating a custom
+stack</strong> in order to leverage the full range of Paketo security patching
+and compliance standards.</p>
+<p>In some cases, a custom stack image may be useful for users who may need an
+extra system library or user ID, for example. The Cloud Native Buildpacks
+project already has documentation for <a href="https://buildpacks.io/docs/operator-guide/create-a-stack/"><strong>creating a stack from
+scratch</strong></a>, but for
+some Paketo users <strong>it may be simpler and less error-prone to build upon the
+stack we already provide</strong>. It’s still recommended to read the CNB documentation
+regardless, because there are a lot of details and explanations there that
+still apply.</p>
+<h2 id="create-a-custom-stack-image-based-off-of-a-paketo-stack" class="markup-heading">
+    <a class="markup-heading__link" href="#create-a-custom-stack-image-based-off-of-a-paketo-stack">
+        Create a custom stack image based off of a Paketo Stack
     </a>
-</h2><p>The Ruby Buildpack uses <a href="https://bundler.io/">Bundler</a> to install and manage
-the gems needed to run your application. Including a <code>Gemfile</code> in your app
-source code instructs the <a href="https://github.com/paketo-buildpacks/bundle-install"><code>bundle-install</code>
-buildpack</a> to vendor your
-dependencies using <code>bundle install</code>.</p>
-<h2 id="webservers--task-runners" class="markup-heading">
-    <a class="markup-heading__link" href="#webservers--task-runners">
-        Webservers &amp; Task Runners
-    </a>
-</h2><p>The Ruby Buildpack supports a number of webservers and task runners that are
-useful for running Ruby applications. If your application uses one of these
-tools, it will be automatically detected and a start command for your
-application will be assigned when building your application container.</p>
-<h3 id="webservers" class="markup-heading">
-    <a class="markup-heading__link" href="#webservers">
-        Webservers
-    </a>
-</h3><ul>
-<li><a href="https://github.com/paketo-buildpacks/passenger">Passenger</a></li>
-<li><a href="https://github.com/paketo-buildpacks/puma">Puma</a></li>
-<li><a href="https://github.com/paketo-buildpacks/rackup">Rackup</a></li>
-<li><a href="https://github.com/paketo-buildpacks/thin">Thin</a></li>
-<li><a href="https://github.com/paketo-buildpacks/unicorn">Unicorn</a></li>
+</h2><p>This guide assumes you know the basics of stacks from the <a href="https://paketo.io/docs/concepts/stacks/">stacks concept page</a>.</p>
+<ol>
+<li>Create a <code>Dockerfile</code> and define the <code>base</code> image as one of the Paketo stacks. For example:
+<div class="copyable">
+    <pre class="copyable__code">FROM paketobuildpacks:full-cnb as base
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></li>
+</ol>
+<p>There are two different options for each of the three (tiny, base, full) stacks you can use.</p>
+<ul>
+<li>The first option is the stack without the <code>-cnb</code> suffix, which can be used as a base image
+without any CNB metadata added at all. Ex. <code>docker.io/paketobuildpacks/run:full</code></li>
+<li>The second option is to use the stack with the <code>-cnb</code> suffix at the end.
+This will be the stack that contains <a href="https://github.com/buildpacks/spec/blob/main/platform.md#stacks">buildpack specific
+metadata</a>
+already added, and is based off of the non-CNB stack image. Ex.
+<code>docker.io/paketobuildpacks/run:full-cnb</code></li>
 </ul>
-<h3 id="task-runners" class="markup-heading">
-    <a class="markup-heading__link" href="#task-runners">
-        Task Runners
-    </a>
-</h3><ul>
-<li><a href="https://github.com/paketo-buildpacks/rake">Rake</a></li>
-</ul>
-<h2 id="rails-asset-pipeline" class="markup-heading">
-    <a class="markup-heading__link" href="#rails-asset-pipeline">
-        Rails Asset Pipeline
-    </a>
-</h2><p>The <a href="https://github.com/paketo-buildpacks/rails-assets">Paketo Rails Assets Buildpack</a> is a <a href="https://paketo.io/docs/concepts/buildpacks/#component-buildpacks">component buildpack</a> included in the Ruby Buildpack. It supports Rails apps (Rails version &gt;= 5.0) that need asset precompilation.</p>
-<p>The buildpack runs <code>bundle exec rails assets:precompile</code> for the app, and works
-with any of the supported Ruby webservers listed above. The Paketo Ruby
-Buildpack pulls in this buildpack, as well as the <a href="https://github.com/paketo-buildpacks/node-engine">Paketo Node Engine
-Buildpack</a> to support asset compilation.</p>
-<h2 id="vendored-gem-behavior" class="markup-heading">
-    <a class="markup-heading__link" href="#vendored-gem-behavior">
-        Vendored Gem Behavior
-    </a>
-</h2><p>Per the Ruby <a href="https://paketo.io/docs/howto/ruby/">How To Guide</a>, the Paketo Ruby
-Buildpack supports building apps with vendored gems. Behind the scenes,
-the presence of the cache path in the app source code indicates to the
-buildpack to run <code>bundle install</code> with the addition of the <code>--local</code> flag to
-prefer the use of local gems.</p>
-<h2 id="buildpack-set-environment-variables" class="markup-heading">
-    <a class="markup-heading__link" href="#buildpack-set-environment-variables">
-        Buildpack-Set Environment Variables
-    </a>
-</h2><p>The Ruby CNB sets a few environment variables during the <code>build</code> and <code>launch</code>
-phases of the app lifecycle. The sections below describe each environment
-variable and its impact on your app.</p>
-<h3 id="gem_path" class="markup-heading">
-    <a class="markup-heading__link" href="#gem_path">
-        <code>GEM_PATH</code>
-    </a>
-</h3><ul>
-<li>Set by: <code>mri</code>, <code>bundler</code></li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: location of the directory gems will be installed for each respective dependency</li>
-</ul>
-<h3 id="bundle_path" class="markup-heading">
-    <a class="markup-heading__link" href="#bundle_path">
-        <code>BUNDLE_PATH</code>
-    </a>
-</h3><ul>
-<li>Set by: <code>bundle-install</code></li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: location where all gems in your bundle will be located</li>
-</ul>
+<p>Check out the <code>bionic</code> and <code>tiny</code> directories in
+<a href="https://github.com/paketo-buildpacks/stacks">github.com/paketo-buildpacks/stacks</a>
+repo to view the Dockerfiles we have defined for both the base image and CNB images.</p>
+<ol start="2">
+<li>
+<p>Add your desired custom stack change to the Dockerfile such as labels,
+environment variables, and/or packages. There are examples in the <a href="https://buildpacks.io/docs/operator-guide/create-a-stack/">CNB
+documentation</a> .
+Note that the changes need to abide by the CNB spec. For example, setting
+the <code>CNB_USER_ID</code> to root isn’t allowed.</p>
+</li>
+<li>
+<p>Build the stack image with  <code>docker build . -t &lt;stack-name&gt;-&lt;run or build&gt;:&lt;tag&gt; --target &lt;target&gt;</code> for both the build and run images.</p>
+</li>
+<li>
+<p>Push the stack images to a registry with <code>docker push</code></p>
+</li>
+<li>
+<p>Create a custom builder with the stack you want to use. Check out the <a href="https://paketo.io/docs/concepts/stacks/">builder
+documentation</a> for details on builders. This can be
+achieved by cloning the builder you want to use, and modifying the
+<code>builder.toml</code> file. For example, if you have built a custom stack based off
+of the Paketo Full stack, you will want to add it to the <a href="https://github.com/paketo-buildpacks/full-builder">Full
+builder</a> builder.toml
+file. Modify the bottom <code>[stack]</code> section to point to the registry location
+of the build and run images you have pushed to a registry. The <code>id</code> should
+match the stack ID if you specified one in the Dockerfile, or in the base
+image you used. It will be <code>io.buildpacks.stacks.bionic</code> if your base image
+was one of the CNB stack images. This ID implies compatibility with the
+official <code>io.buildpacks.stacks.bionic</code> stack.</p>
+</li>
+<li>
+<p>Create the builder with the pack CLI.
+<div class="copyable">
+    <pre class="copyable__code">pack builder create &lt;builder-name&gt; —config &lt;path to builder.toml&gt;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+</li>
+<li>
+<p>Ensure the buildpacks of interest support the wildcard (“*”) stack or
+support the stack ID you provided in the <code>builder.toml</code> by checking the buildpack <code>stacks</code> section. For example, the
+<a href="https://github.com/paketo-buildpacks/node-engine/blob/8f9743093c6696c365baf1739622889c61280bff/buildpack.toml#L129-L130">node-engine
+buildpack</a>
+only supports stacks with ID <code>io.buildpacks.stacks.bionic</code>. If you build
+upon one of the Paketo <code>-cnb</code> stacks, your custom stack will be
+compatible already, since part of the CNB metadata added is the ID.</p>
+</li>
+<li>
+<p>Perform builds with the newly created builder image, which uses the custom stack images.</p>
+</li>
+</ol>
+<!-- raw HTML omitted -->
 
             </div>
             
-  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/ruby-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/create-custom-stack.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -585,22 +576,8 @@ variable and its impact on your app.</p>
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#package-management">Package Management</a></li>
-    <li><a href="#webservers--task-runners">Webservers &amp; Task Runners</a>
-      <ul>
-        <li><a href="#webservers">Webservers</a></li>
-        <li><a href="#task-runners">Task Runners</a></li>
-      </ul>
-    </li>
-    <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
-    <li><a href="#vendored-gem-behavior">Vendored Gem Behavior</a></li>
-    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
-      <ul>
-        <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
-        <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
-      </ul>
-    </li>
+    <li><a href="#preface">Preface</a></li>
+    <li><a href="#create-a-custom-stack-image-based-off-of-a-paketo-stack">Create a custom stack image based off of a Paketo Stack</a></li>
   </ul>
 </nav>
 </div>

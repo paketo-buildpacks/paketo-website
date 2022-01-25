@@ -139,6 +139,17 @@ Access the Bill of Materials on a Sample Node Application  You can access the bi
     </item>
     
     <item>
+      <title>How to Create a Custom Stack</title>
+      <link>https://paketo.io/docs/howto/create-custom-stack/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/howto/create-custom-stack/</guid>
+      <description>Preface  This documentation explains how to create a custom stack based off of the existing Paketo stacks. Check out the stacks concept page for more information about what a stack is and the Paketo offerings.
+It&amp;rsquo;s recommended to use an existent Paketo stack offering, over creating a custom stack in order to leverage the full range of Paketo security patching and compliance standards.
+In some cases, a custom stack image may be useful for users who may need an extra system library or user ID, for example.</description>
+    </item>
+    
+    <item>
       <title>Buildpacks</title>
       <link>https://paketo.io/docs/concepts/buildpacks/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
