@@ -24,7 +24,7 @@ local machine with Paketo buildpacks.
 
 1. Clone the Paketo samples and navigate to a Ruby sample app.
 {{< code/copyable >}}
-git clone <https://github.com/paketo-buildpacks/samples>
+git clone https://github.com/paketo-buildpacks/samples
 cd samples/ruby/puma
 {{< /code/copyable >}}
 
