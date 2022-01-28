@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "clipboard": "zenorocha/clipboard.js#44df750",
+    "clipboard": "^2.0.9",
     "docsearch.js": "^2.6.3",
     "firebase-tools": "^10.1.2"
   },
