@@ -7627,7 +7627,7 @@
  * @version   v4.2.8+1e68dce6
  */
 /*!
- * clipboard.js v2.0.8
+ * clipboard.js v2.0.9
  * https://clipboardjs.com/
  *
  * Licensed MIT © Zeno Rocha
