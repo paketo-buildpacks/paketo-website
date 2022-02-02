@@ -301,15 +301,16 @@
                   key: "onClick",
                   value: function onClick(e) {
                     var trigger = e.delegateTarget || e.currentTarget;
-                    var selectedText = actions_default({
-                      action: this.action(trigger),
+                    var action = this.action(trigger) || "copy";
+                    var text = actions_default({
+                      action,
                       container: this.container,
                       target: this.target(trigger),
                       text: this.text(trigger)
                     });
-                    this.emit(selectedText ? "success" : "error", {
-                      action: this.action,
-                      text: selectedText,
+                    this.emit(text ? "success" : "error", {
+                      action,
+                      text,
                       trigger,
                       clearSelection: function clearSelection() {
                         if (trigger) {
@@ -7627,7 +7628,7 @@
  * @version   v4.2.8+1e68dce6
  */
 /*!
- * clipboard.js v2.0.9
+ * clipboard.js v2.0.10
  * https://clipboardjs.com/
  *
  * Licensed MIT © Zeno Rocha
