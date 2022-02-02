@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "clipboard": "^2.0.9",
+    "clipboard": "^2.0.10",
     "docsearch.js": "^2.6.3",
     "firebase-tools": "^10.1.4"
   },
