@@ -943,7 +943,7 @@ pack build samples/java-native \
     <a class="markup-heading__link" href="#use-an-alternative-java-native-image-toolkit">
         Use an Alternative Java Native Image Toolkit
     </a>
-</h3><p>By default, the <a href="https://github.com/paketo-buildpacks/java-native-image">Paketo Java Native Image buildpack</a> will use the GraalVM Native Image Toolkit. The following Paketo JVM buildpacks may be used to substitute alternate Native Image Toolkit implemenations in place of the default.</p>
+</h3><p>By default, the <a href="https://github.com/paketo-buildpacks/java-native-image">Paketo Java Native Image buildpack</a> will use Bellsoft&rsquo;s Native Image Toolkit. The following Paketo JVM buildpacks may be used to substitute alternate Native Image Toolkit implemenations in place of the default.</p>
 <table>
 <thead>
 <tr>
@@ -956,12 +956,16 @@ pack build samples/java-native \
 <td><a href="https://bell-sw.com/pages/liberica-native-image-kit/">Bellsoft Liberica</a></td>
 <td><a href="https://github.com/paketo-buildpacks/bellsoft-liberica">Paketo Bellsoft Liberica Buildpack</a></td>
 </tr>
+<tr>
+<td><a href="https://www.graalvm.org/docs/introduction/">GraalVM</a></td>
+<td><a href="https://github.com/paketo-buildpacks/graalvm">Paketo GraalVM Buildpack</a></td>
+</tr>
 </tbody>
 </table>
 <p>To use an alternative Java Native Image Toolkit, you will need to set two <code>--buildpack</code> arguments to <code>pack build</code>, one for the alternative Java Native Image Toolkit buildpack you&rsquo;d like to use and one for the Paketo Java Native Image buildpack (in that order). This works because while you end up with two Java Native Image Toolkit buildpacks, the first one, the one you&rsquo;re specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.</p>
-<p>This example will switch in the Bellsoft Liberica buildpack:</p>
+<p>This example will switch in the GraalVM buildpack:</p>
 <div class="copyable">
-    <pre class="copyable__code">pack build samples/native-image --buildpack paketo-buildpacks/bellsoft-liberica --buildpack paketo-buildpacks/java-native-image`
+    <pre class="copyable__code">pack build samples/native-image --buildpack paketo-buildpacks/graalvm --buildpack paketo-buildpacks/java-native-image`
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -970,7 +974,7 @@ pack build samples/java-native \
 <p>If you have customized your Java Native Image Toolkit buildpack to download the Java Native Image Toolkit from a URL that uses a certificate not signed by a well-known CA, you can workaround this by specifying the CA certs buildpack to run first. This works because while you will end up with the CA certificates buildpack specified twice, the lifecycle is smart enough to drop the second one.</p>
 <p>For example:</p>
 <div class="copyable">
-    <pre class="copyable__code">pack build samples/jar --buildpack paketo-buildpacks/ca-certificates --buildpack paketo-buildpacks/bellsoft-liberica --buildpack paketo-buildpacks/java-native-image`
+    <pre class="copyable__code">pack build samples/jar --buildpack paketo-buildpacks/ca-certificates --buildpack paketo-buildpacks/graalvm --buildpack paketo-buildpacks/java-native-image`
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -1279,7 +1283,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> February 8, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 10, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
