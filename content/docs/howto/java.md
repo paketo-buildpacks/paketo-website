@@ -330,18 +330,19 @@ pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buil
 
 ### Use an Alternative Java Native Image Toolkit
 
-By default, the [Paketo Java Native Image buildpack][bp/java-native-image] will use the GraalVM Native Image Toolkit. The following Paketo JVM buildpacks may be used to substitute alternate Native Image Toolkit implemenations in place of the default.
+By default, the [Paketo Java Native Image buildpack][bp/java-native-image] will use Bellsoft's Native Image Toolkit. The following Paketo JVM buildpacks may be used to substitute alternate Native Image Toolkit implemenations in place of the default.
 
 | JVM                                                                       | Buildpack                                                  |
 | ------------------------------------------------------------------------- | ---------------------------------------------------------- |
 | [Bellsoft Liberica](https://bell-sw.com/pages/liberica-native-image-kit/) | [Paketo Bellsoft Liberica Buildpack][bp/bellsoft-liberica] |
+| [GraalVM][graalvm]                                                        | [Paketo GraalVM Buildpack][bp/graalvm]                     |
 
 To use an alternative Java Native Image Toolkit, you will need to set two `--buildpack` arguments to `pack build`, one for the alternative Java Native Image Toolkit buildpack you'd like to use and one for the Paketo Java Native Image buildpack (in that order). This works because while you end up with two Java Native Image Toolkit buildpacks, the first one, the one you're specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.
 
-This example will switch in the Bellsoft Liberica buildpack:
+This example will switch in the GraalVM buildpack:
 
 {{< code/copyable >}}
-pack build samples/native-image --buildpack paketo-buildpacks/bellsoft-liberica --buildpack paketo-buildpacks/java-native-image`
+pack build samples/native-image --buildpack paketo-buildpacks/graalvm --buildpack paketo-buildpacks/java-native-image`
 {{< /code/copyable >}}
 
 There is one drawback to this approach. When using the method above to specify an alternative Java Native Image Toolkit vendor buildpack, this alternate buildpack ends up running before the CA certs buildpack and therefore traffic from the alternate Java Native Image Toolkit vendor buildpack won’t trust any additional CA certs. This is not expected to impact many users because Java Native Image Toolkit buildpacks should reach out to URLs that have a cert signed by a known authority with a CA in the default system truststore.
@@ -351,7 +352,7 @@ If you have customized your Java Native Image Toolkit buildpack to download the 
 For example:
 
 {{< code/copyable >}}
-pack build samples/jar --buildpack paketo-buildpacks/ca-certificates --buildpack paketo-buildpacks/bellsoft-liberica --buildpack paketo-buildpacks/java-native-image`
+pack build samples/jar --buildpack paketo-buildpacks/ca-certificates --buildpack paketo-buildpacks/graalvm --buildpack paketo-buildpacks/java-native-image`
 {{< /code/copyable >}}
 
 It does not hurt to use this command for all situations, it is just more verbose and most users can get away without specifying the CA certificates buildpack to be first.
