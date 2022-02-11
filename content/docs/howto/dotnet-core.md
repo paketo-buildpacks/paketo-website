@@ -227,7 +227,7 @@ project-level configurations.
 
 The resulting command will look like:
 {{< code/copyable >}}
-pack build --env SERVICE_BINDING_ROOT=/bindings --volume <absolute-path-to-binding>:/bindings/nugetconfig <image-name>
+pack build myapp --env SERVICE_BINDING_ROOT=/bindings --volume <absolute-path-to-binding>:/bindings/nugetconfig
 {{< /code/copyable >}}
 
 #### Via Application Source Code

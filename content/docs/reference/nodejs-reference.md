@@ -16,6 +16,14 @@ For more details on the specific versions supported in a given buildpack
 version, see the [release
 notes](https://github.com/paketo-buildpacks/nodejs/releases).
 
+## Supported Service Bindings
+The Node.js buildpack can be configured using [service bindings][service-binding].
+####
+| `type`             | Required Files      | # Bindings of This Type Accepted |
+|--------------------|---------------------|----------------------------------|
+| [`npmrc`][npmrc]   | `type`, `.npmrc`    | 0 or 1                           |
+| [`yarnrc`][yarnrc] | `type`, `.yarnrc`   | 0 or 1                           |
+
 ## Buildpack-Set Environment Variables
 The Node.js buildpack sets a number of environment variables during the `build` and
 `launch` phases of the app lifecycle. The sections below describe each
@@ -207,3 +215,8 @@ The Node.js buildpack supports the full [bill of materials]({{< ref "docs/concep
 * [language module entries]({{< ref "docs/concepts/bom#language-module-entries" >}}) for each `node module` that is either vendored in or installed via NPM or Yarn.
 
 The `node module` BOM entries provide a full picture of the packages on the final app image. The `purl` field is especially helpful to locate where on the NPM Registry a module came from. Check out the [Access the Bill of Materials guide]({{< ref "docs/howto/bom" >}}) for more information about how to retrieve the BOM for your Node.js app image.
+
+<!-- References -->
+[yarnrc]:{{< ref "docs/howto/nodejs#configure-yarn-during-the-build" >}}
+[npmrc]:{{< ref "docs/howto/nodejs#configure-npm-during-the-build" >}}
+[service-binding]:{{< ref "docs/howto/configuration#bindings" >}}

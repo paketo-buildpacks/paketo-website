@@ -24,6 +24,14 @@ If you would like to know more about the policy please refer to this
 [documentation](https://docs.microsoft.com/en-us/dotnet/core/versions/selection)
 provided by Microsoft.
 
+## Supported Service Bindings
+The .NET Core buildpack can be configured using [service bindings][service-binding].
+####
+| `type`                       | Required Files         | # Bindings of This Type Accepted |
+|------------------------------|------------------------|----------------------------------|
+| [`nugetconfig`][nugetconfig] | `type`, `nuget.config` | 0 or 1                           |
+
+
 ## Behavior
 The Paketo .NET Core buildpack is a [composite buildpack][paketo/composite-buildpack] designed to build .NET Core applications in several different forms.
 
@@ -134,3 +142,5 @@ variable.
 <!-- References -->
 [paketo/composite-buildpack]:{{< ref "docs/concepts/buildpacks#composite-buildpacks" >}}
 [dotnet/cli-docs]:https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish
+[service-binding]:{{< ref "docs/howto/configuration#bindings" >}}
+[nugetconfig]:{{< ref "docs/howto/dotnet-core#via-service-bindings" >}}
