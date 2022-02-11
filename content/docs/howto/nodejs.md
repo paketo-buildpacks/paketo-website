@@ -153,7 +153,7 @@ you could then set the following at build time.
 $BP_NODE_PROJECT_PATH=node-app
 ```
 
-## Specifying Scripts to Run During Build Phase
+## Run Scripts During Build Phase
 To specify a script or series of scripts to run during build phase, please use the 
 `BP_NODE_RUN_SCRIPTS` environment variable at build time either directly or through a 
 [`project.toml`](https://buildpacks.io/docs/app-developer-guide/using-project-descriptor). This 
@@ -188,6 +188,24 @@ Configuration [documentation](https://docs.npmjs.com/cli/v6/using-npm/config)
 and the `.npmrc`
 [documentation](https://docs.npmjs.com/cli/v6/configuring-npm/npmrc).
 
+#### Project-level `.npmrc`
+Adding an `.npmrc` file in your app's working directory will allow you to provide
+[project-level][npmrc/precedence] `npm` configuration.
+
+#### Global `.npmrc`
+Some users may prefer not to include an `.npmrc` file in their source code 
+and app image (e.g. if an `.npmrc` contains credentials for connecting
+to a private registry). The `.npmrc` can be provided via a [service binding][service-binding]
+whose `type` is `npmrc`. The binding must contain a file called `.npmrc`.
+The Node.js Buildpack will set this binding as the [`NPM_CONFIG_GLOBALCONFIG`][npmrc/precedence] in
+the build environment.
+To `pack build` with the binding:
+{{< code/copyable >}}
+pack build myapp \
+    --env SERVICE_BINDING_ROOT=/bindings \
+    --volume <absolute-path-to-binding-dir>:/bindings/npmrc
+{{< /code/copyable >}}
+
 ## Build an App that Uses Yarn
 The Node.js buildpack can detect automatically if an app requires `yarn`, by
 checking for a `yarn.lock` file.
@@ -196,6 +214,23 @@ checking for a `yarn.lock` file.
 The Node.js buildpack respects native configuration options for Yarn. If you would
 like to learn more about Yarn configuration using `.yarnrc` please visit [the
 Yarn documentation](https://classic.yarnpkg.com/en/docs/yarnrc).
+
+#### Project-level `.yarnrc`
+Adding an `.yarnrc` file in your app's working directory will allow you to provide
+project-level `yarn` configuration.
+
+#### User-level `.yarnrc`
+Some users may prefer not to include an `.yarnrc` file in their source code 
+and app image. The `.yarnrc` can be provided via a [service binding][service-binding]
+whose `type` is `yarnrc`. The binding must contain a file called `.yarnrc`.
+The Node.js Buildpack will set this binding as the user-level `.yarnrc` in
+the build environment. It will not be present in the launch environment.
+To `pack build` with the binding:
+{{< code/copyable >}}
+pack build myapp \
+    --env SERVICE_BINDING_ROOT=/bindings \
+    --volume <absolute-path-to-binding-dir>:/bindings/yarnrc
+{{< /code/copyable >}}
 
 ## Compile Native Extensions with `node-gyp`
 If your app requires compilation of native extensions using `node-gyp`, the Node.js buildpack requires that
@@ -305,3 +340,5 @@ section of our configuration docs.
 [tilt/pack]:https://github.com/tilt-dev/tilt-extensions/tree/master/pack
 [definition/platform]:https://buildpacks.io/docs/concepts/components/platform
 [project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/
+[service-binding]:{{< ref "docs/howto/configuration#bindings" >}}
+[npmrc/precedence]:https://docs.npmjs.com/cli/v8/using-npm/config#npmrc-files
