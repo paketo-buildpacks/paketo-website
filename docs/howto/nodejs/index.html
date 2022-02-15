@@ -472,7 +472,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
     </li>
     <li><a href="#build-an-app-from-source-in-a-subdirectory">Build an App From Source in a Subdirectory</a></li>
-    <li><a href="#specifying-scripts-to-run-during-build-phase">Specifying Scripts to Run During Build Phase</a></li>
+    <li><a href="#run-scripts-during-build-phase">Run Scripts During Build Phase</a></li>
     <li><a href="#build-an-app-that-uses-npm">Build an App that Uses NPM</a>
       <ul>
         <li><a href="#configure-npm-during-the-build">Configure NPM During the Build</a></li>
@@ -672,9 +672,9 @@ This could be useful if your app is a part of a monorepo.</p>
     └── package.json
 </code></pre><p>you could then set the following at build time.</p>
 <pre tabindex="0"><code>$BP_NODE_PROJECT_PATH=node-app
-</code></pre><h2 id="specifying-scripts-to-run-during-build-phase" class="markup-heading">
-    <a class="markup-heading__link" href="#specifying-scripts-to-run-during-build-phase">
-        Specifying Scripts to Run During Build Phase
+</code></pre><h2 id="run-scripts-during-build-phase" class="markup-heading">
+    <a class="markup-heading__link" href="#run-scripts-during-build-phase">
+        Run Scripts During Build Phase
     </a>
 </h2><p>To specify a script or series of scripts to run during build phase, please use the
 <code>BP_NODE_RUN_SCRIPTS</code> environment variable at build time either directly or through a
@@ -708,6 +708,31 @@ like to learn more about NPM native configuration please check the NPM
 Configuration <a href="https://docs.npmjs.com/cli/v6/using-npm/config">documentation</a>
 and the <code>.npmrc</code>
 <a href="https://docs.npmjs.com/cli/v6/configuring-npm/npmrc">documentation</a>.</p>
+<h4 id="project-level-npmrc" class="markup-heading">
+    <a class="markup-heading__link" href="#project-level-npmrc">
+        Project-level <code>.npmrc</code>
+    </a>
+</h4><p>Adding an <code>.npmrc</code> file in your app&rsquo;s working directory will allow you to provide
+<a href="https://docs.npmjs.com/cli/v8/using-npm/config#npmrc-files">project-level</a> <code>npm</code> configuration.</p>
+<h4 id="global-npmrc" class="markup-heading">
+    <a class="markup-heading__link" href="#global-npmrc">
+        Global <code>.npmrc</code>
+    </a>
+</h4><p>Some users may prefer not to include an <code>.npmrc</code> file in their source code
+and app image (e.g. if an <code>.npmrc</code> contains credentials for connecting
+to a private registry). The <code>.npmrc</code> can be provided via a <a href="https://paketo.io/docs/howto/configuration/#bindings">service binding</a>
+whose <code>type</code> is <code>npmrc</code>. The binding must contain a file called <code>.npmrc</code>.
+The Node.js Buildpack will set this binding as the <a href="https://docs.npmjs.com/cli/v8/using-npm/config#npmrc-files"><code>NPM_CONFIG_GLOBALCONFIG</code></a> in
+the build environment.
+To <code>pack build</code> with the binding:
+<div class="copyable">
+    <pre class="copyable__code">pack build myapp \
+    --env SERVICE_BINDING_ROOT=/bindings \
+    --volume &lt;absolute-path-to-binding-dir&gt;:/bindings/npmrc
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="build-an-app-that-uses-yarn" class="markup-heading">
     <a class="markup-heading__link" href="#build-an-app-that-uses-yarn">
         Build an App that Uses Yarn
@@ -721,6 +746,30 @@ checking for a <code>yarn.lock</code> file.</p>
 </h3><p>The Node.js buildpack respects native configuration options for Yarn. If you would
 like to learn more about Yarn configuration using <code>.yarnrc</code> please visit <a href="https://classic.yarnpkg.com/en/docs/yarnrc">the
 Yarn documentation</a>.</p>
+<h4 id="project-level-yarnrc" class="markup-heading">
+    <a class="markup-heading__link" href="#project-level-yarnrc">
+        Project-level <code>.yarnrc</code>
+    </a>
+</h4><p>Adding an <code>.yarnrc</code> file in your app&rsquo;s working directory will allow you to provide
+project-level <code>yarn</code> configuration.</p>
+<h4 id="user-level-yarnrc" class="markup-heading">
+    <a class="markup-heading__link" href="#user-level-yarnrc">
+        User-level <code>.yarnrc</code>
+    </a>
+</h4><p>Some users may prefer not to include an <code>.yarnrc</code> file in their source code
+and app image. The <code>.yarnrc</code> can be provided via a <a href="https://paketo.io/docs/howto/configuration/#bindings">service binding</a>
+whose <code>type</code> is <code>yarnrc</code>. The binding must contain a file called <code>.yarnrc</code>.
+The Node.js Buildpack will set this binding as the user-level <code>.yarnrc</code> in
+the build environment. It will not be present in the launch environment.
+To <code>pack build</code> with the binding:
+<div class="copyable">
+    <pre class="copyable__code">pack build myapp \
+    --env SERVICE_BINDING_ROOT=/bindings \
+    --volume &lt;absolute-path-to-binding-dir&gt;:/bindings/yarnrc
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="compile-native-extensions-with-node-gyp" class="markup-heading">
     <a class="markup-heading__link" href="#compile-native-extensions-with-node-gyp">
         Compile Native Extensions with <code>node-gyp</code>
@@ -876,7 +925,7 @@ section of our configuration docs.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> February 14, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 15, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -899,7 +948,7 @@ section of our configuration docs.</p>
       </ul>
     </li>
     <li><a href="#build-an-app-from-source-in-a-subdirectory">Build an App From Source in a Subdirectory</a></li>
-    <li><a href="#specifying-scripts-to-run-during-build-phase">Specifying Scripts to Run During Build Phase</a></li>
+    <li><a href="#run-scripts-during-build-phase">Run Scripts During Build Phase</a></li>
     <li><a href="#build-an-app-that-uses-npm">Build an App that Uses NPM</a>
       <ul>
         <li><a href="#configure-npm-during-the-build">Configure NPM During the Build</a></li>

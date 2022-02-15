@@ -460,6 +460,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#net-core-framework-version-selection">.NET Core Framework Version Selection</a></li>
       </ul>
     </li>
+    <li><a href="#supported-service-bindings">Supported Service Bindings</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
     <li><a href="#behavior">Behavior</a>
       <ul>
         <li><a href="#supported-application-types">Supported Application Types</a></li>
@@ -508,6 +513,31 @@ same version selection policy that Microsoft has put together for .NET Core Fram
 If you would like to know more about the policy please refer to this
 <a href="https://docs.microsoft.com/en-us/dotnet/core/versions/selection">documentation</a>
 provided by Microsoft.</p>
+<h2 id="supported-service-bindings" class="markup-heading">
+    <a class="markup-heading__link" href="#supported-service-bindings">
+        Supported Service Bindings
+    </a>
+</h2><p>The .NET Core buildpack can be configured using <a href="https://paketo.io/docs/howto/configuration/#bindings">service bindings</a>.</p>
+<h4 id="heading" class="markup-heading">
+    <a class="markup-heading__link" href="#heading">
+        
+    </a>
+</h4><table>
+<thead>
+<tr>
+<th><code>type</code></th>
+<th>Required Files</th>
+<th># Bindings of This Type Accepted</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://paketo.io/docs/howto/dotnet-core/#via-service-bindings"><code>nugetconfig</code></a></td>
+<td><code>type</code>, <code>nuget.config</code></td>
+<td>0 or 1</td>
+</tr>
+</tbody>
+</table>
 <h2 id="behavior" class="markup-heading">
     <a class="markup-heading__link" href="#behavior">
         Behavior
@@ -652,7 +682,7 @@ variable.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> February 14, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 15, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -661,6 +691,11 @@ variable.</p>
     <li><a href="#supported-dependencies">Supported Dependencies</a>
       <ul>
         <li><a href="#net-core-framework-version-selection">.NET Core Framework Version Selection</a></li>
+      </ul>
+    </li>
+    <li><a href="#supported-service-bindings">Supported Service Bindings</a>
+      <ul>
+        <li></li>
       </ul>
     </li>
     <li><a href="#behavior">Behavior</a>

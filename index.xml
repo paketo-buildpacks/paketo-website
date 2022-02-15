@@ -285,7 +285,7 @@ git clone https://github.com/paketo-buildpacks/samples \ &amp;amp;&amp;amp; cd s
       <guid>https://paketo.io/docs/reference/nodejs-reference/</guid>
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Node.js Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Node.js Buildpack How To documentation.
 Supported Dependencies  The Node.js buildpack supports several versions of Node.js. For more details on the specific versions supported in a given buildpack version, see the release notes.
-Buildpack-Set Environment Variables  The Node.</description>
+Supported Service Bindings  The Node.</description>
     </item>
     
     <item>

@@ -456,6 +456,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <nav id="TableOfContents">
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#supported-service-bindings">Supported Service Bindings</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
       <ul>
         <li><a href="#memory_available">MEMORY_AVAILABLE</a></li>
@@ -503,6 +508,36 @@ the  Paketo Node.js Buildpack  How To <a href="/docs/howto/nodejs">documentation
 For more details on the specific versions supported in a given buildpack
 version, see the <a href="https://github.com/paketo-buildpacks/nodejs/releases">release
 notes</a>.</p>
+<h2 id="supported-service-bindings" class="markup-heading">
+    <a class="markup-heading__link" href="#supported-service-bindings">
+        Supported Service Bindings
+    </a>
+</h2><p>The Node.js buildpack can be configured using <a href="https://paketo.io/docs/howto/configuration/#bindings">service bindings</a>.</p>
+<h4 id="heading" class="markup-heading">
+    <a class="markup-heading__link" href="#heading">
+        
+    </a>
+</h4><table>
+<thead>
+<tr>
+<th><code>type</code></th>
+<th>Required Files</th>
+<th># Bindings of This Type Accepted</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://paketo.io/docs/howto/nodejs/#configure-npm-during-the-build"><code>npmrc</code></a></td>
+<td><code>type</code>, <code>.npmrc</code></td>
+<td>0 or 1</td>
+</tr>
+<tr>
+<td><a href="https://paketo.io/docs/howto/nodejs/#configure-yarn-during-the-build"><code>yarnrc</code></a></td>
+<td><code>type</code>, <code>.yarnrc</code></td>
+<td>0 or 1</td>
+</tr>
+</tbody>
+</table>
 <h2 id="buildpack-set-environment-variables" class="markup-heading">
     <a class="markup-heading__link" href="#buildpack-set-environment-variables">
         Buildpack-Set Environment Variables
@@ -789,6 +824,7 @@ app image&rsquo;s start command to <code>node &lt;entrypoint filename&gt;</code>
 <li><a href="https://paketo.io/docs/concepts/bom/#language-module-entries">language module entries</a> for each <code>node module</code> that is either vendored in or installed via NPM or Yarn.</li>
 </ul>
 <p>The <code>node module</code> BOM entries provide a full picture of the packages on the final app image. The <code>purl</code> field is especially helpful to locate where on the NPM Registry a module came from. Check out the <a href="https://paketo.io/docs/howto/bom/">Access the Bill of Materials guide</a> for more information about how to retrieve the BOM for your Node.js app image.</p>
+<!-- raw HTML omitted -->
 
             </div>
             
@@ -801,13 +837,18 @@ app image&rsquo;s start command to <code>node &lt;entrypoint filename&gt;</code>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> February 14, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 15, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#supported-service-bindings">Supported Service Bindings</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
       <ul>
         <li><a href="#memory_available">MEMORY_AVAILABLE</a></li>
