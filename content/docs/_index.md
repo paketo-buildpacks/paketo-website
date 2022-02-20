@@ -27,5 +27,5 @@ Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and
 [python-guide]:{{< relref "#python" >}}
 [builders]:{{< ref "docs/concepts/builders" >}}
 
-[install-docker]:https://docs.docker.com/get-docker/
-[install-pack]:https://buildpacks.io/docs/install-pack/
+[install-docker](https://docs.docker.com/get-docker/) 
+[install-pack](https://buildpacks.io/docs/install-pack/)
