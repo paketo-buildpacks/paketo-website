@@ -157,3 +157,6 @@ curl http://localhost:8080/
 {{< /code/output >}}
 
 You can also visit `http://localhost:8080` with your browser to see the app's homepage.
+
+[install-docker]:https://docs.docker.com/get-docker/
+[install-pack]:https://buildpacks.io/docs/install-pack/

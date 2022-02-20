@@ -138,3 +138,6 @@ You've done it! As you can see, Paketo buildpacks do most of the hard work for y
 Check out more [sample apps](https://github.com/paketo-buildpacks/samples) that work with Paketo Buildpacks.
 
 Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.
+
+[install-docker]:https://docs.docker.com/get-docker/
+[install-pack]:https://buildpacks.io/docs/install-pack/

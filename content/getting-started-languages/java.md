@@ -201,3 +201,5 @@ Check out more [sample apps](https://github.com/paketo-buildpacks/samples) that 
 
 Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.
 
+[install-docker]:https://docs.docker.com/get-docker/
+[install-pack]:https://buildpacks.io/docs/install-pack/
