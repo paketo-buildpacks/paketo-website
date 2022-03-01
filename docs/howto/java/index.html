@@ -510,7 +510,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="docs-body__markdown">
                 <p>This documentation explains how to use the Paketo buildpacks
 to build Java applications for several common use-cases. For more in-depth
-description of the buildpacks' behavior and configuration see the <a href="https://paketo.io/docs/reference/java-reference/">Paketo Java Buildpack</a> and <a href="https://paketo.io/docs/reference/java-native-image-reference/">Paketo Java Native Image Buildpack</a> reference documentation.</p>
+description of the buildpacks&rsquo; behavior and configuration see the <a href="https://paketo.io/docs/reference/java-reference/">Paketo Java Buildpack</a> and <a href="https://paketo.io/docs/reference/java-native-image-reference/">Paketo Java Native Image Buildpack</a> reference documentation.</p>
 <h2 id="about-the-examples" class="markup-heading">
     <a class="markup-heading__link" href="#about-the-examples">
         About the Examples
@@ -617,10 +617,10 @@ Artifact</a>.</p>
         Connect to a Private Maven Repository
     </a>
 </h5><p>A <a href="https://paketo.io/docs/howto/configuration/#bindings">binding</a> with type <code>maven</code> and key <code>settings.xml</code> can be used to provide custom <a href="https://maven.apache.org/settings.html">Maven settings</a>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain">&lt;binding-name&gt;
-├── settings.xml
-└── type
-</code></pre></div><p>The value of <code>settings.xml</code> file may contain the credentials needed to connect to a private Maven repository.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;binding-name&gt;
+</span></span><span class="line"><span class="cl">├── settings.xml
+</span></span><span class="line"><span class="cl">└── type
+</span></span></code></pre></div><p>The value of <code>settings.xml</code> file may contain the credentials needed to connect to a private Maven repository.</p>
 <p><strong>Example</strong>: Providing Maven Settings</p>
 <p>The following steps demonstrate how to use a <code>settings.xml</code> file from your workstation with <code>pack</code>.</p>
 <ol>

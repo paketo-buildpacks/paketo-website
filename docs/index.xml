@@ -11,7 +11,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/howto/java/</guid>
-      <description>This documentation explains how to use the Paketo buildpacks to build Java applications for several common use-cases. For more in-depth description of the buildpacks&#39; behavior and configuration see the Paketo Java Buildpack and Paketo Java Native Image Buildpack reference documentation.
+      <description>This documentation explains how to use the Paketo buildpacks to build Java applications for several common use-cases. For more in-depth description of the buildpacks&amp;rsquo; behavior and configuration see the Paketo Java Buildpack and Paketo Java Native Image Buildpack reference documentation.
 About the Examples  All Java Buildpack examples will use the Paketo sample applications.
 Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples  Copied!</description>
     </item>
@@ -67,7 +67,7 @@ Prerequisites
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/howto/web-servers/</guid>
-      <description>This documentation explains how to use Paketo buildpacks to build applications that run web servers like HTTPD and NGINX. These docs focus on explaining common user workflows. For more in-depth description of the buildpacks&#39; behavior and configuration, see the reference documentation for each web server buildpack.
+      <description>This documentation explains how to use Paketo buildpacks to build applications that run web servers like HTTPD and NGINX. These docs focus on explaining common user workflows. For more in-depth description of the buildpacks&amp;rsquo; behavior and configuration, see the reference documentation for each web server buildpack.
 HTTPD  This documentation explains how to use the Paketo HTTPD Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo HTTPD Buildpack Reference documentation.</description>
     </item>
     

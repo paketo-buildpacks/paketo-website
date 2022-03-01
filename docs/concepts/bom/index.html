@@ -527,29 +527,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         What is the output format of a Paketo BOM?
     </a>
 </h2><p>Buildpacks provide a bill of materials by adding metadata to the app image when it is built. Paketo buildpacks add entries to the bill of materials as <code>JSON</code> objects with the following schema:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain">{
-  &#34;name&#34;: &lt;name of the dependency&gt;,
-  &#34;metadata&#34;: {
-    &#34;checksum&#34;: {
-      &#34;algorithm&#34;: &lt;CycloneDX-supported hash algorithm (&#39;MD5&#39;, &#39;SHA-1&#39;, &#39;SHA-256&#39;, &#39;SHA-384&#39;, &#39;SHA-512&#39;, &#39;SHA3-256&#39;, &#39;SHA3-384&#39;, &#39;SHA3-512&#39;, &#39;BLAKE2b-256&#39;, &#39;BLAKE2b-384&#39;, &#39;BLAKE2b-512&#39;, &#39;BLAKE3&#39;)&gt;,
-      &#34;hash&#34;: &lt;hash of the dependency&gt;
-    },
-    &#34;cpe&#34;: &lt;dependency/version specific common platform enumeration&gt;,
-    &#34;deprecation-date&#34;: &lt;date of package deprecation&gt;,
-    &#34;licenses&#34;: &lt;[list of all licensesn SPDX format]&gt;,
-    &#34;purl&#34;: &lt;dependency/version specific package URL&gt;,
-    &#34;source&#34;: {
-      &#34;checksum&#34;: {
-        &#34;algorithm&#34;: &lt;CycloneDX-supported hash algorithm (&#39;MD5&#39;, &#39;SHA-1&#39;, &#39;SHA-256&#39;, &#39;SHA-384&#39;, &#39;SHA-512&#39;, &#39;SHA3-256&#39;, &#39;SHA3-384&#39;, &#39;SHA3-512&#39;, &#39;BLAKE2b-256&#39;, &#39;BLAKE2b-384&#39;, &#39;BLAKE2b-512&#39;, &#39;BLAKE3&#39;)&gt;,
-        &#34;hash&#34;: &lt;hash of the dependency&gt;
-      },
-      &#34;uri&#34;: &lt;package upstream source URI&gt;
-    },
-    &#34;uri&#34;: &#34;&lt;compiled package URI&gt;&#34;,
-    &#34;version&#34;: &lt;dependency version&gt;
-  }
-}
-</code></pre></div><p>Paketo buildpacks generate two main types of BOM entries: <em>buildpack entries</em> and <em>language module entries</em>. To help explain these types, we will use as an example the bill of materials of the app in the <a href="https://paketo.io/docs/howto/bom/#access-the-bill-of-materials-on-a-sample-node-application">How to Access the Bill of Materials guide</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;name&#34;: &lt;name of the dependency&gt;,
+</span></span><span class="line"><span class="cl">  &#34;metadata&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;checksum&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;algorithm&#34;: &lt;CycloneDX-supported hash algorithm (&#39;MD5&#39;, &#39;SHA-1&#39;, &#39;SHA-256&#39;, &#39;SHA-384&#39;, &#39;SHA-512&#39;, &#39;SHA3-256&#39;, &#39;SHA3-384&#39;, &#39;SHA3-512&#39;, &#39;BLAKE2b-256&#39;, &#39;BLAKE2b-384&#39;, &#39;BLAKE2b-512&#39;, &#39;BLAKE3&#39;)&gt;,
+</span></span><span class="line"><span class="cl">      &#34;hash&#34;: &lt;hash of the dependency&gt;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;cpe&#34;: &lt;dependency/version specific common platform enumeration&gt;,
+</span></span><span class="line"><span class="cl">    &#34;deprecation-date&#34;: &lt;date of package deprecation&gt;,
+</span></span><span class="line"><span class="cl">    &#34;licenses&#34;: &lt;[list of all licensesn SPDX format]&gt;,
+</span></span><span class="line"><span class="cl">    &#34;purl&#34;: &lt;dependency/version specific package URL&gt;,
+</span></span><span class="line"><span class="cl">    &#34;source&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;checksum&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;algorithm&#34;: &lt;CycloneDX-supported hash algorithm (&#39;MD5&#39;, &#39;SHA-1&#39;, &#39;SHA-256&#39;, &#39;SHA-384&#39;, &#39;SHA-512&#39;, &#39;SHA3-256&#39;, &#39;SHA3-384&#39;, &#39;SHA3-512&#39;, &#39;BLAKE2b-256&#39;, &#39;BLAKE2b-384&#39;, &#39;BLAKE2b-512&#39;, &#39;BLAKE3&#39;)&gt;,
+</span></span><span class="line"><span class="cl">        &#34;hash&#34;: &lt;hash of the dependency&gt;
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">      &#34;uri&#34;: &lt;package upstream source URI&gt;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;uri&#34;: &#34;&lt;compiled package URI&gt;&#34;,
+</span></span><span class="line"><span class="cl">    &#34;version&#34;: &lt;dependency version&gt;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><p>Paketo buildpacks generate two main types of BOM entries: <em>buildpack entries</em> and <em>language module entries</em>. To help explain these types, we will use as an example the bill of materials of the app in the <a href="https://paketo.io/docs/howto/bom/#access-the-bill-of-materials-on-a-sample-node-application">How to Access the Bill of Materials guide</a>.</p>
 <h3 id="buildpack-entries" class="markup-heading">
     <a class="markup-heading__link" href="#buildpack-entries">
         Buildpack Entries
@@ -558,68 +558,68 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>A buildpack entry contains the version, vulnerability identifiers (CPE and pURL), all potential licenses, checksums for both the source and the compiled dependency, source information, and the name of the buildpack that installed the dependency.</p>
 <p>Below, see an example of the buildpack entry for the Node.js runtime installed by the <a href="
 https://github.com/paketo-buildpacks/node-engine">Paketo Node Engine buildpack</a>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Node Engine&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;checksum&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;algorithm&#34;</span><span class="p">:</span> <span class="s2">&#34;SHA-256&#34;</span><span class="p">,</span>
-      <span class="nt">&#34;hash&#34;</span><span class="p">:</span> <span class="s2">&#34;a50ee095f936b51fffe5c032a7377a156723145c1ab0291ccc882f04719f1b54&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;cpe&#34;</span><span class="p">:</span> <span class="s2">&#34;cpe:2.3:a:nodejs:node.js:16.7.0:*:*:*:*:*:*:*&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;deprecation-date&#34;</span><span class="p">:</span> <span class="s2">&#34;2024-04-30T00:00:00Z&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;licenses&#34;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="s2">&#34;0BSD&#34;</span><span class="p">,</span>
-      <span class="s2">&#34;Apache-2.0&#34;</span><span class="p">,</span>
-      <span class="s2">&#34;Artistic-2.0&#34;</span><span class="p">,</span>
-      <span class="s2">&#34;BSD-2-Clause&#34;</span><span class="p">,</span>
-      <span class="s2">&#34;BSD-3-Clause&#34;</span><span class="p">,</span>
-      <span class="s2">&#34;BSD-3-Clause-Clear&#34;</span><span class="p">,</span>
-      <span class="s2">&#34;CC0-1.0&#34;</span><span class="p">,</span>
-      <span class="s2">&#34;MIT&#34;</span><span class="p">,</span>
-      <span class="s2">&#34;MIT-0&#34;</span><span class="p">,</span>
-      <span class="s2">&#34;Unicode-TOU&#34;</span>
-    <span class="p">],</span>
-    <span class="nt">&#34;purl&#34;</span><span class="p">:</span> <span class="s2">&#34;pkg:generic/node@v16.7.0?checksum=0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&amp;download_url=https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;checksum&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;algorithm&#34;</span><span class="p">:</span> <span class="s2">&#34;SHA-256&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;hash&#34;</span><span class="p">:</span> <span class="s2">&#34;0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&#34;</span>
-      <span class="p">},</span>
-      <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;stacks&#34;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="s2">&#34;io.buildpacks.stacks.bionic&#34;</span>
-    <span class="p">],</span>
-    <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://deps.paketo.io/node/node_v16.7.0_linux_x64_bionic_a50ee095.tgz&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;16.7.0&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;buildpacks&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;paketo-buildpacks/node-engine&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.2.3&#34;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><h3 id="language-module-entries" class="markup-heading">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Node Engine&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;checksum&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;algorithm&#34;</span><span class="p">:</span> <span class="s2">&#34;SHA-256&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;hash&#34;</span><span class="p">:</span> <span class="s2">&#34;a50ee095f936b51fffe5c032a7377a156723145c1ab0291ccc882f04719f1b54&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;cpe&#34;</span><span class="p">:</span> <span class="s2">&#34;cpe:2.3:a:nodejs:node.js:16.7.0:*:*:*:*:*:*:*&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;deprecation-date&#34;</span><span class="p">:</span> <span class="s2">&#34;2024-04-30T00:00:00Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;licenses&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;0BSD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Apache-2.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Artistic-2.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;BSD-2-Clause&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;BSD-3-Clause&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;BSD-3-Clause-Clear&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;CC0-1.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;MIT&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;MIT-0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Unicode-TOU&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;purl&#34;</span><span class="p">:</span> <span class="s2">&#34;pkg:generic/node@v16.7.0?checksum=0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&amp;download_url=https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;checksum&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;algorithm&#34;</span><span class="p">:</span> <span class="s2">&#34;SHA-256&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;hash&#34;</span><span class="p">:</span> <span class="s2">&#34;0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;stacks&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;io.buildpacks.stacks.bionic&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://deps.paketo.io/node/node_v16.7.0_linux_x64_bionic_a50ee095.tgz&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;16.7.0&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;buildpacks&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;paketo-buildpacks/node-engine&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.2.3&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="language-module-entries" class="markup-heading">
     <a class="markup-heading__link" href="#language-module-entries">
         Language Module Entries
     </a>
 </h3><p>A language module entry is an entry for a dependency that a Paketo buildpack installs using a dependency manager (e.g. Node.js module, Maven package). The buildpacks generate these entries by gathering metadata about packages after they have been installed.</p>
 <p>A language module entry contains the version, vulnerability identifiers (pURL), all potential licenses, and the name of the buildpack that generated the entry.</p>
 <p>Below, see an example of a language module entry for a Node.js module.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;httpdispatcher&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;licenses&#34;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="s2">&#34;MIT&#34;</span>
-    <span class="p">],</span>
-    <span class="nt">&#34;purl&#34;</span><span class="p">:</span> <span class="s2">&#34;pkg:npm/httpdispatcher@2.1.2&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;2.1.2&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;buildpack&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;paketo-buildpacks/node-module-bom&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.2.3&#34;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><h2 id="heading" class="markup-heading">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;httpdispatcher&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;licenses&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;MIT&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;purl&#34;</span><span class="p">:</span> <span class="s2">&#34;pkg:npm/httpdispatcher@2.1.2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;2.1.2&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;buildpack&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;paketo-buildpacks/node-module-bom&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.2.3&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="heading" class="markup-heading">
     <a class="markup-heading__link" href="#heading">
         
     </a>

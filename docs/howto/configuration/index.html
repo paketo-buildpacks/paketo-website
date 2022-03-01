@@ -700,8 +700,8 @@ on the filesystem, where either the <code>type</code> or <code>kind</code> file 
         Procfiles
     </a>
 </h3><p>Paketo users may override buildpack-provided types or augment the app-image with additional process types using a <code>Procfile</code>.  <code>Procfile</code> support is provided by the <a href="https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a>. The Procfile Buildpack will search for a file named <code>Procfile</code> at the root of the application. <code>Procfiles</code> should adhere to the following schema:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain">&lt;type&gt;: &lt;command&gt;
-</code></pre></div><p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Procfile Buildpack it can be explicitly appended at runtime.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;type&gt;: &lt;command&gt;
+</span></span></code></pre></div><p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Procfile Buildpack it can be explicitly appended at runtime.</p>
 <p><strong>Example</strong>: A Hello World Procfile</p>
 <p>The following adds a process with <code>type</code> equal to <code>hello</code> and makes it the default process.
 <div class="copyable">
@@ -756,25 +756,25 @@ docker run samples/nodejs # should print &#34;hello world&#34;
     </a>
 </h2><p>Additional CA certificates may be added to the system truststore using the <a href="https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Buildpack</a>.</p>
 <p>CA certificates can be provided at both build and runtime with a <a href="#bindings">binding</a> of <code>type</code> <code>ca-certficates</code>. Each key value pair in the binding should map a certficate name to a single PEM encoded CA Certficates</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain">&lt;binding-name&gt;
-├── &lt;cert file name&gt;
-└── type
-</code></pre></div><p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Paketo CA Certificates Buildpack it can be explicitly prepended at runtime.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;binding-name&gt;
+</span></span><span class="line"><span class="cl">├── &lt;cert file name&gt;
+</span></span><span class="line"><span class="cl">└── type
+</span></span></code></pre></div><p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Paketo CA Certificates Buildpack it can be explicitly prepended at runtime.</p>
 <p><strong>Example</strong>: Adding a CA Certificate at Runtime</p>
 <p>The samples repository contains a simple Golang application that will make a <code>HEAD</code> request to a provided URL.</p>
 <p>Given a file <code>&lt;your-ca.pem&gt;</code> containing a single PEM encoded CA certificate needed to verify a TLS connection to <!-- raw HTML omitted --> an https<!-- raw HTML omitted --> URL <code>&lt;url&gt;</code>, add the CA certificate to the binding.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">cp &lt;your-ca.pem&gt; ca-certificates/binding/
-</code></pre></div><p>The provided sample contains a simple Golang application that will make a <code>HEAD</code> request to a provided URL. Build the application using the CA Certificates buildpack</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">pack build samples/ca-certificates <span class="se">\
-</span><span class="se"></span>    --path ca-certificates <span class="se">\
-</span><span class="se"></span>    --buildpack paketo-buildpacks/ca-certificates <span class="se">\
-</span><span class="se"></span>    --buildpack paketo-buildpacks/go
-</code></pre></div><p>Run the sample application, providing the binding, and passing the URL as a positional argument (should print <code>SUCCESS!</code>).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">docker run --rm <span class="se">\
-</span><span class="se"></span>  --env <span class="nv">SERVICE_BINDING_ROOT</span><span class="o">=</span>/bindings <span class="se">\
-</span><span class="se"></span>  --volume <span class="s2">&#34;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/ca-certficates/binding:/bindings/ca-certificates&#34;</span> <span class="se">\
-</span><span class="se"></span>  samples/ca-certificates &lt;url&gt;
-</code></pre></div><p><strong>Disabling CA Certificates</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp &lt;your-ca.pem&gt; ca-certificates/binding/
+</span></span></code></pre></div><p>The provided sample contains a simple Golang application that will make a <code>HEAD</code> request to a provided URL. Build the application using the CA Certificates buildpack</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pack build samples/ca-certificates <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --path ca-certificates <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --buildpack paketo-buildpacks/ca-certificates <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --buildpack paketo-buildpacks/go
+</span></span></code></pre></div><p>Run the sample application, providing the binding, and passing the URL as a positional argument (should print <code>SUCCESS!</code>).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --rm <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --env <span class="nv">SERVICE_BINDING_ROOT</span><span class="o">=</span>/bindings <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --volume <span class="s2">&#34;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/ca-certficates/binding:/bindings/ca-certificates&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  samples/ca-certificates &lt;url&gt;
+</span></span></code></pre></div><p><strong>Disabling CA Certificates</strong></p>
 <p>If a language family buildpack contains the Paketo CA Certifcates Buildpack,
 the CA Certificates Buildpack will always pass detection so that certificates
 can be provided dynamically at runtime.</p>
@@ -809,22 +809,22 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
         Configuring Locale
     </a>
 </h2><p>By default, an image created using Paketo buildpacks will not have a specific locale set. If you run <code>locale</code>, you&rsquo;ll end up with these settings:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">LANG</span><span class="o">=</span>
-<span class="nv">LANGUAGE</span><span class="o">=</span>
-<span class="nv">LC_CTYPE</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
-<span class="nv">LC_NUMERIC</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
-<span class="nv">LC_TIME</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
-<span class="nv">LC_COLLATE</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
-<span class="nv">LC_MONETARY</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
-<span class="nv">LC_MESSAGES</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
-<span class="nv">LC_PAPER</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
-<span class="nv">LC_NAME</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
-<span class="nv">LC_ADDRESS</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
-<span class="nv">LC_TELEPHONE</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
-<span class="nv">LC_MEASUREMENT</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
-<span class="nv">LC_IDENTIFICATION</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
-<span class="nv">LC_ALL</span><span class="o">=</span>
-</code></pre></div><p>If you wish to set a locale, you may do so when you run the image by setting the corresponding environment variable. For example, with Docker one could execute <code>docker run -e LANG=en_US.utf8 ...</code> to change the locale.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">LANG</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LANGUAGE</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LC_CTYPE</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LC_NUMERIC</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LC_TIME</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LC_COLLATE</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LC_MONETARY</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LC_MESSAGES</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LC_PAPER</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LC_NAME</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LC_ADDRESS</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LC_TELEPHONE</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LC_MEASUREMENT</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LC_IDENTIFICATION</span><span class="o">=</span><span class="s2">&#34;POSIX&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LC_ALL</span><span class="o">=</span>
+</span></span></code></pre></div><p>If you wish to set a locale, you may do so when you run the image by setting the corresponding environment variable. For example, with Docker one could execute <code>docker run -e LANG=en_US.utf8 ...</code> to change the locale.</p>
 <p>This isn&rsquo;t always necessary but can impact output from your application. For example if you have an application that writes unicode characters to STDOUT/STDERR and you go to view those, possibly with <code>docker logs</code>, they will not display correctly unless you have a locale set that supports unicode, like UTF-8 in the example above.</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
