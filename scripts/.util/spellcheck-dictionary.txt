@@ -7,7 +7,6 @@ APM
 ASPNET
 Alibaba
 Azul
-BOM
 BPL_[A-Z_]*(=.*)?
 BP_[A-Z_]*(=.*)?
 BellSoft
@@ -91,6 +90,7 @@ Rackup
 Repo
 RubyGems
 Runtimes
+SBOM
 SBT
 SBT\-[a-z]+
 SCD

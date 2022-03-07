@@ -134,6 +134,17 @@ cache layer in the app image.
 | [Paketo Procfile Buildpack][bp/procfile]              | Optional          | Sets a user-specified start command                   |
 | [Paketo Environment Variables Buildpack][bp/env-vars] | Optional          | Sets user-specified launch-time environment variables |
 | [Paketo Image Labels Buildpack][bp/image-labels]          | Optional          | Adds user-specified labels to app image metadata      |
+| [Paketo Watchexec Buildpack][bp/watchexec]          | Optional          | Installs [`watchexec`][watchexec]       |
+| [Paketo Git Buildpack][bp/git]          | Optional          | Enables `git` authentication and/or `git` metadata extraction during builds       |
+
+
+##  Software Bill of Materials
+The Go buildpack supports the full [software bill of materials][concepts/sbom]
+(SBOM) in [Syft][format/syft], [CycloneDX][format/cyclonedx], and
+[SPDX][format/spdx] formats. For apps with a `go.mod`, this includes Go module
+data.  See [Extract Go Module Information from a Build][howto/extract-modules]. The Go buildpack also
+includes limited support for the [Paketo-specific][format/paketo] SBOM format.
+This SBOM does not include Go module information.
 
 <!-- References -->
 [golang/tool-docs]:https://pkg.go.dev/cmd/go
@@ -153,3 +164,15 @@ cache layer in the app image.
 [bp/go-mod-vendor]:{{< bp_repo "go-mod-vendor" >}}
 [bp/image-labels]:{{< bp_repo "image-labels" >}}
 [bp/procfile]:{{< bp_repo "procfile" >}}
+[bp/watchexec]:{{< bp_repo "watchexec" >}}
+[bp/git]:{{< bp_repo "git" >}}
+
+[concepts/sbom]:{{< ref "docs/concepts/sbom" >}}
+[howto/extract-modules]:{{< ref "docs/howto/go#extract-go-module-information-from-a-build" >}}
+
+[format/cyclonedx]:https://cyclonedx.org/
+[format/spdx]:https://spdx.dev/
+[format/syft]:https://github.com/anchore/syft/tree/main/schema/json
+[format/paketo]:{{< ref "docs/concepts/sbom#paketo-specific-sbom-format" >}}
+
+[watchexec]:https://github.com/watchexec/watchexec
