@@ -464,10 +464,14 @@
     border-radius: 5px;
 }
 
+.chroma {
+  overflow-x: auto;
+}
+
 .copyable__code {
     font-family: monospace;
     word-spacing: normal;
-    color: #16819c;
+    color: $link-text-color;
     overflow: auto;
 }
 

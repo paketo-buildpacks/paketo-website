@@ -209,14 +209,21 @@ files, in this order:
 When the buildpack finds one of these, it will consider that the app's entrypoint and set the
 app image's start command to `node <entrypoint filename>`.
 
-##  Bill of Materials
-The Node.js buildpack supports the full [bill of materials]({{< ref "docs/concepts/bom" >}}) (BOM). For Node applications, the BOM contains:
-* [buildpack entries]({{< ref "docs/concepts/bom#buildpack-entries" >}}) for dependencies such as `node engine`,
-* [language module entries]({{< ref "docs/concepts/bom#language-module-entries" >}}) for each `node module` that is either vendored in or installed via NPM or Yarn.
+##  Software Bill of Materials
+The Node.js buildpack supports the full [software bill of materials]({{< ref
+"docs/concepts/sbom" >}}) (SBOM) in [Syft][format/syft], [CycloneDX][format/cyclonedx], [SPDX][format/spdx], and [Paketo-specific][format/paketo] formats.
 
-The `node module` BOM entries provide a full picture of the packages on the final app image. The `purl` field is especially helpful to locate where on the NPM Registry a module came from. Check out the [Access the Bill of Materials guide]({{< ref "docs/howto/bom" >}}) for more information about how to retrieve the BOM for your Node.js app image.
+The `node module` SBOM entries provide a full picture of the packages on the
+final app image. The `purl` field is especially helpful to locate where on the
+NPM Registry a module came from. Check out the [Access the Software Bill of Materials
+guide]({{< ref "docs/howto/sbom" >}}) for more information about how to retrieve
+the SBOM for your Node.js app image.
 
 <!-- References -->
 [yarnrc]:{{< ref "docs/howto/nodejs#configure-yarn-during-the-build" >}}
 [npmrc]:{{< ref "docs/howto/nodejs#configure-npm-during-the-build" >}}
 [service-binding]:{{< ref "docs/howto/configuration#bindings" >}}
+[format/cyclonedx]:https://cyclonedx.org/
+[format/spdx]:https://spdx.dev/
+[format/syft]:https://github.com/anchore/syft/tree/main/schema/json
+[format/paketo]:{{< ref "docs/concepts/sbom#paketo-specific-sbom-format" >}}

@@ -356,10 +356,31 @@ instructions in the [Applying Custom
 Labels]({{< ref "docs/howto/configuration#applying-custom-labels" >}})
 section of our configuration docs.
 
+## Extract Go Module Information From A Build
+The Go buildpack produces a software bill of materials (SBOM) for the
+dependencies installed in the app image during a build. It is possible
+to extract information about the Go modules used in the build using the
+build-time SBOM.
+
+### With pack and a Command-Line Flag
+1. When building with the pack CLI, use the flag `--sbom-output-dir` to extract
+   SBOMs from the build:
+{{< code/copyable >}}
+pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+                  --sbom-output-dir /tmp/sbom-output
+{{< /code/copyable >}}
+2. To view the Go modules used in the build, inspect one of the SBOMs generated
+   by the Go Mod Vendor buildpack. For instance, to view the SBOM as
+   [CycloneDX][format/cyclonedx] JSON:
+{{< code/copyable >}}
+cat /tmp/sbom-output/build/paketo-buildpacks_go-mod-vendor/sbom.cdx.json
+{{< /code/copyable >}}
+
 <!-- References -->
 [cnb/launch-process]:https://buildpacks.io/docs/app-developer-guide/run-an-app/
 
 [cnb/project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor
+[format/cyclonedx]:https://cyclonedx.org/
 
 [bp/releases]:https://github.com/paketo-buildpacks/go/releases/latest
 [tilt]:https://tilt.dev/
