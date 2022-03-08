@@ -51,6 +51,10 @@ Specifying a version of CPython is not required. In the case this is not
 specified, the buildpack will provide the default version, which can be seen in
 the `buildpack.toml` file.
 
+Some tools (like `poetry`) are able to detect the version of python defined in
+configuration files (like `pyproject.toml`). If present, the buildpack will use
+that specific version as long as it is supported.
+
 ## Use a Package Manager
 
 With the Python CNB, there are three options available for package management
@@ -101,6 +105,20 @@ from an `environment.yml` file or a `package-list.txt` file located at the root
 of the app source code.
 
 Configuring a version of miniconda is not supported.
+
+### Poetry
+
+Poetry is a tool to manage both third-party application dependencies and
+virtual environments. Including a `pyproject.toml` file at the root of your app
+source code triggers the poetry installation process. The buildpack will invoke
+`poetry` to install the application dependencies defined in `pyproject.toml`
+and set up a virtual environment.
+
+The buildpack allows you to configure the version of Poetry to be used in the
+installation process. You can set this using the `$BP_POETRY_VERSION` variable
+during build. When specifying a version of Poetry, you must choose a version
+that is available within the buildpack. The supported versions can be found in the
+[release notes](https://github.com/paketo-buildpacks/python/releases/latest).
 
 ## Enable Process Reloading
 [`watchexec`][watchexec] is a tool that can watch files for changes
