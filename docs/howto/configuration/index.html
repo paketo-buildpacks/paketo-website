@@ -762,7 +762,7 @@ docker run samples/nodejs # should print &#34;hello world&#34;
 </span></span></code></pre></div><p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Paketo CA Certificates Buildpack it can be explicitly prepended at runtime.</p>
 <p><strong>Example</strong>: Adding a CA Certificate at Runtime</p>
 <p>The samples repository contains a simple Golang application that will make a <code>HEAD</code> request to a provided URL.</p>
-<p>Given a file <code>&lt;your-ca.pem&gt;</code> containing a single PEM encoded CA certificate needed to verify a TLS connection to <!-- raw HTML omitted --> an https<!-- raw HTML omitted --> URL <code>&lt;url&gt;</code>, add the CA certificate to the binding.</p>
+<p>Given a file <code>&lt;your-ca.pem&gt;</code> containing a single PEM encoded CA certificate needed to verify a TLS connection to &lt;!&ndash; spellchecker-disable &ndash;&gt; an https&lt;!&ndash; spellchecker-enable &ndash;&gt; URL <code>&lt;url&gt;</code>, add the CA certificate to the binding.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp &lt;your-ca.pem&gt; ca-certificates/binding/
 </span></span></code></pre></div><p>The provided sample contains a simple Golang application that will make a <code>HEAD</code> request to a provided URL. Build the application using the CA Certificates buildpack</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pack build samples/ca-certificates <span class="se">\
@@ -842,7 +842,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> March 7, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> March 9, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
