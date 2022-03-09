@@ -82,7 +82,8 @@ lastmod = ["lastmod", ":fileModTime", ":default"]
   title = "PAKETO DOCS"
 
 [params.docs_search]
-  api_key = "bf2d426728685665ceaf22fac947f10f"
+  app_id = "8TYM3HS0CU"
+  api_key = "0bc69e542f0d93e17450f5984dd611c3"
   index = "paketo"
 
 [menu]

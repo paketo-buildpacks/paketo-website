@@ -8,4 +8,4 @@ export default class DocsNav {
 	handleClick(event) {
 	  this.sidebar.classList.toggle('docs-menu-container--showing');
 	}
-      }
+}

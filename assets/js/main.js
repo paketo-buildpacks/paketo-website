@@ -11,13 +11,15 @@ window.addEventListener('load', (event) => {
     element: document.querySelector('#navigation'),
   });
 
-  Search({
-    element: document.querySelector('#docs-search'),
-  })
+  const searchBox = document.querySelector('#docs-search');
+  if (searchBox) {
+    Search({ element: searchBox });
+  }
 
-  new DocsNav({
-    element: document.querySelector('.docs'),
-  });
+  const docsElement = document.querySelector('.docs');
+  if (docsElement) {
+    new DocsNav({ element: docsElement });
+  }
 
   OpenExternalLinksInNewTab({
     links: document.getElementsByTagName('a'),
