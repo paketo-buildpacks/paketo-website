@@ -45,38 +45,66 @@
     }
 }
 
+/* docs search */
 .docs-search-container {
     background: $dark-background-color;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.algolia-autocomplete__search-bar {
-    width: 220px;
-    height: 45px;
-    padding-left: 40px;
-    border: 2px solid $light-background-color;
-    border-radius: 8px;
-    background-image: url('/v2/images/icon-search.svg');
-    background-position: 5px 6px;
-    background-repeat: no-repeat;
-    font-family: $default-font-family;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 24px;
+.DocSearch {
+  &.DocSearch-Button {
+      width: 220px;
+      height: 45px;
+      margin-left: 0;
+      border: 2px solid $light-background-color;
+      border-radius: 8px;
+      background-position: 5px 6px;
+      background-repeat: no-repeat;
+      font-family: $default-font-family;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 24px;
 
-    @media (min-width: $mobile-breakpoint) {
-        width: 305px;
+      @media (min-width: $mobile-breakpoint) {
+          width: 305px;
+      }
+
+  }
+
+  &.DocSearch-Button:hover {
+      outline: none;
+      box-shadow: none;
+      border-color: $link-text-dark-background-color;
+  }
+
+  .DocSearch-Button-Key {
+    padding: 4px 0 2px 1px;
+  }
+
+  .DocSearch-Modal {
+    header {
+      display: block;
+      height: auto;
     }
 
-    @media (min-width: $mobile-breakpoint) {
+    .DocSearch-SearchBar {
+      padding-bottom: 10px;
+    }
+
+    @media (max-width: 750px) {
+      .DocSearch-Form {
+        margin-right: 60px;
+        width: auto;
+      }
+
+      .DocSearch-Cancel {
         display: block;
+        padding: 10px;
+        margin: 0 auto;
+      }
     }
-}
-
-.algolia-autocomplete__search-bar:focus, .algolia-autocomplete__search-bar:focus {
-    outline: none;
-    border-color: $link-text-dark-background-color;
+  }
 }
 
 .algolia-autocomplete .ds-dropdown-menu {
@@ -84,6 +112,7 @@
     min-width: 245px !important; // Necessary because algolia element comes with styling
     height: 100%;
 }
+
 .docs-menu-container {
     position: fixed;
     top: 20%;

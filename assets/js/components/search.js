@@ -1,10 +1,12 @@
-import docsearch from 'docsearch.js';
+import docsearch from '@docsearch/js';
 
 export default function Search({ element }) {
   docsearch({
-    inputSelector: `#${element.id}`,
-    indexName: element.dataset.index,
+    container: element,
+    appId: element.dataset.appId,
     apiKey: element.dataset.apiKey,
+    indexName: element.dataset.index,
+    placeholder: 'Search docs...',
   });
 }
 

@@ -1,7 +1,5 @@
 <!-- sidebar start -->
-<div class="docs-search-container">
-    <input type="text" id="docs-search" class="algolia-autocomplete__search-bar" placeholder="Search docs..." data-api-key="{{ .Site.Params.docs_search.api_key }}" data-index="{{ .Site.Params.docs_search.index }}"/>
-</div>
+<div id="docs-search" class="docs-search-container" data-app-id="{{ .Site.Params.docs_search.app_id }}" data-api-key="{{ .Site.Params.docs_search.api_key }}" data-index="{{ .Site.Params.docs_search.index }}"/></div>
 <div class="docs-menu-container">
     <nav class="docs-menu">
         <ul class="docs-menu__top-level-list">
