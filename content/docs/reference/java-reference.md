@@ -21,7 +21,56 @@ See the [homepage][bp/bellsoft-liberica] for the Bellsoft Liberica Buildpack for
 
 ## Memory Calculator
 
-The Java Buildpack installs a component called the Memory Calculator which will configure JVM memory based on the resources available to the container at runtime. The calculated flags will be appended to `JAVA_TOOL_OPTIONS`.
+The Java Memory Calculator is a tool used by the Paketo Java Buildpack to provide an optimised memory configuration for Java applications running in containers with enforced memory limits.
+
+This section describes the algorithm that is responsible for providing this memory configuration, including the inputs used and their default values.
+
+### Heap
+
+The Heap memory value, ultimately supplied as the `-xmX` JVM flag, is calculated using the following formula:
+
+`Heap = Total Container Memory - Non-Heap - Headroom`
+
+1. The Total Container Memory value is the total memory available to the application, typically the value of the memory limit set for the container.
+
+2. The Non-Heap value is calculated by the algorithm using the following formula. 
+
+   `Non-Heap = Direct Memory + Metaspace + Reserved Code Cache + (Thread Stack * Thread Count)`
+3. Headroom is a percentage of the container’s total memory that can be excluded from the memory calculator’s algorithm and left for non-JVM operations. This defaults to 0.
+
+### Non-Heap
+
+The below table lists the component parts of the Non-Heap value, the equivalent JVM flags, and their defaults. Where one exists, the JVM default value is used.
+
+| Memory Region         | JVM Flag                   | Default        |
+| ----------------------| ---------------------------| ---------------|
+| Direct Memory         | `-XX:MaxDirectMemorySize`    | 10MB (JVM Default)
+| Metaspace             | `-XX:MaxMetaspaceSize`       | Automatically calculated based on class count |
+| Reserved Code Cache   | `-XX:ReservedCodeCacheSize`  | 240MB (JVM Default)
+| Thread Stack          | `-Xss`                       | 1M * 250  (JVM Default Thread Stack Size * Default Optimum Thread Count for Tomcat) |
+
+The outputs of the tool are the above JVM flags and their calculated values. 
+
+The remaining memory left after totalling these values is assigned to the `-Xmx` flag as Heap. All flags and values are then appended to `JAVA_TOOL_OPTIONS` when the application image is run. 
+
+### Notes
+
+**It is not recommended to set the Heap memory value directly using the `-Xmx` flag**
+
+The non-heap value calculated by the tool **remains fixed** for a constant application. 
+Therefore, setting `-Xmx` directly could either:
+* Cause the total memory (Heap + Non-Heap) to exceed the container limit if set too high, or
+* Force a lower limit on Heap size than would be necessary after calculation, wasting memory.
+
+**Adjusting container memory limits**
+
+Decreasing the container memory limit will result in a reduced heap (`-Xmx`) size. 
+
+Similarly, increasing container memory limit beyond a known application's non-heap (fixed) size will assign all of the increased value to Heap (`-Xmx`).
+
+**Overriding Defaults**
+
+It is possible to override the calculated or default values specified above in the non-heap table, however the runtime consequences of adjusting these values should be considered. For more information on how to configure these explicitly, see the How-To section [Configure The JVM at Runtime][configure jvm].
 
 ## Spring Boot Applications
 
@@ -100,3 +149,4 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 <!-- other references -->
 [liberica]:https://bell-sw.com/
 [composite buildpack]:{{< ref "docs/concepts/buildpacks#component-buildpacks" >}}
+[configure jvm]: {{< ref "docs/howto/java#configure-the-jvm-at-runtime" >}}
