@@ -17,7 +17,7 @@ To build your app locally with the buildpack using the `pack` CLI, run
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/dotnet-core/aspnet
-pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core \
+pack build my-app --buildpack paketobuildpacks/dotnet-core:latest \
   --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
@@ -192,7 +192,7 @@ Set the `BP_DOTNET_PUBLISH_FLAGS` environment variable at build time to provide 
 #### With pack and a Command-Line Flag
 When building with the pack CLI, set `BP_DOTNET_PUBLISH_FLAGS` at build time with the `--env` flag. For example, to add `--verbosity=normal` and `--self-contained=true` to the build flagset, set the environment variable as follows:
 {{< code/copyable >}}
-pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+pack build my-app --buildpack paketobuildpacks/dotnet-core:latest \
   --env BP_DOTNET_PUBLISH_FLAGS="--verbosity=normal --self-contained=true"
 {{< /code/copyable >}}
 

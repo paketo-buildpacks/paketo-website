@@ -17,7 +17,7 @@ To build a sample app locally with this buildpack using the pack CLI, run
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/python/pip
-pack build my-app --buildpack gcr.io/paketo-buildpacks/python \
+pack build my-app --buildpack paketobuildpacks/python:latest \
   --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
@@ -153,7 +153,7 @@ You can use the Paketo Python buildpack with [Tilt][tilt]. This example
 uses the [`pack` extension][tilt/pack] for Tilt.
 {{< code/copyable >}}
 pack('my-app',
-  buildpacks=["gcr.io/paketo-buildpacks/python"],
+  buildpacks=["paketobuildpacks/python:latest"],
   env_vars=["BP_LIVE_RELOAD_ENABLED=true"],
   live_update=[
     sync('.', '/workspace'),

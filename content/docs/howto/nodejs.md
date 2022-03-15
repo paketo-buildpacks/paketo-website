@@ -17,7 +17,7 @@ To build a sample app locally with this buildpack using the pack CLI, run
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/nodejs/npm
-pack build my-app --buildpack gcr.io/paketo-buildpacks/nodejs \
+pack build my-app --buildpack paketobuildpacks/nodejs:latest \
   --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
@@ -119,7 +119,7 @@ variable, set it to `true`.
 
 {{< code/copyable >}}
 pack build my-app \
-  --buildpack gcr.io/paketo-buildpacks/nodejs \
+  --buildpack paketobuildpacks/nodejs:latest \
   --env BP_NODE_OPTIMIZE_MEMORY=true
 {{< /code/copyable >}}
 
@@ -303,7 +303,7 @@ You can use the Paketo Node.js buildpack with [Tilt][tilt]. This example
 uses the [`pack` extension][tilt/pack] for Tilt.
 {{< code/copyable >}}
 pack('my-app',
-  buildpacks=["gcr.io/paketo-buildpacks/nodejs"],
+  buildpacks=["paketobuildpacks/nodejs:latest"],
   env_vars=["BP_LIVE_RELOAD_ENABLED=true"],
   live_update=[
     sync('.', '/workspace'),
