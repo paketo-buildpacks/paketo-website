@@ -45,7 +45,7 @@ environment variable is used to set the user base directory.
 The value of `PYTHONUSERBASE` is set to the location where these buildpacks install
 the application packages so that it can be consumed by the app source code.
 
-### Start Command
+## Start Command
 
 The Python Buildpack sets the default start command `python`. This starts the Python
 REPL (read-eval-print loop) at launch.
