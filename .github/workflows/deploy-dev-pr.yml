@@ -46,7 +46,7 @@ jobs:
         extended: true
 
     - name: Install node Modules
-      run: npm install
+      run: npm ci
 
     - name: Setup GCP Auth
       id: auth
