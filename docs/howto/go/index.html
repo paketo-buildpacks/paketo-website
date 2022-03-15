@@ -471,6 +471,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#build-multiple-packages-in-one-app-image">Build Multiple Packages In One App Image</a></li>
       </ul>
     </li>
+    <li><a href="#import-private-go-modules">Import Private Go Modules</a></li>
     <li><a href="#build-an-app-that-imports-its-own-sub-packages">Build an App that Imports Its Own Sub-Packages</a>
       <ul>
         <li></li>
@@ -582,12 +583,6 @@ the buildpack will provide the default version, which can be seen in the
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
 <p>The pack CLI will automatically detect the project file at build time.</p>
-<h4 id="deprecated-with-pack-and-a-buildpackyml" class="markup-heading">
-    <a class="markup-heading__link" href="#deprecated-with-pack-and-a-buildpackyml">
-        Deprecated: With pack and a <code>buildpack.yml</code>
-    </a>
-</h4><p>Please note that setting the Go version through a buildpack.yml file will be
-deprecated in Go Dist Buildpack v1.0.0.</p>
 <h2 id="configure-the-go-build-command" class="markup-heading">
     <a class="markup-heading__link" href="#configure-the-go-build-command">
         Configure the <code>go build</code> Command
@@ -659,13 +654,6 @@ environment variables at build time.</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
-<h4 id="deprecated-with-buildpackyml" class="markup-heading">
-    <a class="markup-heading__link" href="#deprecated-with-buildpackyml">
-        Deprecated: With buildpack.yml
-    </a>
-</h4><p>Specifying the Go Build flags through buildpack.yml configuration will be
-deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
-please set the <code>$BP_GO_BUILD_FLAGS</code> environment variable.</p>
 <p>The pack CLI will automatically detect the project file at build time.</p>
 <h2 id="build-non-default-packages" class="markup-heading">
     <a class="markup-heading__link" href="#build-non-default-packages">
@@ -710,13 +698,6 @@ setting the <code>BP_GO_TARGETS</code> environment variable at build time.</p>
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
 <p>The pack CLI will automatically detect the project file at build time.</p>
-<h4 id="deprecated-with-buildpackyml-1" class="markup-heading">
-    <a class="markup-heading__link" href="#deprecated-with-buildpackyml-1">
-        Deprecated: With buildpack.yml
-    </a>
-</h4><p>Specifying the Go Build targets through buildpack.yml configuration will be
-deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
-please set the <code>$BP_GO_TARGETS</code> environment variable.</p>
 <h3 id="build-multiple-packages-in-one-app-image" class="markup-heading">
     <a class="markup-heading__link" href="#build-multiple-packages-in-one-app-image">
         Build Multiple Packages In One App Image
@@ -751,13 +732,58 @@ the app image. The following examples will build <em>both</em> the <code>first</
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
-<h4 id="deprecated-with-buildpackyml-2" class="markup-heading">
-    <a class="markup-heading__link" href="#deprecated-with-buildpackyml-2">
-        Deprecated: With buildpack.yml
+<h2 id="import-private-go-modules" class="markup-heading">
+    <a class="markup-heading__link" href="#import-private-go-modules">
+        Import Private Go Modules
     </a>
-</h4><p>Specifying the Go Build targets through buildpack.yml configuration will be
-deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
-please set the <code>$BP_GO_TARGETS</code> environment variable.</p>
+</h2><p>The Go buildpack can build apps that import private Go modules. Credentials to
+access private Go modules are provided via a <a href="https://paketo.io/docs/howto/configuration/#bindings">service
+binding</a>.</p>
+<ol>
+<li>
+<p>Set up a directory for the service binding:
+<div class="copyable">
+    <pre class="copyable__code">mkdir /tmp/git-binding
+echo &#34;git-credentials&#34; &gt; /tmp/git-binding/type
+touch /tmp/git-binding/credentials
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+</li>
+<li>
+<p>Add <code>git</code> credentials for accessing the private modules to
+<code>/tmp/git-binding/credentials</code>, following the <a href="https://git-scm.com/docs/git-credential#IOFMT">git credentials
+structure</a>.  For example, to
+access a private module <code>github.com/private-org/private-module</code> with a
+Github username and service account key, add the following to
+<code>/tmp/git-binding/credentials</code>:
+<div class="copyable">
+    <pre class="copyable__code">url=https://github.com
+username=&lt;USERNAME&gt;
+password=&lt;SERVICE ACCOUNT KEY&gt;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+</li>
+<li>
+<p>Provide the service binding and <code>$GOPRIVATE</code> environment variable at build
+time:
+<div class="copyable">
+    <pre class="copyable__code">pack build myapp --buildpack gcr.io/paketo-buildpacks/go \
+                 --env GOPRIVATE=&#34;github.com/private-org/private-module&#34; \
+                 --env SERVICE_BINDING_ROOT=&#34;/bindings&#34; \
+                 --volume /tmp/git-binding:/bindings/git-binding
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+</li>
+</ol>
+<p>You&rsquo;ll see that the build successfully pulls your app&rsquo;s private dependencies.
+The secrets stored in the service binding will <strong>not</strong> be stored in the built
+app image.</p>
 <h2 id="build-an-app-that-imports-its-own-sub-packages" class="markup-heading">
     <a class="markup-heading__link" href="#build-an-app-that-imports-its-own-sub-packages">
         Build an App that Imports Its Own Sub-Packages
@@ -802,13 +828,6 @@ directory structure looks like:</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
-<h4 id="deprecated-with-buildpackyml-3" class="markup-heading">
-    <a class="markup-heading__link" href="#deprecated-with-buildpackyml-3">
-        Deprecated: With buildpack.yml
-    </a>
-</h4><p>Specifying the Go Build import path through buildpack.yml configuration will be
-deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
-please set the <code>$BP_GO_BUILD_IMPORT_PATH</code> environment variable.</p>
 <h2 id="prevent-source-files-from-being-deleted" class="markup-heading">
     <a class="markup-heading__link" href="#prevent-source-files-from-being-deleted">
         Prevent Source Files From Being Deleted
@@ -1031,6 +1050,7 @@ by the Go Mod Vendor buildpack. For instance, to view the SBOM as
         <li><a href="#build-multiple-packages-in-one-app-image">Build Multiple Packages In One App Image</a></li>
       </ul>
     </li>
+    <li><a href="#import-private-go-modules">Import Private Go Modules</a></li>
     <li><a href="#build-an-app-that-imports-its-own-sub-packages">Build an App that Imports Its Own Sub-Packages</a>
       <ul>
         <li></li>
