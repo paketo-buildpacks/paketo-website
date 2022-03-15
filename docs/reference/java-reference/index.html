@@ -454,7 +454,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <nav id="TableOfContents">
   <ul>
     <li><a href="#about-the-jvm">About the JVM</a></li>
-    <li><a href="#memory-calculator">Memory Calculator</a></li>
+    <li><a href="#memory-calculator">Memory Calculator</a>
+      <ul>
+        <li><a href="#heap">Heap</a></li>
+        <li><a href="#non-heap">Non-Heap</a></li>
+        <li><a href="#notes">Notes</a></li>
+      </ul>
+    </li>
     <li><a href="#spring-boot-applications">Spring Boot Applications</a>
       <ul>
         <li><a href="#additional-metadata">Additional Metadata</a></li>
@@ -483,7 +489,80 @@ the  Paketo Java Buildpack  How To <a href="/docs/howto/java">documentation</a>.
     <a class="markup-heading__link" href="#memory-calculator">
         Memory Calculator
     </a>
-</h2><p>The Java Buildpack installs a component called the Memory Calculator which will configure JVM memory based on the resources available to the container at runtime. The calculated flags will be appended to <code>JAVA_TOOL_OPTIONS</code>.</p>
+</h2><p>The Java Memory Calculator is a tool used by the Paketo Java Buildpack to provide an optimized memory configuration for Java applications running in containers with enforced memory limits.</p>
+<p>This section describes the algorithm that is responsible for providing this memory configuration, including the inputs used and their default values.</p>
+<h3 id="heap" class="markup-heading">
+    <a class="markup-heading__link" href="#heap">
+        Heap
+    </a>
+</h3><p>The Heap memory value, ultimately supplied as the <code>-xmX</code> JVM flag, is calculated using the following formula:</p>
+<p><code>Heap = Total Container Memory - Non-Heap - Headroom</code></p>
+<ol>
+<li>
+<p>The Total Container Memory value is the total memory available to the application, typically the value of the memory limit set for the container.</p>
+</li>
+<li>
+<p>The Non-Heap value is calculated by the algorithm using the following formula.</p>
+<p><code>Non-Heap = Direct Memory + Metaspace + Reserved Code Cache + (Thread Stack * Thread Count)</code></p>
+</li>
+<li>
+<p>Headroom is a percentage of the container’s total memory that can be excluded from the memory calculator’s algorithm and left for non-JVM operations. This defaults to 0.</p>
+</li>
+</ol>
+<h3 id="non-heap" class="markup-heading">
+    <a class="markup-heading__link" href="#non-heap">
+        Non-Heap
+    </a>
+</h3><p>The below table lists the component parts of the Non-Heap value, the equivalent JVM flags, and their defaults. Where one exists, the JVM default value is used.</p>
+<table>
+<thead>
+<tr>
+<th>Memory Region</th>
+<th>JVM Flag</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direct Memory</td>
+<td><code>-XX:MaxDirectMemorySize</code></td>
+<td>10MB (JVM Default)</td>
+</tr>
+<tr>
+<td>Metaspace</td>
+<td><code>-XX:MaxMetaspaceSize</code></td>
+<td>Automatically calculated based on class count</td>
+</tr>
+<tr>
+<td>Reserved Code Cache</td>
+<td><code>-XX:ReservedCodeCacheSize</code></td>
+<td>240MB (JVM Default)</td>
+</tr>
+<tr>
+<td>Thread Stack</td>
+<td><code>-Xss</code></td>
+<td>1M * 250  (JVM Default Thread Stack Size * Default Optimum Thread Count for Tomcat)</td>
+</tr>
+</tbody>
+</table>
+<p>The outputs of the tool are the above JVM flags and their calculated values.</p>
+<p>The remaining memory left after totalling these values is assigned to the <code>-Xmx</code> flag as Heap. All flags and values are then appended to <code>JAVA_TOOL_OPTIONS</code> when the application image is run.</p>
+<h3 id="notes" class="markup-heading">
+    <a class="markup-heading__link" href="#notes">
+        Notes
+    </a>
+</h3><p><strong>It is not recommended to set the Heap memory value directly using the <code>-Xmx</code> flag</strong></p>
+<p>The non-heap value calculated by the tool <strong>remains fixed</strong> for a constant application.
+Therefore, setting <code>-Xmx</code> directly could either:</p>
+<ul>
+<li>Cause the total memory (Heap + Non-Heap) to exceed the container limit if set too high, or</li>
+<li>Force a lower limit on Heap size than would be necessary after calculation, wasting memory.</li>
+</ul>
+<p><strong>Adjusting container memory limits</strong></p>
+<p>Decreasing the container memory limit will result in a reduced heap (<code>-Xmx</code>) size.</p>
+<p>Similarly, increasing container memory limit beyond a known application&rsquo;s non-heap (fixed) size will assign all of the increased value to Heap (<code>-Xmx</code>).</p>
+<p><strong>Overriding Defaults</strong></p>
+<p>It is possible to override the calculated or default values specified above in the non-heap table, however the runtime consequences of adjusting these values should be considered. For more information on how to configure these explicitly, see the How-To section <a href="https://paketo.io/docs/howto/java/#configure-the-jvm-at-runtime">Configure The JVM at Runtime</a>.</p>
 <h2 id="spring-boot-applications" class="markup-heading">
     <a class="markup-heading__link" href="#spring-boot-applications">
         Spring Boot Applications
@@ -635,7 +714,13 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
     <nav id="TableOfContents">
   <ul>
     <li><a href="#about-the-jvm">About the JVM</a></li>
-    <li><a href="#memory-calculator">Memory Calculator</a></li>
+    <li><a href="#memory-calculator">Memory Calculator</a>
+      <ul>
+        <li><a href="#heap">Heap</a></li>
+        <li><a href="#non-heap">Non-Heap</a></li>
+        <li><a href="#notes">Notes</a></li>
+      </ul>
+    </li>
     <li><a href="#spring-boot-applications">Spring Boot Applications</a>
       <ul>
         <li><a href="#additional-metadata">Additional Metadata</a></li>
