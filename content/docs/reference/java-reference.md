@@ -21,7 +21,7 @@ See the [homepage][bp/bellsoft-liberica] for the Bellsoft Liberica Buildpack for
 
 ## Memory Calculator
 
-The Java Memory Calculator is a tool used by the Paketo Java Buildpack to provide an optimised memory configuration for Java applications running in containers with enforced memory limits.
+The Java Memory Calculator is a tool used by the Paketo Java Buildpack to provide an optimized memory configuration for Java applications running in containers with enforced memory limits.
 
 This section describes the algorithm that is responsible for providing this memory configuration, including the inputs used and their default values.
 
