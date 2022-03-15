@@ -26,7 +26,7 @@ To build a sample app locally with this CNB using the `pack` CLI, run
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/httpd
-pack build my-app --buildpack gcr.io/paketo-buildpacks/httpd \
+pack build my-app --buildpack paketobuildpacks/httpd:latest \
   --builder paketobuildpacks/builder:full
 {{< /code/copyable >}}
 
@@ -82,7 +82,7 @@ To build a sample app locally with this CNB using the `pack` CLI, run
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/nginx
-pack build my-app --buildpack gcr.io/paketo-buildpacks/nginx \
+pack build my-app --buildpack paketobuildpacks/nginx:latest \
   --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
