@@ -69,10 +69,6 @@ When building with the pack CLI, create a [project.toml][cnb/project-file] file 
 
 The pack CLI will automatically detect the project file at build time.
 
-#### Deprecated: With pack and a `buildpack.yml`
-Please note that setting the Go version through a buildpack.yml file will be
-deprecated in Go Dist Buildpack v1.0.0.
-
 ## Configure the `go build` Command
 
 The Paketo Go buildpack compiles Go source code with the `go build` command, with certain opinionated flags by default. (See reference [documentation]({{< ref "docs/reference/go-reference" >}}) for information about the default flagset.) It is possible to override or add to these defaults by setting the `BP_GO_BUILD_FLAGS` and `BP_GO_BUILD_LDFLAGS`
@@ -120,11 +116,6 @@ When building with the pack CLI, create a [project.toml][cnb/project-file] file 
     value="-buildmode=default -tags=paketo"
 {{< /code/copyable >}}
 
-#### Deprecated: With buildpack.yml
-Specifying the Go Build flags through buildpack.yml configuration will be
-deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
-please set the `$BP_GO_BUILD_FLAGS` environment variable.
-
 The pack CLI will automatically detect the project file at build time.
 
 ## Build Non-Default Package(s)
@@ -163,11 +154,6 @@ When building with the pack CLI, create a [project.toml][cnb/project-file] file 
 
 The pack CLI will automatically detect the project file at build time.
 
-#### Deprecated: With buildpack.yml
-Specifying the Go Build targets through buildpack.yml configuration will be
-deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
-please set the `$BP_GO_TARGETS` environment variable.
-
 ### Build Multiple Packages In One App Image
 
 The `BP_GO_TARGETS` evironment variable can accept a colon-delimited list of
@@ -192,11 +178,42 @@ When building with the pack CLI, create a [project.toml][cnb/project-file] file 
     value="./first:./second"
 {{< /code/copyable >}}
 
-#### Deprecated: With buildpack.yml
-Specifying the Go Build targets through buildpack.yml configuration will be
-deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
-please set the `$BP_GO_TARGETS` environment variable.
+## Import Private Go Modules
+The Go buildpack can build apps that import private Go modules. Credentials to
+access private Go modules are provided via a [service
+binding][service-binding].
 
+1. Set up a directory for the service binding:
+{{< code/copyable >}}
+mkdir /tmp/git-binding
+echo "git-credentials" > /tmp/git-binding/type
+touch /tmp/git-binding/credentials
+{{< /code/copyable >}}
+
+1. Add `git` credentials for accessing the private modules to
+   `/tmp/git-binding/credentials`, following the [git credentials
+   structure](https://git-scm.com/docs/git-credential#IOFMT).  For example, to
+   access a private module `github.com/private-org/private-module` with a
+   Github username and service account key, add the following to
+   `/tmp/git-binding/credentials`:
+{{< code/copyable >}}
+url=https://github.com
+username=<USERNAME>
+password=<SERVICE ACCOUNT KEY>
+{{< /code/copyable >}}
+
+1. Provide the service binding and `$GOPRIVATE` environment variable at build
+   time:
+{{< code/copyable >}}
+pack build myapp --buildpack gcr.io/paketo-buildpacks/go \
+                 --env GOPRIVATE="github.com/private-org/private-module" \
+                 --env SERVICE_BINDING_ROOT="/bindings" \
+                 --volume /tmp/git-binding:/bindings/git-binding
+{{< /code/copyable >}}
+
+You'll see that the build successfully pulls your app's private dependencies.
+The secrets stored in the service binding will **not** be stored in the built
+app image.
 
 ## Build an App that Imports Its Own Sub-Packages
 
@@ -236,11 +253,6 @@ When building with the pack CLI, create a [project.toml][cnb/project-file] file 
     name="BP_GO_BUILD_IMPORT_PATH"
     value="github.com/app-developer/app-directory"
 {{< /code/copyable >}}
-
-#### Deprecated: With buildpack.yml
-Specifying the Go Build import path through buildpack.yml configuration will be
-deprecated in Go Build Buildpack v1.0.0. To migrate from using buildpack.yml
-please set the `$BP_GO_BUILD_IMPORT_PATH` environment variable.
 
 ## Prevent Source Files From Being Deleted
 
@@ -387,3 +399,4 @@ cat /tmp/sbom-output/build/paketo-buildpacks_go-mod-vendor/sbom.cdx.json
 [tilt/pack]:https://github.com/tilt-dev/tilt-extensions/tree/master/pack
 [definition/platform]:https://buildpacks.io/docs/concepts/components/platform
 [project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/
+[service-binding]:{{< ref "/docs/howto/configuration#bindings" >}}
