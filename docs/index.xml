@@ -128,14 +128,13 @@ This tutorial&amp;rsquo;s goal is to take you from nothing to a buildpack that p
     </item>
     
     <item>
-      <title>How to Access the Bill of Materials</title>
-      <link>https://paketo.io/docs/howto/bom/</link>
+      <title>How to Access the Software Bill of Materials</title>
+      <link>https://paketo.io/docs/howto/sbom/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://paketo.io/docs/howto/bom/</guid>
-      <description>This documentation explains how to access the bill of materials (BOM) on an app image built using Paketo buildpacks. For more in-depth field definitions and details check out the bill of materials concept page.
-Access the Bill of Materials on a Sample Node Application  You can access the bill of materials in the metadata of any app image created with Paketo buildpacks.
-  Follow the Node.js Getting Started tutorial to build the Node.</description>
+      <guid>https://paketo.io/docs/howto/sbom/</guid>
+      <description>This documentation explains how to access the software bill of materials (SBOM) for an app image built using Paketo buildpacks. For more in-depth field definitions and details check out the software bill of materials concept page.
+Access the Software Bill of Materials on a Sample Application  A buildpack can generate SBOMs in different formats. The primary supported SBOMs are in Syft, SPDX, and CycloneDX JSON formats. Paketo buildpacks also generate an SBOM in a Paketo-specific schema, but this SBOM is deprecated.</description>
     </item>
     
     <item>
@@ -182,13 +181,13 @@ What is a stack?  A stack consists of two images:
     </item>
     
     <item>
-      <title>Bill of Materials</title>
-      <link>https://paketo.io/docs/concepts/bom/</link>
+      <title>Software Bill of Materials (SBOM)</title>
+      <link>https://paketo.io/docs/concepts/sbom/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://paketo.io/docs/concepts/bom/</guid>
-      <description>In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. Once you have an app image, you can access metadata about all of the dependencies present in the final app image using the bill of materials.
-What is the bill of materials?  A bill of materials (BOM) is an industry standard mechanism of surfacing metadata about dependencies in images or applications. The metadata consists of various fields such as:</description>
+      <guid>https://paketo.io/docs/concepts/sbom/</guid>
+      <description>In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. Once you have an app image, you can access metadata about all of the dependencies present in the final app image using the software bill of materials.
+What is the software bill of materials?  A software bill of materials (SBOM) is an industry standard mechanism of surfacing metadata about dependencies in images or applications. The metadata consists of various fields such as:</description>
     </item>
     
     <item>

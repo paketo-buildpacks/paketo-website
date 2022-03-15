@@ -11,17 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Ruby Buildpack Reference - Paketo Buildpacks</title>
+<title>How to Access the Software Bill of Materials - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1 viewport-fit=cover">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="Ruby Buildpack Reference">
-<meta name="og:url" content="https://paketo.io/docs/reference/ruby-reference/">
+<meta name="og:title" content="How to Access the Software Bill of Materials">
+<meta name="og:url" content="https://paketo.io/docs/howto/sbom/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
-<meta name="twitter:url" content="https://paketo.io/docs/reference/ruby-reference/" />
+<meta name="twitter:url" content="https://paketo.io/docs/howto/sbom/" />
 <meta name="twitter:card" content="" />
 
 
@@ -104,18 +104,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
         <li class="docs-menu__item docs-menu__parent">
             
-            <div class="docs-menu__section-header ">
+            <div class="docs-menu__section-header docs-menu__section-header--opened">
                 
                 <span>How To</span>
-                <button class="expander-button  docs-menu__expander-button">
-                    <svg class="expander-button__triangle " width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button class="expander-button expander-button--opened docs-menu__expander-button">
+                    <svg class="expander-button__triangle expander-button__triangle--opened" width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.140625" width="37.0257" height="34" rx="8" fill="#888888" fill-opacity="0.25"/>
                         <path d="M28.1604 13H8.14648L18.6538 22.5L28.1604 13Z" fill="#FEFCFC"/>
                         </svg>
                 </button>
             </div>
             
-            <ul class="docs-menu__children-list ">
+            <ul class="docs-menu__children-list docs-menu__children-list--opened">
                 
                     
     
@@ -220,7 +220,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/sbom/" class="docs-menu__item docs-menu__link ">
+            <a href="/docs/howto/sbom/" class="docs-menu__item docs-menu__link docs-menu__link--active">
                 
                 <span>Access the SBOM</span>
             </a>
@@ -306,18 +306,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
         <li class="docs-menu__item docs-menu__parent">
             
-            <div class="docs-menu__section-header docs-menu__section-header--opened">
+            <div class="docs-menu__section-header ">
                 
                 <span>Reference</span>
-                <button class="expander-button expander-button--opened docs-menu__expander-button">
-                    <svg class="expander-button__triangle expander-button__triangle--opened" width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button class="expander-button  docs-menu__expander-button">
+                    <svg class="expander-button__triangle " width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.140625" width="37.0257" height="34" rx="8" fill="#888888" fill-opacity="0.25"/>
                         <path d="M28.1604 13H8.14648L18.6538 22.5L28.1604 13Z" fill="#FEFCFC"/>
                         </svg>
                 </button>
             </div>
             
-            <ul class="docs-menu__children-list docs-menu__children-list--opened">
+            <ul class="docs-menu__children-list ">
                 
                     
     
@@ -412,7 +412,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/reference/ruby-reference/" class="docs-menu__item docs-menu__link docs-menu__link--active">
+            <a href="/docs/reference/ruby-reference/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Ruby Buildpack</span>
             </a>
@@ -439,7 +439,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="docs-body">
         <div class="docs-body__container">
             
-  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/ruby-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/sbom.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -448,127 +448,274 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">Ruby Buildpack Reference</h1>
+            <h1 id="title">How to Access the Software Bill of Materials</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#package-management">Package Management</a></li>
-    <li><a href="#webservers--task-runners">Webservers &amp; Task Runners</a>
+    <li><a href="#access-the-software-bill-of-materials-on-a-sample-application">Access the Software Bill of Materials on a Sample Application</a>
       <ul>
-        <li><a href="#webservers">Webservers</a></li>
-        <li><a href="#task-runners">Task Runners</a></li>
+        <li><a href="#access-syft-cyclonedx-and-spdx-sboms">Access Syft, CycloneDX, and SPDX SBOMs</a></li>
+        <li><a href="#deprecated-access-paketo-specific-sbom">(Deprecated) Access Paketo-specific SBOM</a></li>
       </ul>
     </li>
-    <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
-    <li><a href="#vendored-gem-behavior">Vendored Gem Behavior</a></li>
-    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+    <li><a href="#see-build-time-dependencies-in-the-sbom">See Build-time Dependencies in the SBOM</a>
       <ul>
-        <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
-        <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
+        <li><a href="#syft-cyclonedx-and-spdx-sboms">Syft, CycloneDX, and SPDX SBOMs</a></li>
+        <li><a href="#paketo-specific-sbom">Paketo-specific SBOM</a></li>
       </ul>
     </li>
+    <li><a href="#determine-which-sbom-formats-a-buildpack-will-generate">Determine Which SBOM Formats a Buildpack Will Generate</a></li>
   </ul>
 </nav>
 </div>
 
             <div class="docs-body__markdown">
-                <p>This reference documentation offers an in-depth description of the behavior
-and configuration options of the
-<a href="https://github.com/paketo-buildpacks/ruby">Paketo Ruby Buildpack</a>. For explanations of how to use the buildpack for several common use-cases, see
-the  Paketo Ruby Buildpack  How To <a href="/docs/howto/ruby">documentation</a>.</p>
-<h2 id="supported-dependencies" class="markup-heading">
-    <a class="markup-heading__link" href="#supported-dependencies">
-        Supported Dependencies
+                <p>This documentation explains how to access the software bill of materials (SBOM) for an
+app image built using Paketo buildpacks. For more in-depth field definitions
+and details check out the <a href="https://paketo.io/docs/concepts/sbom/">software bill of materials concept page</a>.</p>
+<h2 id="access-the-software-bill-of-materials-on-a-sample-application" class="markup-heading">
+    <a class="markup-heading__link" href="#access-the-software-bill-of-materials-on-a-sample-application">
+        Access the Software Bill of Materials on a Sample Application
     </a>
-</h2><p>The Ruby Paketo Buildpack supports several versions of
-<a href="https://www.ruby-lang.org">MRI</a>, <a href="https://bundler.io/">Bundler</a>, and common
-Ruby webservers and task runners.  For more details on the specific versions
-supported in a given buildpack version, see the <a href="https://github.com/paketo-buildpacks/ruby/releases/latest">release
-notes</a>.</p>
-<h2 id="package-management" class="markup-heading">
-    <a class="markup-heading__link" href="#package-management">
-        Package Management
+</h2><p>A buildpack can generate SBOMs in different formats. The primary supported
+SBOMs are in <a href="https://github.com/anchore/syft/tree/main/schema/json">Syft</a>, <a href="https://spdx.dev/">SPDX</a>, and
+<a href="https://cyclonedx.org/">CycloneDX</a> JSON formats. Paketo buildpacks also generate an
+SBOM in a Paketo-specific schema, but this SBOM is deprecated.</p>
+<h3 id="access-syft-cyclonedx-and-spdx-sboms" class="markup-heading">
+    <a class="markup-heading__link" href="#access-syft-cyclonedx-and-spdx-sboms">
+        Access Syft, CycloneDX, and SPDX SBOMs
     </a>
-</h2><p>The Ruby Buildpack uses <a href="https://bundler.io/">Bundler</a> to install and manage
-the gems needed to run your application. Including a <code>Gemfile</code> in your app
-source code instructs the <a href="https://github.com/paketo-buildpacks/bundle-install"><code>bundle-install</code>
-buildpack</a> to vendor your
-dependencies using <code>bundle install</code>.</p>
-<h2 id="webservers--task-runners" class="markup-heading">
-    <a class="markup-heading__link" href="#webservers--task-runners">
-        Webservers &amp; Task Runners
+</h3><ol>
+<li>Follow the <a href="https://paketo.io/docs/#nodejs">Node.js Getting Started tutorial</a> to build the
+Node.js <code>paketo-demo-app</code> image.</li>
+<li>Use the pack CLI to retrieve the software bill of materials files
+<div class="copyable">
+    <pre class="copyable__code">pack sbom download paketo-demo-app --output-dir /tmp/demo-app-sbom
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></li>
+<li>The SBOM files will be in the specified output directory,
+<code>/tmp/demo-app-sbom</code>. Easily find all generated SBOM files with:
+<div class="copyable">
+    <pre class="copyable__code">find /tmp/demo-app-sbom/layers/sbom -name &#34;*.json&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></li>
+</ol>
+<h3 id="deprecated-access-paketo-specific-sbom" class="markup-heading">
+    <a class="markup-heading__link" href="#deprecated-access-paketo-specific-sbom">
+        (Deprecated) Access Paketo-specific SBOM
     </a>
-</h2><p>The Ruby Buildpack supports a number of webservers and task runners that are
-useful for running Ruby applications. If your application uses one of these
-tools, it will be automatically detected and a start command for your
-application will be assigned when building your application container.</p>
-<h3 id="webservers" class="markup-heading">
-    <a class="markup-heading__link" href="#webservers">
-        Webservers
+</h3><ol>
+<li>
+<p>Follow the <a href="https://paketo.io/docs/#nodejs">Node.js Getting Started tutorial</a> to build the Node.js <code>paketo-demo-app</code> image.</p>
+</li>
+<li>
+<p>Use the pack CLI retrieve the software bill of materials metadata.
+<div class="copyable">
+    <pre class="copyable__code">pack inspect-image paketo-demo-app --bom
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<div class="code-output">
+    <div class="btn code-output__btn code-output__btn">View Output</div>
+    <pre class="code-output__output-container"><code class="code-output__output">{
+  &#34;remote&#34;: null,
+  &#34;local&#34;: [
+    {
+      &#34;name&#34;: &#34;Node Engine&#34;,
+      &#34;metadata&#34;: {
+        &#34;checksum&#34;: {
+          &#34;algorithm&#34;: &#34;SHA-256&#34;,
+          &#34;hash&#34;: &#34;a50ee095f936b51fffe5c032a7377a156723145c1ab0291ccc882f04719f1b54&#34;
+        },
+        &#34;cpe&#34;: &#34;cpe:2.3:a:nodejs:node.js:16.7.0:*:*:*:*:*:*:*&#34;,
+        &#34;deprecation-date&#34;: &#34;2024-04-30T00:00:00Z&#34;,
+        &#34;licenses&#34;: [
+          &#34;0BSD&#34;,
+          &#34;Apache-2.0&#34;,
+          &#34;Artistic-2.0&#34;,
+          &#34;BSD-2-Clause&#34;,
+          &#34;BSD-3-Clause&#34;,
+          &#34;BSD-3-Clause-Clear&#34;,
+          &#34;CC0-1.0&#34;,
+          &#34;MIT&#34;,
+          &#34;MIT-0&#34;,
+          &#34;Unicode-TOU&#34;
+        ],
+        &#34;purl&#34;: &#34;pkg:generic/node@v16.7.0?checksum=0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&amp;download_url=https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz&#34;,
+        &#34;source&#34;: {
+          &#34;checksum&#34;: {
+            &#34;algorithm&#34;: &#34;SHA-256&#34;,
+            &#34;hash&#34;: &#34;0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&#34;
+          },
+          &#34;uri&#34;: &#34;https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz&#34;
+        },
+        &#34;stacks&#34;: [
+          &#34;io.buildpacks.stacks.bionic&#34;
+        ],
+        &#34;uri&#34;: &#34;https://deps.paketo.io/node/node_v16.7.0_linux_x64_bionic_a50ee095.tgz&#34;,
+        &#34;version&#34;: &#34;16.7.0&#34;
+      },
+      &#34;buildpacks&#34;: {
+        &#34;id&#34;: &#34;paketo-buildpacks/node-engine&#34;,
+        &#34;version&#34;: &#34;1.2.3&#34;
+      }
+    },
+    {
+      &#34;name&#34;: &#34;node_modules&#34;,
+      &#34;metadata&#34;: {
+        &#34;build&#34;: true
+      },
+      &#34;buildpacks&#34;: {
+        &#34;id&#34;: &#34;paketo-buildpacks/npm-install&#34;,
+        &#34;version&#34;: &#34;0.4.0&#34;
+      }
+    },
+    {
+      &#34;name&#34;: &#34;node_modules&#34;,
+      &#34;metadata&#34;: {
+        &#34;launch&#34;: true
+      },
+      &#34;buildpacks&#34;: {
+        &#34;id&#34;: &#34;paketo-buildpacks/npm-install&#34;,
+        &#34;version&#34;: &#34;0.4.0&#34;
+      }
+    },
+    {
+      &#34;name&#34;: &#34;httpdispatcher&#34;,
+      &#34;metadata&#34;: {
+        &#34;licenses&#34;: [
+          &#34;MIT&#34;
+        ],
+        &#34;purl&#34;: &#34;pkg:npm/httpdispatcher@2.1.2&#34;,
+        &#34;version&#34;: &#34;2.1.2&#34;
+      },
+      &#34;buildpacks&#34;: {
+        &#34;id&#34;: &#34;paketo-buildpacks/node-module-bom&#34;,
+        &#34;version&#34;: &#34;1.2.3&#34;
+      }
+    },
+    {
+      &#34;name&#34;: &#34;mime-types&#34;,
+      &#34;metadata&#34;: {
+        &#34;licenses&#34;: [
+          &#34;MIT&#34;
+        ],
+        &#34;purl&#34;: &#34;pkg:npm/mime-types@2.1.32&#34;,
+        &#34;version&#34;: &#34;2.1.32&#34;
+      },
+      &#34;buildpacks&#34;: {
+        &#34;id&#34;: &#34;paketo-buildpacks/node-module-bom&#34;,
+        &#34;version&#34;: &#34;1.2.3&#34;
+      }
+    },
+     {
+      &#34;name&#34;: &#34;mime-db&#34;,
+      &#34;metadata&#34;: {
+        &#34;licenses&#34;: [
+          &#34;MIT&#34;
+        ],
+        &#34;purl&#34;: &#34;pkg:npm/mime-db@1.49.0&#34;,
+        &#34;version&#34;: &#34;1.49.0&#34;
+      },
+      &#34;buildpacks&#34;: {
+        &#34;id&#34;: &#34;paketo-buildpacks/node-module-bom&#34;,
+        &#34;version&#34;: &#34;1.2.3&#34;
+      }
+    },
+    {
+      &#34;name&#34;: &#34;leftpad&#34;,
+      &#34;metadata&#34;: {
+        &#34;licenses&#34;: [
+          &#34;BSD-3-Clause&#34;
+        ],
+        &#34;purl&#34;: &#34;pkg:npm/leftpad@0.0.1&#34;,
+        &#34;version&#34;: &#34;0.0.1&#34;
+      },
+      &#34;buildpacks&#34;: {
+        &#34;id&#34;: &#34;paketo-buildpacks/node-module-bom&#34;,
+        &#34;version&#34;: &#34;1.2.3&#34;
+      }
+    }
+  ]
+}
+</code></pre>
+</div>
+</p>
+</li>
+</ol>
+<h2 id="see-build-time-dependencies-in-the-sbom" class="markup-heading">
+    <a class="markup-heading__link" href="#see-build-time-dependencies-in-the-sbom">
+        See Build-time Dependencies in the SBOM
     </a>
-</h3><ul>
-<li><a href="https://github.com/paketo-buildpacks/passenger">Passenger</a></li>
-<li><a href="https://github.com/paketo-buildpacks/puma">Puma</a></li>
-<li><a href="https://github.com/paketo-buildpacks/rackup">Rackup</a></li>
-<li><a href="https://github.com/paketo-buildpacks/thin">Thin</a></li>
-<li><a href="https://github.com/paketo-buildpacks/unicorn">Unicorn</a></li>
-</ul>
-<h3 id="task-runners" class="markup-heading">
-    <a class="markup-heading__link" href="#task-runners">
-        Task Runners
+</h2><h3 id="syft-cyclonedx-and-spdx-sboms" class="markup-heading">
+    <a class="markup-heading__link" href="#syft-cyclonedx-and-spdx-sboms">
+        Syft, CycloneDX, and SPDX SBOMs
     </a>
-</h3><ul>
-<li><a href="https://github.com/paketo-buildpacks/rake">Rake</a></li>
-</ul>
-<h2 id="rails-asset-pipeline" class="markup-heading">
-    <a class="markup-heading__link" href="#rails-asset-pipeline">
-        Rails Asset Pipeline
+</h3><p>Syft, CycloneDX, and SPDX SBOMs that are retrieved using <code>pack sbom download &lt;image&gt;</code> only contain SBOM entries for launch-time app dependencies. <strong><em>To
+access SBOM entries for build-time app dependencies, SBOMs must be extracted at
+build time.</em></strong></p>
+<ol>
+<li>
+<p>Run the build and extract the generated SBOMs to a local directory:
+<div class="copyable">
+    <pre class="copyable__code">pack build myapp --sbom-output-dir /tmp/build-time-sbom
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+</li>
+<li>
+<p>When the build completes, inspect SBOMs in the output directory:
+<div class="copyable">
+    <pre class="copyable__code">find /tmp/demo-app-sbom/layers/sbom -name &#34;*.json&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+SBOMs that are inside the <code>/tmp/demo-app-sbom/layers/sbom/build</code> subdirectory
+contain entries for build-time dependencies.</p>
+</li>
+<li>
+<p>List only the build-time SBOMs:
+<div class="copyable">
+    <pre class="copyable__code">find /tmp/demo-app-sbom/layers/sbom/build -name &#34;*.json&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+</li>
+</ol>
+<h3 id="paketo-specific-sbom" class="markup-heading">
+    <a class="markup-heading__link" href="#paketo-specific-sbom">
+        Paketo-specific SBOM
     </a>
-</h2><p>The <a href="https://github.com/paketo-buildpacks/rails-assets">Paketo Rails Assets Buildpack</a> is a <a href="https://paketo.io/docs/concepts/buildpacks/#component-buildpacks">component buildpack</a> included in the Ruby Buildpack. It supports Rails apps (Rails version &gt;= 5.0) that need asset precompilation.</p>
-<p>The buildpack runs <code>bundle exec rails assets:precompile</code> for the app, and works
-with any of the supported Ruby webservers listed above. The Paketo Ruby
-Buildpack pulls in this buildpack, as well as the <a href="https://github.com/paketo-buildpacks/node-engine">Paketo Node Engine
-Buildpack</a> to support asset compilation.</p>
-<h2 id="vendored-gem-behavior" class="markup-heading">
-    <a class="markup-heading__link" href="#vendored-gem-behavior">
-        Vendored Gem Behavior
+</h3><p>There is currently no way to collect SBOM entries for build-time dependencies
+in the Paketo-specific format. It is unlikely that support will be implemented,
+given that the Paketo-specific SBOM is deprecated.</p>
+<h2 id="determine-which-sbom-formats-a-buildpack-will-generate" class="markup-heading">
+    <a class="markup-heading__link" href="#determine-which-sbom-formats-a-buildpack-will-generate">
+        Determine Which SBOM Formats a Buildpack Will Generate
     </a>
-</h2><p>Per the Ruby <a href="https://paketo.io/docs/howto/ruby/">How To Guide</a>, the Paketo Ruby
-Buildpack supports building apps with vendored gems. Behind the scenes,
-the presence of the cache path in the app source code indicates to the
-buildpack to run <code>bundle install</code> with the addition of the <code>--local</code> flag to
-prefer the use of local gems.</p>
-<h2 id="buildpack-set-environment-variables" class="markup-heading">
-    <a class="markup-heading__link" href="#buildpack-set-environment-variables">
-        Buildpack-Set Environment Variables
-    </a>
-</h2><p>The Ruby CNB sets a few environment variables during the <code>build</code> and <code>launch</code>
-phases of the app lifecycle. The sections below describe each environment
-variable and its impact on your app.</p>
-<h3 id="gem_path" class="markup-heading">
-    <a class="markup-heading__link" href="#gem_path">
-        <code>GEM_PATH</code>
-    </a>
-</h3><ul>
-<li>Set by: <code>mri</code>, <code>bundler</code></li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: location of the directory gems will be installed for each respective dependency</li>
-</ul>
-<h3 id="bundle_path" class="markup-heading">
-    <a class="markup-heading__link" href="#bundle_path">
-        <code>BUNDLE_PATH</code>
-    </a>
-</h3><ul>
-<li>Set by: <code>bundle-install</code></li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: location where all gems in your bundle will be located</li>
-</ul>
+</h2><p>The <code>buildpack.toml</code> in the source code for a <a href="https://paketo.io/docs/concepts/buildpacks/#component-buildpacks">component buildpack</a> will
+indicate which SBOMs it supports.</p>
+<ol>
+<li>Check the <code>api</code> field of the <code>buildpack.toml</code>. If the Buildpack API is less
+than <code>0.7</code>, it only supports the <a href="https://paketo.io/docs/concepts/sbom/#paketo-specific-sbom-format">Paketo-specific SBOM</a>.</li>
+<li>If the Buildpack API version is at least <code>0.7</code>, check the
+<code>buildpack.sbom-formats</code> array in the <code>buildpack.toml</code>. This will enumerate the SBOM formats that the
+buildpack is capable of generating.</li>
+</ol>
+<!-- raw HTML omitted -->
 
             </div>
             
-  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/ruby-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/sbom.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -583,22 +730,19 @@ variable and its impact on your app.</p>
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#package-management">Package Management</a></li>
-    <li><a href="#webservers--task-runners">Webservers &amp; Task Runners</a>
+    <li><a href="#access-the-software-bill-of-materials-on-a-sample-application">Access the Software Bill of Materials on a Sample Application</a>
       <ul>
-        <li><a href="#webservers">Webservers</a></li>
-        <li><a href="#task-runners">Task Runners</a></li>
+        <li><a href="#access-syft-cyclonedx-and-spdx-sboms">Access Syft, CycloneDX, and SPDX SBOMs</a></li>
+        <li><a href="#deprecated-access-paketo-specific-sbom">(Deprecated) Access Paketo-specific SBOM</a></li>
       </ul>
     </li>
-    <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
-    <li><a href="#vendored-gem-behavior">Vendored Gem Behavior</a></li>
-    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+    <li><a href="#see-build-time-dependencies-in-the-sbom">See Build-time Dependencies in the SBOM</a>
       <ul>
-        <li><a href="#gem_path"><code>GEM_PATH</code></a></li>
-        <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
+        <li><a href="#syft-cyclonedx-and-spdx-sboms">Syft, CycloneDX, and SPDX SBOMs</a></li>
+        <li><a href="#paketo-specific-sbom">Paketo-specific SBOM</a></li>
       </ul>
     </li>
+    <li><a href="#determine-which-sbom-formats-a-buildpack-will-generate">Determine Which SBOM Formats a Buildpack Will Generate</a></li>
   </ul>
 </nav>
 </div>

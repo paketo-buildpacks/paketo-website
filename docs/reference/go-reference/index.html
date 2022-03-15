@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.65d1f641094517027c4e736e7db9f865af2208d52bc07d019047232efc3a7215.css">
+<link rel="stylesheet" href="/css/main.min.c1e13d3a5b984aafbd20517ebe772e9978a898c0f2f3afdabe8338741b01df3b.css">
 
 </head>
 
@@ -220,9 +220,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/bom/" class="docs-menu__item docs-menu__link ">
+            <a href="/docs/howto/sbom/" class="docs-menu__item docs-menu__link ">
                 
-                <span>Access the Bill of Materials</span>
+                <span>Access the SBOM</span>
             </a>
         </li>
     
@@ -291,9 +291,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/concepts/bom/" class="docs-menu__item docs-menu__link ">
+            <a href="/docs/concepts/sbom/" class="docs-menu__item docs-menu__link ">
                 
-                <span>Bill of Materials</span>
+                <span>Software Bill of Materials (SBOM)</span>
             </a>
         </li>
     
@@ -468,6 +468,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
     </li>
     <li><a href="#components">Components</a></li>
+    <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
   </ul>
 </nav>
 </div>
@@ -675,8 +676,30 @@ https://github.com/paketo-buildpacks/image-labels">Paketo Image Labels Buildpack
 <td>Optional</td>
 <td>Adds user-specified labels to app image metadata</td>
 </tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/watchexec">Paketo Watchexec Buildpack</a></td>
+<td>Optional</td>
+<td>Installs <a href="https://github.com/watchexec/watchexec"><code>watchexec</code></a></td>
+</tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/git">Paketo Git Buildpack</a></td>
+<td>Optional</td>
+<td>Enables <code>git</code> authentication and/or <code>git</code> metadata extraction during builds</td>
+</tr>
 </tbody>
 </table>
+<h2 id="software-bill-of-materials" class="markup-heading">
+    <a class="markup-heading__link" href="#software-bill-of-materials">
+        Software Bill of Materials
+    </a>
+</h2><p>The Go buildpack supports the full <a href="https://paketo.io/docs/concepts/sbom/">software bill of materials</a>
+(SBOM) in <a href="https://github.com/anchore/syft/tree/main/schema/json">Syft</a>, <a href="https://cyclonedx.org/">CycloneDX</a>, and
+<a href="https://spdx.dev/">SPDX</a> formats. For apps with a <code>go.mod</code>, this includes Go module
+data.  See <a href="https://paketo.io/docs/howto/go/#extract-go-module-information-from-a-build">Extract Go Module Information from a Build</a>. The Go buildpack also
+includes limited support for the <a href="https://paketo.io/docs/concepts/sbom/#paketo-specific-sbom-format">Paketo-specific</a> SBOM format.
+This SBOM does not include Go module information.</p>
 <!-- raw HTML omitted -->
 
             </div>
@@ -711,6 +734,7 @@ https://github.com/paketo-buildpacks/image-labels">Paketo Image Labels Buildpack
       </ul>
     </li>
     <li><a href="#components">Components</a></li>
+    <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
   </ul>
 </nav>
 </div>

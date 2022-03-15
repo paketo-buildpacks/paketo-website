@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.65d1f641094517027c4e736e7db9f865af2208d52bc07d019047232efc3a7215.css">
+<link rel="stylesheet" href="/css/main.min.c1e13d3a5b984aafbd20517ebe772e9978a898c0f2f3afdabe8338741b01df3b.css">
 
 </head>
 
@@ -220,9 +220,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/bom/" class="docs-menu__item docs-menu__link ">
+            <a href="/docs/howto/sbom/" class="docs-menu__item docs-menu__link ">
                 
-                <span>Access the Bill of Materials</span>
+                <span>Access the SBOM</span>
             </a>
         </li>
     
@@ -291,9 +291,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/concepts/bom/" class="docs-menu__item docs-menu__link ">
+            <a href="/docs/concepts/sbom/" class="docs-menu__item docs-menu__link ">
                 
-                <span>Bill of Materials</span>
+                <span>Software Bill of Materials (SBOM)</span>
             </a>
         </li>
     
@@ -490,6 +490,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
     <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
+    <li><a href="#extract-go-module-information-from-a-build">Extract Go Module Information From A Build</a>
+      <ul>
+        <li><a href="#with-pack-and-a-command-line-flag-7">With pack and a Command-Line Flag</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div>
@@ -957,6 +962,38 @@ Buildpack</a>.</p>
 instructions in the <a href="https://paketo.io/docs/howto/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
+<h2 id="extract-go-module-information-from-a-build" class="markup-heading">
+    <a class="markup-heading__link" href="#extract-go-module-information-from-a-build">
+        Extract Go Module Information From A Build
+    </a>
+</h2><p>The Go buildpack produces a software bill of materials (SBOM) for the
+dependencies installed in the app image during a build. It is possible
+to extract information about the Go modules used in the build using the
+build-time SBOM.</p>
+<h3 id="with-pack-and-a-command-line-flag-7" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack-and-a-command-line-flag-7">
+        With pack and a Command-Line Flag
+    </a>
+</h3><ol>
+<li>When building with the pack CLI, use the flag <code>--sbom-output-dir</code> to extract
+SBOMs from the build:
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+                  --sbom-output-dir /tmp/sbom-output
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></li>
+<li>To view the Go modules used in the build, inspect one of the SBOMs generated
+by the Go Mod Vendor buildpack. For instance, to view the SBOM as
+<a href="https://cyclonedx.org/">CycloneDX</a> JSON:
+<div class="copyable">
+    <pre class="copyable__code">cat /tmp/sbom-output/build/paketo-buildpacks_go-mod-vendor/sbom.cdx.json
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></li>
+</ol>
 <!-- raw HTML omitted -->
 
             </div>
@@ -1013,6 +1050,11 @@ section of our configuration docs.</p>
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
     <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
+    <li><a href="#extract-go-module-information-from-a-build">Extract Go Module Information From A Build</a>
+      <ul>
+        <li><a href="#with-pack-and-a-command-line-flag-7">With pack and a Command-Line Flag</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div>

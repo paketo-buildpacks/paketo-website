@@ -1,0 +1,744 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PN39N8V');</script>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Software Bill of Materials (SBOM) - Paketo Buildpacks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1 viewport-fit=cover">
+
+
+
+
+<meta name="og:site_name" content="Paketo Buildpacks">
+<meta name="og:title" content="Software Bill of Materials (SBOM)">
+<meta name="og:url" content="https://paketo.io/docs/concepts/sbom/">
+<meta name="twitter:title" content="Paketo Buildpacks" />
+<meta name="twitter:url" content="https://paketo.io/docs/concepts/sbom/" />
+<meta name="twitter:card" content="" />
+
+
+
+<link rel="stylesheet" href="/css/main.min.c1e13d3a5b984aafbd20517ebe772e9978a898c0f2f3afdabe8338741b01df3b.css">
+
+</head>
+
+<body>
+    
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
+
+    <div id="header-skip-link" class="screenreader-container">
+    <a href="#title" class="screenreader-text">Skip to Content</a>
+</div>
+
+    
+
+
+
+
+<header class="header--narrow">
+    
+    <a class="paketo-p-logo" href="/">
+        <img class="paketo-p-logo__image" src="/v2/images/logo-paketo-p.svg" alt="Paketo Buildpacks Homepage">
+    </a>
+    
+    <div id="navigation" class="right-overlay">
+        <div class="nav-opener">
+            <span class="nav-opener__bar nav-opener__bar-top"></span>
+            <span class="nav-opener__bar nav-opener__bar-middle"></span>
+            <span class="nav-opener__bar nav-opener__bar-bottom"></span>
+        </div>
+        <div class="nav-container" id="nav-container">
+            <nav class="nav" id="nav-tray" >
+                <div class="nav__linkarea text--400">
+                    <a class="nav-link" href="/docs">docs</a>
+                    <a class="nav-link" href="/community">community</a>
+                    <a class="nav-link" href="https://blog.paketo.io">blog</a>
+                    <a class="nav-link" href="https://github.com/paketo-buildpacks">github</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="desktop-nav">
+        
+        
+        
+        <a class="nav-link nav-link--desktop  nav-link--desktop--active" href="/docs">docs</a>
+        
+        <a class="nav-link nav-link--desktop   " href="/community">community</a>
+        <a class="nav-link nav-link--desktop " href="https://blog.paketo.io">blog</a>
+        <a class="nav-link nav-link--desktop " href="https://github.com/paketo-buildpacks">github</a>
+    </div>
+</header>
+
+
+    <div class="docs">
+    <div class="docs-sidebar">
+        
+<div id="docs-search" class="docs-search-container" data-app-id="8TYM3HS0CU" data-api-key="0bc69e542f0d93e17450f5984dd611c3" data-index="paketo"/></div>
+<div class="docs-menu-container">
+    <nav class="docs-menu">
+        <ul class="docs-menu__top-level-list">
+            
+            
+                
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Getting Started</span>
+            </a>
+        </li>
+    
+            
+                
+    
+        <li class="docs-menu__item docs-menu__parent">
+            
+            <div class="docs-menu__section-header ">
+                
+                <span>How To</span>
+                <button class="expander-button  docs-menu__expander-button">
+                    <svg class="expander-button__triangle " width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.140625" width="37.0257" height="34" rx="8" fill="#888888" fill-opacity="0.25"/>
+                        <path d="M28.1604 13H8.14648L18.6538 22.5L28.1604 13Z" fill="#FEFCFC"/>
+                        </svg>
+                </button>
+            </div>
+            
+            <ul class="docs-menu__children-list ">
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/java/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Java</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/nodejs/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Node.js</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/dotnet-core/" class="docs-menu__item docs-menu__link ">
+                
+                <span>.NET Core</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/go/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Go</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/web-servers/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Web Servers</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/python/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Python</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/php/" class="docs-menu__item docs-menu__link ">
+                
+                <span>PHP</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/ruby/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Ruby</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/configuration/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Configure Paketo Buildpacks</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/create-paketo-buildpack/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Create a Paketo Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/sbom/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Access the SBOM</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/howto/create-custom-stack/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Create a Custom Stack</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+            
+                
+    
+        <li class="docs-menu__item docs-menu__parent">
+            
+            <div class="docs-menu__section-header docs-menu__section-header--opened">
+                
+                <span>Concepts</span>
+                <button class="expander-button expander-button--opened docs-menu__expander-button">
+                    <svg class="expander-button__triangle expander-button__triangle--opened" width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.140625" width="37.0257" height="34" rx="8" fill="#888888" fill-opacity="0.25"/>
+                        <path d="M28.1604 13H8.14648L18.6538 22.5L28.1604 13Z" fill="#FEFCFC"/>
+                        </svg>
+                </button>
+            </div>
+            
+            <ul class="docs-menu__children-list docs-menu__children-list--opened">
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/buildpacks/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Buildpacks</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/builders/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Builders</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/stacks/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Stacks</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/concepts/sbom/" class="docs-menu__item docs-menu__link docs-menu__link--active">
+                
+                <span>Software Bill of Materials (SBOM)</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+            
+                
+    
+        <li class="docs-menu__item docs-menu__parent">
+            
+            <div class="docs-menu__section-header ">
+                
+                <span>Reference</span>
+                <button class="expander-button  docs-menu__expander-button">
+                    <svg class="expander-button__triangle " width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="0.140625" width="37.0257" height="34" rx="8" fill="#888888" fill-opacity="0.25"/>
+                        <path d="M28.1604 13H8.14648L18.6538 22.5L28.1604 13Z" fill="#FEFCFC"/>
+                        </svg>
+                </button>
+            </div>
+            
+            <ul class="docs-menu__children-list ">
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/httpd-reference/" class="docs-menu__item docs-menu__link ">
+                
+                <span>HTTPD Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/dotnet-core-reference/" class="docs-menu__item docs-menu__link ">
+                
+                <span>.NET Core Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/go-reference/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Go Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/java-reference/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Java Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/java-native-image-reference/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Java Native Image Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/nginx-reference/" class="docs-menu__item docs-menu__link ">
+                
+                <span>NGINX Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/nodejs-reference/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Node.js Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/php-reference/" class="docs-menu__item docs-menu__link ">
+                
+                <span>PHP Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/python-reference/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Python Buildpack</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
+            <a href="/docs/reference/ruby-reference/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Ruby Buildpack</span>
+            </a>
+        </li>
+    
+                
+            </ul>
+        </li>
+    
+            
+        </ul>
+    </nav>
+</div>
+
+
+    </div>
+    <div class="docs-mobile-tab">
+        <svg width="7" height="39" viewBox="0 0 7 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 3.5C7 5.433 5.433 7 3.5 7C1.567 7 0 5.433 0 3.5C0 1.567 1.567 0 3.5 0C5.433 0 7 1.567 7 3.5Z" fill="#FEFCFC"/>
+            <path d="M7 19.5C7 21.433 5.433 23 3.5 23C1.567 23 0 21.433 0 19.5C0 17.567 1.567 16 3.5 16C5.433 16 7 17.567 7 19.5Z" fill="#FEFCFC"/>
+            <path d="M7 35.5C7 37.433 5.433 39 3.5 39C1.567 39 0 37.433 0 35.5C0 33.567 1.567 32 3.5 32C5.433 32 7 33.567 7 35.5Z" fill="#FEFCFC"/>
+            </svg>
+    </div>
+    <div class="docs-body">
+        <div class="docs-body__container">
+            
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/concepts/sbom.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
+    </div>
+</a>
+
+            <h1 id="title">Software Bill of Materials (SBOM)</h1>
+            
+<div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-the-software-bill-of-materials">What is the software bill of materials?</a></li>
+    <li><a href="#why-is-it-helpful">Why is it helpful?</a>
+      <ul>
+        <li><a href="#vulnerability-scanning">Vulnerability Scanning</a></li>
+        <li><a href="#compliance-checking">Compliance Checking</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-are-the-output-formats-of-a-paketo-sbom">What are the output formats of a Paketo SBOM?</a>
+      <ul>
+        <li><a href="#paketo-specific-sbom-format">Paketo-specific SBOM format</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a></li>
+    <li><a href="#where-are-sboms-stored">Where are SBOMs stored?</a></li>
+  </ul>
+</nav>
+</div>
+
+            <div class="docs-body__markdown">
+                <p>In the Getting Started tutorial, you used the Paketo builder to build a Node.js
+app. Once you have an app image, you can access metadata about all of the
+dependencies present in the final app image using the software bill of materials.</p>
+<h2 id="what-is-the-software-bill-of-materials" class="markup-heading">
+    <a class="markup-heading__link" href="#what-is-the-software-bill-of-materials">
+        What is the software bill of materials?
+    </a>
+</h2><p>A software bill of materials (SBOM) is an industry standard mechanism of surfacing
+metadata about dependencies in images or applications. The metadata consists of
+various fields such as:</p>
+<ul>
+<li><code>version</code>: the dependency version</li>
+<li><code>uri</code>: URI to compiled dependency</li>
+<li><code>checksum</code>: a CycloneDX-supported hash algorithm (such as SHA-256) and value of the dependency</li>
+<li><a href="#compliance-checking"><code>licenses</code></a>: dependency licenses in SPDX format</li>
+<li><code>deprecation-date</code>: dependency deprecation date</li>
+<li><code>source uri</code>: URI to upstream source dependency</li>
+<li><code>source checksum</code>: a CycloneDX-supported hash algorithm and value of the upstream source dependency</li>
+<li><a href="#cpes"><code>CPE</code></a>: common platform enumeration</li>
+<li><a href="#purls"><code>pURL</code></a>: package URL</li>
+</ul>
+<h2 id="why-is-it-helpful" class="markup-heading">
+    <a class="markup-heading__link" href="#why-is-it-helpful">
+        Why is it helpful?
+    </a>
+</h2><p>The information from the software bill of materials is largely used to help understand
+the dependencies involved in your app&rsquo;s secure software supply chain.</p>
+<h3 id="vulnerability-scanning" class="markup-heading">
+    <a class="markup-heading__link" href="#vulnerability-scanning">
+        Vulnerability Scanning
+    </a>
+</h3><p>The software bill of materials can be passed to one of the many existent vulnerability
+scanning tools, such as <a href="https://dependencytrack.org/">Dependency Track</a>, <a href="https://github.com/anchore/syft/">syft</a>, or
+<a href="https://github.com/aquasecurity/trivy">Trivy</a>, in order to identify vulnerabilities.</p>
+<p>The SBOM contains two fields that are primarily concerned with vulnerability identification:</p>
+<h4 id="cpes" class="markup-heading">
+    <a class="markup-heading__link" href="#cpes">
+        CPEs
+    </a>
+</h4><p>CPEs, or common platform enumerations, are standard notation to look up dependency version-specific vulnerabilities and related patches in the <a href="https://nvd.nist.gov/products/cpe/search">NIST National Vulnerabilty Database</a>.</p>
+<h4 id="purls" class="markup-heading">
+    <a class="markup-heading__link" href="#purls">
+        pURLs
+    </a>
+</h4><p>PURLs, or package URLs are <a href="https://github.com/package-url/purl-spec">a universal representation</a> of package location regardless of vendor, project, or ecosystem.</p>
+<h3 id="compliance-checking" class="markup-heading">
+    <a class="markup-heading__link" href="#compliance-checking">
+        Compliance Checking
+    </a>
+</h3><p>The inclusion of license information in the software bill of materials helps with
+application legal compliance by providing the information in a consumable way
+for each dependency involved with your application image.</p>
+<h4 id="licenses" class="markup-heading">
+    <a class="markup-heading__link" href="#licenses">
+        Licenses
+    </a>
+</h4><p>The licenses in the Paketo SBOM are obtained from license scanning tools. Due to the unstandardized nature of license inclusion in software, the detection tools assign &ldquo;confidence scores&rdquo; to each license. We include <strong>every license</strong> discovered by the scanning tools in the SBOM, regardless of the &ldquo;confidence score&rdquo; that the tool has provided, to avoid risk of missing an important license. Because of this feature, advanced compliance checking may be required to filter out false positive licenses.</p>
+<h2 id="what-are-the-output-formats-of-a-paketo-sbom" class="markup-heading">
+    <a class="markup-heading__link" href="#what-are-the-output-formats-of-a-paketo-sbom">
+        What are the output formats of a Paketo SBOM?
+    </a>
+</h2><p>Paketo buildpacks support several SBOM formats:</p>
+<ul>
+<li><a href="https://github.com/anchore/syft/tree/main/schema/json">Syft JSON</a></li>
+<li><a href="https://spdx.dev/">SPDX JSON</a></li>
+<li><a href="https://cyclonedx.org/">CycloneDX JSON</a></li>
+<li>Paketo-specific SBOM format (see below)</li>
+</ul>
+<p>To learn which SBOM format(s) a Paketo buildpack supports, check the <code>buildpack.sbom-formats</code> key in the buildpack&rsquo;s <code>buildpack.toml</code>.</p>
+<h3 id="paketo-specific-sbom-format" class="markup-heading">
+    <a class="markup-heading__link" href="#paketo-specific-sbom-format">
+        Paketo-specific SBOM format
+    </a>
+</h3><p>Paketo buildpacks add entries to the software bill of materials as <code>JSON</code>
+objects with the following schema:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;name&#34;: &lt;name of the dependency&gt;,
+</span></span><span class="line"><span class="cl">  &#34;metadata&#34;: {
+</span></span><span class="line"><span class="cl">    &#34;checksum&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;algorithm&#34;: &lt;CycloneDX-supported hash algorithm (&#39;MD5&#39;, &#39;SHA-1&#39;, &#39;SHA-256&#39;, &#39;SHA-384&#39;, &#39;SHA-512&#39;, &#39;SHA3-256&#39;, &#39;SHA3-384&#39;, &#39;SHA3-512&#39;, &#39;BLAKE2b-256&#39;, &#39;BLAKE2b-384&#39;, &#39;BLAKE2b-512&#39;, &#39;BLAKE3&#39;)&gt;,
+</span></span><span class="line"><span class="cl">      &#34;hash&#34;: &lt;hash of the dependency&gt;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;cpe&#34;: &lt;dependency/version specific common platform enumeration&gt;,
+</span></span><span class="line"><span class="cl">    &#34;deprecation-date&#34;: &lt;date of package deprecation&gt;,
+</span></span><span class="line"><span class="cl">    &#34;licenses&#34;: &lt;[list of all licensesn SPDX format]&gt;,
+</span></span><span class="line"><span class="cl">    &#34;purl&#34;: &lt;dependency/version specific package URL&gt;,
+</span></span><span class="line"><span class="cl">    &#34;source&#34;: {
+</span></span><span class="line"><span class="cl">      &#34;checksum&#34;: {
+</span></span><span class="line"><span class="cl">        &#34;algorithm&#34;: &lt;CycloneDX-supported hash algorithm (&#39;MD5&#39;, &#39;SHA-1&#39;, &#39;SHA-256&#39;, &#39;SHA-384&#39;, &#39;SHA-512&#39;, &#39;SHA3-256&#39;, &#39;SHA3-384&#39;, &#39;SHA3-512&#39;, &#39;BLAKE2b-256&#39;, &#39;BLAKE2b-384&#39;, &#39;BLAKE2b-512&#39;, &#39;BLAKE3&#39;)&gt;,
+</span></span><span class="line"><span class="cl">        &#34;hash&#34;: &lt;hash of the dependency&gt;
+</span></span><span class="line"><span class="cl">      },
+</span></span><span class="line"><span class="cl">      &#34;uri&#34;: &lt;package upstream source URI&gt;
+</span></span><span class="line"><span class="cl">    },
+</span></span><span class="line"><span class="cl">    &#34;uri&#34;: &#34;&lt;compiled package URI&gt;&#34;,
+</span></span><span class="line"><span class="cl">    &#34;version&#34;: &lt;dependency version&gt;
+</span></span><span class="line"><span class="cl">  }
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></div><p>Paketo buildpacks generate two main types of SBOM entries: <em>buildpack entries</em>
+and <em>language module entries</em>. To help explain these types, we will use as an
+example the software bill of materials of the app in the <a href="https://paketo.io/docs/howto/sbom/#access-the-software-bill-of-materials-on-a-sample-application">How to Access the Bill of
+Materials guide</a>.</p>
+<h4 id="buildpack-entries" class="markup-heading">
+    <a class="markup-heading__link" href="#buildpack-entries">
+        Buildpack Entries
+    </a>
+</h4><p>A buildpack entry is an entry for a dependency that a Paketo buildpack installs directly (i.e. <em>without</em> using a dependency manager). Examples include: a JVM, the .NET runtime, or the Node.js runtime. The buildpacks generate these entries using metadata obtained during the construction of the dependency itself.</p>
+<p>A buildpack entry contains the version, vulnerability identifiers (CPE and pURL), all potential licenses, checksums for both the source and the compiled dependency, source information, and the name of the buildpack that installed the dependency.</p>
+<p>Below, see an example of the buildpack entry for the Node.js runtime installed by the <a href="
+https://github.com/paketo-buildpacks/node-engine">Paketo Node Engine buildpack</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Node Engine&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;checksum&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;algorithm&#34;</span><span class="p">:</span> <span class="s2">&#34;SHA-256&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;hash&#34;</span><span class="p">:</span> <span class="s2">&#34;a50ee095f936b51fffe5c032a7377a156723145c1ab0291ccc882f04719f1b54&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;cpe&#34;</span><span class="p">:</span> <span class="s2">&#34;cpe:2.3:a:nodejs:node.js:16.7.0:*:*:*:*:*:*:*&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;deprecation-date&#34;</span><span class="p">:</span> <span class="s2">&#34;2024-04-30T00:00:00Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;licenses&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;0BSD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Apache-2.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Artistic-2.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;BSD-2-Clause&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;BSD-3-Clause&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;BSD-3-Clause-Clear&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;CC0-1.0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;MIT&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;MIT-0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;Unicode-TOU&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;purl&#34;</span><span class="p">:</span> <span class="s2">&#34;pkg:generic/node@v16.7.0?checksum=0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&amp;download_url=https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;checksum&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;algorithm&#34;</span><span class="p">:</span> <span class="s2">&#34;SHA-256&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;hash&#34;</span><span class="p">:</span> <span class="s2">&#34;0c4a82acc5ae67744d56f2c97db54b859f2b3ef8e78deacfb8aed0ed4c7cb690&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://nodejs.org/dist/v16.7.0/node-v16.7.0.tar.gz&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;stacks&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;io.buildpacks.stacks.bionic&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;uri&#34;</span><span class="p">:</span> <span class="s2">&#34;https://deps.paketo.io/node/node_v16.7.0_linux_x64_bionic_a50ee095.tgz&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;16.7.0&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;buildpacks&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;paketo-buildpacks/node-engine&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.2.3&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h4 id="language-module-entries" class="markup-heading">
+    <a class="markup-heading__link" href="#language-module-entries">
+        Language Module Entries
+    </a>
+</h4><p>A language module entry is an entry for a dependency that a Paketo buildpack installs using a dependency manager (e.g. Node.js module, Maven package). The buildpacks generate these entries by gathering metadata about packages after they have been installed.</p>
+<p>A language module entry contains the version, vulnerability identifiers (pURL), all potential licenses, and the name of the buildpack that generated the entry.</p>
+<p>Below, see an example of a language module entry for a Node.js module.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;httpdispatcher&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;metadata&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;licenses&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;MIT&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;purl&#34;</span><span class="p">:</span> <span class="s2">&#34;pkg:npm/httpdispatcher@2.1.2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;2.1.2&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;buildpack&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="s2">&#34;paketo-buildpacks/node-module-bom&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.2.3&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="heading" class="markup-heading">
+    <a class="markup-heading__link" href="#heading">
+        
+    </a>
+</h2><h2 id="where-are-sboms-stored" class="markup-heading">
+    <a class="markup-heading__link" href="#where-are-sboms-stored">
+        Where are SBOMs stored?
+    </a>
+</h2><p>The Paketo-format SBOM is stored in the label <code>&quot;io.buildpacks.build.metadata&quot;</code> on the built app
+image. The Syft, SPDX, and CycloneDX SBOMs are stored on the filesystem of the
+built app image. See <a href="https://paketo.io/docs/howto/sbom/#access-the-software-bill-of-materials-on-a-sample-application">How to Access the Software Bill of Materials</a>
+for more details.</p>
+<!-- raw HTML omitted -->
+
+            </div>
+            
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/concepts/sbom.md" target="_blank" class="github-edit" style="text-decoration:none">
+    <div class="github-edit__content">
+      <div class="github-edit__logo-container">
+        <img class="github-edit__logo" src="/images/github-mark.png">
+      </div>
+        <div class="github-edit__text">Edit</div>
+    </div>
+</a>
+
+            <p class="docs-mod-time"><strong>Last modified:</strong> March 15, 2022</p>
+        </div>
+        
+<div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-the-software-bill-of-materials">What is the software bill of materials?</a></li>
+    <li><a href="#why-is-it-helpful">Why is it helpful?</a>
+      <ul>
+        <li><a href="#vulnerability-scanning">Vulnerability Scanning</a></li>
+        <li><a href="#compliance-checking">Compliance Checking</a></li>
+      </ul>
+    </li>
+    <li><a href="#what-are-the-output-formats-of-a-paketo-sbom">What are the output formats of a Paketo SBOM?</a>
+      <ul>
+        <li><a href="#paketo-specific-sbom-format">Paketo-specific SBOM format</a></li>
+      </ul>
+    </li>
+    <li><a href="#heading"></a></li>
+    <li><a href="#where-are-sboms-stored">Where are SBOMs stored?</a></li>
+  </ul>
+</nav>
+</div>
+
+    </div>
+</div>
+
+
+    <footer class="footer text--light">
+    <div class="footer-social-links-container">
+        <a class="footer-social-link" href="https://twitter.com/Paketo_io">
+            <div class="footer-social-link__image-container">
+                <div class="logo">
+                    <img class="logo__image" src="/v2/images/logo-twitter.svg" alt="Blue Twitter bird logo">
+                </div>
+            </div>
+            <div class="text--light text--400">
+                Twitter
+            </div>
+        </a>
+        <a class="footer-social-link" href="https://slack.paketo.io/">
+            <div class="footer-social-link__image-container">
+                <div class="logo">
+                    <img class="logo__image" src="/v2/images/logo-slack.svg" alt="Slack logo">
+                </div>
+            </div>
+            <div class="text--light text--400">
+                Slack
+            </div>
+        </a>
+        <a class="footer-social-link" href="https://github.com/paketo-buildpacks">
+            <div class="footer-social-link__image-container">
+                <div class="logo logo--github">
+                    <img class="logo__image"  src="/v2/images/logo-github-cropped.svg" alt="GitHub Octocat logo"/>
+                </div>
+            </div>
+            <div class="text--light text--400">
+                GitHub
+            </div>
+        </a>
+    </div>
+    <div class="footer-privacy-policy">
+        <div class="footer-text--small">Paketo Buildpacks is a <a class="text--light" href="https://www.cloudfoundry.org/">Cloud Foundry</a> Project</div>
+        <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
+        <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
+    </div>
+</footer><script src="/js/main.c491c441744ee95257c7169239f33323fea5c9c9cf91d4b391c552de275cc065.js"></script>
+
+    <div id="footer-skip-link" class="screenreader-container">
+    <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
+</div>
+
+</body>
+
+</html>

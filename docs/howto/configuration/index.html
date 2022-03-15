@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.65d1f641094517027c4e736e7db9f865af2208d52bc07d019047232efc3a7215.css">
+<link rel="stylesheet" href="/css/main.min.c1e13d3a5b984aafbd20517ebe772e9978a898c0f2f3afdabe8338741b01df3b.css">
 
 </head>
 
@@ -220,9 +220,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/bom/" class="docs-menu__item docs-menu__link ">
+            <a href="/docs/howto/sbom/" class="docs-menu__item docs-menu__link ">
                 
-                <span>Access the Bill of Materials</span>
+                <span>Access the SBOM</span>
             </a>
         </li>
     
@@ -291,9 +291,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/concepts/bom/" class="docs-menu__item docs-menu__link ">
+            <a href="/docs/concepts/sbom/" class="docs-menu__item docs-menu__link ">
                 
-                <span>Bill of Materials</span>
+                <span>Software Bill of Materials (SBOM)</span>
             </a>
         </li>
     
@@ -760,7 +760,7 @@ docker run samples/nodejs # should print &#34;hello world&#34;
 </span></span></code></pre></div><p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Paketo CA Certificates Buildpack it can be explicitly prepended at runtime.</p>
 <p><strong>Example</strong>: Adding a CA Certificate at Runtime</p>
 <p>The samples repository contains a simple Golang application that will make a <code>HEAD</code> request to a provided URL.</p>
-<p>Given a file <code>&lt;your-ca.pem&gt;</code> containing a single PEM encoded CA certificate needed to verify a TLS connection to &lt;!&ndash; spellchecker-disable &ndash;&gt; an https&lt;!&ndash; spellchecker-enable &ndash;&gt; URL <code>&lt;url&gt;</code>, add the CA certificate to the binding.</p>
+<p>Given a file <code>&lt;your-ca.pem&gt;</code> containing a single PEM encoded CA certificate needed to verify a TLS connection to <!-- raw HTML omitted --> an https<!-- raw HTML omitted --> URL <code>&lt;url&gt;</code>, add the CA certificate to the binding.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp &lt;your-ca.pem&gt; ca-certificates/binding/
 </span></span></code></pre></div><p>The provided sample contains a simple Golang application that will make a <code>HEAD</code> request to a provided URL. Build the application using the CA Certificates buildpack</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pack build samples/ca-certificates <span class="se">\

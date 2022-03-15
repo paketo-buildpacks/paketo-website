@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<link rel="stylesheet" href="/css/main.min.65d1f641094517027c4e736e7db9f865af2208d52bc07d019047232efc3a7215.css">
+<link rel="stylesheet" href="/css/main.min.c1e13d3a5b984aafbd20517ebe772e9978a898c0f2f3afdabe8338741b01df3b.css">
 
 </head>
 
@@ -220,9 +220,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/bom/" class="docs-menu__item docs-menu__link ">
+            <a href="/docs/howto/sbom/" class="docs-menu__item docs-menu__link ">
                 
-                <span>Access the Bill of Materials</span>
+                <span>Access the SBOM</span>
             </a>
         </li>
     
@@ -291,9 +291,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/concepts/bom/" class="docs-menu__item docs-menu__link ">
+            <a href="/docs/concepts/sbom/" class="docs-menu__item docs-menu__link ">
                 
-                <span>Bill of Materials</span>
+                <span>Software Bill of Materials (SBOM)</span>
             </a>
         </li>
     
@@ -488,7 +488,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#start-command">Start Command</a></li>
       </ul>
     </li>
-    <li><a href="#bill-of-materials">Bill of Materials</a></li>
+    <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
   </ul>
 </nav>
 </div>
@@ -812,16 +812,16 @@ files, in this order:</p>
 </ul>
 <p>When the buildpack finds one of these, it will consider that the app&rsquo;s entrypoint and set the
 app image&rsquo;s start command to <code>node &lt;entrypoint filename&gt;</code>.</p>
-<h2 id="bill-of-materials" class="markup-heading">
-    <a class="markup-heading__link" href="#bill-of-materials">
-        Bill of Materials
+<h2 id="software-bill-of-materials" class="markup-heading">
+    <a class="markup-heading__link" href="#software-bill-of-materials">
+        Software Bill of Materials
     </a>
-</h2><p>The Node.js buildpack supports the full <a href="https://paketo.io/docs/concepts/bom/">bill of materials</a> (BOM). For Node applications, the BOM contains:</p>
-<ul>
-<li><a href="https://paketo.io/docs/concepts/bom/#buildpack-entries">buildpack entries</a> for dependencies such as <code>node engine</code>,</li>
-<li><a href="https://paketo.io/docs/concepts/bom/#language-module-entries">language module entries</a> for each <code>node module</code> that is either vendored in or installed via NPM or Yarn.</li>
-</ul>
-<p>The <code>node module</code> BOM entries provide a full picture of the packages on the final app image. The <code>purl</code> field is especially helpful to locate where on the NPM Registry a module came from. Check out the <a href="https://paketo.io/docs/howto/bom/">Access the Bill of Materials guide</a> for more information about how to retrieve the BOM for your Node.js app image.</p>
+</h2><p>The Node.js buildpack supports the full <a href="https://paketo.io/docs/concepts/sbom/">software bill of materials</a> (SBOM) in <a href="https://github.com/anchore/syft/tree/main/schema/json">Syft</a>, <a href="https://cyclonedx.org/">CycloneDX</a>, <a href="https://spdx.dev/">SPDX</a>, and <a href="https://paketo.io/docs/concepts/sbom/#paketo-specific-sbom-format">Paketo-specific</a> formats.</p>
+<p>The <code>node module</code> SBOM entries provide a full picture of the packages on the
+final app image. The <code>purl</code> field is especially helpful to locate where on the
+NPM Registry a module came from. Check out the <a href="https://paketo.io/docs/howto/sbom/">Access the Software Bill of Materials
+guide</a> for more information about how to retrieve
+the SBOM for your Node.js app image.</p>
 <!-- raw HTML omitted -->
 
             </div>
@@ -876,7 +876,7 @@ app image&rsquo;s start command to <code>node &lt;entrypoint filename&gt;</code>
         <li><a href="#start-command">Start Command</a></li>
       </ul>
     </li>
-    <li><a href="#bill-of-materials">Bill of Materials</a></li>
+    <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
   </ul>
 </nav>
 </div>
