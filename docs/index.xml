@@ -272,8 +272,7 @@ Buildpack-Set Environment Variables  The PHP CNB sets a number of environment va
       
       <guid>https://paketo.io/docs/reference/python-reference/</guid>
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Python Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Python Buildpack How To documentation.
-Supported Dependencies  The Python buildpack supports several versions of CPython, Pip and Pipenv. For more details on the specific versions supported in a given buildpack version, see the release notes.
-Buildpack-Set Environment Variables  The Python Buildpack sets a few environment variables during the build and launch phases of the app lifecycle.</description>
+Supported Dependencies  The Python buildpack supports several versions of CPython, as well as tools like Pip and Pipenv. For more details on the specific versions supported in a given buildpack version, see the release notes.</description>
     </item>
     
     <item>

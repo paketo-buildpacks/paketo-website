@@ -460,6 +460,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#pip">Pip</a></li>
         <li><a href="#pipenv">Pipenv</a></li>
         <li><a href="#miniconda">Miniconda</a></li>
+        <li><a href="#poetry">Poetry</a></li>
       </ul>
     </li>
     <li><a href="#enable-process-reloading">Enable Process Reloading</a>
@@ -525,6 +526,9 @@ as shown in the following example:</p>
 <p>Specifying a version of CPython is not required. In the case this is not
 specified, the buildpack will provide the default version, which can be seen in
 the <code>buildpack.toml</code> file.</p>
+<p>Some tools (like <code>poetry</code>) are able to detect the version of python defined in
+configuration files (like <code>pyproject.toml</code>). If present, the buildpack will use
+that specific version as long as it is supported.</p>
 <h2 id="use-a-package-manager" class="markup-heading">
     <a class="markup-heading__link" href="#use-a-package-manager">
         Use a Package Manager
@@ -576,6 +580,20 @@ by the Python buildpack. The builpack will create or update a conda environment
 from an <code>environment.yml</code> file or a <code>package-list.txt</code> file located at the root
 of the app source code.</p>
 <p>Configuring a version of miniconda is not supported.</p>
+<h3 id="poetry" class="markup-heading">
+    <a class="markup-heading__link" href="#poetry">
+        Poetry
+    </a>
+</h3><p>Poetry is a tool to manage both third-party application dependencies and
+virtual environments. Including a <code>pyproject.toml</code> file at the root of your app
+source code triggers the poetry installation process. The buildpack will invoke
+<code>poetry</code> to install the application dependencies defined in <code>pyproject.toml</code>
+and set up a virtual environment.</p>
+<p>The buildpack allows you to configure the version of Poetry to be used in the
+installation process. You can set this using the <code>$BP_POETRY_VERSION</code> variable
+during build. When specifying a version of Poetry, you must choose a version
+that is available within the buildpack. The supported versions can be found in the
+<a href="https://github.com/paketo-buildpacks/python/releases/latest">release notes</a>.</p>
 <h2 id="enable-process-reloading" class="markup-heading">
     <a class="markup-heading__link" href="#enable-process-reloading">
         Enable Process Reloading
@@ -709,6 +727,7 @@ section of our configuration docs.</p>
         <li><a href="#pip">Pip</a></li>
         <li><a href="#pipenv">Pipenv</a></li>
         <li><a href="#miniconda">Miniconda</a></li>
+        <li><a href="#poetry">Poetry</a></li>
       </ul>
     </li>
     <li><a href="#enable-process-reloading">Enable Process Reloading</a>

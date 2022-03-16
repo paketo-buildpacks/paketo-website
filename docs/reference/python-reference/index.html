@@ -458,9 +458,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul>
         <li><a href="#pythonpath">PYTHONPATH</a></li>
         <li><a href="#pythonuserbase">PYTHONUSERBASE</a></li>
-        <li><a href="#start-command">Start Command</a></li>
       </ul>
     </li>
+    <li><a href="#start-command">Start Command</a></li>
   </ul>
 </nav>
 </div>
@@ -474,9 +474,10 @@ the  Paketo Python Buildpack  How To <a href="/docs/howto/python">documentation<
     <a class="markup-heading__link" href="#supported-dependencies">
         Supported Dependencies
     </a>
-</h2><p>The Python buildpack supports several versions of CPython, Pip and Pipenv.  For
-more details on the specific versions supported in a given buildpack version,
-see the <a href="https://github.com/paketo-buildpacks/python/releases">release notes</a>.</p>
+</h2><p>The Python buildpack supports several versions of CPython, as well as tools
+like Pip and Pipenv. For more details on the specific versions supported in a
+given buildpack version, see the <a href="https://github.com/paketo-buildpacks/python/releases">release
+notes</a>.</p>
 <h2 id="buildpack-set-environment-variables" class="markup-heading">
     <a class="markup-heading__link" href="#buildpack-set-environment-variables">
         Buildpack-Set Environment Variables
@@ -492,7 +493,7 @@ environment variable and its impact on your app.</p>
 environment variable is used to add directories where python will look for
 modules.</p>
 <ul>
-<li>Set by: <code>CPython</code>, <code>Pip</code> and <code>Pipenv</code></li>
+<li>Set by: <code>CPython</code>, <code>Pip</code>, <code>Pipenv</code>, <code>Poetry</code>, and <code>Poetry-Install</code></li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
 </ul>
 <p>The CPython buildpack sets the <code>PYTHONPATH</code> value to its installation location,
@@ -505,17 +506,22 @@ and the Pip, Pipenv buildpack prepends their <code>site-packages</code> location
 </h3><p>The <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUSERBASE"><code>PYTHONUSERBASE</code></a>
 environment variable is used to set the user base directory.</p>
 <ul>
-<li>Set by: <code>Pip Install</code> and <code>Pipenv Install</code></li>
+<li>Set by: <code>Pip</code>, <code>Pipenv</code>, <code>Poetry</code> <code>Pip Install</code>, <code>Pipenv Install</code>,</li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
 </ul>
-<p>The value of <code>PYTHONUSERBASE</code> is set to the location where these buildapcks install
+<p>The value of <code>PYTHONUSERBASE</code> is set to the location where these buildpacks install
 the application packages so that it can be consumed by the app source code.</p>
-<h3 id="start-command" class="markup-heading">
+<h2 id="start-command" class="markup-heading">
     <a class="markup-heading__link" href="#start-command">
         Start Command
     </a>
-</h3><p>The Python Buildpack sets the default start command <code>python</code>. This starts the Python
+</h2><p>The Python Buildpack sets the default start command <code>python</code>. This starts the Python
 REPL (read-eval-print loop) at launch.</p>
+<p>If the application uses <code>poetry</code>, the <code>Poetry Run</code> buildpack can also be used
+to create a start command from single script defined in the <code>pyproject.toml</code>
+file. See the <a href="https://github.com/paketo-buildpacks/poetry-run/blob/main/README.md"><code>poetry-run</code>
+documentaton</a>
+for more details.</p>
 <p>The Python Buildpack comes with support for
 <a href="https://paketo.io/docs/howto/configuration/#procfiles"><code>Procfile</code></a>
 that lets users set custom start commands easily.</p>
@@ -542,9 +548,9 @@ that lets users set custom start commands easily.</p>
       <ul>
         <li><a href="#pythonpath">PYTHONPATH</a></li>
         <li><a href="#pythonuserbase">PYTHONUSERBASE</a></li>
-        <li><a href="#start-command">Start Command</a></li>
       </ul>
     </li>
+    <li><a href="#start-command">Start Command</a></li>
   </ul>
 </nav>
 </div>
