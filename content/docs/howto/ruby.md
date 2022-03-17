@@ -31,7 +31,7 @@ cd samples/ruby/puma
 
 1. Use the pack CLI with the Paketo Ruby Buildpack to build the sample app.
 {{< code/copyable >}}
-pack build my-app --buildpack paketobuildpacks/ruby:latest \
+pack build my-app --buildpack paketo-buildpacks/ruby \
   --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
@@ -60,7 +60,7 @@ highest to lowest: `BP_MRI_VERSION`, `Gemfile`.
 #### With pack and a Command-Line Flag
 When building with the pack CLI, set `BP_MRI_VERSION` at build time with the `--env` flag.
 {{< code/copyable >}}
-pack build my-app --buildpack paketobuildpacks/ruby:latest \
+pack build my-app --buildpack paketo-buildpacks/ruby \
   --env BP_MRI_VERSION="2.7.1"
 {{< /code/copyable >}}
 
@@ -111,7 +111,7 @@ location with the following precedence, from highest to lowest:
 #### With pack and a Command-Line Flag
 When building with the pack CLI, set `BP_BUNDLER_VERSION` at build time with the `--env` flag.
 {{< code/copyable >}}
-pack build my-app --buildpack paketobuildpacks/ruby:latest \
+pack build my-app --buildpack paketo-buildpacks/ruby \
   --env BP_BUNDLER_VERSION="2.1.4"
 {{< /code/copyable >}}
 

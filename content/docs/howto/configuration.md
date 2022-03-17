@@ -198,8 +198,8 @@ The following adds a process with `type` equal to `hello` and makes it the defau
 echo "hello: echo hello world" > nodejs/yarn/Procfile
 pack build samples/nodejs \
   --path nodejs/yarn \
-  --buildpack paketobuildpacks/nodejs:latest \
-  --buildpack gcr.io/paketo-buildpacks/procfile:latest \
+  --buildpack paketo-buildpacks/nodejs \
+  --buildpack paketo-buildpacks/procfile \
   --default-process hello
 docker run samples/nodejs # should print "hello world"
 {{< /code/copyable >}}
@@ -299,8 +299,8 @@ If a given [language family buildpack][language family buildpacks] does not cont
 {{< code/copyable >}}
 pack build samples/nodejs \
   --path nodejs/yarn \
-  --buildpack paketobuildpacks/nodejs:latest \
-  --buildpack gcr.io/paketo-buildpacks/procfile:latest \
+  --buildpack paketo-buildpacks/nodejs \
+  --buildpack paketo-buildpacks/image-labels \
   --env "BP_OCI_DESCRIPTION=Demo Application" \
   --env 'BP_IMAGE_LABELS=io.packeto.example="Adding Custom Labels"'
 docker inspect samples/nodejs | jq '.[].Config.Labels["org.opencontainers.image.description"]' # should print "Demo Application"

@@ -17,7 +17,7 @@ To build a sample app locally with this CNB using the `pack` CLI, run
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/php/webserver
-pack build my-app --buildpack paketobuildpacks/php:latest \
+pack build my-app --buildpack paketo-buildpacks/php \
   --builder paketobuildpacks/builder:full
 {{< /code/copyable >}}
 
