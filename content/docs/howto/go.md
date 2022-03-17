@@ -29,7 +29,7 @@ cd samples/go/mod
 
 1. Use the pack CLI with the Paketo Go Buildpack to build the sample app.
 {{< code/copyable >}}
-pack build my-app --buildpack paketobuildpacks/go:latest \
+pack build my-app --buildpack paketo-buildpacks/go \
   --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
@@ -52,7 +52,7 @@ the buildpack will provide the default version, which can be seen in the
 #### With pack and a Command-Line Flag
 When building with the pack CLI, set `BP_GO_VERSION` at build time with the `--env` flag.
 {{< code/copyable >}}
-pack build my-app --buildpack paketobuildpacks/go:latest \
+pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_GO_VERSION="1.14.1"
 {{< /code/copyable >}}
 
@@ -80,7 +80,7 @@ The Paketo Go buildpack has a dedicated environment variable for setting the val
 #### With pack and a Command-Line Flag
 When building with the pack CLI, set `BP_GO_BUILD_LDFLAGS` at build time with the `--env` flag. For example, to add `-ldflags="-X main.variable=some-value"` to the build flagset, set the environment variable as follows:
 {{< code/copyable >}}
-pack build my-app --buildpack paketobuildpacks/go:latest \
+pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_GO_BUILD_LDFLAGS="-X main.variable=some-value"
 {{< /code/copyable >}}
 
@@ -102,7 +102,7 @@ Setting `BP_GO_BUILD_FLAGS` will add to the Paketo Go buildpack's default flagse
 #### With pack and a Command-Line Flag
 When building with the pack CLI, set `BP_GO_BUILD_FLAGS` at build time with the `--env` flag. For example, to add `-buildmode=default -tags=paketo` to the build flagset, set the environment variable as follows:
 {{< code/copyable >}}
-pack build my-app --buildpack paketobuildpacks/go:latest \
+pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_GO_BUILD_FLAGS="-buildmode=default -tags=paketo"
 {{< /code/copyable >}}
 
@@ -138,7 +138,7 @@ app-directory
 When building with the pack CLI, set `BP_GO_TARGETS` at build time with the `--env` flag. 
 
 {{< code/copyable >}}
-pack build my-app --buildpack paketobuildpacks/go:latest \
+pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_GO_TARGETS="./second"
 {{< /code/copyable >}}
 
@@ -164,7 +164,7 @@ the app image. The following examples will build _both_ the `first` and `second`
 When building with the pack CLI, set `BP_GO_TARGETS` at build time with the `--env` flag. 
 
 {{< code/copyable >}}
-pack build my-app --buildpack paketobuildpacks/go:latest \
+pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_GO_TARGETS="./first:./second"
 {{< /code/copyable >}}
 
@@ -205,7 +205,7 @@ password=<SERVICE ACCOUNT KEY>
 1. Provide the service binding and `$GOPRIVATE` environment variable at build
    time:
 {{< code/copyable >}}
-pack build myapp --buildpack paketobuildpacks/go:latest \
+pack build myapp --buildpack paketo-buildpacks/go \
                  --env GOPRIVATE="github.com/private-org/private-module" \
                  --env SERVICE_BINDING_ROOT="/bindings" \
                  --volume /tmp/git-binding:/bindings/git-binding
@@ -240,7 +240,7 @@ import (
 When building with the pack CLI, set `$BP_GO_BUILD_IMPORT_PATH` at build time with the `--env` flag. 
 
 {{< code/copyable >}}
-pack build my-app --buildpack paketobuildpacks/go:latest \
+pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_GO_BUILD_IMPORT_PATH="github.com/app-developer/app-directory"
 {{< /code/copyable >}}
 
@@ -268,7 +268,7 @@ When building with the pack CLI, set `$BP_KEEP_FILES` at build time with the
 `--env` flag. 
 
 {{< code/copyable >}}
-pack build my-app --buildpack paketobuildpacks/go:latest \
+pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_KEEP_FILES="assets/*:public/*"
 {{< /code/copyable >}}
 
@@ -314,7 +314,7 @@ You can use the Paketo Go buildpack with [Tilt][tilt]. This example
 uses the [`pack` extension][tilt/pack] for Tilt, and shows how to configure watched files.
 {{< code/copyable >}}
 pack('my-app',
-  buildpacks=["paketobuildpacks/go:latest"],
+  buildpacks=["paketo-buildpacks/go"],
   path='./src',
   env_vars=["BP_LIVE_RELOAD_ENABLED=true"],
   deps=['./src/build'],
@@ -378,7 +378,7 @@ build-time SBOM.
 1. When building with the pack CLI, use the flag `--sbom-output-dir` to extract
    SBOMs from the build:
 {{< code/copyable >}}
-pack build my-app --buildpack paketobuildpacks/go:latest \
+pack build my-app --buildpack paketo-buildpacks/go \
                   --sbom-output-dir /tmp/sbom-output
 {{< /code/copyable >}}
 2. To view the Go modules used in the build, inspect one of the SBOMs generated

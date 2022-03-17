@@ -234,7 +234,7 @@ To use an alternative JVM, you will need to set two `--buildpack` arguments to `
 This example will switch in the Azul Zulu buildpack:
 
 {{< code/copyable >}}
-pack build samples/jar --buildpack gcr.io/paketo-buildpacks/azul-zulu --buildpack paketo-buildpacks/java`
+pack build samples/jar --buildpack paketo-buildpacks/azul-zulu --buildpack paketo-buildpacks/java`
 {{< /code/copyable >}}
 
 There is one drawback to this approach. When using the method above to specify an alternative JVM vendor buildpack, this alternate buildpack ends up running before the CA certs buildpack and therefore traffic from the alternate JVM vendor buildpack won’t trust any additional CA certs. This is not expected to impact many users because JVM buildpacks should reach out to URLs that have a cert signed by a known authority with a CA in the default system truststore.
@@ -244,7 +244,7 @@ If you have customized your JVM buildpack to download the JVM from a URL that us
 For example:
 
 {{< code/copyable >}}
-pack build samples/jar --buildpack paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/azul-zulu --buildpack paketo-buildpacks/java`
+pack build samples/jar --buildpack paketo-buildpacks/ca-certificates --buildpack paketo-buildpacks/azul-zulu --buildpack paketo-buildpacks/java`
 {{< /code/copyable >}}
 
 It does not hurt to use this command for all situations, it is just more verbose and most users can get away without specifying the CA certificates buildpack to be first.
@@ -325,7 +325,7 @@ The following table documents the versions available.
 For example, to select GraalVM 21.1:
 
 {{< code/copyable >}}
-pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/java-native-image:5.4.0
+pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack paketo-buildpacks/ca-certificates --buildpack paketo-buildpacks/java-native-image@5.4.0
 {{< /code/copyable >}}
 
 ### Use an Alternative Java Native Image Toolkit
