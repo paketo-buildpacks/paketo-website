@@ -491,7 +491,7 @@ Reference <a href="/docs/reference/python-reference">documentation</a>.</p>
 <div class="copyable">
     <pre class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples/python/pip
-pack build my-app --buildpack gcr.io/paketo-buildpacks/python \
+pack build my-app --buildpack paketo-buildpacks/python \
   --builder paketobuildpacks/builder:base
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
@@ -643,7 +643,7 @@ adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
 uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt.
 <div class="copyable">
     <pre class="copyable__code">pack(&#39;my-app&#39;,
-  buildpacks=[&#34;gcr.io/paketo-buildpacks/python&#34;],
+  buildpacks=[&#34;paketo-buildpacks/python&#34;],
   env_vars=[&#34;BP_LIVE_RELOAD_ENABLED=true&#34;],
   live_update=[
     sync(&#39;.&#39;, &#39;/workspace&#39;),

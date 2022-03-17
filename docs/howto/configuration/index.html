@@ -706,8 +706,8 @@ on the filesystem, where either the <code>type</code> or <code>kind</code> file 
     <pre class="copyable__code">echo &#34;hello: echo hello world&#34; &gt; nodejs/yarn/Procfile
 pack build samples/nodejs \
   --path nodejs/yarn \
-  --buildpack gcr.io/paketo-buildpacks/nodejs \
-  --buildpack gcr.io/paketo-buildpacks/procfile \
+  --buildpack paketo-buildpacks/nodejs \
+  --buildpack paketo-buildpacks/procfile \
   --default-process hello
 docker run samples/nodejs # should print &#34;hello world&#34;
 </pre>
@@ -792,8 +792,8 @@ only detect if a certificate binding is provided at build-time.</p>
 <div class="copyable">
     <pre class="copyable__code">pack build samples/nodejs \
   --path nodejs/yarn \
-  --buildpack  gcr.io/paketo-buildpacks/nodejs \
-  --buildpack  gcr.io/paketo-buildpacks/image-labels \
+  --buildpack paketo-buildpacks/nodejs \
+  --buildpack paketo-buildpacks/image-labels \
   --env &#34;BP_OCI_DESCRIPTION=Demo Application&#34; \
   --env &#39;BP_IMAGE_LABELS=io.packeto.example=&#34;Adding Custom Labels&#34;&#39;
 docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;org.opencontainers.image.description&#34;]&#39; # should print &#34;Demo Application&#34;

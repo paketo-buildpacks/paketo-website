@@ -531,7 +531,7 @@ cd samples/go/mod
 <li>
 <p>Use the pack CLI with the Paketo Go Buildpack to build the sample app.
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/go \
   --builder paketobuildpacks/builder:base
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
@@ -561,7 +561,7 @@ the buildpack will provide the default version, which can be seen in the
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_GO_VERSION</code> at build time with the <code>--env</code> flag.
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_GO_VERSION=&#34;1.14.1&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
@@ -600,7 +600,7 @@ environment variables at build time.</p>
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_GO_BUILD_LDFLAGS</code> at build time with the <code>--env</code> flag. For example, to add <code>-ldflags=&quot;-X main.variable=some-value&quot;</code> to the build flagset, set the environment variable as follows:
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_GO_BUILD_LDFLAGS=&#34;-X main.variable=some-value&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
@@ -633,7 +633,7 @@ environment variables at build time.</p>
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_GO_BUILD_FLAGS</code> at build time with the <code>--env</code> flag. For example, to add <code>-buildmode=default -tags=paketo</code> to the build flagset, set the environment variable as follows:
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_GO_BUILD_FLAGS=&#34;-buildmode=default -tags=paketo&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
@@ -676,7 +676,7 @@ setting the <code>BP_GO_TARGETS</code> environment variable at build time.</p>
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_GO_TARGETS</code> at build time with the <code>--env</code> flag.</p>
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_GO_TARGETS=&#34;./second&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
@@ -711,7 +711,7 @@ the app image. The following examples will build <em>both</em> the <code>first</
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_GO_TARGETS</code> at build time with the <code>--env</code> flag.</p>
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_GO_TARGETS=&#34;./first:./second&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
@@ -771,7 +771,7 @@ password=&lt;SERVICE ACCOUNT KEY&gt;
 <p>Provide the service binding and <code>$GOPRIVATE</code> environment variable at build
 time:
 <div class="copyable">
-    <pre class="copyable__code">pack build myapp --buildpack gcr.io/paketo-buildpacks/go \
+    <pre class="copyable__code">pack build myapp --buildpack paketo-buildpacks/go \
                  --env GOPRIVATE=&#34;github.com/private-org/private-module&#34; \
                  --env SERVICE_BINDING_ROOT=&#34;/bindings&#34; \
                  --volume /tmp/git-binding:/bindings/git-binding
@@ -807,7 +807,7 @@ directory structure looks like:</p>
     </a>
 </h4><p>When building with the pack CLI, set <code>$BP_GO_BUILD_IMPORT_PATH</code> at build time with the <code>--env</code> flag.</p>
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_GO_BUILD_IMPORT_PATH=&#34;github.com/app-developer/app-directory&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
@@ -844,7 +844,7 @@ variable at build time.</p>
 </h4><p>When building with the pack CLI, set <code>$BP_KEEP_FILES</code> at build time with the
 <code>--env</code> flag.</p>
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/go \
   --env BP_KEEP_FILES=&#34;assets/*:public/*&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
@@ -913,7 +913,7 @@ adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
 uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt, and shows how to configure watched files.
 <div class="copyable">
     <pre class="copyable__code">pack(&#39;my-app&#39;,
-  buildpacks=[&#34;gcr.io/paketo-buildpacks/go&#34;],
+  buildpacks=[&#34;paketo-buildpacks/go&#34;],
   path=&#39;./src&#39;,
   env_vars=[&#34;BP_LIVE_RELOAD_ENABLED=true&#34;],
   deps=[&#39;./src/build&#39;],
@@ -997,7 +997,7 @@ build-time SBOM.</p>
 <li>When building with the pack CLI, use the flag <code>--sbom-output-dir</code> to extract
 SBOMs from the build:
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/go \
                   --sbom-output-dir /tmp/sbom-output
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />

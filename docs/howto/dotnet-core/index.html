@@ -510,7 +510,7 @@ Reference <a href="/docs/reference/dotnet-core-reference">documentation</a>.</p>
 <div class="copyable">
     <pre class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples/dotnet-core/aspnet
-pack build my-app --buildpack gcr.io/paketo-buildpacks/dotnet-core \
+pack build my-app --buildpack paketo-buildpacks/dotnet-core \
   --builder paketobuildpacks/builder:base
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
@@ -724,7 +724,7 @@ v1.0.0. To migrate from using <code>buildpack.yml</code>, please set the
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_DOTNET_PUBLISH_FLAGS</code> at build time with the <code>--env</code> flag. For example, to add <code>--verbosity=normal</code> and <code>--self-contained=true</code> to the build flagset, set the environment variable as follows:
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/go \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/dotnet-core \
   --env BP_DOTNET_PUBLISH_FLAGS=&#34;--verbosity=normal --self-contained=true&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />

@@ -822,7 +822,7 @@ pack build samples/java \
 <p>To use an alternative JVM, you will need to set two <code>--buildpack</code> arguments to <code>pack build</code>, one for the alternative JVM buildpack you&rsquo;d like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you&rsquo;re specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.</p>
 <p>This example will switch in the Azul Zulu buildpack:</p>
 <div class="copyable">
-    <pre class="copyable__code">pack build samples/jar --buildpack gcr.io/paketo-buildpacks/azul-zulu --buildpack paketo-buildpacks/java`
+    <pre class="copyable__code">pack build samples/jar --buildpack paketo-buildpacks/azul-zulu --buildpack paketo-buildpacks/java`
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -831,7 +831,7 @@ pack build samples/java \
 <p>If you have customized your JVM buildpack to download the JVM from a URL that uses a certificate not signed by a well-known CA, you can workaround this by specifying the CA certs buildpack to run first. This works because while you will end up with the CA certificates buildpack specified twice, the lifecycle is smart enough to drop the second one.</p>
 <p>For example:</p>
 <div class="copyable">
-    <pre class="copyable__code">pack build samples/jar --buildpack paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/azul-zulu --buildpack paketo-buildpacks/java`
+    <pre class="copyable__code">pack build samples/jar --buildpack paketo-buildpacks/ca-certificates --buildpack paketo-buildpacks/azul-zulu --buildpack paketo-buildpacks/java`
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -932,7 +932,7 @@ pack build samples/java-native \
 </table>
 <p>For example, to select GraalVM 21.1:</p>
 <div class="copyable">
-    <pre class="copyable__code">pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack gcr.io/paketo-buildpacks/ca-certificates --buildpack gcr.io/paketo-buildpacks/java-native-image:5.4.0
+    <pre class="copyable__code">pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack paketo-buildpacks/ca-certificates --buildpack paketo-buildpacks/java-native-image@5.4.0
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>

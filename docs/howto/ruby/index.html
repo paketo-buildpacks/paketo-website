@@ -511,7 +511,7 @@ cd samples/ruby/puma
 <li>
 <p>Use the pack CLI with the Paketo Ruby Buildpack to build the sample app.
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/ruby \
   --builder paketobuildpacks/builder:base
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
@@ -547,7 +547,7 @@ highest to lowest: <code>BP_MRI_VERSION</code>, <code>Gemfile</code>.</p>
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_MRI_VERSION</code> at build time with the <code>--env</code> flag.
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/ruby \
   --env BP_MRI_VERSION=&#34;2.7.1&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
@@ -613,7 +613,7 @@ location with the following precedence, from highest to lowest:
     </a>
 </h4><p>When building with the pack CLI, set <code>BP_BUNDLER_VERSION</code> at build time with the <code>--env</code> flag.
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --buildpack gcr.io/paketo-buildpacks/ruby \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/ruby \
   --env BP_BUNDLER_VERSION=&#34;2.1.4&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
