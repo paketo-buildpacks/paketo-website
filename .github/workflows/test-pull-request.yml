@@ -24,10 +24,6 @@ jobs:
     - name: Check For Internal Links without Shortcodes
       run: scripts/check-internal-links.sh
 
-    - name: Check Links
-      if: always()
-      run: scripts/check-links.sh
-
   check-spelling:
     name: Check Spelling in Docs
     runs-on: ubuntu-latest

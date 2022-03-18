@@ -62,7 +62,7 @@ function usage() {
   cat <<-USAGE
 check-links.sh [OPTIONS]
 
-Checks for internal links to docs pages that do not use a {{< ref }} or {{< relref >}}.
+Checks for internal links to docs pages that do not use a {{< ref >}} or {{< relref >}}.
 
 OPTIONS
   --help  -h  prints the command usage
