@@ -12,15 +12,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - uses: actions/setup-node@v3.0.0
-      with:
-        node-version: 16
-        check-latest: true
-        cache: 'npm'
-
-    - name: Install node Modules
-      run: npm install
-
     - name: Check For Internal Links without Shortcodes
       run: scripts/check-internal-links.sh
 
