@@ -2,7 +2,7 @@
   "dependencies": {
     "@docsearch/js": "^3.0.0",
     "clipboard": "^2.0.10",
-    "firebase-tools": "^10.4.1"
+    "firebase-tools": "^10.4.2"
   },
   "scripts": {
     "deploy": "node -e \"const deploy = require('./deploy.js'); deploy({expires: '8h'});\""
