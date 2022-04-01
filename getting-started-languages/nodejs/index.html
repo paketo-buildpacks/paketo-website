@@ -103,7 +103,7 @@ as a runnable container image.</p>
 </h3><p>Clone the Paketo samples repository and navigate to the source code for the sample Node.js app.</p>
 <div class="copyable">
     <pre class="copyable__code">git clone https://github.com/paketo-buildpacks/samples \
-&amp;&amp; cd samples/demo-apps/app-source
+&amp;&amp; cd samples/nodejs/npm
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -220,14 +220,22 @@ Successfully built image paketo-demo-app
 </div>
 <p>Wait a few moments for the app to start. Then, use <code>curl</code> to make a request.</p>
 <div class="copyable">
-    <pre class="copyable__code">curl http://localhost:8080/greeting
+    <pre class="copyable__code">curl http://localhost:8080
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <div class="code-output">
     <div class="btn code-output__btn code-output__btn">View Output</div>
-    <pre class="code-output__output-container"><code class="code-output__output">Hello from your application image
+    <pre class="code-output__output-container"><code class="code-output__output">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Powered By Paketo Buildpacks&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;img style=&#34;display: block; margin-left: auto; margin-right: auto; width: 50%;&#34; src=&#34;https://paketo.io/images/paketo-logo-full-color.png&#34;&gt;&lt;/img&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
 </code></pre>
 </div>
 

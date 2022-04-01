@@ -35,7 +35,7 @@ git clone https://github.com/paketo-buildpacks/samples \ &amp;amp;&amp;amp; cd s
       <guid>https://paketo.io/getting-started-languages/nodejs/</guid>
       <description>Node.js  Let&amp;rsquo;s use the base Paketo Builder and the pack CLI to build a Node.js app as a runnable container image.
 Prerequisites   Install Docker by following this guide. Install the pack CLI by following this guide.  Build the App Image From Source Code  Clone the Paketo samples repository and navigate to the source code for the sample Node.js app.
-git clone https://github.com/paketo-buildpacks/samples \ &amp;amp;&amp;amp; cd samples/demo-apps/app-source  Copied!</description>
+git clone https://github.com/paketo-buildpacks/samples \ &amp;amp;&amp;amp; cd samples/nodejs/npm  Copied!</description>
     </item>
     
     <item>
