@@ -15,7 +15,7 @@ Clone the Paketo samples repository and navigate to the source code for the samp
 
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples \
-&& cd samples/demo-apps/app-source
+&& cd samples/nodejs/npm
 {{< /code/copyable >}}
 
 From the sample app directory, use the pack CLI to build an app image.
@@ -126,11 +126,19 @@ docker run -d -p 8080:8080 -e PORT=8080 paketo-demo-app
 Wait a few moments for the app to start. Then, use `curl` to make a request.
 
 {{< code/copyable >}}
-curl http://localhost:8080/greeting
+curl http://localhost:8080
 {{< /code/copyable >}}
 
 {{< code/output >}}
-Hello from your application image
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Powered By Paketo Buildpacks</title>
+  </head>
+  <body>
+    <img style="display: block; margin-left: auto; margin-right: auto; width: 50%;" src="https://paketo.io/images/paketo-logo-full-color.png"></img>
+  </body>
+</html>
 {{< /code/output >}}
 
 You've done it! As you can see, Paketo buildpacks do most of the hard work for you.
