@@ -182,8 +182,8 @@ pack inspect-image samples/app --bom | jq '.local[] | select(.name=="jre") | .me
 The following environment variable configures the JVM version at build-time.
 
 * `BP_JVM_VERSION`
-  * Defaults to the latest LTS version at the time of release.
-  * Configures a specific JDK or JRE version.
+  * Defaults to the latest 11.x version at the time of release.
+  * Configures a specific JDK or JRE version (specify only the major version).
   * *Example*: Given `BP_JVM_VERSION=8` or `BP_JVM_VERSION=8.*` the buildpack will install the latest patch releases of the Java 8 JDK and JRE.
 
 ### Install a Specific JVM Type
