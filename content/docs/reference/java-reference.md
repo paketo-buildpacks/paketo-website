@@ -42,12 +42,12 @@ The Heap memory value, ultimately supplied as the `-xmX` JVM flag, is calculated
 
 The below table lists the component parts of the Non-Heap value, the equivalent JVM flags, and their defaults. Where one exists, the JVM default value is used.
 
-| Memory Region         | JVM Flag                   | Default        |
-| ----------------------| ---------------------------| ---------------|
-| Direct Memory         | `-XX:MaxDirectMemorySize`    | 10MB (JVM Default)
-| Metaspace             | `-XX:MaxMetaspaceSize`       | Automatically calculated based on class count |
-| Reserved Code Cache   | `-XX:ReservedCodeCacheSize`  | 240MB (JVM Default)
-| Thread Stack          | `-Xss`                       | 1M * 250  (JVM Default Thread Stack Size * Default Optimum Thread Count for Tomcat) |
+| Memory Region       | JVM Flag                    | Default                                                                             |
+| ------------------- | --------------------------- | ----------------------------------------------------------------------------------- |
+| Direct Memory       | `-XX:MaxDirectMemorySize`   | 10MB (JVM Default)                                                                  |
+| Metaspace           | `-XX:MaxMetaspaceSize`      | Automatically calculated based on class count                                       |
+| Reserved Code Cache | `-XX:ReservedCodeCacheSize` | 240MB (JVM Default)                                                                 |
+| Thread Stack        | `-Xss`                      | 1M * 250  (JVM Default Thread Stack Size * Default Optimum Thread Count for Tomcat) |
 
 The outputs of the tool are the above JVM flags and their calculated values. 
 
@@ -71,6 +71,15 @@ Similarly, increasing container memory limit beyond a known application's non-he
 **Overriding Defaults**
 
 It is possible to override the calculated or default values specified above in the non-heap table, however the runtime consequences of adjusting these values should be considered. For more information on how to configure these explicitly, see the How-To section [Configure The JVM at Runtime][configure jvm].
+
+## Java Application Servers
+
+The Paketo Java buildpack supports multiple application servers. Each application server has different capabilities and configuration options. The following are a list of supported application servers and links to reference documentation for each one.
+
+| Application Server | Buildpack Documentation                                                        | Server Documentation                                        |
+| ------------------ | ------------------------------------------------------------------------------ | ----------------------------------------------------------- |
+| Apache Tomcat      | [link](https://github.com/paketo-buildpacks/apache-tomcat/blob/main/README.md) | [link](https://tomcat.apache.org/tomcat-9.0-doc/index.html) |
+| Open Liberty       | [link](https://github.com/paketo-buildpacks/liberty/blob/main/README.md)       | [link](https://openliberty.io/)                             |
 
 ## Spring Boot Applications
 
@@ -101,6 +110,7 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 | ---------------------------------------------------------------------------- | ----------------- | ----------------------------------------------------------------------------------------------- |
 | [Paketo CA Certificates Buildpack][bp/ca-certificates]                       | Optional          | Adds CA certificates to the system truststore at build and runtime.                             |
 | [Paketo BellSoft Liberica Buildpack][bp/bellsoft-liberica]                   | **Required**      | Provides the JDK and/or JRE.                                                                    |
+| [Paketo Syft][bp/syft]                                                       | Optional          | Provides the Syft CLI which can be used to generate SBoM information.                           |
 | [Paketo Leiningen Buildpack][bp/leiningen]                                   | Optional          | Builds Leiningen-based applications from source.                                                |
 | [Paketo Clojure Tools Buildpack][bp/clojure-tools]                           | Optional          | Builds Clojure applications from source.                                                        |
 | [Paketo Gradle Buildpack][bp/gradle]                                         | Optional          | Builds Gradle-based applications from source.                                                   |
@@ -109,11 +119,15 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 | [Paketo Watchexec Buildpack][bp/watchexec]                                   | Optional          | Contributes the `watchexec` binary for process reloading.                                       |
 | [Paketo Executable JAR Buildpack][bp/executable-jar]                         | Optional          | Contributes a process Type that launches an executable JAR.                                     |
 | [Paketo Apache Tomcat Buildpack][bp/apache-tomcat]                           | Optional          | Contributes Apache Tomcat and a process type that launches a WAR with Tomcat.                   |
+| [Paketo Liberty Buildpack][bp/liberty]                                       | Optional          | Contributes Open Liberty and a process type that launches a WAR with Open Liberty.              |
 | [Paketo DistZip Buildpack][bp/dist-zip]                                      | Optional          | Contributes a process type that launches a DistZip-style application.                           |
 | [Paketo Spring Boot Buildpack][bp/spring-boot]                               | Optional          | Contributes configuration and metadata to Spring Boot applications.                             |
 | [Paketo Procfile Buildpack][bp/procfile]                                     | Optional          | Allows the application to define or redefine process types with a [Procfile][procfiles]         |
+| [Paketo Jattach][bp/jattach]                                                 | Optional          | Provides the JAttach binary to send commands to a remote JVM via Dynamic Attach mechanism       |
 | [Paketo Azure Application Insights Buildpack][bp/azure-application-insights] | Optional          | Contributes the Application Insights Agent and configures it to connect to the service.         |
 | [Paketo Google Stackdriver Buildpack][bp/google-stackdriver]                 | Optional          | Contributes Stackdriver agents and configures them to connect to the service.                   |
+| [Paketo Datadog Buildpack][bp/datadog]                                       | Optional          | Contributes Datadog trace agent and configures it to connect to the service.                    |
+| [Paketo Java Memory Assistant Buildpack][bp/java-memory-assistant]           | Optional          | Contributes and configures the SAP Java Memory Assistant (JMA) Agent for Java applications.     |
 | [Paketo Encrypt At Rest Buildpack][bp/encrypt-at-rest]                       | Optional          | Encrypts an application layer and contributes a profile script that decrypts it at launch time. |
 | [Paketo Environment Variables Buildpack][bp/environment-variables]           | Optional          | Contributes arbitrary user-provided environment variables to the image.                         |
 | [Paketo Image Labels Buildpack][bp/image-labels]                             | Optional          | Contributes OCI-specific and arbitrary user-provided labels to the image.                       |
@@ -127,8 +141,9 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 [bp/clojure-tools]:https://github.com/paketo-buildpacks/clojure-tools
 [bp/eclipse-openj9]:https://github.com/paketo-buildpacks/eclipse-openj9
 [bp/graalvm]:https://github.com/paketo-buildpacks/graalvm
-[bp/dragonwell]:https://github.com/paketo-buildpacks/graalvm
-[bp/microsoft]:https://github.com/paketo-buildpacks/graalvm
+[bp/datadog]:https://github.com/paketo-buildpacks/datadog
+[bp/dragonwell]:https://github.com/paketo-buildpacks/alibaba-dragonwell
+[bp/microsoft]:https://github.com/paketo-buildpacks/microsoft-openjdk
 [bp/sap-machine]:https://github.com/paketo-buildpacks/sap-machine
 [bp/ca-certificates]:https://github.com/paketo-buildpacks/ca-certificates
 [bp/dist-zip]:https://github.com/paketo-buildpacks/dist-zip
@@ -138,12 +153,16 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 [bp/google-stackdriver]:https://github.com/paketo-buildpacks/google-stackdriver
 [bp/gradle]:https://github.com/paketo-buildpacks/gradle
 [bp/image-labels]:https://github.com/paketo-buildpacks/image-labels
+[bp/jattach]:https://github.com/paketo-buildpacks/jattach
 [bp/java]:https://github.com/paketo-buildpacks/java
+[bp/java-memory-assistant]:https://github.com/paketo-buildpacks/java-memory-assistant
 [bp/leiningen]:https://github.com/paketo-buildpacks/leiningen
+[bp/liberty]:https://github.com/paketo-buildpacks/liberty
 [bp/maven]:https://github.com/paketo-buildpacks/maven
 [bp/procfile]:https://github.com/paketo-buildpacks/procfile
 [bp/sbt]:https://github.com/paketo-buildpacks/sbt
 [bp/spring-boot]:https://github.com/paketo-buildpacks/spring-boot
+[bp/syft]:https://github.com/paketo-buildpacks/syft
 [bp/watchexec]:https://github.com/paketo-buildpacks/watchexec
 
 <!-- other references -->
