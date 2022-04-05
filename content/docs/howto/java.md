@@ -249,6 +249,21 @@ pack build samples/jar --buildpack paketo-buildpacks/ca-certificates --buildpack
 
 It does not hurt to use this command for all situations, it is just more verbose and most users can get away without specifying the CA certificates buildpack to be first.
 
+### Use an Alternative Java Application Server
+
+When deploying your Java application to an application server, the default application server installed by the Paketo Java buildpack is Apache Tomcat. If you require a different application server, possibly one that supports JavaEE or JakartaEE, you may select an alternative Java application server by setting `BP_JAVA_APP_SERVER` when building your application.
+
+| Application Server                         | BP_JAVA_APP_SERVER | Buildpack                                                                            |
+| ------------------------------------------ | ------------------ | ------------------------------------------------------------------------------------ |
+| [Apache Tomcat](https://tomcat.apache.org) | `tomcat`           | [Paketo Apache Tomcat](https://github.com/paketo-buildpacks/apache-tomcat) - Default |
+| [Open Liberty](https://openliberty.io/)    | `liberty`          | [Paketo Liberty](https://github.com/paketo-buildpacks/liberty)                       |
+
+This example will switch to using Open Liberty:
+
+{{< code/copyable >}}
+pack build samples/war -e BP_JAVA_APP_SERVER=liberty`
+{{< /code/copyable >}}
+
 ## Build an App as a GraalVM Native Image Application
 
 The [Paketo Java Native Image Buildpack][bp/java-native-image] allows users to create an image containing a [GraalVM][graalvm] [native image][graalvm native image] application.
@@ -376,8 +391,9 @@ The Java Buildpack supports the following [APM][apm] integrations:
 
 * [Azure Application Insights][azure application insights] - support provided by the [Azure Application Insights Buildpack][bp/azure-application-insights]
 * [Google Stackdriver][google stackdriver] - support provided by the [Google Stackdriver Buildpack][bp/google-stackdriver]
+* [Datadog][datadog] - support provided by the [Datadog Buildpack][bp/datadog]
 
-APM integrations are enabled with [bindings][bindings]. If a binding of the correct `type` is provided at build-time the corresponding java agent will be contributed to the application image. Connection credentials will be read from the binding at runtime.
+The Azure Application Insights and Google Stackdriver APM integrations are enabled with [bindings][bindings]. If a binding of the correct `type` is provided at build-time the corresponding Java agent will be contributed to the application image. Connection credentials will be read from the binding at runtime.
 
 **Example**: Connecting to Azure Application Insights
 
@@ -394,6 +410,23 @@ docker run --rm --tty \
   --volume "$(pwd)/java/application-insights/binding:/bindings/app-insights" \
   samples/java
 {{< /code/copyable >}}
+
+The Datadog APM integration is enabled with an environment variable. If the environment variable is set then the corresponding Java agent will be contributed to the application image. Connection credentials will also be read from environment variables set at runtime. You can find detailed instructions [available here](https://github.com/paketo-buildpacks/azure-application-insights/tree/main/docs).
+
+**Example**: Connecting to Datadog
+
+The following command builds an image with the Datadog Java Agent
+{{< code/copyable >}}
+pack build samples/java BP_DATADOG_ENABLED=true
+{{< /code/copyable >}}
+
+[Configuration of the Datadog agent](https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configuration) is done through environment variables at runtime:
+
+{{< code/copyable >}}
+docker run --rm --tty samples/java -e DD_SERVICE=foo-service -e DD_ENV=foo-env -e DD_VERSION=1.1.1
+{{< /code/copyable >}}
+
+Note that the Datadog agent requires a side-car agent to be running in addition to the Java agent. This agent runs outside of the buildpack generated image. The [standard Datadog instructions for your container orchestrator of choice](https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configure-the-datadog-agent-for-apm) can be used to install this agent. The Paketo team also has detailed instructions for [various runtimes available here](https://github.com/paketo-buildpacks/datadog/blob/main/docs/).
 
 ## Enable Process Reloading
 
@@ -620,7 +653,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [bp/azure-application-insights]:https://github.com/paketo-buildpacks/azure-application-insights
 [bp/bellsoft-liberica]:https://github.com/paketo-buildpacks/bellsoft-liberica
 [bp/ca-certificates]:https://github.com/paketo-buildpacks/ca-certificates
-[bp/debug]:https://github.com/paketo-buildpacks/debug
+[bp/datadog]:https://github.com/pakteo-buildpacks/datadog
 [bp/dist-zip]:https://github.com/paketo-buildpacks/dist-zip
 [bp/dragonwell]:https://github.com/paketo-buildpacks/alibaba-dragonwell
 [bp/eclipse-openj9]:https://github.com/paketo-buildpacks/eclipse-openj9
@@ -632,7 +665,6 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [bp/image-labels]:https://github.com/paketo-buildpacks/image-labels
 [bp/java-native-image]:https://github.com/paketo-buildpacks/java-native-image
 [bp/java]:https://github.com/paketo-buildpacks/java
-[bp/jmx]:https://github.com/paketo-buildpacks/jmx
 [bp/leiningen]:https://github.com/paketo-buildpacks/leiningen
 [bp/maven]:https://github.com/paketo-buildpacks/maven
 [bp/microsoft]:https://github.com/paketo-buildpacks/microsoft-openjdk
@@ -671,6 +703,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [azure application insights]:https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview
 [bash pattern matching]:https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html
 [dist-zip]:https://docs.gradle.org/current/userguide/distribution_plugin.html
+[datadog]:https://www.datadoghq.com/
 [executable jar]:https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files
 [google stackdriver]:https://cloud.google.com/products/operations
 [graalvm feature]:https://www.graalvm.org/sdk/javadoc/org/graalvm/nativeimage/hosted/Feature.html
