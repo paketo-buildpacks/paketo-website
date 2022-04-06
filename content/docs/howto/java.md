@@ -261,7 +261,7 @@ When deploying your Java application to an application server, the default appli
 This example will switch to using Open Liberty:
 
 {{< code/copyable >}}
-pack build samples/war -e BP_JAVA_APP_SERVER=liberty`
+pack build samples/war -e BP_JAVA_APP_SERVER=liberty
 {{< /code/copyable >}}
 
 ## Build an App as a GraalVM Native Image Application
@@ -411,13 +411,14 @@ docker run --rm --tty \
   samples/java
 {{< /code/copyable >}}
 
-The Datadog APM integration is enabled with an environment variable. If the environment variable is set then the corresponding Java agent will be contributed to the application image. Connection credentials will also be read from environment variables set at runtime. You can find detailed instructions [available here](https://github.com/paketo-buildpacks/azure-application-insights/tree/main/docs).
+The Datadog APM integration is enabled with an environment variable. If the environment variable is set then the corresponding Java agent will be contributed to the application image. Configuration will be read from standard Datadog environment variables set at runtime. You can find the full list in the Datadog documentation [available here](https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configuration).
 
 **Example**: Connecting to Datadog
 
 The following command builds an image with the Datadog Java Agent
+
 {{< code/copyable >}}
-pack build samples/java BP_DATADOG_ENABLED=true
+pack build samples/java -e BP_DATADOG_ENABLED=true
 {{< /code/copyable >}}
 
 [Configuration of the Datadog agent](https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configuration) is done through environment variables at runtime:
