@@ -653,7 +653,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [bp/azure-application-insights]:https://github.com/paketo-buildpacks/azure-application-insights
 [bp/bellsoft-liberica]:https://github.com/paketo-buildpacks/bellsoft-liberica
 [bp/ca-certificates]:https://github.com/paketo-buildpacks/ca-certificates
-[bp/datadog]:https://github.com/pakteo-buildpacks/datadog
+[bp/datadog]:https://github.com/paketo-buildpacks/datadog
 [bp/dist-zip]:https://github.com/paketo-buildpacks/dist-zip
 [bp/dragonwell]:https://github.com/paketo-buildpacks/alibaba-dragonwell
 [bp/eclipse-openj9]:https://github.com/paketo-buildpacks/eclipse-openj9
