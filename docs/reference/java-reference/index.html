@@ -461,6 +461,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#notes">Notes</a></li>
       </ul>
     </li>
+    <li><a href="#java-application-servers">Java Application Servers</a></li>
     <li><a href="#spring-boot-applications">Spring Boot Applications</a>
       <ul>
         <li><a href="#additional-metadata">Additional Metadata</a></li>
@@ -563,6 +564,32 @@ Therefore, setting <code>-Xmx</code> directly could either:</p>
 <p>Similarly, increasing container memory limit beyond a known application&rsquo;s non-heap (fixed) size will assign all of the increased value to Heap (<code>-Xmx</code>).</p>
 <p><strong>Overriding Defaults</strong></p>
 <p>It is possible to override the calculated or default values specified above in the non-heap table, however the runtime consequences of adjusting these values should be considered. For more information on how to configure these explicitly, see the How-To section <a href="https://paketo.io/docs/howto/java/#configure-the-jvm-at-runtime">Configure The JVM at Runtime</a>.</p>
+<h2 id="java-application-servers" class="markup-heading">
+    <a class="markup-heading__link" href="#java-application-servers">
+        Java Application Servers
+    </a>
+</h2><p>The Paketo Java buildpack supports multiple application servers. Each application server has different capabilities and configuration options. The following are a list of supported application servers and links to reference documentation for each one.</p>
+<table>
+<thead>
+<tr>
+<th>Application Server</th>
+<th>Buildpack Documentation</th>
+<th>Server Documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apache Tomcat</td>
+<td><a href="https://github.com/paketo-buildpacks/apache-tomcat/blob/main/README.md">link</a></td>
+<td><a href="https://tomcat.apache.org/tomcat-9.0-doc/index.html">link</a></td>
+</tr>
+<tr>
+<td>Open Liberty</td>
+<td><a href="https://github.com/paketo-buildpacks/liberty/blob/main/README.md">link</a></td>
+<td><a href="https://openliberty.io/">link</a></td>
+</tr>
+</tbody>
+</table>
 <h2 id="spring-boot-applications" class="markup-heading">
     <a class="markup-heading__link" href="#spring-boot-applications">
         Spring Boot Applications
@@ -612,6 +639,11 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
 <td>Provides the JDK and/or JRE.</td>
 </tr>
 <tr>
+<td><a href="https://github.com/paketo-buildpacks/syft">Paketo Syft</a></td>
+<td>Optional</td>
+<td>Provides the Syft CLI which can be used to generate SBoM information.</td>
+</tr>
+<tr>
 <td><a href="https://github.com/paketo-buildpacks/leiningen">Paketo Leiningen Buildpack</a></td>
 <td>Optional</td>
 <td>Builds Leiningen-based applications from source.</td>
@@ -652,6 +684,11 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
 <td>Contributes Apache Tomcat and a process type that launches a WAR with Tomcat.</td>
 </tr>
 <tr>
+<td><a href="https://github.com/paketo-buildpacks/liberty">Paketo Liberty Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes Open Liberty and a process type that launches a WAR with Open Liberty.</td>
+</tr>
+<tr>
 <td><a href="https://github.com/paketo-buildpacks/dist-zip">Paketo DistZip Buildpack</a></td>
 <td>Optional</td>
 <td>Contributes a process type that launches a DistZip-style application.</td>
@@ -667,6 +704,11 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
 <td>Allows the application to define or redefine process types with a [Procfile][procfiles]</td>
 </tr>
 <tr>
+<td><a href="https://github.com/paketo-buildpacks/jattach">Paketo Jattach</a></td>
+<td>Optional</td>
+<td>Provides the JAttach binary to send commands to a remote JVM via Dynamic Attach mechanism</td>
+</tr>
+<tr>
 <td><a href="https://github.com/paketo-buildpacks/azure-application-insights">Paketo Azure Application Insights Buildpack</a></td>
 <td>Optional</td>
 <td>Contributes the Application Insights Agent and configures it to connect to the service.</td>
@@ -675,6 +717,16 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
 <td><a href="https://github.com/paketo-buildpacks/google-stackdriver">Paketo Google Stackdriver Buildpack</a></td>
 <td>Optional</td>
 <td>Contributes Stackdriver agents and configures them to connect to the service.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/datadog">Paketo Datadog Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes Datadog trace agent and configures it to connect to the service.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/java-memory-assistant">Paketo Java Memory Assistant Buildpack</a></td>
+<td>Optional</td>
+<td>Contributes and configures the SAP Java Memory Assistant (JMA) Agent for Java applications.</td>
 </tr>
 <tr>
 <td><a href="https://github.com/paketo-buildpacks/encrypt-at-rest">Paketo Encrypt At Rest Buildpack</a></td>
@@ -707,7 +759,7 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> April 4, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> April 7, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -721,6 +773,7 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
         <li><a href="#notes">Notes</a></li>
       </ul>
     </li>
+    <li><a href="#java-application-servers">Java Application Servers</a></li>
     <li><a href="#spring-boot-applications">Spring Boot Applications</a>
       <ul>
         <li><a href="#additional-metadata">Additional Metadata</a></li>

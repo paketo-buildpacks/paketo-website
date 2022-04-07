@@ -463,6 +463,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#install-a-specific-jvm-type">Install a Specific JVM Type</a></li>
         <li><a href="#configure-the-jvm-at-runtime">Configure the JVM at Runtime</a></li>
         <li><a href="#use-an-alternative-jvm">Use an Alternative JVM</a></li>
+        <li><a href="#use-an-alternative-java-application-server">Use an Alternative Java Application Server</a></li>
       </ul>
     </li>
     <li><a href="#build-an-app-as-a-graalvm-native-image-application">Build an App as a GraalVM Native Image Application</a>
@@ -837,6 +838,39 @@ pack build samples/java \
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <p>It does not hurt to use this command for all situations, it is just more verbose and most users can get away without specifying the CA certificates buildpack to be first.</p>
+<h3 id="use-an-alternative-java-application-server" class="markup-heading">
+    <a class="markup-heading__link" href="#use-an-alternative-java-application-server">
+        Use an Alternative Java Application Server
+    </a>
+</h3><p>When deploying your Java application to an application server, the default application server installed by the Paketo Java buildpack is Apache Tomcat. If you require a different application server, possibly one that supports JavaEE or JakartaEE, you may select an alternative Java application server by setting <code>BP_JAVA_APP_SERVER</code> when building your application.</p>
+<table>
+<thead>
+<tr>
+<th>Application Server</th>
+<th>BP_JAVA_APP_SERVER</th>
+<th>Buildpack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://tomcat.apache.org">Apache Tomcat</a></td>
+<td><code>tomcat</code></td>
+<td><a href="https://github.com/paketo-buildpacks/apache-tomcat">Paketo Apache Tomcat</a> - Default</td>
+</tr>
+<tr>
+<td><a href="https://openliberty.io/">Open Liberty</a></td>
+<td><code>liberty</code></td>
+<td><a href="https://github.com/paketo-buildpacks/liberty">Paketo Liberty</a></td>
+</tr>
+</tbody>
+</table>
+<p>This example will switch to using Open Liberty:</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build samples/war -e BP_JAVA_APP_SERVER=liberty
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h2 id="build-an-app-as-a-graalvm-native-image-application" class="markup-heading">
     <a class="markup-heading__link" href="#build-an-app-as-a-graalvm-native-image-application">
         Build an App as a GraalVM Native Image Application
@@ -1006,8 +1040,9 @@ pack build samples/java-native \
 <ul>
 <li><a href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview">Azure Application Insights</a> - support provided by the <a href="https://github.com/paketo-buildpacks/azure-application-insights">Azure Application Insights Buildpack</a></li>
 <li><a href="https://cloud.google.com/products/operations">Google Stackdriver</a> - support provided by the <a href="https://github.com/paketo-buildpacks/google-stackdriver">Google Stackdriver Buildpack</a></li>
+<li><a href="https://www.datadoghq.com/">Datadog</a> - support provided by the <a href="https://github.com/paketo-buildpacks/datadog">Datadog Buildpack</a></li>
 </ul>
-<p>APM integrations are enabled with <a href="https://paketo.io/docs/howto/configuration/#bindings">bindings</a>. If a binding of the correct <code>type</code> is provided at build-time the corresponding java agent will be contributed to the application image. Connection credentials will be read from the binding at runtime.</p>
+<p>The Azure Application Insights and Google Stackdriver APM integrations are enabled with <a href="https://paketo.io/docs/howto/configuration/#bindings">bindings</a>. If a binding of the correct <code>type</code> is provided at build-time the corresponding Java agent will be contributed to the application image. Connection credentials will be read from the binding at runtime.</p>
 <p><strong>Example</strong>: Connecting to Azure Application Insights</p>
 <p>The following command builds an image with the Azure Application Insights Java Agent
 <div class="copyable">
@@ -1027,6 +1062,23 @@ docker run --rm --tty \
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
+<p>The Datadog APM integration is enabled with an environment variable. If the environment variable is set then the corresponding Java agent will be contributed to the application image. Configuration will be read from standard Datadog environment variables set at runtime. You can find the full list in the Datadog documentation <a href="https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configuration">available here</a>.</p>
+<p><strong>Example</strong>: Connecting to Datadog</p>
+<p>The following command builds an image with the Datadog Java Agent</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build samples/java -e BP_DATADOG_ENABLED=true
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<p><a href="https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configuration">Configuration of the Datadog agent</a> is done through environment variables at runtime:</p>
+<div class="copyable">
+    <pre class="copyable__code">docker run --rm --tty samples/java -e DD_SERVICE=foo-service -e DD_ENV=foo-env -e DD_VERSION=1.1.1
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<p>Note that the Datadog agent requires a side-car agent to be running in addition to the Java agent. This agent runs outside of the buildpack generated image. The <a href="https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configure-the-datadog-agent-for-apm">standard Datadog instructions for your container orchestrator of choice</a> can be used to install this agent. The Paketo team also has detailed instructions for <a href="https://github.com/paketo-buildpacks/datadog/blob/main/docs/">various runtimes available here</a>.</p>
 <h2 id="enable-process-reloading" class="markup-heading">
     <a class="markup-heading__link" href="#enable-process-reloading">
         Enable Process Reloading
@@ -1281,7 +1333,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> April 4, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> April 7, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1297,6 +1349,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
         <li><a href="#install-a-specific-jvm-type">Install a Specific JVM Type</a></li>
         <li><a href="#configure-the-jvm-at-runtime">Configure the JVM at Runtime</a></li>
         <li><a href="#use-an-alternative-jvm">Use an Alternative JVM</a></li>
+        <li><a href="#use-an-alternative-java-application-server">Use an Alternative Java Application Server</a></li>
       </ul>
     </li>
     <li><a href="#build-an-app-as-a-graalvm-native-image-application">Build an App as a GraalVM Native Image Application</a>
