@@ -383,7 +383,7 @@ pack inspect-image samples/java --bom | jq '.local[] | select(.name=="dependenci
 
 ### Disable Spring Boot Auto-Configuration
 
-The Spring Boot Buildpack adds [Spring Cloud Bindings][spring cloud bindings] to the application class path. Spring Cloud Bindings will auto-configure the application to connect to an external service when a binding of a supported type provides credentials and connection information at runtime. Runtime auto-configuration is enabled by default but can be disabled with the `BPL_SPRING_CLOUD_BINDINGS_ENABLED` environment variable.
+The Spring Boot Buildpack adds [Spring Cloud Bindings][spring cloud bindings] to the application class path. Spring Cloud Bindings will auto-configure the application to connect to an external service when a binding of a supported type provides credentials and connection information at runtime. Runtime auto-configuration is enabled by default but can be disabled with the `BPL_SPRING_CLOUD_BINDINGS_DISABLED` environment variable at runtime or the `BP_SPRING_CLOUD_BINDINGS_DISABLED` environment variable at build time.
 
 ## Connect to an APM
 
