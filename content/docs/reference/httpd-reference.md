@@ -23,7 +23,7 @@ version, see the [release
 notes](https://github.com/paketo-buildpacks/httpd/releases).
 
 ## Behavior
-When the HTTPD Buildpack participates in a build, it will contribute in one of two ways:
+When the HTTPD Buildpack participates in a build, it will contribute in one of three ways:
 
 1. When an `httpd.conf` file **is present** in your app's source code, the
    buildpack will set up an Apache HTTP server with that config.
@@ -31,3 +31,6 @@ When the HTTPD Buildpack participates in a build, it will contribute in one of t
 1. When the `httpd.conf` **is not present** in the app's source code, the
    buildpack simply provides the Apache HTTP Server dependency to subsequent
    buildpacks without actually setting up a server.
+
+1. When the `BP_WEB_SERVER` **is set to `httpd`**, the buildpack will set up an
+   Apache HTTP server with a default configuration.
