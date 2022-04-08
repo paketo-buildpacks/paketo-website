@@ -1031,7 +1031,7 @@ pack build samples/java-native \
     <a class="markup-heading__link" href="#disable-spring-boot-auto-configuration">
         Disable Spring Boot Auto-Configuration
     </a>
-</h3><p>The Spring Boot Buildpack adds <a href="https://github.com/spring-cloud/spring-cloud-bindings">Spring Cloud Bindings</a> to the application class path. Spring Cloud Bindings will auto-configure the application to connect to an external service when a binding of a supported type provides credentials and connection information at runtime. Runtime auto-configuration is enabled by default but can be disabled with the <code>BPL_SPRING_CLOUD_BINDINGS_ENABLED</code> environment variable.</p>
+</h3><p>The Spring Boot Buildpack adds <a href="https://github.com/spring-cloud/spring-cloud-bindings">Spring Cloud Bindings</a> to the application class path. Spring Cloud Bindings will auto-configure the application to connect to an external service when a binding of a supported type provides credentials and connection information at runtime. Runtime auto-configuration is enabled by default but can be disabled with the <code>BPL_SPRING_CLOUD_BINDINGS_DISABLED</code> environment variable at runtime or the <code>BP_SPRING_CLOUD_BINDINGS_DISABLED</code> environment variable at build time.</p>
 <h2 id="connect-to-an-apm" class="markup-heading">
     <a class="markup-heading__link" href="#connect-to-an-apm">
         Connect to an APM
@@ -1333,7 +1333,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> April 7, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> April 8, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
