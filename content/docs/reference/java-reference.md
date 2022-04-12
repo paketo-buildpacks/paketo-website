@@ -79,6 +79,7 @@ The Paketo Java buildpack supports multiple application servers. Each applicatio
 | Application Server | Buildpack Documentation                                                        | Server Documentation                                        |
 | ------------------ | ------------------------------------------------------------------------------ | ----------------------------------------------------------- |
 | Apache Tomcat      | [link](https://github.com/paketo-buildpacks/apache-tomcat/blob/main/README.md) | [link](https://tomcat.apache.org/tomcat-9.0-doc/index.html) |
+| Apache Tomee       | [link](https://github.com/paketo-buildpacks/apache-tomee/blob/main/README.md)  | [link](https://tomee.apache.org/tomee-8.0/docs/)            |
 | Open Liberty       | [link](https://github.com/paketo-buildpacks/liberty/blob/main/README.md)       | [link](https://openliberty.io/)                             |
 
 ## Spring Boot Applications
@@ -119,6 +120,7 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 | [Paketo Watchexec Buildpack][bp/watchexec]                                   | Optional          | Contributes the `watchexec` binary for process reloading.                                       |
 | [Paketo Executable JAR Buildpack][bp/executable-jar]                         | Optional          | Contributes a process Type that launches an executable JAR.                                     |
 | [Paketo Apache Tomcat Buildpack][bp/apache-tomcat]                           | Optional          | Contributes Apache Tomcat and a process type that launches a WAR with Tomcat.                   |
+| [Paketo Apache Tomee Buildpack][bp/apache-tomee]                             | Optional          | Contributes Apache Tomee and a process type that launches a WAR with Tomee.                     |
 | [Paketo Liberty Buildpack][bp/liberty]                                       | Optional          | Contributes Open Liberty and a process type that launches a WAR with Open Liberty.              |
 | [Paketo DistZip Buildpack][bp/dist-zip]                                      | Optional          | Contributes a process type that launches a DistZip-style application.                           |
 | [Paketo Spring Boot Buildpack][bp/spring-boot]                               | Optional          | Contributes configuration and metadata to Spring Boot applications.                             |
@@ -134,6 +136,7 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 
 <!-- buildpacks -->
 [bp/apache-tomcat]:https://github.com/paketo-buildpacks/apache-tomcat
+[bp/apache-tomee]:https://github.com/paketo-buildpacks/apache-tomee
 [bp/azure-application-insights]:https://github.com/paketo-buildpacks/azure-application-insights
 [bp/bellsoft-liberica]:https://github.com/paketo-buildpacks/bellsoft-liberica
 [bp/amazon-corretto]:https://github.com/paketo-buildpacks/amazon-corretto
