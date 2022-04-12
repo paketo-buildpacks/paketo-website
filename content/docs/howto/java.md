@@ -256,6 +256,7 @@ When deploying your Java application to an application server, the default appli
 | Application Server                         | BP_JAVA_APP_SERVER | Buildpack                                                                            |
 | ------------------------------------------ | ------------------ | ------------------------------------------------------------------------------------ |
 | [Apache Tomcat](https://tomcat.apache.org) | `tomcat`           | [Paketo Apache Tomcat](https://github.com/paketo-buildpacks/apache-tomcat) - Default |
+| [Apache Tomee](https://tomee.apache.org)   | `tomee`            | [Paketo Apache Tomee](https://github.com/paketo-buildpacks/apache-tomee)             |
 | [Open Liberty](https://openliberty.io/)    | `liberty`          | [Paketo Liberty](https://github.com/paketo-buildpacks/liberty)                       |
 
 This example will switch to using Open Liberty:
