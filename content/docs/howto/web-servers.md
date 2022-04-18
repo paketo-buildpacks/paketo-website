@@ -66,50 +66,48 @@ Specifying the HTTP Server version through `buildpack.yml` configuration will
 be deprecated in Apache HTTP Server Buildpack v1.0.0. To migrate from using
 `buildpack.yml` please set the `$BP_HTTPD_VERSION` environment variable.
 
-### Use Default httpd.conf
+### Automatically Generate an `httpd.conf`
 
-The Apache HTTPD Server Buildpack supports the ability for a user to just
-provide a static application without having a `httpd.conf` and the buildpack
-will now generate a default `httpd.conf`. In order to activate this workflow
-the `BP_WEB_SERVER` environment variable must be set to `httpd`.
+The Apache HTTPD Server Buildpack supports building static
+applications that do not include an  `httpd.conf`. When the `BP_WEB_SERVER`
+environment variable is set to `httpd`, the buildpack will generate an
+`http.conf` during the build process.
 
 {{< code/copyable >}}
 BP_WEB_SERVER=httpd
 {{< /code/copyable >}}
 
-While this will provide a default configuration there are a few modifications
-that can be made to this `httpd.conf` by setting the following environment
-variables and service bindings.
+It is possible to configure the generated `httpd.conf` in several ways. Each option is configurable with an environment variable or service binding, as seen below. 
 
-#### Using BP_WEB_SERVER_ROOT
+#### Set the Root Directory for Static Files
 The `BP_WEB_SERVER_ROOT` variable allows you to modify the location of the static files
-served by the web server by assigning the `BP_WEB_SERVER_ROOT` variable with an
+served by the web server. Set the `BP_WEB_SERVER_ROOT` variable to an
 absolute file path or a file path relative to `/workspace`. For example,
-setting `BP_WEB_SERVER_ROOT=my-build-directory` would change the file path of
+setting `BP_WEB_SERVER_ROOT=my-build-directory` changes the file path of
 served files to `/workspace/my-build-directory`.
 
 {{< code/copyable >}}
 BP_WEB_SERVER_ROOT=htdocs
 {{< /code/copyable >}}
 
-#### Using BP_WEB_SERVER_ENABLE_PUSH_STATE
+#### Enable Push-State Routing
 The `BP_WEB_SERVER_ENABLE_PUSH_STATE` variable to enable push state routing functionality.
 
 {{< code/copyable >}}
 BP_WEB_SERVER_ENABLE_PUSH_STATE=true
 {{< /code/copyable >}}
 
-#### Using BP_WEB_SERVE_FORCE_HTTPS
-The `BP_WEB_SERVE_FORCE_HTTPS` variable allows to enforce HTTPS for server connnections.
+#### Redirect HTTP Requests to HTTPS
+The `BP_WEB_SERVER_FORCE_HTTPS` variable allows to enforce HTTPS for server connnections.
 
 {{< code/copyable >}}
 BP_WEB_SERVER_FORCE_HTTPS=true
 {{< /code/copyable >}}
 
-#### Basic Authentication
+#### Set Up Basic Authentication
 You are able to provide basic authentication credentials via an `htpasswd` type
 service binding specifying the contents of a `.htpasswd` file. The service
-binding will have the following directory structure.
+binding should have the following directory structure.
 
 ```plain
 binding
