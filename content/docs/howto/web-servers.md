@@ -91,7 +91,7 @@ BP_WEB_SERVER_ROOT=htdocs
 {{< /code/copyable >}}
 
 #### Enable Push-State Routing
-The `BP_WEB_SERVER_ENABLE_PUSH_STATE` variable to enable push state routing functionality.
+The `BP_WEB_SERVER_ENABLE_PUSH_STATE` variable enables push state routing functionality. This is useful for single-page web applications.
 
 {{< code/copyable >}}
 BP_WEB_SERVER_ENABLE_PUSH_STATE=true
