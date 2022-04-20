@@ -98,16 +98,16 @@ BP_WEB_SERVER_ENABLE_PUSH_STATE=true
 {{< /code/copyable >}}
 
 #### Redirect HTTP Requests to HTTPS
-The `BP_WEB_SERVER_FORCE_HTTPS` variable allows to enforce HTTPS for server connnections.
+The `BP_WEB_SERVER_FORCE_HTTPS` variable enables enforcing HTTPS for server connnections. HTTP requests will be redirected to the corresponding HTTPS endpoint.
 
 {{< code/copyable >}}
 BP_WEB_SERVER_FORCE_HTTPS=true
 {{< /code/copyable >}}
 
 #### Set Up Basic Authentication
-You are able to provide basic authentication credentials via an `htpasswd` type
-[service bindings][service-binding] specifying the contents of a `.htpasswd`
-file. The service binding should have the following directory structure.
+You are able to provide basic authentication credentials via a
+[service binding][service-binding] of type `htpasswd` that specifies the contents of a `.htpasswd`
+file. The service binding should have the following directory structure:
 
 ```plain
 binding
@@ -117,7 +117,7 @@ binding
 
 ### Start an HTTPD Server at App Launch Time
 
-Include an `httpd.conf` file in your application's source code. The HTTPD Paketo buildpack
+Include an `httpd.conf` file in your application's source code or set `BP_WEB_SERVER=httpd` in the build environment to automatically generate one. The HTTPD Paketo buildpack
 will install the Apache HTTP Server binary _and_ configure it to start when the app image
 launches.
 
