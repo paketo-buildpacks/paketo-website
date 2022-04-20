@@ -44,4 +44,4 @@ When the HTTPD Buildpack participates in a build, it will contribute in one of t
 
 <!-- References -->
 [service-binding]:{{< ref "docs/howto/configuration#bindings" >}}
-[htpasswd]:{{< ref "docs/howto/web-servers/#set-up-basic-authentication" >}}
+[htpasswd]:{{< ref "docs/howto/web-servers#set-up-basic-authentication" >}}
