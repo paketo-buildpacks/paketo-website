@@ -106,8 +106,8 @@ BP_WEB_SERVER_FORCE_HTTPS=true
 
 #### Set Up Basic Authentication
 You are able to provide basic authentication credentials via an `htpasswd` type
-service binding specifying the contents of a `.htpasswd` file. The service
-binding should have the following directory structure.
+[service bindings][service-binding] specifying the contents of a `.htpasswd`
+file. The service binding should have the following directory structure.
 
 ```plain
 binding
@@ -248,3 +248,6 @@ You can use templates to set the path to a dynamic module using the
 See the [NGINX
 docs](https://nginx.org/en/docs/beginners_guide.html#conf_structure) for more
 information about how to set up an `nginx.conf` file.
+
+<!-- References -->
+[service-binding]:{{< ref "docs/howto/configuration#bindings" >}}
