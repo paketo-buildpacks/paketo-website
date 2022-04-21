@@ -454,6 +454,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <nav id="TableOfContents">
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#supported-environment-variable-configuration">Supported Environment Variable Configuration</a>
+      <ul>
+        <li><a href="#bp_live_reload_enabled">BP_LIVE_RELOAD_ENABLED</a></li>
+        <li><a href="#bp_httpd_version">BP_HTTPD_VERSION</a></li>
+        <li><a href="#bp_web_server">BP_WEB_SERVER</a></li>
+        <li><a href="#bp_web_server_root">BP_WEB_SERVER_ROOT</a></li>
+        <li><a href="#bp_web_server_enable_push_state">BP_WEB_SERVER_ENABLE_PUSH_STATE</a></li>
+        <li><a href="#bp_web_server_force_https">BP_WEB_SERVER_FORCE_HTTPS</a></li>
+      </ul>
+    </li>
+    <li><a href="#supported-service-bindings">Supported Service Bindings</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
     <li><a href="#behavior">Behavior</a></li>
   </ul>
 </nav>
@@ -476,11 +491,73 @@ buildpacks.</p>
 For more details on the specific versions supported in a given buildpack
 version, see the <a href="https://github.com/paketo-buildpacks/httpd/releases">release
 notes</a>.</p>
+<h2 id="supported-environment-variable-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#supported-environment-variable-configuration">
+        Supported Environment Variable Configuration
+    </a>
+</h2><h3 id="bp_live_reload_enabled" class="markup-heading">
+    <a class="markup-heading__link" href="#bp_live_reload_enabled">
+        BP_LIVE_RELOAD_ENABLED
+    </a>
+</h3><p>Enables reloadable processes.</p>
+<h3 id="bp_httpd_version" class="markup-heading">
+    <a class="markup-heading__link" href="#bp_httpd_version">
+        BP_HTTPD_VERSION
+    </a>
+</h3><p>Allows you to specify the version of Apache HTTP Server that is installed.</p>
+<h3 id="bp_web_server" class="markup-heading">
+    <a class="markup-heading__link" href="#bp_web_server">
+        BP_WEB_SERVER
+    </a>
+</h3><p>When the value is set to <code>httpd</code> the buildpack will generate a default <code>httpd.conf</code>.</p>
+<h3 id="bp_web_server_root" class="markup-heading">
+    <a class="markup-heading__link" href="#bp_web_server_root">
+        BP_WEB_SERVER_ROOT
+    </a>
+</h3><p>Defaults to <code>public</code>, setting this allows you to modify the location of the
+static files served by the web server with either an absolute file path or a
+file path relative to <code>/workspace</code>.</p>
+<h3 id="bp_web_server_enable_push_state" class="markup-heading">
+    <a class="markup-heading__link" href="#bp_web_server_enable_push_state">
+        BP_WEB_SERVER_ENABLE_PUSH_STATE
+    </a>
+</h3><p>Enables push state routing functionality.</p>
+<h3 id="bp_web_server_force_https" class="markup-heading">
+    <a class="markup-heading__link" href="#bp_web_server_force_https">
+        BP_WEB_SERVER_FORCE_HTTPS
+    </a>
+</h3><p>Allows you to enforce HTTPS for server connnections by redirecting all requests
+to use the HTTPS protocol.</p>
+<h2 id="supported-service-bindings" class="markup-heading">
+    <a class="markup-heading__link" href="#supported-service-bindings">
+        Supported Service Bindings
+    </a>
+</h2><p>The HTTPD buildpack can be configured using <a href="https://paketo.io/docs/howto/configuration/#bindings">service bindings</a>.</p>
+<h4 id="heading" class="markup-heading">
+    <a class="markup-heading__link" href="#heading">
+        
+    </a>
+</h4><table>
+<thead>
+<tr>
+<th><code>type</code></th>
+<th>Required Files</th>
+<th># Bindings of This Type Accepted</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://paketo.io/docs/howto/web-servers/#set-up-basic-authentication"><code>htpasswd</code></a></td>
+<td><code>type</code>, <code>.htpasswd</code></td>
+<td>0 or 1</td>
+</tr>
+</tbody>
+</table>
 <h2 id="behavior" class="markup-heading">
     <a class="markup-heading__link" href="#behavior">
         Behavior
     </a>
-</h2><p>When the HTTPD Buildpack participates in a build, it will contribute in one of two ways:</p>
+</h2><p>When the HTTPD Buildpack participates in a build, it will contribute in one of three ways:</p>
 <ol>
 <li>
 <p>When an <code>httpd.conf</code> file <strong>is present</strong> in your app&rsquo;s source code, the
@@ -491,7 +568,12 @@ buildpack will set up an Apache HTTP server with that config.</p>
 buildpack simply provides the Apache HTTP Server dependency to subsequent
 buildpacks without actually setting up a server.</p>
 </li>
+<li>
+<p>When the <code>BP_WEB_SERVER</code> <strong>is set to <code>httpd</code></strong>, the buildpack will set up an
+Apache HTTP server with a default configuration.</p>
+</li>
 </ol>
+<!-- raw HTML omitted -->
 
             </div>
             
@@ -511,6 +593,21 @@ buildpacks without actually setting up a server.</p>
     <nav id="TableOfContents">
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#supported-environment-variable-configuration">Supported Environment Variable Configuration</a>
+      <ul>
+        <li><a href="#bp_live_reload_enabled">BP_LIVE_RELOAD_ENABLED</a></li>
+        <li><a href="#bp_httpd_version">BP_HTTPD_VERSION</a></li>
+        <li><a href="#bp_web_server">BP_WEB_SERVER</a></li>
+        <li><a href="#bp_web_server_root">BP_WEB_SERVER_ROOT</a></li>
+        <li><a href="#bp_web_server_enable_push_state">BP_WEB_SERVER_ENABLE_PUSH_STATE</a></li>
+        <li><a href="#bp_web_server_force_https">BP_WEB_SERVER_FORCE_HTTPS</a></li>
+      </ul>
+    </li>
+    <li><a href="#supported-service-bindings">Supported Service Bindings</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
     <li><a href="#behavior">Behavior</a></li>
   </ul>
 </nav>

@@ -457,6 +457,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul>
         <li><a href="#build-a-sample-app">Build a Sample App</a></li>
         <li><a href="#install-a-specific-httpd-version">Install a Specific HTTPD Version</a></li>
+        <li><a href="#automatically-generate-an-httpdconf">Automatically Generate an <code>httpd.conf</code></a></li>
         <li><a href="#start-an-httpd-server-at-app-launch-time">Start an HTTPD Server at App Launch Time</a></li>
       </ul>
     </li>
@@ -539,11 +540,73 @@ file:</p>
 </h4><p>Specifying the HTTP Server version through <code>buildpack.yml</code> configuration will
 be deprecated in Apache HTTP Server Buildpack v1.0.0. To migrate from using
 <code>buildpack.yml</code> please set the <code>$BP_HTTPD_VERSION</code> environment variable.</p>
-<h3 id="start-an-httpd-server-at-app-launch-time" class="markup-heading">
+<h3 id="automatically-generate-an-httpdconf" class="markup-heading">
+    <a class="markup-heading__link" href="#automatically-generate-an-httpdconf">
+        Automatically Generate an <code>httpd.conf</code>
+    </a>
+</h3><p>The Apache HTTPD Server Buildpack supports building static
+applications that do not include an  <code>httpd.conf</code>. When the <code>BP_WEB_SERVER</code>
+environment variable is set to <code>httpd</code>, the buildpack will generate an
+<code>http.conf</code> during the build process.</p>
+<div class="copyable">
+    <pre class="copyable__code">BP_WEB_SERVER=httpd
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<p>It is possible to configure the generated <code>httpd.conf</code> in several ways. Each option is configurable with an environment variable or service binding, as seen below.</p>
+<h4 id="set-the-root-directory-for-static-files" class="markup-heading">
+    <a class="markup-heading__link" href="#set-the-root-directory-for-static-files">
+        Set the Root Directory for Static Files
+    </a>
+</h4><p>The <code>BP_WEB_SERVER_ROOT</code> variable allows you to modify the location of the static files
+served by the web server. Set the <code>BP_WEB_SERVER_ROOT</code> variable to an
+absolute file path or a file path relative to <code>/workspace</code>. For example,
+setting <code>BP_WEB_SERVER_ROOT=my-build-directory</code> changes the file path of
+served files to <code>/workspace/my-build-directory</code>.</p>
+<div class="copyable">
+    <pre class="copyable__code">BP_WEB_SERVER_ROOT=htdocs
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h4 id="enable-push-state-routing" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-push-state-routing">
+        Enable Push-State Routing
+    </a>
+</h4><p>The <code>BP_WEB_SERVER_ENABLE_PUSH_STATE</code> variable enables push state routing functionality. This is useful for single-page web applications.</p>
+<div class="copyable">
+    <pre class="copyable__code">BP_WEB_SERVER_ENABLE_PUSH_STATE=true
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h4 id="redirect-http-requests-to-https" class="markup-heading">
+    <a class="markup-heading__link" href="#redirect-http-requests-to-https">
+        Redirect HTTP Requests to HTTPS
+    </a>
+</h4><p>The <code>BP_WEB_SERVER_FORCE_HTTPS</code> variable enables enforcing HTTPS for server connnections. HTTP requests will be redirected to the corresponding HTTPS endpoint.</p>
+<div class="copyable">
+    <pre class="copyable__code">BP_WEB_SERVER_FORCE_HTTPS=true
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h4 id="set-up-basic-authentication" class="markup-heading">
+    <a class="markup-heading__link" href="#set-up-basic-authentication">
+        Set Up Basic Authentication
+    </a>
+</h4><p>You are able to provide basic authentication credentials via a
+<a href="https://paketo.io/docs/howto/configuration/#bindings">service binding</a> of type <code>htpasswd</code> that specifies the contents of a <code>.htpasswd</code>
+file. The service binding should have the following directory structure:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">binding
+</span></span><span class="line"><span class="cl">└── type
+</span></span><span class="line"><span class="cl">└── .htpasswd
+</span></span></code></pre></div><h3 id="start-an-httpd-server-at-app-launch-time" class="markup-heading">
     <a class="markup-heading__link" href="#start-an-httpd-server-at-app-launch-time">
         Start an HTTPD Server at App Launch Time
     </a>
-</h3><p>Include an <code>httpd.conf</code> file in your application&rsquo;s source code. The HTTPD Paketo buildpack
+</h3><p>Include an <code>httpd.conf</code> file in your application&rsquo;s source code or set <code>BP_WEB_SERVER=httpd</code> in the build environment to automatically generate one. The HTTPD Paketo buildpack
 will install the Apache HTTP Server binary <em>and</em> configure it to start when the app image
 launches.</p>
 <h2 id="nginx" class="markup-heading">
@@ -691,6 +754,7 @@ following to the top of your <code>nginx.conf</code> file. You do not need to pr
 <p>See the <a href="https://nginx.org/en/docs/beginners_guide.html#conf_structure">NGINX
 docs</a> for more
 information about how to set up an <code>nginx.conf</code> file.</p>
+<!-- raw HTML omitted -->
 
             </div>
             
@@ -713,6 +777,7 @@ information about how to set up an <code>nginx.conf</code> file.</p>
       <ul>
         <li><a href="#build-a-sample-app">Build a Sample App</a></li>
         <li><a href="#install-a-specific-httpd-version">Install a Specific HTTPD Version</a></li>
+        <li><a href="#automatically-generate-an-httpdconf">Automatically Generate an <code>httpd.conf</code></a></li>
         <li><a href="#start-an-httpd-server-at-app-launch-time">Start an HTTPD Server at App Launch Time</a></li>
       </ul>
     </li>
