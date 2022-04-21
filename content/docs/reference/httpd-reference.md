@@ -41,7 +41,7 @@ file path relative to `/workspace`.
 ### BP_WEB_SERVER_ENABLE_PUSH_STATE
 Enables push state routing functionality.
 
-### BP_WEB_SERVE_FORCE_HTTPS
+### BP_WEB_SERVER_FORCE_HTTPS
 Allows you to enforce HTTPS for server connnections by redirecting all requests
 to use the HTTPS protocol.
 
