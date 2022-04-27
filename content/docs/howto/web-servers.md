@@ -77,7 +77,9 @@ environment variable is set to `httpd`, the buildpack will generate an
 BP_WEB_SERVER=httpd
 {{< /code/copyable >}}
 
-It is possible to configure the generated `httpd.conf` in several ways. Each option is configurable with an environment variable or service binding, as seen below. 
+It is possible to configure the generated `httpd.conf` in several ways. Each
+option is configurable with an environment variable or service binding, as seen
+below.
 
 #### Set the Root Directory for Static Files
 The `BP_WEB_SERVER_ROOT` variable allows you to modify the location of the static files
@@ -91,23 +93,27 @@ BP_WEB_SERVER_ROOT=htdocs
 {{< /code/copyable >}}
 
 #### Enable Push-State Routing
-The `BP_WEB_SERVER_ENABLE_PUSH_STATE` variable enables push state routing functionality. This is useful for single-page web applications.
+The `BP_WEB_SERVER_ENABLE_PUSH_STATE` variable enables push state routing
+functionality. This is useful for single-page web applications.
 
 {{< code/copyable >}}
 BP_WEB_SERVER_ENABLE_PUSH_STATE=true
 {{< /code/copyable >}}
 
 #### Redirect HTTP Requests to HTTPS
-The `BP_WEB_SERVER_FORCE_HTTPS` variable enables enforcing HTTPS for server connnections. HTTP requests will be redirected to the corresponding HTTPS endpoint.
+The `BP_WEB_SERVER_FORCE_HTTPS` variable enables enforcing HTTPS for server
+connnections. HTTP requests will be redirected to the corresponding HTTPS
+endpoint.
 
 {{< code/copyable >}}
 BP_WEB_SERVER_FORCE_HTTPS=true
 {{< /code/copyable >}}
 
 #### Set Up Basic Authentication
-You are able to provide basic authentication credentials via a
-[service binding][service-binding] of type `htpasswd` that specifies the contents of a `.htpasswd`
-file. The service binding should have the following directory structure:
+You are able to provide basic authentication credentials via a [service
+binding][service-binding] of type `htpasswd` that specifies the contents of a
+`.htpasswd` file. The service binding should have the following directory
+structure:
 
 ```plain
 binding
@@ -117,9 +123,10 @@ binding
 
 ### Start an HTTPD Server at App Launch Time
 
-Include an `httpd.conf` file in your application's source code or set `BP_WEB_SERVER=httpd` in the build environment to automatically generate one. The HTTPD Paketo buildpack
-will install the Apache HTTP Server binary _and_ configure it to start when the app image
-launches.
+Include an `httpd.conf` file in your application's source code or set
+`BP_WEB_SERVER=httpd` in the build environment to automatically generate one.
+The HTTPD Paketo buildpack will install the Apache HTTP Server binary _and_
+configure it to start when the app image launches.
 
 ## NGINX
 
@@ -172,11 +179,67 @@ Specifying the NGINX version through `buildpack.yml` configuration will be
 deprecated in NGINX Server Buildpack v1.0.0.  To migrate from using
 `buildpack.yml` please set the `$BP_NGINX_VERSION` environment variable.
 
+### Automatically Generate an `nginx.conf`
+
+The NGINX Buildpack supports building static
+applications that do not include an  `nginx.conf`. When the `BP_WEB_SERVER`
+environment variable is set to `nginx`, the buildpack will generate an
+`nginx.conf` during the build process.
+
+{{< code/copyable >}}
+BP_WEB_SERVER=nginx
+{{< /code/copyable >}}
+
+It is possible to configure the generated `nginx.conf` in several ways. Each
+option is configurable with an environment variable or service binding, as seen
+below.
+
+#### Set the Root Directory for Static Files
+The `BP_WEB_SERVER_ROOT` variable allows you to modify the location of the static files
+served by the web server. Set the `BP_WEB_SERVER_ROOT` variable to an
+absolute file path or a file path relative to `/workspace`. For example,
+setting `BP_WEB_SERVER_ROOT=my-build-directory` changes the file path of
+served files to `/workspace/my-build-directory`.
+
+{{< code/copyable >}}
+BP_WEB_SERVER_ROOT=htdocs
+{{< /code/copyable >}}
+
+#### Enable Push-State Routing
+The `BP_WEB_SERVER_ENABLE_PUSH_STATE` variable enables push state routing
+functionality. This is useful for single-page web applications.
+
+{{< code/copyable >}}
+BP_WEB_SERVER_ENABLE_PUSH_STATE=true
+{{< /code/copyable >}}
+
+#### Redirect HTTP Requests to HTTPS
+The `BP_WEB_SERVER_FORCE_HTTPS` variable enables enforcing HTTPS for server
+connnections. HTTP requests will be redirected to the corresponding HTTPS
+endpoint.
+
+{{< code/copyable >}}
+BP_WEB_SERVER_FORCE_HTTPS=true
+{{< /code/copyable >}}
+
+#### Set Up Basic Authentication
+You are able to provide basic authentication credentials via a [service
+binding][service-binding] of type `htpasswd` that specifies the contents of a
+`.htpasswd` file. The service binding should have the following directory
+structure:
+
+```plain
+binding
+└── type
+└── .htpasswd
+```
+
 ### Start an NGINX Server at App Launch Time
 
-Include an `nginx.conf` file in your application's source code. The NGINX Paketo
-buildpack will install the NGINX binary _and_ configure it to start when the app
-image launches.
+Include an `nginx.conf` file in your application's source code or set
+`BP_WEB_SERVER=nginx` in the build environment to automatically generate one.
+The NGINX Paketo buildpack will install the NGINX binary _and_ configure it to
+start when the app image launches.
 
 ### Configure the NGINX Server with Launch-time Values
 
@@ -189,9 +252,12 @@ directory](https://github.com/paketo-buildpacks/samples/tree/main/nginx).
 
 #### PORT
 
-Use `{{port}}` to dynamically set the port at which the server will accepts requests. At launch time, the buildpack will read the value of `$PORT` to set the value of `{{port}}`.
+Use `{{port}}` to dynamically set the port at which the server will accepts
+requests. At launch time, the buildpack will read the value of `$PORT` to set
+the value of `{{port}}`.
 
-For example, to set an NGINX server to listen on `$PORT`, use the following in your `nginx.conf` file:
+For example, to set an NGINX server to listen on `$PORT`, use the following in
+your `nginx.conf` file:
 
 {{< code/copyable >}}
 server {
