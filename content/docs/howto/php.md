@@ -107,7 +107,7 @@ equivalents instead.
 
 
 ### Set the Composer version
-To define a version of composer to use, set `BP_COMPOSER_VERSION` at build
+To define a version of Composer to use, set `BP_COMPOSER_VERSION` at build
 time. A supported version must be provided, the supported versions can be found
 on the Paketo Composer [releases page][release/composer]. With the `pack` CLI
 this looks like
@@ -126,7 +126,7 @@ pack build my-app --buildpack paketo-buildpacks/php \
   --env BP_COMPOSER_INSTALL_OPTIONS="--no-dev --prefer-install=auto"
 {{< /code/copyable >}}
 
-To define **gobal** `composer install` configurations, set the
+To define **global** `composer install` configurations, set the
 `BP_COMPOSER_INSTALL_GLOBAL` environment variable at build-time to a
 space-separated list of global installation options.
 
@@ -146,9 +146,6 @@ It must be set as a relative path under the application source directory root.
 pack build my-app --buildpack paketo-buildpacks/php \
   --env COMPOSER_VENDOR_DIR="vendor"
 {{< /code/copyable >}}
-
-Note that the value will be modified by the buildpack for caching, and the
-result will be logged in the build output.
 
 ### Set the `composer.json` path
 To define a custom `composer.json` path, users can set [Composer-native
@@ -175,7 +172,7 @@ pack build my-app --buildpack paketo-buildpacks/php \
 The PHP buildpack supports the use of 3 different web servers:
 
  - PHP Built-in Web Server (default)
- - Apache HTTP Web Server
+ - Apache HTTPD Web Server
  - Nginx Web Server
 
 You can configure which web server to use by setting the `BP_PHP_SERVER` environment variable at build-time.
@@ -241,7 +238,9 @@ be considered by PHP FPM.
 ### Configure the web directory
 The PHP web directory for the `httpd` and `nginx` server cases can be
 overwritten from the default of `htdocs` via the `BP_PHP_WEB_DIR` environment
-variable at build-time.
+variable at build-time. For the PHP built-in server case, the default web
+directory is the `/workspace`, but this can also be overrwritten with the
+`BP_PHP_WEB_DIR` environment variable.
 
 {{< code/copyable >}}
   pack build my-app --buildpack paketo-buildpacks/php \
@@ -299,7 +298,7 @@ should contain the following:
 | `password` | Omitted if unset | no     | Redis instance password
 
 The configurations from the service binding are parsed and used to create a
-`php-redis.ini` file with session details, and it's path is appended to the
+`php-redis.ini` file with session details, and its path is appended to the
 `PHP_INI_SCAN_DIR` for usage by PHP when the app starts up.
 
 When performing a build with the `pack` CLI, passing the service binding will look like the following:
@@ -363,7 +362,6 @@ environment variable to `DEBUG` at build-time.
   --env BP_LOG_LEVEL=DEBUG
 {{< /code/copyable >}}
 
-// TODO is this true?
 ## Access the software bill of materials
 The PHP buildpack includes support for the software bill of materials (SBOM).
 Check out the [SBOM how-to documentation]({{< ref "/docs/howto/sbom" >}}) for

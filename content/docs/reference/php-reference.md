@@ -113,9 +113,6 @@ on your app.
 * Phases: `build` and `launch`
 * Value: directories where PHP `ini` configuration can be found.
 
-This includes:
-* Session handler `ini` configuration (if using a session handler buildpack)
-
 ### PHPRC
 
 * Set by: `php-dist`
@@ -158,6 +155,25 @@ This includes:
 * Set by: `httpd` buildpack
 * Phases: `launch`
 * Value: path of the httpd installation
+
+### PHP_FPM_PATH
+
+* Set by: `php-fpm` buildpack
+* Phases: `build` and `launch`
+* Value: path to the FPM configuration for usage in FPM start command
+
+### PHP_HTTPD_PATH
+
+* Set by: `php-httpd` buildpack
+* Phases: `build` and `launch`
+* Value: path to the HTTPD configuration for usage in server start command
+
+### PHP_NGINX_PATH
+
+* Set by: `php-nginx` buildpack
+* Phases: `build` and `launch`
+* Value: path to the Nginx configuration for usage in Nginx start command
+
 
 ## Components
 | Name                                   | Required/Optional | Purpose                                               |
