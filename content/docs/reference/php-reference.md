@@ -38,6 +38,20 @@ choice is set by the user via environment variable (see PHP How To
 documentation), and user-provided configurations will be considered as outlined
 below.
 
+##  Software Bill of Materials
+The PHP buildpack supports the full [software bill of materials]({{< ref
+"docs/concepts/sbom" >}}) (SBOM) in [Syft][format/syft],
+[CycloneDX][format/cyclonedx], [SPDX][format/spdx], and
+[Paketo-specific][format/paketo] formats.
+
+Apps built with the buildpack that use Composer as a a package manager contain
+SBOM entries that provide a full picture of the packages on the final app image
+that get installed.  Additionally, there are entries for the PHP version used,
+the Composer version used. Check out the [Access the Software Bill of Materials
+guide]({{< ref "docs/howto/sbom" >}}) for more information about how to
+retrieve the SBOM for your app image.
+
+
 ## Buildpack Configurations
 
 The buildpacks in the PHP language family set default configurations, as well
@@ -94,6 +108,18 @@ The PHP Nginx Buildpack sets up two flavours of configuration.
 2. User-provided configuration files located from
    `<APP-ROOT>/.httpd.conf.d/*.conf`.
 
+### [Composer Install Buildpack][bp/composer-install] Configuration
+The Composer Install Buildpack sets up configuration to be used for running
+`composer` commands.
+
+1. A Composer PHP `.ini` file is created for usage during the buildpack build
+   process ONLY. It will tell Composer where to find extensions when running
+   `composer-install`.
+2. Platform requirement `.ini` file available on the final image under
+   `/workspace/.php.ini.d/composer-extensions.ini` which will be appended onto
+   the `PHP_INI_SCAN_DIR`. It wil include any `composer.json` specified
+   extensions that come from running the Composer `check-platform-reqs`
+   command.
 
 ## Buildpack-Set Environment Variables
 
@@ -104,7 +130,7 @@ on your app.
 
 ### PATH
 
-* Set by: `php-dist` buildpack
+* Set by: `php-dist` and `composer-install` (`build` phase only)
 * Phases: `build` and `launch`
 * Value: path to the PHP executable
 
@@ -115,7 +141,7 @@ on your app.
 
 ### PHPRC
 
-* Set by: `php-dist`
+* Set by: `php-dist` and `composer-install` (`build` phase only)
 * Phases: `build` and `launch`
 * Value: path to the top-level official PHP Distribution-provided `php.ini`
 
@@ -155,6 +181,30 @@ on your app.
 * Set by: `httpd` buildpack
 * Phases: `launch`
 * Value: path of the httpd installation
+
+### COMPOSER
+
+* Set by: `composer-install` buildpack
+* Phases: `build`
+* Value: path to the `composer.json` file
+
+### COMPOSER_HOME
+
+* Set by: `composer-install` buildpack
+* Phases: `build`
+* Value: Composer home directory
+
+### COMPOSER_VENDOR_DIRECTORY
+
+* Set by: `composer-install` buildpack
+* Phases: `build`
+* Value: Composer packages vendor directory
+
+### COMPOSER_NO_INTERACTION
+
+* Set by: `composer-install` buildpack
+* Phases: `build`
+* Value: Pass the `--no-interaction` flag to Composer commands
 
 ### PHP_FPM_PATH
 
@@ -200,6 +250,7 @@ on your app.
 [bp/php-start]:https://github.com/paketo-buildpacks/php-start
 [bp/fpm]:https://github.com/paketo-buildpacks/php-fpm
 [bp/php-dist]:https://github.com/paketo-buildpacks/php-dist
+[bp/composer-install]:https://github.com/paketo-buildpacks/composer-install
 [bp/nginx]:https://github.com/paketo-buildpacks/nginx
 [bp/httpd]:https://github.com/paketo-buildpacks/httpd
 [bp/php-nginx]:https://github.com/paketo-buildpacks/php-nginx
@@ -225,3 +276,8 @@ on your app.
 [paketo/composite-buildpack]:{{< ref "docs/concepts/buildpacks#composite-buildpacks" >}}
 
 [external/composer]:https://getcomposer.org/
+
+[format/cyclonedx]:https://cyclonedx.org/
+[format/spdx]:https://spdx.dev/
+[format/syft]:https://github.com/anchore/syft/tree/main/schema/json
+[format/paketo]:{{< ref "docs/concepts/sbom#paketo-specific-sbom-format" >}}

@@ -95,6 +95,38 @@ directory named `.php.ini.d/`. Check out the reference docs about the
 [`PHP_INI_SCAN_DIR`]({{< ref "docs/reference/php-reference#php_ini_scan_dir"
 >}}) for more information about defaults.
 
+### Use Extensions
+There are two ways to enable extensions when using the Paketo PHP Buildpack.
+The only extensions available for usage at this time are the ones that come
+with the distribution of PHP.
+
+#### Enable extensions through a custom `.ini` snippet
+An `.ini` snippet is a valid PHP configuration file, the buildpacks will look
+for any user-provided snippets under `<APP-ROOT>/.php.ini.d/*.ini.`. As
+mentioned in the [Configure PHP with a custom `.ini` file section]({{< ref
+"docs/reference/php-reference#configure-php-with-a-custom-ini-file">}})
+
+An example snippet could look like:
+{{< code/copyable >}}
+extension=bz2.so
+extension=curl.so
+{{< /code/copyable >}}
+
+#### Enable extensions through a `composer.json`
+If you are using Composer (see section below on how to do this) as a package
+manager, you can specify extensions through the `composer.json` file.
+
+An example of a `composer.json` file with extensions specified would look like:
+{{< code/copyable >}}
+{
+    "require": {
+        "php": ">=7.1",
+        "ext-bz2": "*",
+        "ext-curl": "*",
+    },
+}
+{{< /code/copyable >}}
+
 ## Configure Composer
 The [Composer][bp/composer] and [Composer Install][bp/composer-install]
 buildpacks allow for user-set configuration options for Composer.
