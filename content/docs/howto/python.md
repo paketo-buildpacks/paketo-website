@@ -57,12 +57,13 @@ that specific version as long as it is supported.
 
 ## Use a Package Manager
 
-With the Python CNB, there are three options available for package management
+With the Python CNB, there are four options available for package management
 depending on your application:
 
 * Using [Pip](https://pip.pypa.io)
 * Using [Pipenv](https://pypi.org/project/pipenv)
 * Using [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+* Using [Poetry](https://python-poetry.org/)
 
 You can find specific information for each option below.
 
