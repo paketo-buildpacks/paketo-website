@@ -33,7 +33,7 @@ system libraries only present in the Full builder.**
 
 The [PHP Dist CNB][bp/php-dist] allows you to specify a version of PHP to use during
 deployment. This version can be specified in a number of ways, including
-through `BP_PHP_VERSION` environment variable, `composer.lock`, or `composer.json` file. When specifying a
+through the `BP_PHP_VERSION` environment variable, `composer.lock`, or `composer.json` file. When specifying a
 version of PHP, you must choose a version that is available
 within the buildpack. The supported versions can be found on the Paketo PHP
 Dist [releases page][release/php-dist].
