@@ -32,7 +32,7 @@ buildpack][bp/composer-install]. Packages installed will be available in a
 rebuilds.
 
 ### Running With Webservers
-The buildpacks within the PHP CNB will configure basic configuration for
+The buildpacks within the PHP CNB will set up basic configuration for
 working with FPM, HTTPD, Nginx, or the built-in PHP webserver. Web server
 choice is set by the user via environment variable (see PHP How To
 documentation), and user-provided configurations will be considered as outlined
