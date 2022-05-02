@@ -89,8 +89,8 @@ setting the `BP_PHP_LIB_DIR` environment variable at build-time.
 
 ### Configure PHP with a custom `.ini` file
 If you'd like to configure custom `.ini` files in addition to the default
-`php.ini` provided by the [PHP Dist buildpack][bp/php-dist], users can provide
-their own configuration file in the application source directory under a
+`php.ini` provided by the [PHP Dist buildpack][bp/php-dist], you can provide
+your own configuration file in the application source directory under a
 directory named `.php.ini.d/`. Check out the reference docs about the
 [`PHP_INI_SCAN_DIR`]({{< ref "docs/reference/php-reference#php_ini_scan_dir"
 >}}) for more information about defaults.
