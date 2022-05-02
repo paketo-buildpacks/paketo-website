@@ -259,7 +259,7 @@ Check out the [PHP Reference documentation]({{< ref
 "docs/reference/php-reference" >}}) for an enumeration of the defaults set for
 FPM.
 
-#### Supply user-provided FPM configuration
+#### Override Default FPM Configuration
 Users can provide FPM configuration by providing a configuration file in the
 application source directory under `.php.fpm.d/*.conf`.
 
