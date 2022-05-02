@@ -80,7 +80,7 @@ deprecated in PHP language family buildpack v1.0.0.  To migrate from using
 
 ### Configure the PHP library directory
 
-Users can override the default libray code directory of `lib` for PHP by
+Users can override the default library code directory of `lib` for PHP by
 setting the `BP_PHP_LIB_DIR` environment variable at build-time.
 {{< code/copyable >}}
   pack build my-app --buildpack paketo-buildpacks/php \
