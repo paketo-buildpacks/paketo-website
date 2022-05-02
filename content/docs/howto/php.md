@@ -349,9 +349,6 @@ should contain the following:
 | `username`  | Omitted if unset | no     | Memcached instance username
 | `password` | Omitted if unset | no     | Memcached instance password
 
-The configurations from the service binding are parsed and used to create a
-`php-memcached.ini` file with session details, and it's path is appended to the
-`PHP_INI_SCAN_DIR` for usage by PHP when the app starts up.
 
 When performing a build with the `pack` CLI, passing the service binding will
 look like the following:
