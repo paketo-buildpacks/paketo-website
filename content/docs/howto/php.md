@@ -101,7 +101,7 @@ The only extensions available for usage at this time are the ones that come
 with the distribution of PHP.
 
 #### Enable extensions through a custom `.ini` snippet
-An `.ini` snippet is a valid PHP configuration file, the buildpacks will look
+An `.ini` snippet is a valid PHP configuration file. The buildpacks will look
 for any user-provided snippets under `<APP-ROOT>/.php.ini.d/*.ini.`. As
 mentioned in the [Configure PHP with a custom `.ini` file section]({{< ref
 "docs/reference/php-reference#configure-php-with-a-custom-ini-file">}})
