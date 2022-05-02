@@ -329,9 +329,6 @@ should contain the following:
 | `port`  | Default: 6379 | no     | Redis instance port
 | `password` | Omitted if unset | no     | Redis instance password
 
-The configurations from the service binding are parsed and used to create a
-`php-redis.ini` file with session details, and its path is appended to the
-`PHP_INI_SCAN_DIR` for usage by PHP when the app starts up.
 
 When performing a build with the `pack` CLI, passing the service binding will look like the following:
 
