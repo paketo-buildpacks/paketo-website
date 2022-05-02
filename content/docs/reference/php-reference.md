@@ -72,20 +72,19 @@ Check out the [PHP_INI_SCAN_DIR documentation section]({{< ref
 "docs/reference/php-reference#php_ini_scan_dir" >}}) for more information.
 
 ### [PHP FPM Buildpack][bp/fpm] Configuration
-The configuration from the PHP FPM buildpack is considered in order of
-precedence, from lowest to highest, with the highest precedence configuration
-sources overriding conflicting settings from lower precedence sources.
+Configuration for PHP FPM comes from a few sources, listed here in order of precedence from highest to lowest:
 
-1. The [default PHP FPM setting][bp/php-dist-fpm] found from the PHP
-   Distribution itself under `$PHPRC/php-fpm.d/www.conf.default`.
-2. [Buildpack-specific configuration][bp/php-cnb-fpm] which includes
+1. User-provided configurations located in `<APP-ROOT>/.php.fpm.d/*.conf`.
+2. Configuration set by other buildpacks (such as the PHP Nginx
+   Buildpack [FPM configuration][bp/nginx-fpm]), which is stored in 
+   `/workspace/.php.fpm.bp/*.conf` files.
+3. [Buildpack-specific configuration][bp/php-cnb-fpm], which includes
    configurations specific to the buildpack's role in the build process. This
-   includes settings such as the default listen directive, and other features
+   includes settings such as the default `listen` directive, and other features
    to make FPM work well with web servers.
-3. Configuration set by other buildpacks (such as the PHP Nginx
-   Buildpack [FPM configuration][bp/nginx-fpm]), which can be located at
-   `/workspace/.php.fpm.bp/*.conf`.
-4. User-provided configurations located from `<APP-ROOT>/.php.fpm.d/*.conf`.
+4. The [default PHP FPM configuration][bp/php-dist-fpm] that is distributed alongside the PHP
+   Distribution itself. This is stored at `$PHPRC/php-fpm.d/www.conf.default` in the container.
+
 
 ### [PHP Nginx Buildpack][bp/php-nginx] Configuration
 The PHP Nginx Buildpack sets up two flavours of configuration.
