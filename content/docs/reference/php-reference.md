@@ -13,7 +13,7 @@ menu:
 
 The Paketo PHP Buildpack supports several versions of PHP and Composer.
 For more details on the specific versions supported in a given buildpack
-version, see the [release notes][bp/php].
+version, see the [release notes][bp/php-releases].
 
 ## Behavior
 The Paketo PHP Buildpack is a [composite buildpack][paketo/composite-buildpack]
@@ -32,10 +32,10 @@ buildpack][bp/composer-install]. Packages installed will be available in a
 rebuilds.
 
 ### Running With Webservers
-The buildpacks within the PHP CNB will set up basic configuration for
-FPM, HTTPD, Nginx, or the built-in PHP webserver. Web server
-choice is set by the user via environment variable (see PHP How To
-documentation), and user-provided configurations will be considered as outlined
+The buildpacks within the PHP CNB will configure basic configuration for
+working with FPM, HTTPD, Nginx, or the built-in PHP webserver. Web server
+choice is set by the user via environment variable (see [PHP How To
+documentation]({{< ref "docs/howto/php" >}})), and user-provided configurations will be considered as outlined
 below.
 
 ##  Software Bill of Materials
@@ -58,6 +58,8 @@ outline the various configurations the buildpacks provide during the build proce
 the various locations that will also be considered as configuration sources.
 
 ### [PHP Distribution Buildpack][bp/php-dist] Configuration
+This section lists the various configuration sources for PHP `.ini` files that
+are made available to PHP at run-time.
 1. The [default PHP `ini` file][bp/php-dist-ini] found from the PHP
    Distribution itself, with no modifications. It can be found on the container
    inside the PHP Distribution Buildpack layer under `/etc/php.ini`.
@@ -87,27 +89,30 @@ Configuration for PHP FPM comes from a few sources, listed here in order of prec
 
 
 ### [PHP Nginx Buildpack][bp/php-nginx] Configuration
-The PHP Nginx Buildpack sets up two flavours of configuration.
+The PHP Nginx Buildpack sets up two flavours of configuration itself, and
+allows for a third flavour from users. They are listed here in order of highest
+precedence, to lowest.
 
-1. Nginx-specific FPM settings (see FPM section above) is added to work with
-   FPM.
+1. User-provided configuration files located from
+   `<APP-ROOT>/.nginx.conf.d/*-server.conf` and
+   `<APP-ROOT>/.nginx.conf.d/*-http.conf`.
 2. [Basic Nginx configuration][bp/nginx-conf] is the `nginx.conf` file for
    running with PHP apps. See PHP how-to documentation for settings that can be
    configured via environment variables.
-3. User-provided configuration files located from
-   `<APP-ROOT>/.nginx.conf.d/*-server.conf` and
-   `<APP-ROOT>/.nginx.conf.d/*-http.conf`.
+3. Nginx-specific FPM settings (see FPM section above) is added to work with
+   FPM.
 
 ### [PHP HTTPD Buildpack][bp/php-httpd] Configuration
 1. [Basic HTTPD configuration][bp/httpd-conf] is the `httpd.conf` file for
-   running with PHP apps. See PHP how-to documentation for settings that can be
-   configured via environment variables.
+   running with PHP apps. See [PHP how-to documentation]({{< ref
+   "docs/howto/php#provide-httpd-specific-configuration" >}}) for settings that
+   can be configured via environment variables.
 2. User-provided configuration files located from
    `<APP-ROOT>/.httpd.conf.d/*.conf`.
 
 ### [Composer Install Buildpack][bp/composer-install] Configuration
 The Composer Install Buildpack sets up configuration to be used for running
-`composer` commands.
+`composer` commands. They are listed here in no specific order.
 
 1. A Composer PHP `.ini` file is created for usage during the buildpack build
    process **only**. It will tell Composer where to find extensions when running
@@ -243,6 +248,7 @@ on your app.
 | [Paketo CA Certificates Buildpack][bp/ca-certs]       | Optional          | Installs custom CA certificates                       |
 
 <!-- References -->
+[bp/php-releases]:https://github.com/paketo-buildpacks/php/releases
 [bp/php]:https://github.com/paketo-buildpacks/php
 [bp/php-start]:https://github.com/paketo-buildpacks/php-start
 [bp/fpm]:https://github.com/paketo-buildpacks/php-fpm
