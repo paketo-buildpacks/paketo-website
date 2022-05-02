@@ -299,7 +299,7 @@ build-time.
   --env BP_PHP_SERVER_ADMIN=some-admin@localhost
 {{< /code/copyable >}}
 
-### Overwrite the start process
+### Override the start process
 By default, the buildpacks will determine the right start command to run
 depending on the server that is being used. A user can override the start
 command by using the [Paketo Procfile buildpack][bp/procfile]. Check out the
