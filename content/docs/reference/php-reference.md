@@ -45,9 +45,7 @@ The PHP buildpack supports the full [software bill of materials]({{< ref
 [Paketo-specific][format/paketo] formats.
 
 Apps built with the buildpack that use Composer as a a package manager contain
-SBOM entries that provide a full picture of the packages on the final app image
-that get installed.  Additionally, there are entries for the PHP version used,
-the Composer version used. Check out the [Access the Software Bill of Materials
+SBOM entries that provide a full picture of the packages installed in the final app image. There are also entries for the installed versions of PHP and Composer. Check out the [Access the Software Bill of Materials
 guide]({{< ref "docs/howto/sbom" >}}) for more information about how to
 retrieve the SBOM for your app image.
 
