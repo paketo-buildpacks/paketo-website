@@ -140,7 +140,7 @@ equivalents instead.
 
 ### Set the Composer version
 To define a version of Composer to use, set `BP_COMPOSER_VERSION` at build
-time. A supported version must be provided, the supported versions can be found
+time. A supported version must be selected. The supported versions can be found
 on the Paketo Composer [releases page][release/composer]. With the `pack` CLI
 this looks like
 {{< code/copyable >}}
