@@ -110,7 +110,7 @@ The Composer Install Buildpack sets up configuration to be used for running
 `composer` commands.
 
 1. A Composer PHP `.ini` file is created for usage during the buildpack build
-   process ONLY. It will tell Composer where to find extensions when running
+   process **only**. It will tell Composer where to find extensions when running
    `composer-install`.
 2. Platform requirement `.ini` file available on the final image under
    `/workspace/.php.ini.d/composer-extensions.ini` which will be appended onto
