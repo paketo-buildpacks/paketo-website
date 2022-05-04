@@ -80,9 +80,7 @@ removed as of PHP language family buildpack v1.0.0.  To migrate from using
 
 ### Configure the PHP library directory
 
-In order to modify the default PHP include path in the PHP `.ini`
-configuration (where PHP will look for files to include), users can append
-onto the default libray code directory of `lib` for PHP by setting the
+To add directories to the [`include_path`](https://www.php.net/manual/en/ini.core.php#ini.include-path) set in the default `php.ini`, buildpack users can set the
 `BP_PHP_LIB_DIR` environment variable at build-time.
 {{< code/copyable >}}
   pack build my-app --buildpack paketo-buildpacks/php \
