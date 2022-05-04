@@ -70,7 +70,7 @@ app, include the values below in your `composer.json` file:
 {{< /code/copyable >}}
 
 If your app has a `composer.lock` file, the buildpack will use
-the php version defined there.
+the PHP version defined there.
 
 #### Unsupported: Using buildpack.yml
 
@@ -81,7 +81,7 @@ removed as of PHP language family buildpack v1.0.0.  To migrate from using
 ### Configure the PHP library directory
 
 To add directories to the [`include_path`](https://www.php.net/manual/en/ini.core.php#ini.include-path) set in the default `php.ini`, buildpack users can set the
-`BP_PHP_LIB_DIR` environment variable at build-time.
+`BP_PHP_LIB_DIR` environment variable at build time.
 {{< code/copyable >}}
   pack build my-app --buildpack paketo-buildpacks/php \
   --env BP_PHP_LIB_DIR=some-lib-directory
@@ -115,8 +115,9 @@ extension=curl.so
 {{< /code/copyable >}}
 
 #### Enable extensions through a `composer.json`
-If you are using Composer (see section below on how to do this) as a package
-manager, you can specify extensions through the `composer.json` file.
+If you are using Composer as a package manager (see [section below]({{< ref
+"/docs/howto/php#configure-composer" >}})), you can specify extensions through
+the `composer.json` file.
 
 An example of a `composer.json` file with extensions specified would look like:
 {{< code/copyable >}}
@@ -137,7 +138,7 @@ buildpacks allow for user-set configuration options for Composer.
 ### Set the Composer version
 To define a version of Composer to use, set `BP_COMPOSER_VERSION` at build
 time. A supported version must be selected. The supported versions can be found
-on the Paketo Composer [releases page][release/composer]. With the `pack` CLI
+on the Paketo Composer [releases page][release/composer]. With the `pack` CLI,
 this looks like
 {{< code/copyable >}}
 pack build my-app --buildpack paketo-buildpacks/php \
@@ -146,7 +147,7 @@ pack build my-app --buildpack paketo-buildpacks/php \
 
 ### Set install options
 To define a command line option for `composer install` to run, set the
-`BP_COMPOSER_INSTALL_OPTIONS` environment variable at build-time to a
+`BP_COMPOSER_INSTALL_OPTIONS` environment variable at build time to a
 space-separated list of flags.
 
 {{< code/copyable >}}
@@ -155,7 +156,7 @@ pack build my-app --buildpack paketo-buildpacks/php \
 {{< /code/copyable >}}
 
 To define **global** `composer install` configurations, set the
-`BP_COMPOSER_INSTALL_GLOBAL` environment variable at build-time to a
+`BP_COMPOSER_INSTALL_GLOBAL` environment variable at build time to a
 space-separated list of global installation options.
 
 {{< code/copyable >}}
@@ -165,7 +166,7 @@ pack build my-app --buildpack paketo-buildpacks/php \
 
 ### Set a custom Composer vendor directory
 To define a custom vendoring location for Composer packages, users can set the
-`COMPOSER_VENDOR_DIR` environment variable at build-time. It is a
+`COMPOSER_VENDOR_DIR` environment variable at build time. It is a
 [Composer-native environment
 variable](https://getcomposer.org/doc/03-cli.md#composer-vendor-dir) setting.
 It must be set as a relative path under the application source directory root.
@@ -176,9 +177,9 @@ pack build my-app --buildpack paketo-buildpacks/php \
 {{< /code/copyable >}}
 
 ### Set the `composer.json` path
-To define a custom `composer.json` path, users can set [Composer-native
+To define a custom `composer.json` path, users can set the [Composer-native
 environment variable
-`COMPOSER`](https://getcomposer.org/doc/03-cli.md#composer) at build-time. The
+`COMPOSER`](https://getcomposer.org/doc/03-cli.md#composer) at build time. The
 path must be relative to the project root.
 
 {{< code/copyable >}}
@@ -203,10 +204,10 @@ The PHP buildpack supports the use of 3 different web servers:
 
  - PHP Built-in Web Server (default)
  - Apache HTTPD Web Server
- - Nginx Web Server
+ - NGINX Web Server
 
 You can configure which web server to use by setting the `BP_PHP_SERVER`
-environment variable at build-time.  The setting options are `php-server`,
+environment variable at build time.  The setting options are `php-server`,
 `httpd`, `nginx`, with the default value of `php-server` if unset. The PHP
 Built-in Server buildpack will only pass detection if there is a `*.php` file
 in the web directory of the application.
@@ -245,21 +246,23 @@ configurable via environment variables in the PHP HTTPD buildpack.
 #### Provide `nginx` specific configuration
 To provide your own NGINX configuration, place configuration files in your
 application source directory under `<app-directory>/.nginx.conf.d/`.
-Server-specific configuration should be inside a file named  `*-server.conf`,
-and HTTP configuration should be inside a file with the naming structure
-`*-http.conf`. This is helpful in the event that you want to set custom
-settings that are not configurable via environment variables in the PHP Nginx
-buildpack. Check out [Nginx documentation][external/nginx-conf-docs] for what
-settings can be applied to server and HTTP blocks.
+Server-specific configuration should be inside a file whose name ends with
+`-server.conf` (e.g. `prod-server.conf`), and HTTP configuration should be
+inside a file whose name ends with `-http.conf` (e.g. `prod-http.conf`). This
+is helpful in the event that you want to set custom settings that are not
+configurable via environment variables in the PHP NGINX buildpack. Check out
+[NGINX documentation][external/nginx-conf-docs] for what settings can be
+applied to server and HTTP blocks.
 
 
 ### Configure FPM settings
 The PHP buildpack includes support for the [PHP FastCGI Process
 Manager][external/fpm] (FPM) when used in conjunction with a web server. In
 this case, the [PHP FPM buildpack][bp/fpm] will generate FPM configuration for
-you to work with the web server of choice. On top of setting up FPM
-configuration, the buildpack will consider configuration from user provided
-sources (see `Override Default FPM Configuration` section below)
+you to work with the web server of choice. The buildpack will also consider
+configuration from user provided sources (see [Override Default FPM
+Configuration]({{< ref
+"docs/howto/php#override-default-fpm-configuration" >}})).
 
 Check out the [PHP Reference documentation]({{< ref
 "docs/reference/php-reference" >}}) for an enumeration of the defaults set for
@@ -280,7 +283,7 @@ HTTPD or NGINX, the web directory defaults to `htdocs.` When the web server is
 the PHP built-in server, the web directory defaults to `/workspace`.
 
 In all cases, the default web directory can be overridden by setting the
-`BP_PHP_WEB_DIR` environment variable at build-time. The value
+`BP_PHP_WEB_DIR` environment variable at build time. The value
 provided should be a path relative to the application root.
 
 Note: The PHP built-in server will only pass
@@ -294,7 +297,7 @@ detection if a `*.php` file is found inside of the web directory.
 ### Enable/disable HTTPS Redirect
 The HTTPS redirect feature is enabled by default in the `nginx` and `httpd`
 cases. It can be disabled by setting the
-`BP_PHP_ENABLE_HTTPS_REDIRECT` environment variable to `false` at build-time.
+`BP_PHP_ENABLE_HTTPS_REDIRECT` environment variable to `false` at build time.
 When this feature is enabled, the server will redirect HTTP requests to HTTPS.
 Check out server-provided documentation for details on what this entails for
 each case.
@@ -307,7 +310,7 @@ each case.
 ### Configure server admin for HTTPD
 The server admin in the `httpd` case can be overridden from the default of
 `admin@localhost` via the `BP_PHP_SERVER_ADMIN` environment variable at
-build-time.
+build time.
 
 {{< code/copyable >}}
   pack build my-app --buildpack paketo-buildpacks/php \
@@ -379,7 +382,7 @@ look like the following:
 
 ## Install a custom CA certificate
 Users of the PHP buildpack can provide their own CA certificates and have them
-included in the container root truststore at build-time and runtime by
+included in the container root truststore at build time and runtime by
 following the instructions outlined in the [CA
 Certificates]({{< ref "/docs/howto/configuration#ca-certificates" >}})
 section of our configuration docs.
@@ -397,7 +400,7 @@ section of our configuration docs.
 
 ## Run a build with `DEBUG` logging
 Users of the PHP buildpack can access extra debug logs during the image build process by setting the `BP_LOG_LEVEL`
-environment variable to `DEBUG` at build-time.
+environment variable to `DEBUG` at build time.
 {{< code/copyable >}}
   pack build my-app --buildpack paketo-buildpacks/php \
   --env BP_LOG_LEVEL=DEBUG

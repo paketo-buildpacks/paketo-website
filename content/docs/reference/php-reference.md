@@ -231,7 +231,7 @@ on your app.
 ## Components
 | Name                                   | Required/Optional | Purpose                                               |
 |----------------------------------------|-------------------|-------------------------------------------------------|
-| [Paketo PHP Dist Buildpack][bp/php-dist]       | Required          | Installs the php distribution, making it available on the $PATH                       |
+| [Paketo PHP Dist Buildpack][bp/php-dist]       | Required          | Installs the PHP distribution, making it available on the $PATH                       |
 | [Paketo PHP FPM Buildpack][bp/fpm]            | Required          | Configures a `php-fpm.conf` config file for PHP FPM                        |
 | [Paketo Composer Buildpack][bp/composer]            | Optional          | Installs the Composer tool onto the $PATH                         |
 | [Paketo Composer Install Buildpack][bp/composer-install]            | Optional          | Runs `composer install`                         |
