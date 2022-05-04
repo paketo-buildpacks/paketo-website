@@ -97,14 +97,15 @@ precedence, to lowest.
    `<APP-ROOT>/.nginx.conf.d/*-server.conf` and
    `<APP-ROOT>/.nginx.conf.d/*-http.conf`.
 2. [Basic Nginx configuration][bp/nginx-conf] is the `nginx.conf` file for
-   running with PHP apps. See PHP how-to documentation for settings that can be
-   configured via environment variables.
+   running with PHP apps. See [PHP How To documentation]({{< ref
+   "docs/howto/php" >}}) for settings that can be configured via environment
+   variables.
 3. Nginx-specific FPM settings (see FPM section above) is added to work with
    FPM.
 
 ### [PHP HTTPD Buildpack][bp/php-httpd] Configuration
 1. [Basic HTTPD configuration][bp/httpd-conf] is the `httpd.conf` file for
-   running with PHP apps. See [PHP how-to documentation]({{< ref
+   running with PHP apps. See [PHP How To documentation]({{< ref
    "docs/howto/php#provide-httpd-specific-configuration" >}}) for settings that
    can be configured via environment variables.
 2. User-provided configuration files located in

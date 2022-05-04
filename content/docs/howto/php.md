@@ -95,10 +95,7 @@ directory named `.php.ini.d/`.  The path to the configuration you add will be
 appended onto the `PHP_INI_SCAN_DIR` during the build process, for use by PHP
 at runtime. Check out the reference docs about the
 [`PHP_INI_SCAN_DIR`]({{< ref "docs/reference/php-reference#php_ini_scan_dir"
->}}) for more information about defaults. In short, if unset, the
-`PHP_INI_SCAN_DIR` will include the path to default PHP `.ini` configuration
-set by the PHP dist buildpack, in addition to configuration added by session
-handler buildpacks if applicable.
+>}}) for more information about defaults.
 
 ### Use Extensions
 There are two ways to enable extensions when using the Paketo PHP Buildpack.
@@ -221,9 +218,9 @@ in the web directory of the application.
 
 #### Unsupported: Using buildpack.yml
 
-Specifying the PHP version through `buildpack.yml` configuration has been
+Selecting a web server through `buildpack.yml` configuration has been
 removed as of PHP language family buildpack v1.0.0.  To migrate from using
-`buildpack.yml` please set the environment variable equivalents instead.
+`buildpack.yml` please set the environment variable equivalent instead.
 
 ## Set server configuration
 If you're using `httpd` or `nginx`, a suitable `httpd.conf` or `nginx.conf`
