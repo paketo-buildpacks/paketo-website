@@ -26,8 +26,8 @@ With the PHP CNB, the only option for package management is
 
 The [Composer buildpack][bp/composer] will install `composer` as the package manager, and if a PHP
 application contains a `composer.json` (and preferably a `composer.lock` file) packages
-are installed by running `composer install` by the [Composer Install
-buildpack][bp/composer-install]. Packages installed will be available in a
+are installed by running `composer install` by the Composer Install
+[buildpack][bp/composer-install]. Packages installed will be available in a
 `vendor` directory in the application source directory, and will be cached for
 rebuilds.
 
@@ -44,7 +44,7 @@ The PHP buildpack supports the full [software bill of materials]({{< ref
 [CycloneDX][format/cyclonedx], [SPDX][format/spdx], and
 [Paketo-specific][format/paketo] formats.
 
-Apps built with the buildpack that use Composer as a a package manager contain
+Apps built with the buildpack that use Composer as a package manager contain
 SBOM entries that provide a full picture of the packages installed in the final app image. There are also entries for the installed versions of PHP and Composer. Check out the [Access the Software Bill of Materials
 guide]({{< ref "docs/howto/sbom" >}}) for more information about how to
 retrieve the SBOM for your app image.
@@ -93,7 +93,7 @@ The PHP Nginx Buildpack sets up two flavours of configuration itself, and
 allows for a third flavour from users. They are listed here in order of highest
 precedence, to lowest.
 
-1. User-provided configuration files located from
+1. User-provided configuration files located in
    `<APP-ROOT>/.nginx.conf.d/*-server.conf` and
    `<APP-ROOT>/.nginx.conf.d/*-http.conf`.
 2. [Basic Nginx configuration][bp/nginx-conf] is the `nginx.conf` file for
@@ -107,7 +107,7 @@ precedence, to lowest.
    running with PHP apps. See [PHP how-to documentation]({{< ref
    "docs/howto/php#provide-httpd-specific-configuration" >}}) for settings that
    can be configured via environment variables.
-2. User-provided configuration files located from
+2. User-provided configuration files located in
    `<APP-ROOT>/.httpd.conf.d/*.conf`.
 
 ### [Composer Install Buildpack][bp/composer-install] Configuration

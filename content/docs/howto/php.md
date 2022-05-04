@@ -107,9 +107,9 @@ with the distribution of PHP.
 
 #### Enable extensions through a custom `.ini` snippet
 An `.ini` snippet is a valid PHP configuration file. The buildpacks will look
-for any user-provided snippets under `<APP-ROOT>/.php.ini.d/*.ini.`. As
+for any user-provided snippets under `<APP-ROOT>/.php.ini.d/*.ini`, as
 mentioned in the [Configure PHP with a custom `.ini` file section]({{< ref
-"docs/reference/php-reference#configure-php-with-a-custom-ini-file">}})
+"docs/reference/php-reference#configure-php-with-a-custom-ini-file">}}).
 
 An example snippet could look like:
 {{< code/copyable >}}
@@ -136,11 +136,6 @@ An example of a `composer.json` file with extensions specified would look like:
 The [Composer][bp/composer] and [Composer Install][bp/composer-install]
 buildpacks allow for user-set configuration options for Composer.
 
-#### Unsupported: Using buildpack.yml
-
-Specifying the PHP version through `buildpack.yml` configuration has been
-removed as of PHP language family buildpack v1.0.0.  To migrate from using
-`buildpack.yml` please set the environment variable equivalents instead.
 
 ### Set the Composer version
 To define a version of Composer to use, set `BP_COMPOSER_VERSION` at build
@@ -245,13 +240,13 @@ If either `httpd` or `nginx` are the selected web server via the
 configurations in the form of a server-specific configuration file.
 
 #### Provide `httpd` specific configuration
-In the `httpd` case, user-included configuration can be placed be found in the
+To provide your own HTTPD configuration, place `*.conf` files in your
 application source directory under `<app-directory>/.httpd.conf.d/*.conf`. This
 is helpful in the event that you want to set custom settings that are not
 configurable via environment variables in the PHP HTTPD buildpack.
 
 #### Provide `nginx` specific configuration
-In the `nginx` case, user-included configuration can be placed in the
+To provide your own NGINX configuration, place configuration files in your
 application source directory under `<app-directory>/.nginx.conf.d/`.
 Server-specific configuration should be inside a file named  `*-server.conf`,
 and HTTP configuration should be inside a file with the naming structure
@@ -275,25 +270,24 @@ FPM.
 
 #### Override Default FPM Configuration
 Users can provide FPM configuration by providing a configuration file in the
-application source directory under `.php.fpm.d/*.conf`.
+application source directory under `<app-directory>/.php.fpm.d/*.conf`.
 
 User-provided configuration will be considered the highest precedence source of
 configuration, and should be provided in an `.ini` compliant format in order to
 be considered by PHP FPM.
 
 ### Configure the web directory
-The top-level directory for the web servers to find files to serve can be set
-via the web directory. For the `httpd` and `nginx` server cases can be
-overwritten from the default of `htdocs` via the `BP_PHP_WEB_DIR` environment
-variable at build-time.
+The top-level directory where a web server finds files to serve is
+the _web directory_.  In the PHP buildpack, when the web server is 
+HTTPD or NGINX, the web directory defaults to `htdocs.` When the web server is
+the PHP built-in server, the web directory defaults to `/workspace`.
 
-For the PHP built-in server case, the default web
-directory is the `/workspace`, but this can also be overrwritten with the
-`BP_PHP_WEB_DIR` environment variable. The PHP built-in server will only pass
+In all cases, the default web directory can be overridden by setting the
+`BP_PHP_WEB_DIR` environment variable at build-time. The value
+provided should be a path relative to the application root.
+
+Note: The PHP built-in server will only pass
 detection if a `*.php` file is found inside of the web directory.
-
-In all cases, the web directory path should be provided relative to the application
-directory root.
 
 {{< code/copyable >}}
   pack build my-app --buildpack paketo-buildpacks/php \
@@ -302,7 +296,7 @@ directory root.
 
 ### Enable/disable HTTPS Redirect
 The HTTPS redirect feature is enabled by default in the `nginx` and `httpd`
-cases. It can be disabled for in these cases by setting the
+cases. It can be disabled by setting the
 `BP_PHP_ENABLE_HTTPS_REDIRECT` environment variable to `false` at build-time.
 When this feature is enabled, the server will redirect HTTP requests to HTTPS.
 Check out server-provided documentation for details on what this entails for
@@ -314,7 +308,7 @@ each case.
 {{< /code/copyable >}}
 
 ### Configure server admin for HTTPD
-The server admin in the `httpd` case can be overrwritten from the default of
+The server admin in the `httpd` case can be overridden from the default of
 `admin@localhost` via the `BP_PHP_SERVER_ADMIN` environment variable at
 build-time.
 
