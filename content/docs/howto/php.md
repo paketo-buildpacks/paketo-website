@@ -89,9 +89,9 @@ To add directories to the [`include_path`](https://www.php.net/manual/en/ini.cor
 
 ### Configure PHP with a custom `.ini` file
 If you'd like to configure custom `.ini` files in addition to the default
-`php.ini` provided by the [PHP Dist buildpack][bp/php-dist], users can provide
-their own configuration file in the application source directory under a
-directory named `.php.ini.d/`.  The path to the configuration you added will be
+`php.ini` provided by the [PHP Dist buildpack][bp/php-dist], you can provide
+your own configuration file in the application source directory under a
+directory named `.php.ini.d/`.  The path to the configuration you add will be
 appended onto the `PHP_INI_SCAN_DIR` during the build process, for use by PHP
 at runtime. Check out the reference docs about the
 [`PHP_INI_SCAN_DIR`]({{< ref "docs/reference/php-reference#php_ini_scan_dir"
