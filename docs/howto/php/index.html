@@ -454,20 +454,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <nav id="TableOfContents">
   <ul>
     <li><a href="#build-a-sample-app">Build a Sample App</a></li>
-    <li><a href="#install-a-specific-php-version">Install a Specific PHP Version</a>
+    <li><a href="#configure-php">Configure PHP</a>
       <ul>
-        <li><a href="#using-buildpackyml">Using buildpack.yml</a></li>
-        <li><a href="#using-composerjson">Using composer.json</a></li>
+        <li><a href="#install-a-specific-php-version">Install a Specific PHP Version</a></li>
+        <li><a href="#configure-the-php-library-directory">Configure the PHP library directory</a></li>
+        <li><a href="#configure-php-with-a-custom-ini-file">Configure PHP with a custom <code>.ini</code> file</a></li>
+        <li><a href="#use-extensions">Use Extensions</a></li>
       </ul>
     </li>
-    <li><a href="#configure-composer">Configure Composer</a></li>
-    <li><a href="#select-a-web-server">Select a Web Server</a></li>
-    <li><a href="#vendor-composer-packages">Vendor composer packages</a></li>
-    <li><a href="#configure-custom-ini-files">Configure custom .ini files</a></li>
-    <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
-    <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
-    <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
-    <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
+    <li><a href="#configure-composer">Configure Composer</a>
+      <ul>
+        <li><a href="#set-the-composer-version">Set the Composer version</a></li>
+        <li><a href="#set-install-options">Set install options</a></li>
+        <li><a href="#set-a-custom-composer-vendor-directory">Set a custom Composer vendor directory</a></li>
+        <li><a href="#set-the-composerjson-path">Set the <code>composer.json</code> path</a></li>
+        <li><a href="#set-composer-authentication">Set Composer authentication</a></li>
+      </ul>
+    </li>
+    <li><a href="#select-a-web-server">Select a web server</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#set-server-configuration">Set server configuration</a>
+      <ul>
+        <li><a href="#provide-your-own-web-server-configuration-file">Provide your own web server configuration file</a></li>
+        <li><a href="#configure-fpm-settings">Configure FPM settings</a></li>
+        <li><a href="#configure-the-web-directory">Configure the web directory</a></li>
+        <li><a href="#enabledisable-https-redirect">Enable/disable HTTPS Redirect</a></li>
+        <li><a href="#configure-server-admin-for-httpd">Configure server admin for HTTPD</a></li>
+        <li><a href="#override-the-start-process">Override the start process</a></li>
+      </ul>
+    </li>
+    <li><a href="#enable-a-session-handler-via-service-bindings">Enable a session handler via service bindings</a>
+      <ul>
+        <li><a href="#enable-the-session-handler-for-redis">Enable the session handler for Redis</a></li>
+        <li><a href="#enable-the-session-handler-for-memcached">Enable the session handler for Memcached</a></li>
+      </ul>
+    </li>
+    <li><a href="#install-a-custom-ca-certificate">Install a custom CA certificate</a></li>
+    <li><a href="#set-environment-variables-for-app-launch-time">Set environment variables for app launch time</a></li>
+    <li><a href="#add-custom-labels-to-the-app-image">Add custom labels to the app image</a></li>
+    <li><a href="#run-a-build-with-debug-logging">Run a build with <code>DEBUG</code> logging</a></li>
+    <li><a href="#access-the-software-bill-of-materials">Access the software bill of materials</a></li>
   </ul>
 </nav>
 </div>
@@ -496,45 +525,49 @@ pack build my-app --buildpack paketo-buildpacks/php \
 for how to run the app.</p>
 <p><strong>NOTE: The Paketo Full builder is required because PHP relies on operating
 system libraries only present in the Full builder.</strong></p>
-<h2 id="install-a-specific-php-version" class="markup-heading">
+<h2 id="configure-php" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-php">
+        Configure PHP
+    </a>
+</h2><h3 id="install-a-specific-php-version" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-specific-php-version">
         Install a Specific PHP Version
     </a>
-</h2><p>The PHP Dist CNB allows you to specify a version of PHP to use during
+</h3><p>The <a href="https://github.com/paketo-buildpacks/php-dist">PHP Dist CNB</a> allows you to specify a version of PHP to use during
 deployment. This version can be specified in a number of ways, including
-through <code>buildpack.yml</code> or <code>composer.json</code> files. When specifying a
+through the <code>BP_PHP_VERSION</code> environment variable, <code>composer.lock</code>, or <code>composer.json</code> file. When specifying a
 version of PHP, you must choose a version that is available
-within the buildpack.</p>
+within the buildpack. The supported versions can be found on the Paketo PHP
+Dist <a href="https://github.com/paketo-buildpacks/php-dist/releases">releases page</a>.</p>
 <p>The buildpack prioritizes the versions specified in
 each possible configuration location with the following precedence, from
-highest to lowest: <code>buildpack.yml</code>, <code>composer.json</code>.</p>
-<h3 id="using-buildpackyml" class="markup-heading">
-    <a class="markup-heading__link" href="#using-buildpackyml">
-        Using buildpack.yml
+highest to lowest: <code>BP_PHP_VERSION</code>, <code>composer.json</code>, <code>composer.lock</code>.</p>
+<h4 id="set-the-version-via-bp_php_version" class="markup-heading">
+    <a class="markup-heading__link" href="#set-the-version-via-bp_php_version">
+        Set the version via <code>BP_PHP_VERSION</code>
     </a>
-</h3><p>To configure the buildpack to use PHP version when deploying your app,
-include the values like below in your <code>buildpack.yml</code> file. Any valid semver
-constraints are acceptable.</p>
+</h4><p>To configure the buildpack to use a specific PHP version when deploying your app, set the
+following environment variable at build time, either directly (ex. <code>pack build my-app --env BP_PHP_VERSION=8.0.0</code>) or through a
+<a href="https://github.com/buildpacks/spec/blob/main/extensions/project-descriptor.md">project.toml</a>
+file:</p>
 <div class="copyable">
-    <pre class="copyable__code">---
-php:
-  version: 7.2.*
+    <pre class="copyable__code">BP_PHP_VERSION=&#34;8.0.0&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<h3 id="using-composerjson" class="markup-heading">
-    <a class="markup-heading__link" href="#using-composerjson">
-        Using composer.json
+<h4 id="set-the-version-via-a-composerjson-file" class="markup-heading">
+    <a class="markup-heading__link" href="#set-the-version-via-a-composerjson-file">
+        Set the version via a <code>composer.json</code> file
     </a>
-</h3><p>If your apps use <code>composer</code>, you can specify the PHP version your apps use
+</h4><p>If your apps use <code>composer</code>, you can specify the PHP version your apps use
 during deployment by configuring the <code>require</code> field in the <code>composer.json</code>
-file. To configure the buildpack to use PHP v7.1 or greater when deploying your
+file. To configure the buildpack to use PHP v8.0 or greater when deploying your
 app, include the values below in your <code>composer.json</code> file:</p>
 <div class="copyable">
     <pre class="copyable__code">{
   &#34;require&#34;: {
-    &#34;php&#34;: &#34;&gt;=7.1&#34;
+    &#34;php&#34;: &#34;&gt;=8.0&#34;
   }
 }
 </pre>
@@ -542,126 +575,479 @@ app, include the values below in your <code>composer.json</code> file:</p>
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <p>If your app has a <code>composer.lock</code> file, the buildpack will use
-the php version defined there.</p>
+the PHP version defined there.</p>
+<h4 id="unsupported-using-buildpackyml" class="markup-heading">
+    <a class="markup-heading__link" href="#unsupported-using-buildpackyml">
+        Unsupported: Using buildpack.yml
+    </a>
+</h4><p>Specifying the PHP version through <code>buildpack.yml</code>  has been
+removed as of PHP language family buildpack v1.0.0.  To migrate from using
+<code>buildpack.yml</code> please set the <code>$BP_PHP_VERSION</code> environment variable.</p>
+<h3 id="configure-the-php-library-directory" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-the-php-library-directory">
+        Configure the PHP library directory
+    </a>
+</h3><p>To add directories to the <a href="https://www.php.net/manual/en/ini.core.php#ini.include-path"><code>include_path</code></a> set in the default <code>php.ini</code>, buildpack users can set the
+<code>BP_PHP_LIB_DIR</code> environment variable at build time.
+<div class="copyable">
+    <pre class="copyable__code">  pack build my-app --buildpack paketo-buildpacks/php \
+  --env BP_PHP_LIB_DIR=some-lib-directory
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+<h3 id="configure-php-with-a-custom-ini-file" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-php-with-a-custom-ini-file">
+        Configure PHP with a custom <code>.ini</code> file
+    </a>
+</h3><p>If you&rsquo;d like to configure custom <code>.ini</code> files in addition to the default
+<code>php.ini</code> provided by the <a href="https://github.com/paketo-buildpacks/php-dist">PHP Dist buildpack</a>, you can provide
+your own configuration file in the application source directory under a
+directory named <code>.php.ini.d/</code>.  The path to the configuration you add will be
+appended onto the <code>PHP_INI_SCAN_DIR</code> during the build process, for use by PHP
+at runtime. Check out the reference docs about the
+<a href="https://paketo.io/docs/reference/php-reference/#php_ini_scan_dir"><code>PHP_INI_SCAN_DIR</code></a> for more information about defaults.</p>
+<h3 id="use-extensions" class="markup-heading">
+    <a class="markup-heading__link" href="#use-extensions">
+        Use Extensions
+    </a>
+</h3><p>There are two ways to enable extensions when using the Paketo PHP Buildpack.
+The only extensions available for usage at this time are the ones that come
+with the distribution of PHP.</p>
+<h4 id="enable-extensions-through-a-custom-ini-snippet" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-extensions-through-a-custom-ini-snippet">
+        Enable extensions through a custom <code>.ini</code> snippet
+    </a>
+</h4><p>An <code>.ini</code> snippet is a valid PHP configuration file. The buildpacks will look
+for any user-provided snippets under <code>&lt;APP-ROOT&gt;/.php.ini.d/*.ini</code>, as
+mentioned in the <a href="https://paketo.io/docs/reference/php-reference/#configure-php-with-a-custom-ini-file">Configure PHP with a custom <code>.ini</code> file section</a>.</p>
+<p>An example snippet could look like:
+<div class="copyable">
+    <pre class="copyable__code">extension=bz2.so
+extension=curl.so
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+<h4 id="enable-extensions-through-a-composerjson" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-extensions-through-a-composerjson">
+        Enable extensions through a <code>composer.json</code>
+    </a>
+</h4><p>If you are using Composer as a package manager (see <a href="https://paketo.io/docs/howto/php/#configure-composer">section below</a>), you can specify extensions through
+the <code>composer.json</code> file.</p>
+<p>An example of a <code>composer.json</code> file with extensions specified would look like:
+<div class="copyable">
+    <pre class="copyable__code">{
+    &#34;require&#34;: {
+        &#34;php&#34;: &#34;&gt;=7.1&#34;,
+        &#34;ext-bz2&#34;: &#34;*&#34;,
+        &#34;ext-curl&#34;: &#34;*&#34;,
+    },
+}
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="configure-composer" class="markup-heading">
     <a class="markup-heading__link" href="#configure-composer">
         Configure Composer
     </a>
-</h2><p>The following options are configurable in the app&rsquo;s <code>buildpack.yml</code></p>
+</h2><p>The <a href="https://github.com/paketo-buildpacks/composer">Composer</a> and <a href="https://github.com/paketo-buildpacks/composer-install">Composer Install</a>
+buildpacks allow for user-set configuration options for Composer.</p>
+<h3 id="set-the-composer-version" class="markup-heading">
+    <a class="markup-heading__link" href="#set-the-composer-version">
+        Set the Composer version
+    </a>
+</h3><p>To define a version of Composer to use, set <code>BP_COMPOSER_VERSION</code> at build
+time. A supported version must be selected. The supported versions can be found
+on the Paketo Composer <a href="https://github.com/paketo-buildpacks/composer/releases">releases page</a>. With the <code>pack</code> CLI,
+this looks like
 <div class="copyable">
-    <pre class="copyable__code">composer:
-  # this allows you to specify a version constaint for composer
-  # any valid semver constaints (e.g. 1.* and 1.10.*) are also acceptable
-  version: 1.10.x
-
-  # a list of command line install options for composer
-  # default: [&#34;--no-dev&#34;]
-  install_options: [&#34;--no-dev&#34;]
-
-  # default: vendor
-  vendor_directory: vendor
-
-  # directory where composer.json can be found
-  # default is app root
-  json_path: composer
-
-  # if included, will run `composer global` with specified arguments
-  install_global: [&#34;list&#34;, &#34;of&#34;, &#34;install&#34;, &#34;options&#34;]
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/php \
+  --env BP_COMPOSER_VERSION=&#34;2.3.1&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+<h3 id="set-install-options" class="markup-heading">
+    <a class="markup-heading__link" href="#set-install-options">
+        Set install options
+    </a>
+</h3><p>To define a command line option for <code>composer install</code> to run, set the
+<code>BP_COMPOSER_INSTALL_OPTIONS</code> environment variable at build time to a
+space-separated list of flags.</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/php \
+  --env BP_COMPOSER_INSTALL_OPTIONS=&#34;--no-dev --prefer-install=auto&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<p>To define <strong>global</strong> <code>composer install</code> configurations, set the
+<code>BP_COMPOSER_INSTALL_GLOBAL</code> environment variable at build time to a
+space-separated list of global installation options.</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/php \
+  --env BP_COMPOSER_INSTALL_GLOBAL=&#34;friendsofphp/php-cs-fixer squizlabs/php_codesniffer=*&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h3 id="set-a-custom-composer-vendor-directory" class="markup-heading">
+    <a class="markup-heading__link" href="#set-a-custom-composer-vendor-directory">
+        Set a custom Composer vendor directory
+    </a>
+</h3><p>To define a custom vendoring location for Composer packages, users can set the
+<code>COMPOSER_VENDOR_DIR</code> environment variable at build time. It is a
+<a href="https://getcomposer.org/doc/03-cli.md#composer-vendor-dir">Composer-native environment
+variable</a> setting.
+It must be set as a relative path under the application source directory root.</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/php \
+  --env COMPOSER_VENDOR_DIR=&#34;vendor&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h3 id="set-the-composerjson-path" class="markup-heading">
+    <a class="markup-heading__link" href="#set-the-composerjson-path">
+        Set the <code>composer.json</code> path
+    </a>
+</h3><p>To define a custom <code>composer.json</code> path, users can set the <a href="https://getcomposer.org/doc/03-cli.md#composer">Composer-native
+environment variable
+<code>COMPOSER</code></a> at build time. The
+path must be relative to the project root.</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/php \
+  --env COMPOSER=&#34;some-other-composer.json&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h3 id="set-composer-authentication" class="markup-heading">
+    <a class="markup-heading__link" href="#set-composer-authentication">
+        Set Composer authentication
+    </a>
+</h3><p>To set up authentication for Composer, the Composer-native environment variable
+<code>COMPOSER_AUTH</code> can be set as a JSON-formatted object containing objects
+defined in the <a href="https://getcomposer.org/doc/03-cli.md#composer-auth">Composer
+docs</a>.</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/php \
+  --env COMPOSER_AUTH=&#39;{&#34;http-basic&#34;: &lt;some-creds&gt;}&#39;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <h2 id="select-a-web-server" class="markup-heading">
     <a class="markup-heading__link" href="#select-a-web-server">
-        Select a Web Server
+        Select a web server
     </a>
 </h2><p>The PHP buildpack supports the use of 3 different web servers:</p>
 <ul>
-<li>PHP built-in Web Server</li>
-<li>Apache HTTP Web Server</li>
-<li>Nginx Web Server</li>
+<li>PHP Built-in Web Server (default)</li>
+<li>Apache HTTPD Web Server</li>
+<li>NGINX Web Server</li>
 </ul>
-<p>You can configure the webserver using <code>buildpack.yml</code> as follows:</p>
+<p>You can configure which web server to use by setting the <code>BP_PHP_SERVER</code>
+environment variable at build time.  The setting options are <code>php-server</code>,
+<code>httpd</code>, <code>nginx</code>, with the default value of <code>php-server</code> if unset. The PHP
+Built-in Server buildpack will only pass detection if there is a <code>*.php</code> file
+in the web directory of the application.</p>
 <div class="copyable">
-    <pre class="copyable__code">php:
-  # options are: php-server, httpd, nginx. default: php-server
-  webserver: php-server
+    <pre class="copyable__code">  pack build my-app --buildpack paketo-buildpacks/php \
+  --env BP_PHP_SERVER=&#34;php-server&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<p>If you&rsquo;re using <code>httpd</code> or <code>nginx</code>, a suitable <code>httpd.conf</code> or <code>nginx.conf</code>
-will be generated for you by the buildpack.</p>
-<p>You can also provide additional configurations like follows:</p>
+<h4 id="unsupported-using-buildpackyml-1" class="markup-heading">
+    <a class="markup-heading__link" href="#unsupported-using-buildpackyml-1">
+        Unsupported: Using buildpack.yml
+    </a>
+</h4><p>Selecting a web server through <code>buildpack.yml</code> configuration has been
+removed as of PHP language family buildpack v1.0.0.  To migrate from using
+<code>buildpack.yml</code> please set the environment variable equivalent instead.</p>
+<h2 id="set-server-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#set-server-configuration">
+        Set server configuration
+    </a>
+</h2><p>If you&rsquo;re using <code>httpd</code> or <code>nginx</code>, a suitable <code>httpd.conf</code> or <code>nginx.conf</code>
+will be generated for you by the buildpack and made available in a layer.
+Check out the <a href="https://paketo.io/docs/reference/php-reference/">PHP Reference documentation</a> for an enumeration of the defaults set for
+<code>httpd</code> and <code>nginx</code>.</p>
+<p>Additional configuration can also be provided via environment variables.</p>
+<h3 id="provide-your-own-web-server-configuration-file" class="markup-heading">
+    <a class="markup-heading__link" href="#provide-your-own-web-server-configuration-file">
+        Provide your own web server configuration file
+    </a>
+</h3><p>If either <code>httpd</code> or <code>nginx</code> are the selected web server via the
+<code>BP_PHP_SERVER</code> environment variable, users can provide their own
+configurations in the form of a server-specific configuration file.</p>
+<h4 id="provide-httpd-specific-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#provide-httpd-specific-configuration">
+        Provide <code>httpd</code> specific configuration
+    </a>
+</h4><p>To provide your own HTTPD configuration, place <code>*.conf</code> files in your
+application source directory under <code>&lt;app-directory&gt;/.httpd.conf.d/*.conf</code>. This
+is helpful in the event that you want to set custom settings that are not
+configurable via environment variables in the PHP HTTPD buildpack.</p>
+<h4 id="provide-nginx-specific-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#provide-nginx-specific-configuration">
+        Provide <code>nginx</code> specific configuration
+    </a>
+</h4><p>To provide your own NGINX configuration, place configuration files in your
+application source directory under <code>&lt;app-directory&gt;/.nginx.conf.d/</code>.
+Server-specific configuration should be inside a file whose name ends with
+<code>-server.conf</code> (e.g. <code>prod-server.conf</code>), and HTTP configuration should be
+inside a file whose name ends with <code>-http.conf</code> (e.g. <code>prod-http.conf</code>). This
+is helpful in the event that you want to set custom settings that are not
+configurable via environment variables in the PHP NGINX buildpack. Check out
+<a href="https://www.nginx.com/resources/wiki/start/topics/examples/full/">NGINX documentation</a> for what settings can be
+applied to server and HTTP blocks.</p>
+<h3 id="configure-fpm-settings" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-fpm-settings">
+        Configure FPM settings
+    </a>
+</h3><p>The PHP buildpack includes support for the <a href="https://www.php.net/manual/en/install.fpm.php">PHP FastCGI Process
+Manager</a> (FPM) when used in conjunction with a web server. In
+this case, the <a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM buildpack</a> will generate FPM configuration for
+you to work with the web server of choice. The buildpack will also consider
+configuration from user provided sources (see <a href="https://paketo.io/docs/howto/php/#override-default-fpm-configuration">Override Default FPM
+Configuration</a>).</p>
+<p>Check out the <a href="https://paketo.io/docs/reference/php-reference/">PHP Reference documentation</a> for an enumeration of the defaults set for
+FPM.</p>
+<h4 id="override-default-fpm-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#override-default-fpm-configuration">
+        Override Default FPM Configuration
+    </a>
+</h4><p>Users can provide FPM configuration by providing a configuration file in the
+application source directory under <code>&lt;app-directory&gt;/.php.fpm.d/*.conf</code>.</p>
+<p>User-provided configuration will be considered the highest precedence source of
+configuration, and should be provided in an <code>.ini</code> compliant format in order to
+be considered by PHP FPM.</p>
+<h3 id="configure-the-web-directory" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-the-web-directory">
+        Configure the web directory
+    </a>
+</h3><p>The top-level directory where a web server finds files to serve is
+the <em>web directory</em>.  In the PHP buildpack, when the web server is
+HTTPD or NGINX, the web directory defaults to <code>htdocs.</code> When the web server is
+the PHP built-in server, the web directory defaults to <code>/workspace</code>.</p>
+<p>In all cases, the default web directory can be overridden by setting the
+<code>BP_PHP_WEB_DIR</code> environment variable at build time. The value
+provided should be a path relative to the application root.</p>
+<p>Note: The PHP built-in server will only pass
+detection if a <code>*.php</code> file is found inside of the web directory.</p>
 <div class="copyable">
-    <pre class="copyable__code"># buildpack.yml
-php:
-  # directory where web app code is stored
-  # default: htdocs
-  webdirectory: htdocs
-
-  # directory where library code is stored
-  # default: lib
-  libdirectory: lib
-
-  # cli script to use
-  # no default
-  script:
-
-  # default: admin@localhost
-  serveradmin: admin@localhost
+    <pre class="copyable__code">  pack build my-app --buildpack paketo-buildpacks/php \
+  --env BP_PHP_WEB_DIR=&#34;some-web-dir&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<h2 id="vendor-composer-packages" class="markup-heading">
-    <a class="markup-heading__link" href="#vendor-composer-packages">
-        Vendor composer packages
+<h3 id="enabledisable-https-redirect" class="markup-heading">
+    <a class="markup-heading__link" href="#enabledisable-https-redirect">
+        Enable/disable HTTPS Redirect
     </a>
-</h2><p>If your php app that uses <code>composer</code> has a valid <code>vendor</code> directory, then
-the buildpack will not download those packages. It will instead use the
-packages location in the <code>vendor</code> directory.</p>
-<h2 id="configure-custom-ini-files" class="markup-heading">
-    <a class="markup-heading__link" href="#configure-custom-ini-files">
-        Configure custom .ini files
+</h3><p>The HTTPS redirect feature is enabled by default in the <code>nginx</code> and <code>httpd</code>
+cases. It can be disabled by setting the
+<code>BP_PHP_ENABLE_HTTPS_REDIRECT</code> environment variable to <code>false</code> at build time.
+When this feature is enabled, the server will redirect HTTP requests to HTTPS.
+Check out server-provided documentation for details on what this entails for
+each case.</p>
+<div class="copyable">
+    <pre class="copyable__code">  pack build my-app --buildpack paketo-buildpacks/php \
+  --env BP_PHP_ENABLE_HTTPS_REDIRECT=false
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h3 id="configure-server-admin-for-httpd" class="markup-heading">
+    <a class="markup-heading__link" href="#configure-server-admin-for-httpd">
+        Configure server admin for HTTPD
     </a>
-</h2><p>If you like to configure custom .ini files in addition to the <code>php.ini</code>
-provided by the buildpack, you can create a directory named <code>.php.ini.d</code> at the
-root of your app and put your custom ini files there. See
-<a href="https://paketo.io/docs/reference/php-reference/#php_ini_scan_dir"><code>PHP_INI_SCAN_DIR</code></a>
-in the Variables section below.</p>
+</h3><p>The server admin in the <code>httpd</code> case can be overridden from the default of
+<code>admin@localhost</code> via the <code>BP_PHP_SERVER_ADMIN</code> environment variable at
+build time.</p>
+<div class="copyable">
+    <pre class="copyable__code">  pack build my-app --buildpack paketo-buildpacks/php \
+  --env BP_PHP_SERVER_ADMIN=some-admin@localhost
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h3 id="override-the-start-process" class="markup-heading">
+    <a class="markup-heading__link" href="#override-the-start-process">
+        Override the start process
+    </a>
+</h3><p>By default, the buildpacks will determine the right start command to run
+depending on the server that is being used. A user can override the start
+command by using the <a href="https://github.com/paketo-buildpacks/procfile">Paketo Procfile buildpack</a>. Check out the
+<a href="https://paketo.io/docs/howto/configuration/#procfiles">Procfiles</a> section
+of our configuration docs for details on how to use the buildpack.</p>
+<h2 id="enable-a-session-handler-via-service-bindings" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-a-session-handler-via-service-bindings">
+        Enable a session handler via service bindings
+    </a>
+</h2><p>The PHP Buildpack supports using session handlers for
+<a href="https://memcached.org/">Memcached</a> and <a href="https://redis.io/">Redis</a> instances
+via the <a href="https://github.com/paketo-buildpacks/php-memcached-session-handler">PHP Memcached Session Handler Buildpack</a> and the <a href="https://github.com/paketo-buildpacks/php-redis-session-handler">PHP
+Redis Session Handler Buildpack</a>.
+Check out the <a href="https://www.php.net/manual/en/class.sessionhandler.php">PHP session handler documentation</a>
+for more information on what a PHP session handler is.</p>
+<p>In order to configure a session handler for either Redis or Memcached the user
+must provide a <a href="https://paketo.io/docs/howto/configuration/#bindings">service binding</a>.</p>
+<h3 id="enable-the-session-handler-for-redis" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-the-session-handler-for-redis">
+        Enable the session handler for Redis
+    </a>
+</h3><p>To configure a Redis instance session handler, the provided service binding
+should contain the following:</p>
+<table>
+<thead>
+<tr>
+<th>Binding File</th>
+<th>Value</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>php-redis-session</code></td>
+<td>yes</td>
+<td>Binding type</td>
+</tr>
+<tr>
+<td><code>host</code> or <code>hostname</code></td>
+<td>Default: 127.0.0.1</td>
+<td>no</td>
+<td>Redis instance IP address</td>
+</tr>
+<tr>
+<td><code>port</code></td>
+<td>Default: 6379</td>
+<td>no</td>
+<td>Redis instance port</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>Omitted if unset</td>
+<td>no</td>
+<td>Redis instance password</td>
+</tr>
+</tbody>
+</table>
+<p>When performing a build with the <code>pack</code> CLI, passing the service binding will look like the following:</p>
+<div class="copyable">
+    <pre class="copyable__code">  pack build my-app --buildpack paketo-buildpacks/php \
+  --env SERVICE_BINDING_ROOT=/bindings \
+  --volume &lt;absolute-path-to-binding&gt;:/bindings/php-redis-session
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h3 id="enable-the-session-handler-for-memcached" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-the-session-handler-for-memcached">
+        Enable the session handler for Memcached
+    </a>
+</h3><p>To configure a Memcached instance session handler, the provided service binding
+should contain the following:</p>
+<table>
+<thead>
+<tr>
+<th>Binding File</th>
+<th>Value</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>php-memcached-session</code></td>
+<td>yes</td>
+<td>Binding type</td>
+</tr>
+<tr>
+<td><code>servers</code></td>
+<td>Default: 127.0.0.1</td>
+<td>no</td>
+<td>Memcached instance IP address</td>
+</tr>
+<tr>
+<td><code>username</code></td>
+<td>Omitted if unset</td>
+<td>no</td>
+<td>Memcached instance username</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td>Omitted if unset</td>
+<td>no</td>
+<td>Memcached instance password</td>
+</tr>
+</tbody>
+</table>
+<p>When performing a build with the <code>pack</code> CLI, passing the service binding will
+look like the following:</p>
+<div class="copyable">
+    <pre class="copyable__code">  pack build my-app --buildpack paketo-buildpacks/php \
+  --env SERVICE_BINDING_ROOT=/bindings \
+  --volume &lt;absolute-path-to-binding&gt;:/bindings/php-memcached-session
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h2 id="install-a-custom-ca-certificate" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-custom-ca-certificate">
-        Install a Custom CA Certificate
+        Install a custom CA certificate
     </a>
-</h2><p>PHP buildpack users can provide their own CA certificates and have them
-included in the container root truststore at build-time and runtime by
+</h2><p>Users of the PHP buildpack can provide their own CA certificates and have them
+included in the container root truststore at build time and runtime by
 following the instructions outlined in the <a href="https://paketo.io/docs/howto/configuration/#ca-certificates">CA
 Certificates</a>
 section of our configuration docs.</p>
-<h2 id="override-the-start-process-set-by-the-buildpack" class="markup-heading">
-    <a class="markup-heading__link" href="#override-the-start-process-set-by-the-buildpack">
-        Override the Start Process Set by the Buildpack
-    </a>
-</h2><p>PHP buildpack users can set custom start processes for their app image by
-following the instructions in the
-<a href="https://paketo.io/docs/howto/configuration/#procfiles">Procfiles</a> section
-of our configuration docs.</p>
 <h2 id="set-environment-variables-for-app-launch-time" class="markup-heading">
     <a class="markup-heading__link" href="#set-environment-variables-for-app-launch-time">
-        Set Environment Variables for App Launch Time
+        Set environment variables for app launch time
     </a>
 </h2><p>PHP buildpack users can embed launch-time environment variables in their
 app image by following the documentation for the <a href="https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md">Environment Variables
 Buildpack</a>.</p>
 <h2 id="add-custom-labels-to-the-app-image" class="markup-heading">
     <a class="markup-heading__link" href="#add-custom-labels-to-the-app-image">
-        Add Custom Labels to the App Image
+        Add custom labels to the app image
     </a>
 </h2><p>PHP buildpack users can add labels to their app image by following the
 instructions in the <a href="https://paketo.io/docs/howto/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
+<h2 id="run-a-build-with-debug-logging" class="markup-heading">
+    <a class="markup-heading__link" href="#run-a-build-with-debug-logging">
+        Run a build with <code>DEBUG</code> logging
+    </a>
+</h2><p>Users of the PHP buildpack can access extra debug logs during the image build process by setting the <code>BP_LOG_LEVEL</code>
+environment variable to <code>DEBUG</code> at build time.
+<div class="copyable">
+    <pre class="copyable__code">  pack build my-app --buildpack paketo-buildpacks/php \
+  --env BP_LOG_LEVEL=DEBUG
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
+<h2 id="access-the-software-bill-of-materials" class="markup-heading">
+    <a class="markup-heading__link" href="#access-the-software-bill-of-materials">
+        Access the software bill of materials
+    </a>
+</h2><p>The PHP buildpack includes support for the software bill of materials (SBOM).
+Check out the <a href="https://paketo.io/docs/howto/sbom/">SBOM how-to documentation</a> for
+details on how to access the SBOM supplied by the buildpacks.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
             </div>
             
@@ -674,27 +1060,56 @@ section of our configuration docs.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> May 2, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> May 4, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#build-a-sample-app">Build a Sample App</a></li>
-    <li><a href="#install-a-specific-php-version">Install a Specific PHP Version</a>
+    <li><a href="#configure-php">Configure PHP</a>
       <ul>
-        <li><a href="#using-buildpackyml">Using buildpack.yml</a></li>
-        <li><a href="#using-composerjson">Using composer.json</a></li>
+        <li><a href="#install-a-specific-php-version">Install a Specific PHP Version</a></li>
+        <li><a href="#configure-the-php-library-directory">Configure the PHP library directory</a></li>
+        <li><a href="#configure-php-with-a-custom-ini-file">Configure PHP with a custom <code>.ini</code> file</a></li>
+        <li><a href="#use-extensions">Use Extensions</a></li>
       </ul>
     </li>
-    <li><a href="#configure-composer">Configure Composer</a></li>
-    <li><a href="#select-a-web-server">Select a Web Server</a></li>
-    <li><a href="#vendor-composer-packages">Vendor composer packages</a></li>
-    <li><a href="#configure-custom-ini-files">Configure custom .ini files</a></li>
-    <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
-    <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
-    <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
-    <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
+    <li><a href="#configure-composer">Configure Composer</a>
+      <ul>
+        <li><a href="#set-the-composer-version">Set the Composer version</a></li>
+        <li><a href="#set-install-options">Set install options</a></li>
+        <li><a href="#set-a-custom-composer-vendor-directory">Set a custom Composer vendor directory</a></li>
+        <li><a href="#set-the-composerjson-path">Set the <code>composer.json</code> path</a></li>
+        <li><a href="#set-composer-authentication">Set Composer authentication</a></li>
+      </ul>
+    </li>
+    <li><a href="#select-a-web-server">Select a web server</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#set-server-configuration">Set server configuration</a>
+      <ul>
+        <li><a href="#provide-your-own-web-server-configuration-file">Provide your own web server configuration file</a></li>
+        <li><a href="#configure-fpm-settings">Configure FPM settings</a></li>
+        <li><a href="#configure-the-web-directory">Configure the web directory</a></li>
+        <li><a href="#enabledisable-https-redirect">Enable/disable HTTPS Redirect</a></li>
+        <li><a href="#configure-server-admin-for-httpd">Configure server admin for HTTPD</a></li>
+        <li><a href="#override-the-start-process">Override the start process</a></li>
+      </ul>
+    </li>
+    <li><a href="#enable-a-session-handler-via-service-bindings">Enable a session handler via service bindings</a>
+      <ul>
+        <li><a href="#enable-the-session-handler-for-redis">Enable the session handler for Redis</a></li>
+        <li><a href="#enable-the-session-handler-for-memcached">Enable the session handler for Memcached</a></li>
+      </ul>
+    </li>
+    <li><a href="#install-a-custom-ca-certificate">Install a custom CA certificate</a></li>
+    <li><a href="#set-environment-variables-for-app-launch-time">Set environment variables for app launch time</a></li>
+    <li><a href="#add-custom-labels-to-the-app-image">Add custom labels to the app image</a></li>
+    <li><a href="#run-a-build-with-debug-logging">Run a build with <code>DEBUG</code> logging</a></li>
+    <li><a href="#access-the-software-bill-of-materials">Access the software bill of materials</a></li>
   </ul>
 </nav>
 </div>

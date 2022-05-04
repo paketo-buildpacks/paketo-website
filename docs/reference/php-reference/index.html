@@ -454,18 +454,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <nav id="TableOfContents">
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#behavior">Behavior</a>
+      <ul>
+        <li><a href="#package-management">Package Management</a></li>
+        <li><a href="#running-with-webservers">Running With Webservers</a></li>
+      </ul>
+    </li>
+    <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
+    <li><a href="#buildpack-configurations">Buildpack Configurations</a>
+      <ul>
+        <li><a href="#php-distribution-buildpackbpphp-dist-configuration"><a href="https://github.com/paketo-buildpacks/php-dist">PHP Distribution Buildpack</a> Configuration</a></li>
+        <li><a href="#php-fpm-buildpackbpfpm-configuration"><a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM Buildpack</a> Configuration</a></li>
+        <li><a href="#php-nginx-buildpackbpphp-nginx-configuration"><a href="https://github.com/paketo-buildpacks/php-nginx">PHP Nginx Buildpack</a> Configuration</a></li>
+        <li><a href="#php-httpd-buildpackbpphp-httpd-configuration"><a href="https://github.com/paketo-buildpacks/php-httpd">PHP HTTPD Buildpack</a> Configuration</a></li>
+        <li><a href="#composer-install-buildpackbpcomposer-install-configuration"><a href="https://github.com/paketo-buildpacks/composer-install">Composer Install Buildpack</a> Configuration</a></li>
+      </ul>
+    </li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
       <ul>
-        <li><a href="#app_root">APP_ROOT</a></li>
-        <li><a href="#server_root">SERVER_ROOT</a></li>
-        <li><a href="#mibdirs">MIBDIRS</a></li>
         <li><a href="#path">PATH</a></li>
+        <li><a href="#php_ini_scan_dir">PHP_INI_SCAN_DIR</a></li>
+        <li><a href="#phprc">PHPRC</a></li>
         <li><a href="#php_api">PHP_API</a></li>
         <li><a href="#php_extension_dir">PHP_EXTENSION_DIR</a></li>
         <li><a href="#php_home">PHP_HOME</a></li>
-        <li><a href="#php_ini_scan_dir">PHP_INI_SCAN_DIR</a></li>
+        <li><a href="#mibdirs">MIBDIRS</a></li>
+        <li><a href="#app_root">APP_ROOT</a></li>
+        <li><a href="#server_root">SERVER_ROOT</a></li>
+        <li><a href="#composer">COMPOSER</a></li>
+        <li><a href="#composer_home">COMPOSER_HOME</a></li>
+        <li><a href="#composer_vendor_directory">COMPOSER_VENDOR_DIRECTORY</a></li>
+        <li><a href="#composer_no_interaction">COMPOSER_NO_INTERACTION</a></li>
+        <li><a href="#php_fpm_path">PHP_FPM_PATH</a></li>
+        <li><a href="#php_httpd_path">PHP_HTTPD_PATH</a></li>
+        <li><a href="#php_nginx_path">PHP_NGINX_PATH</a></li>
       </ul>
     </li>
+    <li><a href="#components">Components</a></li>
   </ul>
 </nav>
 </div>
@@ -479,17 +504,205 @@ the  Paketo PHP Buildpack  How To <a href="/docs/howto/php">documentation</a>.</
     <a class="markup-heading__link" href="#supported-dependencies">
         Supported Dependencies
     </a>
-</h2><p>The PHP Paketo Buildpack supports several versions of PHP.
+</h2><p>The Paketo PHP Buildpack supports several versions of PHP and Composer.
 For more details on the specific versions supported in a given buildpack
-version, see the <a href="https://github.com/paketo-buildpacks/php/releases">release
-notes</a>.</p>
+version, see the <a href="https://github.com/paketo-buildpacks/php/releases">release notes</a>.</p>
+<h2 id="behavior" class="markup-heading">
+    <a class="markup-heading__link" href="#behavior">
+        Behavior
+    </a>
+</h2><p>The Paketo PHP Buildpack is a <a href="https://paketo.io/docs/concepts/buildpacks/#composite-buildpacks">composite buildpack</a>
+designed to build applications written in PHP.</p>
+<h3 id="package-management" class="markup-heading">
+    <a class="markup-heading__link" href="#package-management">
+        Package Management
+    </a>
+</h3><p>With the PHP CNB, the only option for package management is
+<a href="https://getcomposer.org/">Composer</a>.</p>
+<p>The <a href="https://github.com/paketo-buildpacks/composer">Composer buildpack</a> will install <code>composer</code> as the package manager, and if a PHP
+application contains a <code>composer.json</code> (and preferably a <code>composer.lock</code> file) packages
+are installed by running <code>composer install</code> by the Composer Install
+<a href="https://github.com/paketo-buildpacks/composer-install">buildpack</a>. Packages installed will be available in a
+<code>vendor</code> directory in the application source directory, and will be cached for
+rebuilds.</p>
+<h3 id="running-with-webservers" class="markup-heading">
+    <a class="markup-heading__link" href="#running-with-webservers">
+        Running With Webservers
+    </a>
+</h3><p>The buildpacks within the PHP CNB will configure basic configuration for
+working with FPM, HTTPD, Nginx, or the built-in PHP webserver. Web server
+choice is set by the user via environment variable (see <a href="https://paketo.io/docs/howto/php/">PHP How To
+documentation</a>), and user-provided configurations will be considered as outlined
+below.</p>
+<h2 id="software-bill-of-materials" class="markup-heading">
+    <a class="markup-heading__link" href="#software-bill-of-materials">
+        Software Bill of Materials
+    </a>
+</h2><p>The PHP buildpack supports the full <a href="https://paketo.io/docs/concepts/sbom/">software bill of materials</a> (SBOM) in <a href="https://github.com/anchore/syft/tree/main/schema/json">Syft</a>,
+<a href="https://cyclonedx.org/">CycloneDX</a>, <a href="https://spdx.dev/">SPDX</a>, and
+<a href="https://paketo.io/docs/concepts/sbom/#paketo-specific-sbom-format">Paketo-specific</a> formats.</p>
+<p>Apps built with the buildpack that use Composer as a package manager contain
+SBOM entries that provide a full picture of the packages installed in the final app image. There are also entries for the installed versions of PHP and Composer. Check out the <a href="https://paketo.io/docs/howto/sbom/">Access the Software Bill of Materials
+guide</a> for more information about how to
+retrieve the SBOM for your app image.</p>
+<h2 id="buildpack-configurations" class="markup-heading">
+    <a class="markup-heading__link" href="#buildpack-configurations">
+        Buildpack Configurations
+    </a>
+</h2><p>The buildpacks in the PHP language family set default configurations, as well
+as include configurations from user-provided sources. The sections below
+outline the various configurations the buildpacks provide during the build process, and
+the various locations that will also be considered as configuration sources.</p>
+<h3 id="php-distribution-buildpackbpphp-dist-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#php-distribution-buildpackbpphp-dist-configuration">
+        <a href="https://github.com/paketo-buildpacks/php-dist">PHP Distribution Buildpack</a> Configuration
+    </a>
+</h3><p>This section lists the various configuration sources for PHP <code>.ini</code> files that
+are made available to PHP at run-time.</p>
+<ol>
+<li>The <a href="https://github.com/paketo-buildpacks/php-dist/blob/a33ea23adcb4dd0b4ae0d2a4746f570b13a1a75b/config/default.ini">default PHP <code>ini</code> file</a> found from the PHP
+Distribution itself, with no modifications. It can be found on the container
+inside the PHP Distribution Buildpack layer under <code>/etc/php.ini</code>.</li>
+<li><a href="https://github.com/paketo-buildpacks/php-dist/blob/a33ea23adcb4dd0b4ae0d2a4746f570b13a1a75b/config/buildpack.ini">Buildpack-specific configuration</a> which can be found inside the PHP
+Distribution Buildpack layer under <code>/etc/buildpack.ini</code>. This includes
+confgurations specific to the buildpack&rsquo;s install process and app image file
+system, such as the path to PHP extensions (<code>extension_dir</code>), the include
+path to the PHP library directory.</li>
+<li>User-provided configurations from the <code>&lt;APP-ROOT&gt;/.php.ini.d</code> directory.</li>
+</ol>
+<p>Check out the <a href="https://paketo.io/docs/reference/php-reference/#php_ini_scan_dir">PHP_INI_SCAN_DIR documentation section</a> for more information.</p>
+<h3 id="php-fpm-buildpackbpfpm-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#php-fpm-buildpackbpfpm-configuration">
+        <a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM Buildpack</a> Configuration
+    </a>
+</h3><p>Configuration for PHP FPM comes from a few sources, listed here in order of precedence from highest to lowest:</p>
+<ol>
+<li>User-provided configurations located in <code>&lt;APP-ROOT&gt;/.php.fpm.d/*.conf</code>.</li>
+<li>Configuration set by other buildpacks (such as the PHP Nginx
+Buildpack <a href="https://github.com/paketo-buildpacks/php-nginx/blob/d98ea729531efec03ede533c7e74e7093367fb33/config/nginx-fpm.conf">FPM configuration</a>), which is stored in
+<code>/workspace/.php.fpm.bp/*.conf</code> files.</li>
+<li><a href="https://github.com/paketo-buildpacks/php-fpm/blob/e605c742b1fdde7d30d67fc21360227f40fecb93/config/php-fpm-buildpack.conf">Buildpack-specific configuration</a>, which includes
+configurations specific to the buildpack&rsquo;s role in the build process. This
+includes settings such as the default <code>listen</code> directive, and other features
+to make FPM work well with web servers.</li>
+<li>The <a href="https://github.com/paketo-buildpacks/php-fpm/blob/e605c742b1fdde7d30d67fc21360227f40fecb93/config/php-fpm-base.conf">default PHP FPM configuration</a> that is distributed alongside the PHP
+Distribution itself. This is stored at <code>$PHPRC/php-fpm.d/www.conf.default</code> in the container.</li>
+</ol>
+<h3 id="php-nginx-buildpackbpphp-nginx-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#php-nginx-buildpackbpphp-nginx-configuration">
+        <a href="https://github.com/paketo-buildpacks/php-nginx">PHP Nginx Buildpack</a> Configuration
+    </a>
+</h3><p>The PHP Nginx Buildpack sets up two flavours of configuration itself, and
+allows for a third flavour from users. They are listed here in order of highest
+precedence, to lowest.</p>
+<ol>
+<li>User-provided configuration files located in
+<code>&lt;APP-ROOT&gt;/.nginx.conf.d/*-server.conf</code> and
+<code>&lt;APP-ROOT&gt;/.nginx.conf.d/*-http.conf</code>.</li>
+<li><a href="https://github.com/paketo-buildpacks/php-nginx/blob/d98ea729531efec03ede533c7e74e7093367fb33/config/nginx.conf">Basic Nginx configuration</a> is the <code>nginx.conf</code> file for
+running with PHP apps. See <a href="https://paketo.io/docs/howto/php/">PHP How To documentation</a> for settings that can be configured via environment
+variables.</li>
+<li>Nginx-specific FPM settings (see FPM section above) is added to work with
+FPM.</li>
+</ol>
+<h3 id="php-httpd-buildpackbpphp-httpd-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#php-httpd-buildpackbpphp-httpd-configuration">
+        <a href="https://github.com/paketo-buildpacks/php-httpd">PHP HTTPD Buildpack</a> Configuration
+    </a>
+</h3><ol>
+<li><a href="https://github.com/paketo-buildpacks/php-httpd/blob/d7be88d8def441d2fdbc03fd52773d3558ae8e14/config/httpd.conf">Basic HTTPD configuration</a> is the <code>httpd.conf</code> file for
+running with PHP apps. See <a href="https://paketo.io/docs/howto/php/#provide-httpd-specific-configuration">PHP How To documentation</a> for settings that
+can be configured via environment variables.</li>
+<li>User-provided configuration files located in
+<code>&lt;APP-ROOT&gt;/.httpd.conf.d/*.conf</code>.</li>
+</ol>
+<h3 id="composer-install-buildpackbpcomposer-install-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#composer-install-buildpackbpcomposer-install-configuration">
+        <a href="https://github.com/paketo-buildpacks/composer-install">Composer Install Buildpack</a> Configuration
+    </a>
+</h3><p>The Composer Install Buildpack sets up configuration to be used for running
+<code>composer</code> commands. They are listed here in no specific order.</p>
+<ol>
+<li>A Composer PHP <code>.ini</code> file is created for usage during the buildpack build
+process <strong>only</strong>. It will tell Composer where to find extensions when running
+<code>composer-install</code>.</li>
+<li>Platform requirement <code>.ini</code> file available on the final image under
+<code>/workspace/.php.ini.d/composer-extensions.ini</code> which will be appended onto
+the <code>PHP_INI_SCAN_DIR</code>. It wil include any <code>composer.json</code> specified
+extensions that come from running the Composer <code>check-platform-reqs</code>
+command.</li>
+</ol>
 <h2 id="buildpack-set-environment-variables" class="markup-heading">
     <a class="markup-heading__link" href="#buildpack-set-environment-variables">
         Buildpack-Set Environment Variables
     </a>
-</h2><p>The PHP CNB sets a number of environment variables during the <code>build</code> and
-<code>launch</code> phases of the app lifecycle. The sections below describe each
-environment variable and its impact on your app.</p>
+</h2><p>The buildpacks within the <a href="https://github.com/paketo-buildpacks/php">Paketo PHP language family</a> set a number of
+environment variables during the <code>build</code> and <code>launch</code> phases of the app
+lifecycle. The sections below describe each environment variable and its impact
+on your app.</p>
+<h3 id="path" class="markup-heading">
+    <a class="markup-heading__link" href="#path">
+        PATH
+    </a>
+</h3><ul>
+<li>Set by: <code>php-dist</code> and <code>composer-install</code> (<code>build</code> phase only)</li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: path to the PHP executable</li>
+</ul>
+<h3 id="php_ini_scan_dir" class="markup-heading">
+    <a class="markup-heading__link" href="#php_ini_scan_dir">
+        PHP_INI_SCAN_DIR
+    </a>
+</h3><ul>
+<li>Set by: <code>php-dist</code>, <code>php-redis-session-handler</code>, and <code>php-memcached-session-handler</code> buildpacks</li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: directories where PHP <code>ini</code> configuration can be found.</li>
+</ul>
+<h3 id="phprc" class="markup-heading">
+    <a class="markup-heading__link" href="#phprc">
+        PHPRC
+    </a>
+</h3><ul>
+<li>Set by: <code>php-dist</code> and <code>composer-install</code> (<code>build</code> phase only)</li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: path to the top-level official PHP Distribution-provided <code>php.ini</code></li>
+</ul>
+<h3 id="php_api" class="markup-heading">
+    <a class="markup-heading__link" href="#php_api">
+        PHP_API
+    </a>
+</h3><ul>
+<li>Set by: <code>php-dist</code> buildpack</li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: internal api version (YYYYMMDD)</li>
+</ul>
+<h3 id="php_extension_dir" class="markup-heading">
+    <a class="markup-heading__link" href="#php_extension_dir">
+        PHP_EXTENSION_DIR
+    </a>
+</h3><ul>
+<li>Set by: <code>php-dist</code> buildpack</li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: location of directory with dynamic libraries for extensions</li>
+</ul>
+<h3 id="php_home" class="markup-heading">
+    <a class="markup-heading__link" href="#php_home">
+        PHP_HOME
+    </a>
+</h3><ul>
+<li>Set by: <code>php-dist</code> buildpack</li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: location of PHP installation</li>
+</ul>
+<h3 id="mibdirs" class="markup-heading">
+    <a class="markup-heading__link" href="#mibdirs">
+        MIBDIRS
+    </a>
+</h3><ul>
+<li>Set by: <code>php-dist</code> buildpack</li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: See <a href="https://www.php.net/manual/en/snmp.installation.php">PHP documentation</a></li>
+</ul>
 <h3 id="app_root" class="markup-heading">
     <a class="markup-heading__link" href="#app_root">
         APP_ROOT
@@ -508,60 +721,169 @@ environment variable and its impact on your app.</p>
 <li>Phases: <code>launch</code></li>
 <li>Value: path of the httpd installation</li>
 </ul>
-<h3 id="mibdirs" class="markup-heading">
-    <a class="markup-heading__link" href="#mibdirs">
-        MIBDIRS
+<h3 id="composer" class="markup-heading">
+    <a class="markup-heading__link" href="#composer">
+        COMPOSER
     </a>
 </h3><ul>
-<li>Set by: <code>php-dist</code> buildpack</li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: See <a href="https://www.php.net/manual/en/snmp.installation.php">php documentation</a></li>
+<li>Set by: <code>composer-install</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: path to the <code>composer.json</code> file</li>
 </ul>
-<h3 id="path" class="markup-heading">
-    <a class="markup-heading__link" href="#path">
-        PATH
+<h3 id="composer_home" class="markup-heading">
+    <a class="markup-heading__link" href="#composer_home">
+        COMPOSER_HOME
     </a>
 </h3><ul>
-<li>Set by: <code>php-dist</code> buildpack</li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: path to the php executable</li>
+<li>Set by: <code>composer-install</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: Composer home directory</li>
 </ul>
-<h3 id="php_api" class="markup-heading">
-    <a class="markup-heading__link" href="#php_api">
-        PHP_API
+<h3 id="composer_vendor_directory" class="markup-heading">
+    <a class="markup-heading__link" href="#composer_vendor_directory">
+        COMPOSER_VENDOR_DIRECTORY
     </a>
 </h3><ul>
-<li>Set by: <code>php-dist</code> buildpack</li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: internl api version (YYYYMMDD)</li>
+<li>Set by: <code>composer-install</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: Composer packages vendor directory</li>
 </ul>
-<h3 id="php_extension_dir" class="markup-heading">
-    <a class="markup-heading__link" href="#php_extension_dir">
-        PHP_EXTENSION_DIR
+<h3 id="composer_no_interaction" class="markup-heading">
+    <a class="markup-heading__link" href="#composer_no_interaction">
+        COMPOSER_NO_INTERACTION
     </a>
 </h3><ul>
-<li>Set by: <code>php-dist</code> buildpack</li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: location of directory with dynamic libraries for extensions</li>
+<li>Set by: <code>composer-install</code> buildpack</li>
+<li>Phases: <code>build</code></li>
+<li>Value: Pass the <code>--no-interaction</code> flag to Composer commands</li>
 </ul>
-<h3 id="php_home" class="markup-heading">
-    <a class="markup-heading__link" href="#php_home">
-        PHP_HOME
+<h3 id="php_fpm_path" class="markup-heading">
+    <a class="markup-heading__link" href="#php_fpm_path">
+        PHP_FPM_PATH
     </a>
 </h3><ul>
-<li>Set by: <code>php-dist</code> buildpack</li>
+<li>Set by: <code>php-fpm</code> buildpack</li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: location of php installation</li>
+<li>Value: path to the FPM configuration for usage in FPM start command</li>
 </ul>
-<h3 id="php_ini_scan_dir" class="markup-heading">
-    <a class="markup-heading__link" href="#php_ini_scan_dir">
-        PHP_INI_SCAN_DIR
+<h3 id="php_httpd_path" class="markup-heading">
+    <a class="markup-heading__link" href="#php_httpd_path">
+        PHP_HTTPD_PATH
     </a>
 </h3><ul>
-<li>Set by: <code>php-web</code> buildpack</li>
+<li>Set by: <code>php-httpd</code> buildpack</li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: <code>&lt;APP-ROOT&gt;/.php.ini.d</code></li>
+<li>Value: path to the HTTPD configuration for usage in server start command</li>
 </ul>
+<h3 id="php_nginx_path" class="markup-heading">
+    <a class="markup-heading__link" href="#php_nginx_path">
+        PHP_NGINX_PATH
+    </a>
+</h3><ul>
+<li>Set by: <code>php-nginx</code> buildpack</li>
+<li>Phases: <code>build</code> and <code>launch</code></li>
+<li>Value: path to the Nginx configuration for usage in Nginx start command</li>
+</ul>
+<h2 id="components" class="markup-heading">
+    <a class="markup-heading__link" href="#components">
+        Components
+    </a>
+</h2><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Required/Optional</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/php-dist">Paketo PHP Dist Buildpack</a></td>
+<td>Required</td>
+<td>Installs the PHP distribution, making it available on the $PATH</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/php-fpm">Paketo PHP FPM Buildpack</a></td>
+<td>Required</td>
+<td>Configures a <code>php-fpm.conf</code> config file for PHP FPM</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/composer">Paketo Composer Buildpack</a></td>
+<td>Optional</td>
+<td>Installs the Composer tool onto the $PATH</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/composer-install">Paketo Composer Install Buildpack</a></td>
+<td>Optional</td>
+<td>Runs <code>composer install</code></td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/httpd">Paketo HTTPD Buildpack</a></td>
+<td>Optional</td>
+<td>Installs Apache HTTPD</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/nginx">Paketo Nginx Buildpack</a></td>
+<td>Optional</td>
+<td>Installs Nginx</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/php-httpd">Paketo PHP HTTPD Buildpack</a></td>
+<td>Optional</td>
+<td>Configures HTTPD to serve a PHP app</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/php-nginx">Paketo PHP Nginx Buildpack</a></td>
+<td>Optional</td>
+<td>Configures Nginx to serve a PHP app</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/php-builtin-server">Paketo PHP Builtin Server Buildpack</a></td>
+<td>Optional</td>
+<td>Sets a PHP built-in server start command</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/php-redis-session-handler">Paketo PHP Redis Session Handler Buildpack</a></td>
+<td>Optional</td>
+<td>Configures a PHP session handler for a Redis instance</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/php-memcached-session-handler">Paketo PHP Memcached Session Handler Buildpack</a></td>
+<td>Optional</td>
+<td>Configures a PHP session handler for a Memcached instance</td>
+</tr>
+<tr>
+<td><a href="https://github.com/paketo-buildpacks/php-start">Paketo PHP Start Buildpack</a></td>
+<td>Optional</td>
+<td>Sets the start command to serve PHP apps with Nginx or HTTPD with FPM</td>
+</tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a></td>
+<td>Optional</td>
+<td>Sets a user-specified start command</td>
+</tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/environment-variables">Paketo Environment Variables Buildpack</a></td>
+<td>Optional</td>
+<td>Sets user-specified launch-time environment variables</td>
+</tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/image-labels">Paketo Image Labels Buildpack</a></td>
+<td>Optional</td>
+<td>Adds user-specified labels to app image metadata</td>
+</tr>
+<tr>
+<td><a href="
+https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Buildpack</a></td>
+<td>Optional</td>
+<td>Installs custom CA certificates</td>
+</tr>
+</tbody>
+</table>
+<!-- raw HTML omitted -->
 
             </div>
             
@@ -574,25 +896,50 @@ environment variable and its impact on your app.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> May 2, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> May 4, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#supported-dependencies">Supported Dependencies</a></li>
+    <li><a href="#behavior">Behavior</a>
+      <ul>
+        <li><a href="#package-management">Package Management</a></li>
+        <li><a href="#running-with-webservers">Running With Webservers</a></li>
+      </ul>
+    </li>
+    <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
+    <li><a href="#buildpack-configurations">Buildpack Configurations</a>
+      <ul>
+        <li><a href="#php-distribution-buildpackbpphp-dist-configuration"><a href="https://github.com/paketo-buildpacks/php-dist">PHP Distribution Buildpack</a> Configuration</a></li>
+        <li><a href="#php-fpm-buildpackbpfpm-configuration"><a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM Buildpack</a> Configuration</a></li>
+        <li><a href="#php-nginx-buildpackbpphp-nginx-configuration"><a href="https://github.com/paketo-buildpacks/php-nginx">PHP Nginx Buildpack</a> Configuration</a></li>
+        <li><a href="#php-httpd-buildpackbpphp-httpd-configuration"><a href="https://github.com/paketo-buildpacks/php-httpd">PHP HTTPD Buildpack</a> Configuration</a></li>
+        <li><a href="#composer-install-buildpackbpcomposer-install-configuration"><a href="https://github.com/paketo-buildpacks/composer-install">Composer Install Buildpack</a> Configuration</a></li>
+      </ul>
+    </li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
       <ul>
-        <li><a href="#app_root">APP_ROOT</a></li>
-        <li><a href="#server_root">SERVER_ROOT</a></li>
-        <li><a href="#mibdirs">MIBDIRS</a></li>
         <li><a href="#path">PATH</a></li>
+        <li><a href="#php_ini_scan_dir">PHP_INI_SCAN_DIR</a></li>
+        <li><a href="#phprc">PHPRC</a></li>
         <li><a href="#php_api">PHP_API</a></li>
         <li><a href="#php_extension_dir">PHP_EXTENSION_DIR</a></li>
         <li><a href="#php_home">PHP_HOME</a></li>
-        <li><a href="#php_ini_scan_dir">PHP_INI_SCAN_DIR</a></li>
+        <li><a href="#mibdirs">MIBDIRS</a></li>
+        <li><a href="#app_root">APP_ROOT</a></li>
+        <li><a href="#server_root">SERVER_ROOT</a></li>
+        <li><a href="#composer">COMPOSER</a></li>
+        <li><a href="#composer_home">COMPOSER_HOME</a></li>
+        <li><a href="#composer_vendor_directory">COMPOSER_VENDOR_DIRECTORY</a></li>
+        <li><a href="#composer_no_interaction">COMPOSER_NO_INTERACTION</a></li>
+        <li><a href="#php_fpm_path">PHP_FPM_PATH</a></li>
+        <li><a href="#php_httpd_path">PHP_HTTPD_PATH</a></li>
+        <li><a href="#php_nginx_path">PHP_NGINX_PATH</a></li>
       </ul>
     </li>
+    <li><a href="#components">Components</a></li>
   </ul>
 </nav>
 </div>
