@@ -88,17 +88,23 @@
                 return fakeElement;
               }
               ;
+              var fakeCopyAction = function fakeCopyAction2(value, options) {
+                var fakeElement = createFakeElement(value);
+                options.container.appendChild(fakeElement);
+                var selectedText = select_default()(fakeElement);
+                command("copy");
+                fakeElement.remove();
+                return selectedText;
+              };
               var ClipboardActionCopy = function ClipboardActionCopy2(target) {
                 var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {
                   container: document.body
                 };
                 var selectedText = "";
                 if (typeof target === "string") {
-                  var fakeElement = createFakeElement(target);
-                  options.container.appendChild(fakeElement);
-                  selectedText = select_default()(fakeElement);
-                  command("copy");
-                  fakeElement.remove();
+                  selectedText = fakeCopyAction(target, options);
+                } else if (target instanceof HTMLInputElement && !["text", "search", "url", "tel", "password"].includes(target === null || target === void 0 ? void 0 : target.type)) {
+                  selectedText = fakeCopyAction(target.value, options);
                 } else {
                   selectedText = select_default()(target);
                   command("copy");
@@ -301,7 +307,6 @@
                         if (trigger) {
                           trigger.focus();
                         }
-                        document.activeElement.blur();
                         window.getSelection().removeAllRanges();
                       }
                     });
@@ -3769,7 +3774,7 @@
   });
 })();
 /*!
- * clipboard.js v2.0.10
+ * clipboard.js v2.0.11
  * https://clipboardjs.com/
  *
  * Licensed MIT © Zeno Rocha
