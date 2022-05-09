@@ -33,7 +33,9 @@ pack config default-builder paketobuildpacks/builder:base
 Paketo buildpacks can be configured via the following mechanisms:
 
 * [Environment Variables]({{< relref "#environment-variables" >}}) - used for generic configuration at both **build-time** and **runtime**.
+<!-- spellchecker-disable -->
 * [buildpack.yml]({{< relref "#buildpackyml" >}}) - used for generic configuration at **build-time**.
+<!-- spellchecker-enable-->
 * [Bindings]({{< relref "#bindings" >}}) - used for **secret** configuration at both **build-time** and **runtime**.
 * [Procfiles]({{< relref "#procfiles" >}}) - used to provide custom **process types** at **build-time**.
 
@@ -53,11 +55,13 @@ pack build samples/java  \
 
 During the build process, a buildpack may invoke other programs that accept configuration via the environment. Users may configure these tools as they would normally. For example, the command below configures the JVM memory settings for the JVM running Maven using [`MAVEN_OPTS`][maven opts].
 
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack build samples/java  \
   --path java/maven \
   --env "MAVEN_OPTS=-Xms256m -Xmx512m"
 {{< /code/copyable >}}
+<!-- spellchecker-enable-->
 
 #### Runtime Environment Variables
 
@@ -95,13 +99,13 @@ You can also change the delimiter used when appending or prepending by setting `
 
 Many Paketo buildpacks accept configuration from a `buildpack.yml` file if one is present at the root of the application directory.
 
-For example, to configure the NodeJS version installed by the NodeJS Buildpack, create a file named `buildpack.yml` in the `nodejs/yarn` directory in the [samples repo][samples].
+For example, to configure the Node.js version installed by the Node.js Buildpack, create a file named `buildpack.yml` in the `nodejs/yarn` directory in the [samples repo][samples].
 {{< code/copyable >}}
 nodejs:
   version: 12.12.0
 {{< /code/copyable >}}
 
-Next, execute the build as normal and observe the that the specified version of NodeJs is installed.
+Next, execute the build as normal and observe the that the specified version of Node.js is installed.
 {{< code/copyable >}}
 pack build samples/nodejs --path nodejs/yarn
 {{< /code/copyable >}}
@@ -131,7 +135,7 @@ For example, the Spring Boot Buildpack will install [Spring Cloud Bindings][spri
 
 A Binding contains:
 
-1. A **name**. Indentifies a particular binding. The name typically does not affect build or runtime behavior but may be used to reference a specific binding in output such as log messages.
+1. A **name**. Identifies a particular binding. The name typically does not affect build or runtime behavior but may be used to reference a specific binding in output such as log messages.
 1. A **type** or **kind**. Indicates what type of credentials the binding contains. For example, a binding of type `ApplicationInsights` contains the credentials needed to connect to Azure Application Insights.
 1. An _optional_ **provider**. Indicates the source of the binding. For example, in a PaaS context, a specific service broker might provide the binding.
 1. key-value pairs. These contain the configuration data. For example, an `ApplicationInsights` binding may contain a key-value pair with key `InstrumentationKey`.
@@ -220,9 +224,9 @@ The URI mappings can be configured with one or more bindings of `type` `dependen
 
 **Example** Mapping the JRE to an internal URI
 
-For example, to make the Bellsoft Liberica JRE dependency accessible available to builds in an environment where Github is inaccessible, an operator should:
+For example, to make the BellSoft Liberica JRE dependency accessible available to builds in an environment where Github is inaccessible, an operator should:
 
-1. Find the `sha256` and default `uri` for the desired dependency in [buildpack.toml][bp/bellsoft-liberica/descriptor] of the [Bellsoft Liberica buildpack][bp/bellsoft-liberica]. Example values:
+1. Find the `sha256` and default `uri` for the desired dependency in [buildpack.toml][bp/bellsoft-liberica/descriptor] of the [BellSoft Liberica buildpack][bp/bellsoft-liberica]. Example values:
     * `sha256`: `b4cb31162ff6d7926dd09e21551fa745fa3ae1758c25148b48dadcf78ab0c24c`
     * `uri`: `https://github.com/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`
 2. Download the dependency from the `uri` and upload it to a location on the internal network that is accessible during the build.
@@ -235,7 +239,7 @@ For example, to make the Bellsoft Liberica JRE dependency accessible available t
 
 Additional CA certificates may be added to the system truststore using the [Paketo CA Certificates Buildpack][bp/ca-certificates].
 
-CA certificates can be provided at both build and runtime with a [binding]({{< relref "#bindings" >}}) of `type` `ca-certficates`. Each key value pair in the binding should map a certficate name to a single PEM encoded CA Certficates
+CA certificates can be provided at both build and runtime with a [binding]({{< relref "#bindings" >}}) of `type` `ca-certficates`. Each key value pair in the binding should map a certficate name to a single PEM encoded CA Certificates
 
 ```plain
 <binding-name>
@@ -275,7 +279,7 @@ docker run --rm \
 
 **Disabling CA Certificates**
 
-If a language family buildpack contains the Paketo CA Certifcates Buildpack,
+If a language family buildpack contains the Paketo CA Certificates Buildpack,
 the CA Certificates Buildpack will always pass detection so that certificates
 can be provided dynamically at runtime.
 

@@ -13,10 +13,12 @@ as a runnable container image.
 ### Build the App Image From Source Code
 Clone the Paketo samples repository and navigate to the source code for the sample Python app.
 
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples \
 && cd samples/python/pipenv
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 From the sample app directory, use the pack CLI to build an app image.
 
@@ -24,6 +26,7 @@ From the sample app directory, use the pack CLI to build an app image.
 pack build paketo-demo-app --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
+<!-- spellchecker-disable -->
 {{< code/output >}}
 ===> DETECTING
 7 of 9 buildpacks participating
@@ -126,6 +129,7 @@ Adding cache layer 'paketo-buildpacks/pipenv-install:cache'
 Adding cache layer 'paketo-buildpacks/pipenv-install:packages'
 Successfully built image 'paketo-demo-app'
 {{< /code/output >}}
+<!-- spellchecker-enable -->
 
 Once the build finishes, you'll see that the resulting image is on your Docker daemon.
 
@@ -144,6 +148,7 @@ Wait a few moments for the app to start. Then, use `curl` to make a request.
 curl http://localhost:8080/
 {{< /code/copyable >}}
 
+<!-- spellchecker-disable -->
 {{< code/output >}}
 <!DOCTYPE html>
 <html>
@@ -155,6 +160,7 @@ curl http://localhost:8080/
   </body>
 </html>
 {{< /code/output >}}
+<!-- spellchecker-enable -->
 
 You can also visit `http://localhost:8080` with your browser to see the app's homepage.
 

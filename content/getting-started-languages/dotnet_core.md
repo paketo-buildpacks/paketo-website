@@ -24,6 +24,7 @@ From the sample app directory, use the pack CLI to build an app image.
 pack build paketo-demo-app --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
+<!-- spellchecker-disable -->
 {{< code/output >}}
 ===> DETECTING
 7 of 11 buildpacks participating
@@ -135,6 +136,7 @@ Adding cache layer 'paketo-buildpacks/dotnet-core-sdk:dotnet-core-sdk'
 Adding cache layer 'paketo-buildpacks/icu:icu'
 Successfully built image paketo-demo-app
 {{< /code/output >}}
+<!-- spellchecker-enable -->
 
 Once the build finishes, you'll see that the resulting image is on your Docker daemon.
 

@@ -92,7 +92,7 @@ set the `$BP_MRI_VERSION` environment variable.
 
 ## Override the Detected Bundler Version
 
-The Paketo Ruby Buildpack will also attempt to automatically detecy the correct
+The Paketo Ruby Buildpack will also attempt to automatically detect the correct
 version of Bundler to use based on the default version in the
 [`buildpack.toml`][bundler/toml] file. It is possible to override this version
 by setting the `BP_BUNDLER_VERSION` environment variable at build time, or via
@@ -159,10 +159,12 @@ directory inside app source code, such as `custom_dir/custom_cache`. In order
 to tell the buildpack where to look for the gems, create a `.bundle/config`
 file and set the `BUNDLE_CACHE_PATH`.
 
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 ---
 BUNDLE_CACHE_PATH: "custom_dir/custom_cache"
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 ## Build an App Image That Runs a Rake Task
 The Ruby Buildpack can build images that run a rake task

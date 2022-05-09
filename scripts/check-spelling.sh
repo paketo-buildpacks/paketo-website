@@ -32,8 +32,10 @@ function main() {
   npm install &> /dev/null
   ./node_modules/.bin/spellchecker ./content/**/** \
                                    --no-suggestions \
+                                   --generate-dictionary \
                                    --dictionaries ./scripts/.util/spellcheck-dictionary.txt \
-                                   --plugins spell indefinite-article repeated-words syntax-mentions syntax-urls frontmatter
+                                   --plugins spell indefinite-article repeated-words syntax-mentions syntax-urls frontmatter \
+                                   --frontmatter-keys title
 }
 
 

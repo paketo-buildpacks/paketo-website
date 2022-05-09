@@ -17,7 +17,7 @@ The Java Buildpack is a [composite buildpack][composite buildpack] and each step
 
 The Java Buildpack uses the [BellSoft Liberica][liberica] implementations of the JRE and JDK. JVM installation is handled by the [BellSoft Liberica Buildpack][bp/bellsoft-liberica]. The JDK will be installed in the build container but only the JRE will be contributed to the application image.
 
-See the [homepage][bp/bellsoft-liberica] for the Bellsoft Liberica Buildpack for a full set of configuration options.
+See the [homepage][bp/bellsoft-liberica] for the BellSoft Liberica Buildpack for a full set of configuration options.
 
 ## Memory Calculator
 
@@ -41,13 +41,14 @@ The Heap memory value, ultimately supplied as the `-xmX` JVM flag, is calculated
 ### Non-Heap
 
 The below table lists the component parts of the Non-Heap value, the equivalent JVM flags, and their defaults. Where one exists, the JVM default value is used.
-
+<!-- spellchecker-disable -->
 | Memory Region       | JVM Flag                    | Default                                                                             |
 | ------------------- | --------------------------- | ----------------------------------------------------------------------------------- |
 | Direct Memory       | `-XX:MaxDirectMemorySize`   | 10MB (JVM Default)                                                                  |
 | Metaspace           | `-XX:MaxMetaspaceSize`      | Automatically calculated based on class count                                       |
 | Reserved Code Cache | `-XX:ReservedCodeCacheSize` | 240MB (JVM Default)                                                                 |
 | Thread Stack        | `-Xss`                      | 1M * 250  (JVM Default Thread Stack Size * Default Optimum Thread Count for Tomcat) |
+<!-- spellchecker-enable -->
 
 The outputs of the tool are the above JVM flags and their calculated values. 
 
@@ -70,7 +71,7 @@ Similarly, increasing container memory limit beyond a known application's non-he
 
 **Overriding Defaults**
 
-It is possible to override the calculated or default values specified above in the non-heap table, however the runtime consequences of adjusting these values should be considered. For more information on how to configure these explicitly, see the How-To section [Configure The JVM at Runtime][configure jvm].
+It is possible to override the calculated or default values specified above in the non-heap table, however the runtime consequences of adjusting these values should be considered. For more information on how to configure these explicitly, see the How-To section [Configure The JVM at Runtime][configure JVM].
 
 ## Java Application Servers
 
@@ -111,7 +112,7 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 | ---------------------------------------------------------------------------- | ----------------- | ----------------------------------------------------------------------------------------------- |
 | [Paketo CA Certificates Buildpack][bp/ca-certificates]                       | Optional          | Adds CA certificates to the system truststore at build and runtime.                             |
 | [Paketo BellSoft Liberica Buildpack][bp/bellsoft-liberica]                   | **Required**      | Provides the JDK and/or JRE.                                                                    |
-| [Paketo Syft][bp/syft]                                                       | Optional          | Provides the Syft CLI which can be used to generate SBoM information.                           |
+| [Paketo Syft][bp/syft]                                                       | Optional          | Provides the Syft CLI which can be used to generate SBOM information.                           |
 | [Paketo Leiningen Buildpack][bp/leiningen]                                   | Optional          | Builds Leiningen-based applications from source.                                                |
 | [Paketo Clojure Tools Buildpack][bp/clojure-tools]                           | Optional          | Builds Clojure applications from source.                                                        |
 | [Paketo Gradle Buildpack][bp/gradle]                                         | Optional          | Builds Gradle-based applications from source.                                                   |
@@ -125,7 +126,7 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 | [Paketo DistZip Buildpack][bp/dist-zip]                                      | Optional          | Contributes a process type that launches a DistZip-style application.                           |
 | [Paketo Spring Boot Buildpack][bp/spring-boot]                               | Optional          | Contributes configuration and metadata to Spring Boot applications.                             |
 | [Paketo Procfile Buildpack][bp/procfile]                                     | Optional          | Allows the application to define or redefine process types with a [Procfile][procfiles]         |
-| [Paketo Jattach][bp/jattach]                                                 | Optional          | Provides the JAttach binary to send commands to a remote JVM via Dynamic Attach mechanism       |
+| [Paketo JAttach][bp/jattach]                                                 | Optional          | Provides the JAttach binary to send commands to a remote JVM via Dynamic Attach mechanism       |
 | [Paketo Azure Application Insights Buildpack][bp/azure-application-insights] | Optional          | Contributes the Application Insights Agent and configures it to connect to the service.         |
 | [Paketo Google Stackdriver Buildpack][bp/google-stackdriver]                 | Optional          | Contributes Stackdriver agents and configures them to connect to the service.                   |
 | [Paketo Datadog Buildpack][bp/datadog]                                       | Optional          | Contributes Datadog trace agent and configures it to connect to the service.                    |
@@ -134,6 +135,9 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 | [Paketo Environment Variables Buildpack][bp/environment-variables]           | Optional          | Contributes arbitrary user-provided environment variables to the image.                         |
 | [Paketo Image Labels Buildpack][bp/image-labels]                             | Optional          | Contributes OCI-specific and arbitrary user-provided labels to the image.                       |
 
+
+<!-- References -->
+<!-- spellchecker-disable -->
 <!-- buildpacks -->
 [bp/apache-tomcat]:https://github.com/paketo-buildpacks/apache-tomcat
 [bp/apache-tomee]:https://github.com/paketo-buildpacks/apache-tomee
@@ -171,4 +175,5 @@ The following component buildpacks compose the Java Buildpack. Buildpacks are li
 <!-- other references -->
 [liberica]:https://bell-sw.com/
 [composite buildpack]:{{< ref "docs/concepts/buildpacks#component-buildpacks" >}}
-[configure jvm]: {{< ref "docs/howto/java#configure-the-jvm-at-runtime" >}}
+[configure JVM]: {{< ref "docs/howto/java#configure-the-jvm-at-runtime" >}}
+<!-- spellchecker-enable -->

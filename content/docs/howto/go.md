@@ -156,7 +156,7 @@ The pack CLI will automatically detect the project file at build time.
 
 ### Build Multiple Packages In One App Image
 
-The `BP_GO_TARGETS` evironment variable can accept a colon-delimited list of
+The `BP_GO_TARGETS` environment variable can accept a colon-delimited list of
 target packages. Each binary will be set as a [launch process][cnb/launch-process] of the same name in
 the app image. The following examples will build _both_ the `first` and `second` packages in the same multi-package app directory as [above]({{< relref "#build-non-default-packages" >}}).
 
@@ -196,11 +196,13 @@ touch /tmp/git-binding/credentials
    access a private module `github.com/private-org/private-module` with a
    Github username and service account key, add the following to
    `/tmp/git-binding/credentials`:
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 url=https://github.com
 username=<USERNAME>
 password=<SERVICE ACCOUNT KEY>
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 1. Provide the service binding and `$GOPRIVATE` environment variable at build
    time:
@@ -312,6 +314,7 @@ pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
 #### In a `Tiltfile` with the `pack` resource
 You can use the Paketo Go buildpack with [Tilt][tilt]. This example
 uses the [`pack` extension][tilt/pack] for Tilt, and shows how to configure watched files.
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack('my-app',
   buildpacks=["paketo-buildpacks/go"],
@@ -331,6 +334,7 @@ local_resource('go-build',
   dir='./src'
 )
 {{< /code/copyable >}}
+<!-- spellchecker-enable-->
 
 ##### Notes
 - The Go Paketo buildpack works best with Tilt and hot reloading when all of
@@ -377,16 +381,20 @@ build-time SBOM.
 ### With pack and a Command-Line Flag
 1. When building with the pack CLI, use the flag `--sbom-output-dir` to extract
    SBOMs from the build:
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack build my-app --buildpack paketo-buildpacks/go \
                   --sbom-output-dir /tmp/sbom-output
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 2. To view the Go modules used in the build, inspect one of the SBOMs generated
    by the Go Mod Vendor buildpack. For instance, to view the SBOM as
    [CycloneDX][format/cyclonedx] JSON:
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 cat /tmp/sbom-output/build/paketo-buildpacks_go-mod-vendor/sbom.cdx.json
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 <!-- References -->
 [cnb/launch-process]:https://buildpacks.io/docs/app-developer-guide/run-an-app/

@@ -296,6 +296,7 @@ repository for an example [React app][sample/react-servers] with build instructi
    script_ from step 1. `BP_WEB_SERVER_ROOT` should be set to the build _output
    directory_ from step 2. To (optionally) further adjust the behaviour of the
    NGINX server, see the NGINX How-to [guides][nginx/configure].
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack build frontend-nginx --buildpack paketo-buildpacks/nodejs \
                           --buildpack paketo-buildpacks/nginx \
@@ -303,6 +304,7 @@ pack build frontend-nginx --buildpack paketo-buildpacks/nodejs \
                           --env BP_WEB_SERVER=nginx \
                           --env BP_WEB_SERVER_ROOT=build
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 5. **[HTTPD]** If you chose NGINX, **skip to step 6**. Use the Node.js and
    HTTPD buildpacks to build your app. Use environment variables to configure
@@ -310,6 +312,7 @@ pack build frontend-nginx --buildpack paketo-buildpacks/nodejs \
    script_ from step 1. `BP_WEB_SERVER_ROOT` should be set to the build _output
    directory_ from step 2. To (optionally) further adjust the behaviour of the
    HTTPD server, see the HTTPD How-to [guides][httpd/configure].
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack build frontend-httpd --buildpack paketo-buildpacks/nodejs \
                           --buildpack paketo-buildpacks/httpd \
@@ -317,6 +320,7 @@ pack build frontend-httpd --buildpack paketo-buildpacks/nodejs \
                           --env BP_WEB_SERVER=httpd \
                           --env BP_WEB_SERVER_ROOT=build
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 6. You're done! The resulting app container will serve your frontend app with
    an automatically generated server configuration.
@@ -352,6 +356,7 @@ pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
 #### In a `Tiltfile` with the `pack` resource
 You can use the Paketo Node.js buildpack with [Tilt][tilt]. This example
 uses the [`pack` extension][tilt/pack] for Tilt.
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack('my-app',
   buildpacks=["paketo-buildpacks/nodejs"],
@@ -361,6 +366,7 @@ pack('my-app',
   ]
 )
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 ## Install a Custom CA Certificate
 Node.js Buildpack users can provide their own CA certificates and have them
@@ -386,6 +392,7 @@ instructions in the [Applying Custom
 Labels]({{< ref "/docs/howto/configuration#applying-custom-labels" >}})
 section of our configuration docs.
 
+<!-- spellchecker-disable -->
 <!-- References -->
 [tilt]:https://tilt.dev/
 [tilt/pack]:https://github.com/tilt-dev/tilt-extensions/tree/master/pack
@@ -397,3 +404,4 @@ section of our configuration docs.
 [nginx/configure]:{{< ref "docs/howto/web-servers#automatically-generate-an-nginxconf" >}}
 [httpd/configure]:{{< ref "docs/howto/web-servers#automatically-generate-an-httpdconf" >}}
 [sample/react-servers]:https://github.com/paketo-buildpacks/samples/tree/main/nodejs/react-httpd-nginx
+<!-- spellchecker-enable -->

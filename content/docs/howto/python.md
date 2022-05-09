@@ -74,7 +74,7 @@ source code triggers the pip installation process by the buildpack. The
 buildpack will install the application packages and make it available to the
 app.
 
-The buidpack allows you to configure the version of Pip to be used in the
+The buildpack allows you to configure the version of Pip to be used in the
 installation process. You can set this using the `$BP_PIP_VERSION` variable
 during build. When specifying a version of Pip, you must choose a version that
 is available within the buildpack. The supported versions can be found in the
@@ -87,7 +87,7 @@ Pipenv is another common option for managing dependencies. Including a valid
 installation process by the buildpack. The buildpack will install the
 application packages and make it available to the app.
 
-The buidpack allows you to configure the version of Pipenv to be used in the
+The buildpack allows you to configure the version of Pipenv to be used in the
 installation process. You can set this using the `$BP_PIPENV_VERSION` variable
 during build. When specifying a version of Pipenv, you must choose a version
 that is available within the buildpack. The supported versions can be found in the
@@ -100,7 +100,7 @@ this as discussed in [this section above]({{< relref "#install-a-specific-cpytho
 ### Miniconda
 
 Miniconda is a package management and environment management system supported
-by the Python buildpack. The builpack will create or update a conda environment
+by the Python buildpack. The buildpack will create or update a conda environment
 from an `environment.yml` file or a `package-list.txt` file located at the root
 of the app source code.
 
@@ -151,6 +151,7 @@ pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
 #### In a `Tiltfile` with the `pack` resource
 You can use the Paketo Python buildpack with [Tilt][tilt]. This example
 uses the [`pack` extension][tilt/pack] for Tilt.
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack('my-app',
   buildpacks=["paketo-buildpacks/python"],
@@ -160,6 +161,7 @@ pack('my-app',
   ]
 )
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 ### Setting a reloadable start command
 You can then use a [Procfile][procfile] to set a start command for the app that

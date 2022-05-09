@@ -89,7 +89,7 @@ Core Runtime v2.1.14 when deploying your app, include the values below in your
 
 ### Using a Project file
 
-If you are using a Project file (eg. `*.csproj`, `*.fsproj`, or `*.vbproj`), you can specify
+If you are using a Project file (e.g. `*.csproj`, `*.fsproj`, or `*.vbproj`), you can specify
 the .Net Core Runtime version within that file. To configure the buildpack to
 use .Net Core Runtime v2.1.14 when deploying your app, include the values below
 in your Project file:
@@ -122,7 +122,7 @@ please review the [Microsoft documentation][dotnet-version-selection-docs].
 ### Deprecated: Using buildpack.yml
 
 Specifying the .Net Core Framework version through `buildpack.yml`
-configuration will be deprecated in .Net Core Runtime and .Net Core ASPNET
+configuration will be deprecated in .Net Core Runtime and .Net Core ASP.NET
 Buildpacks v1.0.0.  To migrate from using `buildpack.yml`, please set the
 `BP_DOTNET_FRAMEWORK_VERSION` environment variable.
 
@@ -222,7 +222,7 @@ documentation for more details on service bindings.
 
 The binding will be made available as a "user-level" NuGet configuration at
 `$HOME/.nuget/NuGet/NuGet.Config` during the build process. The  configuration
-applies across all operations involving NuGet, but will be overriden by
+applies across all operations involving NuGet, but will be overridden by
 project-level configurations.
 
 The resulting command will look like:
@@ -265,6 +265,7 @@ pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
 #### In a `Tiltfile` with the `pack` resource
 You can use the Paketo .NET Core buildpack with [Tilt][tilt]. This example
 uses the [`pack` extension][tilt/pack] for Tilt, and shows how to configure watched files.
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack(
   'myapp',
@@ -289,11 +290,14 @@ local_resource(
   ]
 )
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 ##### Notes
 - The .NET Paketo buildpack works best with Tilt and hot reloading when all of
   your app's source code is in a subdirectory (`./src` in the above example).
+  <!-- spellchecker-disable -->
   Use [`BP_DOTNET_PROJECT_PATH`]({{< relref "#build-an-app-from-source-in-a-subdirectory" >}})
+  <!-- spellchecker-enable -->
   to indicate the location of the source code.
 - The .NET Paketo buildpack will not recompile your source code inside the
   running app container. You must use a `local_resource` to rebuild your app

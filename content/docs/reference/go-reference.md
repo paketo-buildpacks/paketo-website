@@ -23,8 +23,8 @@ The Paketo Go Buildpack is a [composite buildpack][paketo/composite-buildpack] d
 
 With the Go CNB, there are three options for package management depending on
 your application:
-* The built-in [Go modules][golang/modules] feature,
-* The [Dep][golang/dep] tool
+* The built-in [Go modules][Golang/modules] feature,
+* The [Dep][Golang/dep] tool
 * No package manager
 
 Support for each of these package managers is mutually-exclusive. You can find
@@ -44,7 +44,7 @@ in the app's root directory and will contain all packages required for the build
 
 Dep is an alternative option to Go Modules for package management in Go apps. The buildpack will vendor dependencies using `dep` if the app source code
 contains a `Gopkg.toml` file. (For more information about this file, see the `dep`
-[documentation][golang/dep/gopkg.toml]. There may be an optional `Gopkg.lock` file that outlines specific versions of the dependencies to be packaged. During its build
+[documentation][Golang/dep/gopkg.toml]. There may be an optional `Gopkg.lock` file that outlines specific versions of the dependencies to be packaged. During its build
 phase, the `dep-ensure`
 [buildpack][bp/dep-ensure] runs the `dep
 ensure` command. The resulting `vendor` directory will exist in
@@ -59,7 +59,7 @@ require third-party packages. In this case there is no vendoring step, and the
 ### Compilation
 The buildpack runs `go build` to compile Go source code into executables. By
 default, it sets the flag `-buildmode=pie`. If there is a `go.mod` present in
-the app's root directory, it also builds with `mod=vendor`. See the Go tool's [documentation][golang/tool-docs] for details about build configuration.
+the app's root directory, it also builds with `mod=vendor`. See the Go tool's [documentation][Golang/tool-docs] for details about build configuration.
 
 ## Buildpack-Set Environment Variables
 
@@ -139,7 +139,7 @@ cache layer in the app image.
 
 
 ##  Software Bill of Materials
-The Go buildpack supports the full [software bill of materials][concepts/sbom]
+The Go buildpack supports the full [software bill of materials][concepts/SBOM]
 (SBOM) in [Syft][format/syft], [CycloneDX][format/cyclonedx], and
 [SPDX][format/spdx] formats. For apps with a `go.mod`, this includes Go module
 data.  See [Extract Go Module Information from a Build][howto/extract-modules]. The Go buildpack also
@@ -147,10 +147,11 @@ includes limited support for the [Paketo-specific][format/paketo] SBOM format.
 This SBOM does not include Go module information.
 
 <!-- References -->
-[golang/tool-docs]:https://pkg.go.dev/cmd/go
-[golang/modules]:https://github.com/golang/go/wiki/Modules
-[golang/dep]:https://github.com/golang/dep
-[golang/dep/gopkg.toml]:https://golang.github.io/dep/docs/Gopkg.toml.html
+<!-- spellchecker-disable -->
+[Golang/tool-docs]:https://pkg.go.dev/cmd/go
+[Golang/modules]:https://github.com/golang/go/wiki/Modules
+[Golang/dep]:https://github.com/golang/dep
+[Golang/dep/gopkg.toml]:https://golang.github.io/dep/docs/Gopkg.toml.html
 
 [paketo/composite-buildpack]:{{< ref "docs/concepts/buildpacks#composite-buildpacks" >}}
 
@@ -167,7 +168,7 @@ This SBOM does not include Go module information.
 [bp/watchexec]:{{< bp_repo "watchexec" >}}
 [bp/git]:{{< bp_repo "git" >}}
 
-[concepts/sbom]:{{< ref "docs/concepts/sbom" >}}
+[concepts/SBOM]:{{< ref "docs/concepts/sbom" >}}
 [howto/extract-modules]:{{< ref "docs/howto/go#extract-go-module-information-from-a-build" >}}
 
 [format/cyclonedx]:https://cyclonedx.org/
@@ -176,3 +177,4 @@ This SBOM does not include Go module information.
 [format/paketo]:{{< ref "docs/concepts/sbom#paketo-specific-sbom-format" >}}
 
 [watchexec]:https://github.com/watchexec/watchexec
+<!-- spellchecker-enable -->

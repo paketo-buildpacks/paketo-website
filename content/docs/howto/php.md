@@ -94,8 +94,8 @@ your own configuration file in the application source directory under a
 directory named `.php.ini.d/`.  The path to the configuration you add will be
 appended onto the `PHP_INI_SCAN_DIR` during the build process, for use by PHP
 at runtime. Check out the reference docs about the
-[`PHP_INI_SCAN_DIR`]({{< ref "docs/reference/php-reference#php_ini_scan_dir"
->}}) for more information about defaults.
+[`PHP_INI_SCAN_DIR`][paketo/PHP-scan-directory] for more information about
+defaults.
 
 ### Use Extensions
 There are two ways to enable extensions when using the Paketo PHP Buildpack.
@@ -105,8 +105,8 @@ with the distribution of PHP.
 #### Enable extensions through a custom `.ini` snippet
 An `.ini` snippet is a valid PHP configuration file. The buildpacks will look
 for any user-provided snippets under `<APP-ROOT>/.php.ini.d/*.ini`, as
-mentioned in the [Configure PHP with a custom `.ini` file section]({{< ref
-"docs/reference/php-reference#configure-php-with-a-custom-ini-file">}}).
+mentioned in the [Configure PHP with a custom `.ini` file
+section][paketo/custom-PHP-configuration].
 
 An example snippet could look like:
 {{< code/copyable >}}
@@ -159,10 +159,12 @@ To define **global** `composer install` configurations, set the
 `BP_COMPOSER_INSTALL_GLOBAL` environment variable at build time to a
 space-separated list of global installation options.
 
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack build my-app --buildpack paketo-buildpacks/php \
   --env BP_COMPOSER_INSTALL_GLOBAL="friendsofphp/php-cs-fixer squizlabs/php_codesniffer=*"
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 ### Set a custom Composer vendor directory
 To define a custom vendoring location for Composer packages, users can set the
@@ -251,18 +253,17 @@ Server-specific configuration should be inside a file whose name ends with
 inside a file whose name ends with `-http.conf` (e.g. `prod-http.conf`). This
 is helpful in the event that you want to set custom settings that are not
 configurable via environment variables in the PHP NGINX buildpack. Check out
-[NGINX documentation][external/nginx-conf-docs] for what settings can be
+[NGINX documentation][external/NGINX-configuration] for what settings can be
 applied to server and HTTP blocks.
 
 
 ### Configure FPM settings
 The PHP buildpack includes support for the [PHP FastCGI Process
-Manager][external/fpm] (FPM) when used in conjunction with a web server. In
-this case, the [PHP FPM buildpack][bp/fpm] will generate FPM configuration for
+Manager][external/FPM] (FPM) when used in conjunction with a web server. In
+this case, the [PHP FPM buildpack][bp/php-fpm] will generate FPM configuration for
 you to work with the web server of choice. The buildpack will also consider
 configuration from user provided sources (see [Override Default FPM
-Configuration]({{< ref
-"docs/howto/php#override-default-fpm-configuration" >}})).
+Configuration][paketo/override-FPM-configuration]).
 
 Check out the [PHP Reference documentation]({{< ref
 "docs/reference/php-reference" >}}) for an enumeration of the defaults set for
@@ -327,10 +328,10 @@ of our configuration docs for details on how to use the buildpack.
 ## Enable a session handler via service bindings
 The PHP Buildpack supports using session handlers for
 [Memcached](https://memcached.org/) and [Redis](https://redis.io/) instances
-via the [PHP Memcached Session Handler Buildpack][bp/memcached] and the [PHP
-Redis Session Handler Buildpack][bp/redis].
-Check out the [PHP session handler documentation][external/php-session-handler]
-for more information on what a PHP session handler is. 
+via the [PHP Memcached Session Handler Buildpack][bp/php-memcached-session-handler] and the [PHP
+Redis Session Handler Buildpack][bp/php-redis-session-handler].
+Check out the [PHP session handler documentation][external/PHP-session-handler]
+for more information on what a PHP session handler is.
 
 In order to configure a session handler for either Redis or Memcached the user
 must provide a [service binding]({{< ref "/docs/howto/configuration#bindings"
@@ -340,45 +341,50 @@ must provide a [service binding]({{< ref "/docs/howto/configuration#bindings"
 To configure a Redis instance session handler, the provided service binding
 should contain the following:
 
+<!-- spellchecker-disable -->
 | Binding File | Value |  Required | Description |
 | -------- | -------- | -------- | ----------- |
 | `type`   | `php-redis-session` | yes     | Binding type
 | `host` or `hostname`   | Default: 127.0.0.1 | no     | Redis instance IP address
 | `port`  | Default: 6379 | no     | Redis instance port
 | `password` | Omitted if unset | no     | Redis instance password
+<!-- spellchecker-enable -->
 
 
 When performing a build with the `pack` CLI, passing the service binding will look like the following:
 
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
   pack build my-app --buildpack paketo-buildpacks/php \
   --env SERVICE_BINDING_ROOT=/bindings \
   --volume <absolute-path-to-binding>:/bindings/php-redis-session
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 ### Enable the session handler for Memcached
 To configure a Memcached instance session handler, the provided service binding
 should contain the following:
 
+<!-- spellchecker-disable -->
 | Binding File | Value |  Required | Description |
 | -------- | -------- | -------- | ----------- |
 | `type`   | `php-memcached-session` | yes     | Binding type
 | `servers`   | Default: 127.0.0.1 | no     | Memcached instance IP address
 | `username`  | Omitted if unset | no     | Memcached instance username
 | `password` | Omitted if unset | no     | Memcached instance password
+<!-- spellchecker-enable -->
 
 
 When performing a build with the `pack` CLI, passing the service binding will
 look like the following:
 
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
   pack build my-app --buildpack paketo-buildpacks/php \
   --env SERVICE_BINDING_ROOT=/bindings \
   --volume <absolute-path-to-binding>:/bindings/php-memcached-session
 {{< /code/copyable >}}
-
-
-
+<!-- spellchecker-enable -->
 
 ## Install a custom CA certificate
 Users of the PHP buildpack can provide their own CA certificates and have them
@@ -408,21 +414,30 @@ environment variable to `DEBUG` at build time.
 
 ## Access the software bill of materials
 The PHP buildpack includes support for the software bill of materials (SBOM).
-Check out the [SBOM how-to documentation]({{< ref "/docs/howto/sbom" >}}) for
+Check out the [SBOM how-to documentation][paketo/SBOM] for
 details on how to access the SBOM supplied by the buildpacks.
 
+<!-- References -->
+<!-- spellchecker-disable -->
 <!-- buildpacks -->
 [bp/php-dist]:https://github.com/paketo-buildpacks/php-dist
 [bp/composer]:https://github.com/paketo-buildpacks/composer
-[bp/fpm]:https://github.com/paketo-buildpacks/php-fpm
+[bp/php-fpm]:https://github.com/paketo-buildpacks/php-fpm
 [bp/procfile]:https://github.com/paketo-buildpacks/procfile
 [bp/composer-install]:https://github.com/paketo-buildpacks/composer-install
-[bp/memcached]:https://github.com/paketo-buildpacks/php-memcached-session-handler
+[bp/php-memcached-session-handler]:https://github.com/paketo-buildpacks/php-memcached-session-handler
 [bp/redis]:https://github.com/paketo-buildpacks/php-redis-session-handler
 <!-- releases -->
 [release/php-dist]:https://github.com/paketo-buildpacks/php-dist/releases
 [release/composer]:https://github.com/paketo-buildpacks/composer/releases
 <!-- external -->
-[external/fpm]:https://www.php.net/manual/en/install.fpm.php
-[external/php-session-handler]:https://www.php.net/manual/en/class.sessionhandler.php
-[external/nginx-conf-docs]:https://www.nginx.com/resources/wiki/start/topics/examples/full/
+[external/FPM]:https://www.php.net/manual/en/install.fpm.php
+[external/PHP-session-handler]:https://www.php.net/manual/en/class.sessionhandler.php
+[external/NGINX-configuration]:https://www.nginx.com/resources/wiki/start/topics/examples/full/
+
+<!-- Paketo -->
+[paketo/PHP-scan-directory]:{{< ref "docs/reference/php-reference#php_ini_scan_dir" >}}
+[paketo/custom-PHP-configuration]:{{< ref "docs/reference/php-reference#configure-php-with-a-custom-ini-file">}}
+[paketo/override-FPM-configuration]:{{< ref" docs/howto/php#override-default-fpm-configuration" >}}
+[paketo/SBOM]:{{< ref "/docs/howto/sbom" >}}
+<!-- spellchecker-enable -->

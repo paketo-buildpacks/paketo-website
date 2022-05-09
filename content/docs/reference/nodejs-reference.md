@@ -188,7 +188,7 @@ your app. The start command differs depending on which package management
 tooling the Node.js buildpack uses. If the Node.js buildpack uses `yarn` to install
 packages, the start command is `yarn start`.
 
-## Determing the Start Command
+## Determining the Start Command
 As part of the build process, the Node.js buildpack determines a start command for
 your app. The start command differs depending on which package management
 tooling the Node.js buildpack uses. If the Node.js buildpack uses `npm` or `yarn` to
@@ -210,16 +210,16 @@ When the buildpack finds one of these, it will consider that the app's entrypoin
 app image's start command to `node <entrypoint filename>`.
 
 ##  Software Bill of Materials
-The Node.js buildpack supports the full [software bill of materials]({{< ref
-"docs/concepts/sbom" >}}) (SBOM) in [Syft][format/syft], [CycloneDX][format/cyclonedx], [SPDX][format/spdx], and [Paketo-specific][format/paketo] formats.
+The Node.js buildpack supports the full [software bill of materials][concepts/SBOM] (SBOM) in [Syft][format/syft], [CycloneDX][format/cyclonedx], [SPDX][format/spdx], and [Paketo-specific][format/paketo] formats.
 
 The `node module` SBOM entries provide a full picture of the packages on the
 final app image. The `purl` field is especially helpful to locate where on the
 NPM Registry a module came from. Check out the [Access the Software Bill of Materials
-guide]({{< ref "docs/howto/sbom" >}}) for more information about how to retrieve
+guide][how-to/SBOM] for more information about how to retrieve
 the SBOM for your Node.js app image.
 
 <!-- References -->
+<!-- spellchecker-disable -->
 [yarnrc]:{{< ref "docs/howto/nodejs#configure-yarn-during-the-build" >}}
 [npmrc]:{{< ref "docs/howto/nodejs#configure-npm-during-the-build" >}}
 [service-binding]:{{< ref "docs/howto/configuration#bindings" >}}
@@ -227,3 +227,6 @@ the SBOM for your Node.js app image.
 [format/spdx]:https://spdx.dev/
 [format/syft]:https://github.com/anchore/syft/tree/main/schema/json
 [format/paketo]:{{< ref "docs/concepts/sbom#paketo-specific-sbom-format" >}}
+[concepts/SBOM]:{{< ref "docs/concepts/sbom" >}}
+[how-to/SBOM]:{{< ref "docs/howto/sbom" >}}
+<!-- spellchecker-enable -->

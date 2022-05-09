@@ -102,7 +102,7 @@ BP_WEB_SERVER_ENABLE_PUSH_STATE=true
 
 #### Redirect HTTP Requests to HTTPS
 The `BP_WEB_SERVER_FORCE_HTTPS` variable enables enforcing HTTPS for server
-connnections. HTTP requests will be redirected to the corresponding HTTPS
+connections. HTTP requests will be redirected to the corresponding HTTPS
 endpoint.
 
 {{< code/copyable >}}
@@ -215,7 +215,7 @@ BP_WEB_SERVER_ENABLE_PUSH_STATE=true
 
 #### Redirect HTTP Requests to HTTPS
 The `BP_WEB_SERVER_FORCE_HTTPS` variable enables enforcing HTTPS for server
-connnections. HTTP requests will be redirected to the corresponding HTTPS
+connections. HTTP requests will be redirected to the corresponding HTTPS
 endpoint.
 
 {{< code/copyable >}}
@@ -273,7 +273,7 @@ docker run --tty --env PORT=8080 --publish 8080:8080 my-nginx-image
 
 #### Environment Variables
 
-This is a generic case of the `{{port}}` directive described ealier. To use the
+This is a generic case of the `{{port}}` directive described earlier. To use the
 value of any environment variable `$FOOVAR` available at launch time, use the
 directive `{{env "FOOVAR"}}` in your `nginx.conf`.
 

@@ -45,9 +45,11 @@ curl -s http://localhost:8080/actuator/health | jq .
 The Java Buildpack can build from source using any of the following build tools:
 
 * [Gradle][gradle] - Support provided by the [Gradle Buildpack][bp/gradle]
+<!-- spellchecker-disable -->
 * [Leiningen][leiningen] - Support provided by the [Leiningen Buildpack][bp/leiningen]
 * [Maven][maven] - Support provided by the [Maven Buildpack][bp/maven]
 * [SBT][sbt] - Support provided by the [SBT Buildpack][bp/sbt]
+<!-- spellchecker-enable -->
 
 The correct build tool to use will be detected based on the contents of the
 application directory.
@@ -82,7 +84,7 @@ For a given build `<TOOL>`, where `<TOOL>` is one of `MAVEN`, `GRADLE`, `LEIN` o
 * `BP_<TOOL>_BUILT_ARTIFACT`
   * Defaults to a tool-specific pattern (e.g. `target/*.[jw]ar` for Maven, `build/libs/*.[jw]ar` for gradle). See component buildpack homepage for details.
   * Configures the built application artifact path, using [Bash Pattern Matching][bash pattern matching].
-  * Supercedes `BP_<TOOL>_BUILT_MODULE` if set to a non-default value.
+  * Supersedes`BP_<TOOL>_BUILT_MODULE` if set to a non-default value.
   * *Example*: Given `BP_MAVEN_BUILT_ARTIFACT=out/api-*.jar`, the Paketo Maven Buildpack will select a file with name `out/api-1.0.0.jar`.
 
 ##### Specify the Build Command
@@ -137,12 +139,14 @@ pack build samples/java \
 An application developer may build an image from following archive formats:
 
 * [Executable JAR][executable jar] - Support provided by the [Executable Jar Buildpack][bp/executable-jar]
+<!-- spellchecker-disable -->
 * [WAR][war] - Support provided by the [Apache Tomcat Buildpack][bp/apache-tomcat]
 * [Distribution ZIP][dist-zip] - Support provided by the [DistZip Buildpack][bp/dist-zip]
 
 The Java Buildpack expects the application directory to contain the extracted contents of the archive (e.g. an exploded JAR). Most platforms will automatically extract any provided archives.
 
 If a WAR is detect the Java Buildpack will install [Apache Tomcat][apache tomcat]. For exact set of supported Tomcat versions can be found in the Java Buildpack [releases notes][bp/java/releases]. For tomcat configuration options see the [Apache Tomcat Buildpack][bp/apache-tomcat].
+<!-- spellchecker-enable -->
 
 The component buildpack for the provided artifact format will contribute a start command to the image.
 
@@ -206,12 +210,12 @@ The runtime JVM can be configured in two ways:
     * `BPL_JVM_THREAD_COUNT`
 2. Flags can be set directly at runtime with the `JAVA_TOOL_OPTIONS` environment variable. User-provided flags will be appended to buildpack-provided flags. If the user and a buildpack set the same flag, user-provided flags take precedence.
 
-See the [homepage][bp/bellsoft-liberica] for the Bellsoft Liberica Buildpack for a full set of configuration options.
+See the [homepage][bp/bellsoft-liberica] for the BellSoft Liberica Buildpack for a full set of configuration options.
 
 ### Use an Alternative JVM
 
-By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implemenations in place of Liberica's JVM.
-
+By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implementations in place of Liberica's JVM.
+<!-- spellchecker-disable -->
 | JVM                                                                                                                                     | Buildpack                                                            |
 | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | [Adoptium](https://adoptium.net/) {{< text/sup >}}1{{< /text/sup >}}                                                                    | [Paketo Adoptium Buildpack][bp/adoptium]                             |
@@ -224,12 +228,13 @@ By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The 
 | [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) {{< text/sup >}}2{{< /text/sup >}} {{< text/sup >}}3{{< /text/sup >}} | [Paketo Oracle Buildpack][bp/oracle]                                 |
 | [Microsoft OpenJDK](https://www.microsoft.com/openjdk) {{< text/sup >}}2{{< /text/sup >}}                                               | [Paketo Microsoft OpenJDK Buildpack][bp/microsoft]                   |
 | [SapMachine](https://sap.github.io/SapMachine/)                                                                                         | [Paketo SapMachine Buildpack][bp/sap-machine]                        |
+<!-- spellchecker-enable -->
 
 1. *{{< text/sub >}}Only provides JRE and JDK releases for Java 8 and 11, Java 16+ is JDK only{{< /text/sub >}}*
 2. *{{< text/sub >}}Only provides JDK releases{{< /text/sub >}}*
 3. *{{< text/sub >}}Only provides Java 17{{< /text/sub >}}*
 
-To use an alternative JVM, you will need to set two `--buildpack` arguments to `pack build`, one for the alternative JVM buildpack you'd like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you're specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.
+To use an alternative JVM, you will need to set two `--buildpack` arguments to `pack build`, one for the alternative JVM buildpack you'd like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you're specifying will claim the build plan entries so the second one will end up being a no-op and doing nothing.
 
 This example will switch in the Azul Zulu buildpack:
 
@@ -266,7 +271,6 @@ pack build samples/war -e BP_JAVA_APP_SERVER=liberty
 {{< /code/copyable >}}
 
 ## Build an App as a GraalVM Native Image Application
-
 The [Paketo Java Native Image Buildpack][bp/java-native-image] allows users to create an image containing a [GraalVM][graalvm] [native image][graalvm native image] application.
 
 The Java Native Buildpack is a [composite buildpack][composite buildpack] and
@@ -327,7 +331,7 @@ pack inspect-image samples/java-native --bom | jq '.local[] | select(.name=="nat
 
 ### Configure the GraalVM Version
 
-Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a sepecific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.
+Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a specific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.
 
 The following table documents the versions available.
 
@@ -346,20 +350,22 @@ pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack paketo-buildpacks/
 
 ### Use an Alternative Java Native Image Toolkit
 
-By default, the [Paketo Java Native Image buildpack][bp/java-native-image] will use Bellsoft's Native Image Toolkit. The following Paketo JVM buildpacks may be used to substitute alternate Native Image Toolkit implemenations in place of the default.
+By default, the [Paketo Java Native Image buildpack][bp/java-native-image] will use BellSoft's Native Image Toolkit. The following Paketo JVM buildpacks may be used to substitute alternate Native Image Toolkit implementations in place of the default.
 
 | JVM                                                                       | Buildpack                                                  |
 | ------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| [Bellsoft Liberica](https://bell-sw.com/pages/liberica-native-image-kit/) | [Paketo Bellsoft Liberica Buildpack][bp/bellsoft-liberica] |
+| [BellSoft Liberica](https://bell-sw.com/pages/liberica-native-image-kit/) | [Paketo BellSoft Liberica Buildpack][bp/bellsoft-liberica] |
 | [GraalVM][graalvm]                                                        | [Paketo GraalVM Buildpack][bp/graalvm]                     |
 
-To use an alternative Java Native Image Toolkit, you will need to set two `--buildpack` arguments to `pack build`, one for the alternative Java Native Image Toolkit buildpack you'd like to use and one for the Paketo Java Native Image buildpack (in that order). This works because while you end up with two Java Native Image Toolkit buildpacks, the first one, the one you're specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.
+To use an alternative Java Native Image Toolkit, you will need to set two `--buildpack` arguments to `pack build`, one for the alternative Java Native Image Toolkit buildpack you'd like to use and one for the Paketo Java Native Image buildpack (in that order). This works because while you end up with two Java Native Image Toolkit buildpacks, the first one, the one you're specifying will claim the build plan entries so the second one will end up being a no-op and doing nothing.
 
 This example will switch in the GraalVM buildpack:
 
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack build samples/native-image --buildpack paketo-buildpacks/graalvm --buildpack paketo-buildpacks/java-native-image`
 {{< /code/copyable >}}
+<!-- spellchecker-enable-->
 
 There is one drawback to this approach. When using the method above to specify an alternative Java Native Image Toolkit vendor buildpack, this alternate buildpack ends up running before the CA certs buildpack and therefore traffic from the alternate Java Native Image Toolkit vendor buildpack won’t trust any additional CA certs. This is not expected to impact many users because Java Native Image Toolkit buildpacks should reach out to URLs that have a cert signed by a known authority with a CA in the default system truststore.
 
@@ -403,7 +409,7 @@ The following command builds an image with the Azure Application Insights Java A
 pack build samples/java --volume "$(pwd)/java/application-insights/binding:/platform/bindings/application-insights"
 {{< /code/copyable >}}
 
-To connect to Azure Applicaiton Insights at runtime a valid [Instrumentation Key][azure application insights instrumentation key] is required.
+To connect to Azure Application Insights at runtime a valid [Instrumentation Key][azure application insights instrumentation key] is required.
 {{< code/copyable >}}
 echo "<Instrumentation Key>" > java/application-insights/binding/InstrumentationKey
 docker run --rm --tty \
@@ -424,9 +430,11 @@ pack build samples/java -e BP_DATADOG_ENABLED=true
 
 [Configuration of the Datadog agent](https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configuration) is done through environment variables at runtime:
 
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 docker run --rm --tty samples/java -e DD_SERVICE=foo-service -e DD_ENV=foo-env -e DD_VERSION=1.1.1
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 Note that the Datadog agent requires a side-car agent to be running in addition to the Java agent. This agent runs outside of the buildpack generated image. The [standard Datadog instructions for your container orchestrator of choice](https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configure-the-datadog-agent-for-apm) can be used to install this agent. The Paketo team also has detailed instructions for [various runtimes available here](https://github.com/paketo-buildpacks/datadog/blob/main/docs/).
 
@@ -473,6 +481,7 @@ You can use [Tilt](https://tilt.dev/) with the Paketo Java Buildpacks. This uses
 2. `cd tilt-example-java/0-base`
 3. Modify your `Tiltfile` to look like this:
 
+<!-- spellchecker-disable -->
     {{< code/copyable >}}
     load('ext://pack', 'pack')
 
@@ -486,6 +495,7 @@ You can use [Tilt](https://tilt.dev/) with the Paketo Java Buildpacks. This uses
     k8s_yaml('kubernetes.yaml')
     k8s_resource('example-java', port_forwards=8000)
     {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 4. Execute `tilt up`.
 
@@ -542,11 +552,11 @@ docker run --env BPL_JMX_ENABLED=true --publish 5000:5000 samples/java
 
 Connect [JConsole][jconsole] to the published port.
 ![JConsole](/images/jconsole.png)
-  
+
 ## Enable Java Native Memory Tracking (NMT)
 
 By default for Java 11+, the JVM will be configured to track internal memory usage. The JVM will print its last memory usage data when it exits, the level of detail can be configured at runtime by setting the environment variable `BPL_JAVA_NMT_LEVEL`, which supports both `summary` (default) and `detail`. Since there is a small amount of overhead required to support NMT, it can be disabled by setting the environment variable `BPL_JAVA_NMT_ENABLED` to `false`.
-  
+
 **Example**: Capturing NMT output
 
 To capture NMT data using the JDK tool `jcmd`, first ensure that you have a JDK installed at runtime (see [Install a Specific JVM Type][install-jvm-type]).
@@ -559,9 +569,11 @@ docker exec -it <container-id> /cnb/lifecycle/launcher /bin/bash
 
 From inside the new bash session, you can run the following to view the NMT data:
 
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 jcmd 1 VM.native_memory summary
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 The first argument should be the JVM PID, in the case of the Paketo Java buildpack, this will be `1`.
 
@@ -577,10 +589,12 @@ Java NMT support does not work with [Reloadable Processes]({{< relref "#enable-p
 
 If you attempt to enable Java NMT and are using Reloadable Processes, that's OK. The JVM will not enable Java NMT and it will output the following messages.
 
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 OpenJDK 64-Bit Server VM warning: Native Memory Tracking did not setup properly, using wrong launcher?
 OpenJDK 64-Bit Server VM warning: PrintNMTStatistics is disabled, because native memory tracking is not enabled
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 Your application should continue to run, but with Java NMT disabled.
 
@@ -612,7 +626,7 @@ docker run --env BPL_JFR_ENABLED=true --env BPL_JFR_ARGS=filename=/tmp/my-record
 
 ## Append Arguments to the App's Start Command
 
-Additional arguments can be provided to the application using the container [`CMD`][oci config]. In Kubernetes set `CMD` using the `args` field on the [container][kubernetes container resource] resource.
+Additional arguments can be provided to the application using the container [`CMD`][OCI config]. In Kubernetes set `CMD` using the `args` field on the [container][kubernetes container resource] resource.
 
 **Example**: Setting the Server Port
 
@@ -624,7 +638,7 @@ curl -s http://localhost:8081/actuator/health
 
 ## Provide a Custom Start Command at Launch
 
-To override the buildpack-provided start command with a custom command, set the container [`ENTRYPOINT`][oci config]
+To override the buildpack-provided start command with a custom command, set the container [`ENTRYPOINT`][OCI config]
 
 **Example**: Starting an Interactive Shell
 
@@ -647,6 +661,7 @@ docker run --rm --entrypoint launcher samples/java echo 'JAVA_TOOL_OPTIONS: $JAV
 
 Each argument provided to the launcher will be evaluated by the shell prior to execution and the original tokenization will be preserved. Note that, in the example above `'JAVA_TOOL_OPTIONS: $JAVA_TOOL_OPTIONS'` is single quoted so that `$JAVA_TOOL_OPTIONS` is evaluated in the container, rather than by the host shell.
 
+<!-- spellchecker-disable -->
 <!-- buildpacks -->
 [bp/adoptium]:https://github.com/paketo-buildpacks/adoptium
 [bp/amazon-corretto]:https://github.com/paketo-buildpacks/amazon-corretto
@@ -721,7 +736,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [liberica]:https://bell-sw.com/
 [maven settings]:https://maven.apache.org/settings.html
 [maven]:https://maven.apache.org/
-[oci config]:https://github.com/opencontainers/image-spec/blob/master/config.md#properties
+[OCI config]:https://github.com/opencontainers/image-spec/blob/master/config.md#properties
 [sbt]:https://www.scala-sbt.org/index.html
 [spring boot actuator endpoints]:https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints
 [spring boot configuration metadata]:https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-configuration-metadata.html
@@ -732,3 +747,4 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [spring native releases]:https://github.com/spring-projects-experimental/spring-native/releases
 [spring native]:https://github.com/spring-projects-experimental/spring-native
 [war]:https://en.wikipedia.org/wiki/WAR_(file_format)
+<!-- spellchecker-enable -->
