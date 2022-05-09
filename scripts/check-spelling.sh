@@ -33,8 +33,7 @@ function main() {
   ./node_modules/.bin/spellchecker ./content/**/** \
                                    --no-suggestions \
                                    --dictionaries ./scripts/.util/spellcheck-dictionary.txt \
-                                   --plugins frontmatter
-
+                                   --plugins spell indefinite-article repeated-words syntax-mentions syntax-urls frontmatter
 }
 
 
