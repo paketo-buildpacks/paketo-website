@@ -25,14 +25,18 @@ SBOM in a Paketo-specific schema, but this SBOM is deprecated.
 1. Follow the [Node.js Getting Started tutorial][tutorial/nodejs] to build the
    Node.js `paketo-demo-app` image.
 2. Use the pack CLI to retrieve the software bill of materials files
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack sbom download paketo-demo-app --output-dir /tmp/demo-app-sbom
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 3. The SBOM files will be in the specified output directory,
    `/tmp/demo-app-sbom`. Easily find all generated SBOM files with:
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 find /tmp/demo-app-sbom/layers/sbom -name "*.json"
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 ### (Deprecated) Access Paketo-specific SBOM
 1. Follow the [Node.js Getting Started tutorial][tutorial/nodejs] to build the Node.js `paketo-demo-app` image.
@@ -173,20 +177,26 @@ access SBOM entries for build-time app dependencies, SBOMs must be extracted at
 build time._**
 
 1. Run the build and extract the generated SBOMs to a local directory:
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack build myapp --sbom-output-dir /tmp/build-time-sbom
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 2. When the build completes, inspect SBOMs in the output directory:
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 find /tmp/demo-app-sbom/layers/sbom -name "*.json"
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 SBOMs that are inside the `/tmp/demo-app-sbom/layers/sbom/build` subdirectory
 contain entries for build-time dependencies.
 
 3. List only the build-time SBOMs:
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 find /tmp/demo-app-sbom/layers/sbom/build -name "*.json"
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 ### Paketo-specific SBOM
 There is currently no way to collect SBOM entries for build-time dependencies
@@ -205,7 +215,7 @@ indicate which SBOMs it supports.
    buildpack is capable of generating.
 
 <!-- References -->
-
+<!-- spellchecker-disable -->
 [concepts/bom]:{{< ref "docs/concepts/sbom" >}}
 [concepts/component]:{{< ref "docs/concepts/buildpacks#component-buildpacks" >}}
 [concepts/bom/paketo]:{{< ref "docs/concepts/sbom#paketo-specific-sbom-format" >}}
@@ -213,3 +223,4 @@ indicate which SBOMs it supports.
 [format/cyclonedx]:https://cyclonedx.org/
 [format/spdx]:https://spdx.dev/
 [format/syft]:https://github.com/anchore/syft/tree/main/schema/json
+<!-- spellchecker-enable -->

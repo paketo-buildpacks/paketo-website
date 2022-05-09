@@ -53,7 +53,7 @@ REPL (read-eval-print loop) at launch.
 If the application uses `poetry`, the `Poetry Run` buildpack can also be used
 to create a start command from single script defined in the `pyproject.toml`
 file. See the [`poetry-run`
-documentaton](https://github.com/paketo-buildpacks/poetry-run/blob/main/README.md)
+documentation](https://github.com/paketo-buildpacks/poetry-run/blob/main/README.md)
 for more details.
 
 The Python Buildpack comes with support for

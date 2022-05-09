@@ -34,13 +34,13 @@ the dependencies involved in your app's secure software supply chain.
 
 ### Vulnerability Scanning
 The software bill of materials can be passed to one of the many existent vulnerability
-scanning tools, such as [Dependency Track][tool/dependency-track], [syft][tool/syft], or
+scanning tools, such as [Dependency Track][tool/dependency-track], [Syft][tool/syft], or
 [Trivy][tool/trivy], in order to identify vulnerabilities.
 
 The SBOM contains two fields that are primarily concerned with vulnerability identification:
 
 #### CPEs
-CPEs, or common platform enumerations, are standard notation to look up dependency version-specific vulnerabilities and related patches in the [NIST National Vulnerabilty Database][NIST].
+CPEs, or common platform enumerations, are standard notation to look up dependency version-specific vulnerabilities and related patches in the [NIST National Vulnerability Database][NIST].
 
 #### pURLs
 PURLs, or package URLs are [a universal representation][PURL definition] of package location regardless of vendor, project, or ecosystem.
@@ -178,6 +178,7 @@ image. The Syft, SPDX, and CycloneDX SBOMs are stored on the filesystem of the
 built app image. See [How to Access the Software Bill of Materials][howto/access-bom]
 for more details.
 
+<!-- spellchecker-disable -->
 <!-- References -->
 [CPE]:{{< relref "#cpes" >}}
 [PURL]:{{< relref "#purls" >}}
@@ -197,3 +198,4 @@ for more details.
 
 [NIST]:https://nvd.nist.gov/products/cpe/search
 [PURL definition]:https://github.com/package-url/purl-spec
+<!-- spellchecker-enable -->

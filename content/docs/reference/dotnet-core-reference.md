@@ -56,7 +56,7 @@ when the application source is for .NET Core Framework 3.x. The buildpack sets t
 - `--self-contained false`
 - `--output <temp-directory>`
 
-See the dotnet CLI's [documentation][dotnet/cli-docs] for details about build configuration.
+See the dotnet CLI [documentation][dotnet/CLI-docs] for details about build configuration.
 
 ### Framework-Dependent Deployments or Framework-Dependent Executables
 
@@ -141,6 +141,6 @@ variable.
 
 <!-- References -->
 [paketo/composite-buildpack]:{{< ref "docs/concepts/buildpacks#composite-buildpacks" >}}
-[dotnet/cli-docs]:https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish
+[dotnet/CLI-docs]:https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish
 [service-binding]:{{< ref "docs/howto/configuration#bindings" >}}
 [nugetconfig]:{{< ref "docs/howto/dotnet-core#via-service-bindings" >}}
