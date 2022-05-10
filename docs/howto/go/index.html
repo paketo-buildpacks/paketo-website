@@ -702,7 +702,7 @@ setting the <code>BP_GO_TARGETS</code> environment variable at build time.</p>
     <a class="markup-heading__link" href="#build-multiple-packages-in-one-app-image">
         Build Multiple Packages In One App Image
     </a>
-</h3><p>The <code>BP_GO_TARGETS</code> evironment variable can accept a colon-delimited list of
+</h3><p>The <code>BP_GO_TARGETS</code> environment variable can accept a colon-delimited list of
 target packages. Each binary will be set as a <a href="https://buildpacks.io/docs/app-developer-guide/run-an-app/">launch process</a> of the same name in
 the app image. The following examples will build <em>both</em> the <code>first</code> and <code>second</code> packages in the same multi-package app directory as <a href="#build-non-default-packages">above</a>.</p>
 <h4 id="with-pack-and-a-command-line-flag-4" class="markup-heading">
@@ -757,7 +757,10 @@ touch /tmp/git-binding/credentials
 structure</a>.  For example, to
 access a private module <code>github.com/private-org/private-module</code> with a
 Github username and service account key, add the following to
-<code>/tmp/git-binding/credentials</code>:
+<code>/tmp/git-binding/credentials</code>:</p>
+</li>
+</ol>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">url=https://github.com
 username=&lt;USERNAME&gt;
@@ -765,10 +768,10 @@ password=&lt;SERVICE ACCOUNT KEY&gt;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
-</div></p>
-</li>
-<li>
-<p>Provide the service binding and <code>$GOPRIVATE</code> environment variable at build
+</div>
+<!-- raw HTML omitted -->
+<ol>
+<li>Provide the service binding and <code>$GOPRIVATE</code> environment variable at build
 time:
 <div class="copyable">
     <pre class="copyable__code">pack build myapp --buildpack paketo-buildpacks/go \
@@ -778,8 +781,7 @@ time:
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
-</div></p>
-</li>
+</div></li>
 </ol>
 <p>You&rsquo;ll see that the build successfully pulls your app&rsquo;s private dependencies.
 The secrets stored in the service binding will <strong>not</strong> be stored in the built
@@ -910,7 +912,8 @@ adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
         In a <code>Tiltfile</code> with the <code>pack</code> resource
     </a>
 </h4><p>You can use the Paketo Go buildpack with <a href="https://tilt.dev/">Tilt</a>. This example
-uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt, and shows how to configure watched files.
+uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt, and shows how to configure watched files.</p>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack(&#39;my-app&#39;,
   buildpacks=[&#34;paketo-buildpacks/go&#34;],
@@ -932,7 +935,8 @@ local_resource(&#39;go-build&#39;,
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
-</div></p>
+</div>
+<!-- raw HTML omitted -->
 <h5 id="notes" class="markup-heading">
     <a class="markup-heading__link" href="#notes">
         Notes
@@ -995,24 +999,30 @@ build-time SBOM.</p>
     </a>
 </h3><ol>
 <li>When building with the pack CLI, use the flag <code>--sbom-output-dir</code> to extract
-SBOMs from the build:
+SBOMs from the build:</li>
+</ol>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/go \
                   --sbom-output-dir /tmp/sbom-output
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
-</div></li>
+</div>
+<!-- raw HTML omitted -->
+<ol start="2">
 <li>To view the Go modules used in the build, inspect one of the SBOMs generated
 by the Go Mod Vendor buildpack. For instance, to view the SBOM as
-<a href="https://cyclonedx.org/">CycloneDX</a> JSON:
+<a href="https://cyclonedx.org/">CycloneDX</a> JSON:</li>
+</ol>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">cat /tmp/sbom-output/build/paketo-buildpacks_go-mod-vendor/sbom.cdx.json
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
-</div></li>
-</ol>
+</div>
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
             </div>

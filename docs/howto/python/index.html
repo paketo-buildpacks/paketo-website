@@ -550,7 +550,7 @@ Python apps.  Including a valid <code>requirements.txt</code> file at the root o
 source code triggers the pip installation process by the buildpack. The
 buildpack will install the application packages and make it available to the
 app.</p>
-<p>The buidpack allows you to configure the version of Pip to be used in the
+<p>The buildpack allows you to configure the version of Pip to be used in the
 installation process. You can set this using the <code>$BP_PIP_VERSION</code> variable
 during build. When specifying a version of Pip, you must choose a version that
 is available within the buildpack. The supported versions can be found in the
@@ -563,7 +563,7 @@ is available within the buildpack. The supported versions can be found in the
 <code>Pipfile</code> file at the root of your app source code triggers the pipenv
 installation process by the buildpack. The buildpack will install the
 application packages and make it available to the app.</p>
-<p>The buidpack allows you to configure the version of Pipenv to be used in the
+<p>The buildpack allows you to configure the version of Pipenv to be used in the
 installation process. You can set this using the <code>$BP_PIPENV_VERSION</code> variable
 during build. When specifying a version of Pipenv, you must choose a version
 that is available within the buildpack. The supported versions can be found in the
@@ -576,7 +576,7 @@ this as discussed in <a href="#install-a-specific-cpython-version">this section 
         Miniconda
     </a>
 </h3><p>Miniconda is a package management and environment management system supported
-by the Python buildpack. The builpack will create or update a conda environment
+by the Python buildpack. The buildpack will create or update a conda environment
 from an <code>environment.yml</code> file or a <code>package-list.txt</code> file located at the root
 of the app source code.</p>
 <p>Configuring a version of miniconda is not supported.</p>
@@ -640,7 +640,8 @@ adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
         In a <code>Tiltfile</code> with the <code>pack</code> resource
     </a>
 </h4><p>You can use the Paketo Python buildpack with <a href="https://tilt.dev/">Tilt</a>. This example
-uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt.
+uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt.</p>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack(&#39;my-app&#39;,
   buildpacks=[&#34;paketo-buildpacks/python&#34;],
@@ -652,7 +653,8 @@ uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack">
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
-</div></p>
+</div>
+<!-- raw HTML omitted -->
 <h3 id="setting-a-reloadable-start-command" class="markup-heading">
     <a class="markup-heading__link" href="#setting-a-reloadable-start-command">
         Setting a reloadable start command

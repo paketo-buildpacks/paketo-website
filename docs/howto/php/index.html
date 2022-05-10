@@ -606,7 +606,8 @@ your own configuration file in the application source directory under a
 directory named <code>.php.ini.d/</code>.  The path to the configuration you add will be
 appended onto the <code>PHP_INI_SCAN_DIR</code> during the build process, for use by PHP
 at runtime. Check out the reference docs about the
-<a href="https://paketo.io/docs/reference/php-reference/#php_ini_scan_dir"><code>PHP_INI_SCAN_DIR</code></a> for more information about defaults.</p>
+<a href="https://paketo.io/docs/reference/php-reference/#php_ini_scan_dir"><code>PHP_INI_SCAN_DIR</code></a> for more information about
+defaults.</p>
 <h3 id="use-extensions" class="markup-heading">
     <a class="markup-heading__link" href="#use-extensions">
         Use Extensions
@@ -620,7 +621,8 @@ with the distribution of PHP.</p>
     </a>
 </h4><p>An <code>.ini</code> snippet is a valid PHP configuration file. The buildpacks will look
 for any user-provided snippets under <code>&lt;APP-ROOT&gt;/.php.ini.d/*.ini</code>, as
-mentioned in the <a href="https://paketo.io/docs/reference/php-reference/#configure-php-with-a-custom-ini-file">Configure PHP with a custom <code>.ini</code> file section</a>.</p>
+mentioned in the <a href="https://paketo.io/docs/reference/php-reference/#configure-php-with-a-custom-ini-file">Configure PHP with a custom <code>.ini</code> file
+section</a>.</p>
 <p>An example snippet could look like:
 <div class="copyable">
     <pre class="copyable__code">extension=bz2.so
@@ -686,6 +688,7 @@ space-separated list of flags.</p>
 <p>To define <strong>global</strong> <code>composer install</code> configurations, set the
 <code>BP_COMPOSER_INSTALL_GLOBAL</code> environment variable at build time to a
 space-separated list of global installation options.</p>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/php \
   --env BP_COMPOSER_INSTALL_GLOBAL=&#34;friendsofphp/php-cs-fixer squizlabs/php_codesniffer=*&#34;
@@ -693,6 +696,7 @@ space-separated list of global installation options.</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
+<!-- raw HTML omitted -->
 <h3 id="set-a-custom-composer-vendor-directory" class="markup-heading">
     <a class="markup-heading__link" href="#set-a-custom-composer-vendor-directory">
         Set a custom Composer vendor directory
@@ -892,8 +896,8 @@ of our configuration docs for details on how to use the buildpack.</p>
     </a>
 </h2><p>The PHP Buildpack supports using session handlers for
 <a href="https://memcached.org/">Memcached</a> and <a href="https://redis.io/">Redis</a> instances
-via the <a href="https://github.com/paketo-buildpacks/php-memcached-session-handler">PHP Memcached Session Handler Buildpack</a> and the <a href="https://github.com/paketo-buildpacks/php-redis-session-handler">PHP
-Redis Session Handler Buildpack</a>.
+via the <a href="https://github.com/paketo-buildpacks/php-memcached-session-handler">PHP Memcached Session Handler Buildpack</a> and the [PHP
+Redis Session Handler Buildpack][bp/php-redis-session-handler].
 Check out the <a href="https://www.php.net/manual/en/class.sessionhandler.php">PHP session handler documentation</a>
 for more information on what a PHP session handler is.</p>
 <p>In order to configure a session handler for either Redis or Memcached the user
@@ -904,6 +908,7 @@ must provide a <a href="https://paketo.io/docs/howto/configuration/#bindings">se
     </a>
 </h3><p>To configure a Redis instance session handler, the provided service binding
 should contain the following:</p>
+<!-- raw HTML omitted -->
 <table>
 <thead>
 <tr>
@@ -940,7 +945,9 @@ should contain the following:</p>
 </tr>
 </tbody>
 </table>
+<!-- raw HTML omitted -->
 <p>When performing a build with the <code>pack</code> CLI, passing the service binding will look like the following:</p>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">  pack build my-app --buildpack paketo-buildpacks/php \
   --env SERVICE_BINDING_ROOT=/bindings \
@@ -949,12 +956,14 @@ should contain the following:</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
+<!-- raw HTML omitted -->
 <h3 id="enable-the-session-handler-for-memcached" class="markup-heading">
     <a class="markup-heading__link" href="#enable-the-session-handler-for-memcached">
         Enable the session handler for Memcached
     </a>
 </h3><p>To configure a Memcached instance session handler, the provided service binding
 should contain the following:</p>
+<!-- raw HTML omitted -->
 <table>
 <thead>
 <tr>
@@ -991,8 +1000,10 @@ should contain the following:</p>
 </tr>
 </tbody>
 </table>
+<!-- raw HTML omitted -->
 <p>When performing a build with the <code>pack</code> CLI, passing the service binding will
 look like the following:</p>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">  pack build my-app --buildpack paketo-buildpacks/php \
   --env SERVICE_BINDING_ROOT=/bindings \
@@ -1001,6 +1012,7 @@ look like the following:</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
+<!-- raw HTML omitted -->
 <h2 id="install-a-custom-ca-certificate" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-custom-ca-certificate">
         Install a custom CA certificate
@@ -1045,6 +1057,10 @@ environment variable to <code>DEBUG</code> at build time.
 </h2><p>The PHP buildpack includes support for the software bill of materials (SBOM).
 Check out the <a href="https://paketo.io/docs/howto/sbom/">SBOM how-to documentation</a> for
 details on how to access the SBOM supplied by the buildpacks.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->

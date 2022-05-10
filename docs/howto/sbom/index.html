@@ -489,22 +489,28 @@ SBOM in a Paketo-specific schema, but this SBOM is deprecated.</p>
 </h3><ol>
 <li>Follow the <a href="https://paketo.io/docs/#nodejs">Node.js Getting Started tutorial</a> to build the
 Node.js <code>paketo-demo-app</code> image.</li>
-<li>Use the pack CLI to retrieve the software bill of materials files
+<li>Use the pack CLI to retrieve the software bill of materials files</li>
+</ol>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack sbom download paketo-demo-app --output-dir /tmp/demo-app-sbom
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
-</div></li>
+</div>
+<!-- raw HTML omitted -->
+<ol start="3">
 <li>The SBOM files will be in the specified output directory,
-<code>/tmp/demo-app-sbom</code>. Easily find all generated SBOM files with:
+<code>/tmp/demo-app-sbom</code>. Easily find all generated SBOM files with:</li>
+</ol>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">find /tmp/demo-app-sbom/layers/sbom -name &#34;*.json&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
-</div></li>
-</ol>
+</div>
+<!-- raw HTML omitted -->
 <h3 id="deprecated-access-paketo-specific-sbom" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-access-paketo-specific-sbom">
         (Deprecated) Access Paketo-specific SBOM
@@ -661,36 +667,40 @@ Node.js <code>paketo-demo-app</code> image.</li>
 access SBOM entries for build-time app dependencies, SBOMs must be extracted at
 build time.</em></strong></p>
 <ol>
-<li>
-<p>Run the build and extract the generated SBOMs to a local directory:
+<li>Run the build and extract the generated SBOMs to a local directory:</li>
+</ol>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack build myapp --sbom-output-dir /tmp/build-time-sbom
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
-</div></p>
-</li>
-<li>
-<p>When the build completes, inspect SBOMs in the output directory:
+</div>
+<!-- raw HTML omitted -->
+<ol start="2">
+<li>When the build completes, inspect SBOMs in the output directory:</li>
+</ol>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">find /tmp/demo-app-sbom/layers/sbom -name &#34;*.json&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-SBOMs that are inside the <code>/tmp/demo-app-sbom/layers/sbom/build</code> subdirectory
+<!-- raw HTML omitted -->
+<p>SBOMs that are inside the <code>/tmp/demo-app-sbom/layers/sbom/build</code> subdirectory
 contain entries for build-time dependencies.</p>
-</li>
-<li>
-<p>List only the build-time SBOMs:
+<ol start="3">
+<li>List only the build-time SBOMs:</li>
+</ol>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">find /tmp/demo-app-sbom/layers/sbom/build -name &#34;*.json&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
-</div></p>
-</li>
-</ol>
+</div>
+<!-- raw HTML omitted -->
 <h3 id="paketo-specific-sbom" class="markup-heading">
     <a class="markup-heading__link" href="#paketo-specific-sbom">
         Paketo-specific SBOM
@@ -711,6 +721,8 @@ than <code>0.7</code>, it only supports the <a href="https://paketo.io/docs/conc
 <code>buildpack.sbom-formats</code> array in the <code>buildpack.toml</code>. This will enumerate the SBOM formats that the
 buildpack is capable of generating.</li>
 </ol>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
             </div>

@@ -485,7 +485,7 @@ the  Paketo Java Buildpack  How To <a href="/docs/howto/java">documentation</a>.
         About the JVM
     </a>
 </h2><p>The Java Buildpack uses the <a href="https://bell-sw.com/">BellSoft Liberica</a> implementations of the JRE and JDK. JVM installation is handled by the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">BellSoft Liberica Buildpack</a>. The JDK will be installed in the build container but only the JRE will be contributed to the application image.</p>
-<p>See the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">homepage</a> for the Bellsoft Liberica Buildpack for a full set of configuration options.</p>
+<p>See the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">homepage</a> for the BellSoft Liberica Buildpack for a full set of configuration options.</p>
 <h2 id="memory-calculator" class="markup-heading">
     <a class="markup-heading__link" href="#memory-calculator">
         Memory Calculator
@@ -515,6 +515,7 @@ the  Paketo Java Buildpack  How To <a href="/docs/howto/java">documentation</a>.
         Non-Heap
     </a>
 </h3><p>The below table lists the component parts of the Non-Heap value, the equivalent JVM flags, and their defaults. Where one exists, the JVM default value is used.</p>
+<!-- raw HTML omitted -->
 <table>
 <thead>
 <tr>
@@ -546,6 +547,7 @@ the  Paketo Java Buildpack  How To <a href="/docs/howto/java">documentation</a>.
 </tr>
 </tbody>
 </table>
+<!-- raw HTML omitted -->
 <p>The outputs of the tool are the above JVM flags and their calculated values.</p>
 <p>The remaining memory left after totalling these values is assigned to the <code>-Xmx</code> flag as Heap. All flags and values are then appended to <code>JAVA_TOOL_OPTIONS</code> when the application image is run.</p>
 <h3 id="notes" class="markup-heading">
@@ -646,7 +648,7 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
 <tr>
 <td><a href="https://github.com/paketo-buildpacks/syft">Paketo Syft</a></td>
 <td>Optional</td>
-<td>Provides the Syft CLI which can be used to generate SBoM information.</td>
+<td>Provides the Syft CLI which can be used to generate SBOM information.</td>
 </tr>
 <tr>
 <td><a href="https://github.com/paketo-buildpacks/leiningen">Paketo Leiningen Buildpack</a></td>
@@ -714,7 +716,7 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
 <td>Allows the application to define or redefine process types with a [Procfile][procfiles]</td>
 </tr>
 <tr>
-<td><a href="https://github.com/paketo-buildpacks/jattach">Paketo Jattach</a></td>
+<td><a href="https://github.com/paketo-buildpacks/jattach">Paketo JAttach</a></td>
 <td>Optional</td>
 <td>Provides the JAttach binary to send commands to a remote JVM via Dynamic Attach mechanism</td>
 </tr>
@@ -755,6 +757,9 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
 </tr>
 </tbody>
 </table>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 

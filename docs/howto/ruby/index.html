@@ -594,7 +594,7 @@ set the <code>$BP_MRI_VERSION</code> environment variable.</p>
     <a class="markup-heading__link" href="#override-the-detected-bundler-version">
         Override the Detected Bundler Version
     </a>
-</h2><p>The Paketo Ruby Buildpack will also attempt to automatically detecy the correct
+</h2><p>The Paketo Ruby Buildpack will also attempt to automatically detect the correct
 version of Bundler to use based on the default version in the
 <a href="https://github.com/paketo-buildpacks/bundler/blob/main/buildpack.toml"><code>buildpack.toml</code></a> file. It is possible to override this version
 by setting the <code>BP_BUNDLER_VERSION</code> environment variable at build time, or via
@@ -679,6 +679,7 @@ RubyGems index. Check out the Ruby reference <a href="https://paketo.io/docs/ref
 directory inside app source code, such as <code>custom_dir/custom_cache</code>. In order
 to tell the buildpack where to look for the gems, create a <code>.bundle/config</code>
 file and set the <code>BUNDLE_CACHE_PATH</code>.</p>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">---
 BUNDLE_CACHE_PATH: &#34;custom_dir/custom_cache&#34;
@@ -686,6 +687,7 @@ BUNDLE_CACHE_PATH: &#34;custom_dir/custom_cache&#34;
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
+<!-- raw HTML omitted -->
 <h2 id="build-an-app-image-that-runs-a-rake-task" class="markup-heading">
     <a class="markup-heading__link" href="#build-an-app-image-that-runs-a-rake-task">
         Build an App Image That Runs a Rake Task

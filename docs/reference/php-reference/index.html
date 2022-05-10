@@ -464,8 +464,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#buildpack-configurations">Buildpack Configurations</a>
       <ul>
         <li><a href="#php-distribution-buildpackbpphp-dist-configuration"><a href="https://github.com/paketo-buildpacks/php-dist">PHP Distribution Buildpack</a> Configuration</a></li>
-        <li><a href="#php-fpm-buildpackbpfpm-configuration"><a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM Buildpack</a> Configuration</a></li>
-        <li><a href="#php-nginx-buildpackbpphp-nginx-configuration"><a href="https://github.com/paketo-buildpacks/php-nginx">PHP Nginx Buildpack</a> Configuration</a></li>
+        <li><a href="#php-fpm-buildpackbpphp-fpm-configuration"><a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM Buildpack</a> Configuration</a></li>
+        <li><a href="#php-nginx-buildpackbpphp-nginx-configuration"><a href="https://github.com/paketo-buildpacks/php-nginx">PHP NGINX Buildpack</a> Configuration</a></li>
         <li><a href="#php-httpd-buildpackbpphp-httpd-configuration"><a href="https://github.com/paketo-buildpacks/php-httpd">PHP HTTPD Buildpack</a> Configuration</a></li>
         <li><a href="#composer-install-buildpackbpcomposer-install-configuration"><a href="https://github.com/paketo-buildpacks/composer-install">Composer Install Buildpack</a> Configuration</a></li>
       </ul>
@@ -530,7 +530,7 @@ rebuilds.</p>
         Running With Webservers
     </a>
 </h3><p>The buildpacks within the PHP CNB will configure basic configuration for
-working with FPM, HTTPD, Nginx, or the built-in PHP webserver. Web server
+working with FPM, HTTPD, NGINX, or the built-in PHP webserver. Web server
 choice is set by the user via environment variable (see <a href="https://paketo.io/docs/howto/php/">PHP How To
 documentation</a>), and user-provided configurations will be considered as outlined
 below.</p>
@@ -565,20 +565,20 @@ Distribution itself, with no modifications. It can be found on the container
 inside the PHP Distribution Buildpack layer under <code>/etc/php.ini</code>.</li>
 <li><a href="https://github.com/paketo-buildpacks/php-dist/blob/a33ea23adcb4dd0b4ae0d2a4746f570b13a1a75b/config/buildpack.ini">Buildpack-specific configuration</a> which can be found inside the PHP
 Distribution Buildpack layer under <code>/etc/buildpack.ini</code>. This includes
-confgurations specific to the buildpack&rsquo;s install process and app image file
+configurations specific to the buildpack&rsquo;s install process and app image file
 system, such as the path to PHP extensions (<code>extension_dir</code>), the include
 path to the PHP library directory.</li>
 <li>User-provided configurations from the <code>&lt;APP-ROOT&gt;/.php.ini.d</code> directory.</li>
 </ol>
 <p>Check out the <a href="https://paketo.io/docs/reference/php-reference/#php_ini_scan_dir">PHP_INI_SCAN_DIR documentation section</a> for more information.</p>
-<h3 id="php-fpm-buildpackbpfpm-configuration" class="markup-heading">
-    <a class="markup-heading__link" href="#php-fpm-buildpackbpfpm-configuration">
+<h3 id="php-fpm-buildpackbpphp-fpm-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#php-fpm-buildpackbpphp-fpm-configuration">
         <a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM Buildpack</a> Configuration
     </a>
 </h3><p>Configuration for PHP FPM comes from a few sources, listed here in order of precedence from highest to lowest:</p>
 <ol>
 <li>User-provided configurations located in <code>&lt;APP-ROOT&gt;/.php.fpm.d/*.conf</code>.</li>
-<li>Configuration set by other buildpacks (such as the PHP Nginx
+<li>Configuration set by other buildpacks (such as the PHP NGINX
 Buildpack <a href="https://github.com/paketo-buildpacks/php-nginx/blob/d98ea729531efec03ede533c7e74e7093367fb33/config/nginx-fpm.conf">FPM configuration</a>), which is stored in
 <code>/workspace/.php.fpm.bp/*.conf</code> files.</li>
 <li><a href="https://github.com/paketo-buildpacks/php-fpm/blob/e605c742b1fdde7d30d67fc21360227f40fecb93/config/php-fpm-buildpack.conf">Buildpack-specific configuration</a>, which includes
@@ -590,19 +590,19 @@ Distribution itself. This is stored at <code>$PHPRC/php-fpm.d/www.conf.default</
 </ol>
 <h3 id="php-nginx-buildpackbpphp-nginx-configuration" class="markup-heading">
     <a class="markup-heading__link" href="#php-nginx-buildpackbpphp-nginx-configuration">
-        <a href="https://github.com/paketo-buildpacks/php-nginx">PHP Nginx Buildpack</a> Configuration
+        <a href="https://github.com/paketo-buildpacks/php-nginx">PHP NGINX Buildpack</a> Configuration
     </a>
-</h3><p>The PHP Nginx Buildpack sets up two flavours of configuration itself, and
+</h3><p>The PHP NGINX Buildpack sets up two flavours of configuration itself, and
 allows for a third flavour from users. They are listed here in order of highest
 precedence, to lowest.</p>
 <ol>
 <li>User-provided configuration files located in
 <code>&lt;APP-ROOT&gt;/.nginx.conf.d/*-server.conf</code> and
 <code>&lt;APP-ROOT&gt;/.nginx.conf.d/*-http.conf</code>.</li>
-<li><a href="https://github.com/paketo-buildpacks/php-nginx/blob/d98ea729531efec03ede533c7e74e7093367fb33/config/nginx.conf">Basic Nginx configuration</a> is the <code>nginx.conf</code> file for
+<li><a href="https://github.com/paketo-buildpacks/php-nginx/blob/d98ea729531efec03ede533c7e74e7093367fb33/config/nginx.conf">Basic NGINX configuration</a> is the <code>nginx.conf</code> file for
 running with PHP apps. See <a href="https://paketo.io/docs/howto/php/">PHP How To documentation</a> for settings that can be configured via environment
 variables.</li>
-<li>Nginx-specific FPM settings (see FPM section above) is added to work with
+<li>NGINX-specific FPM settings (see FPM section above) is added to work with
 FPM.</li>
 </ol>
 <h3 id="php-httpd-buildpackbpphp-httpd-configuration" class="markup-heading">
@@ -628,7 +628,7 @@ process <strong>only</strong>. It will tell Composer where to find extensions wh
 <code>composer-install</code>.</li>
 <li>Platform requirement <code>.ini</code> file available on the final image under
 <code>/workspace/.php.ini.d/composer-extensions.ini</code> which will be appended onto
-the <code>PHP_INI_SCAN_DIR</code>. It wil include any <code>composer.json</code> specified
+the <code>PHP_INI_SCAN_DIR</code>. It will include any <code>composer.json</code> specified
 extensions that come from running the Composer <code>check-platform-reqs</code>
 command.</li>
 </ol>
@@ -782,7 +782,7 @@ on your app.</p>
 </h3><ul>
 <li>Set by: <code>php-nginx</code> buildpack</li>
 <li>Phases: <code>build</code> and <code>launch</code></li>
-<li>Value: path to the Nginx configuration for usage in Nginx start command</li>
+<li>Value: path to the NGINX configuration for usage in NGINX start command</li>
 </ul>
 <h2 id="components" class="markup-heading">
     <a class="markup-heading__link" href="#components">
@@ -823,9 +823,9 @@ on your app.</p>
 <td>Installs Apache HTTPD</td>
 </tr>
 <tr>
-<td><a href="https://github.com/paketo-buildpacks/nginx">Paketo Nginx Buildpack</a></td>
+<td><a href="https://github.com/paketo-buildpacks/nginx">Paketo NGINX Buildpack</a></td>
 <td>Optional</td>
-<td>Installs Nginx</td>
+<td>Installs NGINX</td>
 </tr>
 <tr>
 <td><a href="https://github.com/paketo-buildpacks/php-httpd">Paketo PHP HTTPD Buildpack</a></td>
@@ -833,9 +833,9 @@ on your app.</p>
 <td>Configures HTTPD to serve a PHP app</td>
 </tr>
 <tr>
-<td><a href="https://github.com/paketo-buildpacks/php-nginx">Paketo PHP Nginx Buildpack</a></td>
+<td><a href="https://github.com/paketo-buildpacks/php-nginx">Paketo PHP NGINX Buildpack</a></td>
 <td>Optional</td>
-<td>Configures Nginx to serve a PHP app</td>
+<td>Configures NGINX to serve a PHP app</td>
 </tr>
 <tr>
 <td><a href="https://github.com/paketo-buildpacks/php-builtin-server">Paketo PHP Builtin Server Buildpack</a></td>
@@ -855,7 +855,7 @@ on your app.</p>
 <tr>
 <td><a href="https://github.com/paketo-buildpacks/php-start">Paketo PHP Start Buildpack</a></td>
 <td>Optional</td>
-<td>Sets the start command to serve PHP apps with Nginx or HTTPD with FPM</td>
+<td>Sets the start command to serve PHP apps with NGINX or HTTPD with FPM</td>
 </tr>
 <tr>
 <td><a href="
@@ -883,6 +883,8 @@ https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Bui
 </tr>
 </tbody>
 </table>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
             </div>
@@ -913,8 +915,8 @@ https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Bui
     <li><a href="#buildpack-configurations">Buildpack Configurations</a>
       <ul>
         <li><a href="#php-distribution-buildpackbpphp-dist-configuration"><a href="https://github.com/paketo-buildpacks/php-dist">PHP Distribution Buildpack</a> Configuration</a></li>
-        <li><a href="#php-fpm-buildpackbpfpm-configuration"><a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM Buildpack</a> Configuration</a></li>
-        <li><a href="#php-nginx-buildpackbpphp-nginx-configuration"><a href="https://github.com/paketo-buildpacks/php-nginx">PHP Nginx Buildpack</a> Configuration</a></li>
+        <li><a href="#php-fpm-buildpackbpphp-fpm-configuration"><a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM Buildpack</a> Configuration</a></li>
+        <li><a href="#php-nginx-buildpackbpphp-nginx-configuration"><a href="https://github.com/paketo-buildpacks/php-nginx">PHP NGINX Buildpack</a> Configuration</a></li>
         <li><a href="#php-httpd-buildpackbpphp-httpd-configuration"><a href="https://github.com/paketo-buildpacks/php-httpd">PHP HTTPD Buildpack</a> Configuration</a></li>
         <li><a href="#composer-install-buildpackbpcomposer-install-configuration"><a href="https://github.com/paketo-buildpacks/composer-install">Composer Install Buildpack</a> Configuration</a></li>
       </ul>

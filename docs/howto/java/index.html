@@ -550,10 +550,14 @@ curl -s http://localhost:8080/actuator/health | jq .
 </h3><p>The Java Buildpack can build from source using any of the following build tools:</p>
 <ul>
 <li><a href="https://gradle.org/">Gradle</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/gradle">Gradle Buildpack</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
 <li><a href="https://leiningen.org/">Leiningen</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/leiningen">Leiningen Buildpack</a></li>
 <li><a href="https://maven.apache.org/">Maven</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/maven">Maven Buildpack</a></li>
 <li><a href="https://www.scala-sbt.org/index.html">SBT</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/sbt">SBT Buildpack</a></li>
 </ul>
+<!-- raw HTML omitted -->
 <p>The correct build tool to use will be detected based on the contents of the
 application directory.</p>
 <p>The build should produce one the of <a href="#build-from-a-compiled-artifact">supported artifact
@@ -592,7 +596,7 @@ Artifact</a>.</p>
 <ul>
 <li>Defaults to a tool-specific pattern (e.g. <code>target/*.[jw]ar</code> for Maven, <code>build/libs/*.[jw]ar</code> for gradle). See component buildpack homepage for details.</li>
 <li>Configures the built application artifact path, using <a href="https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html">Bash Pattern Matching</a>.</li>
-<li>Supercedes <code>BP_&lt;TOOL&gt;_BUILT_MODULE</code> if set to a non-default value.</li>
+<li>Supersedes<code>BP_&lt;TOOL&gt;_BUILT_MODULE</code> if set to a non-default value.</li>
 <li><em>Example</em>: Given <code>BP_MAVEN_BUILT_ARTIFACT=out/api-*.jar</code>, the Paketo Maven Buildpack will select a file with name <code>out/api-1.0.0.jar</code>.</li>
 </ul>
 </li>
@@ -669,11 +673,15 @@ Artifact</a>.</p>
 </h3><p>An application developer may build an image from following archive formats:</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">Executable JAR</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/executable-jar">Executable Jar Buildpack</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
 <li><a href="https://en.wikipedia.org/wiki/WAR_(file_format)">WAR</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/apache-tomcat">Apache Tomcat Buildpack</a></li>
 <li><a href="https://docs.gradle.org/current/userguide/distribution_plugin.html">Distribution ZIP</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/dist-zip">DistZip Buildpack</a></li>
 </ul>
 <p>The Java Buildpack expects the application directory to contain the extracted contents of the archive (e.g. an exploded JAR). Most platforms will automatically extract any provided archives.</p>
 <p>If a WAR is detect the Java Buildpack will install <a href="https://tomcat.apache.org">Apache Tomcat</a>. For exact set of supported Tomcat versions can be found in the Java Buildpack <a href="https://github.com/paketo-buildpacks/java/releases">releases notes</a>. For tomcat configuration options see the <a href="https://github.com/paketo-buildpacks/apache-tomcat">Apache Tomcat Buildpack</a>.</p>
+<!-- raw HTML omitted -->
 <p>The component buildpack for the provided artifact format will contribute a start command to the image.</p>
 <p><em>Note</em>: All three of the <a href="https://github.com/paketo-buildpacks/apache-tomcat">Apache Tomcat Buildpack</a>,
 <a href="https://github.com/paketo-buildpacks/executable-jar">Executable Jar Buildpack</a>, and <a href="https://github.com/paketo-buildpacks/dist-zip">DistZip
@@ -749,12 +757,13 @@ pack build samples/java \
 </li>
 <li>Flags can be set directly at runtime with the <code>JAVA_TOOL_OPTIONS</code> environment variable. User-provided flags will be appended to buildpack-provided flags. If the user and a buildpack set the same flag, user-provided flags take precedence.</li>
 </ol>
-<p>See the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">homepage</a> for the Bellsoft Liberica Buildpack for a full set of configuration options.</p>
+<p>See the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">homepage</a> for the BellSoft Liberica Buildpack for a full set of configuration options.</p>
 <h3 id="use-an-alternative-jvm" class="markup-heading">
     <a class="markup-heading__link" href="#use-an-alternative-jvm">
         Use an Alternative JVM
     </a>
-</h3><p>By default, the <a href="https://github.com/paketo-buildpacks/java">Paketo Java buildpack</a> will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implemenations in place of Liberica&rsquo;s JVM.</p>
+</h3><p>By default, the <a href="https://github.com/paketo-buildpacks/java">Paketo Java buildpack</a> will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implementations in place of Liberica&rsquo;s JVM.</p>
+<!-- raw HTML omitted -->
 <table>
 <thead>
 <tr>
@@ -812,6 +821,7 @@ pack build samples/java \
 </tr>
 </tbody>
 </table>
+<!-- raw HTML omitted -->
 <ol>
 <li><em><span class="sub">Only provides JRE and JDK releases for Java 8 and 11, Java 16+ is JDK only</span>
 </em></li>
@@ -820,7 +830,7 @@ pack build samples/java \
 <li><em><span class="sub">Only provides Java 17</span>
 </em></li>
 </ol>
-<p>To use an alternative JVM, you will need to set two <code>--buildpack</code> arguments to <code>pack build</code>, one for the alternative JVM buildpack you&rsquo;d like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you&rsquo;re specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.</p>
+<p>To use an alternative JVM, you will need to set two <code>--buildpack</code> arguments to <code>pack build</code>, one for the alternative JVM buildpack you&rsquo;d like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you&rsquo;re specifying will claim the build plan entries so the second one will end up being a no-op and doing nothing.</p>
 <p>This example will switch in the Azul Zulu buildpack:</p>
 <div class="copyable">
     <pre class="copyable__code">pack build samples/jar --buildpack paketo-buildpacks/azul-zulu --buildpack paketo-buildpacks/java`
@@ -941,7 +951,7 @@ pack build samples/java-native \
     <a class="markup-heading__link" href="#configure-the-graalvm-version">
         Configure the GraalVM Version
     </a>
-</h3><p>Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a sepecific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.</p>
+</h3><p>Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a specific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.</p>
 <p>The following table documents the versions available.</p>
 <table>
 <thead>
@@ -980,7 +990,7 @@ pack build samples/java-native \
     <a class="markup-heading__link" href="#use-an-alternative-java-native-image-toolkit">
         Use an Alternative Java Native Image Toolkit
     </a>
-</h3><p>By default, the <a href="https://github.com/paketo-buildpacks/java-native-image">Paketo Java Native Image buildpack</a> will use Bellsoft&rsquo;s Native Image Toolkit. The following Paketo JVM buildpacks may be used to substitute alternate Native Image Toolkit implemenations in place of the default.</p>
+</h3><p>By default, the <a href="https://github.com/paketo-buildpacks/java-native-image">Paketo Java Native Image buildpack</a> will use BellSoft&rsquo;s Native Image Toolkit. The following Paketo JVM buildpacks may be used to substitute alternate Native Image Toolkit implementations in place of the default.</p>
 <table>
 <thead>
 <tr>
@@ -990,8 +1000,8 @@ pack build samples/java-native \
 </thead>
 <tbody>
 <tr>
-<td><a href="https://bell-sw.com/pages/liberica-native-image-kit/">Bellsoft Liberica</a></td>
-<td><a href="https://github.com/paketo-buildpacks/bellsoft-liberica">Paketo Bellsoft Liberica Buildpack</a></td>
+<td><a href="https://bell-sw.com/pages/liberica-native-image-kit/">BellSoft Liberica</a></td>
+<td><a href="https://github.com/paketo-buildpacks/bellsoft-liberica">Paketo BellSoft Liberica Buildpack</a></td>
 </tr>
 <tr>
 <td><a href="https://www.graalvm.org/docs/introduction/">GraalVM</a></td>
@@ -999,14 +1009,16 @@ pack build samples/java-native \
 </tr>
 </tbody>
 </table>
-<p>To use an alternative Java Native Image Toolkit, you will need to set two <code>--buildpack</code> arguments to <code>pack build</code>, one for the alternative Java Native Image Toolkit buildpack you&rsquo;d like to use and one for the Paketo Java Native Image buildpack (in that order). This works because while you end up with two Java Native Image Toolkit buildpacks, the first one, the one you&rsquo;re specifying will claim the build plan entries so the second one will end up being a noop and doing nothing.</p>
+<p>To use an alternative Java Native Image Toolkit, you will need to set two <code>--buildpack</code> arguments to <code>pack build</code>, one for the alternative Java Native Image Toolkit buildpack you&rsquo;d like to use and one for the Paketo Java Native Image buildpack (in that order). This works because while you end up with two Java Native Image Toolkit buildpacks, the first one, the one you&rsquo;re specifying will claim the build plan entries so the second one will end up being a no-op and doing nothing.</p>
 <p>This example will switch in the GraalVM buildpack:</p>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack build samples/native-image --buildpack paketo-buildpacks/graalvm --buildpack paketo-buildpacks/java-native-image`
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
+<!-- raw HTML omitted -->
 <p>There is one drawback to this approach. When using the method above to specify an alternative Java Native Image Toolkit vendor buildpack, this alternate buildpack ends up running before the CA certs buildpack and therefore traffic from the alternate Java Native Image Toolkit vendor buildpack won’t trust any additional CA certs. This is not expected to impact many users because Java Native Image Toolkit buildpacks should reach out to URLs that have a cert signed by a known authority with a CA in the default system truststore.</p>
 <p>If you have customized your Java Native Image Toolkit buildpack to download the Java Native Image Toolkit from a URL that uses a certificate not signed by a well-known CA, you can workaround this by specifying the CA certs buildpack to run first. This works because while you will end up with the CA certificates buildpack specified twice, the lifecycle is smart enough to drop the second one.</p>
 <p>For example:</p>
@@ -1056,7 +1068,7 @@ pack build samples/java-native \
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
-<p>To connect to Azure Applicaiton Insights at runtime a valid <a href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key">Instrumentation Key</a> is required.
+<p>To connect to Azure Application Insights at runtime a valid <a href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key">Instrumentation Key</a> is required.
 <div class="copyable">
     <pre class="copyable__code">echo &#34;&lt;Instrumentation Key&gt;&#34; &gt; java/application-insights/binding/InstrumentationKey
 docker run --rm --tty \
@@ -1077,12 +1089,14 @@ docker run --rm --tty \
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <p><a href="https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configuration">Configuration of the Datadog agent</a> is done through environment variables at runtime:</p>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">docker run --rm --tty samples/java -e DD_SERVICE=foo-service -e DD_ENV=foo-env -e DD_VERSION=1.1.1
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
+<!-- raw HTML omitted -->
 <p>Note that the Datadog agent requires a side-car agent to be running in addition to the Java agent. This agent runs outside of the buildpack generated image. The <a href="https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configure-the-datadog-agent-for-apm">standard Datadog instructions for your container orchestrator of choice</a> can be used to install this agent. The Paketo team also has detailed instructions for <a href="https://github.com/paketo-buildpacks/datadog/blob/main/docs/">various runtimes available here</a>.</p>
 <h2 id="enable-process-reloading" class="markup-heading">
     <a class="markup-heading__link" href="#enable-process-reloading">
@@ -1124,15 +1138,12 @@ docker run --rm --tty \
 </h3><p>You can use <a href="https://tilt.dev/">Tilt</a> with the Paketo Java Buildpacks. This uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack">Pack Tilt extension</a>. The example below shows how to use the pack extension and how to configure watched files.</p>
 <p><strong>Example</strong>: Tilt</p>
 <ol>
-<li>
-<p>Clone the official Tilt examples: <code>git clone https://github.com/tilt-dev/tilt-example-java</code></p>
-</li>
-<li>
-<p><code>cd tilt-example-java/0-base</code></p>
-</li>
-<li>
-<p>Modify your <code>Tiltfile</code> to look like this:</p>
-<div class="copyable">
+<li>Clone the official Tilt examples: <code>git clone https://github.com/tilt-dev/tilt-example-java</code></li>
+<li><code>cd tilt-example-java/0-base</code></li>
+<li>Modify your <code>Tiltfile</code> to look like this:</li>
+</ol>
+<!-- raw HTML omitted -->
+<pre><code><div class="copyable">
     <pre class="copyable__code">    load(&#39;ext://pack&#39;, &#39;pack&#39;)
 
     pack(
@@ -1148,7 +1159,9 @@ docker run --rm --tty \
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-</li>
+</code></pre>
+<!-- raw HTML omitted -->
+<ol start="4">
 <li>
 <p>Execute <code>tilt up</code>.</p>
 </li>
@@ -1225,12 +1238,14 @@ docker run --rm --tty \
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <p>From inside the new bash session, you can run the following to view the NMT data:</p>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">jcmd 1 VM.native_memory summary
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
+<!-- raw HTML omitted -->
 <p>The first argument should be the JVM PID, in the case of the Paketo Java buildpack, this will be <code>1</code>.</p>
 <h3 id="java-nmt-and-java-8" class="markup-heading">
     <a class="markup-heading__link" href="#java-nmt-and-java-8">
@@ -1244,6 +1259,7 @@ docker run --rm --tty \
     </a>
 </h3><p>Java NMT support does not work with <a href="#enable-process-reloading">Reloadable Processes</a>. This is because when using reloadable processes, the JVM PID is not 1 and not easily determinable by the buildpack Java NMT helper. Thus the helper cannot set the environment variables required by the JVM to enable Java NMT.</p>
 <p>If you attempt to enable Java NMT and are using Reloadable Processes, that&rsquo;s OK. The JVM will not enable Java NMT and it will output the following messages.</p>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">OpenJDK 64-Bit Server VM warning: Native Memory Tracking did not setup properly, using wrong launcher?
 OpenJDK 64-Bit Server VM warning: PrintNMTStatistics is disabled, because native memory tracking is not enabled
@@ -1251,6 +1267,7 @@ OpenJDK 64-Bit Server VM warning: PrintNMTStatistics is disabled, because native
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
+<!-- raw HTML omitted -->
 <p>Your application should continue to run, but with Java NMT disabled.</p>
 <h2 id="enable-java-flight-recorder-jfr" class="markup-heading">
     <a class="markup-heading__link" href="#enable-java-flight-recorder-jfr">
@@ -1321,6 +1338,8 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
 <p>Each argument provided to the launcher will be evaluated by the shell prior to execution and the original tokenization will be preserved. Note that, in the example above <code>'JAVA_TOOL_OPTIONS: $JAVA_TOOL_OPTIONS'</code> is single quoted so that <code>$JAVA_TOOL_OPTIONS</code> is evaluated in the container, rather than by the host shell.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->

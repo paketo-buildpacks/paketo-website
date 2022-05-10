@@ -599,7 +599,7 @@ Core Runtime v2.1.14 when deploying your app, include the values below in your
     <a class="markup-heading__link" href="#using-a-project-file">
         Using a Project file
     </a>
-</h3><p>If you are using a Project file (eg. <code>*.csproj</code>, <code>*.fsproj</code>, or <code>*.vbproj</code>), you can specify
+</h3><p>If you are using a Project file (e.g. <code>*.csproj</code>, <code>*.fsproj</code>, or <code>*.vbproj</code>), you can specify
 the .Net Core Runtime version within that file. To configure the buildpack to
 use .Net Core Runtime v2.1.14 when deploying your app, include the values below
 in your Project file:</p>
@@ -635,7 +635,7 @@ please review the <a href="https://docs.microsoft.com/en-us/dotnet/core/versions
         Deprecated: Using buildpack.yml
     </a>
 </h3><p>Specifying the .Net Core Framework version through <code>buildpack.yml</code>
-configuration will be deprecated in .Net Core Runtime and .Net Core ASPNET
+configuration will be deprecated in .Net Core Runtime and .Net Core ASP.NET
 Buildpacks v1.0.0.  To migrate from using <code>buildpack.yml</code>, please set the
 <code>BP_DOTNET_FRAMEWORK_VERSION</code> environment variable.</p>
 <h2 id="install-a-specific-net-sdk-version" class="markup-heading">
@@ -765,7 +765,7 @@ containing a <code>nuget.config</code> file can be provided. In addition to the
 documentation for more details on service bindings.</p>
 <p>The binding will be made available as a &ldquo;user-level&rdquo; NuGet configuration at
 <code>$HOME/.nuget/NuGet/NuGet.Config</code> during the build process. The  configuration
-applies across all operations involving NuGet, but will be overriden by
+applies across all operations involving NuGet, but will be overridden by
 project-level configurations.</p>
 <p>The resulting command will look like:
 <div class="copyable">
@@ -826,7 +826,8 @@ adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
         In a <code>Tiltfile</code> with the <code>pack</code> resource
     </a>
 </h4><p>You can use the Paketo .NET Core buildpack with <a href="https://tilt.dev/">Tilt</a>. This example
-uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt, and shows how to configure watched files.
+uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt, and shows how to configure watched files.</p>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack(
   &#39;myapp&#39;,
@@ -853,7 +854,8 @@ local_resource(
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
-</div></p>
+</div>
+<!-- raw HTML omitted -->
 <h5 id="notes" class="markup-heading">
     <a class="markup-heading__link" href="#notes">
         Notes
@@ -861,7 +863,9 @@ local_resource(
 </h5><ul>
 <li>The .NET Paketo buildpack works best with Tilt and hot reloading when all of
 your app&rsquo;s source code is in a subdirectory (<code>./src</code> in the above example).
+<!-- raw HTML omitted -->
 Use <a href="#build-an-app-from-source-in-a-subdirectory"><code>BP_DOTNET_PROJECT_PATH</code></a>
+<!-- raw HTML omitted -->
 to indicate the location of the source code.</li>
 <li>The .NET Paketo buildpack will not recompile your source code inside the
 running app container. You must use a <code>local_resource</code> to rebuild your app

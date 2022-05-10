@@ -504,7 +504,13 @@ cd samples
 </h2><p>Paketo buildpacks can be configured via the following mechanisms:</p>
 <ul>
 <li><a href="#environment-variables">Environment Variables</a> - used for generic configuration at both <strong>build-time</strong> and <strong>runtime</strong>.</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
 <li><a href="#buildpackyml">buildpack.yml</a> - used for generic configuration at <strong>build-time</strong>.</li>
+</ul>
+<!-- raw HTML omitted -->
+<ul>
 <li><a href="#bindings">Bindings</a> - used for <strong>secret</strong> configuration at both <strong>build-time</strong> and <strong>runtime</strong>.</li>
 <li><a href="#procfiles">Procfiles</a> - used to provide custom <strong>process types</strong> at <strong>build-time</strong>.</li>
 </ul>
@@ -527,6 +533,7 @@ cd samples
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <p>During the build process, a buildpack may invoke other programs that accept configuration via the environment. Users may configure these tools as they would normally. For example, the command below configures the JVM memory settings for the JVM running Maven using <a href="https://maven.apache.org/configure.html#maven_opts-environment-variable"><code>MAVEN_OPTS</code></a>.</p>
+<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack build samples/java  \
   --path java/maven \
@@ -535,6 +542,7 @@ cd samples
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
+<!-- raw HTML omitted -->
 <h4 id="runtime-environment-variables" class="markup-heading">
     <a class="markup-heading__link" href="#runtime-environment-variables">
         Runtime Environment Variables
@@ -593,7 +601,7 @@ curl -s http://localhost:8082/actuator/health
         buildpack.yml
     </a>
 </h3><p>Many Paketo buildpacks accept configuration from a <code>buildpack.yml</code> file if one is present at the root of the application directory.</p>
-<p>For example, to configure the NodeJS version installed by the NodeJS Buildpack, create a file named <code>buildpack.yml</code> in the <code>nodejs/yarn</code> directory in the <a href="https://github.com/paketo-buildpacks/samples">samples repo</a>.
+<p>For example, to configure the Node.js version installed by the Node.js Buildpack, create a file named <code>buildpack.yml</code> in the <code>nodejs/yarn</code> directory in the <a href="https://github.com/paketo-buildpacks/samples">samples repo</a>.
 <div class="copyable">
     <pre class="copyable__code">nodejs:
   version: 12.12.0
@@ -601,7 +609,7 @@ curl -s http://localhost:8082/actuator/health
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
-<p>Next, execute the build as normal and observe the that the specified version of NodeJs is installed.
+<p>Next, execute the build as normal and observe the that the specified version of Node.js is installed.
 <div class="copyable">
     <pre class="copyable__code">pack build samples/nodejs --path nodejs/yarn
 </pre>
@@ -636,7 +644,7 @@ curl -s http://localhost:8082/actuator/health
     </a>
 </h4><p>A Binding contains:</p>
 <ol>
-<li>A <strong>name</strong>. Indentifies a particular binding. The name typically does not affect build or runtime behavior but may be used to reference a specific binding in output such as log messages.</li>
+<li>A <strong>name</strong>. Identifies a particular binding. The name typically does not affect build or runtime behavior but may be used to reference a specific binding in output such as log messages.</li>
 <li>A <strong>type</strong> or <strong>kind</strong>. Indicates what type of credentials the binding contains. For example, a binding of type <code>ApplicationInsights</code> contains the credentials needed to connect to Azure Application Insights.</li>
 <li>An <em>optional</em> <strong>provider</strong>. Indicates the source of the binding. For example, in a PaaS context, a specific service broker might provide the binding.</li>
 <li>key-value pairs. These contain the configuration data. For example, an <code>ApplicationInsights</code> binding may contain a key-value pair with key <code>InstrumentationKey</code>.</li>
@@ -731,9 +739,9 @@ docker run samples/nodejs # should print &#34;hello world&#34;
 <p>If a dependency URI is inaccessible from the build environment, a <a href="#bindings">binding</a> can be used to map a new URI to a given dependency. This allows organizations to upload a copies of vetted dependencies to an accessible location and provide developers and CI/CD pipelines with configuration pointing the buildpack at the accessible dependencies.</p>
 <p>The URI mappings can be configured with one or more bindings of <code>type</code> <code>dependency-mapping</code>. Each key value pair in the binding should map the <code>sha256</code> of a dependency to a URI. Information about the dependencies a buildpack may download (including the <code>sha256</code> and the current default <code>uri</code>) can be found in the <code>buildpack.toml</code> of each component buildpack.</p>
 <p><strong>Example</strong> Mapping the JRE to an internal URI</p>
-<p>For example, to make the Bellsoft Liberica JRE dependency accessible available to builds in an environment where Github is inaccessible, an operator should:</p>
+<p>For example, to make the BellSoft Liberica JRE dependency accessible available to builds in an environment where Github is inaccessible, an operator should:</p>
 <ol>
-<li>Find the <code>sha256</code> and default <code>uri</code> for the desired dependency in <a href="https://github.com/paketo-buildpacks/bellsoft-liberica/blob/main/buildpack.toml">buildpack.toml</a> of the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">Bellsoft Liberica buildpack</a>. Example values:
+<li>Find the <code>sha256</code> and default <code>uri</code> for the desired dependency in <a href="https://github.com/paketo-buildpacks/bellsoft-liberica/blob/main/buildpack.toml">buildpack.toml</a> of the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">BellSoft Liberica buildpack</a>. Example values:
 <ul>
 <li><code>sha256</code>: <code>b4cb31162ff6d7926dd09e21551fa745fa3ae1758c25148b48dadcf78ab0c24c</code></li>
 <li><code>uri</code>: <code>https://github.com/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz</code></li>
@@ -753,7 +761,7 @@ docker run samples/nodejs # should print &#34;hello world&#34;
         CA Certificates
     </a>
 </h2><p>Additional CA certificates may be added to the system truststore using the <a href="https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Buildpack</a>.</p>
-<p>CA certificates can be provided at both build and runtime with a <a href="#bindings">binding</a> of <code>type</code> <code>ca-certficates</code>. Each key value pair in the binding should map a certficate name to a single PEM encoded CA Certficates</p>
+<p>CA certificates can be provided at both build and runtime with a <a href="#bindings">binding</a> of <code>type</code> <code>ca-certficates</code>. Each key value pair in the binding should map a certficate name to a single PEM encoded CA Certificates</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;binding-name&gt;
 </span></span><span class="line"><span class="cl">├── &lt;cert file name&gt;
 </span></span><span class="line"><span class="cl">└── type
@@ -773,7 +781,7 @@ docker run samples/nodejs # should print &#34;hello world&#34;
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --volume <span class="s2">&#34;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/ca-certficates/binding:/bindings/ca-certificates&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  samples/ca-certificates &lt;url&gt;
 </span></span></code></pre></div><p><strong>Disabling CA Certificates</strong></p>
-<p>If a language family buildpack contains the Paketo CA Certifcates Buildpack,
+<p>If a language family buildpack contains the Paketo CA Certificates Buildpack,
 the CA Certificates Buildpack will always pass detection so that certificates
 can be provided dynamically at runtime.</p>
 <p>To opt out of this behavior all together, the <code>BP_ENABLE_RUNTIME_CERT_BINDING</code>
