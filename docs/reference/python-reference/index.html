@@ -461,6 +461,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
     </li>
     <li><a href="#start-command">Start Command</a></li>
+    <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
   </ul>
 </nav>
 </div>
@@ -525,6 +526,25 @@ for more details.</p>
 <p>The Python Buildpack comes with support for
 <a href="https://paketo.io/docs/howto/configuration/#procfiles"><code>Procfile</code></a>
 that lets users set custom start commands easily.</p>
+<h2 id="software-bill-of-materials" class="markup-heading">
+    <a class="markup-heading__link" href="#software-bill-of-materials">
+        Software Bill of Materials
+    </a>
+</h2><p>The Python buildpack supports the full [software bill of
+materials][concepts/SBOM] (SBOM) in [Syft][format/syft],
+[CycloneDX][format/cyclonedx], and [SPDX][format/spdx] formats. The Python
+buildpack also includes limited support for the
+[Paketo-specific][format/paketo] SBOM format. This Paketo-specific SBOM format
+does not include information about the application dependencies.</p>
+<p>SBOMs will be generated for applications which leverage <code>Pip</code>, <code>Pipenv</code>, or
+<code>Poetry</code>.</p>
+<p>Currently the Python buildpack has limited support for generating an SBOM for
+applications which leverage <code>Miniconda</code>. Specifically - in order to generate an
+SBOM for a <code>Miniconda</code> application, applications must vendor their dependencies
+in addition to defining them via a <code>package-list.txt</code> file. <code>Miniconda</code>
+applications that declare their dependencies via a <code>package-list.txt</code> file but
+do not vendor them will result in an empty SBOM. This is due to a limitation in
+the upstream SBOM generation library (Syft).</p>
 
             </div>
             
@@ -551,6 +571,7 @@ that lets users set custom start commands easily.</p>
       </ul>
     </li>
     <li><a href="#start-command">Start Command</a></li>
+    <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
   </ul>
 </nav>
 </div>

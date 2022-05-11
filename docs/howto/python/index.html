@@ -473,6 +473,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
     <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
+    <li><a href="#access-the-software-bill-of-materials">Access the software bill of materials</a></li>
   </ul>
 </nav>
 </div>
@@ -703,6 +704,21 @@ Buildpack</a>.</p>
 instructions in the <a href="https://paketo.io/docs/howto/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
+<h2 id="access-the-software-bill-of-materials" class="markup-heading">
+    <a class="markup-heading__link" href="#access-the-software-bill-of-materials">
+        Access the software bill of materials
+    </a>
+</h2><p>The Python buildpack includes support for the software bill of materials (SBOM).
+Check out the [SBOM how-to documentation][paketo/SBOM] for
+details on how to access the SBOM supplied by the buildpacks.</p>
+<p>SBOMs will be generated for applications which leverage <code>Pip</code>, <code>Pipenv</code>, or <code>Poetry</code>.</p>
+<p>Currently the Python buildpack has limited support for generating an SBOM for
+applications which leverage <code>Miniconda</code>. Specifically - in order to generate an
+SBOM for a <code>Miniconda</code> application, applications must vendor their dependencies
+in addition to defining them via a <code>package-list.txt</code> file. <code>Miniconda</code>
+applications that declare their dependencies via a <code>package-list.txt</code> file but
+do not vendor them will result in an empty SBOM. This is due to a limitation in
+the upstream SBOM generation library (Syft).</p>
 <!-- raw HTML omitted -->
 
             </div>
@@ -742,6 +758,7 @@ section of our configuration docs.</p>
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
     <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
+    <li><a href="#access-the-software-bill-of-materials">Access the software bill of materials</a></li>
   </ul>
 </nav>
 </div>
