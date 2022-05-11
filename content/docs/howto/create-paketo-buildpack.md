@@ -481,7 +481,6 @@ package node
 
 import (
 	"fmt"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -524,7 +523,7 @@ func Build() packit.BuildFunc {
 
 		nodeLayer.Launch = true
 
-		downloadDir, err := ioutil.TempDir("", "downloadDir")
+		downloadDir, err := os.MkdirTemp("", "downloadDir")
 		if err != nil {
 			return packit.BuildResult{}, err
 		}
