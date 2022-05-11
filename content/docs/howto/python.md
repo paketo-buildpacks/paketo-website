@@ -201,7 +201,7 @@ section of our configuration docs.
 
 ## Access the software bill of materials
 The Python buildpack includes support for the software bill of materials (SBOM).
-Check out the [SBOM how-to documentation][paketo/SBOM] for
+Check out the [SBOM how-to documentation][how-to/SBOM] for
 details on how to access the SBOM supplied by the buildpacks.
 
 SBOMs will be generated for applications which leverage `Pip`, `Pipenv`, or `Poetry`.
@@ -215,9 +215,12 @@ do not vendor them will result in an empty SBOM. This is due to a limitation in
 the upstream SBOM generation library (Syft).
 
 <!-- References -->
+<!-- spellchecker-disable -->
 [watchexec]:https://github.com/watchexec/watchexec
 [tilt]:https://tilt.dev/
 [tilt/pack]:https://github.com/tilt-dev/tilt-extensions/tree/master/pack
 [definition/platform]:https://buildpacks.io/docs/concepts/components/platform
 [project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/
 [procfile]:{{< ref "docs/howto/configuration#procfiles" >}}
+[how-to/SBOM]:{{< ref "docs/howto/sbom" >}}
+<!-- spellchecker-enable -->

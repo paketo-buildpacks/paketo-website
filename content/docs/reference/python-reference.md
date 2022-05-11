@@ -71,6 +71,10 @@ does not include information about the application dependencies.
 SBOMs will be generated for applications which leverage `Pip`, `Pipenv`, or
 `Poetry`.
 
+Check out the [Access the Software Bill of Materials
+guide][how-to/SBOM] for more information about how to retrieve
+the SBOM for your Python app image.
+
 Currently the Python buildpack has limited support for generating an SBOM for
 applications which leverage `Miniconda`. Specifically - in order to generate an
 SBOM for a `Miniconda` application, applications must vendor their dependencies
@@ -78,3 +82,13 @@ in addition to defining them via a `package-list.txt` file. `Miniconda`
 applications that declare their dependencies via a `package-list.txt` file but
 do not vendor them will result in an empty SBOM. This is due to a limitation in
 the upstream SBOM generation library (Syft).
+
+<!-- References -->
+<!-- spellchecker-disable -->
+[format/cyclonedx]:https://cyclonedx.org/
+[format/spdx]:https://spdx.dev/
+[format/syft]:https://github.com/anchore/syft/tree/main/schema/json
+[format/paketo]:{{< ref "docs/concepts/sbom#paketo-specific-sbom-format" >}}
+[concepts/SBOM]:{{< ref "docs/concepts/sbom" >}}
+[how-to/SBOM]:{{< ref "docs/howto/sbom" >}}
+<!-- spellchecker-enable -->
