@@ -198,6 +198,21 @@ instructions in the [Applying Custom
 Labels]({{< ref "docs/howto/configuration#applying-custom-labels" >}})
 section of our configuration docs.
 
+## Access the software bill of materials
+The Python buildpack includes support for the software bill of materials (SBOM).
+Check out the [SBOM how-to documentation][paketo/SBOM] for
+details on how to access the SBOM supplied by the buildpacks.
+
+SBOMs will be generated for applications which leverage `Pip`, `Pipenv`, or `Poetry`.
+
+Currently the Python buildpack has limited support for generating an SBOM for
+applications which leverage `Miniconda`. Specifically - in order to generate an
+SBOM for a `Miniconda` application, applications must vendor their dependencies
+in addition to defining them via a `package-list.txt` file. `Miniconda`
+applications that declare their dependencies via a `package-list.txt` file but
+do not vendor them will result in an empty SBOM. This is due to a limitation in
+the upstream SBOM generation library (Syft).
+
 <!-- References -->
 [watchexec]:https://github.com/watchexec/watchexec
 [tilt]:https://tilt.dev/
