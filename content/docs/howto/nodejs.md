@@ -274,11 +274,10 @@ as its start command.
 ## Build and Serve a Frontend Framework App
 
 If you are using a framework that generates a static site for your (e.g. React,
-Vue, Angular) and you would like to have the the buildpacks to run the build
-porcess and then serve using a static web server. The [Paketo Web Servers
-buildpack]({{< ref "/docs/howto/web-servers" >}}) has a [frontend application
-workflow]({{< ref "/docs/howto/web-servers#build-and-serve-a-frontend-framework-app" >}})
-that covers this use case.
+Vue, Angular) and you would like to have the buildpacks to run the build
+process and then serve using a static web server. The [Paketo Web Servers
+buildpack][web-servers] has a [frontend application
+workflow][web-servers/frontend] that covers this use case.
 
 ## Enable Process Reloading
 By default, your Node.js server will be the only process running in your app
@@ -354,4 +353,6 @@ section of our configuration docs.
 [project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/
 [service-binding]:{{< ref "docs/howto/configuration#bindings" >}}
 [npmrc/precedence]:https://docs.npmjs.com/cli/v8/using-npm/config#npmrc-files
+[web-servers]:{{< ref "/docs/howto/web-servers" >}}
+[web-servers/frontend]:{{< ref "/docs/howto/web-servers#build-and-serve-a-frontend-framework-app" >}}
 <!-- spellchecker-enable -->
