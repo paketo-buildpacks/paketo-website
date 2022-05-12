@@ -57,12 +57,13 @@ that specific version as long as it is supported.
 
 ## Use a Package Manager
 
-With the Python CNB, there are three options available for package management
+With the Python CNB, there are four options available for package management
 depending on your application:
 
 * Using [Pip](https://pip.pypa.io)
 * Using [Pipenv](https://pypi.org/project/pipenv)
 * Using [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
+* Using [Poetry](https://python-poetry.org/)
 
 You can find specific information for each option below.
 
@@ -198,10 +199,28 @@ instructions in the [Applying Custom
 Labels]({{< ref "docs/howto/configuration#applying-custom-labels" >}})
 section of our configuration docs.
 
+## Access the software bill of materials
+The Python buildpack includes support for the software bill of materials (SBOM).
+Check out the [SBOM how-to documentation][how-to/SBOM] for
+details on how to access the SBOM supplied by the buildpacks.
+
+SBOMs will be generated for applications which leverage `Pip`, `Pipenv`, or `Poetry`.
+
+Currently the Python buildpack has limited support for generating an SBOM for
+applications which leverage `Miniconda`. Specifically - in order to generate an
+SBOM for a `Miniconda` application, applications must vendor their dependencies
+in addition to defining them via a `package-list.txt` file. `Miniconda`
+applications that declare their dependencies via a `package-list.txt` file but
+do not vendor them will result in an empty SBOM. This is due to a limitation in
+the upstream SBOM generation library (Syft).
+
 <!-- References -->
+<!-- spellchecker-disable -->
 [watchexec]:https://github.com/watchexec/watchexec
 [tilt]:https://tilt.dev/
 [tilt/pack]:https://github.com/tilt-dev/tilt-extensions/tree/master/pack
 [definition/platform]:https://buildpacks.io/docs/concepts/components/platform
 [project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/
 [procfile]:{{< ref "docs/howto/configuration#procfiles" >}}
+[how-to/SBOM]:{{< ref "docs/howto/sbom" >}}
+<!-- spellchecker-enable -->
