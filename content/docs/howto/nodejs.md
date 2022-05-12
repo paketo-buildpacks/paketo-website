@@ -271,60 +271,12 @@ BP_LAUNCHPOINT="./src/launchpoint.js"
 The image produced by the build will run `node src/launchpoint.js`
 as its start command.
 
-## Build and Serve a Front-end Framework App
+## Build and Serve a Frontend Framework App
 
-Combining the Paketo Node.js buildpack with a web server buildpack like the
-Paketo Apache HTTP Server buildpack or Paketo NGINX buildpack allows you to
-easily containerize front-end framework apps (e.g. React, Angular, Vue). The
-buildpacks will build source code into production-ready static assets, then
-automatically configure a web server to serve those assets. Check the Paketo samples
-repository for an example [React app][sample/react-servers] with build instructions.
-
-1. Define a script under the `"scripts"` property of your `package.json` that
-   builds your production-ready static assets. Most frameworks bootstrap this
-   automatically. For React, it's `"build"`.
-
-2. Find out where static assets are stored after the build script runs. It'll
-   be a directory under the root of the app directory. For React, this is
-   `./build` by default.
-
-3. Select which web server to use: NGINX or HTTPD.
-
-4. **[NGINX]** If you chose HTTPD, **skip to step 5**. Use the Node.js and
-   NGINX buildpacks to build your app. Use environment variables to configure
-   the server. `BP_NODE_RUN_SCRIPTS` should be set to the name of the _build
-   script_ from step 1. `BP_WEB_SERVER_ROOT` should be set to the build _output
-   directory_ from step 2. To (optionally) further adjust the behaviour of the
-   NGINX server, see the NGINX How-to [guides][nginx/configure].
-<!-- spellchecker-disable -->
-{{< code/copyable >}}
-pack build frontend-nginx --buildpack paketo-buildpacks/nodejs \
-                          --buildpack paketo-buildpacks/nginx \
-                          --env BP_NODE_RUN_SCRIPTS=build \
-                          --env BP_WEB_SERVER=nginx \
-                          --env BP_WEB_SERVER_ROOT=build
-{{< /code/copyable >}}
-<!-- spellchecker-enable -->
-
-5. **[HTTPD]** If you chose NGINX, **skip to step 6**. Use the Node.js and
-   HTTPD buildpacks to build your app. Use environment variables to configure
-   the server. `BP_NODE_RUN_SCRIPTS` should be set to the name of the _build
-   script_ from step 1. `BP_WEB_SERVER_ROOT` should be set to the build _output
-   directory_ from step 2. To (optionally) further adjust the behaviour of the
-   HTTPD server, see the HTTPD How-to [guides][httpd/configure].
-<!-- spellchecker-disable -->
-{{< code/copyable >}}
-pack build frontend-httpd --buildpack paketo-buildpacks/nodejs \
-                          --buildpack paketo-buildpacks/httpd \
-                          --env BP_NODE_RUN_SCRIPTS=build \
-                          --env BP_WEB_SERVER=httpd \
-                          --env BP_WEB_SERVER_ROOT=build
-{{< /code/copyable >}}
-<!-- spellchecker-enable -->
-
-6. You're done! The resulting app container will serve your frontend app with
-   an automatically generated server configuration.
-
+If you are using a framework that generates a static site from JavaScript source
+code (e.g. React, Vue, Angular), you can use the [Paketo Web Servers
+buildpack][web-servers] to build the static assets and automatically configure
+a web server. The Web Servers [documentation][web-servers/frontend] covers this use case.
 
 ## Enable Process Reloading
 By default, your Node.js server will be the only process running in your app
@@ -400,8 +352,6 @@ section of our configuration docs.
 [project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/
 [service-binding]:{{< ref "docs/howto/configuration#bindings" >}}
 [npmrc/precedence]:https://docs.npmjs.com/cli/v8/using-npm/config#npmrc-files
-
-[nginx/configure]:{{< ref "docs/howto/web-servers#automatically-generate-an-nginxconf" >}}
-[httpd/configure]:{{< ref "docs/howto/web-servers#automatically-generate-an-httpdconf" >}}
-[sample/react-servers]:https://github.com/paketo-buildpacks/samples/tree/main/nodejs/react-httpd-nginx
+[web-servers]:{{< ref "/docs/howto/web-servers" >}}
+[web-servers/frontend]:{{< ref "/docs/howto/web-servers#build-and-serve-a-frontend-framework-app" >}}
 <!-- spellchecker-enable -->

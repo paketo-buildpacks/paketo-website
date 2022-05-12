@@ -45,6 +45,7 @@ FDD
 FDE
 ([a-z]+\-)?FPM(\-[a-z]+)?
 FastCGI
+Frontend
 GOARCH=[a-zA-Z0-9_\-]+
 GOOS=linux
 GZIP_DOWNLOADS=off
@@ -242,6 +243,7 @@ integrations
 io
 ioutil
 jattach
+javascript-frontend
 jdk
 jq
 jre
