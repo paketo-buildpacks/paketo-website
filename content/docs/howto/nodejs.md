@@ -273,11 +273,10 @@ as its start command.
 
 ## Build and Serve a Frontend Framework App
 
-If you are using a framework that generates a static site for your (e.g. React,
-Vue, Angular) and you would like to have the buildpacks to run the build
-process and then serve using a static web server. The [Paketo Web Servers
-buildpack][web-servers] has a [frontend application
-workflow][web-servers/frontend] that covers this use case.
+If you are using a framework that generates a static site from JavaScript source
+code (e.g. React, Vue, Angular), you can use the [Paketo Web Servers
+buildpack][web-servers] to build the static assets and automatically configure
+a web server. The Web Servers [documentation][web-servers/frontend] covers this use case.
 
 ## Enable Process Reloading
 By default, your Node.js server will be the only process running in your app
