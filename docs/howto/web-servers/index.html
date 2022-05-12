@@ -471,6 +471,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#use-dynamic-modules-at-app-launch-time">Use Dynamic Modules at App Launch Time</a></li>
       </ul>
     </li>
+    <li><a href="#build-and-serve-a-frontend-framework-app">Build and Serve a Frontend Framework App</a></li>
   </ul>
 </nav>
 </div>
@@ -834,6 +835,75 @@ following to the top of your <code>nginx.conf</code> file. You do not need to pr
 <p>See the <a href="https://nginx.org/en/docs/beginners_guide.html#conf_structure">NGINX
 docs</a> for more
 information about how to set up an <code>nginx.conf</code> file.</p>
+<h2 id="build-and-serve-a-frontend-framework-app" class="markup-heading">
+    <a class="markup-heading__link" href="#build-and-serve-a-frontend-framework-app">
+        Build and Serve a Frontend Framework App
+    </a>
+</h2><p>The Paketo Web Servers buildpack combines buildpacks for Node.js with
+buildpacks for Apache HTTP Server and NGINX. As a result, it can build
+JavaScript source code into production-ready static assets, then automatically
+configure a web server to serve those assets. Check the Paketo samples
+repository for an example <a href="https://github.com/paketo-buildpacks/samples/tree/main/web-servers/javascript-frontend-sample">React app</a> with build
+instructions.</p>
+<ol>
+<li>
+<p>Define a script under the <code>&quot;scripts&quot;</code> property of your <code>package.json</code> that
+builds your production-ready static assets. Most frameworks bootstrap this
+automatically. For React, it&rsquo;s <code>&quot;build&quot;</code>.</p>
+</li>
+<li>
+<p>Find out where static assets are stored after the build script runs. It&rsquo;ll
+be a directory under the root of the app directory. For React, this is
+<code>./build</code> by default.</p>
+</li>
+<li>
+<p>Select which web server to use: NGINX or HTTPD.</p>
+</li>
+<li>
+<p><strong>[NGINX]</strong> If you chose HTTPD, <strong>skip to step 5</strong>.  Use environment
+variables to configure the server. <code>BP_NODE_RUN_SCRIPTS</code> should be set to
+the name of the <em>build script</em> from step 1. <code>BP_WEB_SERVER_ROOT</code> should be
+set to the build <em>output directory</em> from step 2. To (optionally) further
+adjust the behaviour of the NGINX server, see the NGINX How-to
+<a href="https://paketo.io/docs/howto/web-servers/#automatically-generate-an-nginxconf">guides</a>.</p>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">pack build frontend-nginx --buildpack paketo-buildpacks/web-servers \
+                          --env BP_NODE_RUN_SCRIPTS=build \
+                          --env BP_WEB_SERVER=nginx \
+                          --env BP_WEB_SERVER_ROOT=build
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<!-- raw HTML omitted -->
+<ol start="5">
+<li><strong>[HTTPD]</strong> If you chose NGINX, <strong>skip to step 6</strong>. Use environment
+variables to configure the server. <code>BP_NODE_RUN_SCRIPTS</code> should be set to
+the name of the <em>build script</em> from step 1. <code>BP_WEB_SERVER_ROOT</code> should be
+set to the build <em>output directory</em> from step 2. To (optionally) further
+adjust the behaviour of the HTTPD server, see the HTTPD How-to
+<a href="https://paketo.io/docs/howto/web-servers/#automatically-generate-an-httpdconf">guides</a>.</li>
+</ol>
+<!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">pack build frontend-httpd --buildpack paketo-buildpacks/web-servers \
+                          --env BP_NODE_RUN_SCRIPTS=build \
+                          --env BP_WEB_SERVER=httpd \
+                          --env BP_WEB_SERVER_ROOT=build
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<!-- raw HTML omitted -->
+<ol start="6">
+<li>You&rsquo;re done! The resulting app container will serve your frontend app with
+an automatically generated server configuration.</li>
+</ol>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
             </div>
@@ -871,6 +941,7 @@ information about how to set up an <code>nginx.conf</code> file.</p>
         <li><a href="#use-dynamic-modules-at-app-launch-time">Use Dynamic Modules at App Launch Time</a></li>
       </ul>
     </li>
+    <li><a href="#build-and-serve-a-frontend-framework-app">Build and Serve a Frontend Framework App</a></li>
   </ul>
 </nav>
 </div>
