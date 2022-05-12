@@ -271,12 +271,14 @@ BP_LAUNCHPOINT="./src/launchpoint.js"
 The image produced by the build will run `node src/launchpoint.js`
 as its start command.
 
-## Build and Serve a Front-end Framework App
+## Build and Serve a Frontend Framework App
 
-This functionality is handled by the [Paketo Web Servers buildpack]({{< ref
-"/docs/howto/web-servers" >}}). If you would like to read about how to
-configure an app to use this feature, you can check that section out [here]({{<
-ref "/docs/howto/web-servers#build-and-serve-a-front-end-framework-app" >}}).
+If you are using a framework that generates a static site for your (e.g. React,
+Vue, Angular) and you would like to have the the buildpacks to run the build
+porcess and then serve using a static web server. The [Paketo Web Servers
+buildpack]({{< ref "/docs/howto/web-servers" >}}) has a [frontend application
+workflow]({{< ref "/docs/howto/web-servers#build-and-serve-a-frontend-framework-app" >}})
+that covers this use case.
 
 ## Enable Process Reloading
 By default, your Node.js server will be the only process running in your app

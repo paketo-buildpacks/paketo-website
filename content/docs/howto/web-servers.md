@@ -315,12 +315,14 @@ See the [NGINX
 docs](https://nginx.org/en/docs/beginners_guide.html#conf_structure) for more
 information about how to set up an `nginx.conf` file.
 
-## Build and Serve a Front-end Framework App
+## Build and Serve a Frontend Framework App
 
-The Paketo Web Servers buildpack combines buildpacks for Node.js with buildpacks for Apache HTTP Server and NGINX. As a result, it can build JavaScript source code into
-production-ready static assets, then automatically configure a web server to
-serve those assets. Check the Paketo samples repository for an example [React
-app][sample/react-servers] with build instructions.
+The Paketo Web Servers buildpack combines buildpacks for Node.js with
+buildpacks for Apache HTTP Server and NGINX. As a result, it can build
+JavaScript source code into production-ready static assets, then automatically
+configure a web server to serve those assets. Check the Paketo samples
+repository for an example [React app][sample/javascript-frontend] with build
+instructions.
 
 1. Define a script under the `"scripts"` property of your `package.json` that
    builds your production-ready static assets. Most frameworks bootstrap this
@@ -364,8 +366,6 @@ pack build frontend-httpd --buildpack paketo-buildpacks/web-servers \
 
 6. You're done! The resulting app container will serve your frontend app with
    an automatically generated server configuration.
-
-
 
 <!-- spellchecker-disable -->
 <!-- References -->
