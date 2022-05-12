@@ -317,11 +317,7 @@ information about how to set up an `nginx.conf` file.
 
 ## Build and Serve a Front-end Framework App
 
-Combining the Paketo Node.js buildpack with a web server buildpack like the
-Paketo Apache HTTP Server buildpack or Paketo NGINX buildpack allows you to
-easily containerize front-end framework apps (e.g. React, Angular, Vue). This
-workflow has fortunately already been conveniently laid out for you in the Paketo
-Web Servers buildpack. The buildpack will build source code into
+The Paketo Web Servers buildpack combines buildpacks for Node.js with buildpacks for Apache HTTP Server and NGINX. As a result, it can build JavaScript source code into
 production-ready static assets, then automatically configure a web server to
 serve those assets. Check the Paketo samples repository for an example [React
 app][sample/react-servers] with build instructions.
