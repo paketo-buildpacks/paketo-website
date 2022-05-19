@@ -93,5 +93,10 @@ the SBOM for your Ruby app image.
 
 <!-- References -->
 <!-- spellchecker-disable -->
+[format/cyclonedx]:https://cyclonedx.org/
+[format/spdx]:https://spdx.dev/
+[format/syft]:https://github.com/anchore/syft/tree/main/schema/json
+[format/paketo]:{{< ref "docs/concepts/sbom#paketo-specific-sbom-format" >}}
+[concepts/SBOM]:{{< ref "docs/concepts/sbom" >}}
 [how-to/SBOM]:{{< ref "docs/howto/sbom" >}}
 <!-- spellchecker-enable -->
