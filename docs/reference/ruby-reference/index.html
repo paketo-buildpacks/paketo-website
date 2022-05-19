@@ -469,6 +469,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
       </ul>
     </li>
+    <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
   </ul>
 </nav>
 </div>
@@ -565,6 +566,23 @@ variable and its impact on your app.</p>
 <li>Phases: <code>build</code> and <code>launch</code></li>
 <li>Value: location where all gems in your bundle will be located</li>
 </ul>
+<h2 id="software-bill-of-materials" class="markup-heading">
+    <a class="markup-heading__link" href="#software-bill-of-materials">
+        Software Bill of Materials
+    </a>
+</h2><p>The Ruby buildpack supports the full <a href="https://paketo.io/docs/concepts/sbom/">software bill of
+materials</a> (SBOM) in <a href="https://github.com/anchore/syft/tree/main/schema/json">Syft</a>,
+<a href="https://cyclonedx.org/">CycloneDX</a>, and <a href="https://spdx.dev/">SPDX</a> formats. The Ruby
+buildpack also includes limited support for the
+<a href="https://paketo.io/docs/concepts/sbom/#paketo-specific-sbom-format">Paketo-specific</a> SBOM format. This Paketo-specific SBOM format
+does not include information about the application dependencies.</p>
+<p>SBOMs will be generated for applications which leverage Bundler.</p>
+<p>Check out the <a href="https://paketo.io/docs/howto/sbom/">Access the Software Bill of Materials
+guide</a> for more information about how to retrieve
+the SBOM for your Ruby app image.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 
             </div>
             
@@ -599,6 +617,7 @@ variable and its impact on your app.</p>
         <li><a href="#bundle_path"><code>BUNDLE_PATH</code></a></li>
       </ul>
     </li>
+    <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
   </ul>
 </nav>
 </div>
