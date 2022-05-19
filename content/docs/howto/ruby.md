@@ -220,6 +220,7 @@ access the SBOM supplied by the buildpacks.
 SBOMs will be generated for applications which leverage `Bundler`.
 
 <!-- References -->
+<!-- spellchecker-disable -->
 [bp/releases]:https://github.com/paketo-buildpacks/mri/releases/latest
 [bp/toml]:https://github.com/paketo-buildpacks/mri/blob/main/buildpack.toml
 [bundler/toml]:https://github.com/paketo-buildpacks/bundler/blob/main/buildpack.toml
@@ -228,3 +229,4 @@ SBOMs will be generated for applications which leverage `Bundler`.
 [cnb/project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor
 [samples/rake]:https://github.com/paketo-buildpacks/samples/tree/main/ruby/rake
 [how-to/SBOM]:{{< ref "docs/howto/sbom" >}}
+<!-- spellchecker-enable -->
