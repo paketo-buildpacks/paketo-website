@@ -1532,7 +1532,7 @@
     var n2 = e2.translations, r2 = n2 === void 0 ? {} : n2, o2 = We(e2, Ve), c2 = r2.buttonText, i2 = c2 === void 0 ? "Search" : c2, a2 = r2.buttonAriaLabel, u2 = a2 === void 0 ? "Search" : a2, l2 = oe(function() {
       return typeof navigator != "undefined" ? /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? "\u2318" : "Ctrl" : null;
     }, []);
-    return Ue.createElement("button", ze({ type: "button", className: "DocSearch DocSearch-Button", "aria-label": u2 }, o2, { ref: t2 }), Ue.createElement("span", { className: "DocSearch-Button-Container" }, Ue.createElement(Be, null), Ue.createElement("span", { className: "DocSearch-Button-Placeholder" }, i2)), Ue.createElement("span", { className: "DocSearch-Button-Keys" }, l2 !== null && Ue.createElement(Ue.Fragment, null, Ue.createElement("span", { className: "DocSearch-Button-Key" }, l2 === "Ctrl" ? Ue.createElement(Fe, null) : l2), Ue.createElement("span", { className: "DocSearch-Button-Key" }, "K"))));
+    return Ue.createElement("button", ze({ type: "button", className: "DocSearch DocSearch-Button", "aria-label": u2 }, o2, { ref: t2 }), Ue.createElement("span", { className: "DocSearch-Button-Container" }, Ue.createElement(Be, null), Ue.createElement("span", { className: "DocSearch-Button-Placeholder" }, i2)), Ue.createElement("span", { className: "DocSearch-Button-Keys" }, l2 !== null && Ue.createElement(Ue.Fragment, null, Ue.createElement("kbd", { className: "DocSearch-Button-Key" }, l2 === "Ctrl" ? Ue.createElement(Fe, null) : l2), Ue.createElement("kbd", { className: "DocSearch-Button-Key" }, "K"))));
   });
   function Je(e2, t2) {
     return function(e3) {
@@ -1616,7 +1616,7 @@
   }
   var tt = function() {
   };
-  var nt = [{ segment: "autocomplete-core", version: "1.5.2" }];
+  var nt = [{ segment: "autocomplete-core", version: "1.6.3" }];
   var rt = { current: {} };
   function ot(e2) {
     (function(e3, t2) {
@@ -1740,7 +1740,8 @@
     }({ state: e2, collection: t2 })], r2 = t2.source;
     return { item: n2, itemInputValue: r2.getItemInputValue({ item: n2, state: e2 }), itemUrl: r2.getItemUrl({ item: n2, state: e2 }), source: r2 };
   }
-  function dt(e2, t2) {
+  var dt = /((gt|sm)-|galaxy nexus)|samsung[- ]/i;
+  function ht(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -1750,21 +1751,21 @@
     }
     return n2;
   }
-  function ht(e2) {
+  function vt(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = arguments[t2] != null ? arguments[t2] : {};
-      t2 % 2 ? dt(Object(n2), true).forEach(function(t3) {
-        vt(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : dt(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? ht(Object(n2), true).forEach(function(t3) {
+        yt(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : ht(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function vt(e2, t2, n2) {
+  function yt(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function yt(e2, t2) {
+  function _t(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -1774,10 +1775,10 @@
     }
     return n2;
   }
-  function _t(e2, t2, n2) {
+  function bt(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function bt(e2, t2, n2) {
+  function gt(e2, t2, n2) {
     var r2, o2 = t2.initialState;
     return { getState: function() {
       return o2;
@@ -1785,9 +1786,9 @@
       var i2 = function(e3) {
         for (var t3 = 1; t3 < arguments.length; t3++) {
           var n3 = arguments[t3] != null ? arguments[t3] : {};
-          t3 % 2 ? yt(Object(n3), true).forEach(function(t4) {
-            _t(e3, t4, n3[t4]);
-          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e3, Object.getOwnPropertyDescriptors(n3)) : yt(Object(n3)).forEach(function(t4) {
+          t3 % 2 ? _t(Object(n3), true).forEach(function(t4) {
+            bt(e3, t4, n3[t4]);
+          }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e3, Object.getOwnPropertyDescriptors(n3)) : _t(Object(n3)).forEach(function(t4) {
             Object.defineProperty(e3, t4, Object.getOwnPropertyDescriptor(n3, t4));
           });
         }
@@ -1808,7 +1809,7 @@
       return r2.length === 0;
     } }) };
   }
-  function gt(e2, t2) {
+  function Ot(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -1818,24 +1819,24 @@
     }
     return n2;
   }
-  function Ot(e2) {
+  function St(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = arguments[t2] != null ? arguments[t2] : {};
-      t2 % 2 ? gt(Object(n2), true).forEach(function(t3) {
-        St(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : gt(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? Ot(Object(n2), true).forEach(function(t3) {
+        Et(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Ot(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function St(e2, t2, n2) {
+  function Et(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function Et(e2) {
+  function wt(e2) {
     return function(e3) {
       if (Array.isArray(e3))
-        return wt(e3);
+        return jt(e3);
     }(e2) || function(e3) {
       if (typeof Symbol != "undefined" && e3[Symbol.iterator] != null || e3["@@iterator"] != null)
         return Array.from(e3);
@@ -1843,24 +1844,24 @@
       if (!e3)
         return;
       if (typeof e3 == "string")
-        return wt(e3, t2);
+        return jt(e3, t2);
       var n2 = Object.prototype.toString.call(e3).slice(8, -1);
       n2 === "Object" && e3.constructor && (n2 = e3.constructor.name);
       if (n2 === "Map" || n2 === "Set")
         return Array.from(e3);
       if (n2 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
-        return wt(e3, t2);
+        return jt(e3, t2);
     }(e2) || function() {
       throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }();
   }
-  function wt(e2, t2) {
+  function jt(e2, t2) {
     (t2 == null || t2 > e2.length) && (t2 = e2.length);
     for (var n2 = 0, r2 = new Array(t2); n2 < t2; n2++)
       r2[n2] = e2[n2];
     return r2;
   }
-  function jt(e2, t2) {
+  function Pt(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -1870,21 +1871,21 @@
     }
     return n2;
   }
-  function Pt(e2) {
+  function It(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = arguments[t2] != null ? arguments[t2] : {};
-      t2 % 2 ? jt(Object(n2), true).forEach(function(t3) {
-        It(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : jt(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? Pt(Object(n2), true).forEach(function(t3) {
+        kt(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Pt(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function It(e2, t2, n2) {
+  function kt(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function kt(e2, t2) {
+  function Dt(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -1894,31 +1895,31 @@
     }
     return n2;
   }
-  function Dt(e2) {
+  function Ct(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = arguments[t2] != null ? arguments[t2] : {};
-      t2 % 2 ? kt(Object(n2), true).forEach(function(t3) {
-        Ct(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : kt(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? Dt(Object(n2), true).forEach(function(t3) {
+        At(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Dt(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function Ct(e2, t2, n2) {
+  function At(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function At(e2) {
-    return At = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e3) {
+  function xt(e2) {
+    return xt = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(e3) {
       return typeof e3;
     } : function(e3) {
       return e3 && typeof Symbol == "function" && e3.constructor === Symbol && e3 !== Symbol.prototype ? "symbol" : typeof e3;
-    }, At(e2);
+    }, xt(e2);
   }
-  function xt(e2) {
+  function Nt(e2) {
     return function(e3) {
       if (Array.isArray(e3))
-        return Nt(e3);
+        return Rt(e3);
     }(e2) || function(e3) {
       if (typeof Symbol != "undefined" && e3[Symbol.iterator] != null || e3["@@iterator"] != null)
         return Array.from(e3);
@@ -1926,24 +1927,24 @@
       if (!e3)
         return;
       if (typeof e3 == "string")
-        return Nt(e3, t2);
+        return Rt(e3, t2);
       var n2 = Object.prototype.toString.call(e3).slice(8, -1);
       n2 === "Object" && e3.constructor && (n2 = e3.constructor.name);
       if (n2 === "Map" || n2 === "Set")
         return Array.from(e3);
       if (n2 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
-        return Nt(e3, t2);
+        return Rt(e3, t2);
     }(e2) || function() {
       throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }();
   }
-  function Nt(e2, t2) {
+  function Rt(e2, t2) {
     (t2 == null || t2 > e2.length) && (t2 = e2.length);
     for (var n2 = 0, r2 = new Array(t2); n2 < t2; n2++)
       r2[n2] = e2[n2];
     return r2;
   }
-  function Rt(e2, t2) {
+  function Tt(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -1953,46 +1954,46 @@
     }
     return n2;
   }
-  function Tt(e2) {
+  function Lt(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = arguments[t2] != null ? arguments[t2] : {};
-      t2 % 2 ? Rt(Object(n2), true).forEach(function(t3) {
-        Lt(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Rt(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? Tt(Object(n2), true).forEach(function(t3) {
+        qt(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Tt(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function Lt(e2, t2, n2) {
+  function qt(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function qt(e2) {
+  function Mt(e2) {
     return Boolean(e2.execute);
   }
-  function Mt(e2, t2) {
-    return n2 = e2, Boolean(n2 == null ? void 0 : n2.execute) ? Tt(Tt({}, e2), {}, { requests: e2.queries.map(function(n3) {
+  function Ht(e2, t2) {
+    return n2 = e2, Boolean(n2 == null ? void 0 : n2.execute) ? Lt(Lt({}, e2), {}, { requests: e2.queries.map(function(n3) {
       return { query: n3, sourceId: t2, transformResponse: e2.transformResponse };
     }) }) : { items: e2, sourceId: t2 };
     var n2;
   }
-  function Ht(e2) {
+  function Ut(e2) {
     var t2 = e2.reduce(function(e3, t3) {
-      if (!qt(t3))
+      if (!Mt(t3))
         return e3.push(t3), e3;
-      var n2 = t3.searchClient, r2 = t3.execute, o2 = t3.requests, c2 = e3.find(function(e4) {
-        return qt(t3) && qt(e4) && e4.searchClient === n2 && e4.execute === r2;
+      var n2 = t3.searchClient, r2 = t3.execute, o2 = t3.requesterId, c2 = t3.requests, i2 = e3.find(function(e4) {
+        return Mt(t3) && Mt(e4) && e4.searchClient === n2 && Boolean(o2) && e4.requesterId === o2;
       });
-      if (c2) {
-        var i2;
-        (i2 = c2.items).push.apply(i2, xt(o2));
+      if (i2) {
+        var a2;
+        (a2 = i2.items).push.apply(a2, Nt(c2));
       } else {
-        var a2 = { execute: r2, items: o2, searchClient: n2 };
-        e3.push(a2);
+        var u2 = { execute: r2, requesterId: o2, items: c2, searchClient: n2 };
+        e3.push(u2);
       }
       return e3;
     }, []).map(function(e3) {
-      if (!qt(e3))
+      if (!Mt(e3))
         return Promise.resolve(e3);
       var t3 = e3, n2 = t3.execute, r2 = t3.items;
       return n2({ searchClient: t3.searchClient, requests: r2 });
@@ -2001,7 +2002,7 @@
       return Ge(e3);
     });
   }
-  function Ut(e2, t2) {
+  function Ft(e2, t2) {
     return t2.map(function(t3) {
       var n2 = e2.filter(function(e3) {
         return e3.sourceId === t3.sourceId;
@@ -2010,8 +2011,8 @@
       }), o2 = n2[0].transformResponse, c2 = o2 ? o2(function(e3) {
         var t4 = e3.map(function(e4) {
           var t5;
-          return ht(ht({}, e4), {}, { hits: (t5 = e4.hits) === null || t5 === void 0 ? void 0 : t5.map(function(t6) {
-            return ht(ht({}, t6), {}, { __autocomplete_indexName: e4.index, __autocomplete_queryID: e4.queryID });
+          return vt(vt({}, e4), {}, { hits: (t5 = e4.hits) === null || t5 === void 0 ? void 0 : t5.map(function(t6) {
+            return vt(vt({}, t6), {}, { __autocomplete_indexName: e4.index, __autocomplete_queryID: e4.queryID });
           }) });
         });
         return { results: t4, hits: t4.map(function(e4) {
@@ -2024,12 +2025,12 @@
         }).filter(Boolean) };
       }(r2)) : r2;
       return et(Array.isArray(c2), function() {
-        return 'The `getItems` function from source "'.concat(t3.sourceId, '" must return an array of items but returned type ').concat(JSON.stringify(At(c2)), ":\n\n").concat(JSON.stringify(Ye(c2), null, 2), ".\n\nSee: https://www.algolia.com/doc/ui-libraries/autocomplete/core-concepts/sources/#param-getitems");
+        return 'The `getItems` function from source "'.concat(t3.sourceId, '" must return an array of items but returned type ').concat(JSON.stringify(xt(c2)), ":\n\n").concat(JSON.stringify(Ye(c2), null, 2), ".\n\nSee: https://www.algolia.com/doc/ui-libraries/autocomplete/core-concepts/sources/#param-getitems");
       }), et(c2.every(Boolean), 'The `getItems` function from source "'.concat(t3.sourceId, '" must return an array of items but returned ').concat(JSON.stringify(void 0), ".\n\nDid you forget to return items?\n\nSee: https://www.algolia.com/doc/ui-libraries/autocomplete/core-concepts/sources/#param-getitems")), { source: t3, items: c2 };
     });
   }
-  var Ft = ["event", "nextState", "props", "query", "refresh", "store"];
-  function Bt(e2, t2) {
+  var Bt = ["event", "nextState", "props", "query", "refresh", "store"];
+  function Vt(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -2039,21 +2040,21 @@
     }
     return n2;
   }
-  function Vt(e2) {
+  function zt(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = arguments[t2] != null ? arguments[t2] : {};
-      t2 % 2 ? Bt(Object(n2), true).forEach(function(t3) {
-        zt(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Bt(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? Vt(Object(n2), true).forEach(function(t3) {
+        Wt(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Vt(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function zt(e2, t2, n2) {
+  function Wt(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function Wt(e2, t2) {
+  function Kt(e2, t2) {
     if (e2 == null)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -2071,44 +2072,44 @@
     }
     return o2;
   }
-  var Kt;
   var Jt;
   var $t;
-  var Qt = null;
-  var Yt = (Kt = -1, Jt = -1, $t = void 0, function(e2) {
-    var t2 = ++Kt;
+  var Qt;
+  var Yt = null;
+  var Gt = (Jt = -1, $t = -1, Qt = void 0, function(e2) {
+    var t2 = ++Jt;
     return Promise.resolve(e2).then(function(e3) {
-      return $t && t2 < Jt ? $t : (Jt = t2, $t = e3, e3);
+      return Qt && t2 < $t ? Qt : ($t = t2, Qt = e3, e3);
     });
   });
-  function Gt(e2) {
-    var t2 = e2.event, n2 = e2.nextState, r2 = n2 === void 0 ? {} : n2, o2 = e2.props, c2 = e2.query, i2 = e2.refresh, a2 = e2.store, u2 = Wt(e2, Ft);
-    Qt && o2.environment.clearTimeout(Qt);
+  function Zt(e2) {
+    var t2 = e2.event, n2 = e2.nextState, r2 = n2 === void 0 ? {} : n2, o2 = e2.props, c2 = e2.query, i2 = e2.refresh, a2 = e2.store, u2 = Kt(e2, Bt);
+    Yt && o2.environment.clearTimeout(Yt);
     var l2 = u2.setCollections, s2 = u2.setIsOpen, f2 = u2.setQuery, p2 = u2.setActiveItemId, m2 = u2.setStatus;
     if (f2(c2), p2(o2.defaultActiveItemId), !c2 && o2.openOnFocus === false) {
       var d2, h2 = a2.getState().collections.map(function(e3) {
-        return Vt(Vt({}, e3), {}, { items: [] });
+        return zt(zt({}, e3), {}, { items: [] });
       });
       m2("idle"), l2(h2), s2((d2 = r2.isOpen) !== null && d2 !== void 0 ? d2 : o2.shouldPanelOpen({ state: a2.getState() }));
-      var v2 = it(Yt(h2).then(function() {
+      var v2 = it(Gt(h2).then(function() {
         return Promise.resolve();
       }));
       return a2.pendingRequests.add(v2);
     }
-    m2("loading"), Qt = o2.environment.setTimeout(function() {
+    m2("loading"), Yt = o2.environment.setTimeout(function() {
       m2("stalled");
     }, o2.stallThreshold);
-    var y2 = it(Yt(o2.getSources(Vt({ query: c2, refresh: i2, state: a2.getState() }, u2)).then(function(e3) {
+    var y2 = it(Gt(o2.getSources(zt({ query: c2, refresh: i2, state: a2.getState() }, u2)).then(function(e3) {
       return Promise.all(e3.map(function(e4) {
-        return Promise.resolve(e4.getItems(Vt({ query: c2, refresh: i2, state: a2.getState() }, u2))).then(function(t3) {
-          return Mt(t3, e4.sourceId);
+        return Promise.resolve(e4.getItems(zt({ query: c2, refresh: i2, state: a2.getState() }, u2))).then(function(t3) {
+          return Ht(t3, e4.sourceId);
         });
-      })).then(Ht).then(function(t3) {
-        return Ut(t3, e3);
+      })).then(Ut).then(function(t3) {
+        return Ft(t3, e3);
       }).then(function(e4) {
         return function(e5) {
           var t3 = e5.collections, n3 = e5.props, r3 = e5.state, o3 = t3.reduce(function(e6, t4) {
-            return Dt(Dt({}, e6), {}, Ct({}, t4.source.sourceId, Dt(Dt({}, t4.source), {}, { getItems: function() {
+            return Ct(Ct({}, e6), {}, At({}, t4.source.sourceId, Ct(Ct({}, t4.source), {}, { getItems: function() {
               return Ge(t4.items);
             } })));
           }, {});
@@ -2125,15 +2126,15 @@
       var p3 = mt(a2.getState());
       if (a2.getState().activeItemId !== null && p3) {
         var d3 = p3.item, h3 = p3.itemInputValue, v3 = p3.itemUrl, y3 = p3.source;
-        y3.onActive(Vt({ event: t2, item: d3, itemInputValue: h3, itemUrl: v3, refresh: i2, source: y3, state: a2.getState() }, u2));
+        y3.onActive(zt({ event: t2, item: d3, itemInputValue: h3, itemUrl: v3, refresh: i2, source: y3, state: a2.getState() }, u2));
       }
     }).finally(function() {
-      m2("idle"), Qt && o2.environment.clearTimeout(Qt);
+      m2("idle"), Yt && o2.environment.clearTimeout(Yt);
     });
     return a2.pendingRequests.add(y2);
   }
-  var Zt = ["event", "props", "refresh", "store"];
-  function Xt(e2, t2) {
+  var Xt = ["event", "props", "refresh", "store"];
+  function en(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -2143,21 +2144,21 @@
     }
     return n2;
   }
-  function en(e2) {
+  function tn(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = arguments[t2] != null ? arguments[t2] : {};
-      t2 % 2 ? Xt(Object(n2), true).forEach(function(t3) {
-        tn(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Xt(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? en(Object(n2), true).forEach(function(t3) {
+        nn(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : en(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function tn(e2, t2, n2) {
+  function nn(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function nn(e2, t2) {
+  function rn(e2, t2) {
     if (e2 == null)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -2175,12 +2176,12 @@
     }
     return o2;
   }
-  var rn = ["props", "refresh", "store"];
-  var on = ["inputElement", "formElement", "panelElement"];
-  var cn = ["inputElement"];
-  var an = ["inputElement", "maxLength"];
-  var un = ["item", "source"];
-  function ln(e2, t2) {
+  var on = ["props", "refresh", "store"];
+  var cn = ["inputElement", "formElement", "panelElement"];
+  var an = ["inputElement"];
+  var un = ["inputElement", "maxLength"];
+  var ln = ["item", "source"];
+  function sn(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -2190,21 +2191,21 @@
     }
     return n2;
   }
-  function sn(e2) {
+  function fn(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = arguments[t2] != null ? arguments[t2] : {};
-      t2 % 2 ? ln(Object(n2), true).forEach(function(t3) {
-        fn(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : ln(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? sn(Object(n2), true).forEach(function(t3) {
+        pn(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : sn(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function fn(e2, t2, n2) {
+  function pn(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function pn(e2, t2) {
+  function mn(e2, t2) {
     if (e2 == null)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -2222,41 +2223,44 @@
     }
     return o2;
   }
-  function mn(e2) {
-    var t2 = e2.props, n2 = e2.refresh, r2 = e2.store, o2 = pn(e2, rn);
+  function dn(e2) {
+    var t2 = e2.props, n2 = e2.refresh, r2 = e2.store, o2 = mn(e2, on);
     return { getEnvironmentProps: function(e3) {
       var n3 = e3.inputElement, o3 = e3.formElement, c2 = e3.panelElement;
-      return sn({ onTouchStart: function(e4) {
+      return fn({ onTouchStart: function(e4) {
         !r2.getState().isOpen && r2.pendingRequests.isEmpty() || e4.target === n3 || [o3, c2].some(function(t3) {
           return n4 = t3, r3 = e4.target, n4 === r3 || n4.contains(r3);
           var n4, r3;
         }) === false && (r2.dispatch("blur", null), t2.debug || r2.pendingRequests.cancelAll());
       }, onTouchMove: function(e4) {
         r2.getState().isOpen !== false && n3 === t2.environment.document.activeElement && e4.target !== n3 && n3.blur();
-      } }, pn(e3, on));
+      } }, mn(e3, cn));
     }, getRootProps: function(e3) {
-      return sn({ role: "combobox", "aria-expanded": r2.getState().isOpen, "aria-haspopup": "listbox", "aria-owns": r2.getState().isOpen ? "".concat(t2.id, "-list") : void 0, "aria-labelledby": "".concat(t2.id, "-label") }, e3);
+      return fn({ role: "combobox", "aria-expanded": r2.getState().isOpen, "aria-haspopup": "listbox", "aria-owns": r2.getState().isOpen ? "".concat(t2.id, "-list") : void 0, "aria-labelledby": "".concat(t2.id, "-label") }, e3);
     }, getFormProps: function(e3) {
       e3.inputElement;
-      return sn({ action: "", noValidate: true, role: "search", onSubmit: function(c2) {
+      return fn({ action: "", noValidate: true, role: "search", onSubmit: function(c2) {
         var i2;
-        c2.preventDefault(), t2.onSubmit(sn({ event: c2, refresh: n2, state: r2.getState() }, o2)), r2.dispatch("submit", null), (i2 = e3.inputElement) === null || i2 === void 0 || i2.blur();
+        c2.preventDefault(), t2.onSubmit(fn({ event: c2, refresh: n2, state: r2.getState() }, o2)), r2.dispatch("submit", null), (i2 = e3.inputElement) === null || i2 === void 0 || i2.blur();
       }, onReset: function(c2) {
         var i2;
-        c2.preventDefault(), t2.onReset(sn({ event: c2, refresh: n2, state: r2.getState() }, o2)), r2.dispatch("reset", null), (i2 = e3.inputElement) === null || i2 === void 0 || i2.focus();
-      } }, pn(e3, cn));
+        c2.preventDefault(), t2.onReset(fn({ event: c2, refresh: n2, state: r2.getState() }, o2)), r2.dispatch("reset", null), (i2 = e3.inputElement) === null || i2 === void 0 || i2.focus();
+      } }, mn(e3, an));
     }, getLabelProps: function(e3) {
-      return sn({ htmlFor: "".concat(t2.id, "-input"), id: "".concat(t2.id, "-label") }, e3);
+      return fn({ htmlFor: "".concat(t2.id, "-input"), id: "".concat(t2.id, "-label") }, e3);
     }, getInputProps: function(e3) {
-      function c2(e4) {
-        (t2.openOnFocus || Boolean(r2.getState().query)) && Gt(sn({ event: e4, props: t2, query: r2.getState().completion || r2.getState().query, refresh: n2, store: r2 }, o2)), r2.dispatch("focus", null);
+      var c2;
+      function i2(e4) {
+        (t2.openOnFocus || Boolean(r2.getState().query)) && Zt(fn({ event: e4, props: t2, query: r2.getState().completion || r2.getState().query, refresh: n2, store: r2 }, o2)), r2.dispatch("focus", null);
       }
-      var i2 = "ontouchstart" in t2.environment, a2 = e3 || {}, u2 = (a2.inputElement, a2.maxLength), l2 = u2 === void 0 ? 512 : u2, s2 = pn(a2, an), f2 = mt(r2.getState());
-      return sn({ "aria-autocomplete": "both", "aria-activedescendant": r2.getState().isOpen && r2.getState().activeItemId !== null ? "".concat(t2.id, "-item-").concat(r2.getState().activeItemId) : void 0, "aria-controls": r2.getState().isOpen ? "".concat(t2.id, "-list") : void 0, "aria-labelledby": "".concat(t2.id, "-label"), value: r2.getState().completion || r2.getState().query, id: "".concat(t2.id, "-input"), autoComplete: "off", autoCorrect: "off", autoCapitalize: "off", enterKeyHint: f2 != null && f2.itemUrl ? "go" : "search", spellCheck: "false", autoFocus: t2.autoFocus, placeholder: t2.placeholder, maxLength: l2, type: "search", onChange: function(e4) {
-        Gt(sn({ event: e4, props: t2, query: e4.currentTarget.value.slice(0, l2), refresh: n2, store: r2 }, o2));
+      var a2 = "ontouchstart" in t2.environment, u2 = e3 || {}, l2 = (u2.inputElement, u2.maxLength), s2 = l2 === void 0 ? 512 : l2, f2 = mn(u2, un), p2 = mt(r2.getState()), m2 = function(e4) {
+        return Boolean(e4 && e4.match(dt));
+      }((c2 = t2.environment.navigator) === null || c2 === void 0 ? void 0 : c2.userAgent), d2 = p2 != null && p2.itemUrl && !m2 ? "go" : "search";
+      return fn({ "aria-autocomplete": "both", "aria-activedescendant": r2.getState().isOpen && r2.getState().activeItemId !== null ? "".concat(t2.id, "-item-").concat(r2.getState().activeItemId) : void 0, "aria-controls": r2.getState().isOpen ? "".concat(t2.id, "-list") : void 0, "aria-labelledby": "".concat(t2.id, "-label"), value: r2.getState().completion || r2.getState().query, id: "".concat(t2.id, "-input"), autoComplete: "off", autoCorrect: "off", autoCapitalize: "off", enterKeyHint: d2, spellCheck: "false", autoFocus: t2.autoFocus, placeholder: t2.placeholder, maxLength: s2, type: "search", onChange: function(e4) {
+        Zt(fn({ event: e4, props: t2, query: e4.currentTarget.value.slice(0, s2), refresh: n2, store: r2 }, o2));
       }, onKeyDown: function(e4) {
         !function(e5) {
-          var t3 = e5.event, n3 = e5.props, r3 = e5.refresh, o3 = e5.store, c3 = nn(e5, Zt);
+          var t3 = e5.event, n3 = e5.props, r3 = e5.refresh, o3 = e5.store, c3 = rn(e5, Xt);
           if (t3.key === "ArrowUp" || t3.key === "ArrowDown") {
             var i3 = function() {
               var e6 = n3.environment.document.getElementById("".concat(n3.id, "-item-").concat(o3.getState().activeItemId));
@@ -2265,10 +2269,10 @@
               var e6 = mt(o3.getState());
               if (o3.getState().activeItemId !== null && e6) {
                 var n4 = e6.item, i4 = e6.itemInputValue, a4 = e6.itemUrl, u4 = e6.source;
-                u4.onActive(en({ event: t3, item: n4, itemInputValue: i4, itemUrl: a4, refresh: r3, source: u4, state: o3.getState() }, c3));
+                u4.onActive(tn({ event: t3, item: n4, itemInputValue: i4, itemUrl: a4, refresh: r3, source: u4, state: o3.getState() }, c3));
               }
             };
-            t3.preventDefault(), o3.getState().isOpen === false && (n3.openOnFocus || Boolean(o3.getState().query)) ? Gt(en({ event: t3, props: n3, query: o3.getState().query, refresh: r3, store: o3 }, c3)).then(function() {
+            t3.preventDefault(), o3.getState().isOpen === false && (n3.openOnFocus || Boolean(o3.getState().query)) ? Zt(tn({ event: t3, props: n3, query: o3.getState().query, refresh: r3, store: o3 }, c3)).then(function() {
               o3.dispatch(t3.key, { nextActiveItemId: n3.defaultActiveItemId }), a3(), setTimeout(i3, 0);
             }) : (o3.dispatch(t3.key, {}), a3(), i3());
           } else if (t3.key === "Escape")
@@ -2279,57 +2283,57 @@
             }))
               return;
             t3.preventDefault();
-            var u3 = mt(o3.getState()), l3 = u3.item, s3 = u3.itemInputValue, f3 = u3.itemUrl, p2 = u3.source;
+            var u3 = mt(o3.getState()), l3 = u3.item, s3 = u3.itemInputValue, f3 = u3.itemUrl, p3 = u3.source;
             if (t3.metaKey || t3.ctrlKey)
-              f3 !== void 0 && (p2.onSelect(en({ event: t3, item: l3, itemInputValue: s3, itemUrl: f3, refresh: r3, source: p2, state: o3.getState() }, c3)), n3.navigator.navigateNewTab({ itemUrl: f3, item: l3, state: o3.getState() }));
+              f3 !== void 0 && (p3.onSelect(tn({ event: t3, item: l3, itemInputValue: s3, itemUrl: f3, refresh: r3, source: p3, state: o3.getState() }, c3)), n3.navigator.navigateNewTab({ itemUrl: f3, item: l3, state: o3.getState() }));
             else if (t3.shiftKey)
-              f3 !== void 0 && (p2.onSelect(en({ event: t3, item: l3, itemInputValue: s3, itemUrl: f3, refresh: r3, source: p2, state: o3.getState() }, c3)), n3.navigator.navigateNewWindow({ itemUrl: f3, item: l3, state: o3.getState() }));
+              f3 !== void 0 && (p3.onSelect(tn({ event: t3, item: l3, itemInputValue: s3, itemUrl: f3, refresh: r3, source: p3, state: o3.getState() }, c3)), n3.navigator.navigateNewWindow({ itemUrl: f3, item: l3, state: o3.getState() }));
             else if (t3.altKey)
               ;
             else {
               if (f3 !== void 0)
-                return p2.onSelect(en({ event: t3, item: l3, itemInputValue: s3, itemUrl: f3, refresh: r3, source: p2, state: o3.getState() }, c3)), void n3.navigator.navigate({ itemUrl: f3, item: l3, state: o3.getState() });
-              Gt(en({ event: t3, nextState: { isOpen: false }, props: n3, query: s3, refresh: r3, store: o3 }, c3)).then(function() {
-                p2.onSelect(en({ event: t3, item: l3, itemInputValue: s3, itemUrl: f3, refresh: r3, source: p2, state: o3.getState() }, c3));
+                return p3.onSelect(tn({ event: t3, item: l3, itemInputValue: s3, itemUrl: f3, refresh: r3, source: p3, state: o3.getState() }, c3)), void n3.navigator.navigate({ itemUrl: f3, item: l3, state: o3.getState() });
+              Zt(tn({ event: t3, nextState: { isOpen: false }, props: n3, query: s3, refresh: r3, store: o3 }, c3)).then(function() {
+                p3.onSelect(tn({ event: t3, item: l3, itemInputValue: s3, itemUrl: f3, refresh: r3, source: p3, state: o3.getState() }, c3));
               });
             }
           }
-        }(sn({ event: e4, props: t2, refresh: n2, store: r2 }, o2));
-      }, onFocus: c2, onBlur: function() {
-        i2 || (r2.dispatch("blur", null), t2.debug || r2.pendingRequests.cancelAll());
+        }(fn({ event: e4, props: t2, refresh: n2, store: r2 }, o2));
+      }, onFocus: i2, onBlur: function() {
+        a2 || (r2.dispatch("blur", null), t2.debug || r2.pendingRequests.cancelAll());
       }, onClick: function(n3) {
-        e3.inputElement !== t2.environment.document.activeElement || r2.getState().isOpen || c2(n3);
-      } }, s2);
+        e3.inputElement !== t2.environment.document.activeElement || r2.getState().isOpen || i2(n3);
+      } }, f2);
     }, getPanelProps: function(e3) {
-      return sn({ onMouseDown: function(e4) {
+      return fn({ onMouseDown: function(e4) {
         e4.preventDefault();
       }, onMouseLeave: function() {
         r2.dispatch("mouseleave", null);
       } }, e3);
     }, getListProps: function(e3) {
-      return sn({ role: "listbox", "aria-labelledby": "".concat(t2.id, "-label"), id: "".concat(t2.id, "-list") }, e3);
+      return fn({ role: "listbox", "aria-labelledby": "".concat(t2.id, "-label"), id: "".concat(t2.id, "-list") }, e3);
     }, getItemProps: function(e3) {
-      var c2 = e3.item, i2 = e3.source, a2 = pn(e3, un);
-      return sn({ id: "".concat(t2.id, "-item-").concat(c2.__autocomplete_id), role: "option", "aria-selected": r2.getState().activeItemId === c2.__autocomplete_id, onMouseMove: function(e4) {
+      var c2 = e3.item, i2 = e3.source, a2 = mn(e3, ln);
+      return fn({ id: "".concat(t2.id, "-item-").concat(c2.__autocomplete_id), role: "option", "aria-selected": r2.getState().activeItemId === c2.__autocomplete_id, onMouseMove: function(e4) {
         if (c2.__autocomplete_id !== r2.getState().activeItemId) {
           r2.dispatch("mousemove", c2.__autocomplete_id);
           var t3 = mt(r2.getState());
           if (r2.getState().activeItemId !== null && t3) {
             var i3 = t3.item, a3 = t3.itemInputValue, u2 = t3.itemUrl, l2 = t3.source;
-            l2.onActive(sn({ event: e4, item: i3, itemInputValue: a3, itemUrl: u2, refresh: n2, source: l2, state: r2.getState() }, o2));
+            l2.onActive(fn({ event: e4, item: i3, itemInputValue: a3, itemUrl: u2, refresh: n2, source: l2, state: r2.getState() }, o2));
           }
         }
       }, onMouseDown: function(e4) {
         e4.preventDefault();
       }, onClick: function(e4) {
         var a3 = i2.getItemInputValue({ item: c2, state: r2.getState() }), u2 = i2.getItemUrl({ item: c2, state: r2.getState() });
-        (u2 ? Promise.resolve() : Gt(sn({ event: e4, nextState: { isOpen: false }, props: t2, query: a3, refresh: n2, store: r2 }, o2))).then(function() {
-          i2.onSelect(sn({ event: e4, item: c2, itemInputValue: a3, itemUrl: u2, refresh: n2, source: i2, state: r2.getState() }, o2));
+        (u2 ? Promise.resolve() : Zt(fn({ event: e4, nextState: { isOpen: false }, props: t2, query: a3, refresh: n2, store: r2 }, o2))).then(function() {
+          i2.onSelect(fn({ event: e4, item: c2, itemInputValue: a3, itemUrl: u2, refresh: n2, source: i2, state: r2.getState() }, o2));
         });
       } }, a2);
     } };
   }
-  function dn(e2, t2) {
+  function hn(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -2339,31 +2343,31 @@
     }
     return n2;
   }
-  function hn(e2) {
+  function vn(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = arguments[t2] != null ? arguments[t2] : {};
-      t2 % 2 ? dn(Object(n2), true).forEach(function(t3) {
-        vn(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : dn(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? hn(Object(n2), true).forEach(function(t3) {
+        yn(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : hn(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function vn(e2, t2, n2) {
+  function yn(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function yn(e2) {
-    var t2, n2, r2, o2, c2 = e2.plugins, i2 = e2.options, a2 = (t2 = (((n2 = i2.__autocomplete_metadata) === null || n2 === void 0 ? void 0 : n2.userAgents) || [])[0]) === null || t2 === void 0 ? void 0 : t2.segment, u2 = a2 ? vn({}, a2, Object.keys(((r2 = i2.__autocomplete_metadata) === null || r2 === void 0 ? void 0 : r2.options) || {})) : {};
+  function _n(e2) {
+    var t2, n2, r2, o2, c2 = e2.plugins, i2 = e2.options, a2 = (t2 = (((n2 = i2.__autocomplete_metadata) === null || n2 === void 0 ? void 0 : n2.userAgents) || [])[0]) === null || t2 === void 0 ? void 0 : t2.segment, u2 = a2 ? yn({}, a2, Object.keys(((r2 = i2.__autocomplete_metadata) === null || r2 === void 0 ? void 0 : r2.options) || {})) : {};
     return { plugins: c2.map(function(e3) {
       return { name: e3.name, options: Object.keys(e3.__autocomplete_pluginOptions || []) };
-    }), options: hn({ "autocomplete-core": Object.keys(i2) }, u2), ua: nt.concat(((o2 = i2.__autocomplete_metadata) === null || o2 === void 0 ? void 0 : o2.userAgents) || []) };
+    }), options: vn({ "autocomplete-core": Object.keys(i2) }, u2), ua: nt.concat(((o2 = i2.__autocomplete_metadata) === null || o2 === void 0 ? void 0 : o2.userAgents) || []) };
   }
-  function _n(e2) {
+  function bn(e2) {
     var t2, n2 = e2.state;
     return n2.isOpen === false || n2.activeItemId === null ? null : ((t2 = mt(n2)) === null || t2 === void 0 ? void 0 : t2.itemInputValue) || null;
   }
-  function bn(e2, t2) {
+  function gn(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -2373,58 +2377,58 @@
     }
     return n2;
   }
-  function gn(e2) {
+  function On(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = arguments[t2] != null ? arguments[t2] : {};
-      t2 % 2 ? bn(Object(n2), true).forEach(function(t3) {
-        On(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : bn(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? gn(Object(n2), true).forEach(function(t3) {
+        Sn(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : gn(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function On(e2, t2, n2) {
+  function Sn(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  var Sn = function(e2, t2) {
+  var En = function(e2, t2) {
     switch (t2.type) {
       case "setActiveItemId":
       case "mousemove":
-        return gn(gn({}, e2), {}, { activeItemId: t2.payload });
+        return On(On({}, e2), {}, { activeItemId: t2.payload });
       case "setQuery":
-        return gn(gn({}, e2), {}, { query: t2.payload, completion: null });
+        return On(On({}, e2), {}, { query: t2.payload, completion: null });
       case "setCollections":
-        return gn(gn({}, e2), {}, { collections: t2.payload });
+        return On(On({}, e2), {}, { collections: t2.payload });
       case "setIsOpen":
-        return gn(gn({}, e2), {}, { isOpen: t2.payload });
+        return On(On({}, e2), {}, { isOpen: t2.payload });
       case "setStatus":
-        return gn(gn({}, e2), {}, { status: t2.payload });
+        return On(On({}, e2), {}, { status: t2.payload });
       case "setContext":
-        return gn(gn({}, e2), {}, { context: gn(gn({}, e2.context), t2.payload) });
+        return On(On({}, e2), {}, { context: On(On({}, e2.context), t2.payload) });
       case "ArrowDown":
-        var n2 = gn(gn({}, e2), {}, { activeItemId: t2.payload.hasOwnProperty("nextActiveItemId") ? t2.payload.nextActiveItemId : ut(1, e2.activeItemId, Xe(e2), t2.props.defaultActiveItemId) });
-        return gn(gn({}, n2), {}, { completion: _n({ state: n2 }) });
+        var n2 = On(On({}, e2), {}, { activeItemId: t2.payload.hasOwnProperty("nextActiveItemId") ? t2.payload.nextActiveItemId : ut(1, e2.activeItemId, Xe(e2), t2.props.defaultActiveItemId) });
+        return On(On({}, n2), {}, { completion: bn({ state: n2 }) });
       case "ArrowUp":
-        var r2 = gn(gn({}, e2), {}, { activeItemId: ut(-1, e2.activeItemId, Xe(e2), t2.props.defaultActiveItemId) });
-        return gn(gn({}, r2), {}, { completion: _n({ state: r2 }) });
+        var r2 = On(On({}, e2), {}, { activeItemId: ut(-1, e2.activeItemId, Xe(e2), t2.props.defaultActiveItemId) });
+        return On(On({}, r2), {}, { completion: bn({ state: r2 }) });
       case "Escape":
-        return e2.isOpen ? gn(gn({}, e2), {}, { activeItemId: null, isOpen: false, completion: null }) : gn(gn({}, e2), {}, { activeItemId: null, query: "", status: "idle", collections: [] });
+        return e2.isOpen ? On(On({}, e2), {}, { activeItemId: null, isOpen: false, completion: null }) : On(On({}, e2), {}, { activeItemId: null, query: "", status: "idle", collections: [] });
       case "submit":
-        return gn(gn({}, e2), {}, { activeItemId: null, isOpen: false, status: "idle" });
+        return On(On({}, e2), {}, { activeItemId: null, isOpen: false, status: "idle" });
       case "reset":
-        return gn(gn({}, e2), {}, { activeItemId: t2.props.openOnFocus === true ? t2.props.defaultActiveItemId : null, status: "idle", query: "" });
+        return On(On({}, e2), {}, { activeItemId: t2.props.openOnFocus === true ? t2.props.defaultActiveItemId : null, status: "idle", query: "" });
       case "focus":
-        return gn(gn({}, e2), {}, { activeItemId: t2.props.defaultActiveItemId, isOpen: (t2.props.openOnFocus || Boolean(e2.query)) && t2.props.shouldPanelOpen({ state: e2 }) });
+        return On(On({}, e2), {}, { activeItemId: t2.props.defaultActiveItemId, isOpen: (t2.props.openOnFocus || Boolean(e2.query)) && t2.props.shouldPanelOpen({ state: e2 }) });
       case "blur":
-        return t2.props.debug ? e2 : gn(gn({}, e2), {}, { isOpen: false, activeItemId: null });
+        return t2.props.debug ? e2 : On(On({}, e2), {}, { isOpen: false, activeItemId: null });
       case "mouseleave":
-        return gn(gn({}, e2), {}, { activeItemId: t2.props.defaultActiveItemId });
+        return On(On({}, e2), {}, { activeItemId: t2.props.defaultActiveItemId });
       default:
         return et(false, "The reducer action ".concat(JSON.stringify(t2.type), " is not supported.")), e2;
     }
   };
-  function En(e2, t2) {
+  function wn(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -2434,29 +2438,29 @@
     }
     return n2;
   }
-  function wn(e2) {
+  function jn(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = arguments[t2] != null ? arguments[t2] : {};
-      t2 % 2 ? En(Object(n2), true).forEach(function(t3) {
-        jn(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : En(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? wn(Object(n2), true).forEach(function(t3) {
+        Pn(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : wn(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function jn(e2, t2, n2) {
+  function Pn(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function Pn(e2) {
+  function In(e2) {
     ot(e2);
     var t2 = [], n2 = function(e3, t3) {
       var n3, r3 = typeof window != "undefined" ? window : {}, o3 = e3.plugins || [];
-      return Pt(Pt({ debug: false, openOnFocus: false, placeholder: "", autoFocus: false, defaultActiveItemId: null, stallThreshold: 300, environment: r3, shouldPanelOpen: function(e4) {
+      return It(It({ debug: false, openOnFocus: false, placeholder: "", autoFocus: false, defaultActiveItemId: null, stallThreshold: 300, environment: r3, shouldPanelOpen: function(e4) {
         return Xe(e4.state) > 0;
       }, reshape: function(e4) {
         return e4.sources;
-      } }, e3), {}, { id: (n3 = e3.id) !== null && n3 !== void 0 ? n3 : "autocomplete-".concat(Ze++), plugins: o3, initialState: Pt({ activeItemId: null, query: "", completion: null, collections: [], isOpen: false, status: "idle", context: {} }, e3.initialState), onStateChange: function(t4) {
+      } }, e3), {}, { id: (n3 = e3.id) !== null && n3 !== void 0 ? n3 : "autocomplete-".concat(Ze++), plugins: o3, initialState: It({ activeItemId: null, query: "", completion: null, collections: [], isOpen: false, status: "idle", context: {} }, e3.initialState), onStateChange: function(t4) {
         var n4;
         (n4 = e3.onStateChange) === null || n4 === void 0 || n4.call(e3, t4), o3.forEach(function(e4) {
           var n5;
@@ -2475,7 +2479,7 @@
           return (n5 = e4.onReset) === null || n5 === void 0 ? void 0 : n5.call(e4, t4);
         });
       }, getSources: function(n4) {
-        return Promise.all([].concat(Et(o3.map(function(e4) {
+        return Promise.all([].concat(wt(o3.map(function(e4) {
           return e4.getSources;
         })), [e3.getSources]).filter(Boolean).map(function(e4) {
           return pt(e4, n4);
@@ -2483,7 +2487,7 @@
           return Ge(e4);
         }).then(function(e4) {
           return e4.map(function(e5) {
-            return Pt(Pt({}, e5), {}, { onSelect: function(n5) {
+            return It(It({}, e5), {}, { onSelect: function(n5) {
               e5.onSelect(n5), t3.forEach(function(e6) {
                 var t4;
                 return (t4 = e6.onSelect) === null || t4 === void 0 ? void 0 : t4.call(e6, n5);
@@ -2496,7 +2500,7 @@
             } });
           });
         });
-      }, navigator: Pt({ navigate: function(e4) {
+      }, navigator: It({ navigate: function(e4) {
         var t4 = e4.itemUrl;
         r3.location.assign(t4);
       }, navigateNewTab: function(e4) {
@@ -2506,9 +2510,9 @@
         var t4 = e4.itemUrl;
         r3.open(t4, "_blank", "noopener");
       } }, e3.navigator) });
-    }(e2, t2), r2 = bt(Sn, n2, function(e3) {
+    }(e2, t2), r2 = gt(En, n2, function(e3) {
       var t3 = e3.prevState, r3 = e3.state;
-      n2.onStateChange(wn({ prevState: t3, state: r3, refresh: i2 }, o2));
+      n2.onStateChange(jn({ prevState: t3, state: r3, refresh: i2 }, o2));
     }), o2 = function(e3) {
       var t3 = e3.store;
       return { setActiveItemId: function(e4) {
@@ -2517,8 +2521,8 @@
         t3.dispatch("setQuery", e4);
       }, setCollections: function(e4) {
         var n3 = 0, r3 = e4.map(function(e5) {
-          return Ot(Ot({}, e5), {}, { items: Ge(e5.items).map(function(e6) {
-            return Ot(Ot({}, e6), {}, { __autocomplete_id: n3++ });
+          return St(St({}, e5), {}, { items: Ge(e5.items).map(function(e6) {
+            return St(St({}, e6), {}, { __autocomplete_id: n3++ });
           }) });
         });
         t3.dispatch("setCollections", r3);
@@ -2529,13 +2533,13 @@
       }, setContext: function(e4) {
         t3.dispatch("setContext", e4);
       } };
-    }({ store: r2 }), c2 = mn(wn({ props: n2, refresh: i2, store: r2 }, o2));
+    }({ store: r2 }), c2 = dn(jn({ props: n2, refresh: i2, store: r2 }, o2));
     function i2() {
-      return Gt(wn({ event: new Event("input"), nextState: { isOpen: r2.getState().isOpen }, props: n2, query: r2.getState().query, refresh: i2, store: r2 }, o2));
+      return Zt(jn({ event: new Event("input"), nextState: { isOpen: r2.getState().isOpen }, props: n2, query: r2.getState().query, refresh: i2, store: r2 }, o2));
     }
     return n2.plugins.forEach(function(e3) {
       var n3;
-      return (n3 = e3.subscribe) === null || n3 === void 0 ? void 0 : n3.call(e3, wn(wn({}, o2), {}, { refresh: i2, onSelect: function(e4) {
+      return (n3 = e3.subscribe) === null || n3 === void 0 ? void 0 : n3.call(e3, jn(jn({}, o2), {}, { refresh: i2, onSelect: function(e4) {
         t2.push({ onSelect: e4 });
       }, onActive: function(e4) {
         t2.push({ onActive: e4 });
@@ -2548,72 +2552,72 @@
           o3.content = JSON.stringify(n3), c3.appendChild(o3);
         }, 0);
       }
-    }({ metadata: yn({ plugins: n2.plugins, options: e2 }), environment: n2.environment }), wn(wn({ refresh: i2 }, c2), o2);
+    }({ metadata: _n({ plugins: n2.plugins, options: e2 }), environment: n2.environment }), jn(jn({ refresh: i2 }, c2), o2);
   }
-  function In(e2) {
+  function kn(e2) {
     var t2 = e2.translations, n2 = (t2 === void 0 ? {} : t2).searchByText, r2 = n2 === void 0 ? "Search by" : n2;
     return Ue.createElement("a", { href: "https://www.algolia.com/ref/docsearch/?utm_source=".concat(window.location.hostname, "&utm_medium=referral&utm_content=powered_by&utm_campaign=docsearch"), target: "_blank", rel: "noopener noreferrer" }, Ue.createElement("span", { className: "DocSearch-Label" }, r2), Ue.createElement("svg", { width: "77", height: "19", "aria-label": "Algolia", role: "img" }, Ue.createElement("path", { d: "M2.5067 0h14.0245c1.384.001 2.5058 1.1205 2.5068 2.5017V16.5c-.0014 1.3808-1.1232 2.4995-2.5068 2.5H2.5067C1.1232 18.9995.0014 17.8808 0 16.5V2.4958A2.495 2.495 0 01.735.7294 2.505 2.505 0 012.5068 0zM37.95 15.0695c-3.7068.0168-3.7068-2.986-3.7068-3.4634L34.2372.3576 36.498 0v11.1794c0 .2715 0 1.9889 1.452 1.994v1.8961zm-9.1666-1.8388c.694 0 1.2086-.0397 1.5678-.1088v-2.2934a5.3639 5.3639 0 00-1.3303-.1679 4.8283 4.8283 0 00-.758.0582 2.2845 2.2845 0 00-.688.2024c-.2029.0979-.371.2362-.4919.4142-.1268.1788-.185.2826-.185.5533 0 .5297.185.8359.5205 1.0375.3355.2016.7928.3053 1.365.3053v-.0008zm-.1969-8.1817c.7463 0 1.3768.092 1.8856.2767.5088.1838.9195.4428 1.2204.7717.3068.334.5147.7777.6423 1.251.1327.4723.196.991.196 1.5603v5.798c-.5235.1036-1.05.192-1.5787.2649-.7048.1037-1.4976.156-2.3774.156-.5832 0-1.1215-.0582-1.6016-.167a3.385 3.385 0 01-1.2432-.5364 2.6034 2.6034 0 01-.8037-.9565c-.191-.3922-.29-.9447-.29-1.5208 0-.5533.11-.905.3246-1.2863a2.7351 2.7351 0 01.8849-.9329c.376-.242.8029-.415 1.2948-.5187a7.4517 7.4517 0 011.5381-.156 7.1162 7.1162 0 011.6667.2024V8.886c0-.259-.0296-.5061-.093-.7372a1.5847 1.5847 0 00-.3245-.6158 1.5079 1.5079 0 00-.6119-.4158 2.6788 2.6788 0 00-.966-.173c-.5206 0-.9948.0634-1.4283.1384a6.5481 6.5481 0 00-1.065.259l-.2712-1.849c.2831-.0986.7048-.1964 1.2491-.2943a9.2979 9.2979 0 011.752-.1501v.0008zm44.6597 8.1193c.6947 0 1.2086-.0405 1.567-.1097v-2.2942a5.3743 5.3743 0 00-1.3303-.1679c-.2485 0-.503.0177-.7573.0582a2.2853 2.2853 0 00-.688.2024 1.2333 1.2333 0 00-.4918.4142c-.1268.1788-.1843.2826-.1843.5533 0 .5297.1843.8359.5198 1.0375.3414.2066.7927.3053 1.365.3053v.0009zm-.191-8.1767c.7463 0 1.3768.0912 1.8856.2759.5087.1847.9195.4436 1.2204.7717.3.329.5147.7786.6414 1.251a5.7248 5.7248 0 01.197 1.562v5.7972c-.3466.0742-.874.1602-1.5788.2648-.7049.1038-1.4976.1552-2.3774.1552-.5832 0-1.1215-.0573-1.6016-.167a3.385 3.385 0 01-1.2432-.5356 2.6034 2.6034 0 01-.8038-.9565c-.191-.3922-.2898-.9447-.2898-1.5216 0-.5533.1098-.905.3245-1.2854a2.7373 2.7373 0 01.8849-.9338c.376-.2412.8029-.4141 1.2947-.5178a7.4545 7.4545 0 012.325-.1097c.2781.0287.5672.081.879.156v-.3686a2.7781 2.7781 0 00-.092-.738 1.5788 1.5788 0 00-.3246-.6166 1.5079 1.5079 0 00-.612-.415 2.6797 2.6797 0 00-.966-.1729c-.5205 0-.9947.0633-1.4282.1384a6.5608 6.5608 0 00-1.065.259l-.2712-1.8498c.283-.0979.7048-.1957 1.2491-.2935a9.8597 9.8597 0 011.752-.1494zm-6.79-1.072c-.7576.001-1.373-.6103-1.3759-1.3664 0-.755.6128-1.3664 1.376-1.3664.764 0 1.3775.6115 1.3775 1.3664s-.6195 1.3664-1.3776 1.3664zm1.1393 11.1507h-2.2726V5.3409l2.2734-.3568v10.0845l-.0008.0017zm-3.984 0c-3.707.0168-3.707-2.986-3.707-3.4642L59.7069.3576 61.9685 0v11.1794c0 .2715 0 1.9889 1.452 1.994V15.0703zm-7.3512-4.979c0-.975-.2138-1.7873-.6305-2.3516-.4167-.571-.9998-.852-1.747-.852-.7454 0-1.3302.281-1.7452.852-.4166.5702-.6195 1.3765-.6195 2.3516 0 .9851.208 1.6473.6254 2.2183.4158.576.9998.8587 1.7461.8587.7454 0 1.3303-.2885 1.747-.8595.4158-.5761.6237-1.2315.6237-2.2184v.0009zm2.3132-.006c0 .7609-.1099 1.3361-.3356 1.9654a4.654 4.654 0 01-.9533 1.6076A4.214 4.214 0 0155.613 14.69c-.579.2412-1.4697.3795-1.9143.3795-.4462-.005-1.3303-.1324-1.9033-.3795a4.307 4.307 0 01-1.474-1.0316c-.4115-.4445-.7293-.9801-.9609-1.6076a5.3423 5.3423 0 01-.3465-1.9653c0-.7608.104-1.493.3356-2.1155a4.683 4.683 0 01.9719-1.5958 4.3383 4.3383 0 011.479-1.0257c.5739-.242 1.2043-.3567 1.8864-.3567.6829 0 1.3125.1197 1.8906.3567a4.1245 4.1245 0 011.4816 1.0257 4.7587 4.7587 0 01.9592 1.5958c.2426.6225.3643 1.3547.3643 2.1155zm-17.0198 0c0 .9448.208 1.9932.6238 2.431.4166.4386.955.6579 1.6142.6579.3584 0 .6998-.0523 1.0176-.1502.3186-.0978.5721-.2134.775-.3517V7.0784a8.8706 8.8706 0 00-1.4926-.1906c-.8206-.0236-1.4452.312-1.8847.8468-.4335.5365-.6533 1.476-.6533 2.3516v-.0008zm6.2863 4.4485c0 1.5385-.3938 2.662-1.1866 3.3773-.791.7136-2.0005 1.0712-3.6308 1.0712-.5958 0-1.834-.1156-2.8228-.334l.3643-1.7865c.8282.173 1.9202.2193 2.4932.2193.9077 0 1.555-.1847 1.943-.5533.388-.3686.578-.916.578-1.643v-.3687a6.8289 6.8289 0 01-.8848.3349c-.3634.1096-.786.167-1.261.167-.6246 0-1.1917-.0979-1.7055-.2944a3.5554 3.5554 0 01-1.3244-.8645c-.3642-.3796-.6541-.8579-.8561-1.4289-.2028-.571-.3068-1.59-.3068-2.339 0-.7034.1099-1.5856.3245-2.1735.2198-.5871.5316-1.0949.9542-1.515.4167-.42.9255-.743 1.5213-.98a5.5923 5.5923 0 012.052-.3855c.7353 0 1.4114.092 2.0707.2024.6592.1088 1.2204.2236 1.6776.35v8.945-.0008zM11.5026 4.2418v-.6511c-.0005-.4553-.3704-.8241-.8266-.8241H8.749c-.4561 0-.826.3688-.8265.824v.669c0 .0742.0693.1264.1445.1096a6.0346 6.0346 0 011.6768-.2362 6.125 6.125 0 011.6202.2185.1116.1116 0 00.1386-.1097zm-5.2806.852l-.3296-.3282a.8266.8266 0 00-1.168 0l-.393.3922a.8199.8199 0 000 1.164l.3237.323c.0524.0515.1268.0397.1733-.0117.191-.259.3989-.507.6305-.7372.2374-.2362.48-.4437.7462-.6335.0575-.0354.0634-.1155.017-.1687zm3.5159 2.069v2.818c0 .081.0879.1392.1622.0987l2.5102-1.2964c.0574-.0287.0752-.0987.0464-.1552a3.1237 3.1237 0 00-2.603-1.574c-.0575 0-.115.0456-.115.1097l-.0008-.0009zm.0008 6.789c-2.0933.0005-3.7915-1.6912-3.7947-3.7804C5.9468 8.0821 7.6452 6.39 9.7387 6.391c2.0932-.0005 3.7911 1.6914 3.794 3.7804a3.7783 3.7783 0 01-1.1124 2.675 3.7936 3.7936 0 01-2.6824 1.1054h.0008zM9.738 4.8002c-1.9218 0-3.6975 1.0232-4.6584 2.6841a5.359 5.359 0 000 5.3683c.9609 1.661 2.7366 2.6841 4.6584 2.6841a5.3891 5.3891 0 003.8073-1.5725 5.3675 5.3675 0 001.578-3.7987 5.3574 5.3574 0 00-1.5771-3.797A5.379 5.379 0 009.7387 4.801l-.0008-.0008z", fill: "currentColor", fillRule: "evenodd" })));
   }
-  function kn(e2) {
+  function Dn(e2) {
     return Ue.createElement("svg", { width: "15", height: "15", "aria-label": e2.ariaLabel, role: "img" }, Ue.createElement("g", { fill: "none", stroke: "currentColor", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "1.2" }, e2.children));
   }
-  function Dn(e2) {
-    var t2 = e2.translations, n2 = t2 === void 0 ? {} : t2, r2 = n2.selectText, o2 = r2 === void 0 ? "to select" : r2, c2 = n2.selectKeyAriaLabel, i2 = c2 === void 0 ? "Enter key" : c2, a2 = n2.navigateText, u2 = a2 === void 0 ? "to navigate" : a2, l2 = n2.navigateUpKeyAriaLabel, s2 = l2 === void 0 ? "Arrow up" : l2, f2 = n2.navigateDownKeyAriaLabel, p2 = f2 === void 0 ? "Arrow down" : f2, m2 = n2.closeText, d2 = m2 === void 0 ? "to close" : m2, h2 = n2.closeKeyAriaLabel, v2 = h2 === void 0 ? "Escape key" : h2, y2 = n2.searchByText, _2 = y2 === void 0 ? "Search by" : y2;
-    return Ue.createElement(Ue.Fragment, null, Ue.createElement("div", { className: "DocSearch-Logo" }, Ue.createElement(In, { translations: { searchByText: _2 } })), Ue.createElement("ul", { className: "DocSearch-Commands" }, Ue.createElement("li", null, Ue.createElement("span", { className: "DocSearch-Commands-Key" }, Ue.createElement(kn, { ariaLabel: i2 }, Ue.createElement("path", { d: "M12 3.53088v3c0 1-1 2-2 2H4M7 11.53088l-3-3 3-3" }))), Ue.createElement("span", { className: "DocSearch-Label" }, o2)), Ue.createElement("li", null, Ue.createElement("span", { className: "DocSearch-Commands-Key" }, Ue.createElement(kn, { ariaLabel: p2 }, Ue.createElement("path", { d: "M7.5 3.5v8M10.5 8.5l-3 3-3-3" }))), Ue.createElement("span", { className: "DocSearch-Commands-Key" }, Ue.createElement(kn, { ariaLabel: s2 }, Ue.createElement("path", { d: "M7.5 11.5v-8M10.5 6.5l-3-3-3 3" }))), Ue.createElement("span", { className: "DocSearch-Label" }, u2)), Ue.createElement("li", null, Ue.createElement("span", { className: "DocSearch-Commands-Key" }, Ue.createElement(kn, { ariaLabel: v2 }, Ue.createElement("path", { d: "M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956" }))), Ue.createElement("span", { className: "DocSearch-Label" }, d2))));
-  }
   function Cn(e2) {
+    var t2 = e2.translations, n2 = t2 === void 0 ? {} : t2, r2 = n2.selectText, o2 = r2 === void 0 ? "to select" : r2, c2 = n2.selectKeyAriaLabel, i2 = c2 === void 0 ? "Enter key" : c2, a2 = n2.navigateText, u2 = a2 === void 0 ? "to navigate" : a2, l2 = n2.navigateUpKeyAriaLabel, s2 = l2 === void 0 ? "Arrow up" : l2, f2 = n2.navigateDownKeyAriaLabel, p2 = f2 === void 0 ? "Arrow down" : f2, m2 = n2.closeText, d2 = m2 === void 0 ? "to close" : m2, h2 = n2.closeKeyAriaLabel, v2 = h2 === void 0 ? "Escape key" : h2, y2 = n2.searchByText, _2 = y2 === void 0 ? "Search by" : y2;
+    return Ue.createElement(Ue.Fragment, null, Ue.createElement("div", { className: "DocSearch-Logo" }, Ue.createElement(kn, { translations: { searchByText: _2 } })), Ue.createElement("ul", { className: "DocSearch-Commands" }, Ue.createElement("li", null, Ue.createElement("kbd", { className: "DocSearch-Commands-Key" }, Ue.createElement(Dn, { ariaLabel: i2 }, Ue.createElement("path", { d: "M12 3.53088v3c0 1-1 2-2 2H4M7 11.53088l-3-3 3-3" }))), Ue.createElement("span", { className: "DocSearch-Label" }, o2)), Ue.createElement("li", null, Ue.createElement("kbd", { className: "DocSearch-Commands-Key" }, Ue.createElement(Dn, { ariaLabel: p2 }, Ue.createElement("path", { d: "M7.5 3.5v8M10.5 8.5l-3 3-3-3" }))), Ue.createElement("kbd", { className: "DocSearch-Commands-Key" }, Ue.createElement(Dn, { ariaLabel: s2 }, Ue.createElement("path", { d: "M7.5 11.5v-8M10.5 6.5l-3-3-3 3" }))), Ue.createElement("span", { className: "DocSearch-Label" }, u2)), Ue.createElement("li", null, Ue.createElement("kbd", { className: "DocSearch-Commands-Key" }, Ue.createElement(Dn, { ariaLabel: v2 }, Ue.createElement("path", { d: "M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956" }))), Ue.createElement("span", { className: "DocSearch-Label" }, d2))));
+  }
+  function An(e2) {
     var t2 = e2.hit, n2 = e2.children;
     return Ue.createElement("a", { href: t2.url }, n2);
   }
-  function An() {
+  function xn() {
     return Ue.createElement("svg", { viewBox: "0 0 38 38", stroke: "currentColor", strokeOpacity: ".5" }, Ue.createElement("g", { fill: "none", fillRule: "evenodd" }, Ue.createElement("g", { transform: "translate(1 1)", strokeWidth: "2" }, Ue.createElement("circle", { strokeOpacity: ".3", cx: "18", cy: "18", r: "18" }), Ue.createElement("path", { d: "M36 18c0-9.94-8.06-18-18-18" }, Ue.createElement("animateTransform", { attributeName: "transform", type: "rotate", from: "0 18 18", to: "360 18 18", dur: "1s", repeatCount: "indefinite" })))));
   }
-  function xn() {
+  function Nn() {
     return Ue.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20" }, Ue.createElement("g", { stroke: "currentColor", fill: "none", fillRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round" }, Ue.createElement("path", { d: "M3.18 6.6a8.23 8.23 0 1112.93 9.94h0a8.23 8.23 0 01-11.63 0" }), Ue.createElement("path", { d: "M6.44 7.25H2.55V3.36M10.45 6v5.6M10.45 11.6L13 13" })));
   }
-  function Nn() {
+  function Rn() {
     return Ue.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20" }, Ue.createElement("path", { d: "M10 10l5.09-5.09L10 10l5.09 5.09L10 10zm0 0L4.91 4.91 10 10l-5.09 5.09L10 10z", stroke: "currentColor", fill: "none", fillRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round" }));
   }
-  function Rn() {
+  function Tn() {
     return Ue.createElement("svg", { className: "DocSearch-Hit-Select-Icon", width: "20", height: "20", viewBox: "0 0 20 20" }, Ue.createElement("g", { stroke: "currentColor", fill: "none", fillRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round" }, Ue.createElement("path", { d: "M18 3v4c0 2-2 4-4 4H2" }), Ue.createElement("path", { d: "M8 17l-6-6 6-6" })));
   }
-  var Tn = function() {
+  var Ln = function() {
     return Ue.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20" }, Ue.createElement("path", { d: "M17 6v12c0 .52-.2 1-1 1H4c-.7 0-1-.33-1-1V2c0-.55.42-1 1-1h8l5 5zM14 8h-3.13c-.51 0-.87-.34-.87-.87V4", stroke: "currentColor", fill: "none", fillRule: "evenodd", strokeLinejoin: "round" }));
   };
-  function Ln(e2) {
+  function qn(e2) {
     switch (e2.type) {
       case "lvl1":
-        return Ue.createElement(Tn, null);
+        return Ue.createElement(Ln, null);
       case "content":
-        return Ue.createElement(Mn, null);
+        return Ue.createElement(Hn, null);
       default:
-        return Ue.createElement(qn, null);
+        return Ue.createElement(Mn, null);
     }
   }
-  function qn() {
+  function Mn() {
     return Ue.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20" }, Ue.createElement("path", { d: "M13 13h4-4V8H7v5h6v4-4H7V8H3h4V3v5h6V3v5h4-4v5zm-6 0v4-4H3h4z", stroke: "currentColor", fill: "none", fillRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round" }));
   }
-  function Mn() {
+  function Hn() {
     return Ue.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20" }, Ue.createElement("path", { d: "M17 5H3h14zm0 5H3h14zm0 5H3h14z", stroke: "currentColor", fill: "none", fillRule: "evenodd", strokeLinejoin: "round" }));
   }
-  function Hn() {
+  function Un() {
     return Ue.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20" }, Ue.createElement("path", { d: "M10 14.2L5 17l1-5.6-4-4 5.5-.7 2.5-5 2.5 5 5.6.8-4 4 .9 5.5z", stroke: "currentColor", fill: "none", fillRule: "evenodd", strokeLinejoin: "round" }));
   }
-  function Un() {
+  function Fn() {
     return Ue.createElement("svg", { width: "40", height: "40", viewBox: "0 0 20 20", fill: "none", fillRule: "evenodd", stroke: "currentColor", strokeLinecap: "round", strokeLinejoin: "round" }, Ue.createElement("path", { d: "M19 4.8a16 16 0 00-2-1.2m-3.3-1.2A16 16 0 001.1 4.7M16.7 8a12 12 0 00-2.8-1.4M10 6a12 12 0 00-6.7 2M12.3 14.7a4 4 0 00-4.5 0M14.5 11.4A8 8 0 0010 10M3 16L18 2M10 18h0" }));
   }
-  function Fn() {
+  function Bn() {
     return Ue.createElement("svg", { width: "40", height: "40", viewBox: "0 0 20 20", fill: "none", fillRule: "evenodd", stroke: "currentColor", strokeLinecap: "round", strokeLinejoin: "round" }, Ue.createElement("path", { d: "M15.5 4.8c2 3 1.7 7-1 9.7h0l4.3 4.3-4.3-4.3a7.8 7.8 0 01-9.8 1m-2.2-2.2A7.8 7.8 0 0113.2 2.4M2 18L18 2" }));
   }
-  function Bn(e2) {
+  function Vn(e2) {
     var t2 = e2.translations, n2 = t2 === void 0 ? {} : t2, r2 = n2.titleText, o2 = r2 === void 0 ? "Unable to fetch results" : r2, c2 = n2.helpText, i2 = c2 === void 0 ? "You might want to check your network connection." : c2;
-    return Ue.createElement("div", { className: "DocSearch-ErrorScreen" }, Ue.createElement("div", { className: "DocSearch-Screen-Icon" }, Ue.createElement(Un, null)), Ue.createElement("p", { className: "DocSearch-Title" }, o2), Ue.createElement("p", { className: "DocSearch-Help" }, i2));
+    return Ue.createElement("div", { className: "DocSearch-ErrorScreen" }, Ue.createElement("div", { className: "DocSearch-Screen-Icon" }, Ue.createElement(Fn, null)), Ue.createElement("p", { className: "DocSearch-Title" }, o2), Ue.createElement("p", { className: "DocSearch-Help" }, i2));
   }
-  var Vn = ["translations"];
-  function zn(e2) {
+  var zn = ["translations"];
+  function Wn(e2) {
     return function(e3) {
       if (Array.isArray(e3))
-        return Wn(e3);
+        return Kn(e3);
     }(e2) || function(e3) {
       if (typeof Symbol != "undefined" && e3[Symbol.iterator] != null || e3["@@iterator"] != null)
         return Array.from(e3);
@@ -2621,24 +2625,24 @@
       if (!e3)
         return;
       if (typeof e3 == "string")
-        return Wn(e3, t2);
+        return Kn(e3, t2);
       var n2 = Object.prototype.toString.call(e3).slice(8, -1);
       n2 === "Object" && e3.constructor && (n2 = e3.constructor.name);
       if (n2 === "Map" || n2 === "Set")
         return Array.from(e3);
       if (n2 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
-        return Wn(e3, t2);
+        return Kn(e3, t2);
     }(e2) || function() {
       throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }();
   }
-  function Wn(e2, t2) {
+  function Kn(e2, t2) {
     (t2 == null || t2 > e2.length) && (t2 = e2.length);
     for (var n2 = 0, r2 = new Array(t2); n2 < t2; n2++)
       r2[n2] = e2[n2];
     return r2;
   }
-  function Kn(e2, t2) {
+  function Jn(e2, t2) {
     if (e2 == null)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -2656,16 +2660,16 @@
     }
     return o2;
   }
-  function Jn(e2) {
-    var t2 = e2.translations, n2 = t2 === void 0 ? {} : t2, r2 = Kn(e2, Vn), o2 = n2.noResultsText, c2 = o2 === void 0 ? "No results for" : o2, i2 = n2.suggestedQueryText, a2 = i2 === void 0 ? "Try searching for" : i2, u2 = n2.reportMissingResultsText, l2 = u2 === void 0 ? "Believe this query should return results?" : u2, s2 = n2.reportMissingResultsLinkText, f2 = s2 === void 0 ? "Let us know." : s2, p2 = r2.state.context.searchSuggestions;
-    return Ue.createElement("div", { className: "DocSearch-NoResults" }, Ue.createElement("div", { className: "DocSearch-Screen-Icon" }, Ue.createElement(Fn, null)), Ue.createElement("p", { className: "DocSearch-Title" }, c2, ' "', Ue.createElement("strong", null, r2.state.query), '"'), p2 && p2.length > 0 && Ue.createElement("div", { className: "DocSearch-NoResults-Prefill-List" }, Ue.createElement("p", { className: "DocSearch-Help" }, a2, ":"), Ue.createElement("ul", null, p2.slice(0, 3).reduce(function(e3, t3) {
-      return [].concat(zn(e3), [Ue.createElement("li", { key: t3 }, Ue.createElement("button", { className: "DocSearch-Prefill", key: t3, type: "button", onClick: function() {
+  function $n(e2) {
+    var t2 = e2.translations, n2 = t2 === void 0 ? {} : t2, r2 = Jn(e2, zn), o2 = n2.noResultsText, c2 = o2 === void 0 ? "No results for" : o2, i2 = n2.suggestedQueryText, a2 = i2 === void 0 ? "Try searching for" : i2, u2 = n2.reportMissingResultsText, l2 = u2 === void 0 ? "Believe this query should return results?" : u2, s2 = n2.reportMissingResultsLinkText, f2 = s2 === void 0 ? "Let us know." : s2, p2 = r2.state.context.searchSuggestions;
+    return Ue.createElement("div", { className: "DocSearch-NoResults" }, Ue.createElement("div", { className: "DocSearch-Screen-Icon" }, Ue.createElement(Bn, null)), Ue.createElement("p", { className: "DocSearch-Title" }, c2, ' "', Ue.createElement("strong", null, r2.state.query), '"'), p2 && p2.length > 0 && Ue.createElement("div", { className: "DocSearch-NoResults-Prefill-List" }, Ue.createElement("p", { className: "DocSearch-Help" }, a2, ":"), Ue.createElement("ul", null, p2.slice(0, 3).reduce(function(e3, t3) {
+      return [].concat(Wn(e3), [Ue.createElement("li", { key: t3 }, Ue.createElement("button", { className: "DocSearch-Prefill", key: t3, type: "button", onClick: function() {
         r2.setQuery(t3.toLowerCase() + " "), r2.refresh(), r2.inputRef.current.focus();
       } }, t3))]);
     }, []))), r2.getMissingResultsUrl && Ue.createElement("p", { className: "DocSearch-Help" }, "".concat(l2, " "), Ue.createElement("a", { href: r2.getMissingResultsUrl({ query: r2.state.query }), target: "_blank", rel: "noopener noreferrer" }, f2)));
   }
-  var $n = ["hit", "attribute", "tagName"];
-  function Qn(e2, t2) {
+  var Qn = ["hit", "attribute", "tagName"];
+  function Yn(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -2675,21 +2679,21 @@
     }
     return n2;
   }
-  function Yn(e2) {
+  function Gn(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = arguments[t2] != null ? arguments[t2] : {};
-      t2 % 2 ? Qn(Object(n2), true).forEach(function(t3) {
-        Gn(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Qn(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? Yn(Object(n2), true).forEach(function(t3) {
+        Zn(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Yn(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function Gn(e2, t2, n2) {
+  function Zn(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function Zn(e2, t2) {
+  function Xn(e2, t2) {
     if (e2 == null)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -2707,16 +2711,16 @@
     }
     return o2;
   }
-  function Xn(e2, t2) {
+  function er(e2, t2) {
     return t2.split(".").reduce(function(e3, t3) {
       return e3 != null && e3[t3] ? e3[t3] : null;
     }, e2);
   }
-  function er(e2) {
+  function tr(e2) {
     var t2 = e2.hit, n2 = e2.attribute, r2 = e2.tagName;
-    return g(r2 === void 0 ? "span" : r2, Yn(Yn({}, Zn(e2, $n)), {}, { dangerouslySetInnerHTML: { __html: Xn(t2, "_snippetResult.".concat(n2, ".value")) || Xn(t2, n2) } }));
+    return g(r2 === void 0 ? "span" : r2, Gn(Gn({}, Xn(e2, Qn)), {}, { dangerouslySetInnerHTML: { __html: er(t2, "_snippetResult.".concat(n2, ".value")) || er(t2, n2) } }));
   }
-  function tr(e2, t2) {
+  function nr(e2, t2) {
     return function(e3) {
       if (Array.isArray(e3))
         return e3;
@@ -2743,105 +2747,105 @@
       if (!e3)
         return;
       if (typeof e3 == "string")
-        return nr(e3, t3);
+        return rr(e3, t3);
       var n2 = Object.prototype.toString.call(e3).slice(8, -1);
       n2 === "Object" && e3.constructor && (n2 = e3.constructor.name);
       if (n2 === "Map" || n2 === "Set")
         return Array.from(e3);
       if (n2 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
-        return nr(e3, t3);
+        return rr(e3, t3);
     }(e2, t2) || function() {
       throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }();
   }
-  function nr(e2, t2) {
+  function rr(e2, t2) {
     (t2 == null || t2 > e2.length) && (t2 = e2.length);
     for (var n2 = 0, r2 = new Array(t2); n2 < t2; n2++)
       r2[n2] = e2[n2];
     return r2;
   }
-  function rr() {
-    return rr = Object.assign || function(e2) {
+  function or() {
+    return or = Object.assign || function(e2) {
       for (var t2 = 1; t2 < arguments.length; t2++) {
         var n2 = arguments[t2];
         for (var r2 in n2)
           Object.prototype.hasOwnProperty.call(n2, r2) && (e2[r2] = n2[r2]);
       }
       return e2;
-    }, rr.apply(this, arguments);
-  }
-  function or(e2) {
-    return e2.collection && e2.collection.items.length !== 0 ? Ue.createElement("section", { className: "DocSearch-Hits" }, Ue.createElement("div", { className: "DocSearch-Hit-source" }, e2.title), Ue.createElement("ul", e2.getListProps(), e2.collection.items.map(function(t2, n2) {
-      return Ue.createElement(cr, rr({ key: [e2.title, t2.objectID].join(":"), item: t2, index: n2 }, e2));
-    }))) : null;
+    }, or.apply(this, arguments);
   }
   function cr(e2) {
-    var t2 = e2.item, n2 = e2.index, r2 = e2.renderIcon, o2 = e2.renderAction, c2 = e2.getItemProps, i2 = e2.onItemClick, a2 = e2.collection, u2 = e2.hitComponent, l2 = tr(Ue.useState(false), 2), s2 = l2[0], f2 = l2[1], p2 = tr(Ue.useState(false), 2), m2 = p2[0], d2 = p2[1], h2 = Ue.useRef(null), v2 = u2;
-    return Ue.createElement("li", rr({ className: ["DocSearch-Hit", t2.__docsearch_parent && "DocSearch-Hit--Child", s2 && "DocSearch-Hit--deleting", m2 && "DocSearch-Hit--favoriting"].filter(Boolean).join(" "), onTransitionEnd: function() {
+    return e2.collection && e2.collection.items.length !== 0 ? Ue.createElement("section", { className: "DocSearch-Hits" }, Ue.createElement("div", { className: "DocSearch-Hit-source" }, e2.title), Ue.createElement("ul", e2.getListProps(), e2.collection.items.map(function(t2, n2) {
+      return Ue.createElement(ir, or({ key: [e2.title, t2.objectID].join(":"), item: t2, index: n2 }, e2));
+    }))) : null;
+  }
+  function ir(e2) {
+    var t2 = e2.item, n2 = e2.index, r2 = e2.renderIcon, o2 = e2.renderAction, c2 = e2.getItemProps, i2 = e2.onItemClick, a2 = e2.collection, u2 = e2.hitComponent, l2 = nr(Ue.useState(false), 2), s2 = l2[0], f2 = l2[1], p2 = nr(Ue.useState(false), 2), m2 = p2[0], d2 = p2[1], h2 = Ue.useRef(null), v2 = u2;
+    return Ue.createElement("li", or({ className: ["DocSearch-Hit", t2.__docsearch_parent && "DocSearch-Hit--Child", s2 && "DocSearch-Hit--deleting", m2 && "DocSearch-Hit--favoriting"].filter(Boolean).join(" "), onTransitionEnd: function() {
       h2.current && h2.current();
     } }, c2({ item: t2, source: a2.source, onClick: function() {
       i2(t2);
-    } })), Ue.createElement(v2, { hit: t2 }, Ue.createElement("div", { className: "DocSearch-Hit-Container" }, r2({ item: t2, index: n2 }), t2.hierarchy[t2.type] && t2.type === "lvl1" && Ue.createElement("div", { className: "DocSearch-Hit-content-wrapper" }, Ue.createElement(er, { className: "DocSearch-Hit-title", hit: t2, attribute: "hierarchy.lvl1" }), t2.content && Ue.createElement(er, { className: "DocSearch-Hit-path", hit: t2, attribute: "content" })), t2.hierarchy[t2.type] && (t2.type === "lvl2" || t2.type === "lvl3" || t2.type === "lvl4" || t2.type === "lvl5" || t2.type === "lvl6") && Ue.createElement("div", { className: "DocSearch-Hit-content-wrapper" }, Ue.createElement(er, { className: "DocSearch-Hit-title", hit: t2, attribute: "hierarchy.".concat(t2.type) }), Ue.createElement(er, { className: "DocSearch-Hit-path", hit: t2, attribute: "hierarchy.lvl1" })), t2.type === "content" && Ue.createElement("div", { className: "DocSearch-Hit-content-wrapper" }, Ue.createElement(er, { className: "DocSearch-Hit-title", hit: t2, attribute: "content" }), Ue.createElement(er, { className: "DocSearch-Hit-path", hit: t2, attribute: "hierarchy.lvl1" })), o2({ item: t2, runDeleteTransition: function(e3) {
+    } })), Ue.createElement(v2, { hit: t2 }, Ue.createElement("div", { className: "DocSearch-Hit-Container" }, r2({ item: t2, index: n2 }), t2.hierarchy[t2.type] && t2.type === "lvl1" && Ue.createElement("div", { className: "DocSearch-Hit-content-wrapper" }, Ue.createElement(tr, { className: "DocSearch-Hit-title", hit: t2, attribute: "hierarchy.lvl1" }), t2.content && Ue.createElement(tr, { className: "DocSearch-Hit-path", hit: t2, attribute: "content" })), t2.hierarchy[t2.type] && (t2.type === "lvl2" || t2.type === "lvl3" || t2.type === "lvl4" || t2.type === "lvl5" || t2.type === "lvl6") && Ue.createElement("div", { className: "DocSearch-Hit-content-wrapper" }, Ue.createElement(tr, { className: "DocSearch-Hit-title", hit: t2, attribute: "hierarchy.".concat(t2.type) }), Ue.createElement(tr, { className: "DocSearch-Hit-path", hit: t2, attribute: "hierarchy.lvl1" })), t2.type === "content" && Ue.createElement("div", { className: "DocSearch-Hit-content-wrapper" }, Ue.createElement(tr, { className: "DocSearch-Hit-title", hit: t2, attribute: "content" }), Ue.createElement(tr, { className: "DocSearch-Hit-path", hit: t2, attribute: "hierarchy.lvl1" })), o2({ item: t2, runDeleteTransition: function(e3) {
       f2(true), h2.current = e3;
     }, runFavoriteTransition: function(e3) {
       d2(true), h2.current = e3;
     } }))));
   }
-  function ir(e2, t2) {
+  function ar(e2, t2) {
     return e2.reduce(function(e3, n2) {
       var r2 = t2(n2);
       return e3.hasOwnProperty(r2) || (e3[r2] = []), e3[r2].length < 5 && e3[r2].push(n2), e3;
     }, {});
   }
-  function ar(e2) {
+  function ur(e2) {
     return e2;
   }
-  function ur() {
+  function lr() {
   }
-  var lr = /(<mark>|<\/mark>)/g;
-  var sr = RegExp(lr.source);
-  function fr(e2) {
+  var sr = /(<mark>|<\/mark>)/g;
+  var fr = RegExp(sr.source);
+  function pr(e2) {
     var t2, n2, r2, o2, c2, i2 = e2;
     if (!i2.__docsearch_parent && !e2._highlightResult)
       return e2.hierarchy.lvl0;
     var a2 = ((i2.__docsearch_parent ? (t2 = i2.__docsearch_parent) === null || t2 === void 0 || (n2 = t2._highlightResult) === null || n2 === void 0 || (r2 = n2.hierarchy) === null || r2 === void 0 ? void 0 : r2.lvl0 : (o2 = e2._highlightResult) === null || o2 === void 0 || (c2 = o2.hierarchy) === null || c2 === void 0 ? void 0 : c2.lvl0) || {}).value;
-    return a2 && sr.test(a2) ? a2.replace(lr, "") : a2;
+    return a2 && fr.test(a2) ? a2.replace(sr, "") : a2;
   }
-  function pr() {
-    return pr = Object.assign || function(e2) {
+  function mr() {
+    return mr = Object.assign || function(e2) {
       for (var t2 = 1; t2 < arguments.length; t2++) {
         var n2 = arguments[t2];
         for (var r2 in n2)
           Object.prototype.hasOwnProperty.call(n2, r2) && (e2[r2] = n2[r2]);
       }
       return e2;
-    }, pr.apply(this, arguments);
+    }, mr.apply(this, arguments);
   }
-  function mr(e2) {
+  function dr(e2) {
     return Ue.createElement("div", { className: "DocSearch-Dropdown-Container" }, e2.state.collections.map(function(t2) {
       if (t2.items.length === 0)
         return null;
-      var n2 = fr(t2.items[0]);
-      return Ue.createElement(or, pr({}, e2, { key: t2.source.sourceId, title: n2, collection: t2, renderIcon: function(e3) {
+      var n2 = pr(t2.items[0]);
+      return Ue.createElement(cr, mr({}, e2, { key: t2.source.sourceId, title: n2, collection: t2, renderIcon: function(e3) {
         var n3, r2 = e3.item, o2 = e3.index;
-        return Ue.createElement(Ue.Fragment, null, r2.__docsearch_parent && Ue.createElement("svg", { className: "DocSearch-Hit-Tree", viewBox: "0 0 24 54" }, Ue.createElement("g", { stroke: "currentColor", fill: "none", fillRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round" }, r2.__docsearch_parent !== ((n3 = t2.items[o2 + 1]) === null || n3 === void 0 ? void 0 : n3.__docsearch_parent) ? Ue.createElement("path", { d: "M8 6v21M20 27H8.3" }) : Ue.createElement("path", { d: "M8 6v42M20 27H8.3" }))), Ue.createElement("div", { className: "DocSearch-Hit-icon" }, Ue.createElement(Ln, { type: r2.type })));
+        return Ue.createElement(Ue.Fragment, null, r2.__docsearch_parent && Ue.createElement("svg", { className: "DocSearch-Hit-Tree", viewBox: "0 0 24 54" }, Ue.createElement("g", { stroke: "currentColor", fill: "none", fillRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round" }, r2.__docsearch_parent !== ((n3 = t2.items[o2 + 1]) === null || n3 === void 0 ? void 0 : n3.__docsearch_parent) ? Ue.createElement("path", { d: "M8 6v21M20 27H8.3" }) : Ue.createElement("path", { d: "M8 6v42M20 27H8.3" }))), Ue.createElement("div", { className: "DocSearch-Hit-icon" }, Ue.createElement(qn, { type: r2.type })));
       }, renderAction: function() {
-        return Ue.createElement("div", { className: "DocSearch-Hit-action" }, Ue.createElement(Rn, null));
+        return Ue.createElement("div", { className: "DocSearch-Hit-action" }, Ue.createElement(Tn, null));
       } }));
     }), e2.resultsFooterComponent && Ue.createElement("section", { className: "DocSearch-HitsFooter" }, Ue.createElement(e2.resultsFooterComponent, { state: e2.state })));
   }
-  var dr = ["translations"];
-  function hr() {
-    return hr = Object.assign || function(e2) {
+  var hr = ["translations"];
+  function vr() {
+    return vr = Object.assign || function(e2) {
       for (var t2 = 1; t2 < arguments.length; t2++) {
         var n2 = arguments[t2];
         for (var r2 in n2)
           Object.prototype.hasOwnProperty.call(n2, r2) && (e2[r2] = n2[r2]);
       }
       return e2;
-    }, hr.apply(this, arguments);
+    }, vr.apply(this, arguments);
   }
-  function vr(e2, t2) {
+  function yr(e2, t2) {
     if (e2 == null)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -2859,44 +2863,44 @@
     }
     return o2;
   }
-  function yr(e2) {
-    var t2 = e2.translations, n2 = t2 === void 0 ? {} : t2, r2 = vr(e2, dr), o2 = n2.recentSearchesTitle, c2 = o2 === void 0 ? "Recent" : o2, i2 = n2.noRecentSearchesText, a2 = i2 === void 0 ? "No recent searches" : i2, u2 = n2.saveRecentSearchButtonTitle, l2 = u2 === void 0 ? "Save this search" : u2, s2 = n2.removeRecentSearchButtonTitle, f2 = s2 === void 0 ? "Remove this search from history" : s2, p2 = n2.favoriteSearchesTitle, m2 = p2 === void 0 ? "Favorite" : p2, d2 = n2.removeFavoriteSearchButtonTitle, h2 = d2 === void 0 ? "Remove this search from favorites" : d2;
-    return r2.state.status === "idle" && r2.hasCollections === false ? r2.disableUserPersonalization ? null : Ue.createElement("div", { className: "DocSearch-StartScreen" }, Ue.createElement("p", { className: "DocSearch-Help" }, a2)) : r2.hasCollections === false ? null : Ue.createElement("div", { className: "DocSearch-Dropdown-Container" }, Ue.createElement(or, hr({}, r2, { title: c2, collection: r2.state.collections[0], renderIcon: function() {
-      return Ue.createElement("div", { className: "DocSearch-Hit-icon" }, Ue.createElement(xn, null));
+  function _r(e2) {
+    var t2 = e2.translations, n2 = t2 === void 0 ? {} : t2, r2 = yr(e2, hr), o2 = n2.recentSearchesTitle, c2 = o2 === void 0 ? "Recent" : o2, i2 = n2.noRecentSearchesText, a2 = i2 === void 0 ? "No recent searches" : i2, u2 = n2.saveRecentSearchButtonTitle, l2 = u2 === void 0 ? "Save this search" : u2, s2 = n2.removeRecentSearchButtonTitle, f2 = s2 === void 0 ? "Remove this search from history" : s2, p2 = n2.favoriteSearchesTitle, m2 = p2 === void 0 ? "Favorite" : p2, d2 = n2.removeFavoriteSearchButtonTitle, h2 = d2 === void 0 ? "Remove this search from favorites" : d2;
+    return r2.state.status === "idle" && r2.hasCollections === false ? r2.disableUserPersonalization ? null : Ue.createElement("div", { className: "DocSearch-StartScreen" }, Ue.createElement("p", { className: "DocSearch-Help" }, a2)) : r2.hasCollections === false ? null : Ue.createElement("div", { className: "DocSearch-Dropdown-Container" }, Ue.createElement(cr, vr({}, r2, { title: c2, collection: r2.state.collections[0], renderIcon: function() {
+      return Ue.createElement("div", { className: "DocSearch-Hit-icon" }, Ue.createElement(Nn, null));
     }, renderAction: function(e3) {
       var t3 = e3.item, n3 = e3.runFavoriteTransition, o3 = e3.runDeleteTransition;
       return Ue.createElement(Ue.Fragment, null, Ue.createElement("div", { className: "DocSearch-Hit-action" }, Ue.createElement("button", { className: "DocSearch-Hit-action-button", title: l2, type: "submit", onClick: function(e4) {
         e4.preventDefault(), e4.stopPropagation(), n3(function() {
           r2.favoriteSearches.add(t3), r2.recentSearches.remove(t3), r2.refresh();
         });
-      } }, Ue.createElement(Hn, null))), Ue.createElement("div", { className: "DocSearch-Hit-action" }, Ue.createElement("button", { className: "DocSearch-Hit-action-button", title: f2, type: "submit", onClick: function(e4) {
+      } }, Ue.createElement(Un, null))), Ue.createElement("div", { className: "DocSearch-Hit-action" }, Ue.createElement("button", { className: "DocSearch-Hit-action-button", title: f2, type: "submit", onClick: function(e4) {
         e4.preventDefault(), e4.stopPropagation(), o3(function() {
           r2.recentSearches.remove(t3), r2.refresh();
         });
-      } }, Ue.createElement(Nn, null))));
-    } })), Ue.createElement(or, hr({}, r2, { title: m2, collection: r2.state.collections[1], renderIcon: function() {
-      return Ue.createElement("div", { className: "DocSearch-Hit-icon" }, Ue.createElement(Hn, null));
+      } }, Ue.createElement(Rn, null))));
+    } })), Ue.createElement(cr, vr({}, r2, { title: m2, collection: r2.state.collections[1], renderIcon: function() {
+      return Ue.createElement("div", { className: "DocSearch-Hit-icon" }, Ue.createElement(Un, null));
     }, renderAction: function(e3) {
       var t3 = e3.item, n3 = e3.runDeleteTransition;
       return Ue.createElement("div", { className: "DocSearch-Hit-action" }, Ue.createElement("button", { className: "DocSearch-Hit-action-button", title: h2, type: "submit", onClick: function(e4) {
         e4.preventDefault(), e4.stopPropagation(), n3(function() {
           r2.favoriteSearches.remove(t3), r2.refresh();
         });
-      } }, Ue.createElement(Nn, null)));
+      } }, Ue.createElement(Rn, null)));
     } })));
   }
-  var _r = ["translations"];
-  function br() {
-    return br = Object.assign || function(e2) {
+  var br = ["translations"];
+  function gr() {
+    return gr = Object.assign || function(e2) {
       for (var t2 = 1; t2 < arguments.length; t2++) {
         var n2 = arguments[t2];
         for (var r2 in n2)
           Object.prototype.hasOwnProperty.call(n2, r2) && (e2[r2] = n2[r2]);
       }
       return e2;
-    }, br.apply(this, arguments);
+    }, gr.apply(this, arguments);
   }
-  function gr(e2, t2) {
+  function Or(e2, t2) {
     if (e2 == null)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -2914,29 +2918,29 @@
     }
     return o2;
   }
-  var Or = Ue.memo(function(e2) {
-    var t2 = e2.translations, n2 = t2 === void 0 ? {} : t2, r2 = gr(e2, _r);
+  var Sr = Ue.memo(function(e2) {
+    var t2 = e2.translations, n2 = t2 === void 0 ? {} : t2, r2 = Or(e2, br);
     if (r2.state.status === "error")
-      return Ue.createElement(Bn, { translations: n2 == null ? void 0 : n2.errorScreen });
+      return Ue.createElement(Vn, { translations: n2 == null ? void 0 : n2.errorScreen });
     var o2 = r2.state.collections.some(function(e3) {
       return e3.items.length > 0;
     });
-    return r2.state.query ? o2 === false ? Ue.createElement(Jn, br({}, r2, { translations: n2 == null ? void 0 : n2.noResultsScreen })) : Ue.createElement(mr, r2) : Ue.createElement(yr, br({}, r2, { hasCollections: o2, translations: n2 == null ? void 0 : n2.startScreen }));
+    return r2.state.query ? o2 === false ? Ue.createElement($n, gr({}, r2, { translations: n2 == null ? void 0 : n2.noResultsScreen })) : Ue.createElement(dr, r2) : Ue.createElement(_r, gr({}, r2, { hasCollections: o2, translations: n2 == null ? void 0 : n2.startScreen }));
   }, function(e2, t2) {
     return t2.state.status === "loading" || t2.state.status === "stalled";
   });
-  var Sr = ["translations"];
-  function Er() {
-    return Er = Object.assign || function(e2) {
+  var Er = ["translations"];
+  function wr() {
+    return wr = Object.assign || function(e2) {
       for (var t2 = 1; t2 < arguments.length; t2++) {
         var n2 = arguments[t2];
         for (var r2 in n2)
           Object.prototype.hasOwnProperty.call(n2, r2) && (e2[r2] = n2[r2]);
       }
       return e2;
-    }, Er.apply(this, arguments);
+    }, wr.apply(this, arguments);
   }
-  function wr(e2, t2) {
+  function jr(e2, t2) {
     if (e2 == null)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -2954,18 +2958,18 @@
     }
     return o2;
   }
-  function jr(e2) {
-    var t2 = e2.translations, n2 = t2 === void 0 ? {} : t2, r2 = wr(e2, Sr), o2 = n2.resetButtonTitle, c2 = o2 === void 0 ? "Clear the query" : o2, i2 = n2.resetButtonAriaLabel, a2 = i2 === void 0 ? "Clear the query" : i2, u2 = n2.cancelButtonText, l2 = u2 === void 0 ? "Cancel" : u2, s2 = n2.cancelButtonAriaLabel, f2 = s2 === void 0 ? "Cancel" : s2, p2 = r2.getFormProps({ inputElement: r2.inputRef.current }).onReset;
+  function Pr(e2) {
+    var t2 = e2.translations, n2 = t2 === void 0 ? {} : t2, r2 = jr(e2, Er), o2 = n2.resetButtonTitle, c2 = o2 === void 0 ? "Clear the query" : o2, i2 = n2.resetButtonAriaLabel, a2 = i2 === void 0 ? "Clear the query" : i2, u2 = n2.cancelButtonText, l2 = u2 === void 0 ? "Cancel" : u2, s2 = n2.cancelButtonAriaLabel, f2 = s2 === void 0 ? "Cancel" : s2, p2 = r2.getFormProps({ inputElement: r2.inputRef.current }).onReset;
     return Ue.useEffect(function() {
       r2.autoFocus && r2.inputRef.current && r2.inputRef.current.focus();
     }, [r2.autoFocus, r2.inputRef]), Ue.useEffect(function() {
       r2.isFromSelection && r2.inputRef.current && r2.inputRef.current.select();
     }, [r2.isFromSelection, r2.inputRef]), Ue.createElement(Ue.Fragment, null, Ue.createElement("form", { className: "DocSearch-Form", onSubmit: function(e3) {
       e3.preventDefault();
-    }, onReset: p2 }, Ue.createElement("label", Er({ className: "DocSearch-MagnifierLabel" }, r2.getLabelProps()), Ue.createElement(Be, null)), Ue.createElement("div", { className: "DocSearch-LoadingIndicator" }, Ue.createElement(An, null)), Ue.createElement("input", Er({ className: "DocSearch-Input", ref: r2.inputRef }, r2.getInputProps({ inputElement: r2.inputRef.current, autoFocus: r2.autoFocus, maxLength: 64 }))), Ue.createElement("button", { type: "reset", title: c2, className: "DocSearch-Reset", "aria-label": a2, hidden: !r2.state.query }, Ue.createElement(Nn, null))), Ue.createElement("button", { className: "DocSearch-Cancel", type: "reset", "aria-label": f2, onClick: r2.onClose }, l2));
+    }, onReset: p2 }, Ue.createElement("label", wr({ className: "DocSearch-MagnifierLabel" }, r2.getLabelProps()), Ue.createElement(Be, null)), Ue.createElement("div", { className: "DocSearch-LoadingIndicator" }, Ue.createElement(xn, null)), Ue.createElement("input", wr({ className: "DocSearch-Input", ref: r2.inputRef }, r2.getInputProps({ inputElement: r2.inputRef.current, autoFocus: r2.autoFocus, maxLength: 64 }))), Ue.createElement("button", { type: "reset", title: c2, className: "DocSearch-Reset", "aria-label": a2, hidden: !r2.state.query }, Ue.createElement(Rn, null))), Ue.createElement("button", { className: "DocSearch-Cancel", type: "reset", "aria-label": f2, onClick: r2.onClose }, l2));
   }
-  var Pr = ["_highlightResult", "_snippetResult"];
-  function Ir(e2, t2) {
+  var Ir = ["_highlightResult", "_snippetResult"];
+  function kr(e2, t2) {
     if (e2 == null)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -2983,7 +2987,7 @@
     }
     return o2;
   }
-  function kr(e2) {
+  function Dr(e2) {
     return function() {
       var e3 = "__TEST_KEY__";
       try {
@@ -3001,10 +3005,10 @@
       return t2 ? JSON.parse(t2) : [];
     } };
   }
-  function Dr(e2) {
-    var t2 = e2.key, n2 = e2.limit, r2 = n2 === void 0 ? 5 : n2, o2 = kr(t2), c2 = o2.getItem().slice(0, r2);
+  function Cr(e2) {
+    var t2 = e2.key, n2 = e2.limit, r2 = n2 === void 0 ? 5 : n2, o2 = Dr(t2), c2 = o2.getItem().slice(0, r2);
     return { add: function(e3) {
-      var t3 = e3, n3 = (t3._highlightResult, t3._snippetResult, Ir(t3, Pr)), i2 = c2.findIndex(function(e4) {
+      var t3 = e3, n3 = (t3._highlightResult, t3._snippetResult, kr(t3, Ir)), i2 = c2.findIndex(function(e4) {
         return e4.objectID === n3.objectID;
       });
       i2 > -1 && c2.splice(i2, 1), c2.unshift(n3), c2 = c2.slice(0, r2), o2.setItem(c2);
@@ -3016,8 +3020,8 @@
       return c2;
     } };
   }
-  var Cr = ["facetName", "facetQuery"];
-  function Ar(e2) {
+  var Ar = ["facetName", "facetQuery"];
+  function xr(e2) {
     var t2, n2 = "algoliasearch-client-js-".concat(e2.key), r2 = function() {
       return t2 === void 0 && (t2 = e2.localStorage || window.localStorage), t2;
     }, o2 = function() {
@@ -3052,7 +3056,7 @@
       });
     } };
   }
-  function xr(e2) {
+  function Nr(e2) {
     var t2 = a(e2.caches), n2 = t2.shift();
     return n2 === void 0 ? { get: function(e3, t3) {
       var n3 = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : { miss: function() {
@@ -3074,23 +3078,23 @@
         return Promise.resolve();
       } };
       return n2.get(e3, r2, o2).catch(function() {
-        return xr({ caches: t2 }).get(e3, r2, o2);
+        return Nr({ caches: t2 }).get(e3, r2, o2);
       });
     }, set: function(e3, r2) {
       return n2.set(e3, r2).catch(function() {
-        return xr({ caches: t2 }).set(e3, r2);
+        return Nr({ caches: t2 }).set(e3, r2);
       });
     }, delete: function(e3) {
       return n2.delete(e3).catch(function() {
-        return xr({ caches: t2 }).delete(e3);
+        return Nr({ caches: t2 }).delete(e3);
       });
     }, clear: function() {
       return n2.clear().catch(function() {
-        return xr({ caches: t2 }).clear();
+        return Nr({ caches: t2 }).clear();
       });
     } };
   }
-  function Nr() {
+  function Rr() {
     var e2 = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : { serializable: true }, t2 = {};
     return { get: function(n2, r2) {
       var o2 = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : { miss: function() {
@@ -3114,19 +3118,19 @@
       return t2 = {}, Promise.resolve();
     } };
   }
-  function Rr(e2) {
+  function Tr(e2) {
     for (var t2 = e2.length - 1; t2 > 0; t2--) {
       var n2 = Math.floor(Math.random() * (t2 + 1)), r2 = e2[t2];
       e2[t2] = e2[n2], e2[n2] = r2;
     }
     return e2;
   }
-  function Tr(e2, t2) {
+  function Lr(e2, t2) {
     return t2 ? (Object.keys(t2).forEach(function(n2) {
       e2[n2] = t2[n2](e2);
     }), e2) : e2;
   }
-  function Lr(e2) {
+  function qr(e2) {
     for (var t2 = arguments.length, n2 = new Array(t2 > 1 ? t2 - 1 : 0), r2 = 1; r2 < t2; r2++)
       n2[r2 - 1] = arguments[r2];
     var o2 = 0;
@@ -3134,51 +3138,51 @@
       return encodeURIComponent(n2[o2++]);
     });
   }
-  var qr = { WithinQueryParameters: 0, WithinHeaders: 1 };
-  function Mr(e2, t2) {
+  var Mr = { WithinQueryParameters: 0, WithinHeaders: 1 };
+  function Hr(e2, t2) {
     var n2 = e2 || {}, r2 = n2.data || {};
     return Object.keys(n2).forEach(function(e3) {
       ["timeout", "headers", "queryParameters", "data", "cacheable"].indexOf(e3) === -1 && (r2[e3] = n2[e3]);
     }), { data: Object.entries(r2).length > 0 ? r2 : void 0, timeout: n2.timeout || t2, headers: n2.headers || {}, queryParameters: n2.queryParameters || {}, cacheable: n2.cacheable };
   }
-  var Hr = { Read: 1, Write: 2, Any: 3 };
-  var Ur = 1;
-  var Fr = 2;
-  var Br = 3;
-  function Vr(e2) {
-    var n2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : Ur;
+  var Ur = { Read: 1, Write: 2, Any: 3 };
+  var Fr = 1;
+  var Br = 2;
+  var Vr = 3;
+  function zr(e2) {
+    var n2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : Fr;
     return t(t({}, e2), {}, { status: n2, lastUpdate: Date.now() });
   }
-  function zr(e2) {
-    return typeof e2 == "string" ? { protocol: "https", url: e2, accept: Hr.Any } : { protocol: e2.protocol || "https", url: e2.url, accept: e2.accept || Hr.Any };
+  function Wr(e2) {
+    return typeof e2 == "string" ? { protocol: "https", url: e2, accept: Ur.Any } : { protocol: e2.protocol || "https", url: e2.url, accept: e2.accept || Ur.Any };
   }
-  var Wr = "GET";
-  var Kr = "POST";
-  function Jr(e2, t2) {
+  var Kr = "GET";
+  var Jr = "POST";
+  function $r(e2, t2) {
     return Promise.all(t2.map(function(t3) {
       return e2.get(t3, function() {
-        return Promise.resolve(Vr(t3));
+        return Promise.resolve(zr(t3));
       });
     })).then(function(e3) {
       var n2 = e3.filter(function(e4) {
         return function(e5) {
-          return e5.status === Ur || Date.now() - e5.lastUpdate > 12e4;
+          return e5.status === Fr || Date.now() - e5.lastUpdate > 12e4;
         }(e4);
       }), r2 = e3.filter(function(e4) {
         return function(e5) {
-          return e5.status === Br && Date.now() - e5.lastUpdate <= 12e4;
+          return e5.status === Vr && Date.now() - e5.lastUpdate <= 12e4;
         }(e4);
       }), o2 = [].concat(a(n2), a(r2));
       return { getTimeout: function(e4, t3) {
         return (r2.length === 0 && e4 === 0 ? 1 : r2.length + 3 + e4) * t3;
       }, statelessHosts: o2.length > 0 ? o2.map(function(e4) {
-        return zr(e4);
+        return Wr(e4);
       }) : t2 };
     });
   }
-  function $r(e2, n2, r2, o2) {
+  function Qr(e2, n2, r2, o2) {
     var c2 = [], i2 = function(e3, n3) {
-      if (e3.method === Wr || e3.data === void 0 && n3.data === void 0)
+      if (e3.method === Kr || e3.data === void 0 && n3.data === void 0)
         return;
       var r3 = Array.isArray(e3.data) ? e3.data : t(t({}, e3.data), n3.data);
       return JSON.stringify(r3);
@@ -3188,11 +3192,11 @@
         var t2 = r3[e4];
         o3[e4.toLowerCase()] = t2;
       }), o3;
-    }(e2, o2), l2 = r2.method, s2 = r2.method !== Wr ? {} : t(t({}, r2.data), o2.data), f2 = t(t(t({ "x-algolia-agent": e2.userAgent.value }, e2.queryParameters), s2), o2.queryParameters), p2 = 0, m2 = function t2(n3, a2) {
+    }(e2, o2), l2 = r2.method, s2 = r2.method !== Kr ? {} : t(t({}, r2.data), o2.data), f2 = t(t(t({ "x-algolia-agent": e2.userAgent.value }, e2.queryParameters), s2), o2.queryParameters), p2 = 0, m2 = function t2(n3, a2) {
       var s3 = n3.pop();
       if (s3 === void 0)
-        throw { name: "RetryError", message: "Unreachable hosts - your application id may be incorrect. If the error persists, contact support@algolia.com.", transporterStackTrace: Zr(c2) };
-      var m3 = { data: i2, headers: u2, method: l2, url: Yr(s3, r2.path, f2), connectTimeout: a2(p2, e2.timeouts.connect), responseTimeout: a2(p2, o2.timeout) }, d2 = function(e3) {
+        throw { name: "RetryError", message: "Unreachable hosts - your application id may be incorrect. If the error persists, contact support@algolia.com.", transporterStackTrace: Xr(c2) };
+      var m3 = { data: i2, headers: u2, method: l2, url: Gr(s3, r2.path, f2), connectTimeout: a2(p2, e2.timeouts.connect), responseTimeout: a2(p2, o2.timeout) }, d2 = function(e3) {
         var t3 = { request: m3, response: e3, host: s3, triesLeft: n3.length };
         return c2.push(t3), t3;
       }, h2 = { onSucess: function(e3) {
@@ -3207,7 +3211,7 @@
         }(e3);
       }, onRetry: function(r3) {
         var o3 = d2(r3);
-        return r3.isTimedOut && p2++, Promise.all([e2.logger.info("Retryable failure", Xr(o3)), e2.hostsCache.set(s3, Vr(s3, r3.isTimedOut ? Br : Fr))]).then(function() {
+        return r3.isTimedOut && p2++, Promise.all([e2.logger.info("Retryable failure", eo(o3)), e2.hostsCache.set(s3, zr(s3, r3.isTimedOut ? Vr : Br))]).then(function() {
           return t2(n3, a2);
         });
       }, onFail: function(e3) {
@@ -3220,7 +3224,7 @@
           return function(e5, t4, n5) {
             return { name: "ApiError", message: e5, status: t4, transporterStackTrace: n5 };
           }(o3, r3, t3);
-        }(e3, Zr(c2));
+        }(e3, Xr(c2));
       } };
       return e2.requester.send(m3).then(function(e3) {
         return function(e4, t3) {
@@ -3234,51 +3238,51 @@
         }(e3, h2);
       });
     };
-    return Jr(e2.hostsCache, n2).then(function(e3) {
+    return $r(e2.hostsCache, n2).then(function(e3) {
       return m2(a(e3.statelessHosts).reverse(), e3.getTimeout);
     });
   }
-  function Qr(e2) {
+  function Yr(e2) {
     var t2 = { value: "Algolia for JavaScript (".concat(e2, ")"), add: function(e3) {
       var n2 = "; ".concat(e3.segment).concat(e3.version !== void 0 ? " (".concat(e3.version, ")") : "");
       return t2.value.indexOf(n2) === -1 && (t2.value = "".concat(t2.value).concat(n2)), t2;
     } };
     return t2;
   }
-  function Yr(e2, t2, n2) {
-    var r2 = Gr(n2), o2 = "".concat(e2.protocol, "://").concat(e2.url, "/").concat(t2.charAt(0) === "/" ? t2.substr(1) : t2);
+  function Gr(e2, t2, n2) {
+    var r2 = Zr(n2), o2 = "".concat(e2.protocol, "://").concat(e2.url, "/").concat(t2.charAt(0) === "/" ? t2.substr(1) : t2);
     return r2.length && (o2 += "?".concat(r2)), o2;
   }
-  function Gr(e2) {
+  function Zr(e2) {
     return Object.keys(e2).map(function(t2) {
-      return Lr("%s=%s", t2, (n2 = e2[t2], Object.prototype.toString.call(n2) === "[object Object]" || Object.prototype.toString.call(n2) === "[object Array]" ? JSON.stringify(e2[t2]) : e2[t2]));
+      return qr("%s=%s", t2, (n2 = e2[t2], Object.prototype.toString.call(n2) === "[object Object]" || Object.prototype.toString.call(n2) === "[object Array]" ? JSON.stringify(e2[t2]) : e2[t2]));
       var n2;
     }).join("&");
   }
-  function Zr(e2) {
+  function Xr(e2) {
     return e2.map(function(e3) {
-      return Xr(e3);
+      return eo(e3);
     });
   }
-  function Xr(e2) {
+  function eo(e2) {
     var n2 = e2.request.headers["x-algolia-api-key"] ? { "x-algolia-api-key": "*****" } : {};
     return t(t({}, e2), {}, { request: t(t({}, e2.request), {}, { headers: t(t({}, e2.request.headers), n2) }) });
   }
-  var eo = function(e2) {
+  var to = function(e2) {
     var n2 = e2.appId, r2 = function(e3, t2, n3) {
       var r3 = { "x-algolia-api-key": n3, "x-algolia-application-id": t2 };
       return { headers: function() {
-        return e3 === qr.WithinHeaders ? r3 : {};
+        return e3 === Mr.WithinHeaders ? r3 : {};
       }, queryParameters: function() {
-        return e3 === qr.WithinQueryParameters ? r3 : {};
+        return e3 === Mr.WithinQueryParameters ? r3 : {};
       } };
-    }(e2.authMode !== void 0 ? e2.authMode : qr.WithinHeaders, n2, e2.apiKey), o2 = function(e3) {
+    }(e2.authMode !== void 0 ? e2.authMode : Mr.WithinHeaders, n2, e2.apiKey), o2 = function(e3) {
       var t2 = e3.hostsCache, n3 = e3.logger, r3 = e3.requester, o3 = e3.requestsCache, c3 = e3.responsesCache, a2 = e3.timeouts, u2 = e3.userAgent, l2 = e3.hosts, s2 = e3.queryParameters, f2 = { hostsCache: t2, logger: n3, requester: r3, requestsCache: o3, responsesCache: c3, timeouts: a2, userAgent: u2, headers: e3.headers, queryParameters: s2, hosts: l2.map(function(e4) {
-        return zr(e4);
+        return Wr(e4);
       }), read: function(e4, t3) {
-        var n4 = Mr(t3, f2.timeouts.read), r4 = function() {
-          return $r(f2, f2.hosts.filter(function(e5) {
-            return (e5.accept & Hr.Read) != 0;
+        var n4 = Hr(t3, f2.timeouts.read), r4 = function() {
+          return Qr(f2, f2.hosts.filter(function(e5) {
+            return (e5.accept & Ur.Read) != 0;
           }), e4, n4);
         };
         if ((n4.cacheable !== void 0 ? n4.cacheable : e4.cacheable) !== true)
@@ -3299,60 +3303,60 @@
           return f2.responsesCache.set(o4, e5);
         } });
       }, write: function(e4, t3) {
-        return $r(f2, f2.hosts.filter(function(e5) {
-          return (e5.accept & Hr.Write) != 0;
-        }), e4, Mr(t3, f2.timeouts.write));
+        return Qr(f2, f2.hosts.filter(function(e5) {
+          return (e5.accept & Ur.Write) != 0;
+        }), e4, Hr(t3, f2.timeouts.write));
       } };
       return f2;
-    }(t(t({ hosts: [{ url: "".concat(n2, "-dsn.algolia.net"), accept: Hr.Read }, { url: "".concat(n2, ".algolia.net"), accept: Hr.Write }].concat(Rr([{ url: "".concat(n2, "-1.algolianet.com") }, { url: "".concat(n2, "-2.algolianet.com") }, { url: "".concat(n2, "-3.algolianet.com") }])) }, e2), {}, { headers: t(t(t({}, r2.headers()), { "content-type": "application/x-www-form-urlencoded" }), e2.headers), queryParameters: t(t({}, r2.queryParameters()), e2.queryParameters) })), c2 = { transporter: o2, appId: n2, addAlgoliaAgent: function(e3, t2) {
+    }(t(t({ hosts: [{ url: "".concat(n2, "-dsn.algolia.net"), accept: Ur.Read }, { url: "".concat(n2, ".algolia.net"), accept: Ur.Write }].concat(Tr([{ url: "".concat(n2, "-1.algolianet.com") }, { url: "".concat(n2, "-2.algolianet.com") }, { url: "".concat(n2, "-3.algolianet.com") }])) }, e2), {}, { headers: t(t(t({}, r2.headers()), { "content-type": "application/x-www-form-urlencoded" }), e2.headers), queryParameters: t(t({}, r2.queryParameters()), e2.queryParameters) })), c2 = { transporter: o2, appId: n2, addAlgoliaAgent: function(e3, t2) {
       o2.userAgent.add({ segment: e3, version: t2 });
     }, clearCache: function() {
       return Promise.all([o2.requestsCache.clear(), o2.responsesCache.clear()]).then(function() {
       });
     } };
-    return Tr(c2, e2.methods);
-  };
-  var to = function(e2) {
-    return function(t2) {
-      var n2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, r2 = { transporter: e2.transporter, appId: e2.appId, indexName: t2 };
-      return Tr(r2, n2.methods);
-    };
+    return Lr(c2, e2.methods);
   };
   var no = function(e2) {
-    return function(n2, r2) {
-      var o2 = n2.map(function(e3) {
-        return t(t({}, e3), {}, { params: Gr(e3.params || {}) });
-      });
-      return e2.transporter.read({ method: Kr, path: "1/indexes/*/queries", data: { requests: o2 }, cacheable: true }, r2);
+    return function(t2) {
+      var n2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, r2 = { transporter: e2.transporter, appId: e2.appId, indexName: t2 };
+      return Lr(r2, n2.methods);
     };
   };
   var ro = function(e2) {
     return function(n2, r2) {
-      return Promise.all(n2.map(function(n3) {
-        var o2 = n3.params, i2 = o2.facetName, a2 = o2.facetQuery, u2 = c(o2, Cr);
-        return to(e2)(n3.indexName, { methods: { searchForFacetValues: io } }).searchForFacetValues(i2, a2, t(t({}, r2), u2));
-      }));
+      var o2 = n2.map(function(e3) {
+        return t(t({}, e3), {}, { params: Zr(e3.params || {}) });
+      });
+      return e2.transporter.read({ method: Jr, path: "1/indexes/*/queries", data: { requests: o2 }, cacheable: true }, r2);
     };
   };
   var oo = function(e2) {
-    return function(t2, n2, r2) {
-      return e2.transporter.read({ method: Kr, path: Lr("1/answers/%s/prediction", e2.indexName), data: { query: t2, queryLanguages: n2 }, cacheable: true }, r2);
+    return function(n2, r2) {
+      return Promise.all(n2.map(function(n3) {
+        var o2 = n3.params, i2 = o2.facetName, a2 = o2.facetQuery, u2 = c(o2, Ar);
+        return no(e2)(n3.indexName, { methods: { searchForFacetValues: ao } }).searchForFacetValues(i2, a2, t(t({}, r2), u2));
+      }));
     };
   };
   var co = function(e2) {
-    return function(t2, n2) {
-      return e2.transporter.read({ method: Kr, path: Lr("1/indexes/%s/query", e2.indexName), data: { query: t2 }, cacheable: true }, n2);
+    return function(t2, n2, r2) {
+      return e2.transporter.read({ method: Jr, path: qr("1/answers/%s/prediction", e2.indexName), data: { query: t2, queryLanguages: n2 }, cacheable: true }, r2);
     };
   };
   var io = function(e2) {
-    return function(t2, n2, r2) {
-      return e2.transporter.read({ method: Kr, path: Lr("1/indexes/%s/facets/%s/query", e2.indexName, t2), data: { facetQuery: n2 }, cacheable: true }, r2);
+    return function(t2, n2) {
+      return e2.transporter.read({ method: Jr, path: qr("1/indexes/%s/query", e2.indexName), data: { query: t2 }, cacheable: true }, n2);
     };
   };
-  var ao = 1;
-  var uo = 2;
-  var lo = 3;
-  function so(e2, n2, r2) {
+  var ao = function(e2) {
+    return function(t2, n2, r2) {
+      return e2.transporter.read({ method: Jr, path: qr("1/indexes/%s/facets/%s/query", e2.indexName, t2), data: { facetQuery: n2 }, cacheable: true }, r2);
+    };
+  };
+  var uo = 1;
+  var lo = 2;
+  var so = 3;
+  function fo(e2, n2, r2) {
     var o2, c2 = { appId: e2, apiKey: n2, timeouts: { connect: 1, read: 2, write: 30 }, requester: { send: function(e3) {
       return new Promise(function(t2) {
         var n3 = new XMLHttpRequest();
@@ -3372,32 +3376,32 @@
           clearTimeout(c3), clearTimeout(r3), t2({ content: n3.responseText, status: n3.status, isTimedOut: false });
         }, n3.send(e3.data);
       });
-    } }, logger: (o2 = lo, { debug: function(e3, t2) {
-      return ao >= o2 && console.debug(e3, t2), Promise.resolve();
+    } }, logger: (o2 = so, { debug: function(e3, t2) {
+      return uo >= o2 && console.debug(e3, t2), Promise.resolve();
     }, info: function(e3, t2) {
-      return uo >= o2 && console.info(e3, t2), Promise.resolve();
+      return lo >= o2 && console.info(e3, t2), Promise.resolve();
     }, error: function(e3, t2) {
       return console.error(e3, t2), Promise.resolve();
-    } }), responsesCache: Nr(), requestsCache: Nr({ serializable: false }), hostsCache: xr({ caches: [Ar({ key: "".concat("4.8.5", "-").concat(e2) }), Nr()] }), userAgent: Qr("4.8.5").add({ segment: "Browser", version: "lite" }), authMode: qr.WithinQueryParameters };
-    return eo(t(t(t({}, c2), r2), {}, { methods: { search: no, searchForFacetValues: ro, multipleQueries: no, multipleSearchForFacetValues: ro, initIndex: function(e3) {
+    } }), responsesCache: Rr(), requestsCache: Rr({ serializable: false }), hostsCache: Nr({ caches: [xr({ key: "".concat("4.8.5", "-").concat(e2) }), Rr()] }), userAgent: Yr("4.8.5").add({ segment: "Browser", version: "lite" }), authMode: Mr.WithinQueryParameters };
+    return to(t(t(t({}, c2), r2), {}, { methods: { search: ro, searchForFacetValues: oo, multipleQueries: ro, multipleSearchForFacetValues: oo, initIndex: function(e3) {
       return function(t2) {
-        return to(e3)(t2, { methods: { search: co, searchForFacetValues: io, findAnswers: oo } });
+        return no(e3)(t2, { methods: { search: io, searchForFacetValues: ao, findAnswers: co } });
       };
     } } }));
   }
-  so.version = "4.8.5";
-  var fo = ["footer", "searchBox"];
-  function po() {
-    return po = Object.assign || function(e2) {
+  fo.version = "4.8.5";
+  var po = ["footer", "searchBox"];
+  function mo() {
+    return mo = Object.assign || function(e2) {
       for (var t2 = 1; t2 < arguments.length; t2++) {
         var n2 = arguments[t2];
         for (var r2 in n2)
           Object.prototype.hasOwnProperty.call(n2, r2) && (e2[r2] = n2[r2]);
       }
       return e2;
-    }, po.apply(this, arguments);
+    }, mo.apply(this, arguments);
   }
-  function mo(e2, t2) {
+  function ho(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -3407,21 +3411,21 @@
     }
     return n2;
   }
-  function ho(e2) {
+  function vo(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = arguments[t2] != null ? arguments[t2] : {};
-      t2 % 2 ? mo(Object(n2), true).forEach(function(t3) {
-        vo(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : mo(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? ho(Object(n2), true).forEach(function(t3) {
+        yo(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : ho(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function vo(e2, t2, n2) {
+  function yo(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function yo(e2, t2) {
+  function _o(e2, t2) {
     return function(e3) {
       if (Array.isArray(e3))
         return e3;
@@ -3448,24 +3452,24 @@
       if (!e3)
         return;
       if (typeof e3 == "string")
-        return _o(e3, t3);
+        return bo(e3, t3);
       var n2 = Object.prototype.toString.call(e3).slice(8, -1);
       n2 === "Object" && e3.constructor && (n2 = e3.constructor.name);
       if (n2 === "Map" || n2 === "Set")
         return Array.from(e3);
       if (n2 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
-        return _o(e3, t3);
+        return bo(e3, t3);
     }(e2, t2) || function() {
       throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }();
   }
-  function _o(e2, t2) {
+  function bo(e2, t2) {
     (t2 == null || t2 > e2.length) && (t2 = e2.length);
     for (var n2 = 0, r2 = new Array(t2); n2 < t2; n2++)
       r2[n2] = e2[n2];
     return r2;
   }
-  function bo(e2, t2) {
+  function go(e2, t2) {
     if (e2 == null)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -3483,15 +3487,15 @@
     }
     return o2;
   }
-  function go(e2) {
-    var t2 = e2.appId, n2 = e2.apiKey, r2 = e2.indexName, o2 = e2.placeholder, c2 = o2 === void 0 ? "Search docs" : o2, i2 = e2.searchParameters, a2 = e2.onClose, u2 = a2 === void 0 ? ur : a2, l2 = e2.transformItems, s2 = l2 === void 0 ? ar : l2, f2 = e2.hitComponent, p2 = f2 === void 0 ? Cn : f2, m2 = e2.resultsFooterComponent, d2 = m2 === void 0 ? function() {
+  function Oo(e2) {
+    var t2 = e2.appId, n2 = e2.apiKey, r2 = e2.indexName, o2 = e2.placeholder, c2 = o2 === void 0 ? "Search docs" : o2, i2 = e2.searchParameters, a2 = e2.onClose, u2 = a2 === void 0 ? lr : a2, l2 = e2.transformItems, s2 = l2 === void 0 ? ur : l2, f2 = e2.hitComponent, p2 = f2 === void 0 ? An : f2, m2 = e2.resultsFooterComponent, d2 = m2 === void 0 ? function() {
       return null;
-    } : m2, h2 = e2.navigator, v2 = e2.initialScrollY, y2 = v2 === void 0 ? 0 : v2, _2 = e2.transformSearchClient, b2 = _2 === void 0 ? ar : _2, g2 = e2.disableUserPersonalization, O2 = g2 !== void 0 && g2, S2 = e2.initialQuery, E2 = S2 === void 0 ? "" : S2, w2 = e2.translations, j2 = w2 === void 0 ? {} : w2, P2 = e2.getMissingResultsUrl, I2 = j2.footer, k2 = j2.searchBox, D2 = bo(j2, fo), C2 = yo(Ue.useState({ query: "", collections: [], completion: null, context: {}, isOpen: false, activeItemId: null, status: "idle" }), 2), A2 = C2[0], x2 = C2[1], N2 = Ue.useRef(null), R2 = Ue.useRef(null), T2 = Ue.useRef(null), L2 = Ue.useRef(null), q2 = Ue.useRef(null), M2 = Ue.useRef(10), H2 = Ue.useRef(typeof window != "undefined" ? window.getSelection().toString().slice(0, 64) : "").current, U2 = Ue.useRef(E2 || H2).current, F2 = function(e3, t3, n3) {
+    } : m2, h2 = e2.navigator, v2 = e2.initialScrollY, y2 = v2 === void 0 ? 0 : v2, _2 = e2.transformSearchClient, b2 = _2 === void 0 ? ur : _2, g2 = e2.disableUserPersonalization, O2 = g2 !== void 0 && g2, S2 = e2.initialQuery, E2 = S2 === void 0 ? "" : S2, w2 = e2.translations, j2 = w2 === void 0 ? {} : w2, P2 = e2.getMissingResultsUrl, I2 = j2.footer, k2 = j2.searchBox, D2 = go(j2, po), C2 = _o(Ue.useState({ query: "", collections: [], completion: null, context: {}, isOpen: false, activeItemId: null, status: "idle" }), 2), A2 = C2[0], x2 = C2[1], N2 = Ue.useRef(null), R2 = Ue.useRef(null), T2 = Ue.useRef(null), L2 = Ue.useRef(null), q2 = Ue.useRef(null), M2 = Ue.useRef(10), H2 = Ue.useRef(typeof window != "undefined" ? window.getSelection().toString().slice(0, 64) : "").current, U2 = Ue.useRef(E2 || H2).current, F2 = function(e3, t3, n3) {
       return Ue.useMemo(function() {
-        var r3 = so(e3, t3);
-        return r3.addAlgoliaAgent("docsearch", "3.0.0"), /docsearch.js \(.*\)/.test(r3.transporter.userAgent.value) === false && r3.addAlgoliaAgent("docsearch-react", "3.0.0"), n3(r3);
+        var r3 = fo(e3, t3);
+        return r3.addAlgoliaAgent("docsearch", "3.1.0"), /docsearch.js \(.*\)/.test(r3.transporter.userAgent.value) === false && r3.addAlgoliaAgent("docsearch-react", "3.1.0"), n3(r3);
       }, [e3, t3, n3]);
-    }(t2, n2, b2), B2 = Ue.useRef(Dr({ key: "__DOCSEARCH_FAVORITE_SEARCHES__".concat(r2), limit: 10 })).current, V2 = Ue.useRef(Dr({ key: "__DOCSEARCH_RECENT_SEARCHES__".concat(r2), limit: B2.getAll().length === 0 ? 7 : 4 })).current, z2 = Ue.useCallback(function(e3) {
+    }(t2, n2, b2), B2 = Ue.useRef(Cr({ key: "__DOCSEARCH_FAVORITE_SEARCHES__".concat(r2), limit: 10 })).current, V2 = Ue.useRef(Cr({ key: "__DOCSEARCH_RECENT_SEARCHES__".concat(r2), limit: B2.getAll().length === 0 ? 7 : 4 })).current, z2 = Ue.useCallback(function(e3) {
       if (!O2) {
         var t3 = e3.type === "content" ? e3.__docsearch_parent : e3;
         t3 && B2.getAll().findIndex(function(e4) {
@@ -3499,15 +3503,15 @@
         }) === -1 && V2.add(t3);
       }
     }, [B2, V2, O2]), W2 = Ue.useMemo(function() {
-      return Pn({ id: "docsearch", defaultActiveItemId: 0, placeholder: c2, openOnFocus: true, initialState: { query: U2, context: { searchSuggestions: [] } }, navigator: h2, onStateChange: function(e3) {
+      return In({ id: "docsearch", defaultActiveItemId: 0, placeholder: c2, openOnFocus: true, initialState: { query: U2, context: { searchSuggestions: [] } }, navigator: h2, onStateChange: function(e3) {
         x2(e3.state);
       }, getSources: function(e3) {
         var t3 = e3.query, n3 = e3.state, o3 = e3.setContext, c3 = e3.setStatus;
-        return t3 ? F2.search([{ query: t3, indexName: r2, params: ho({ attributesToRetrieve: ["hierarchy.lvl0", "hierarchy.lvl1", "hierarchy.lvl2", "hierarchy.lvl3", "hierarchy.lvl4", "hierarchy.lvl5", "hierarchy.lvl6", "content", "type", "url"], attributesToSnippet: ["hierarchy.lvl1:".concat(M2.current), "hierarchy.lvl2:".concat(M2.current), "hierarchy.lvl3:".concat(M2.current), "hierarchy.lvl4:".concat(M2.current), "hierarchy.lvl5:".concat(M2.current), "hierarchy.lvl6:".concat(M2.current), "content:".concat(M2.current)], snippetEllipsisText: "\u2026", highlightPreTag: "<mark>", highlightPostTag: "</mark>", hitsPerPage: 20 }, i2) }]).catch(function(e4) {
+        return t3 ? F2.search([{ query: t3, indexName: r2, params: vo({ attributesToRetrieve: ["hierarchy.lvl0", "hierarchy.lvl1", "hierarchy.lvl2", "hierarchy.lvl3", "hierarchy.lvl4", "hierarchy.lvl5", "hierarchy.lvl6", "content", "type", "url"], attributesToSnippet: ["hierarchy.lvl1:".concat(M2.current), "hierarchy.lvl2:".concat(M2.current), "hierarchy.lvl3:".concat(M2.current), "hierarchy.lvl4:".concat(M2.current), "hierarchy.lvl5:".concat(M2.current), "hierarchy.lvl6:".concat(M2.current), "content:".concat(M2.current)], snippetEllipsisText: "\u2026", highlightPreTag: "<mark>", highlightPostTag: "</mark>", hitsPerPage: 20 }, i2) }]).catch(function(e4) {
           throw e4.name === "RetryError" && c3("error"), e4;
         }).then(function(e4) {
-          var t4 = e4.results[0], r3 = t4.hits, c4 = t4.nbHits, i3 = ir(r3, function(e5) {
-            return fr(e5);
+          var t4 = e4.results[0], r3 = t4.hits, c4 = t4.nbHits, i3 = ar(r3, function(e5) {
+            return pr(e5);
           });
           return n3.context.searchSuggestions.length < Object.keys(i3).length && o3({ searchSuggestions: Object.keys(i3) }), o3({ nbHits: c4 }), Object.values(i3).map(function(e5, t5) {
             return { sourceId: "hits".concat(t5), onSelect: function(e6) {
@@ -3516,11 +3520,11 @@
             }, getItemUrl: function(e6) {
               return e6.item.url;
             }, getItems: function() {
-              return Object.values(ir(e5, function(e6) {
+              return Object.values(ar(e5, function(e6) {
                 return e6.hierarchy.lvl1;
               })).map(s2).map(function(e6) {
                 return e6.map(function(t6) {
-                  return ho(ho({}, t6), {}, { __docsearch_parent: t6.type !== "lvl1" && e6.find(function(e7) {
+                  return vo(vo({}, t6), {}, { __docsearch_parent: t6.type !== "lvl1" && e6.find(function(e7) {
                     return e7.type === "lvl1" && e7.hierarchy.lvl1 === t6.hierarchy.lvl1;
                   }) });
                 });
@@ -3588,23 +3592,23 @@
       return e3(), window.addEventListener("resize", e3), function() {
         window.removeEventListener("resize", e3);
       };
-    }, []), Ue.createElement("div", po({ ref: N2 }, J2({ "aria-expanded": true }), { className: ["DocSearch", "DocSearch-Container", A2.status === "stalled" && "DocSearch-Container--Stalled", A2.status === "error" && "DocSearch-Container--Errored"].filter(Boolean).join(" "), role: "button", tabIndex: 0, onMouseDown: function(e3) {
+    }, []), Ue.createElement("div", mo({ ref: N2 }, J2({ "aria-expanded": true }), { className: ["DocSearch", "DocSearch-Container", A2.status === "stalled" && "DocSearch-Container--Stalled", A2.status === "error" && "DocSearch-Container--Errored"].filter(Boolean).join(" "), role: "button", tabIndex: 0, onMouseDown: function(e3) {
       e3.target === e3.currentTarget && u2();
-    } }), Ue.createElement("div", { className: "DocSearch-Modal", ref: R2 }, Ue.createElement("header", { className: "DocSearch-SearchBar", ref: T2 }, Ue.createElement(jr, po({}, W2, { state: A2, autoFocus: U2.length === 0, inputRef: q2, isFromSelection: Boolean(U2) && U2 === H2, translations: k2, onClose: u2 }))), Ue.createElement("div", { className: "DocSearch-Dropdown", ref: L2 }, Ue.createElement(Or, po({}, W2, { indexName: r2, state: A2, hitComponent: p2, resultsFooterComponent: d2, disableUserPersonalization: O2, recentSearches: V2, favoriteSearches: B2, inputRef: q2, translations: D2, getMissingResultsUrl: P2, onItemClick: function(e3) {
+    } }), Ue.createElement("div", { className: "DocSearch-Modal", ref: R2 }, Ue.createElement("header", { className: "DocSearch-SearchBar", ref: T2 }, Ue.createElement(Pr, mo({}, W2, { state: A2, autoFocus: U2.length === 0, inputRef: q2, isFromSelection: Boolean(U2) && U2 === H2, translations: k2, onClose: u2 }))), Ue.createElement("div", { className: "DocSearch-Dropdown", ref: L2 }, Ue.createElement(Sr, mo({}, W2, { indexName: r2, state: A2, hitComponent: p2, resultsFooterComponent: d2, disableUserPersonalization: O2, recentSearches: V2, favoriteSearches: B2, inputRef: q2, translations: D2, getMissingResultsUrl: P2, onItemClick: function(e3) {
       z2(e3), u2();
-    } }))), Ue.createElement("footer", { className: "DocSearch-Footer" }, Ue.createElement(Dn, { translations: I2 }))));
+    } }))), Ue.createElement("footer", { className: "DocSearch-Footer" }, Ue.createElement(Cn, { translations: I2 }))));
   }
-  function Oo() {
-    return Oo = Object.assign || function(e2) {
+  function So() {
+    return So = Object.assign || function(e2) {
       for (var t2 = 1; t2 < arguments.length; t2++) {
         var n2 = arguments[t2];
         for (var r2 in n2)
           Object.prototype.hasOwnProperty.call(n2, r2) && (e2[r2] = n2[r2]);
       }
       return e2;
-    }, Oo.apply(this, arguments);
+    }, So.apply(this, arguments);
   }
-  function So(e2, t2) {
+  function Eo(e2, t2) {
     return function(e3) {
       if (Array.isArray(e3))
         return e3;
@@ -3631,25 +3635,25 @@
       if (!e3)
         return;
       if (typeof e3 == "string")
-        return Eo(e3, t3);
+        return wo(e3, t3);
       var n2 = Object.prototype.toString.call(e3).slice(8, -1);
       n2 === "Object" && e3.constructor && (n2 = e3.constructor.name);
       if (n2 === "Map" || n2 === "Set")
         return Array.from(e3);
       if (n2 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
-        return Eo(e3, t3);
+        return wo(e3, t3);
     }(e2, t2) || function() {
       throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }();
   }
-  function Eo(e2, t2) {
+  function wo(e2, t2) {
     (t2 == null || t2 > e2.length) && (t2 = e2.length);
     for (var n2 = 0, r2 = new Array(t2); n2 < t2; n2++)
       r2[n2] = e2[n2];
     return r2;
   }
-  function wo(e2) {
-    var t2, n2, r2 = Ue.useRef(null), o2 = So(Ue.useState(false), 2), c2 = o2[0], i2 = o2[1], a2 = So(Ue.useState((e2 == null ? void 0 : e2.initialQuery) || void 0), 2), u2 = a2[0], l2 = a2[1], s2 = Ue.useCallback(function() {
+  function jo(e2) {
+    var t2, n2, r2 = Ue.useRef(null), o2 = Eo(Ue.useState(false), 2), c2 = o2[0], i2 = o2[1], a2 = Eo(Ue.useState((e2 == null ? void 0 : e2.initialQuery) || void 0), 2), u2 = a2[0], l2 = a2[1], s2 = Ue.useCallback(function() {
       i2(true);
     }, [i2]), f2 = Ue.useCallback(function() {
       i2(false);
@@ -3669,17 +3673,17 @@
       }, [t3, n3, r3, o3, c3]);
     }({ isOpen: c2, onOpen: s2, onClose: f2, onInput: Ue.useCallback(function(e3) {
       i2(true), l2(e3.key);
-    }, [i2, l2]), searchButtonRef: r2 }), Ue.createElement(Ue.Fragment, null, Ue.createElement(Ke, { ref: r2, translations: e2 == null || (t2 = e2.translations) === null || t2 === void 0 ? void 0 : t2.button, onClick: s2 }), c2 && je(Ue.createElement(go, Oo({}, e2, { initialScrollY: window.scrollY, initialQuery: u2, translations: e2 == null || (n2 = e2.translations) === null || n2 === void 0 ? void 0 : n2.modal, onClose: f2 })), document.body));
+    }, [i2, l2]), searchButtonRef: r2 }), Ue.createElement(Ue.Fragment, null, Ue.createElement(Ke, { ref: r2, translations: e2 == null || (t2 = e2.translations) === null || t2 === void 0 ? void 0 : t2.button, onClick: s2 }), c2 && je(Ue.createElement(Oo, So({}, e2, { initialScrollY: window.scrollY, initialQuery: u2, translations: e2 == null || (n2 = e2.translations) === null || n2 === void 0 ? void 0 : n2.modal, onClose: f2 })), document.body));
   }
-  function jo(e2) {
-    De(Ue.createElement(wo, o({}, e2, { transformSearchClient: function(t2) {
-      return t2.addAlgoliaAgent("docsearch.js", "3.0.0"), e2.transformSearchClient ? e2.transformSearchClient(t2) : t2;
+  function Po(e2) {
+    De(Ue.createElement(jo, o({}, e2, { transformSearchClient: function(t2) {
+      return t2.addAlgoliaAgent("docsearch.js", "3.1.0"), e2.transformSearchClient ? e2.transformSearchClient(t2) : t2;
     } })), function(e3) {
       var t2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : window;
       return typeof e3 == "string" ? t2.document.querySelector(e3) : e3;
     }(e2.container, e2.environment));
   }
-  var esm_default = jo;
+  var esm_default = Po;
 
   // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/search.js
   function Search({ element }) {
@@ -3779,4 +3783,4 @@
  *
  * Licensed MIT © Zeno Rocha
  */
-/*! @docsearch/js 3.0.0 | MIT License | © Algolia, Inc. and contributors | https://docsearch.algolia.com */
+/*! @docsearch/js 3.1.0 | MIT License | © Algolia, Inc. and contributors | https://docsearch.algolia.com */
