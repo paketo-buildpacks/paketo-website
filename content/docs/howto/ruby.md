@@ -217,7 +217,7 @@ The Ruby buildpack includes support for the software bill of materials (SBOM).
 Check out the [SBOM how-to documentation][how-to/SBOM] for details on how to
 access the SBOM supplied by the buildpacks.
 
-SBOMs will be generated for applications which leverage `Bundler`.
+SBOMs will be generated for applications which leverage Bundler.
 
 <!-- References -->
 <!-- spellchecker-disable -->
