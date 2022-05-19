@@ -16,7 +16,7 @@ Buildpack
 Buildpack's
 Buildpack\-[a-z]+
 Buildpacks
-Bundler
+[bB]undler
 BurntSushi's
 ([a-z]+\-)?CLI(\-[a-z]+)?
 ([a-z]+\-)?CNB
