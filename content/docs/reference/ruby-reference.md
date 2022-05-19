@@ -85,7 +85,7 @@ buildpack also includes limited support for the
 [Paketo-specific][format/paketo] SBOM format. This Paketo-specific SBOM format
 does not include information about the application dependencies.
 
-SBOMs will be generated for applications which leverage `Bundler`.
+SBOMs will be generated for applications which leverage Bundler.
 
 Check out the [Access the Software Bill of Materials
 guide][how-to/SBOM] for more information about how to retrieve
