@@ -76,3 +76,22 @@ variable and its impact on your app.
 * Set by: `bundle-install`
 * Phases: `build` and `launch`
 * Value: location where all gems in your bundle will be located
+
+##  Software Bill of Materials
+The Ruby buildpack supports the full [software bill of
+materials][concepts/SBOM] (SBOM) in [Syft][format/syft],
+[CycloneDX][format/cyclonedx], and [SPDX][format/spdx] formats. The Ruby
+buildpack also includes limited support for the
+[Paketo-specific][format/paketo] SBOM format. This Paketo-specific SBOM format
+does not include information about the application dependencies.
+
+SBOMs will be generated for applications which leverage `Bundler`.
+
+Check out the [Access the Software Bill of Materials
+guide][how-to/SBOM] for more information about how to retrieve
+the SBOM for your Ruby app image.
+
+<!-- References -->
+<!-- spellchecker-disable -->
+[how-to/SBOM]:{{< ref "docs/howto/sbom" >}}
+<!-- spellchecker-enable -->
