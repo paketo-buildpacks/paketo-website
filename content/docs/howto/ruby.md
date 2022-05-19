@@ -212,6 +212,12 @@ To use this feature:
 1. Include an `app/assets` directory in your app source code
 1. Add the `rails` gem to your `Gemfile`
 
+## Access the software bill of materials
+The Ruby buildpack includes support for the software bill of materials (SBOM).
+Check out the [SBOM how-to documentation][how-to/SBOM] for details on how to
+access the SBOM supplied by the buildpacks.
+
+SBOMs will be generated for applications which leverage `Bundler`.
 
 <!-- References -->
 [bp/releases]:https://github.com/paketo-buildpacks/mri/releases/latest
@@ -221,3 +227,4 @@ To use this feature:
 [bundler/toml]:https://github.com/paketo-buildpacks/bundler/blob/main/buildpack.toml
 [cnb/project-file]:https://buildpacks.io/docs/app-developer-guide/using-project-descriptor
 [samples/rake]:https://github.com/paketo-buildpacks/samples/tree/main/ruby/rake
+[how-to/SBOM]:{{< ref "docs/howto/sbom" >}}
