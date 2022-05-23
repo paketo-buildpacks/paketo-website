@@ -39,7 +39,7 @@ and the Pip, Pipenv buildpack prepends their `site-packages` location to it.
 The [`PYTHONUSERBASE`](https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUSERBASE)
 environment variable is used to set the user base directory.
 
-* Set by: `Pip`, `Pipenv`, `Poetry` `Pip Install`, `Pipenv Install`,
+* Set by: `Pip`, `Pipenv`, `Poetry`, `Pip Install`, `Pipenv Install`, and `Conda Env Update`
 * Phases: `build` and `launch`
 
 The value of `PYTHONUSERBASE` is set to the location where these buildpacks install
