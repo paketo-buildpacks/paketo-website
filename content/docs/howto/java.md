@@ -208,9 +208,19 @@ The runtime JVM can be configured in two ways:
     * `BPL_JVM_HEAD_ROOM`
     * `BPL_JVM_LOADED_CLASS_COUNT`
     * `BPL_JVM_THREAD_COUNT`
+
 2. Flags can be set directly at runtime with the `JAVA_TOOL_OPTIONS` environment variable. User-provided flags will be appended to buildpack-provided flags. If the user and a buildpack set the same flag, user-provided flags take precedence.
 
 See the [homepage][bp/bellsoft-liberica] for the BellSoft Liberica Buildpack for a full set of configuration options.
+
+For example, you can add additional JVM flags to configure garbage collection, memory flags and other settings.
+
+{{< code/copyable >}}
+docker run --rm --tty \
+  --env JAVA_TOOL_OPTIONS='-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40' \
+  --env BPL_JVM_THREAD_COUNT=100
+  samples/java
+{{< /code/copyable >}}
 
 ### Use an Alternative JVM
 
