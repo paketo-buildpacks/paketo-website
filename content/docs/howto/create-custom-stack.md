@@ -65,13 +65,16 @@ repo to view the Dockerfiles we have defined for both the base image and CNB ima
 
 #### Prerequisites
 You will need the following tools installed on your machine:
+<!-- spellchecker-disable -->
 - [jam](https://github.com/paketo-buildpacks/jam)
 - [skopeo](https://github.com/containers/skopeo)
-
+<!-- spellchecker-enable-->
 
 1. Create a Dockerfile for the build and run stack images, as in steps 1 and 2 above.
 
 2. Create a `stack.toml`, which should resemble the following:
+
+<!-- spellchecker-disable -->
 
 {{< code/copyable >}}
 id = "io.paketo.stacks.tiny"
@@ -121,8 +124,12 @@ platforms = ["linux/amd64"]
   mixins = true
 {{< /code/copyable >}}
 
+<!-- spellchecker-enable-->
+
+
 
 3. Create the stack with the `jam` CLI:
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 jam create-stack --config stack.toml --build-output <name>.oci --run-output <name>.oci
 {{< /code/copyable >}}
@@ -150,6 +157,7 @@ skopeo copy oci-archive:///<path/to/oci/archive> docker-daemon:<stack-image-name
 
    `skopeo copy oci-archive:///workspace/tiny-stack/run.oci docker-daemon:tiny-run:latest`
 
+<!-- spellchecker-enable-->
 
 ## Create a custom builder with the custom stack
 
