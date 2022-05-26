@@ -28,10 +28,9 @@ still apply.
 
 
 
-
 ## Create a custom stack image based off of a Paketo Stack
 
-### Manually
+### Using `docker build`
 This guide assumes you know the basics of stacks from the [stacks concept page][concepts/stacks].
 1. Create a `Dockerfile` and define the `base` image as one of the Paketo stacks. For example:
 {{< code/copyable >}}
@@ -64,9 +63,15 @@ repo to view the Dockerfiles we have defined for both the base image and CNB ima
 
 ### Using `jam create-stack`
 
-1. Create a Dockerfile for the build and run stack images (or use the same one for both), as above.
+#### Prerequisites
+You will need the following tools installed on your machine:
+- [jam](https://github.com/paketo-buildpacks/jam)
+- [skopeo](https://github.com/containers/skopeo)
 
-2. Create a `stack.toml`, which could contain the following:
+
+1. Create a Dockerfile for the build and run stack images, as in steps 1 and 2 above.
+
+2. Create a `stack.toml`, which should resemble the following:
 
 {{< code/copyable >}}
 id = "io.paketo.stacks.tiny"
@@ -116,32 +121,34 @@ platforms = ["linux/amd64"]
   mixins = true
 {{< /code/copyable >}}
 
-3. Create the stack with the [`jam`](https://github.com/paketo-buildpacks/jam) CLI:
 
+3. Create the stack with the `jam` CLI:
 {{< code/copyable >}}
 jam create-stack --config stack.toml --build-output <name>.oci --run-output <name>.oci
 {{< /code/copyable >}}
 
 
-4. Use [skopeo](https://github.com/containers/skopeo) to copy the OCI archives
+4. Use `skopeo` to copy the OCI archives
    to the desired registry:
 
-To copy the archives to a remote registry:
-
+   To copy the archives to a remote registry:
 {{< code/copyable >}}
 skopeo copy oci-archive:///<path/to/oci/archive/> docker://<registry-image-location>:<tag>
 {{< /code/copyable >}}
 
-Example: `skopeo copy oci-archive:///Users/user1/workspace/tiny-stack/build.oci docker://index.docker.io/test-tiny-stack-build:latest`
+   **Example:**
 
+   `skopeo copy oci-archive:///workspace/tiny-stack/build.oci docker://index.docker.io/tiny-build:latest`
 
-To copy the archives to your local Docker daemon:
-
+   To copy the archives to your local Docker daemon:
 {{< code/copyable >}}
 skopeo copy oci-archive:///<path/to/oci/archive> docker-daemon:<stack-image-name>:<tag>
 {{< /code/copyable >}}
 
-Example: `skopeo copy oci-archive:///Users/user1/workspace/tiny-stack/run.oci docker-daemon:tiny-run:latest`
+
+   **Example:**
+
+   `skopeo copy oci-archive:///workspace/tiny-stack/run.oci docker-daemon:tiny-run:latest`
 
 
 ## Create a custom builder with the custom stack
