@@ -133,12 +133,14 @@ platforms = ["linux/amd64"]
 {{< code/copyable >}}
 jam create-stack --config stack.toml --build-output <name>.oci --run-output <name>.oci
 {{< /code/copyable >}}
+<!-- spellchecker-enable-->
 
 
 4. Use `skopeo` to copy the OCI archives
    to the desired registry:
 
    To copy the archives to a remote registry:
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 skopeo copy oci-archive:///<path/to/oci/archive/> docker://<registry-image-location>:<tag>
 {{< /code/copyable >}}
@@ -147,7 +149,10 @@ skopeo copy oci-archive:///<path/to/oci/archive/> docker://<registry-image-locat
 
    `skopeo copy oci-archive:///workspace/tiny-stack/build.oci docker://index.docker.io/tiny-build:latest`
 
+<!-- spellchecker-enable-->
+
    To copy the archives to your local Docker daemon:
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 skopeo copy oci-archive:///<path/to/oci/archive> docker-daemon:<stack-image-name>:<tag>
 {{< /code/copyable >}}
@@ -158,6 +163,7 @@ skopeo copy oci-archive:///<path/to/oci/archive> docker-daemon:<stack-image-name
    `skopeo copy oci-archive:///workspace/tiny-stack/run.oci docker-daemon:tiny-run:latest`
 
 <!-- spellchecker-enable-->
+
 
 ## Create a custom builder with the custom stack
 
