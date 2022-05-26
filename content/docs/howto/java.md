@@ -214,14 +214,14 @@ The runtime JVM can be configured in two ways:
 See the [homepage][bp/bellsoft-liberica] for the BellSoft Liberica Buildpack for a full set of configuration options.
 
 For example, you can add additional JVM flags to configure garbage collection, memory flags and other settings.
-
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 docker run --rm --tty \
   --env JAVA_TOOL_OPTIONS='-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40' \
   --env BPL_JVM_THREAD_COUNT=100
   samples/java
 {{< /code/copyable >}}
-
+<!-- spellchecker-enable -->
 ### Use an Alternative JVM
 
 By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implementations in place of Liberica's JVM.
