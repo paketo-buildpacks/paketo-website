@@ -144,11 +144,6 @@ jam create-stack --config stack.toml --build-output <name>.oci --run-output <nam
 {{< code/copyable >}}
 skopeo copy oci-archive:///<path/to/oci/archive/> docker://<registry-image-location>:<tag>
 {{< /code/copyable >}}
-
-   **Example:**
-
-   `skopeo copy oci-archive:///workspace/tiny-stack/build.oci docker://index.docker.io/tiny-build:latest`
-
 <!-- spellchecker-enable-->
 
    To copy the archives to your local Docker daemon:
@@ -156,12 +151,6 @@ skopeo copy oci-archive:///<path/to/oci/archive/> docker://<registry-image-locat
 {{< code/copyable >}}
 skopeo copy oci-archive:///<path/to/oci/archive> docker-daemon:<stack-image-name>:<tag>
 {{< /code/copyable >}}
-
-
-   **Example:**
-
-   `skopeo copy oci-archive:///workspace/tiny-stack/run.oci docker-daemon:tiny-run:latest`
-
 <!-- spellchecker-enable-->
 
 
