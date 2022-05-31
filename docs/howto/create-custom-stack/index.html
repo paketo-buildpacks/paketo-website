@@ -454,7 +454,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <nav id="TableOfContents">
   <ul>
     <li><a href="#preface">Preface</a></li>
-    <li><a href="#create-a-custom-stack-image-based-off-of-a-paketo-stack">Create a custom stack image based off of a Paketo Stack</a></li>
+    <li><a href="#create-a-custom-stack-image-based-off-of-a-paketo-stack">Create a custom stack image based off of a Paketo Stack</a>
+      <ul>
+        <li><a href="#using-docker-build">Using <code>docker build</code></a></li>
+        <li><a href="#using-jam-create-stack">Using <code>jam create-stack</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#create-a-custom-builder-with-the-custom-stack">Create a custom builder with the custom stack</a></li>
   </ul>
 </nav>
 </div>
@@ -475,14 +481,18 @@ extra system library or user ID, for example. The Cloud Native Buildpacks
 project already has documentation for <a href="https://buildpacks.io/docs/operator-guide/create-a-stack/"><strong>creating a stack from
 scratch</strong></a>, but for
 some Paketo users <strong>it may be simpler and less error-prone to build upon the
-stack we already provide</strong>. It’s still recommended to read the CNB documentation
+stack we already provide</strong>. It’s recommended to read the CNB documentation
 regardless, because there are a lot of details and explanations there that
 still apply.</p>
 <h2 id="create-a-custom-stack-image-based-off-of-a-paketo-stack" class="markup-heading">
     <a class="markup-heading__link" href="#create-a-custom-stack-image-based-off-of-a-paketo-stack">
         Create a custom stack image based off of a Paketo Stack
     </a>
-</h2><p>This guide assumes you know the basics of stacks from the <a href="https://paketo.io/docs/concepts/stacks/">stacks concept page</a>.</p>
+</h2><h3 id="using-docker-build" class="markup-heading">
+    <a class="markup-heading__link" href="#using-docker-build">
+        Using <code>docker build</code>
+    </a>
+</h3><p>This guide assumes you know the basics of stacks from the <a href="https://paketo.io/docs/concepts/stacks/">stacks concept page</a>.</p>
 <ol>
 <li>Create a <code>Dockerfile</code> and define the <code>base</code> image as one of the Paketo stacks. For example:
 <div class="copyable">
@@ -519,41 +529,149 @@ the <code>CNB_USER_ID</code> to root isn’t allowed.</p>
 <li>
 <p>Push the stack images to a registry with <code>docker push</code></p>
 </li>
+</ol>
+<h3 id="using-jam-create-stack" class="markup-heading">
+    <a class="markup-heading__link" href="#using-jam-create-stack">
+        Using <code>jam create-stack</code>
+    </a>
+</h3><h4 id="prerequisites" class="markup-heading">
+    <a class="markup-heading__link" href="#prerequisites">
+        Prerequisites
+    </a>
+</h4><p>You will need the following tools installed on your machine:</p>
+<!-- raw HTML omitted -->
+<ul>
+<li><a href="https://github.com/paketo-buildpacks/jam">jam</a></li>
+<li><a href="https://github.com/containers/skopeo">skopeo</a></li>
+</ul>
+<!-- raw HTML omitted -->
+<ol>
 <li>
-<p>Create a custom builder with the stack you want to use. Check out the <a href="https://paketo.io/docs/concepts/stacks/">builder
-documentation</a> for details on builders. This can be
-achieved by cloning the builder you want to use, and modifying the
-<code>builder.toml</code> file. For example, if you have built a custom stack based off
-of the Paketo Full stack, you will want to add it to the <a href="https://github.com/paketo-buildpacks/full-builder">Full
+<p>Create a Dockerfile for the build and run stack images, as in steps 1 and 2 above.</p>
+</li>
+<li>
+<p>Create a <code>stack.toml</code>, which should resemble the following:</p>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">id = &#34;io.paketo.stacks.tiny&#34;
+
+platforms = [&#34;linux/amd64&#34;]
+
+[build] 
+  dockerfile = &#34;&lt;path/to/build/Dockerfile&gt;&#34;
+  gid = 1000
+  shell = &#34;/bin/bash&#34;
+  uid = 1000
+
+  [build.args]
+    sources = &#34;&#34;&#34;
+    deb http://archive.ubuntu.com/ubuntu bionic main universe multiverse
+    deb http://archive.ubuntu.com/ubuntu bionic-updates main universe multiverse
+    deb http://archive.ubuntu.com/ubuntu bionic-security main universe multiverse
+    &#34;&#34;&#34;
+
+    # List of packages which should be included in the stack build image
+    packages = &#34;&#34;&#34;\
+    &lt;some-package&gt; \
+    &lt;another-package&gt; \
+    &#34;&#34;&#34;
+
+[run]
+  dockerfile = &#34;&lt;path/to/run/Dockerfile&gt;&#34;
+  gid = 1000
+  shell = &#34;/sbin/nologin&#34;
+  uid = 1000
+
+  [run.args]
+    sources = &#34;&#34;&#34;
+    deb http://archive.ubuntu.com/ubuntu bionic main universe multiverse
+    deb http://archive.ubuntu.com/ubuntu bionic-updates main universe multiverse
+    deb http://archive.ubuntu.com/ubuntu bionic-security main universe multiverse
+    &#34;&#34;&#34;
+
+    # List of packages which should be included in the stack run image
+    packages = &#34;&#34;&#34;\
+    &lt;some-package&gt; \
+    &lt;another-package&gt; \
+    &#34;&#34;&#34;
+
+[deprecated]
+  legacy-sbom = true
+  mixins = true
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<!-- raw HTML omitted -->
+<ol start="3">
+<li>Create the stack with the <code>jam</code> CLI:</li>
+</ol>
+<!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">jam create-stack --config stack.toml --build-output &lt;name&gt;.oci --run-output &lt;name&gt;.oci
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<!-- raw HTML omitted -->
+<ol start="4">
+<li>
+<p>Use <code>skopeo</code> to copy the OCI archives
+to the desired registry:</p>
+<p>To copy the archives to a remote registry:</p>
+</li>
+</ol>
+<!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">skopeo copy oci-archive:///&lt;path/to/oci/archive/&gt; docker://&lt;registry-image-location&gt;:&lt;tag&gt;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<!-- raw HTML omitted -->
+<p>To copy the archives to your local Docker daemon:</p>
+<!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">skopeo copy oci-archive:///&lt;path/to/oci/archive&gt; docker-daemon:&lt;stack-image-name&gt;:&lt;tag&gt;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<!-- raw HTML omitted -->
+<h2 id="create-a-custom-builder-with-the-custom-stack" class="markup-heading">
+    <a class="markup-heading__link" href="#create-a-custom-builder-with-the-custom-stack">
+        Create a custom builder with the custom stack
+    </a>
+</h2><p>Check out the <a href="https://paketo.io/docs/concepts/stacks/">builder documentation</a> for details on
+builders.</p>
+<ol>
+<li>Clone the builder you want to use, and modify the <code>builder.toml</code> file. For
+example, if you have built a custom stack based off of the Paketo Full
+stack, you will want to add it to the <a href="https://github.com/paketo-buildpacks/full-builder">Full
 builder</a> builder.toml
 file. Modify the bottom <code>[stack]</code> section to point to the registry location
-of the build and run images you have pushed to a registry. The <code>id</code> should
+of the build and run images you have pushed to a registry.  The <code>id</code> should
 match the stack ID if you specified one in the Dockerfile, or in the base
 image you used. It will be <code>io.buildpacks.stacks.bionic</code> if your base image
 was one of the CNB stack images. This ID implies compatibility with the
-official <code>io.buildpacks.stacks.bionic</code> stack.</p>
-</li>
-<li>
-<p>Create the builder with the pack CLI.
+official <code>io.buildpacks.stacks.bionic</code> stack.</li>
+<li>Create the builder with the pack CLI.
 <div class="copyable">
     <pre class="copyable__code">pack builder create &lt;builder-name&gt; —config &lt;path to builder.toml&gt;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
-</div></p>
-</li>
-<li>
-<p>Ensure the buildpacks of interest support the wildcard (“*”) stack or
+</div></li>
+<li>Ensure the buildpacks of interest support the wildcard (“*”) stack or
 support the stack ID you provided in the <code>builder.toml</code> by checking the buildpack <code>stacks</code> section. For example, the
 <a href="https://github.com/paketo-buildpacks/node-engine/blob/8f9743093c6696c365baf1739622889c61280bff/buildpack.toml#L129-L130">node-engine
 buildpack</a>
 only supports stacks with ID <code>io.buildpacks.stacks.bionic</code>. If you build
 upon one of the Paketo <code>-cnb</code> stacks, your custom stack will be
-compatible already, since part of the CNB metadata added is the ID.</p>
-</li>
-<li>
-<p>Perform builds with the newly created builder image, which uses the custom stack images.</p>
-</li>
+compatible already, since part of the CNB metadata added is the ID.</li>
+<li>Perform builds with the newly created builder image, which uses the custom stack images.</li>
 </ol>
 <!-- raw HTML omitted -->
 
@@ -568,14 +686,20 @@ compatible already, since part of the CNB metadata added is the ID.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> May 27, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> May 31, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#preface">Preface</a></li>
-    <li><a href="#create-a-custom-stack-image-based-off-of-a-paketo-stack">Create a custom stack image based off of a Paketo Stack</a></li>
+    <li><a href="#create-a-custom-stack-image-based-off-of-a-paketo-stack">Create a custom stack image based off of a Paketo Stack</a>
+      <ul>
+        <li><a href="#using-docker-build">Using <code>docker build</code></a></li>
+        <li><a href="#using-jam-create-stack">Using <code>jam create-stack</code></a></li>
+      </ul>
+    </li>
+    <li><a href="#create-a-custom-builder-with-the-custom-stack">Create a custom builder with the custom stack</a></li>
   </ul>
 </nav>
 </div>
