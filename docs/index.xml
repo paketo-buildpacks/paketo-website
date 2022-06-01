@@ -12,8 +12,8 @@
       
       <guid>https://paketo.io/docs/howto/java/</guid>
       <description>This documentation explains how to use the Paketo buildpacks to build Java applications for several common use-cases. For more in-depth description of the buildpacks&amp;rsquo; behavior and configuration see the Paketo Java Buildpack and Paketo Java Native Image Buildpack reference documentation.
-About the Examples  All Java Buildpack examples will use the Paketo sample applications.
-Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples  Copied!</description>
+About the Examples All Java Buildpack examples will use the Paketo sample applications.
+Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied!</description>
     </item>
     
     <item>
@@ -23,8 +23,8 @@ Examples assume that the root of this repository is the working directory: git c
       
       <guid>https://paketo.io/docs/howto/nodejs/</guid>
       <description>This documentation explains how to use the Paketo Node.js Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Node.js Buildpack Reference documentation.
-Build a Sample App  To build a sample app locally with this buildpack using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/samples cd samples/nodejs/npm pack build my-app --buildpack paketo-buildpacks/nodejs \ --builder paketobuildpacks/builder:base  Copied!  See samples for how to run the app.</description>
+Build a Sample App To build a sample app locally with this buildpack using the pack CLI, run
+git clone https://github.com/paketo-buildpacks/samples cd samples/nodejs/npm pack build my-app --buildpack paketo-buildpacks/nodejs \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
     </item>
     
     <item>
@@ -34,8 +34,8 @@ git clone https://github.com/paketo-buildpacks/samples cd samples/nodejs/npm pac
       
       <guid>https://paketo.io/docs/howto/dotnet-core/</guid>
       <description>This documentation explains how to use the Paketo .NET Core Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo .NET Core Buildpack Reference documentation.
-Build a Sample App  To build your app locally with the buildpack using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/samples cd samples/dotnet-core/aspnet pack build my-app --buildpack paketo-buildpacks/dotnet-core \ --builder paketobuildpacks/builder:base  Copied!  See samples for how to run the app.</description>
+Build a Sample App To build your app locally with the buildpack using the pack CLI, run
+git clone https://github.com/paketo-buildpacks/samples cd samples/dotnet-core/aspnet pack build my-app --buildpack paketo-buildpacks/dotnet-core \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ git clone https://github.com/paketo-buildpacks/samples cd samples/dotnet-core/as
       <guid>https://paketo.io/docs/reference/httpd-reference/</guid>
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo HTTPD Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo HTTPD Buildpack How To documentation.
 The HTTPD Paketo Buildpack supports the installation of the Apache HTTP Server binary distribution onto the $PATH inside a container. This makes it available to subsequent buildpacks.
-Supported Dependencies  The HTTPD Paketo Buildpack supports several versions of Apache HTTP Server.</description>
+Supported Dependencies The HTTPD Paketo Buildpack supports several versions of Apache HTTP Server.</description>
     </item>
     
     <item>
@@ -56,9 +56,9 @@ Supported Dependencies  The HTTPD Paketo Buildpack supports several versions of 
       
       <guid>https://paketo.io/docs/howto/go/</guid>
       <description>This documentation explains how to use the Paketo Go Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Go Buildpack Reference documentation.
-Build a Sample Go Application  You can quickly build a sample Go app into a runnable OCI image on your local machine with Paketo buildpacks.
+Build a Sample Go Application You can quickly build a sample Go app into a runnable OCI image on your local machine with Paketo buildpacks.
 Prerequisites
- docker CLI pack CLI    Clone the Paketo samples and navigate to a Go sample app.</description>
+docker CLI pack CLI Clone the Paketo samples and navigate to a Go sample app.</description>
     </item>
     
     <item>
@@ -68,7 +68,7 @@ Prerequisites
       
       <guid>https://paketo.io/docs/howto/web-servers/</guid>
       <description>This documentation explains how to use Paketo buildpacks to build applications that run web servers like HTTPD and NGINX. These docs focus on explaining common user workflows. For more in-depth description of the buildpacks&amp;rsquo; behavior and configuration, see the reference documentation for each web server buildpack.
-HTTPD  This documentation explains how to use the Paketo HTTPD Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo HTTPD Buildpack Reference documentation.</description>
+HTTPD This documentation explains how to use the Paketo HTTPD Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo HTTPD Buildpack Reference documentation.</description>
     </item>
     
     <item>
@@ -78,8 +78,8 @@ HTTPD  This documentation explains how to use the Paketo HTTPD Buildpack to buil
       
       <guid>https://paketo.io/docs/howto/python/</guid>
       <description>This documentation explains how to use the Paketo Python Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Python Buildpack Reference documentation.
-Build a Sample App  To build a sample app locally with this buildpack using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/samples cd samples/python/pip pack build my-app --buildpack paketo-buildpacks/python \ --builder paketobuildpacks/builder:base  Copied!  See samples for how to run the app.</description>
+Build a Sample App To build a sample app locally with this buildpack using the pack CLI, run
+git clone https://github.com/paketo-buildpacks/samples cd samples/python/pip pack build my-app --buildpack paketo-buildpacks/python \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
     </item>
     
     <item>
@@ -89,8 +89,8 @@ git clone https://github.com/paketo-buildpacks/samples cd samples/python/pip pac
       
       <guid>https://paketo.io/docs/howto/php/</guid>
       <description>This documentation explains how to use the Paketo PHP Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo PHP Buildpack Reference documentation.
-Build a Sample App  To build a sample app locally with this CNB using the pack CLI, run
-git clone https://github.com/paketo-buildpacks/samples cd samples/php/webserver pack build my-app --buildpack paketo-buildpacks/php \ --builder paketobuildpacks/builder:full  Copied!  See samples for how to run the app.</description>
+Build a Sample App To build a sample app locally with this CNB using the pack CLI, run
+git clone https://github.com/paketo-buildpacks/samples cd samples/php/webserver pack build my-app --buildpack paketo-buildpacks/php \ --builder paketobuildpacks/builder:full Copied! See samples for how to run the app.</description>
     </item>
     
     <item>
@@ -100,9 +100,9 @@ git clone https://github.com/paketo-buildpacks/samples cd samples/php/webserver 
       
       <guid>https://paketo.io/docs/howto/ruby/</guid>
       <description>This documentation explains how to use the Paketo Ruby Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Ruby Buildpack Reference documentation.
-Build a Sample Ruby App  You can quickly build a sample Ruby app into a runnable OCI image on your local machine with Paketo buildpacks.
+Build a Sample Ruby App You can quickly build a sample Ruby app into a runnable OCI image on your local machine with Paketo buildpacks.
 Prerequisites
- docker CLI pack CLI    Clone the Paketo samples and navigate to a Ruby sample app.</description>
+docker CLI pack CLI Clone the Paketo samples and navigate to a Ruby sample app.</description>
     </item>
     
     <item>
@@ -111,10 +111,9 @@ Prerequisites
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/howto/configuration/</guid>
-      <description>About the Examples  Configuration examples will use the Paketo sample applications.
-Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples  Copied! 
-The pack CLI is used throughout the examples. pack is just one of several Cloud Native Buildpack platforms than can execute builds with Paketo Buildpacks.
-Examples assume that the Paketo Base builder is the default builder: pack config default-builder paketobuildpacks/builder:base  Copied!</description>
+      <description>About the Examples Configuration examples will use the Paketo sample applications.
+Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied! The pack CLI is used throughout the examples. pack is just one of several Cloud Native Buildpack platforms than can execute builds with Paketo Buildpacks.
+Examples assume that the Paketo Base builder is the default builder: pack config default-builder paketobuildpacks/builder:base Copied!</description>
     </item>
     
     <item>
@@ -134,7 +133,7 @@ This tutorial&amp;rsquo;s goal is to take you from nothing to a buildpack that p
       
       <guid>https://paketo.io/docs/howto/sbom/</guid>
       <description>This documentation explains how to access the software bill of materials (SBOM) for an app image built using Paketo buildpacks. For more in-depth field definitions and details check out the software bill of materials concept page.
-Access the Software Bill of Materials on a Sample Application  A buildpack can generate SBOMs in different formats. The primary supported SBOMs are in Syft, SPDX, and CycloneDX JSON formats. Paketo buildpacks also generate an SBOM in a Paketo-specific schema, but this SBOM is deprecated.</description>
+Access the Software Bill of Materials on a Sample Application A buildpack can generate SBOMs in different formats. The primary supported SBOMs are in Syft, SPDX, and CycloneDX JSON formats. Paketo buildpacks also generate an SBOM in a Paketo-specific schema, but this SBOM is deprecated.</description>
     </item>
     
     <item>
@@ -143,7 +142,7 @@ Access the Software Bill of Materials on a Sample Application  A buildpack can g
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/howto/create-custom-stack/</guid>
-      <description>Preface  This documentation explains how to create a custom stack based off of the existing Paketo stacks. Check out the stacks concept page for more information about what a stack is and the Paketo offerings.
+      <description>Preface This documentation explains how to create a custom stack based off of the existing Paketo stacks. Check out the stacks concept page for more information about what a stack is and the Paketo offerings.
 It&amp;rsquo;s recommended to use an existent Paketo stack offering, over creating a custom stack in order to leverage the full range of Paketo security patching and compliance standards.
 In some cases, a custom stack image may be useful for users who may need an extra system library or user ID, for example.</description>
     </item>
@@ -165,8 +164,8 @@ In some cases, a custom stack image may be useful for users who may need an extr
       
       <guid>https://paketo.io/docs/concepts/builders/</guid>
       <description>In the Getting Started tutorial, you used the pack CLI and the base builder to create a runnable image with your application. This section explains what builders are and what builders are released by the Paketo project.
-What is a builder?  A builder is an image that contains three components:
- a set of buildpacks, which provide your app&amp;rsquo;s dependencies a stack, which provides the OS layer for your app image the CNB lifecycle, which puts everything together to produce your final app image  For more information about builders, see buildpacks.</description>
+What is a builder? A builder is an image that contains three components:
+a set of buildpacks, which provide your app&amp;rsquo;s dependencies a stack, which provides the OS layer for your app image the CNB lifecycle, which puts everything together to produce your final app image For more information about builders, see buildpacks.</description>
     </item>
     
     <item>
@@ -176,8 +175,8 @@ What is a builder?  A builder is an image that contains three components:
       
       <guid>https://paketo.io/docs/concepts/stacks/</guid>
       <description>In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. One of the core pieces to Buildpacks and Builders are Stack Images. Stacks provide the buildpack lifecycle with build-time and run-time environments in the form of images.
-What is a stack?  A stack consists of two images:
- build image: the environment in which your app is built run image: the OS layer for your app image  For more information about stacks, see buildpacks.</description>
+What is a stack? A stack consists of two images:
+build image: the environment in which your app is built run image: the OS layer for your app image For more information about stacks, see buildpacks.</description>
     </item>
     
     <item>
@@ -187,7 +186,7 @@ What is a stack?  A stack consists of two images:
       
       <guid>https://paketo.io/docs/concepts/sbom/</guid>
       <description>In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. Once you have an app image, you can access metadata about all of the dependencies present in the final app image using the software bill of materials.
-What is the software bill of materials?  A software bill of materials (SBOM) is an industry standard mechanism of surfacing metadata about dependencies in images or applications. The metadata consists of various fields such as:</description>
+What is the software bill of materials? A software bill of materials (SBOM) is an industry standard mechanism of surfacing metadata about dependencies in images or applications. The metadata consists of various fields such as:</description>
     </item>
     
     <item>
@@ -197,7 +196,7 @@ What is the software bill of materials?  A software bill of materials (SBOM) is 
       
       <guid>https://paketo.io/docs/reference/dotnet-core-reference/</guid>
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo .NET Core buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo .NET Core buildpack How To documentation.
-Supported Dependencies  The .NET Core Paketo buildpack supports several versions of the .NET Core Framework. For more details on the specific versions supported in a given buildpack version, see the release notes.</description>
+Supported Dependencies The .NET Core Paketo buildpack supports several versions of the .NET Core Framework. For more details on the specific versions supported in a given buildpack version, see the release notes.</description>
     </item>
     
     <item>
@@ -207,8 +206,8 @@ Supported Dependencies  The .NET Core Paketo buildpack supports several versions
       
       <guid>https://paketo.io/docs/reference/go-reference/</guid>
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Go Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Go Buildpack How To documentation.
-Supported Dependencies  The Go Paketo Buildpack supports several versions of Go. For more details on the specific versions supported in a given buildpack version, see the release notes.
-Behavior  The Paketo Go Buildpack is a composite buildpack designed to build applications written in Go.</description>
+Supported Dependencies The Go Paketo Buildpack supports several versions of Go. For more details on the specific versions supported in a given buildpack version, see the release notes.
+Behavior The Paketo Go Buildpack is a composite buildpack designed to build applications written in Go.</description>
     </item>
     
     <item>
@@ -240,7 +239,7 @@ The [Paketo Java Native Image Buildpack][bp/java-native-image] allows users to c
       <guid>https://paketo.io/docs/reference/nginx-reference/</guid>
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo NGINX Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo NGINX Buildpack How To documentation.
 The NGINX Paketo Buildpack supports the installation of the NGINX binary distribution onto the $PATH inside a container. This makes it available to subsequent buildpacks.
-Supported Dependencies  The NGINX Paketo Buildpack supports several versions of NGINX.</description>
+Supported Dependencies The NGINX Paketo Buildpack supports several versions of NGINX.</description>
     </item>
     
     <item>
@@ -250,8 +249,8 @@ Supported Dependencies  The NGINX Paketo Buildpack supports several versions of 
       
       <guid>https://paketo.io/docs/reference/nodejs-reference/</guid>
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Node.js Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Node.js Buildpack How To documentation.
-Supported Dependencies  The Node.js buildpack supports several versions of Node.js. For more details on the specific versions supported in a given buildpack version, see the release notes.
-Supported Service Bindings  The Node.</description>
+Supported Dependencies The Node.js buildpack supports several versions of Node.js. For more details on the specific versions supported in a given buildpack version, see the release notes.
+Supported Service Bindings The Node.js buildpack can be configured using service bindings.</description>
     </item>
     
     <item>
@@ -261,8 +260,8 @@ Supported Service Bindings  The Node.</description>
       
       <guid>https://paketo.io/docs/reference/php-reference/</guid>
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo PHP Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo PHP Buildpack How To documentation.
-Supported Dependencies  The Paketo PHP Buildpack supports several versions of PHP and Composer. For more details on the specific versions supported in a given buildpack version, see the release notes.
-Behavior  The Paketo PHP Buildpack is a composite buildpack designed to build applications written in PHP.</description>
+Supported Dependencies The Paketo PHP Buildpack supports several versions of PHP and Composer. For more details on the specific versions supported in a given buildpack version, see the release notes.
+Behavior The Paketo PHP Buildpack is a composite buildpack designed to build applications written in PHP.</description>
     </item>
     
     <item>
@@ -272,7 +271,7 @@ Behavior  The Paketo PHP Buildpack is a composite buildpack designed to build ap
       
       <guid>https://paketo.io/docs/reference/python-reference/</guid>
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Python Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Python Buildpack How To documentation.
-Supported Dependencies  The Python buildpack supports several versions of CPython, as well as tools like Pip and Pipenv. For more details on the specific versions supported in a given buildpack version, see the release notes.</description>
+Supported Dependencies The Python buildpack supports several versions of CPython, as well as tools like Pip and Pipenv. For more details on the specific versions supported in a given buildpack version, see the release notes.</description>
     </item>
     
     <item>
@@ -282,7 +281,7 @@ Supported Dependencies  The Python buildpack supports several versions of CPytho
       
       <guid>https://paketo.io/docs/reference/ruby-reference/</guid>
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Ruby Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Ruby Buildpack How To documentation.
-Supported Dependencies  The Ruby Paketo Buildpack supports several versions of MRI, Bundler, and common Ruby webservers and task runners. For more details on the specific versions supported in a given buildpack version, see the release notes.</description>
+Supported Dependencies The Ruby Paketo Buildpack supports several versions of MRI, Bundler, and common Ruby webservers and task runners. For more details on the specific versions supported in a given buildpack version, see the release notes.</description>
     </item>
     
   </channel>
