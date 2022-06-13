@@ -748,16 +748,31 @@ pack build samples/java \
 </h3><p>The Java Buildpack configures the JVM by setting <code>JAVA_TOOL_OPTIONS</code> in the JVM environment.</p>
 <p>The runtime JVM can be configured in two ways:</p>
 <ol>
-<li>Buildpack-provided runtime components including the Memory Calculator accept semantically named environment variables which are then used to derive <code>JAVA_TOOL_OPTIONS</code> flags. Examples include:
+<li>
+<p>Buildpack-provided runtime components including the Memory Calculator accept semantically named environment variables which are then used to derive <code>JAVA_TOOL_OPTIONS</code> flags. Examples include:</p>
 <ul>
 <li><code>BPL_JVM_HEAD_ROOM</code></li>
 <li><code>BPL_JVM_LOADED_CLASS_COUNT</code></li>
 <li><code>BPL_JVM_THREAD_COUNT</code></li>
 </ul>
 </li>
-<li>Flags can be set directly at runtime with the <code>JAVA_TOOL_OPTIONS</code> environment variable. User-provided flags will be appended to buildpack-provided flags. If the user and a buildpack set the same flag, user-provided flags take precedence.</li>
+<li>
+<p>Flags can be set directly at runtime with the <code>JAVA_TOOL_OPTIONS</code> environment variable. User-provided flags will be appended to buildpack-provided flags. If the user and a buildpack set the same flag, user-provided flags take precedence.</p>
+</li>
 </ol>
 <p>See the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">homepage</a> for the BellSoft Liberica Buildpack for a full set of configuration options.</p>
+<p>For example, you can add additional JVM flags to configure garbage collection, memory flags and other settings.</p>
+<!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">docker run --rm --tty \
+  --env JAVA_TOOL_OPTIONS=&#39;-XX:&#43;UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40&#39; \
+  --env BPL_JVM_THREAD_COUNT=100
+  samples/java
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<!-- raw HTML omitted -->
 <h3 id="use-an-alternative-jvm" class="markup-heading">
     <a class="markup-heading__link" href="#use-an-alternative-jvm">
         Use an Alternative JVM
