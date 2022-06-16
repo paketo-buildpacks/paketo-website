@@ -134,6 +134,34 @@ pack build samples/java \
    --volume $(pwd)/java/maven/binding:/platform/bindings/my-maven-settings
 {{< /code/copyable >}}
 
+##### Share Local Maven or Gradle Cache
+
+If you have been developing your code on your computer, it's very likely that Maven or Gradle have already downloaded all of the dependency JARs required to build your application. However, if you perform a `pack build` of your application this runs in a new container and does not by default have access to your existing Maven or Gradle cache. This means Maven and Gradle will helpfully download all of the dependencies they require again, slowing down your builds.
+
+You can speed up builds by sharing your local Maven or Gradle cache with the container.
+
+To do this with `pack`, you need to add the flag `--volume $HOME/.m2:/home/cnb/.m2:rw` to your `pack build` command. This flag will volume mount your local Maven directory into the build container so it can be used there. This command makes the volume mount read-write, which allows Maven running inside the container to download and persist additional dependencies. If you do not want this, you can make the mount read-only by changing `:rw` to `:ro`. If read-only and Maven requires a dependency not present, the build will fail.
+
+You may do the same thing with Gradle, the flag to add is `--volume $HOME/.gradle:/home/cnb/.gradle:rw`. Again, you make change `:rw` to `:ro` if you prefer the mount to be read-only.
+
+For example:
+
+{{< code/copyable >}}
+pack build samples/java \
+  --path java/maven \
+  --volume $HOME/.m2:/home/cnb/.m2:rw
+{{< /code/copyable >}}
+
+or
+
+{{< code/copyable >}}
+pack build samples/java \
+  --path java/gradle \
+  --volume $HOME/.gradle:/home/cnb/.gradle:rw
+{{< /code/copyable >}}
+
+**DO NOT** use this option if [including a Maven or Gradle binding]({{< relref "#connect-to-a-private-maven-repository" >}})! If you do this, it will overwrite your actual local config file with the binding file which could cause data loss. It is also unnecessary because we are volume mounting the entire Maven or Gradle directory into the container which includes your Maven and Gradle settings.
+
 ### Build from a Compiled Artifact
 
 An application developer may build an image from following archive formats:

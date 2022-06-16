@@ -2,6 +2,9 @@
 .dotnet_root
 .ini
 .m2
+.m2:rw
+.gradle
+.gradle:rw
 .nvmrc
 APM
 ASP.NET
