@@ -666,6 +666,33 @@ Artifact</a>.</p>
 </div></p>
 </li>
 </ol>
+<h5 id="share-local-maven-or-gradle-cache" class="markup-heading">
+    <a class="markup-heading__link" href="#share-local-maven-or-gradle-cache">
+        Share Local Maven or Gradle Cache
+    </a>
+</h5><p>If you have been developing your code on your computer, it&rsquo;s very likely that Maven or Gradle have already downloaded all of the dependency JARs required to build your application. However, if you perform a <code>pack build</code> of your application this runs in a new container and does not by default have access to your existing Maven or Gradle cache. This means Maven and Gradle will helpfully download all of the dependencies they require again, slowing down your builds.</p>
+<p>You can speed up builds by sharing your local Maven or Gradle cache with the container.</p>
+<p>To do this with <code>pack</code>, you need to add the flag <code>--volume $HOME/.m2:/home/cnb/.m2:rw</code> to your <code>pack build</code> command. This flag will volume mount your local Maven directory into the build container so it can be used there. This command makes the volume mount read-write, which allows Maven running inside the container to download and persist additional dependencies. If you do not want this, you can make the mount read-only by changing <code>:rw</code> to <code>:ro</code>. If read-only and Maven requires a dependency not present, the build will fail.</p>
+<p>You may do the same thing with Gradle, the flag to add is <code>--volume $HOME/.gradle:/home/cnb/.gradle:rw</code>. Again, you make change <code>:rw</code> to <code>:ro</code> if you prefer the mount to be read-only.</p>
+<p>For example:</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build samples/java \
+  --path java/maven \
+  --volume $HOME/.m2:/home/cnb/.m2:rw
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<p>or</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build samples/java \
+  --path java/gradle \
+  --volume $HOME/.gradle:/home/cnb/.gradle:rw
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<p><strong>DO NOT</strong> use this option if <a href="#connect-to-a-private-maven-repository">including a Maven or Gradle binding</a>! If you do this, it will overwrite your actual local config file with the binding file which could cause data loss. It is also unnecessary because we are volume mounting the entire Maven or Gradle directory into the container which includes your Maven and Gradle settings.</p>
 <h3 id="build-from-a-compiled-artifact" class="markup-heading">
     <a class="markup-heading__link" href="#build-from-a-compiled-artifact">
         Build from a Compiled Artifact
@@ -1372,7 +1399,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> June 13, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> June 16, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
