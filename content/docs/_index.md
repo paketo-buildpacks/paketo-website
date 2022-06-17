@@ -20,6 +20,7 @@ Check out more [sample apps](https://github.com/paketo-buildpacks/samples) that 
 
 Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and what Paketo Buildpacks are doing under the hood to make it easy to build your apps.
 
+<!-- spellchecker-disable -->
 <!-- References -->
 [java-guide]:{{< relref "#java" >}}
 [node-guide]:{{< relref "#nodejs" >}}
@@ -33,3 +34,4 @@ Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and
 [howto/golang]:{{ ref "/docs/howto/go" }}
 [howto/ruby]:{{ ref "/docs/howto/ruby" }}
 [howto/php]:{{ ref "/docs/howto/php" }}
+<!-- spellchecker-enable -->
