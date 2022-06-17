@@ -10,7 +10,7 @@ toc: false
 
 This section gets you started with Paketo Buildpacks using Paketo [**Builders**][builders], the **pack** CLI, and **Docker**.
 
-Select your favorite language and learn how to get started with Paketo Buildpacks.
+Select your favorite language and learn how to get started with Paketo Buildpacks. (Don't see your favorite here? Check out the How To guides for even more languages, like [Golang][howto/golang] [Ruby][howto/ruby], or [PHP][howto/php].)
 
 {{< getting-started >}}
 
@@ -29,3 +29,7 @@ Keep reading to learn about Paketo Builders, the Cloud Native Buildpack API, and
 
 [install-docker]:https://docs.docker.com/get-docker/
 [install-pack]:https://buildpacks.io/docs/install-pack/
+
+[howto/golang]:{{ ref "/docs/howto/go" }}
+[howto/ruby]:{{ ref "/docs/howto/ruby" }}
+[howto/php]:{{ ref "/docs/howto/php" }}
