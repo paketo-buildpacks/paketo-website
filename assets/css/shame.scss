@@ -6,21 +6,20 @@ the hack is needed, and **sign with your name and the date** so it's
 easy to keep track of who has context on it.
 */
 
-
 /* Needed to prevent the edit on github actiion button image 
 from having a border because .docs img{} styling in paketo scss
 is aggressive
 Frankie GJ 9/13/21 */
 :root .github-edit__logo {
-	border: none;
-	width: 100%;
+  border: none;
+  width: 100%;
 }
 
 /* Needed to override some styles on .docs img
 that shouldn't apply to the click to copy clipboard
 Frankie GJ 9/13/21  */
 :root .copyable__clipboard {
-	border: none;
+  border: none;
 }
 
 /* Without this, the docs-menu__link hover state color overrides
@@ -30,19 +29,20 @@ requirements against the light background of active nav
 elements
 Frankie GJ 9/13/21 */
 .docs-menu__link--active:hover.docs-menu__link--active:hover {
-    color: $link-text-color;
+  color: $link-text-color;
 }
 
 /* Not sure exactly what this does, but without it, elements like
 the docs sidebar render in a wonky way where its size changes
 depending on which element is active
 Frankie GJ 9/13/21 */
-*, *:before, *:after {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 
 /* A hack to prevent inline-code elements from having huge spaces between words.
 The first selector applies to _all_ code elements (including inside blocks),
@@ -50,9 +50,9 @@ the second applies only to code blocks; it re-sets the word spacing to the monos
 default
 Frankie GJ 9/13/21 */
 code {
-	word-spacing: -.25em;
+  word-spacing: -0.25em;
 }
 
 pre code {
-	word-spacing: normal;
+  word-spacing: normal;
 }

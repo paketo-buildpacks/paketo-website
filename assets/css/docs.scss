@@ -1,81 +1,80 @@
 /* docs */
 .docs {
-    display: block;
-    background: $light-background-color;
+  display: block;
+  background: $light-background-color;
 
-    @media (min-width: $docs-sidebar-breakpoint) {
-        display: flex;
-    }
+  @media (min-width: $docs-sidebar-breakpoint) {
+    display: flex;
+  }
 }
 
 /* docs mobile tab */
 
 .docs-mobile-tab {
-    display: flex;
-    position: fixed;
-    float: right;
-    width: 28px;
-    height: 62px;
-    right: 0px;
-    top: 30%;
-    background: $dark-background-color;
-    color: $light-background-color;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    z-index: 100;
+  display: flex;
+  position: fixed;
+  float: right;
+  width: 28px;
+  height: 62px;
+  right: 0px;
+  top: 30%;
+  background: $dark-background-color;
+  color: $light-background-color;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  z-index: 100;
 
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 
-    @media (min-width: $mobile-breakpoint) {
-        display: none;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    display: none;
+  }
 }
 
 /* docs nav */
 .docs-sidebar {
-    background-color: $dark-background-color;
-    padding-left: 34px;
+  background-color: $dark-background-color;
+  padding-left: 34px;
 
-    @media (min-width: $docs-sidebar-breakpoint) {
-        padding-left: 50px;
-        padding-right: 20px;
-        width: 380px;
-    }
+  @media (min-width: $docs-sidebar-breakpoint) {
+    padding-left: 50px;
+    padding-right: 20px;
+    width: 380px;
+  }
 }
 
 /* docs search */
 .docs-search-container {
-    background: $dark-background-color;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  background: $dark-background-color;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .DocSearch {
   &.DocSearch-Button {
-      width: 220px;
-      height: 45px;
-      margin-left: 0;
-      border: 2px solid $light-background-color;
-      border-radius: 8px;
-      background-position: 5px 6px;
-      background-repeat: no-repeat;
-      font-family: $default-font-family;
-      font-size: 18px;
-      font-weight: 500;
-      line-height: 24px;
+    width: 220px;
+    height: 45px;
+    margin-left: 0;
+    border: 2px solid $light-background-color;
+    border-radius: 8px;
+    background-position: 5px 6px;
+    background-repeat: no-repeat;
+    font-family: $default-font-family;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
 
-      @media (min-width: $mobile-breakpoint) {
-          width: 305px;
-      }
-
+    @media (min-width: $mobile-breakpoint) {
+      width: 305px;
+    }
   }
 
   &.DocSearch-Button:hover {
-      outline: none;
-      box-shadow: none;
-      border-color: $link-text-dark-background-color;
+    outline: none;
+    box-shadow: none;
+    border-color: $link-text-dark-background-color;
   }
 
   .DocSearch-Button-Key {
@@ -108,360 +107,365 @@
 }
 
 .algolia-autocomplete .ds-dropdown-menu {
-    width: 75vw;
-    min-width: 245px !important; // Necessary because algolia element comes with styling
-    height: 100%;
+  width: 75vw;
+  min-width: 245px !important; // Necessary because algolia element comes with styling
+  height: 100%;
 }
 
 .docs-menu-container {
-    position: fixed;
-    top: 20%;
-    left: -100%;
-    height: 75%;
-    width: 90vw;
-    z-index: 300;
-    overflow: scroll;
-    padding-left: 34px;
-    padding-top: 28px;
-    background: $dark-background-color;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    box-shadow: 2px -3px 4px rgba(0, 0, 0, 0.25);
-    transition: transform 0.3s cubic-bezier(.22, .61, .36, 1);
-    display: block;
+  position: fixed;
+  top: 20%;
+  left: -100%;
+  height: 75%;
+  width: 90vw;
+  z-index: 300;
+  overflow: scroll;
+  padding-left: 34px;
+  padding-top: 28px;
+  background: $dark-background-color;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  box-shadow: 2px -3px 4px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+  display: block;
 
-    @media (min-width: $mobile-breakpoint) {
-        position: static;
-        width: 100%;
-        box-shadow: none;
-        top: auto;
-        left: auto;
-        overflow: visible;
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
-        z-index: auto;
-        padding-left: 0px;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+    top: auto;
+    left: auto;
+    overflow: visible;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    z-index: auto;
+    padding-left: 0px;
+  }
 
-    @media (min-width: $docs-sidebar-breakpoint) {
-        padding-top: 50px;
-    }
+  @media (min-width: $docs-sidebar-breakpoint) {
+    padding-top: 50px;
+  }
 }
 
 .docs-menu-container--showing {
-    transform: translateX(110%);
+  transform: translateX(110%);
 
-    @media (min-width: $mobile-breakpoint) {
-        transform: none;
-        transition: none;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    transform: none;
+    transition: none;
+  }
 }
 
 .docs-menu {
-    padding-top: 30px;
-    padding-bottom: 50px;
+  padding-top: 30px;
+  padding-bottom: 50px;
 }
 
 .docs-menu__title {
-	color: $light-text-color;
-	line-height: 3em;
+  color: $light-text-color;
+  line-height: 3em;
 }
 
 .docs-menu__top-level-list {
-    padding: 0;
-    list-style: none;
-    position: relative;
-    padding: 0;
+  padding: 0;
+  list-style: none;
+  position: relative;
+  padding: 0;
 }
 
 .docs-menu__item {
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 33px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 33px;
 
-    @media (min-width: $mobile-breakpoint) {
-        font-weight: 500;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    font-weight: 500;
+  }
 }
 
 .docs-menu__parent {
-    list-style: inherit;
-    position: relative;
-    padding: 0px;
-    padding-right: 5px;
+  list-style: inherit;
+  position: relative;
+  padding: 0px;
+  padding-right: 5px;
 }
 
 .docs-menu__children-list {
-    display: none;
-    list-style: inherit;
-    padding-left: 20px;
-	position: relative;
+  display: none;
+  list-style: inherit;
+  padding-left: 20px;
+  position: relative;
 }
 
 .docs-menu__children-list--opened {
-    display: block;
+  display: block;
 }
 
 .docs-menu__leaf {
-    list-style: inherit;
-    position: relative;
-    padding: 0;
-    padding-right: 5px;
+  list-style: inherit;
+  position: relative;
+  padding: 0;
+  padding-right: 5px;
 }
 
 .docs-menu__section-header {
-    cursor: default;
-    display: flex;
-    align-items: center;
-    position: relative;
-    margin: 5px 0;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-decoration: none;
-    opacity: 1;
-    color: $light-text-color;
+  cursor: default;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 5px 0;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  opacity: 1;
+  color: $light-text-color;
 }
 
 .docs-menu__expander-button {
-    position: absolute;
-    right: 20px;
+  position: absolute;
+  right: 20px;
 
-    @media (min-width: $docs-sidebar-breakpoint) {
-        right: 0px;
-    }
+  @media (min-width: $docs-sidebar-breakpoint) {
+    right: 0px;
+  }
 }
 
 .expander-button {
-    width: 37px;
-    height: 34px;
-    background-color: $docs-expander-button-color;
-    border-radius: 8px;
-    padding: 0px;
-    border-style: none;
+  width: 37px;
+  height: 34px;
+  background-color: $docs-expander-button-color;
+  border-radius: 8px;
+  padding: 0px;
+  border-style: none;
 }
 
 .expander-button:hover {
-    opacity: .8;
+  opacity: 0.8;
 }
 
-.expander-button--opened, .expander-button--opened:hover {
-    opacity: .6;
+.expander-button--opened,
+.expander-button--opened:hover {
+  opacity: 0.6;
 }
 
 .expander-button__triangle--opened {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .docs-menu__link {
-    display: inline-block;
-    position: relative;
-    margin: 5px 0;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    text-decoration: none;
-    opacity: 1;
-    color: $light-text-color;
+  display: inline-block;
+  position: relative;
+  margin: 5px 0;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
+  opacity: 1;
+  color: $light-text-color;
 }
 
 .docs-menu__link--active {
-	color: $dark-text-color;
-    background: $light-background-color;
-    border-radius: 10px;
+  color: $dark-text-color;
+  background: $light-background-color;
+  border-radius: 10px;
 }
 
 .docs-menu__link:hover {
-	color: $link-text-dark-background-color;
-    opacity: 100%;
+  color: $link-text-dark-background-color;
+  opacity: 100%;
 }
 
 .docs-menu__link--active:hover {
-    color: $link-text-color;
+  color: $link-text-color;
 }
 
 @media (min-width: $docs-sidebar-breakpoint) {
-    .docs-menu {
-		padding-bottom: 0px;
-	}
+  .docs-menu {
+    padding-bottom: 0px;
+  }
 
-	.docs-menu a {
-        display: block;
-    }
+  .docs-menu a {
+    display: block;
+  }
 
-    .docs-menu a.active {
-        border-radius: 0px;
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-    }
+  .docs-menu a.active {
+    border-radius: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
 }
 
 /* docs body */
 .docs-body {
-    width: 100%;
-    position: relative;
-    padding-left: 31px;
-    padding-right: unquote('max(40px, env(safe-area-inset-right))');
-    padding-top: 40px;
-    padding-bottom: 40px;
+  width: 100%;
+  position: relative;
+  padding-left: 31px;
+  padding-right: unquote("max(40px, env(safe-area-inset-right))");
+  padding-top: 40px;
+  padding-bottom: 40px;
 
-    @media (min-width: $docs-sidebar-breakpoint) {
-        width: calc(100% - 380px);
-        display: flex;
-        flex-direction: row;
-    }
+  @media (min-width: $docs-sidebar-breakpoint) {
+    width: calc(100% - 380px);
+    display: flex;
+    flex-direction: row;
+  }
 
-    @media (min-width: $mobile-breakpoint) {
-        font-weight: normal;
-        font-size: 17px;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    font-weight: normal;
+    font-size: 17px;
+  }
 }
 
 .docs-body__container {
-    max-width: 1000px;
-	overflow: auto;
+  max-width: 1000px;
+  overflow: auto;
 }
 
 .docs-body__markdown {
-    margin-top: 60px;
+  margin-top: 60px;
 }
 
 .docs-body h1 {
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 27px;
-    margin-bottom: 30px;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  margin-bottom: 30px;
 
-    @media (min-width: $mobile-breakpoint) {
-        font-weight: bold;
-        font-size: 36px;
-        line-height: 49px;
-        margin-bottom: 53px;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 49px;
+    margin-bottom: 53px;
+  }
 }
 
 .docs-body h2 {
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 24px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
 
-    @media (min-width: $mobile-breakpoint) {
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 33px;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 33px;
+  }
 }
 
 .docs-body h3 {
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 22px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
 
-    @media (min-width: $mobile-breakpoint) {
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 27px;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 27px;
+  }
 }
 
 .docs-body h4 {
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 22px;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 22px;
 
-    @media (min-width: $mobile-breakpoint) {
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 27px;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 27px;
+  }
 }
 
 /* table of contents */
 .docs-body__table-of-contents-container {
-    color: $dark-text-color;
-    font-size: 17px;
-    line-height: 24px;
-    text-decoration-line: underline;
+  color: $dark-text-color;
+  font-size: 17px;
+  line-height: 24px;
+  text-decoration-line: underline;
 }
 
 .docs-body__table-of-contents-container ul {
-    list-style: none;
-    padding: 0px;               // don't indent h2 headers
+  list-style: none;
+  padding: 0px; // don't indent h2 headers
 }
 
-.docs-body__table-of-contents-container ul li ul { // indent h3 subheaders
-       padding: 0 1em;
-   }
+.docs-body__table-of-contents-container ul li ul {
+  // indent h3 subheaders
+  padding: 0 1em;
+}
 
 .docs-body__table-of-contents-container--desktop {
-    display: none
+  display: none;
 }
 
-@media(min-width: $table-of-contents-breakpoint) {
+@media (min-width: $table-of-contents-breakpoint) {
+  .docs-body__table-of-contents-container {
+    padding-top: 40px;
+    padding-left: 48px;
+    max-width: 600px;
+    min-width: 350px;
+  }
 
-    .docs-body__table-of-contents-container {
-        padding-top: 40px;
-        padding-left: 48px;
-        max-width: 600px;
-        min-width: 350px;
-    }
+  .docs-body__table-of-contents-container--mobile {
+    display: none;
+  }
 
-    .docs-body__table-of-contents-container--mobile {
-        display: none;
-    }
-
-    .docs-body__table-of-contents-container--desktop {
-        display: block;
-    }
+  .docs-body__table-of-contents-container--desktop {
+    display: block;
+  }
 }
 
 /* github redirect */
 
 .github-edit {
-    display: none;
+  display: none;
 
-    margin-top: 16px;
-	border-radius: 8px;
-	background: $docs-expander-button-color;
-	width: 75px;
-	float: right;
+  margin-top: 16px;
+  border-radius: 8px;
+  background: $docs-expander-button-color;
+  width: 75px;
+  float: right;
 
-    @media (min-width: $mobile-breakpoint) {
-        display: block;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    display: block;
+  }
 }
 
 .github-edit__content {
-	display: flex;
-	justify-content: center;
-	text-align: center;
-	margin: 8px 0px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 8px 0px;
 }
 
 .github-edit__logo-container {
-	border: none;
-	width: 30%;
-	margin-left: 5px;
-	margin-right: 5px;
+  border: none;
+  width: 30%;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .github-edit__text {
-	margin-right: 10px;
-	font-size: 12px;
+  margin-right: 10px;
+  font-size: 12px;
 }
 
 /* code blocks */
 
 // chroma is class that Hugo automatically gives to <pre> elements that wrap
 // things in ``` ``` blocks in markdown
-.chroma, .copyable {
-	position: relative;
-	display: block;
-	background-color: $light-background-color;
-	font-family: monospace;
-	padding: 0.35em 0.6em;
-	border: 1px solid #E4E4E4;
-    border-radius: 5px;
+.chroma,
+.copyable {
+  position: relative;
+  display: block;
+  background-color: $light-background-color;
+  font-family: monospace;
+  padding-top: 0.35em;
+  padding-bottom: 0.35em;
+  padding-left: 0.6em;
+  padding-right: 23px;
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
 }
 
 .chroma {
@@ -469,158 +473,154 @@
 }
 
 .copyable__code {
-    font-family: monospace;
-    word-spacing: normal;
-    color: $link-text-color;
-    overflow: auto;
+  font-family: monospace;
+  word-spacing: normal;
+  color: $link-text-color;
+  overflow: auto;
 }
 
 .copyable__clipboard {
-    display: block;
-	position: absolute;
-	top: 2px;
-	right: 2px;
-    background: #FFF;
-	cursor: pointer;
-	border: none;
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.4);
+  top: 2px;
+  right: 2px;
+  cursor: pointer;
+  border: none;
 }
 
 .copyable:hover .copyable__clipboard {
-    display: block;
+  display: block;
 }
 
 .copyable__copied {
-    visibility: hidden;
-	position: absolute;
-	top: 25px;
-	right: 2px;
-    background-color: $light-background-color;
-    opacity: 100;
-    font-family: $default-font-family;
+  visibility: hidden;
+  position: absolute;
+  top: 25px;
+  right: 2px;
+  background-color: $light-background-color;
+  opacity: 100;
+  font-family: $default-font-family;
 }
 
 .copyable--clicked .copyable__copied {
-    visibility: visible;
-	opacity: 0;
-	transition: visibility 0s, opacity 1s ease-in-out 1s;
+  visibility: visible;
+  opacity: 0;
+  transition: visibility 0s, opacity 1s ease-in-out 1s;
 }
 
 @media (min-width: $mobile-breakpoint) {
-    .copyable__clipboard {
-        display: none;
-        position: absolute;
-        top: 2px;
-        right: 2px;
-        background: #FFF;
-        cursor: pointer;
-        border: none;
-    }
+  .copyable__clipboard {
+    display: none;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    cursor: pointer;
+    border: none;
+  }
 
-    .copyable:hover .copyable__clipboard {
-        display: block;
-    }
+  .copyable:hover .copyable__clipboard {
+    display: block;
+  }
 
-    .copyable__copied {
-        visibility: hidden;
-        position: absolute;
-        top: 25px;
-        right: 2px;
-        background-color: $light-background-color;
-        opacity: 100;
-        font-family: $default-font-family;
-    }
+  .copyable__copied {
+    visibility: hidden;
+    position: absolute;
+    top: 25px;
+    right: 2px;
+    background-color: $light-background-color;
+    opacity: 100;
+    font-family: $default-font-family;
+  }
 
-    .copyable--clicked .copyable__copied {
-        visibility: visible;
-        opacity: 0;
-        transition: visibility 0s, opacity 1s ease-in-out 1s;
-    }
-
+  .copyable--clicked .copyable__copied {
+    visibility: visible;
+    opacity: 0;
+    transition: visibility 0s, opacity 1s ease-in-out 1s;
+  }
 }
 
 /* view output expander */
 
 .code-output__btn {
-    width: 80px;
-    background: $docs-output-expander-color; // TODO: Check contrast
-	text-transform: uppercase;
-	font-size: 0.6em;
-	margin-top: 10px;
-    padding: 3px;
-	text-align: center;
+  width: 80px;
+  background: $docs-output-expander-color; // TODO: Check contrast
+  text-transform: uppercase;
+  font-size: 0.6em;
+  margin-top: 10px;
+  padding: 3px;
+  text-align: center;
 }
 
 .code-output__btn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .code-output__output-container {
-    display: none;
-    background: $docs-output-expander-color;
-    width: 100%;
-    overflow: auto;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 0.7em;
+  display: none;
+  background: $docs-output-expander-color;
+  width: 100%;
+  overflow: auto;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 0.7em;
 }
 
 .code-output__output {
-    color: $dark-text-color;
+  color: $dark-text-color;
 }
 
 .code-output--opened {
-
-    .code-output__output-container {
-        display: block;
-
-    }
+  .code-output__output-container {
+    display: block;
+  }
 }
 
 /* bits and bobs */
 .docs img {
-	display: block;
-	margin: 0 auto;
-	border: 1px solid #E4E4E4;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid #e4e4e4;
 }
 
 .docs-mod-time {
-	padding-left: 50px;
-    font-style: italic;
-    padding: 0px;
+  padding-left: 50px;
+  font-style: italic;
+  padding: 0px;
 }
 
 .markup-heading__link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .getting-started__note {
-	display: none;
+  display: none;
 }
 
 .getting-started__note.getting-started__note--selected {
-		display: block;
+  display: block;
 }
 
 .getting-started__btn-container {
-	background-color: $subtle-background-color;
-	padding: 15px;
+  background-color: $subtle-background-color;
+  padding: 15px;
 }
 
 .getting-started__btn {
-	border: none;
-	background-color: $iso-button-background-color;
-	color: $dark-text-color;
-	padding: 10px;
-	margin: 5px;
-	font-family: $default-font-family;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 16px;
-	line-height: 22px;
+  border: none;
+  background-color: $iso-button-background-color;
+  color: $dark-text-color;
+  padding: 10px;
+  margin: 5px;
+  font-family: $default-font-family;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
 }
 
 .getting-started__btn.getting-started__btn--selected {
-	background-color: $dark-background-color;
-	color: $light-text-color;
+  background-color: $dark-background-color;
+  color: $light-text-color;
 }

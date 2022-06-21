@@ -1,72 +1,72 @@
 /* footer */
 
 .footer {
-    background: $dark-background-color;
-    padding-left: unquote('max(28px, env(safe-area-inset-left))');
-    padding-top: 34px;
-    padding-bottom: 34px;
-    padding-right: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  background: $dark-background-color;
+  padding-left: unquote("max(28px, env(safe-area-inset-left))");
+  padding-top: 34px;
+  padding-bottom: 34px;
+  padding-right: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-    @media (min-width: $mobile-breakpoint-footer) {
-        flex-direction: row-reverse;
-        align-items: center;
-    }
+  @media (min-width: $mobile-breakpoint-footer) {
+    flex-direction: row-reverse;
+    align-items: center;
+  }
 }
 
 .footer-social-links-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    @media (min-width: $mobile-breakpoint-footer) {
-        flex-direction: row;
-        align-items: center;
-    }
+  @media (min-width: $mobile-breakpoint-footer) {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 
 .footer-social-link {
-    font-family: Metropolis, sans-serif;
-    font-size: 22px;
-    line-height: 24px;
-    margin-bottom: 28px;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+  font-family: Metropolis, sans-serif;
+  font-size: 22px;
+  line-height: 24px;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 
-    @media (min-width: $mobile-breakpoint-footer) {
-        margin-left: 20px;
-        margin-right: 20px;
-        margin-bottom: 0px;
-    }
+  @media (min-width: $mobile-breakpoint-footer) {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 0px;
+  }
 }
 
-.footer-social-link__image-container{
-    width: 50px;
-    height: 50px;
-    margin-left: 10px;
-    margin-right: 12px;
+.footer-social-link__image-container {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  margin-right: 12px;
 
-    @media(min-width: $mobile-breakpoint-footer) {
-        width: 40px;
-    }
+  @media (min-width: $mobile-breakpoint-footer) {
+    width: 40px;
+  }
 }
 
 .footer-text--small {
-    font-family: Metropolis, sans-serif;
-    font-size: 12px;
-    line-height: 24px;
-    font-weight: 100;
+  font-family: Metropolis, sans-serif;
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: 100;
 }
 
 .footer-privacy-policy {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .cloudfoundry-logo {
-    width: 160px;
-    margin: 13px; /* must be >=8% of width to follow branding guidelines*/
-    margin-left: 0px;
+  width: 160px;
+  margin: 13px; /* must be >=8% of width to follow branding guidelines*/
+  margin-left: 0px;
 }
