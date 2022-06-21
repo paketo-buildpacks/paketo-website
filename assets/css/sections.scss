@@ -1,29 +1,28 @@
-
 .homepage-section {
-    padding-left: unquote('max(28px, env(safe-area-inset-left))');
-    padding-top: 34px;
-    padding-bottom: 34px;
-    padding-right: unquote('max(30px, env(safe-area-inset-right))');
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  padding-left: unquote("max(28px, env(safe-area-inset-left))");
+  padding-top: 34px;
+  padding-bottom: 34px;
+  padding-right: unquote("max(30px, env(safe-area-inset-right))");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .homepage-section--dark {
-    background: $dark-background-color;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: $dark-background-color;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .homepage-section--light {
-    background: $light-background-color !important;
-    box-shadow: none;
+  background: $light-background-color !important;
+  box-shadow: none;
 }
 
 .homepage-section--padded {
-    padding-bottom: 64px;
+  padding-bottom: 64px;
 }
 
 .text-container {
-    max-width: 1000px;
-    text-align: left;
+  max-width: 1000px;
+  text-align: left;
 }

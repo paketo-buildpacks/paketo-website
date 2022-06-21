@@ -1,29 +1,28 @@
-@import 'common/reset';
-@import 'variables'; // Needs to be before imports that use these variables
-@import 'plugins/docsearch';
+@import "common/reset";
+@import "variables"; // Needs to be before imports that use these variables
+@import "plugins/docsearch";
 
-@import 'docs';
-@import 'footer';
-@import 'header';
-@import 'homepage';
-@import 'icons';
-@import 'nav';
-@import 'sections';
-@import 'shame';
-@import 'text';
-@import 'community';
-
+@import "docs";
+@import "footer";
+@import "header";
+@import "homepage";
+@import "icons";
+@import "nav";
+@import "sections";
+@import "shame";
+@import "text";
+@import "community";
 
 @media (prefers-reduced-motion) {
-    .nav {
-        transition: none;
-    }
+  .nav {
+    transition: none;
+  }
 
-    .nav-opener__bar {
-        transition: none;
-    }
+  .nav-opener__bar {
+    transition: none;
+  }
 
-    .how-it-works-animation {
-        display: none;
-    }
+  .how-it-works-animation {
+    display: none;
+  }
 }

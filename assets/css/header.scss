@@ -1,74 +1,75 @@
-.paketo-logo, .paketo-p-logo {
-    width: -moz-fit-content;
-    width: fit-content;
-    margin-bottom: 46px;
+.paketo-logo,
+.paketo-p-logo {
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-bottom: 46px;
 
-    @media (min-width: $mobile-breakpoint) {
-        padding: 20px;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    padding: 20px;
+  }
 }
 
 .paketo-logo__image {
-    width: 112px;
+  width: 112px;
 
-    @media (min-width: $mobile-breakpoint) {
-        width: 245px;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    width: 245px;
+  }
 }
 
 .paketo-p-logo__image {
-    width: 32px;
+  width: 32px;
 
-    @media (min-width: $mobile-breakpoint) {
-        width: auto;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    width: auto;
+  }
 }
 
 header {
-    background: $dark-background-color;
-    box-shadow: none;
-    height: 120px;
-    padding-top: unquote('max(20px, env(safe-area-inset-top))');
-    padding-left: unquote('max(28px, env(safe-area-inset-left))');
-    padding-bottom: 34px;
-    padding-right: 30px;
-    display: flex;
-    flex-direction: column;
+  background: $dark-background-color;
+  box-shadow: none;
+  height: 120px;
+  padding-top: unquote("max(20px, env(safe-area-inset-top))");
+  padding-left: unquote("max(28px, env(safe-area-inset-left))");
+  padding-bottom: 34px;
+  padding-right: 30px;
+  display: flex;
+  flex-direction: column;
 
-    @media (min-width: $mobile-breakpoint) {
-        height: 200px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .header--light {
-    background: $light-background-color;
+  background: $light-background-color;
 }
 
 .header--narrow {
-    height: 80px;
+  height: 80px;
 
-    @media (min-width: $mobile-breakpoint) {
-        height: 145px;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    height: 145px;
+  }
 }
 
 /* Skip links */
 .screenreader-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    background-color: $dark-background-color;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: $dark-background-color;
 }
 
 .screenreader-text {
-    color: $link-text-dark-background-color;
-    position: absolute;
-    left: -999px;
+  color: $link-text-dark-background-color;
+  position: absolute;
+  left: -999px;
 
-    &:focus {
-        position: static;
-    }
+  &:focus {
+    position: static;
+  }
 }

@@ -1,31 +1,31 @@
 .logo {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo--github {
-    width: 116%;
-    margin-left: -8%;
-    margin-right: -8%;
+  width: 116%;
+  margin-left: -8%;
+  margin-right: -8%;
 }
 
 .logo--tilt {
-    margin-left: -20%;
-    margin-right: -20%;
+  margin-left: -20%;
+  margin-right: -20%;
 }
 
 .logo__image {
-    width: 100%;
+  width: 100%;
 }
 
 .logo__image--circleCI {
-    width: 90%;
+  width: 90%;
 }
 
 .logo__image--pr {
-    height: 100%;
-    width: auto;
+  height: 100%;
+  width: auto;
 }

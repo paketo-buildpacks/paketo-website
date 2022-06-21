@@ -1,226 +1,234 @@
 body {
-    font-family: $default-font-family;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
-    letter-spacing: 0px;
-    text-align: left;
-	color: $dark-text-color;
+  font-family: $default-font-family;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  color: $dark-text-color;
 
-    @media (min-width: $mobile-breakpoint) {
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 24px;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+  }
 }
 img {
-	height: auto;
-	max-width: 100%;
+  height: auto;
+  max-width: 100%;
 }
 p {
-	padding: 0.7em 0;
+  padding: 0.7em 0;
 }
-h1, h2, h3, h4, h5, h6 {
-	font-family: $default-font-family;
-	line-height: 1.5em;
-	color: $dark-text-color;
-	-webkit-font-smoothing: subpixel-antialiased;
-	letter-spacing: -0.025em;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $default-font-family;
+  line-height: 1.5em;
+  color: $dark-text-color;
+  -webkit-font-smoothing: subpixel-antialiased;
+  letter-spacing: -0.025em;
 }
 h1 {
-	font-size: 20px;
-	font-style: normal;
-	font-weight: 600;
-	line-height: 27px;
-	letter-spacing: 0px;
-	text-align: left;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 27px;
+  letter-spacing: 0px;
+  text-align: left;
 
-	@media (min-width: $mobile-breakpoint) {
-	font-size: 36px;
-	font-weight: 700;
-	line-height: 49px;
-	}
+  @media (min-width: $mobile-breakpoint) {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 49px;
+  }
 }
 
 h2 {
-	font-size: 18px;
-	font-style: normal;
-	font-weight: 600;
-	line-height: 24px;
-	letter-spacing: 0px;
-	text-align: left;
-	padding-top: 20px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0px;
+  text-align: left;
+  padding-top: 20px;
 
-	@media (min-width: $mobile-breakpoint) {
-		font-size: 32px;
-		line-height: 44px;
-	}
+  @media (min-width: $mobile-breakpoint) {
+    font-size: 32px;
+    line-height: 44px;
+  }
 }
 
 h3 {
-	font-size: 16px;
-	font-style: normal;
-	font-weight: 500;
-	line-height: 22px;
-	letter-spacing: 0px;
-	text-align: left;
-	padding-top: 20px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0px;
+  text-align: left;
+  padding-top: 20px;
 
-	@media (min-width: $mobile-breakpoint) {
-		font-size: 24px;
-		font-weight: 500;
-		line-height: 33px;
-	}
+  @media (min-width: $mobile-breakpoint) {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 33px;
+  }
 }
 
 h4 {
-	font-weight: bold;
-	font-size: 1.1em;
-	line-height: 23px;
-	letter-spacing: 0.05em;
-	padding-top: 10px;
+  font-weight: bold;
+  font-size: 1.1em;
+  line-height: 23px;
+  letter-spacing: 0.05em;
+  padding-top: 10px;
 }
 
 ul {
-	list-style: disc;
-	padding: 0 2em;
+  list-style: disc;
+  padding: 0 2em;
 }
 ol {
-	padding: 0 2em;
+  padding: 0 2em;
 }
 li {
-	padding: 5px 0;
+  padding: 5px 0;
 }
 ol li {
-	list-style: decimal;
+  list-style: decimal;
 }
 hr {
-	border: 0;
-	height: 1px;
-	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0)
+  );
 }
 code {
-	font-family: monospace;
-	color: $link-text-color;
-	overflow-wrap: break-word;
+  font-family: monospace;
+  color: $link-text-color;
+  overflow-wrap: break-word;
 }
 td {
-	border:	1px solid #DDD;
-	background: white;
-	padding: 10px;
+  border: 1px solid #ddd;
+  background: white;
+  padding: 10px;
 }
 th {
-	border:	1px solid #DDD;
-	background: white;
-	padding: 10px;
-	word-break: break-word;
+  border: 1px solid #ddd;
+  background: white;
+  padding: 10px;
+  word-break: break-word;
 }
 tr {
-	text-align: center;
+  text-align: center;
 }
 table {
-	table-layout: fixed;
-	width: 100%;
+  table-layout: fixed;
+  width: 100%;
 }
 
 .text__tagline {
-    margin-bottom: 14px;
+  margin-bottom: 14px;
 }
 
 .text__tagline__item {
-    font-size: 20px;
-    line-height: 28px;
-    font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
 
-    @media (min-width: $mobile-breakpoint) {
-        font-size: 36px;
-        line-height: 48px;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    font-size: 36px;
+    line-height: 48px;
+  }
 }
 
 .text__section-header {
-    font-size: 18px;
-    line-height: 24px;
-    font-weight: 600;
-    margin-bottom: 32px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+  margin-bottom: 32px;
 
-    @media (min-width: $mobile-breakpoint) {
-        font-weight: 500;
-        font-size: 32px;
-        line-height: 44px;
-    }
+  @media (min-width: $mobile-breakpoint) {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 44px;
+  }
 }
 
 .text__homepage-link {
-    color: #16819c;
-    font-weight: 500;
-    font-family: Metropolis, sans-serif;
-    margin-bottom: 40px;
+  color: #16819c;
+  font-weight: 500;
+  font-family: Metropolis, sans-serif;
+  margin-bottom: 40px;
 }
 
 .screen-reader-link-text {
-    position: absolute;
-    width: 1px;
-    clip: rect(0 0 0 0);
-    overflow: hidden;
-    white-space: nowrap;
+  position: absolute;
+  width: 1px;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .sub {
-    vertical-align: sub;
-    font-size: medium;
+  vertical-align: sub;
+  font-size: medium;
 }
 
 .sup {
-    vertical-align:super;
-    font-size: medium;
+  vertical-align: super;
+  font-size: medium;
 }
 
 .text--light {
-    color: $light-text-color;
+  color: $light-text-color;
 }
 
 .text--dark {
-    color: $dark-text-color;
+  color: $dark-text-color;
 }
 
 .text--shadow {
-    text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
 }
 
 .text--shadow-mobile {
-	text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
-	@media (min-width: $mobile-breakpoint) {
-		text-shadow: none;
-	}
+  text-shadow: 2px 3px 4px rgba(0, 0, 0, 0.25);
+  @media (min-width: $mobile-breakpoint) {
+    text-shadow: none;
+  }
 }
 
 .text--600 {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .text--500 {
-    font-weight: 500;
+  font-weight: 500;
 }
 
 .text--400 {
-	font-weight: 400;
+  font-weight: 400;
 }
 
 .text-line-height--24 {
-    line-height: 24px;
+  line-height: 24px;
 }
 
 .text-line-height--22 {
-    line-height: 22px;
+  line-height: 22px;
 }
 
 .text-size--16 {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .text-size--14 {
-    font-size: 14px;
+  font-size: 14px;
 }
-

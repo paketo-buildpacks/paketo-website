@@ -1,5 +1,5 @@
 /* screen sizing variables */
-$mobile-breakpoint : 480px;
+$mobile-breakpoint: 480px;
 $mobile-breakpoint-footer: 800px;
 $header-hamburger-breakpoint: 835px;
 $table-of-contents-breakpoint: 1200px;
@@ -7,22 +7,26 @@ $action-buttons-breakpoint: 650px;
 $docs-sidebar-breakpoint: 1000px;
 
 /* color variables */
-$light-text-color : #ffffff;
-$dark-text-color: #133D47;
-$link-text-color: #16819C;
-$link-text-dark-background-color: #6FD1E7; // lighter link color; WCAG contrast compliant on dark background
+$light-text-color: #ffffff;
+$dark-text-color: #133d47;
+$link-text-color: #16819c;
+$link-text-dark-background-color: #6fd1e7; // lighter link color; WCAG contrast compliant on dark background
 
-$docs-output-expander-color: #E4E4E4;
+$docs-output-expander-color: #e4e4e4;
 
 $subtle-background-color: #eeeeee;
 $light-background-color: #ffffff;
-$dark-background-color: #4B5259;
+$dark-background-color: #4b5259;
 
 $docs-expander-button-color: rgba(136, 136, 136, 0.25);
 
-$homepage-button-gradient: linear-gradient(194.93deg, #9DDCB2 10.52%, #08A69B 97.9%);
+$homepage-button-gradient: linear-gradient(
+  194.93deg,
+  #9ddcb2 10.52%,
+  #08a69b 97.9%
+);
 $action-button-color: rgba(196, 196, 196, 0.1);
 
 $default-font-family: "Avenir Next", sans-serif;
 
-$iso-button-background-color: #C9D3DB;
+$iso-button-background-color: #c9d3db;
