@@ -15,7 +15,7 @@ Buildpacks._**
 
 Don't see your favorite language below? See the How To guides for even
 more languages, like [Golang][howto/Golang], [Ruby][howto/Ruby], or
-[PHP][howto/PHP].)
+[PHP][howto/PHP].
 
 {{< getting-started >}}
 
