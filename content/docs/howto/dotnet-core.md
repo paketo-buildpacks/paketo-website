@@ -311,7 +311,7 @@ The .NET Core buildpack includes support for the software bill of materials (SBO
 Check out the [SBOM how-to documentation][how-to/SBOM] for details on how to
 access the SBOM supplied by the buildpacks.
 
-SBOMs will be generated for all support .NET Core applications.
+SBOMs will be generated for all supported .NET Core applications.
 
 ## Install a Custom CA Certificate
 .NET Core Buildpack users can provide their own CA certificates and have them
