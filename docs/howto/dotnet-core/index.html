@@ -454,7 +454,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <nav id="TableOfContents">
   <ul>
     <li><a href="#build-a-sample-app">Build a Sample App</a></li>
-    <li><a href="#install-specific-net-runtime-and-aspnet-versions">Install Specific .NET Runtime and ASP.Net Versions</a>
+    <li><a href="#install-specific-net-runtime-and-aspnet-versions">Install Specific .NET Runtime and ASP.NET Versions</a>
       <ul>
         <li><a href="#using-bp_dotnet_framework_version">Using <code>BP_DOTNET_FRAMEWORK_VERSION</code></a></li>
         <li><a href="#using-runtimeconfigjson">Using runtimeconfig.json</a></li>
@@ -488,6 +488,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#using-bp_live_reload_enabled">Using <code>BP_LIVE_RELOAD_ENABLED</code></a></li>
       </ul>
     </li>
+    <li><a href="#access-the-software-bill-of-materials">Access the Software Bill of Materials</a></li>
     <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
@@ -522,28 +523,28 @@ pack build my-app --buildpack paketo-buildpacks/dotnet-core \
 also compatible with the Paketo Full builder.</strong></p>
 <h2 id="install-specific-net-runtime-and-aspnet-versions" class="markup-heading">
     <a class="markup-heading__link" href="#install-specific-net-runtime-and-aspnet-versions">
-        Install Specific .NET Runtime and ASP.Net Versions
+        Install Specific .NET Runtime and ASP.NET Versions
     </a>
-</h2><p>The .Net Core Runtime and .Net Core ASP.Net Buildpacks allow you to specify a
-version of the .Net Core Runtime and ASP.Net to use during deployment. This
+</h2><p>The .NET Core Runtime and .NET Core ASP.NET Buildpacks allow you to specify a
+version of the .NET Core Runtime and ASP.NET to use during deployment. This
 version can be specified in several ways including through a
 <code>runtimeconfig.json</code>, MSBuild Project file, or build-time environment
-variables. When specifying a version of the .Net Core Runtime and ASP.Net, you
+variables. When specifying a version of the .NET Core Runtime and ASP.NET, you
 must choose a version that is available within these buildpacks. These versions
 can be found in the <a href="
-https://github.com/paketo-buildpacks/dotnet-core-runtime/releases">.Net Core Runtime release
+https://github.com/paketo-buildpacks/dotnet-core-runtime/releases">.NET Core Runtime release
 notes</a> and <a href="
-https://github.com/paketo-buildpacks/dotnet-core-aspnet/releases">.Net Core ASP.Net release
+https://github.com/paketo-buildpacks/dotnet-core-aspnet/releases">.NET Core ASP.NET release
 notes</a>.</p>
-<p>.Net Core ASP.Net will only be included in the build process if your
+<p>.NET Core ASP.NET will only be included in the build process if your
 application declares its Runtime Framework as either <code>Microsoft.AspNetCore.App</code>
 or <code>Microsoft.AspNetCore.All</code>.</p>
 <h3 id="using-bp_dotnet_framework_version" class="markup-heading">
     <a class="markup-heading__link" href="#using-bp_dotnet_framework_version">
         Using <code>BP_DOTNET_FRAMEWORK_VERSION</code>
     </a>
-</h3><p>To configure the buildpack to use a certain version of the .Net Core Runtime
-and ASP.Net when deploying your app, set the <code>$BP_DOTNET_FRAMEWORK</code> environment
+</h3><p>To configure the buildpack to use a certain version of the .NET Core Runtime
+and ASP.NET when deploying your app, set the <code>$BP_DOTNET_FRAMEWORK</code> environment
 variable at build time, either by passing a flag to the
 <a href="https://buildpacks.io/docs/concepts/components/platform">platform</a> or by adding it to your <code>project.toml</code>. See the
 Cloud Native Buildpacks <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/">documentation</a> to learn more about
@@ -572,15 +573,15 @@ Cloud Native Buildpacks <a href="https://buildpacks.io/docs/app-developer-guide/
 </div>
 <p><strong>Note</strong>: If you specify a particular version using the above environment
 variable, the buildpack <strong>will not</strong> run runtime version roll-forward logic. To
-learn more about roll-forward logic, see the <a href="https://docs.microsoft.com/en-us/dotnet/core/versions/selection#framework-dependent-apps-roll-forward">Microsoft .Net Runtime
+learn more about roll-forward logic, see the <a href="https://docs.microsoft.com/en-us/dotnet/core/versions/selection#framework-dependent-apps-roll-forward">Microsoft .NET Runtime
 documentation</a>.</p>
 <h3 id="using-runtimeconfigjson" class="markup-heading">
     <a class="markup-heading__link" href="#using-runtimeconfigjson">
         Using runtimeconfig.json
     </a>
 </h3><p>If you are using a
-<a href="https://docs.microsoft.com/en-us/dotnet/core/run-time-config/"><code>runtimeconfig.json</code></a> file, you can specify the .Net
-Core Runtime version within that file. To configure the buildpack to use .Net
+<a href="https://docs.microsoft.com/en-us/dotnet/core/run-time-config/"><code>runtimeconfig.json</code></a> file, you can specify the .NET
+Core Runtime version within that file. To configure the buildpack to use .NET
 Core Runtime v2.1.14 when deploying your app, include the values below in your
 <code>runtimeconfig.json</code> file:</p>
 <div class="copyable">
@@ -600,8 +601,8 @@ Core Runtime v2.1.14 when deploying your app, include the values below in your
         Using a Project file
     </a>
 </h3><p>If you are using a Project file (e.g. <code>*.csproj</code>, <code>*.fsproj</code>, or <code>*.vbproj</code>), you can specify
-the .Net Core Runtime version within that file. To configure the buildpack to
-use .Net Core Runtime v2.1.14 when deploying your app, include the values below
+the .NET Core Runtime version within that file. To configure the buildpack to
+use .NET Core Runtime v2.1.14 when deploying your app, include the values below
 in your Project file:</p>
 <div class="copyable">
     <pre class="copyable__code">&lt;Project&gt;
@@ -613,10 +614,10 @@ in your Project file:</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<p>Alternatively, for applications that do not rely upon a specific .Net Core
+<p>Alternatively, for applications that do not rely upon a specific .NET Core
 Runtime patch version, you can specify the Target Framework and the buildpack
-will choose the appropriate .Net Core Runtime version. To configure the
-buildpack to use a .Net Core Runtime version in the 2.1 .Net Core Target Framework
+will choose the appropriate .NET Core Runtime version. To configure the
+buildpack to use a .NET Core Runtime version in the 2.1 .NET Core Target Framework
 when deploying your app, include the values below in your Project file:</p>
 <div class="copyable">
     <pre class="copyable__code">&lt;Project&gt;
@@ -628,38 +629,38 @@ when deploying your app, include the values below in your Project file:</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<p>For more details about specifying a .Net Core version using a Project file,
+<p>For more details about specifying a .NET Core version using a Project file,
 please review the <a href="https://docs.microsoft.com/en-us/dotnet/core/versions/selection">Microsoft documentation</a>.</p>
 <h3 id="deprecated-using-buildpackyml" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-using-buildpackyml">
         Deprecated: Using buildpack.yml
     </a>
-</h3><p>Specifying the .Net Core Framework version through <code>buildpack.yml</code>
-configuration will be deprecated in .Net Core Runtime and .Net Core ASP.NET
+</h3><p>Specifying the .NET Core Framework version through <code>buildpack.yml</code>
+configuration will be deprecated in .NET Core Runtime and .NET Core ASP.NET
 Buildpacks v1.0.0.  To migrate from using <code>buildpack.yml</code>, please set the
 <code>BP_DOTNET_FRAMEWORK_VERSION</code> environment variable.</p>
 <h2 id="install-a-specific-net-sdk-version" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-specific-net-sdk-version">
         Install a Specific .NET SDK Version
     </a>
-</h2><p>By default, the .Net Core SDK Buildpack installs the latest available patch
-version of the SDK that is compatible with the installed .Net Core runtime.
+</h2><p>By default, the .NET Core SDK Buildpack installs the latest available patch
+version of the SDK that is compatible with the installed .NET Core runtime.
 The available SDK versions for each buildpack release can be found in the
 <a href="
 https://github.com/paketo-buildpacks/dotnet-core-sdk/releases">release notes</a>.</p>
-<p>However, the .Net Core SDK version can be explicitly set by specifying a
+<p>However, the .NET Core SDK version can be explicitly set by specifying a
 version in a <code>buildpack.yml</code> file.</p>
 <h3 id="deprecated-using-buildpackyml-1" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-using-buildpackyml-1">
         Deprecated: Using buildpack.yml
     </a>
-</h3><p>Specifying the .Net Core SDK version through <code>buildpack.yml</code> configuration will
-be deprecated in .Net Core SDK Buildpack v1.0.0.</p>
+</h3><p>Specifying the .NET Core SDK version through <code>buildpack.yml</code> configuration will
+be deprecated in .NET Core SDK Buildpack v1.0.0.</p>
 <p>Because versions of the .NET Core runtime and .NET Core SDK dependencies are so
 tightly coupled, most users should instead use the
 <code>BP_DOTNET_FRAMEWORK_VERSION</code> environment variable to specify which version of
 the .NET Core runtime that the .NET Core Runtime Buildpack should install. The
-.Net Core SDK buildpack will automatically install an SDK version that is
+.NET Core SDK buildpack will automatically install an SDK version that is
 compatible with the selected .NET Core runtime version.</p>
 <h2 id="build-an-app-from-source-in-a-subdirectory" class="markup-heading">
     <a class="markup-heading__link" href="#build-an-app-from-source-in-a-subdirectory">
@@ -874,11 +875,19 @@ when source code changes, and copy the built artifacts into the container with
 <li>The <code>cmd</code> that is run as part of the <code>dotnet-publish</code> local resource matches
 the command that the .NET Core buildpack runs to build the app.</li>
 </ul>
+<h2 id="access-the-software-bill-of-materials" class="markup-heading">
+    <a class="markup-heading__link" href="#access-the-software-bill-of-materials">
+        Access the Software Bill of Materials
+    </a>
+</h2><p>The .NET Core buildpack includes support for the software bill of materials (SBOM).
+Check out the <a href="https://paketo.io/docs/howto/sbom/">SBOM how-to documentation</a> for details on how to
+access the SBOM supplied by the buildpacks.</p>
+<p>SBOMs will be generated for all supported .NET Core applications.</p>
 <h2 id="install-a-custom-ca-certificate" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-custom-ca-certificate">
         Install a Custom CA Certificate
     </a>
-</h2><p>.Net Core Buildpack users can provide their own CA certificates and have them
+</h2><p>.NET Core Buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
 following the instructions outlined in the <a href="https://paketo.io/docs/howto/configuration/#ca-certificates">CA
 Certificates</a>
@@ -887,7 +896,7 @@ section of our configuration docs.</p>
     <a class="markup-heading__link" href="#override-the-start-process-set-by-the-buildpack">
         Override the Start Process Set by the Buildpack
     </a>
-</h2><p>.Net Core Buildpack users can set custom start processes for their app image by
+</h2><p>.NET Core Buildpack users can set custom start processes for their app image by
 following the instructions in the
 <a href="https://paketo.io/docs/howto/configuration/#procfiles">Procfiles</a> section
 of our configuration docs.</p>
@@ -895,17 +904,19 @@ of our configuration docs.</p>
     <a class="markup-heading__link" href="#set-environment-variables-for-app-launch-time">
         Set Environment Variables for App Launch Time
     </a>
-</h2><p>.Net Core Buildpack users can embed launch-time environment variables in their
+</h2><p>.NET Core Buildpack users can embed launch-time environment variables in their
 app image by following the documentation for the <a href="https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md">Environment Variables
 Buildpack</a>.</p>
 <h2 id="add-custom-labels-to-the-app-image" class="markup-heading">
     <a class="markup-heading__link" href="#add-custom-labels-to-the-app-image">
         Add Custom Labels to the App Image
     </a>
-</h2><p>.Net Core Buildpack users can add labels to their app image by following the
+</h2><p>.NET Core Buildpack users can add labels to their app image by following the
 instructions in the <a href="https://paketo.io/docs/howto/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
             </div>
@@ -919,14 +930,14 @@ section of our configuration docs.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> June 21, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> June 28, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#build-a-sample-app">Build a Sample App</a></li>
-    <li><a href="#install-specific-net-runtime-and-aspnet-versions">Install Specific .NET Runtime and ASP.Net Versions</a>
+    <li><a href="#install-specific-net-runtime-and-aspnet-versions">Install Specific .NET Runtime and ASP.NET Versions</a>
       <ul>
         <li><a href="#using-bp_dotnet_framework_version">Using <code>BP_DOTNET_FRAMEWORK_VERSION</code></a></li>
         <li><a href="#using-runtimeconfigjson">Using runtimeconfig.json</a></li>
@@ -960,6 +971,7 @@ section of our configuration docs.</p>
         <li><a href="#using-bp_live_reload_enabled">Using <code>BP_LIVE_RELOAD_ENABLED</code></a></li>
       </ul>
     </li>
+    <li><a href="#access-the-software-bill-of-materials">Access the Software Bill of Materials</a></li>
     <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
