@@ -139,8 +139,28 @@ variable.
 ./myapp --urls http://0.0.0.0:${PORT:-8080}
 {{< /code/copyable >}}
 
+##  Software Bill of Materials
+The .NET Core buildpack supports the full [software bill of
+materials][concepts/SBOM] (SBOM) in [Syft][format/syft],
+[CycloneDX][format/cyclonedx], and [SPDX][format/spdx] formats. The .NET Core
+buildpack also includes limited support for the legacy
+[Paketo-specific][format/paketo] SBOM format. This Paketo-specific SBOM format
+does not include information about the application dependencies.
+
+Check out the [Access the Software Bill of Materials
+guide][how-to/SBOM] for more information about how to retrieve
+the SBOM for your .NET Core app image.
+
 <!-- References -->
+<!-- spellchecker-disable -->
 [paketo/composite-buildpack]:{{< ref "docs/concepts/buildpacks#composite-buildpacks" >}}
 [dotnet/CLI-docs]:https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-publish
 [service-binding]:{{< ref "docs/howto/configuration#bindings" >}}
 [nugetconfig]:{{< ref "docs/howto/dotnet-core#via-service-bindings" >}}
+[format/cyclonedx]:https://cyclonedx.org/
+[format/spdx]:https://spdx.dev/
+[format/syft]:https://github.com/anchore/syft/tree/main/schema/json
+[format/paketo]:{{< ref "docs/concepts/sbom#paketo-specific-sbom-format" >}}
+[concepts/SBOM]:{{< ref "docs/concepts/sbom" >}}
+[how-to/SBOM]:{{< ref "docs/howto/sbom" >}}
+<!-- spellchecker-enable -->
