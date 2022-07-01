@@ -220,8 +220,37 @@ The exact JRE version that was contributed to a given image can be read from the
 
 Given an image named `samples/java` built from one of examples above, the following command should print the exact version of the installed JRE.
 {{< code/copyable >}}
-pack inspect-image samples/app --bom | jq '.local[] | select(.name=="jre") | .metadata.version'
+pack sbom download samples/app
 {{< /code/copyable >}}
+
+Files arez created in your directory 
+
+{{< code>}}
+layers
+└── sbom
+    └── launch
+        ├── paketo-buildpacks_bellsoft-liberica
+        │   ├── helper
+        │   │   └── sbom.syft.json
+        │   └── jre
+        │       └── sbom.syft.json
+        ├── paketo-buildpacks_ca-certificates
+        │   └── helper
+        │       └── sbom.syft.json
+        ├── paketo-buildpacks_executable-jar
+        │   ├── sbom.cdx.json
+        │   └── sbom.syft.json
+        ├── paketo-buildpacks_spring-boot
+        │   ├── helper
+        │   │   └── sbom.syft.json
+        │   └── spring-cloud-bindings
+        │       └── sbom.syft.json
+        └── sbom.legacy.json
+
+11 directories, 8 files
+{{< /code/copyable >}}
+
+You will have jre information in layers/sbom/launch/paketo-buildpacks_bellsoft-liberica/jre/sbom.syft.json
 
 ### Install a Specific JVM Version
 
