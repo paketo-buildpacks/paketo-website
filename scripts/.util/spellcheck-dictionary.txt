@@ -69,6 +69,7 @@ NMT
 JakartaEE
 JDK
 JFR(\-[a-z]+)?
+JLink
 JMX(\-[a-z]+)?
 JRE
 JSON(\-[a-z]+)?
