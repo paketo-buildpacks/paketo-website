@@ -21,7 +21,7 @@ pack build my-app --buildpack paketo-buildpacks/php \
   --builder paketobuildpacks/builder:full
 {{< /code/copyable >}}
 
-See [samples](https://github.com/paketo-buildpacks/samples/tree/main/php/webserver)
+See [samples](https://github.com/paketo-buildpacks/samples/tree/main/php/builtin-server)
 for how to run the app.
 
 **NOTE: The Paketo Full builder is required because PHP relies on operating
