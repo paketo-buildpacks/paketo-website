@@ -73,10 +73,10 @@ Stacks are backwards compatible. A stack can safely be upgraded to the most rece
 
 ## What security and hardening features do Paketo stacks offer?
 
-* By using Ubuntu 18.04 as the base image for our stacks, we benefit from all
-  of the security provided by Canonical and Ubuntu. For more information, see
-  the [Canonical web site](https://ubuntu.com/security) and the [Ubuntu
-  wiki](https://wiki.ubuntu.com/Security/Features).
+* By using Ubuntu 18.04 and 22.04 as the base images for our stacks, we benefit
+  from all of the security provided by Canonical and Ubuntu. For more
+  information, see the [Canonical web site](https://ubuntu.com/security) and
+  the [Ubuntu wiki](https://wiki.ubuntu.com/Security/Features).
 * Our automatic monitoring and patching of CVEs means that our stacks are often
   updated within hours of Canonical's patches.
 * The stack images are run as a dedicated non-root user when building and
@@ -86,3 +86,6 @@ Stacks are backwards compatible. A stack can safely be upgraded to the most rece
 * Each stack has separate images for building and running applications. The
   packages on the runtime image are curated to exclude compilers and other
   tools that might pose security risks.
+* (For Jammy stacks) The build and run images have different user IDs. This
+  means that sensitive files and dependencies installed at build-time cannot be
+  corrupted at run-time by malicious app code.
