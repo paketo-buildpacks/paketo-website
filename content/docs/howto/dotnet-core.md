@@ -108,6 +108,7 @@ will choose the appropriate .NET Core Runtime version. To configure the
 buildpack to use a .NET Core Runtime version in the 2.1 .NET Core Target Framework
 when deploying your app, include the values below in your Project file:
 
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 <Project>
   <PropertyGroup>
@@ -115,6 +116,7 @@ when deploying your app, include the values below in your Project file:
   </PropertyGroup>
 </Project>
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 For more details about specifying a .NET Core version using a Project file,
 please review the [Microsoft documentation][dotnet-version-selection-docs].
