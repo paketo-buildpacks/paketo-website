@@ -54,6 +54,14 @@ The available stacks, _**from smallest to largest**_, are:
 In general, it is a best practice to select the smallest stack that supports
 the apps you are trying to build.
 
+## How are Paketo stacks used?
+Paketo stacks are distributed in [builders][docs/builders], which are necessary
+for buildpack builds. (See the [Builders][docs/builders] concepts page for more
+information.) You can also create your own builder based on a Paketo stack. See
+the Cloud Native Buildpacks [Create a
+builder](https://buildpacks.io/docs/operator-guide/create-a-builder/)
+documentation for a step by step guide.
+
 ## When are Paketo stacks updated?
 
 Stacks are rebuilt whenever a package is patched to fix a CVE.
@@ -89,3 +97,6 @@ Stacks are backwards compatible. A stack can safely be upgraded to the most rece
 * (For Jammy stacks) The build and run images have different user IDs. This
   means that sensitive files and dependencies installed at build-time cannot be
   corrupted at run-time by malicious app code.
+
+<!-- References -->
+[docs/builders]:{{< ref "docs/concepts/builders" >}}
