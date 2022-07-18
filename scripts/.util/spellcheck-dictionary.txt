@@ -199,7 +199,7 @@ create-paketo-buildpack
 decrypts
 dep
 dep-ensure
-distroless-like
+distroless
 dotnet
 dotnet-core
 dotnet-core-aspnet
