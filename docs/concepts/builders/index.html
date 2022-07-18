@@ -466,7 +466,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
             <div class="docs-body__markdown">
-                <p>In the Getting Started tutorial, you used the <code>pack</code> CLI and the base <code>builder</code> to create a runnable image with your application. This section explains what <code>builders</code> are and what builders are released by the Paketo project.</p>
+                <p>In the Getting Started tutorial, you used the <code>pack</code> CLI and the base <code>builder</code>
+to create a runnable image with your application. This section explains what
+<code>builders</code> are and what builders are released by the Paketo project.</p>
 <h2 id="what-is-a-builder" class="markup-heading">
     <a class="markup-heading__link" href="#what-is-a-builder">
         What is a builder?
@@ -482,12 +484,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a class="markup-heading__link" href="#what-paketo-builders-are-available">
         What Paketo builders are available?
     </a>
-</h2><p>The Paketo project releases several builder images to choose from depending on your application needs. These are:</p>
+</h2><p>The Paketo project releases several builder images to choose from depending on
+your application needs. These are:</p>
 <h3 id="full" class="markup-heading">
     <a class="markup-heading__link" href="#full">
         Full
     </a>
-</h3><p>Builder based off of the <code>ubuntu:bionic</code> stack. Consists of buildpacks to build most <strong>PHP, Java, Node.js, Go, .NET Core, Ruby, NGINX,</strong> and <strong>HTTPD</strong> apps <em><strong>with</strong></em> common C libraries. To build your app with it locally using <code>pack</code>, run:</p>
+</h3><p>Builder based off of the <code>ubuntu:bionic</code> stack. Consists of buildpacks to build
+most <strong>PHP, Java, Node.js, Go, .NET Core, Ruby, NGINX,</strong> and <strong>HTTPD</strong> apps
+<em><strong>with</strong></em> common C libraries. To build your app with it locally using <code>pack</code>,
+run:</p>
 <div class="copyable">
     <pre class="copyable__code">pack build my-app-image --builder paketobuildpacks/builder:full
 </pre>
@@ -499,7 +505,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a class="markup-heading__link" href="#base">
         Base
     </a>
-</h3><p>Builder based off of the <code>ubuntu:bionic</code> stack. Consists of buildpacks to build most <strong>Java, Node.js, Go, .NET Core, Ruby,</strong> and <strong>NGINX</strong> apps <em><strong>without</strong></em> common C libraries. To build your app with it locally using <code>pack</code>, run:</p>
+</h3><p>Builder based off of the <code>ubuntu:bionic</code> stack. Consists of buildpacks to build
+most <strong>Java, Node.js, Go, .NET Core, Ruby,</strong> and <strong>NGINX</strong> apps <em><strong>without</strong></em>
+common C libraries. To build your app with it locally using <code>pack</code>, run:</p>
 <div class="copyable">
     <pre class="copyable__code">pack build my-app-image --builder paketobuildpacks/builder:base
 </pre>
@@ -511,7 +519,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a class="markup-heading__link" href="#tiny">
         Tiny
     </a>
-</h3><p>Builder based off of a Distroless <code>ubuntu:bionic</code> stack. Consists of buildpacks to build most <strong>Go</strong> and <strong>Java</strong> <a href="https://www.graalvm.org/reference-manual/native-image/">GraalVM Native Image</a> apps. To build your app with it locally using <code>pack</code>, run:</p>
+</h3><p>Builder based off of a Distroless <code>ubuntu:bionic</code> stack. Consists of buildpacks
+to build most <strong>Go</strong> and <strong>Java</strong> <a href="https://www.graalvm.org/reference-manual/native-image/">GraalVM Native
+Image</a> apps. To build
+your app with it locally using <code>pack</code>, run:</p>
 <div class="copyable">
     <pre class="copyable__code">pack build my-app-image --builder paketobuildpacks/builder:tiny
 </pre>
@@ -531,7 +542,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> July 15, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 18, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
