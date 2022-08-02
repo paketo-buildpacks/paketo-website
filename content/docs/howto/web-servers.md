@@ -82,11 +82,12 @@ option is configurable with an environment variable or service binding, as seen
 below.
 
 #### Set the Root Directory for Static Files
-The `BP_WEB_SERVER_ROOT` variable allows you to modify the location of the static files
-served by the web server. Set the `BP_WEB_SERVER_ROOT` variable to an
+The [`BP_WEB_SERVER_ROOT`][httpd/bp-web-server-root] variable allows you to
+modify the location of the static files served by the web server. Its default
+value is `/workspace/public`. Set the `BP_WEB_SERVER_ROOT` variable to an
 absolute file path or a file path relative to `/workspace`. For example,
-setting `BP_WEB_SERVER_ROOT=my-build-directory` changes the file path of
-served files to `/workspace/my-build-directory`.
+setting `BP_WEB_SERVER_ROOT=my-build-directory` changes the file path of served
+files to `/workspace/my-build-directory`.
 
 {{< code/copyable >}}
 BP_WEB_SERVER_ROOT=htdocs
@@ -195,11 +196,12 @@ option is configurable with an environment variable or service binding, as seen
 below.
 
 #### Set the Root Directory for Static Files
-The `BP_WEB_SERVER_ROOT` variable allows you to modify the location of the static files
-served by the web server. Set the `BP_WEB_SERVER_ROOT` variable to an
+The [`BP_WEB_SERVER_ROOT`][nginx/bp-web-server-root] variable allows you to
+modify the location of the static files served by the web server. Its default
+value is `/workspace/public`. Set the `BP_WEB_SERVER_ROOT` variable to an
 absolute file path or a file path relative to `/workspace`. For example,
-setting `BP_WEB_SERVER_ROOT=my-build-directory` changes the file path of
-served files to `/workspace/my-build-directory`.
+setting `BP_WEB_SERVER_ROOT=my-build-directory` changes the file path of served
+files to `/workspace/my-build-directory`.
 
 {{< code/copyable >}}
 BP_WEB_SERVER_ROOT=htdocs
@@ -369,9 +371,13 @@ pack build frontend-httpd --buildpack paketo-buildpacks/web-servers \
 
 <!-- spellchecker-disable -->
 <!-- References -->
-[service-binding]:{{< ref "docs/howto/configuration#bindings" >}}
-
-[nginx/configure]:{{< ref "docs/howto/web-servers#automatically-generate-an-nginxconf" >}}
+[httpd/bp-web-server-root]:{{< ref "docs/reference/httpd-reference#bp_web_server_root" >}}
 [httpd/configure]:{{< ref "docs/howto/web-servers#automatically-generate-an-httpdconf" >}}
+
+[nginx/bp-web-server-root]:{{< ref "docs/reference/nginx-reference#bp_web_server_root" >}}
+[nginx/configure]:{{< ref "docs/howto/web-servers#automatically-generate-an-nginxconf" >}}
+
 [sample/javascript-frontend]:https://github.com/paketo-buildpacks/samples/tree/main/web-servers/javascript-frontend-sample
+
+[service-binding]:{{< ref "docs/howto/configuration#bindings" >}}
 <!-- spellchecker-enable -->
