@@ -3540,7 +3540,7 @@
     } : m2, h2 = e2.navigator, v2 = e2.initialScrollY, y2 = v2 === void 0 ? 0 : v2, _2 = e2.transformSearchClient, b2 = _2 === void 0 ? pr : _2, g2 = e2.disableUserPersonalization, O2 = g2 !== void 0 && g2, S2 = e2.initialQuery, E2 = S2 === void 0 ? "" : S2, w2 = e2.translations, j2 = w2 === void 0 ? {} : w2, P2 = e2.getMissingResultsUrl, I2 = j2.footer, k2 = j2.searchBox, D2 = wo(j2, yo), C2 = So(Be.useState({ query: "", collections: [], completion: null, context: {}, isOpen: false, activeItemId: null, status: "idle" }), 2), A2 = C2[0], x2 = C2[1], N2 = Be.useRef(null), T2 = Be.useRef(null), R2 = Be.useRef(null), L2 = Be.useRef(null), q2 = Be.useRef(null), M2 = Be.useRef(10), H2 = Be.useRef(typeof window != "undefined" ? window.getSelection().toString().slice(0, 64) : "").current, U2 = Be.useRef(E2 || H2).current, F2 = function(e3, t3, n3) {
       return Be.useMemo(function() {
         var r3 = vo(e3, t3);
-        return r3.addAlgoliaAgent("docsearch", "3.2.0"), /docsearch.js \(.*\)/.test(r3.transporter.userAgent.value) === false && r3.addAlgoliaAgent("docsearch-react", "3.2.0"), n3(r3);
+        return r3.addAlgoliaAgent("docsearch", "3.2.1"), /docsearch.js \(.*\)/.test(r3.transporter.userAgent.value) === false && r3.addAlgoliaAgent("docsearch-react", "3.2.1"), n3(r3);
       }, [e3, t3, n3]);
     }(t2, n2, b2), B2 = Be.useRef(Tr({ key: "__DOCSEARCH_FAVORITE_SEARCHES__".concat(r2), limit: 10 })).current, V2 = Be.useRef(Tr({ key: "__DOCSEARCH_RECENT_SEARCHES__".concat(r2), limit: B2.getAll().length === 0 ? 7 : 4 })).current, z2 = Be.useCallback(function(e3) {
       if (!O2) {
@@ -3724,7 +3724,7 @@
   }
   function Co(e2) {
     Ae(Be.createElement(Do, o({}, e2, { transformSearchClient: function(t2) {
-      return t2.addAlgoliaAgent("docsearch.js", "3.2.0"), e2.transformSearchClient ? e2.transformSearchClient(t2) : t2;
+      return t2.addAlgoliaAgent("docsearch.js", "3.2.1"), e2.transformSearchClient ? e2.transformSearchClient(t2) : t2;
     } })), function(e3) {
       var t2 = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : window;
       return typeof e3 == "string" ? t2.document.querySelector(e3) : e3;
@@ -3830,4 +3830,4 @@
  *
  * Licensed MIT © Zeno Rocha
  */
-/*! @docsearch/js 3.2.0 | MIT License | © Algolia, Inc. and contributors | https://docsearch.algolia.com */
+/*! @docsearch/js 3.2.1 | MIT License | © Algolia, Inc. and contributors | https://docsearch.algolia.com */
