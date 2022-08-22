@@ -315,6 +315,84 @@ access the SBOM supplied by the buildpacks.
 
 SBOMs will be generated for all supported .NET Core applications.
 
+## Enable Remote Debugging
+
+Remote debugging can provide insight into complex program logic and
+interactions in remote environments. This practice is supported for .NET Core
+applications via the Visual Studio Debugger (`vsdbg`), which may be included in
+your application image via the BP_DEBUG_ENABLED environment variable. The
+debugger can attach to a running dotnet process and be bound to a client-side
+debugger via STDIN across a connection invoked via `docker exec` or `kubectl exec`.
+
+### Using `BP_DEBUG_ENABLED`
+
+To enable remote debugging, set the `$BP_DEBUG_ENABLED` environment
+variable at build time, either by passing a flag to the
+[platform][definition/platform] or by
+adding it to your `project.toml`. See the Cloud Native Buildpacks
+[documentation][project-file] to learn more about `project.toml` files.
+
+#### With a `pack build` flag
+<!-- spellchecker-disable -->
+{{< code/copyable >}}
+pack build myapp --env BP_DEBUG_ENABLED=true
+{{< /code/copyable >}}
+<!-- spellchecker-enable -->
+
+#### In a `project.toml` file
+<!-- spellchecker-disable -->
+{{< code/copyable >}}
+[[ build.env ]]
+  name = 'BP_DEBUG_ENABLED'
+  value = 'true'
+{{< /code/copyable >}}
+<!-- spellchecker-enable -->
+
+### Setting up Visual Studio Code for Remote Debugging
+
+Visual Studio Code can be configured to attach a remote debugging session into
+a running container via `docker exec`. Once your application is built, follow the
+steps below to set up Visual Studio Code for remote debugging.
+
+1. Add `.vscode/launch.json` to app source directory
+
+<!-- spellchecker-disable -->
+```json
+{
+  "configurations": [
+    {
+      "name": ".NET Core Docker Attach",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickRemoteProcess}",
+      "pipeTransport": {
+        "pipeProgram": "docker",
+        "pipeArgs": [ "exec", "-i", "<container id>" ],
+        "debuggerPath": "/cnb/lifecycle/launcher vsdbg",
+        "pipeCwd": "${workspaceRoot}",
+        "quoteArgs": false
+      },
+      "sourceFileMap": {
+        "/workspace": "${workspaceRoot}"
+      }
+    }
+  ]
+}
+```
+<!-- spellchecker-enable -->
+
+1. Install the Microsoft C# extension
+
+### Start Debugging in Visual Studio Code
+
+1. Run the app with `docker run -p 8080:8080 <app-image-name>`
+1. Open a browser window to `http://localhost:8080`
+1. Update `<container id>` field in `launch.json` with actual container id
+
+From here you might set a breakpoint and start debugging via the menu bar or by
+pressing `F5`. In the event that you are prompted to select a process to attach
+to, select the name of your app image if it is listed.
+
 ## Install a Custom CA Certificate
 .NET Core Buildpack users can provide their own CA certificates and have them
 included in the container root truststore at build-time and runtime by
