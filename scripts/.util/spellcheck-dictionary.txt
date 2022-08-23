@@ -132,6 +132,7 @@ SDKs
 SHA-256
 SPDX
 STDERR
+STDIN
 STDOUT
 SaaS
 SapMachine
@@ -176,6 +177,7 @@ bp-web-server-root
 bp/go
 bp_name
 bp_repo
+breakpoint
 build-an-app-as-a-graalvm-native-image-application
 buildmode
 buildpack
