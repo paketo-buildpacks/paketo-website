@@ -381,7 +381,7 @@ steps below to set up Visual Studio Code for remote debugging.
 ```
 <!-- spellchecker-enable -->
 
-1. Install the Microsoft C# extension
+2. Install the Microsoft C# extension
 
 ### Start Debugging in Visual Studio Code
 
@@ -392,6 +392,16 @@ steps below to set up Visual Studio Code for remote debugging.
 From here you might set a breakpoint and start debugging via the menu bar or by
 pressing `F5`. In the event that you are prompted to select a process to attach
 to, select the name of your app image if it is listed.
+
+##### Notes
+- The steps above are intended for remote debugging in a non-production
+  context. Setting `BP_DEBUG_ENABLED` to `true` will ensure that a .NET app is
+  published in Debug configuration instead of Release configuration and is the
+  currently the only official way to include Visual Studio Debugger in your
+  application image. It is possible to [perform remote debugging on
+  Release-configured
+  apps](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes#building-and-deploying-the-application-and-pdbs)
+  but that workflow is not officially supported by the .NET Core Buildpack.
 
 ## Install a Custom CA Certificate
 .NET Core Buildpack users can provide their own CA certificates and have them
