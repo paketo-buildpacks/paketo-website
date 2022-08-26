@@ -322,8 +322,7 @@ interactions in remote environments. This practice is supported for .NET Core
 applications via the Visual Studio Debugger (`vsdbg`), which may be included in
 your application image via the `BP_DEBUG_ENABLED` environment variable. The
 debugger can attach to a running dotnet process and be bound to a client-side
-debugger via STDIN across a connection invoked via `docker exec` or `kubectl
-exec`.
+debugger via STDIN across a connection invoked via `docker exec`.
 
 ### Using `BP_DEBUG_ENABLED`
 
