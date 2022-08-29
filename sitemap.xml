@@ -3,108 +3,108 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://paketo.io/docs/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/howto/java/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/howto/nodejs/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/howto/dotnet-core/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/reference/httpd-reference/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/howto/go/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/howto/web-servers/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/howto/python/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/howto/php/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/howto/ruby/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/howto/configuration/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/howto/create-paketo-buildpack/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/howto/sbom/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/howto/create-custom-stack/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/concepts/buildpacks/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/concepts/builders/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/concepts/stacks/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/concepts/sbom/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/getting-started-languages/dotnet_core/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/reference/dotnet-core-reference/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/categories/</loc>
   </url><url>
     <loc>https://paketo.io/community/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/getting-started-languages/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/reference/go-reference/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/getting-started-languages/java/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/reference/java-reference/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/reference/java-native-image-reference/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/reference/nginx-reference/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/getting-started-languages/nodejs/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/reference/nodejs-reference/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/reference/php-reference/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/getting-started-languages/python/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/reference/python-reference/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/docs/reference/ruby-reference/</loc>
-    <lastmod>2022-08-23T14:21:06+00:00</lastmod>
+    <lastmod>2022-08-29T13:40:09+00:00</lastmod>
   </url><url>
     <loc>https://paketo.io/tags/</loc>
   </url>
