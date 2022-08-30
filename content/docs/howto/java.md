@@ -457,49 +457,7 @@ The Spring Boot Buildpack adds [Spring Cloud Bindings][spring cloud bindings] to
 
 ## Connect to an APM
 
-The Java Buildpack supports the following [APM][apm] integrations:
-
-* [Azure Application Insights][azure application insights] - support provided by the [Azure Application Insights Buildpack][bp/azure-application-insights]
-* [Google Stackdriver][google stackdriver] - support provided by the [Google Stackdriver Buildpack][bp/google-stackdriver]
-* [Datadog][datadog] - support provided by the [Datadog Buildpack][bp/datadog]
-
-The Azure Application Insights and Google Stackdriver APM integrations are enabled with [bindings][bindings]. If a binding of the correct `type` is provided at build-time the corresponding Java agent will be contributed to the application image. Connection credentials will be read from the binding at runtime.
-
-**Example**: Connecting to Azure Application Insights
-
-The following command builds an image with the Azure Application Insights Java Agent
-{{< code/copyable >}}
-pack build samples/java --volume "$(pwd)/java/application-insights/binding:/platform/bindings/application-insights"
-{{< /code/copyable >}}
-
-To connect to Azure Application Insights at runtime a valid [Instrumentation Key][azure application insights instrumentation key] is required.
-{{< code/copyable >}}
-echo "<Instrumentation Key>" > java/application-insights/binding/InstrumentationKey
-docker run --rm --tty \
-  --env SERVICE_BINDING_ROOT=/bindings \
-  --volume "$(pwd)/java/application-insights/binding:/bindings/app-insights" \
-  samples/java
-{{< /code/copyable >}}
-
-The Datadog APM integration is enabled with an environment variable. If the environment variable is set then the corresponding Java agent will be contributed to the application image. Configuration will be read from standard Datadog environment variables set at runtime. You can find the full list in the Datadog documentation [available here](https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configuration).
-
-**Example**: Connecting to Datadog
-
-The following command builds an image with the Datadog Java Agent
-
-{{< code/copyable >}}
-pack build samples/java -e BP_DATADOG_ENABLED=true
-{{< /code/copyable >}}
-
-[Configuration of the Datadog agent](https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configuration) is done through environment variables at runtime:
-
-<!-- spellchecker-disable -->
-{{< code/copyable >}}
-docker run --rm --tty samples/java -e DD_SERVICE=foo-service -e DD_ENV=foo-env -e DD_VERSION=1.1.1
-{{< /code/copyable >}}
-<!-- spellchecker-enable -->
-
-Note that the Datadog agent requires a side-car agent to be running in addition to the Java agent. This agent runs outside of the buildpack generated image. The [standard Datadog instructions for your container orchestrator of choice](https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configure-the-datadog-agent-for-apm) can be used to install this agent. The Paketo team also has detailed instructions for [various runtimes available here](https://github.com/paketo-buildpacks/datadog/blob/main/docs/).
+Application Monitoring has been moved to a new page. Please see the [Application Monitoring][howto/app-monitor].
 
 ## Enable Process Reloading
 
@@ -764,6 +722,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [bindings]:{{< ref "/docs/howto/configuration#bindings" >}}
 [build-from-compiled-artifact]:{{< relref "#build-from-a-compiled-artifact" >}}
 [building-from-source]:{{< relref "#build-from-source" >}}
+[howto/app-monitor]:{{< relref "/docs/howto/app-monitor" >}}
 [install-jvm-type]:{{< relref "#install-a-specific-jvm-type" >}}
 [components]:{{< ref "/docs/reference/java-native-image-reference#components" >}}
 [composite buildpack]:{{< ref "/docs/concepts/buildpacks#composite-buildpacks" >}}
@@ -778,14 +737,9 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 
 <!-- other references -->
 [apache tomcat]:https://tomcat.apache.org
-[apm]:https://en.wikipedia.org/wiki/Application_performance_management
-[azure application insights instrumentation key]:https://docs.microsoft.com/en-us/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key
-[azure application insights]:https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview
 [bash pattern matching]:https://www.gnu.org/software/bash/manual/html_node/Pattern-Matching.html
 [dist-zip]:https://docs.gradle.org/current/userguide/distribution_plugin.html
-[datadog]:https://www.datadoghq.com/
 [executable jar]:https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files
-[google stackdriver]:https://cloud.google.com/products/operations
 [graalvm feature]:https://www.graalvm.org/sdk/javadoc/org/graalvm/nativeimage/hosted/Feature.html
 [graalvm native image]:https://www.graalvm.org/reference-manual/native-image/
 [graalvm substrate vm]:https://www.graalvm.org/reference-manual/native-image/SubstrateVM/

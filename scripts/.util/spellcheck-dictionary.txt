@@ -17,6 +17,8 @@ APM
 ASP.NET
 Adoptium
 Alibaba
+AppDynamics
+Aternity
 Azul
 BPL_[A-Z_]*(=.*)?
 BP_[A-Z_]*(=.*)?
@@ -45,6 +47,7 @@ Distroless
 Dockerfile(s)?
 Dotnet
 Dragonwell
+Dynatrace
 Entrypoint
 Executable
 Executables
@@ -71,6 +74,7 @@ JDK
 JFR(\-[a-z]+)?
 JLink
 JMX(\-[a-z]+)?
+JProfiler
 JRE
 JSON(\-[a-z]+)?
 JVMKill
@@ -99,6 +103,7 @@ NuGet
 OAuth2
 OCI
 OCI\-[a-z]+
+OneAgent
 OpenJ9
 OpenJDK
 PEM
@@ -116,6 +121,7 @@ Paketo(\-[a-z]+)?
 Pipenv
 Procfile
 Procfiles
+Profiler
 REPL
 Rackup
 Reloadable
@@ -136,6 +142,7 @@ STDIN
 STDOUT
 SaaS
 SapMachine
+Skywalking
 Stackdriver
 Subdirectory
 Syft
@@ -143,6 +150,7 @@ TLS
 TOML
 Tomee
 Trivy
+UI
 URI
 UTF-8
 VM
@@ -151,18 +159,23 @@ Vue
 Watchexec
 Webserver
 Webservers
+YourKit
 [0-9]+M
 [0-9]+MB
 [bB]undler
 [b|B]uildpack\-[p|P]rovided
 [b|B]uildpack\-[s|S]et
 access-bom
+apache-skywalking
 apache-tomcat
 apache-tomee
 api
+apm
+appdynamics
 arg(s)?
 aspnet
 assets:precompile
+aternity
 azul-zulu
 behaviour
 bellsoft-liberica
@@ -224,6 +237,8 @@ dotnet-core-sdk:dotnet-env-var
 dotnet-execute
 dotnet-publish
 dotnet-publish-output295991778
+dynatrace
+elastic-apm
 entrypoint
 env
 env-vars
@@ -259,6 +274,7 @@ ioutil
 jattach
 javascript-frontend
 jdk
+jprofiler
 jq
 jre
 jvmkill
@@ -325,6 +341,7 @@ prepending
 prepends
 procfile
 procfiles
+profiler
 read-eval-print
 redownloaded
 reference_docs_path
@@ -350,6 +367,7 @@ toolchain
 totalling
 trivy
 truststore
+truthy
 tty
 ubuntu:bionic
 unicode
@@ -364,3 +382,4 @@ watchexec
 webserver
 webservers
 yarnrc
+yourkit

@@ -14,6 +14,7 @@ content/docs/howto/web-servers.md            @paketo-buildpacks/web-servers-main
 content/docs/howto/go.md                     @paketo-buildpacks/go-maintainers
 content/docs/howto/dotnet-core.md            @paketo-buildpacks/dotnet-core-maintainers
 content/docs/howto/configuration.md          @paketo-buildpacks/utilities-maintainers
+content/docs/howto/app-monitor.md            @paketo-buildpacks/app-monitoring-maintainers
 
 content/docs/reference/java-reference.md               @paketo-buildpacks/java-buildpacks
 content/docs/reference/java-native-image-reference.md  @paketo-buildpacks/java-buildpacks
