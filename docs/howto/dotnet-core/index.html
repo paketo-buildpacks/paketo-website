@@ -489,6 +489,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
     </li>
     <li><a href="#access-the-software-bill-of-materials">Access the Software Bill of Materials</a></li>
+    <li><a href="#enable-remote-debugging">Enable Remote Debugging</a>
+      <ul>
+        <li><a href="#using-bp_debug_enabled">Using <code>BP_DEBUG_ENABLED</code></a></li>
+        <li><a href="#setting-up-visual-studio-code-for-remote-debugging">Setting up Visual Studio Code for Remote Debugging</a></li>
+        <li><a href="#start-debugging-in-visual-studio-code">Start Debugging in Visual Studio Code</a></li>
+      </ul>
+    </li>
     <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
@@ -885,6 +892,120 @@ the command that the .NET Core buildpack runs to build the app.</li>
 Check out the <a href="https://paketo.io/docs/howto/sbom/">SBOM how-to documentation</a> for details on how to
 access the SBOM supplied by the buildpacks.</p>
 <p>SBOMs will be generated for all supported .NET Core applications.</p>
+<h2 id="enable-remote-debugging" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-remote-debugging">
+        Enable Remote Debugging
+    </a>
+</h2><p>Remote debugging can provide insight into complex program logic and
+interactions in remote environments. This practice is supported for .NET Core
+applications via the Visual Studio Debugger (<code>vsdbg</code>), which may be included in
+your application image via the <code>BP_DEBUG_ENABLED</code> environment variable. The
+debugger can attach to a running .NET Core process and be bound to a client-side
+debugger via STDIN across a connection invoked via <code>docker exec</code>.</p>
+<h3 id="using-bp_debug_enabled" class="markup-heading">
+    <a class="markup-heading__link" href="#using-bp_debug_enabled">
+        Using <code>BP_DEBUG_ENABLED</code>
+    </a>
+</h3><p>To enable remote debugging, set the <code>$BP_DEBUG_ENABLED</code> environment variable at
+build time, either by passing a flag to the <a href="https://buildpacks.io/docs/concepts/components/platform">platform</a> or
+by adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
+<a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/">documentation</a> to learn more about <code>project.toml</code> files.</p>
+<h4 id="with-a-pack-build-flag-3" class="markup-heading">
+    <a class="markup-heading__link" href="#with-a-pack-build-flag-3">
+        With a <code>pack build</code> flag
+    </a>
+</h4><!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">pack build myapp --env BP_DEBUG_ENABLED=true
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<!-- raw HTML omitted -->
+<h4 id="in-a-projecttoml-file-3" class="markup-heading">
+    <a class="markup-heading__link" href="#in-a-projecttoml-file-3">
+        In a <code>project.toml</code> file
+    </a>
+</h4><!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">[[ build.env ]]
+  name = &#39;BP_DEBUG_ENABLED&#39;
+  value = &#39;true&#39;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<!-- raw HTML omitted -->
+<h3 id="setting-up-visual-studio-code-for-remote-debugging" class="markup-heading">
+    <a class="markup-heading__link" href="#setting-up-visual-studio-code-for-remote-debugging">
+        Setting up Visual Studio Code for Remote Debugging
+    </a>
+</h3><p>Visual Studio Code can be [configured] to <a href="https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes">attach a remote debugging session
+into a running container via <code>docker exec</code></a>.
+Once your application is built, follow the steps below to set up Visual Studio
+Code for remote debugging.</p>
+<ol>
+<li>Add <code>.vscode/launch.json</code> to app source directory</li>
+</ol>
+<!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">```json
+{
+  &#34;configurations&#34;: [
+    {
+      &#34;name&#34;: &#34;.NET Core Docker Attach&#34;,
+      &#34;type&#34;: &#34;coreclr&#34;,
+      &#34;request&#34;: &#34;attach&#34;,
+      &#34;processId&#34;: &#34;${command:pickRemoteProcess}&#34;,
+      &#34;pipeTransport&#34;: {
+        &#34;pipeProgram&#34;: &#34;docker&#34;,
+        &#34;pipeArgs&#34;: [ &#34;exec&#34;, &#34;-i&#34;, &#34;&lt;container id&gt;&#34; ],
+        &#34;debuggerPath&#34;: &#34;/cnb/lifecycle/launcher vsdbg&#34;,
+        &#34;pipeCwd&#34;: &#34;${workspaceRoot}&#34;,
+        &#34;quoteArgs&#34;: false
+      },
+      &#34;sourceFileMap&#34;: {
+        &#34;/workspace&#34;: &#34;${workspaceRoot}&#34;
+      }
+    }
+  ]
+}
+```
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<!-- raw HTML omitted -->
+<ol start="2">
+<li>Install the Microsoft C# extension</li>
+</ol>
+<h3 id="start-debugging-in-visual-studio-code" class="markup-heading">
+    <a class="markup-heading__link" href="#start-debugging-in-visual-studio-code">
+        Start Debugging in Visual Studio Code
+    </a>
+</h3><ol>
+<li>Run the app with <code>docker run -p 8080:8080 &lt;app-image-name&gt;</code></li>
+<li>Open a browser window to <code>http://localhost:8080</code></li>
+<li>Update <code>&lt;container id&gt;</code> field in <code>launch.json</code> with actual container id</li>
+</ol>
+<p>From here you might set a breakpoint and start debugging via the menu bar or by
+pressing <code>F5</code>. In the event that you are prompted to select a process to attach
+to, select the name of your app image if it is listed. (<a href="https://code.visualstudio.com/docs/editor/debugging">Visual Studio Code
+debugging docs</a>).</p>
+<h5 id="notes-1" class="markup-heading">
+    <a class="markup-heading__link" href="#notes-1">
+        Notes
+    </a>
+</h5><ul>
+<li>The steps above are intended for remote debugging in a non-production
+context. Setting <code>BP_DEBUG_ENABLED</code> to <code>true</code> will ensure that a .NET app is
+published in Debug configuration instead of Release configuration and is the
+currently the only official way to include Visual Studio Debugger in your
+application image. It is possible to <a href="https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes#building-and-deploying-the-application-and-pdbs">perform remote debugging on
+Release-configured
+apps</a>
+but that workflow is not officially supported by the .NET Core Buildpack.</li>
+</ul>
 <h2 id="install-a-custom-ca-certificate" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-custom-ca-certificate">
         Install a Custom CA Certificate
@@ -974,6 +1095,13 @@ section of our configuration docs.</p>
       </ul>
     </li>
     <li><a href="#access-the-software-bill-of-materials">Access the Software Bill of Materials</a></li>
+    <li><a href="#enable-remote-debugging">Enable Remote Debugging</a>
+      <ul>
+        <li><a href="#using-bp_debug_enabled">Using <code>BP_DEBUG_ENABLED</code></a></li>
+        <li><a href="#setting-up-visual-studio-code-for-remote-debugging">Setting up Visual Studio Code for Remote Debugging</a></li>
+        <li><a href="#start-debugging-in-visual-studio-code">Start Debugging in Visual Studio Code</a></li>
+      </ul>
+    </li>
     <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
