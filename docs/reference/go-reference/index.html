@@ -464,7 +464,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul>
         <li><a href="#gopath"><code>GOPATH</code></a></li>
         <li><a href="#gocache"><code>GOCACHE</code></a></li>
-        <li><a href="#depcachedir"><code>DEPCACHEDIR</code></a></li>
       </ul>
     </li>
     <li><a href="#components">Components</a></li>
@@ -500,7 +499,6 @@ notes</a>.</p>
 your application:</p>
 <ul>
 <li>The built-in <a href="https://github.com/golang/go/wiki/Modules">Go modules</a> feature,</li>
-<li>The <a href="https://github.com/golang/dep">Dep</a> tool</li>
 <li>No package manager</li>
 </ul>
 <p>Support for each of these package managers is mutually-exclusive. You can find
@@ -515,17 +513,6 @@ code contains a <code>go.mod</code> file. During the build phase, the <code>go-m
 https://github.com/paketo-buildpacks/go-mod-vendor">buildpack</a> checks to see
 if the application requires any external modules and if it does, runs the <code>go mod vendor</code> command for your app. The resulting <code>vendor</code> directory will exist
 in the app&rsquo;s root directory and will contain all packages required for the build.</p>
-<h4 id="package-management-with-dep" class="markup-heading">
-    <a class="markup-heading__link" href="#package-management-with-dep">
-        Package Management with Dep
-    </a>
-</h4><p>Dep is an alternative option to Go Modules for package management in Go apps. The buildpack will vendor dependencies using <code>dep</code> if the app source code
-contains a <code>Gopkg.toml</code> file. (For more information about this file, see the <code>dep</code>
-<a href="https://golang.github.io/dep/docs/Gopkg.toml.html">documentation</a>. There may be an optional <code>Gopkg.lock</code> file that outlines specific versions of the dependencies to be packaged. During its build
-phase, the <code>dep-ensure</code>
-<a href="
-https://github.com/paketo-buildpacks/dep-ensure">buildpack</a> runs the <code>dep ensure</code> command. The resulting <code>vendor</code> directory will exist in
-the app&rsquo;s root directory and will contain all the packages required for the build.</p>
 <h4 id="no-package-management" class="markup-heading">
     <a class="markup-heading__link" href="#no-package-management">
         No Package Management
@@ -555,7 +542,7 @@ variable and its impact on your app.</p>
 source code and binaries. The Go CNB takes care of setting the <code>GOPATH</code> for
 you, depending on your app and which package management option your app uses.</p>
 <ul>
-<li>Set by: <code>go-mod-vendor</code>, <code>dep-ensure</code> and <code>go-build</code></li>
+<li>Set by: <code>go-mod-vendor</code> and <code>go-build</code></li>
 <li>Phases: <code>build</code></li>
 <li>Value: path to Go workspace</li>
 </ul>
@@ -568,15 +555,6 @@ the image so that between builds of the app, the dependencies don&rsquo;t have t
 redownloaded. Essentially, the <code>GOPATH</code> is being used to tell the <code>go mod vendor</code> command where to look for dependencies. It&rsquo;s worth noting that in this
 case, the <code>GOPATH</code> isn&rsquo;t persisted beyond vendoring the dependencies and gets
 overwritten by a subsequent buildpack.</p>
-<h4 id="dep" class="markup-heading">
-    <a class="markup-heading__link" href="#dep">
-        Dep
-    </a>
-</h4><p>When using the Dep tool, the Go CNB sets the <code>GOPATH</code> to a temporary directory.
-The app source code gets copied into the <code>GOPATH</code> location so that the <code>dep ensure</code> command knows where to look for the source code, as well as where to
-put the <code>vendor</code> directory. The <code>vendor</code> directory that is created is then
-copied to the original source code directory. The <code>GOPATH</code> in this case is used
-to run <code>dep ensure</code>, but does not persist beyond that step.</p>
 <h4 id="build" class="markup-heading">
     <a class="markup-heading__link" href="#build">
         Build
@@ -596,18 +574,6 @@ subsequent builds. It gets set to a cached layer in  the image by the
 <li>Set by: <code>go-build</code></li>
 <li>Phases: <code>build</code></li>
 <li>Value: Go Cache layer path</li>
-</ul>
-<h3 id="depcachedir" class="markup-heading">
-    <a class="markup-heading__link" href="#depcachedir">
-        <code>DEPCACHEDIR</code>
-    </a>
-</h3><p><code>DEPCACHEDIR</code> specifies where upstream dependency source code is stored for use
-by the Dep tool. The <code>dep-ensure</code> buildpack sets this variable to the path of a
-cache layer in the app image.</p>
-<ul>
-<li>Set by: <code>dep-ensure</code></li>
-<li>Phases: <code>build</code></li>
-<li>Value: Dep Cache layer path</li>
 </ul>
 <h2 id="components" class="markup-heading">
     <a class="markup-heading__link" href="#components">
@@ -639,18 +605,6 @@ https://github.com/paketo-buildpacks/go-dist">Paketo Go Dist Buildpack</a></td>
 https://github.com/paketo-buildpacks/go-mod-vendor">Paketo Go Mod Vendor Buildpack</a></td>
 <td>Optional</td>
 <td>Installs app Go modules</td>
-</tr>
-<tr>
-<td><a href="
-https://github.com/paketo-buildpacks/dep">Paketo Dep Buildpack</a></td>
-<td>Optional</td>
-<td>Installs <code>dep</code></td>
-</tr>
-<tr>
-<td><a href="
-https://github.com/paketo-buildpacks/dep-ensure">Paketo Dep Ensure Buildpack</a></td>
-<td>Optional</td>
-<td>Uses <code>dep</code> to install app dependencies</td>
 </tr>
 <tr>
 <td><a href="
@@ -732,7 +686,6 @@ This SBOM does not include Go module information.</p>
       <ul>
         <li><a href="#gopath"><code>GOPATH</code></a></li>
         <li><a href="#gocache"><code>GOCACHE</code></a></li>
-        <li><a href="#depcachedir"><code>DEPCACHEDIR</code></a></li>
       </ul>
     </li>
     <li><a href="#components">Components</a></li>
