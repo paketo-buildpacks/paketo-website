@@ -400,7 +400,7 @@ The following table documents the versions available.
 
 | GraalVM Version | Java Native Image Buildpack Version |
 | --------------- | ----------------------------------- |
-| 22.0            | 7.27.0                              |
+| 22.2           | 7.26.1                              |
 | 22.1            | 7.16.2                              |
 | 22.0            | 7.8.1                               |
 | 21.3            | 5.12.0                              |
