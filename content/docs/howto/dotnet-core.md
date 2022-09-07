@@ -349,7 +349,7 @@ pack build myapp --env BP_DEBUG_ENABLED=true
 
 ### Setting up Visual Studio Code for Remote Debugging
 
-Visual Studio Code can be [configured] to [attach a remote debugging session
+Visual Studio Code can be configured to [attach a remote debugging session
 into a running container via `docker
 exec`](https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes).
 Once your application is built, follow the steps below to set up Visual Studio
@@ -359,7 +359,6 @@ Code for remote debugging.
 
 <!-- spellchecker-disable -->
 {{< code/copyable >}}
-```json
 {
   "configurations": [
     {
@@ -380,7 +379,6 @@ Code for remote debugging.
     }
   ]
 }
-```
 {{< /code/copyable >}}
 <!-- spellchecker-enable -->
 
@@ -394,7 +392,7 @@ Code for remote debugging.
 
 From here you might set a breakpoint and start debugging via the menu bar or by
 pressing `F5`. In the event that you are prompted to select a process to attach
-to, select the name of your app image if it is listed. ([Visual Studio Code
+to, select the name of your app process if it is listed. ([Visual Studio Code
 debugging docs](https://code.visualstudio.com/docs/editor/debugging)).
 
 ##### Notes
