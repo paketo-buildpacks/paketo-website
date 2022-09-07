@@ -392,8 +392,9 @@ Code for remote debugging.
 
 From here you might set a breakpoint and start debugging via the menu bar or by
 pressing `F5`. In the event that you are prompted to select a process to attach
-to, select the name of your app process if it is listed. ([Visual Studio Code
-debugging docs](https://code.visualstudio.com/docs/editor/debugging)).
+to, select the name of your app process if it is listed. See the Visual Studio Code
+debugging [docs](https://code.visualstudio.com/docs/editor/debugging) for more about
+how to use the debugger.
 
 ##### Notes
 - The steps above are intended for remote debugging in a non-production
