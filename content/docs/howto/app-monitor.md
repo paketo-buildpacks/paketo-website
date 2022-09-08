@@ -5,13 +5,13 @@ menu:
   main:
     parent: howto
     identifier: monitoring
-    name: "Application Monitoring"
+    name: "Enable Application Monitoring"
 aliases:
   - /docs/buildpacks/app-monitor/
   - /docs/reference/app-monitor/
 ---
 
-This documentation explains how to use the Paketo buildpacks to build applications that include application monitoring tools. 
+This documentation explains how to use the Paketo buildpacks to build applications that include application monitoring tools.
 
 ## Apache Skywalking
 
@@ -225,9 +225,11 @@ Not all of the Paketo Application Monitoring buildpacks are presently included i
 
 We plan to add all of them in the future, but there are presently technical limitations around the maximum number of layers that can be added to the builder preventing more from being added to the builders. What you can do in the meantime is to manually include the APM buildpack that you would like to use at the end of the buildpack list.
 
+<!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack build samples/java --volume "$(pwd)/binding:/platform/bindings/skywalking" -b urn:cnb:builder:paketo-buildpacks/java -b paketo-buildpacks/apache-skywalking
 {{< /code/copyable >}}
+<!-- spellchecker-enable -->
 
 **Note**: it is important to use the `urn:cnb:builder:` reference so that the build uses the composite buildpack that already exists on the builder. If you reference a composite buildpack image, like `gcr.io/paketo-buildpacks/java` or `paketo-buildpacks/java`, this will result in downloading and adding that image to the builder, despite it already being there, which increases the layer count and can make the build fail.
 
