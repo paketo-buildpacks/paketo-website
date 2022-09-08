@@ -940,7 +940,7 @@ by adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
     <a class="markup-heading__link" href="#setting-up-visual-studio-code-for-remote-debugging">
         Setting up Visual Studio Code for Remote Debugging
     </a>
-</h3><p>Visual Studio Code can be [configured] to <a href="https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes">attach a remote debugging session
+</h3><p>Visual Studio Code can be configured to <a href="https://github.com/OmniSharp/omnisharp-vscode/wiki/Attaching-to-remote-processes">attach a remote debugging session
 into a running container via <code>docker exec</code></a>.
 Once your application is built, follow the steps below to set up Visual Studio
 Code for remote debugging.</p>
@@ -949,8 +949,7 @@ Code for remote debugging.</p>
 </ol>
 <!-- raw HTML omitted -->
 <div class="copyable">
-    <pre class="copyable__code">```json
-{
+    <pre class="copyable__code">{
   &#34;configurations&#34;: [
     {
       &#34;name&#34;: &#34;.NET Core Docker Attach&#34;,
@@ -970,7 +969,6 @@ Code for remote debugging.</p>
     }
   ]
 }
-```
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -990,8 +988,9 @@ Code for remote debugging.</p>
 </ol>
 <p>From here you might set a breakpoint and start debugging via the menu bar or by
 pressing <code>F5</code>. In the event that you are prompted to select a process to attach
-to, select the name of your app image if it is listed. (<a href="https://code.visualstudio.com/docs/editor/debugging">Visual Studio Code
-debugging docs</a>).</p>
+to, select the name of your app process if it is listed. See the Visual Studio Code
+debugging <a href="https://code.visualstudio.com/docs/editor/debugging">docs</a> for more about
+how to use the debugger.</p>
 <h5 id="notes-1" class="markup-heading">
     <a class="markup-heading__link" href="#notes-1">
         Notes
@@ -1053,7 +1052,7 @@ section of our configuration docs.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> September 2, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> September 8, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
