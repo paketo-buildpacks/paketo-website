@@ -117,6 +117,17 @@ Examples assume that the Paketo Base builder is the default builder: pack config
     </item>
     
     <item>
+      <title>How To Use Application Monitoring With Paketo Buildpacks</title>
+      <link>https://paketo.io/docs/howto/app-monitor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/howto/app-monitor/</guid>
+      <description>This documentation explains how to use the Paketo buildpacks to build applications that include application monitoring tools.
+Apache Skywalking The Apache Skywalking integration is enabled with bindings through the Apache Skywalking Buildpack. If a binding of the correct type, ApacheSkyWalking, is provided at build-time then an agent appropriate for the application will be contributed to the application image.
+Connection credentials will be read from the binding at runtime, with the binding secrets being transformed to system properties with the following the pattern -Dskywalking.</description>
+    </item>
+    
+    <item>
       <title>Create a Paketo Buildpack</title>
       <link>https://paketo.io/docs/howto/create-paketo-buildpack/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

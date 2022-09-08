@@ -210,6 +210,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
+            <a href="/docs/howto/app-monitor/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Enable Application Monitoring</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
             <a href="/docs/howto/create-paketo-buildpack/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Create a Paketo Buildpack</span>
@@ -1123,51 +1133,7 @@ pack build samples/java-native \
     <a class="markup-heading__link" href="#connect-to-an-apm">
         Connect to an APM
     </a>
-</h2><p>The Java Buildpack supports the following <a href="https://en.wikipedia.org/wiki/Application_performance_management">APM</a> integrations:</p>
-<ul>
-<li><a href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview">Azure Application Insights</a> - support provided by the <a href="https://github.com/paketo-buildpacks/azure-application-insights">Azure Application Insights Buildpack</a></li>
-<li><a href="https://cloud.google.com/products/operations">Google Stackdriver</a> - support provided by the <a href="https://github.com/paketo-buildpacks/google-stackdriver">Google Stackdriver Buildpack</a></li>
-<li><a href="https://www.datadoghq.com/">Datadog</a> - support provided by the <a href="https://github.com/paketo-buildpacks/datadog">Datadog Buildpack</a></li>
-</ul>
-<p>The Azure Application Insights and Google Stackdriver APM integrations are enabled with <a href="https://paketo.io/docs/howto/configuration/#bindings">bindings</a>. If a binding of the correct <code>type</code> is provided at build-time the corresponding Java agent will be contributed to the application image. Connection credentials will be read from the binding at runtime.</p>
-<p><strong>Example</strong>: Connecting to Azure Application Insights</p>
-<p>The following command builds an image with the Azure Application Insights Java Agent
-<div class="copyable">
-    <pre class="copyable__code">pack build samples/java --volume &#34;$(pwd)/java/application-insights/binding:/platform/bindings/application-insights&#34;
-</pre>
-    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
-    <div class="copyable__copied copied">Copied!</div>
-</div></p>
-<p>To connect to Azure Application Insights at runtime a valid <a href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/create-new-resource#copy-the-instrumentation-key">Instrumentation Key</a> is required.
-<div class="copyable">
-    <pre class="copyable__code">echo &#34;&lt;Instrumentation Key&gt;&#34; &gt; java/application-insights/binding/InstrumentationKey
-docker run --rm --tty \
-  --env SERVICE_BINDING_ROOT=/bindings \
-  --volume &#34;$(pwd)/java/application-insights/binding:/bindings/app-insights&#34; \
-  samples/java
-</pre>
-    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
-    <div class="copyable__copied copied">Copied!</div>
-</div></p>
-<p>The Datadog APM integration is enabled with an environment variable. If the environment variable is set then the corresponding Java agent will be contributed to the application image. Configuration will be read from standard Datadog environment variables set at runtime. You can find the full list in the Datadog documentation <a href="https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configuration">available here</a>.</p>
-<p><strong>Example</strong>: Connecting to Datadog</p>
-<p>The following command builds an image with the Datadog Java Agent</p>
-<div class="copyable">
-    <pre class="copyable__code">pack build samples/java -e BP_DATADOG_ENABLED=true
-</pre>
-    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
-    <div class="copyable__copied copied">Copied!</div>
-</div>
-<p><a href="https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configuration">Configuration of the Datadog agent</a> is done through environment variables at runtime:</p>
-<!-- raw HTML omitted -->
-<div class="copyable">
-    <pre class="copyable__code">docker run --rm --tty samples/java -e DD_SERVICE=foo-service -e DD_ENV=foo-env -e DD_VERSION=1.1.1
-</pre>
-    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
-    <div class="copyable__copied copied">Copied!</div>
-</div>
-<!-- raw HTML omitted -->
-<p>Note that the Datadog agent requires a side-car agent to be running in addition to the Java agent. This agent runs outside of the buildpack generated image. The <a href="https://docs.datadoghq.com/tracing/setup_overview/setup/java/?tab=containers#configure-the-datadog-agent-for-apm">standard Datadog instructions for your container orchestrator of choice</a> can be used to install this agent. The Paketo team also has detailed instructions for <a href="https://github.com/paketo-buildpacks/datadog/blob/main/docs/">various runtimes available here</a>.</p>
+</h2><p>Application Monitoring has been moved to a new page. Please see the <a href="/docs/howto/app-monitor/">Application Monitoring</a>.</p>
 <h2 id="enable-process-reloading" class="markup-heading">
     <a class="markup-heading__link" href="#enable-process-reloading">
         Enable Process Reloading
