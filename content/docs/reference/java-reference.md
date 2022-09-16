@@ -82,6 +82,7 @@ The Paketo Java buildpack supports multiple application servers. Each applicatio
 | Apache Tomcat      | [link](https://github.com/paketo-buildpacks/apache-tomcat/blob/main/README.md) | [link](https://tomcat.apache.org/tomcat-9.0-doc/index.html) |
 | Apache Tomee       | [link](https://github.com/paketo-buildpacks/apache-tomee/blob/main/README.md)  | [link](https://tomee.apache.org/tomee-8.0/docs/)            |
 | Open Liberty       | [link](https://github.com/paketo-buildpacks/liberty/blob/main/README.md)       | [link](https://openliberty.io/)                             |
+| WebSphere Liberty  | [link](https://github.com/paketo-buildpacks/liberty/blob/main/README.md)       | [link](https://www.ibm.com/cloud/websphere-liberty)             |
 
 ## Spring Boot Applications
 
