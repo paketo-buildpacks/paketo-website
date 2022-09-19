@@ -24,7 +24,6 @@ The Paketo Go Buildpack is a [composite buildpack][paketo/composite-buildpack] d
 With the Go CNB, there are three options for package management depending on
 your application:
 * The built-in [Go modules][Golang/modules] feature,
-* The [Dep][Golang/dep] tool
 * No package manager
 
 Support for each of these package managers is mutually-exclusive. You can find
@@ -39,16 +38,6 @@ if the application requires any external modules and if it does, runs the `go
 mod vendor` command for your app. The resulting `vendor` directory will exist
 in the app's root directory and will contain all packages required for the build.
 
-
-#### Package Management with Dep
-
-Dep is an alternative option to Go Modules for package management in Go apps. The buildpack will vendor dependencies using `dep` if the app source code
-contains a `Gopkg.toml` file. (For more information about this file, see the `dep`
-[documentation][Golang/dep/gopkg.toml]. There may be an optional `Gopkg.lock` file that outlines specific versions of the dependencies to be packaged. During its build
-phase, the `dep-ensure`
-[buildpack][bp/dep-ensure] runs the `dep
-ensure` command. The resulting `vendor` directory will exist in
-the app's root directory and will contain all the packages required for the build.
 
 #### No Package Management
 
@@ -73,7 +62,7 @@ The `GOPATH` environment variable tells Go where to look for artifacts such as
 source code and binaries. The Go CNB takes care of setting the `GOPATH` for
 you, depending on your app and which package management option your app uses.
 
-* Set by: `go-mod-vendor`, `dep-ensure` and `go-build`
+* Set by: `go-mod-vendor` and `go-build`
 * Phases: `build`
 * Value: path to Go workspace
 
@@ -85,15 +74,6 @@ redownloaded. Essentially, the `GOPATH` is being used to tell the `go mod
 vendor` command where to look for dependencies. It's worth noting that in this
 case, the `GOPATH` isn't persisted beyond vendoring the dependencies and gets
 overwritten by a subsequent buildpack.
-
-#### Dep
-
-When using the Dep tool, the Go CNB sets the `GOPATH` to a temporary directory.
-The app source code gets copied into the `GOPATH` location so that the `dep
-ensure` command knows where to look for the source code, as well as where to
-put the `vendor` directory. The `vendor` directory that is created is then
-copied to the original source code directory. The `GOPATH` in this case is used
-to run `dep ensure`, but does not persist beyond that step.
 
 #### Build
 
@@ -112,24 +92,12 @@ subsequent builds. It gets set to a cached layer in  the image by the
 * Phases: `build`
 * Value: Go Cache layer path
 
-### `DEPCACHEDIR`
-
-`DEPCACHEDIR` specifies where upstream dependency source code is stored for use
-by the Dep tool. The `dep-ensure` buildpack sets this variable to the path of a
-cache layer in the app image.
-
-* Set by: `dep-ensure`
-* Phases: `build`
-* Value: Dep Cache layer path
-
 ## Components
 | Name                                   | Required/Optional | Purpose                                               |
 |----------------------------------------|-------------------|-------------------------------------------------------|
 | [Paketo CA Certificates Buildpack][bp/ca-certs]       | Optional          | Installs custom CA certificates                       |
 | [Paketo Go Dist Buildpack][bp/go-dist]               | Required          | Installs the Golang toolchain                         |
 | [Paketo Go Mod Vendor Buildpack][bp/go-mod-vendor]         | Optional          | Installs app Go modules                               |
-| [Paketo Dep Buildpack][bp/dep]                   | Optional          | Installs `dep`                                        |
-| [Paketo Dep Ensure Buildpack][bp/dep-ensure]            | Optional          | Uses `dep` to install app dependencies                |
 | [Paketo Go Build Buildpack][bp/go-build]              | Required          | Compiles source code                                  |
 | [Paketo Procfile Buildpack][bp/procfile]              | Optional          | Sets a user-specified start command                   |
 | [Paketo Environment Variables Buildpack][bp/env-vars] | Optional          | Sets user-specified launch-time environment variables |
@@ -150,14 +118,10 @@ This SBOM does not include Go module information.
 <!-- spellchecker-disable -->
 [Golang/tool-docs]:https://pkg.go.dev/cmd/go
 [Golang/modules]:https://github.com/golang/go/wiki/Modules
-[Golang/dep]:https://github.com/golang/dep
-[Golang/dep/gopkg.toml]:https://golang.github.io/dep/docs/Gopkg.toml.html
 
 [paketo/composite-buildpack]:{{< ref "docs/concepts/buildpacks#composite-buildpacks" >}}
 
 [bp/ca-certs]:{{< bp_repo "ca-certificates" >}}
-[bp/dep]:{{< bp_repo "dep" >}}
-[bp/dep-ensure]:{{< bp_repo "dep-ensure" >}}
 [bp/env-vars]:{{< bp_repo "environment-variables" >}}
 [bp/go/releases]:{{< bp_repo "go" >}}/releases/latest
 [bp/go-build]:{{< bp_repo "go-build" >}}
