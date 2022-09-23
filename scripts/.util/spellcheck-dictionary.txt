@@ -157,6 +157,7 @@ VM
 Vendored
 Vue
 Watchexec
+WebSphere
 Webserver
 Webservers
 YourKit
