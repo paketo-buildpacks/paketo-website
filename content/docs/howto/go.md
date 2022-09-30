@@ -322,8 +322,8 @@ pack('my-app',
   env_vars=["BP_LIVE_RELOAD_ENABLED=true"],
   deps=['./src/build'],
   live_update=[
-    sync('./src/build', '/workspace/build'),
-    run('cp -rf /workspace/build/* /layers/paketo-buildpacks_go-build/targets/bin', trigger=['./src/build']),
+    sync('./src/build', '/tmp/tilt')  ,      
+    run('cp -rf /tmp/tilt/* /layers/paketo-buildpacks_go-build/targets/bin', trigger=['./src/build']),
   ])
 
 # (Re)build locally when source code changes
