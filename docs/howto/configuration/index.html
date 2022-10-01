@@ -771,7 +771,7 @@ docker run samples/nodejs # should print &#34;hello world&#34;
         CA Certificates
     </a>
 </h2><p>Additional CA certificates may be added to the system truststore using the <a href="https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Buildpack</a>.</p>
-<p>CA certificates can be provided at both build and runtime with a <a href="#bindings">binding</a> of <code>type</code> <code>ca-certficates</code>. Each key value pair in the binding should map a certficate name to a single PEM encoded CA Certificates</p>
+<p>CA certificates can be provided at both build and runtime with a <a href="#bindings">binding</a> of <code>type</code> <code>ca-certificates</code>. Each key value pair in the binding should map a certficate name to a single PEM encoded CA Certificates</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;binding-name&gt;
 </span></span><span class="line"><span class="cl">├── &lt;cert file name&gt;
 </span></span><span class="line"><span class="cl">└── type
