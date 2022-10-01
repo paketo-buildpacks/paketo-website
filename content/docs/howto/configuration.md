@@ -239,7 +239,7 @@ For example, to make the BellSoft Liberica JRE dependency accessible available t
 
 Additional CA certificates may be added to the system truststore using the [Paketo CA Certificates Buildpack][bp/ca-certificates].
 
-CA certificates can be provided at both build and runtime with a [binding]({{< relref "#bindings" >}}) of `type` `ca-certficates`. Each key value pair in the binding should map a certficate name to a single PEM encoded CA Certificates
+CA certificates can be provided at both build and runtime with a [binding]({{< relref "#bindings" >}}) of `type` `ca-certificates`. Each key value pair in the binding should map a certficate name to a single PEM encoded CA Certificates
 
 ```plain
 <binding-name>
