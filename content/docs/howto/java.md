@@ -400,15 +400,18 @@ The following table documents the versions available.
 
 | GraalVM Version | Java Native Image Buildpack Version |
 | --------------- | ----------------------------------- |
+| 22.2           | 7.26.1                              |
+| 22.1            | 7.16.2                              |
+| 22.0            | 7.8.1                               |
 | 21.3            | 5.12.0                              |
 | 21.2            | 5.5.0                               |
 | 21.1            | 5.4.0                               |
 | 21.0            | 5.3.0                               |
 
-For example, to select GraalVM 21.1:
+For example, to select GraalVM 22.1:
 
 {{< code/copyable >}}
-pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack paketo-buildpacks/ca-certificates --buildpack paketo-buildpacks/java-native-image@5.4.0
+pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack paketo-buildpacks/ca-certificates --buildpack paketo-buildpacks/java-native-image@7.16.2
 {{< /code/copyable >}}
 
 ### Use an Alternative Java Native Image Toolkit
