@@ -931,8 +931,8 @@ uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack">
   env_vars=[&#34;BP_LIVE_RELOAD_ENABLED=true&#34;],
   deps=[&#39;./src/build&#39;],
   live_update=[
-    sync(&#39;./src/build&#39;, &#39;/workspace/build&#39;),
-    run(&#39;cp -rf /workspace/build/* /layers/paketo-buildpacks_go-build/targets/bin&#39;, trigger=[&#39;./src/build&#39;]),
+    sync(&#39;./src/build&#39;, &#39;/tmp/tilt&#39;)  ,      
+    run(&#39;cp -rf /tmp/tilt/* /layers/paketo-buildpacks_go-build/targets/bin&#39;, trigger=[&#39;./src/build&#39;]),
   ])
 
 # (Re)build locally when source code changes
