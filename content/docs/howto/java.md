@@ -162,6 +162,20 @@ pack build samples/java \
 
 **DO NOT** use this option if [including a Maven or Gradle binding]({{< relref "#connect-to-a-private-maven-repository" >}})! If you do this, it will overwrite your actual local config file with the binding file which could cause data loss. It is also unnecessary because we are volume mounting the entire Maven or Gradle directory into the container which includes your Maven and Gradle settings.
 
+### Include or Exclude Custom Files
+
+When building your application from source code, the Java buildpacks will capture the output artifact from your build process, typically a JAR/WAR file, and include that in the image that is generated. If you need to include/exclude additional files you may do so by setting the `BP_INCLUDE_FILES` or `BP_EXCLUDE_FILES` environment variables. Each can be set with a colon separated list of glob patterns. If a file or directory matches then it'll be included or excluded. If both include and exclude patterns are specified then the include patterns are applied first, followed by the exclude patterns second. By default, no additional file are included or excluded.
+
+Any files added to the image through this process are rooted at the application directory, which is `/workspace` in the generated image. Files will reside under the same sub directories there as under the application source code root. If you have files under `src/main/resources/foo` and you use an include pattern of `src/main/resources/foo/*` then those files will be in the image at `/workspace/src/main/resources/foo`. There is not presently any way to transform the file locations, so if you require files at a specific location in the generated image you will need to use the same sub directory structure in your application source code.
+
+{{< code/copyable >}}
+pack build samples/java \
+  --path java/maven
+  -e BP_INCLUDE_FILES='foo/*'
+{{< /code/copyable >}}
+
+**NOTE:** It is important to properly quote values for `BP_INCLUDE_FILES` and `BP_EXCLUDE_FILES` as they may contain wild card characters like `*` which the shell my interpret. Proper quoting ensures the actual characters are passed through to the buildpack.
+
 ### Build from a Compiled Artifact
 
 An application developer may build an image from following archive formats:
