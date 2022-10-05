@@ -162,7 +162,7 @@ pack build samples/java \
 
 **DO NOT** use this option if [including a Maven or Gradle binding]({{< relref "#connect-to-a-private-maven-repository" >}})! If you do this, it will overwrite your actual local config file with the binding file which could cause data loss. It is also unnecessary because we are volume mounting the entire Maven or Gradle directory into the container which includes your Maven and Gradle settings.
 
-### Include or Exclude Custom Files
+##### Include or Exclude Custom Files
 
 When building your application from source code, the Java buildpacks will capture the output artifact from your build process, typically a JAR/WAR file, and include that in the image that is generated. If you need to include/exclude additional files you may do so by setting the `BP_INCLUDE_FILES` or `BP_EXCLUDE_FILES` environment variables. Each can be set with a colon separated list of glob patterns. If a file or directory matches then it'll be included or excluded. If both include and exclude patterns are specified then the include patterns are applied first, followed by the exclude patterns second. By default, no additional file are included or excluded.
 
