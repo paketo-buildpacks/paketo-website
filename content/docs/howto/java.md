@@ -220,7 +220,7 @@ The exact JRE version that was contributed to a given image can be read from the
 
 Given an image named `samples/java` built from one of examples above, the following command should print the exact version of the installed JRE.
 {{< code/copyable >}}
-pack sbom download samples/app
+pack sbom download samples/java
 {{< /code/copyable >}}
 
 Files are created in your directory 
