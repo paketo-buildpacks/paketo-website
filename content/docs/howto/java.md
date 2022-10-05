@@ -250,7 +250,14 @@ layers
 11 directories, 8 files
 {{< /code/copyable >}}
 
-You will have jre information in layers/sbom/launch/paketo-buildpacks_bellsoft-liberica/jre/sbom.syft.json
+You will find the JVM version information in layers/sbom/launch/paketo-buildpacks_bellsoft-liberica/jre/sbom.syft.json
+
+** Deprecated ** 
+The following command can also be used to access the Paketo-specific SBOM format, however this format is deprecated, the above `pack sbom download` command should be used instead.
+{{< code/copyable >}}
+pack inspect-image samples/java --bom | jq '.local[] | select(.name=="jre") | .metadata.version'
+{{< /code/copyable >}}
+
 
 ### Install a Specific JVM Version
 
