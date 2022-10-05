@@ -223,7 +223,7 @@ Given an image named `samples/java` built from one of examples above, the follow
 pack sbom download samples/app
 {{< /code/copyable >}}
 
-Files arez created in your directory 
+Files are created in your directory 
 
 {{< code>}}
 layers
