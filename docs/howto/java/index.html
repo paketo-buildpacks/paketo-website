@@ -704,6 +704,21 @@ Artifact</a>.</p>
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <p><strong>DO NOT</strong> use this option if <a href="#connect-to-a-private-maven-repository">including a Maven or Gradle binding</a>! If you do this, it will overwrite your actual local config file with the binding file which could cause data loss. It is also unnecessary because we are volume mounting the entire Maven or Gradle directory into the container which includes your Maven and Gradle settings.</p>
+<h5 id="include-or-exclude-custom-files" class="markup-heading">
+    <a class="markup-heading__link" href="#include-or-exclude-custom-files">
+        Include or Exclude Custom Files
+    </a>
+</h5><p>When building your application from source code, the Java buildpacks will capture the output artifact from your build process, typically a JAR/WAR file, and include that in the image that is generated. If you need to include/exclude additional files you may do so by setting the <code>BP_INCLUDE_FILES</code> or <code>BP_EXCLUDE_FILES</code> environment variables. Each can be set with a colon separated list of glob patterns. If a file or directory matches then it&rsquo;ll be included or excluded. If both include and exclude patterns are specified then the include patterns are applied first, followed by the exclude patterns second. By default, no additional files are included or excluded.</p>
+<p>Any files added to the image through this process are rooted at the application directory, which is <code>/workspace</code> in the generated image. Files will reside under the same sub directories there as under the application source code root. If you have files under <code>src/main/resources/foo</code> and you use an include pattern of <code>src/main/resources/foo/*</code> then those files will be in the image at <code>/workspace/src/main/resources/foo</code>. There is not presently any way to transform the file locations, so if you require files at a specific location in the generated image you will need to use the same sub directory structure in your application source code.</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build samples/java \
+  --path java/maven
+  -e BP_INCLUDE_FILES=&#39;foo/*&#39;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<p><strong>NOTE:</strong> It is important to properly quote values for <code>BP_INCLUDE_FILES</code> and <code>BP_EXCLUDE_FILES</code> as they may contain wild card characters like <code>*</code> which the shell my interpret. Proper quoting ensures the actual characters are passed through to the buildpack.</p>
 <h3 id="build-from-a-compiled-artifact" class="markup-heading">
     <a class="markup-heading__link" href="#build-from-a-compiled-artifact">
         Build from a Compiled Artifact
