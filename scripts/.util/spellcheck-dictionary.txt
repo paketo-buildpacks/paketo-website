@@ -251,6 +251,7 @@ filesystem
 flagset
 flavour(s)?
 frontend
+frontend-app
 func
 github
 glibc
