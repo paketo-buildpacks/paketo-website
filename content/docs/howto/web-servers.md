@@ -30,11 +30,8 @@ pack build my-app --buildpack paketo-buildpacks/httpd \
   --builder paketobuildpacks/builder:full
 {{< /code/copyable >}}
 
-See [samples](https://github.com/paketo-buildpacks/samples/tree/main/httpd)
+See [samples](https://github.com/paketo-buildpacks/samples/tree/main/web-servers)
 for how to run the app.
-
-**NOTE: The Paketo Full builder is required because HTTPD relies on operating
-system libraries only present in the Full builder.**
 
 ### Install a Specific HTTPD Version
 
@@ -143,7 +140,7 @@ pack build my-app --buildpack paketo-buildpacks/nginx \
   --builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
-See [samples](https://github.com/paketo-buildpacks/samples/tree/main/nginx)
+See [samples](https://github.com/paketo-buildpacks/samples/tree/main/web-servers)
 for how to run the app.
 
 **NOTE: Though the example above uses the Paketo Base builder, this buildpack is
@@ -249,8 +246,8 @@ The NGINX buildpack supports data driven templates for nginx config. You can
 use templated variables like `{{port}}`, `{{env "FOO"}}` and `{{module
 "ngx_stream_module"}}` in your `nginx.conf` to use values known at launch time.
 
-A usage example can be found in the [`samples` repository under the `nginx`
-directory](https://github.com/paketo-buildpacks/samples/tree/main/nginx).
+A usage example can be found in the [`samples` repository under the `web-servers/nginx-sample`
+directory](https://github.com/paketo-buildpacks/samples/tree/main/web-servers/nginx-sample).
 
 #### PORT
 
@@ -344,7 +341,7 @@ instructions.
    [guides][nginx/configure].
 <!-- spellchecker-disable -->
 {{< code/copyable >}}
-pack build frontend-nginx --buildpack paketo-buildpacks/web-servers \
+pack build frontend-app --buildpack paketo-buildpacks/web-servers \
                           --env BP_NODE_RUN_SCRIPTS=build \
                           --env BP_WEB_SERVER=nginx \
                           --env BP_WEB_SERVER_ROOT=build
@@ -359,15 +356,18 @@ pack build frontend-nginx --buildpack paketo-buildpacks/web-servers \
    [guides][httpd/configure].
 <!-- spellchecker-disable -->
 {{< code/copyable >}}
-pack build frontend-httpd --buildpack paketo-buildpacks/web-servers \
+pack build frontend-app --buildpack paketo-buildpacks/web-servers \
                           --env BP_NODE_RUN_SCRIPTS=build \
                           --env BP_WEB_SERVER=httpd \
                           --env BP_WEB_SERVER_ROOT=build
 {{< /code/copyable >}}
 <!-- spellchecker-enable -->
 
-6. You're done! The resulting app container will serve your frontend app with
-   an automatically generated server configuration.
+6. You're done! You can run the resulting app container to serve your frontend app with
+   an automatically generated server configuration using the following command:
+{{< code/copyable >}}
+docker run --tty --env PORT=8080 --publish 8080:8080 frontend-app
+{{< /code/copyable >}}
 
 <!-- spellchecker-disable -->
 <!-- References -->
