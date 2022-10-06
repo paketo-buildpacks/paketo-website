@@ -515,10 +515,8 @@ pack build my-app --buildpack paketo-buildpacks/httpd \
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/httpd">samples</a>
+<p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/web-servers">samples</a>
 for how to run the app.</p>
-<p><strong>NOTE: The Paketo Full builder is required because HTTPD relies on operating
-system libraries only present in the Full builder.</strong></p>
 <h3 id="install-a-specific-httpd-version" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-specific-httpd-version">
         Install a Specific HTTPD Version
@@ -652,7 +650,7 @@ pack build my-app --buildpack paketo-buildpacks/nginx \
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/nginx">samples</a>
+<p>See <a href="https://github.com/paketo-buildpacks/samples/tree/main/web-servers">samples</a>
 for how to run the app.</p>
 <p><strong>NOTE: Though the example above uses the Paketo Base builder, this buildpack is
 also compatible with the Paketo Full builder.</strong></p>
@@ -772,7 +770,7 @@ start when the app image launches.</p>
     </a>
 </h3><p>The NGINX buildpack supports data driven templates for nginx config. You can
 use templated variables like <code>{{port}}</code>, <code>{{env &quot;FOO&quot;}}</code> and <code>{{module &quot;ngx_stream_module&quot;}}</code> in your <code>nginx.conf</code> to use values known at launch time.</p>
-<p>A usage example can be found in the <a href="https://github.com/paketo-buildpacks/samples/tree/main/nginx"><code>samples</code> repository under the <code>nginx</code>
+<p>A usage example can be found in the <a href="https://github.com/paketo-buildpacks/samples/tree/main/web-servers/nginx-sample"><code>samples</code> repository under the <code>web-servers/nginx-sample</code>
 directory</a>.</p>
 <h4 id="port" class="markup-heading">
     <a class="markup-heading__link" href="#port">
@@ -882,7 +880,7 @@ adjust the behaviour of the NGINX server, see the NGINX How-to
 </ol>
 <!-- raw HTML omitted -->
 <div class="copyable">
-    <pre class="copyable__code">pack build frontend-nginx --buildpack paketo-buildpacks/web-servers \
+    <pre class="copyable__code">pack build frontend-app --buildpack paketo-buildpacks/web-servers \
                           --env BP_NODE_RUN_SCRIPTS=build \
                           --env BP_WEB_SERVER=nginx \
                           --env BP_WEB_SERVER_ROOT=build
@@ -901,7 +899,7 @@ adjust the behaviour of the HTTPD server, see the HTTPD How-to
 </ol>
 <!-- raw HTML omitted -->
 <div class="copyable">
-    <pre class="copyable__code">pack build frontend-httpd --buildpack paketo-buildpacks/web-servers \
+    <pre class="copyable__code">pack build frontend-app --buildpack paketo-buildpacks/web-servers \
                           --env BP_NODE_RUN_SCRIPTS=build \
                           --env BP_WEB_SERVER=httpd \
                           --env BP_WEB_SERVER_ROOT=build
@@ -911,8 +909,14 @@ adjust the behaviour of the HTTPD server, see the HTTPD How-to
 </div>
 <!-- raw HTML omitted -->
 <ol start="6">
-<li>You&rsquo;re done! The resulting app container will serve your frontend app with
-an automatically generated server configuration.</li>
+<li>You&rsquo;re done! You can run the resulting app container to serve your frontend app with
+an automatically generated server configuration using the following command:
+<div class="copyable">
+    <pre class="copyable__code">docker run --tty --env PORT=8080 --publish 8080:8080 frontend-app
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></li>
 </ol>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
@@ -929,7 +933,7 @@ an automatically generated server configuration.</li>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> October 5, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 6, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
