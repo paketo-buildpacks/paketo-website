@@ -549,6 +549,15 @@ This example is tuned for use with Visual Studio Code and its Java and Gradle ex
 
 This functionality presently depends on the support of [`watchexec`](https://github.com/watchexec/watchexec/). It is recommend that you read the section [Enable Process Reloading]({{< relref "#enable-process-reloading" >}}) for further details.
 
+## Enable `DEBUG` logging
+Users of the Java buildpack can access extra debug logs during the image build process by setting the `BP_LOG_LEVEL`
+environment variable to `DEBUG` at build time. Additional debug logs will
+appear in build logs if the relevant buildpacks have debug log lines.
+{{< code/copyable >}}
+pack build my-app --buildpack paketo-buildpacks/java \
+  --env BP_LOG_LEVEL=DEBUG
+{{< /code/copyable >}}
+
 ## Enable Remote Debugging
 
 If `BPL_DEBUG_ENABLED` is set to `true` at runtime the application will be configured to accept debugger connections. The debug port defaults to `8000` and can be configured with `BPL_DEBUG_PORT` at runtime. If `BPL_DEBUG_SUSPEND` is set at runtime, the JVM will suspend execution until a debugger has attached.

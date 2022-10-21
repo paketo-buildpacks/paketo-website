@@ -199,6 +199,15 @@ instructions in the [Applying Custom
 Labels]({{< ref "docs/howto/configuration#applying-custom-labels" >}})
 section of our configuration docs.
 
+## Enable `DEBUG` logging
+Users of the Python buildpack can access extra debug logs during the image build process by setting the `BP_LOG_LEVEL`
+environment variable to `DEBUG` at build time. Additional debug logs will
+appear in build logs if the relevant buildpacks have debug log lines.
+{{< code/copyable >}}
+pack build my-app --buildpack paketo-buildpacks/python \
+  --env BP_LOG_LEVEL=DEBUG
+{{< /code/copyable >}}
+
 ## Access the software bill of materials
 The Python buildpack includes support for the software bill of materials (SBOM).
 Check out the [SBOM how-to documentation][how-to/SBOM] for

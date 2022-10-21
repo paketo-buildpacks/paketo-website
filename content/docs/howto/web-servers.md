@@ -369,6 +369,15 @@ pack build frontend-app --buildpack paketo-buildpacks/web-servers \
 docker run --tty --env PORT=8080 --publish 8080:8080 frontend-app
 {{< /code/copyable >}}
 
+## Enable `DEBUG` logging
+Users of the Web Servers buildpack can access extra debug logs during the image build process by setting the `BP_LOG_LEVEL`
+environment variable to `DEBUG` at build time. Additional debug logs will
+appear in build logs if the relevant buildpacks have debug log lines.
+{{< code/copyable >}}
+pack build my-app --buildpack paketo-buildpacks/web-servers \
+  --env BP_LOG_LEVEL=DEBUG
+{{< /code/copyable >}}
+
 <!-- spellchecker-disable -->
 <!-- References -->
 [httpd/bp-web-server-root]:{{< ref "docs/reference/httpd-reference#bp_web_server_root" >}}
