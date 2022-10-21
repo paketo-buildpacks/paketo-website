@@ -208,6 +208,23 @@ pack build samples/nodejs \
 docker run samples/nodejs # should print "hello world"
 {{< /code/copyable >}}
 
+## Enabling Debug Logging
+
+### Environment Variable Configuration
+
+Paketo Buildpacks can be configured to emit additional debug logs to provide
+additional insights into the build. This setting can be configured by setting
+the `BP_LOG_LEVEL` environment variable to `DEBUG` at build-time. Any
+buildpacks that have this configuration enabled, and contain additional
+debugging logs, will emit them when this environment variable is set.
+
+**Example**: Enabling Debug Logging
+{{< code/copyable >}}
+pack build samples/nodejs \
+  --buildpack paketo-buildpacks/nodejs \
+  --env "BP_LOG_LEVEL=DEBUG" \
+{{< /code/copyable >}}
+
 ## Building Behind a Firewall
 
 ### Proxy Configuration
