@@ -940,10 +940,10 @@
         }
     return void 0 !== i2 ? i2 : o2.nextSibling;
   }
-  function x(e2, t2, n2) {
+  function N(e2, t2, n2) {
     "-" === t2[0] ? e2.setProperty(t2, n2) : e2[t2] = null == n2 ? "" : "number" != typeof n2 || y.test(t2) ? n2 : n2 + "px";
   }
-  function N(e2, t2, n2, r2, o2) {
+  function x(e2, t2, n2, r2, o2) {
     var c2;
     e:
       if ("style" === t2)
@@ -952,10 +952,10 @@
         else {
           if ("string" == typeof r2 && (e2.style.cssText = r2 = ""), r2)
             for (t2 in r2)
-              n2 && t2 in n2 || x(e2.style, t2, "");
+              n2 && t2 in n2 || N(e2.style, t2, "");
           if (n2)
             for (t2 in n2)
-              r2 && n2[t2] === r2[t2] || x(e2.style, t2, n2[t2]);
+              r2 && n2[t2] === r2[t2] || N(e2.style, t2, n2[t2]);
         }
       else if ("o" === t2[0] && "n" === t2[1])
         c2 = t2 !== (t2 = t2.replace(/Capture$/, "")), t2 = t2.toLowerCase() in e2 ? t2.toLowerCase().slice(2) : t2.slice(2), e2.l || (e2.l = {}), e2.l[t2 + c2] = n2, n2 ? r2 || e2.addEventListener(t2, c2 ? R : T, c2) : e2.removeEventListener(t2, c2 ? R : T, c2);
@@ -1041,15 +1041,15 @@
       if (function(e3, t3, n3, r3, o3) {
         var c3;
         for (c3 in n3)
-          "children" === c3 || "key" === c3 || c3 in t3 || N(e3, c3, null, n3[c3], r3);
+          "children" === c3 || "key" === c3 || c3 in t3 || x(e3, c3, null, n3[c3], r3);
         for (c3 in t3)
-          o3 && "function" != typeof t3[c3] || "children" === c3 || "key" === c3 || "value" === c3 || "checked" === c3 || n3[c3] === t3[c3] || N(e3, c3, t3[c3], n3[c3], r3);
+          o3 && "function" != typeof t3[c3] || "children" === c3 || "key" === c3 || "value" === c3 || "checked" === c3 || n3[c3] === t3[c3] || x(e3, c3, t3[c3], n3[c3], r3);
       }(e2, m2, p2, o2, a2), s2)
         t2.__k = [];
       else if (y2 = t2.props.children, k(e2, Array.isArray(y2) ? y2 : [y2], t2, n2, r2, o2 && "foreignObject" !== d2, c2, i2, e2.firstChild, a2), null != c2)
         for (y2 = c2.length; y2--; )
           null != c2[y2] && b(c2[y2]);
-      a2 || ("value" in m2 && void 0 !== (y2 = m2.value) && (y2 !== e2.value || "progress" === d2 && !y2) && N(e2, "value", y2, p2.value, false), "checked" in m2 && void 0 !== (y2 = m2.checked) && y2 !== e2.checked && N(e2, "checked", y2, p2.checked, false));
+      a2 || ("value" in m2 && void 0 !== (y2 = m2.value) && (y2 !== e2.value || "progress" === d2 && !y2) && x(e2, "value", y2, p2.value, false), "checked" in m2 && void 0 !== (y2 = m2.checked) && y2 !== e2.checked && x(e2, "checked", y2, p2.checked, false));
     }
     return e2;
   }
@@ -1086,7 +1086,7 @@
   function V(e2, t2) {
     B(e2, t2, V);
   }
-  function z(e2, t2, n2) {
+  function W(e2, t2, n2) {
     var r2, o2, c2, i2 = arguments, a2 = _({}, e2.props);
     for (c2 in t2)
       "key" == c2 ? r2 = t2[c2] : "ref" == c2 ? o2 = t2[c2] : a2[c2] = t2[c2];
@@ -1111,41 +1111,41 @@
   }, E.prototype.forceUpdate = function(e2) {
     this.__v && (this.__e = true, e2 && this.__h.push(e2), P(this));
   }, E.prototype.render = S, f = [], p = "function" == typeof Promise ? Promise.prototype.then.bind(Promise.resolve()) : setTimeout, I.__r = 0, d = 0;
-  var W;
   var K;
+  var z;
   var J;
   var $ = 0;
   var Q = [];
-  var Y = s.__b;
-  var G = s.__r;
-  var Z = s.diffed;
+  var Z = s.__b;
+  var Y = s.__r;
+  var G = s.diffed;
   var X = s.__c;
   var ee = s.unmount;
   function te(e2, t2) {
-    s.__h && s.__h(K, e2, $ || t2), $ = 0;
-    var n2 = K.__H || (K.__H = { __: [], __h: [] });
+    s.__h && s.__h(z, e2, $ || t2), $ = 0;
+    var n2 = z.__H || (z.__H = { __: [], __h: [] });
     return e2 >= n2.__.length && n2.__.push({}), n2.__[e2];
   }
   function ne(e2) {
     return $ = 1, re(pe, e2);
   }
   function re(e2, t2, n2) {
-    var r2 = te(W++, 2);
+    var r2 = te(K++, 2);
     return r2.t = e2, r2.__c || (r2.__ = [n2 ? n2(t2) : pe(void 0, t2), function(e3) {
       var t3 = r2.t(r2.__[0], e3);
       r2.__[0] !== t3 && (r2.__ = [t3, r2.__[1]], r2.__c.setState({}));
-    }], r2.__c = K), r2.__;
+    }], r2.__c = z), r2.__;
   }
   function oe(e2, t2) {
-    var n2 = te(W++, 3);
-    !s.__s && fe(n2.__H, t2) && (n2.__ = e2, n2.__H = t2, K.__H.__h.push(n2));
+    var n2 = te(K++, 3);
+    !s.__s && fe(n2.__H, t2) && (n2.__ = e2, n2.__H = t2, z.__H.__h.push(n2));
   }
   function ce(e2, t2) {
-    var n2 = te(W++, 4);
-    !s.__s && fe(n2.__H, t2) && (n2.__ = e2, n2.__H = t2, K.__h.push(n2));
+    var n2 = te(K++, 4);
+    !s.__s && fe(n2.__H, t2) && (n2.__ = e2, n2.__H = t2, z.__h.push(n2));
   }
   function ie(e2, t2) {
-    var n2 = te(W++, 7);
+    var n2 = te(K++, 7);
     return fe(n2.__H, t2) && (n2.__ = e2(), n2.__H = t2, n2.__h = e2), n2.__;
   }
   function ae() {
@@ -1159,20 +1159,20 @@
     }), Q = [];
   }
   s.__b = function(e2) {
-    K = null, Y && Y(e2);
+    z = null, Z && Z(e2);
   }, s.__r = function(e2) {
-    G && G(e2), W = 0;
-    var t2 = (K = e2.__c).__H;
+    Y && Y(e2), K = 0;
+    var t2 = (z = e2.__c).__H;
     t2 && (t2.__h.forEach(le), t2.__h.forEach(se), t2.__h = []);
   }, s.diffed = function(e2) {
-    Z && Z(e2);
+    G && G(e2);
     var t2 = e2.__c;
     t2 && t2.__H && t2.__H.__h.length && (1 !== Q.push(t2) && J === s.requestAnimationFrame || ((J = s.requestAnimationFrame) || function(e3) {
       var t3, n2 = function() {
         clearTimeout(r2), ue && cancelAnimationFrame(t3), setTimeout(e3);
       }, r2 = setTimeout(n2, 100);
       ue && (t3 = requestAnimationFrame(n2));
-    })(ae)), K = void 0;
+    })(ae)), z = void 0;
   }, s.__c = function(e2, t2) {
     t2.some(function(e3) {
       try {
@@ -1197,12 +1197,12 @@
   };
   var ue = "function" == typeof requestAnimationFrame;
   function le(e2) {
-    var t2 = K;
-    "function" == typeof e2.__c && e2.__c(), K = t2;
+    var t2 = z;
+    "function" == typeof e2.__c && e2.__c(), z = t2;
   }
   function se(e2) {
-    var t2 = K;
-    e2.__c = e2.__(), K = t2;
+    var t2 = z;
+    e2.__c = e2.__(), z = t2;
   }
   function fe(e2, t2) {
     return !e2 || e2.length !== t2.length || t2.some(function(t3, n2) {
@@ -1376,8 +1376,8 @@
       Object.defineProperty(this, e2, { configurable: true, writable: true, value: t2 });
     } });
   });
-  var xe = s.event;
-  function Ne() {
+  var Ne = s.event;
+  function xe() {
   }
   function Te() {
     return this.cancelBubble;
@@ -1386,7 +1386,7 @@
     return this.defaultPrevented;
   }
   s.event = function(e2) {
-    return xe && (e2 = xe(e2)), e2.persist = Ne, e2.isPropagationStopped = Te, e2.isDefaultPrevented = Re, e2.nativeEvent = e2;
+    return Ne && (e2 = Ne(e2)), e2.persist = xe, e2.isPropagationStopped = Te, e2.isDefaultPrevented = Re, e2.nativeEvent = e2;
   };
   var Le;
   var qe = { configurable: true, get: function() {
@@ -1432,8 +1432,8 @@
       return e2;
     }, t2);
   }, useContext: function(e2) {
-    var t2 = K.context[e2.__c], n2 = te(W++, 9);
-    return n2.__c = e2, t2 ? (null == n2.__ && (n2.__ = true, t2.sub(K)), t2.props.value) : e2.__;
+    var t2 = z.context[e2.__c], n2 = te(K++, 9);
+    return n2.__c = e2, t2 ? (null == n2.__ && (n2.__ = true, t2.sub(z)), t2.props.value) : e2.__;
   }, useDebugValue: function(e2, t2) {
     s.useDebugValue && s.useDebugValue(t2 ? t2(e2) : e2);
   }, version: "16.8.0", Children: be, render: Ae, hydrate: function(e2, t2, n2) {
@@ -1461,7 +1461,7 @@
   }, createFactory: function(e2) {
     return g.bind(null, e2);
   }, cloneElement: function(e2) {
-    return Fe(e2) ? z.apply(null, arguments) : e2;
+    return Fe(e2) ? W.apply(null, arguments) : e2;
   }, createRef: function() {
     return { current: null };
   }, Fragment: S, isValidElement: Fe, findDOMNode: function(e2) {
@@ -1501,19 +1501,19 @@
   function Ve() {
     return Be.createElement("svg", { width: "15", height: "15", className: "DocSearch-Control-Key-Icon" }, Be.createElement("path", { d: "M4.505 4.496h2M5.505 5.496v5M8.216 4.496l.055 5.993M10 7.5c.333.333.5.667.5 1v2M12.326 4.5v5.996M8.384 4.496c1.674 0 2.116 0 2.116 1.5s-.442 1.5-2.116 1.5M3.205 9.303c-.09.448-.277 1.21-1.241 1.203C1 10.5.5 9.513.5 8V7c0-1.57.5-2.5 1.464-2.494.964.006 1.134.598 1.24 1.342M12.553 10.5h1.953", strokeWidth: "1.2", stroke: "currentColor", fill: "none", strokeLinecap: "square" }));
   }
-  function ze() {
+  function We() {
     return Be.createElement("svg", { width: "20", height: "20", className: "DocSearch-Search-Icon", viewBox: "0 0 20 20" }, Be.createElement("path", { d: "M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z", stroke: "currentColor", fill: "none", fillRule: "evenodd", strokeLinecap: "round", strokeLinejoin: "round" }));
   }
-  var We = ["translations"];
-  function Ke() {
-    return Ke = Object.assign || function(e2) {
+  var Ke = ["translations"];
+  function ze() {
+    return ze = Object.assign || function(e2) {
       for (var t2 = 1; t2 < arguments.length; t2++) {
         var n2 = arguments[t2];
         for (var r2 in n2)
           Object.prototype.hasOwnProperty.call(n2, r2) && (e2[r2] = n2[r2]);
       }
       return e2;
-    }, Ke.apply(this, arguments);
+    }, ze.apply(this, arguments);
   }
   function Je(e2, t2) {
     return function(e3) {
@@ -1577,13 +1577,13 @@
     }
     return o2;
   }
-  var Ye = Be.forwardRef(function(e2, t2) {
-    var n2 = e2.translations, r2 = void 0 === n2 ? {} : n2, o2 = Qe(e2, We), c2 = r2.buttonText, i2 = void 0 === c2 ? "Search" : c2, a2 = r2.buttonAriaLabel, u2 = void 0 === a2 ? "Search" : a2, l2 = Je(ne(null), 2), s2 = l2[0], f2 = l2[1];
+  var Ze = Be.forwardRef(function(e2, t2) {
+    var n2 = e2.translations, r2 = void 0 === n2 ? {} : n2, o2 = Qe(e2, Ke), c2 = r2.buttonText, i2 = void 0 === c2 ? "Search" : c2, a2 = r2.buttonAriaLabel, u2 = void 0 === a2 ? "Search" : a2, l2 = Je(ne(null), 2), s2 = l2[0], f2 = l2[1];
     return oe(function() {
       "undefined" != typeof navigator && (/(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? f2("\u2318") : f2("Ctrl"));
-    }, []), Be.createElement("button", Ke({ type: "button", className: "DocSearch DocSearch-Button", "aria-label": u2 }, o2, { ref: t2 }), Be.createElement("span", { className: "DocSearch-Button-Container" }, Be.createElement(ze, null), Be.createElement("span", { className: "DocSearch-Button-Placeholder" }, i2)), Be.createElement("span", { className: "DocSearch-Button-Keys" }, null !== s2 && Be.createElement(Be.Fragment, null, Be.createElement("kbd", { className: "DocSearch-Button-Key" }, "Ctrl" === s2 ? Be.createElement(Ve, null) : s2), Be.createElement("kbd", { className: "DocSearch-Button-Key" }, "K"))));
+    }, []), Be.createElement("button", ze({ type: "button", className: "DocSearch DocSearch-Button", "aria-label": u2 }, o2, { ref: t2 }), Be.createElement("span", { className: "DocSearch-Button-Container" }, Be.createElement(We, null), Be.createElement("span", { className: "DocSearch-Button-Placeholder" }, i2)), Be.createElement("span", { className: "DocSearch-Button-Keys" }, null !== s2 && Be.createElement(Be.Fragment, null, Be.createElement("kbd", { className: "DocSearch-Button-Key" }, "Ctrl" === s2 ? Be.createElement(Ve, null) : s2), Be.createElement("kbd", { className: "DocSearch-Button-Key" }, "K"))));
   });
-  function Ge(e2, t2) {
+  function Ye(e2, t2) {
     return function(e3) {
       if (Array.isArray(e3))
         return e3;
@@ -1610,18 +1610,18 @@
       if (!e3)
         return;
       if ("string" == typeof e3)
-        return Ze(e3, t3);
+        return Ge(e3, t3);
       var n2 = Object.prototype.toString.call(e3).slice(8, -1);
       "Object" === n2 && e3.constructor && (n2 = e3.constructor.name);
       if ("Map" === n2 || "Set" === n2)
         return Array.from(e3);
       if ("Arguments" === n2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
-        return Ze(e3, t3);
+        return Ge(e3, t3);
     }(e2, t2) || function() {
       throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }();
   }
-  function Ze(e2, t2) {
+  function Ge(e2, t2) {
     (null == t2 || t2 > e2.length) && (t2 = e2.length);
     for (var n2 = 0, r2 = new Array(t2); n2 < t2; n2++)
       r2[n2] = e2[n2];
@@ -1644,7 +1644,7 @@
     return Array.isArray(e2) ? e2.map(function(e3) {
       return et(e3, n2);
     }) : Object.fromEntries(Object.entries(e2).map(function(e3) {
-      var t3 = Ge(e3, 2);
+      var t3 = Ye(e3, 2);
       return [t3[0], et(t3[1], n2)];
     }));
   }
@@ -1924,17 +1924,17 @@
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
       t2 % 2 ? Ct(Object(n2), true).forEach(function(t3) {
-        xt(e2, t3, n2[t3]);
+        Nt(e2, t3, n2[t3]);
       }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Ct(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function xt(e2, t2, n2) {
+  function Nt(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function Nt(e2, t2) {
+  function xt(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -1947,9 +1947,9 @@
   function Tt(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? Nt(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? xt(Object(n2), true).forEach(function(t3) {
         Rt(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Nt(Object(n2)).forEach(function(t3) {
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : xt(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
@@ -2026,7 +2026,7 @@
     }) }) : { items: e2, sourceId: t2 };
     var n2;
   }
-  function zt(e2) {
+  function Wt(e2) {
     var t2 = e2.reduce(function(e3, t3) {
       if (!Bt(t3))
         return e3.push(t3), e3;
@@ -2051,7 +2051,7 @@
       return tt(e3);
     });
   }
-  function Wt(e2, t2) {
+  function Kt(e2, t2) {
     return t2.map(function(t3) {
       var n2 = e2.filter(function(e3) {
         return e3.sourceId === t3.sourceId;
@@ -2078,7 +2078,7 @@
       }), ot(c2.every(Boolean), 'The `getItems` function from source "'.concat(t3.sourceId, '" must return an array of items but returned ').concat(JSON.stringify(void 0), ".\n\nDid you forget to return items?\n\nSee: https://www.algolia.com/doc/ui-libraries/autocomplete/core-concepts/sources/#param-getitems")), { source: t3, items: c2 };
     });
   }
-  var Kt = ["event", "nextState", "props", "query", "refresh", "store"];
+  var zt = ["event", "nextState", "props", "query", "refresh", "store"];
   function Jt(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
@@ -2103,7 +2103,7 @@
   function Qt(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function Yt(e2, t2) {
+  function Zt(e2, t2) {
     if (null == e2)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -2121,18 +2121,18 @@
     }
     return o2;
   }
+  var Yt;
   var Gt;
-  var Zt;
   var Xt;
   var en = null;
-  var tn = (Gt = -1, Zt = -1, Xt = void 0, function(e2) {
-    var t2 = ++Gt;
+  var tn = (Yt = -1, Gt = -1, Xt = void 0, function(e2) {
+    var t2 = ++Yt;
     return Promise.resolve(e2).then(function(e3) {
-      return Xt && t2 < Zt ? Xt : (Zt = t2, Xt = e3, e3);
+      return Xt && t2 < Gt ? Xt : (Gt = t2, Xt = e3, e3);
     });
   });
   function nn(e2) {
-    var t2 = e2.event, n2 = e2.nextState, r2 = void 0 === n2 ? {} : n2, o2 = e2.props, c2 = e2.query, i2 = e2.refresh, a2 = e2.store, u2 = Yt(e2, Kt);
+    var t2 = e2.event, n2 = e2.nextState, r2 = void 0 === n2 ? {} : n2, o2 = e2.props, c2 = e2.query, i2 = e2.refresh, a2 = e2.store, u2 = Zt(e2, zt);
     en && o2.environment.clearTimeout(en);
     var l2 = u2.setCollections, s2 = u2.setIsOpen, f2 = u2.setQuery, p2 = u2.setActiveItemId, m2 = u2.setStatus;
     if (f2(c2), p2(o2.defaultActiveItemId), !c2 && false === o2.openOnFocus) {
@@ -2153,8 +2153,8 @@
         return Promise.resolve(e4.getItems($t({ query: c2, refresh: i2, state: a2.getState() }, u2))).then(function(t3) {
           return Vt(t3, e4.sourceId);
         });
-      })).then(zt).then(function(t3) {
-        return Wt(t3, e3);
+      })).then(Wt).then(function(t3) {
+        return Kt(t3, e3);
       }).then(function(e4) {
         return function(e5) {
           var t3 = e5.collections, n3 = e5.props, r3 = e5.state, o3 = t3.reduce(function(e6, t4) {
@@ -2604,16 +2604,16 @@
       }
     }({ metadata: Sn({ plugins: n2.plugins, options: e2 }), environment: n2.environment }), Dn(Dn({ refresh: i2 }, c2), o2);
   }
-  function xn(e2) {
-    var t2 = e2.translations, n2 = (void 0 === t2 ? {} : t2).searchByText, r2 = void 0 === n2 ? "Search by" : n2;
-    return Be.createElement("a", { href: "https://www.algolia.com/ref/docsearch/?utm_source=".concat(window.location.hostname, "&utm_medium=referral&utm_content=powered_by&utm_campaign=docsearch"), target: "_blank", rel: "noopener noreferrer" }, Be.createElement("span", { className: "DocSearch-Label" }, r2), Be.createElement("svg", { width: "77", height: "19", "aria-label": "Algolia", role: "img" }, Be.createElement("path", { d: "M2.5067 0h14.0245c1.384.001 2.5058 1.1205 2.5068 2.5017V16.5c-.0014 1.3808-1.1232 2.4995-2.5068 2.5H2.5067C1.1232 18.9995.0014 17.8808 0 16.5V2.4958A2.495 2.495 0 01.735.7294 2.505 2.505 0 012.5068 0zM37.95 15.0695c-3.7068.0168-3.7068-2.986-3.7068-3.4634L34.2372.3576 36.498 0v11.1794c0 .2715 0 1.9889 1.452 1.994v1.8961zm-9.1666-1.8388c.694 0 1.2086-.0397 1.5678-.1088v-2.2934a5.3639 5.3639 0 00-1.3303-.1679 4.8283 4.8283 0 00-.758.0582 2.2845 2.2845 0 00-.688.2024c-.2029.0979-.371.2362-.4919.4142-.1268.1788-.185.2826-.185.5533 0 .5297.185.8359.5205 1.0375.3355.2016.7928.3053 1.365.3053v-.0008zm-.1969-8.1817c.7463 0 1.3768.092 1.8856.2767.5088.1838.9195.4428 1.2204.7717.3068.334.5147.7777.6423 1.251.1327.4723.196.991.196 1.5603v5.798c-.5235.1036-1.05.192-1.5787.2649-.7048.1037-1.4976.156-2.3774.156-.5832 0-1.1215-.0582-1.6016-.167a3.385 3.385 0 01-1.2432-.5364 2.6034 2.6034 0 01-.8037-.9565c-.191-.3922-.29-.9447-.29-1.5208 0-.5533.11-.905.3246-1.2863a2.7351 2.7351 0 01.8849-.9329c.376-.242.8029-.415 1.2948-.5187a7.4517 7.4517 0 011.5381-.156 7.1162 7.1162 0 011.6667.2024V8.886c0-.259-.0296-.5061-.093-.7372a1.5847 1.5847 0 00-.3245-.6158 1.5079 1.5079 0 00-.6119-.4158 2.6788 2.6788 0 00-.966-.173c-.5206 0-.9948.0634-1.4283.1384a6.5481 6.5481 0 00-1.065.259l-.2712-1.849c.2831-.0986.7048-.1964 1.2491-.2943a9.2979 9.2979 0 011.752-.1501v.0008zm44.6597 8.1193c.6947 0 1.2086-.0405 1.567-.1097v-2.2942a5.3743 5.3743 0 00-1.3303-.1679c-.2485 0-.503.0177-.7573.0582a2.2853 2.2853 0 00-.688.2024 1.2333 1.2333 0 00-.4918.4142c-.1268.1788-.1843.2826-.1843.5533 0 .5297.1843.8359.5198 1.0375.3414.2066.7927.3053 1.365.3053v.0009zm-.191-8.1767c.7463 0 1.3768.0912 1.8856.2759.5087.1847.9195.4436 1.2204.7717.3.329.5147.7786.6414 1.251a5.7248 5.7248 0 01.197 1.562v5.7972c-.3466.0742-.874.1602-1.5788.2648-.7049.1038-1.4976.1552-2.3774.1552-.5832 0-1.1215-.0573-1.6016-.167a3.385 3.385 0 01-1.2432-.5356 2.6034 2.6034 0 01-.8038-.9565c-.191-.3922-.2898-.9447-.2898-1.5216 0-.5533.1098-.905.3245-1.2854a2.7373 2.7373 0 01.8849-.9338c.376-.2412.8029-.4141 1.2947-.5178a7.4545 7.4545 0 012.325-.1097c.2781.0287.5672.081.879.156v-.3686a2.7781 2.7781 0 00-.092-.738 1.5788 1.5788 0 00-.3246-.6166 1.5079 1.5079 0 00-.612-.415 2.6797 2.6797 0 00-.966-.1729c-.5205 0-.9947.0633-1.4282.1384a6.5608 6.5608 0 00-1.065.259l-.2712-1.8498c.283-.0979.7048-.1957 1.2491-.2935a9.8597 9.8597 0 011.752-.1494zm-6.79-1.072c-.7576.001-1.373-.6103-1.3759-1.3664 0-.755.6128-1.3664 1.376-1.3664.764 0 1.3775.6115 1.3775 1.3664s-.6195 1.3664-1.3776 1.3664zm1.1393 11.1507h-2.2726V5.3409l2.2734-.3568v10.0845l-.0008.0017zm-3.984 0c-3.707.0168-3.707-2.986-3.707-3.4642L59.7069.3576 61.9685 0v11.1794c0 .2715 0 1.9889 1.452 1.994V15.0703zm-7.3512-4.979c0-.975-.2138-1.7873-.6305-2.3516-.4167-.571-.9998-.852-1.747-.852-.7454 0-1.3302.281-1.7452.852-.4166.5702-.6195 1.3765-.6195 2.3516 0 .9851.208 1.6473.6254 2.2183.4158.576.9998.8587 1.7461.8587.7454 0 1.3303-.2885 1.747-.8595.4158-.5761.6237-1.2315.6237-2.2184v.0009zm2.3132-.006c0 .7609-.1099 1.3361-.3356 1.9654a4.654 4.654 0 01-.9533 1.6076A4.214 4.214 0 0155.613 14.69c-.579.2412-1.4697.3795-1.9143.3795-.4462-.005-1.3303-.1324-1.9033-.3795a4.307 4.307 0 01-1.474-1.0316c-.4115-.4445-.7293-.9801-.9609-1.6076a5.3423 5.3423 0 01-.3465-1.9653c0-.7608.104-1.493.3356-2.1155a4.683 4.683 0 01.9719-1.5958 4.3383 4.3383 0 011.479-1.0257c.5739-.242 1.2043-.3567 1.8864-.3567.6829 0 1.3125.1197 1.8906.3567a4.1245 4.1245 0 011.4816 1.0257 4.7587 4.7587 0 01.9592 1.5958c.2426.6225.3643 1.3547.3643 2.1155zm-17.0198 0c0 .9448.208 1.9932.6238 2.431.4166.4386.955.6579 1.6142.6579.3584 0 .6998-.0523 1.0176-.1502.3186-.0978.5721-.2134.775-.3517V7.0784a8.8706 8.8706 0 00-1.4926-.1906c-.8206-.0236-1.4452.312-1.8847.8468-.4335.5365-.6533 1.476-.6533 2.3516v-.0008zm6.2863 4.4485c0 1.5385-.3938 2.662-1.1866 3.3773-.791.7136-2.0005 1.0712-3.6308 1.0712-.5958 0-1.834-.1156-2.8228-.334l.3643-1.7865c.8282.173 1.9202.2193 2.4932.2193.9077 0 1.555-.1847 1.943-.5533.388-.3686.578-.916.578-1.643v-.3687a6.8289 6.8289 0 01-.8848.3349c-.3634.1096-.786.167-1.261.167-.6246 0-1.1917-.0979-1.7055-.2944a3.5554 3.5554 0 01-1.3244-.8645c-.3642-.3796-.6541-.8579-.8561-1.4289-.2028-.571-.3068-1.59-.3068-2.339 0-.7034.1099-1.5856.3245-2.1735.2198-.5871.5316-1.0949.9542-1.515.4167-.42.9255-.743 1.5213-.98a5.5923 5.5923 0 012.052-.3855c.7353 0 1.4114.092 2.0707.2024.6592.1088 1.2204.2236 1.6776.35v8.945-.0008zM11.5026 4.2418v-.6511c-.0005-.4553-.3704-.8241-.8266-.8241H8.749c-.4561 0-.826.3688-.8265.824v.669c0 .0742.0693.1264.1445.1096a6.0346 6.0346 0 011.6768-.2362 6.125 6.125 0 011.6202.2185.1116.1116 0 00.1386-.1097zm-5.2806.852l-.3296-.3282a.8266.8266 0 00-1.168 0l-.393.3922a.8199.8199 0 000 1.164l.3237.323c.0524.0515.1268.0397.1733-.0117.191-.259.3989-.507.6305-.7372.2374-.2362.48-.4437.7462-.6335.0575-.0354.0634-.1155.017-.1687zm3.5159 2.069v2.818c0 .081.0879.1392.1622.0987l2.5102-1.2964c.0574-.0287.0752-.0987.0464-.1552a3.1237 3.1237 0 00-2.603-1.574c-.0575 0-.115.0456-.115.1097l-.0008-.0009zm.0008 6.789c-2.0933.0005-3.7915-1.6912-3.7947-3.7804C5.9468 8.0821 7.6452 6.39 9.7387 6.391c2.0932-.0005 3.7911 1.6914 3.794 3.7804a3.7783 3.7783 0 01-1.1124 2.675 3.7936 3.7936 0 01-2.6824 1.1054h.0008zM9.738 4.8002c-1.9218 0-3.6975 1.0232-4.6584 2.6841a5.359 5.359 0 000 5.3683c.9609 1.661 2.7366 2.6841 4.6584 2.6841a5.3891 5.3891 0 003.8073-1.5725 5.3675 5.3675 0 001.578-3.7987 5.3574 5.3574 0 00-1.5771-3.797A5.379 5.379 0 009.7387 4.801l-.0008-.0008z", fill: "currentColor", fillRule: "evenodd" })));
-  }
   function Nn(e2) {
+    var t2 = e2.translations, n2 = (void 0 === t2 ? {} : t2).searchByText, r2 = void 0 === n2 ? "Search by" : n2;
+    return Be.createElement("a", { href: "https://www.algolia.com/ref/docsearch/?utm_source=".concat(window.location.hostname, "&utm_medium=referral&utm_content=powered_by&utm_campaign=docsearch"), target: "_blank", rel: "noopener noreferrer" }, Be.createElement("span", { className: "DocSearch-Label" }, r2), Be.createElement("svg", { width: "77", height: "19", "aria-label": "Algolia", role: "img", id: "Layer_1", xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 2196.2 500" }, Be.createElement("defs", null, Be.createElement("style", null, ".cls-1,.cls-2{fill:#003dff;}.cls-2{fill-rule:evenodd;}")), Be.createElement("path", { className: "cls-2", d: "M1070.38,275.3V5.91c0-3.63-3.24-6.39-6.82-5.83l-50.46,7.94c-2.87,.45-4.99,2.93-4.99,5.84l.17,273.22c0,12.92,0,92.7,95.97,95.49,3.33,.1,6.09-2.58,6.09-5.91v-40.78c0-2.96-2.19-5.51-5.12-5.84-34.85-4.01-34.85-47.57-34.85-54.72Z" }), Be.createElement("rect", { className: "cls-1", x: "1845.88", y: "104.73", width: "62.58", height: "277.9", rx: "5.9", ry: "5.9" }), Be.createElement("path", { className: "cls-2", d: "M1851.78,71.38h50.77c3.26,0,5.9-2.64,5.9-5.9V5.9c0-3.62-3.24-6.39-6.82-5.83l-50.77,7.95c-2.87,.45-4.99,2.92-4.99,5.83v51.62c0,3.26,2.64,5.9,5.9,5.9Z" }), Be.createElement("path", { className: "cls-2", d: "M1764.03,275.3V5.91c0-3.63-3.24-6.39-6.82-5.83l-50.46,7.94c-2.87,.45-4.99,2.93-4.99,5.84l.17,273.22c0,12.92,0,92.7,95.97,95.49,3.33,.1,6.09-2.58,6.09-5.91v-40.78c0-2.96-2.19-5.51-5.12-5.84-34.85-4.01-34.85-47.57-34.85-54.72Z" }), Be.createElement("path", { className: "cls-2", d: "M1631.95,142.72c-11.14-12.25-24.83-21.65-40.78-28.31-15.92-6.53-33.26-9.85-52.07-9.85-18.78,0-36.15,3.17-51.92,9.85-15.59,6.66-29.29,16.05-40.76,28.31-11.47,12.23-20.38,26.87-26.76,44.03-6.38,17.17-9.24,37.37-9.24,58.36,0,20.99,3.19,36.87,9.55,54.21,6.38,17.32,15.14,32.11,26.45,44.36,11.29,12.23,24.83,21.62,40.6,28.46,15.77,6.83,40.12,10.33,52.4,10.48,12.25,0,36.78-3.82,52.7-10.48,15.92-6.68,29.46-16.23,40.78-28.46,11.29-12.25,20.05-27.04,26.25-44.36,6.22-17.34,9.24-33.22,9.24-54.21,0-20.99-3.34-41.19-10.03-58.36-6.38-17.17-15.14-31.8-26.43-44.03Zm-44.43,163.75c-11.47,15.75-27.56,23.7-48.09,23.7-20.55,0-36.63-7.8-48.1-23.7-11.47-15.75-17.21-34.01-17.21-61.2,0-26.89,5.59-49.14,17.06-64.87,11.45-15.75,27.54-23.52,48.07-23.52,20.55,0,36.63,7.78,48.09,23.52,11.47,15.57,17.36,37.98,17.36,64.87,0,27.19-5.72,45.3-17.19,61.2Z" }), Be.createElement("path", { className: "cls-2", d: "M894.42,104.73h-49.33c-48.36,0-90.91,25.48-115.75,64.1-14.52,22.58-22.99,49.63-22.99,78.73,0,44.89,20.13,84.92,51.59,111.1,2.93,2.6,6.05,4.98,9.31,7.14,12.86,8.49,28.11,13.47,44.52,13.47,1.23,0,2.46-.03,3.68-.09,.36-.02,.71-.05,1.07-.07,.87-.05,1.75-.11,2.62-.2,.34-.03,.68-.08,1.02-.12,.91-.1,1.82-.21,2.73-.34,.21-.03,.42-.07,.63-.1,32.89-5.07,61.56-30.82,70.9-62.81v57.83c0,3.26,2.64,5.9,5.9,5.9h50.42c3.26,0,5.9-2.64,5.9-5.9V110.63c0-3.26-2.64-5.9-5.9-5.9h-56.32Zm0,206.92c-12.2,10.16-27.97,13.98-44.84,15.12-.16,.01-.33,.03-.49,.04-1.12,.07-2.24,.1-3.36,.1-42.24,0-77.12-35.89-77.12-79.37,0-10.25,1.96-20.01,5.42-28.98,11.22-29.12,38.77-49.74,71.06-49.74h49.33v142.83Z" }), Be.createElement("path", { className: "cls-2", d: "M2133.97,104.73h-49.33c-48.36,0-90.91,25.48-115.75,64.1-14.52,22.58-22.99,49.63-22.99,78.73,0,44.89,20.13,84.92,51.59,111.1,2.93,2.6,6.05,4.98,9.31,7.14,12.86,8.49,28.11,13.47,44.52,13.47,1.23,0,2.46-.03,3.68-.09,.36-.02,.71-.05,1.07-.07,.87-.05,1.75-.11,2.62-.2,.34-.03,.68-.08,1.02-.12,.91-.1,1.82-.21,2.73-.34,.21-.03,.42-.07,.63-.1,32.89-5.07,61.56-30.82,70.9-62.81v57.83c0,3.26,2.64,5.9,5.9,5.9h50.42c3.26,0,5.9-2.64,5.9-5.9V110.63c0-3.26-2.64-5.9-5.9-5.9h-56.32Zm0,206.92c-12.2,10.16-27.97,13.98-44.84,15.12-.16,.01-.33,.03-.49,.04-1.12,.07-2.24,.1-3.36,.1-42.24,0-77.12-35.89-77.12-79.37,0-10.25,1.96-20.01,5.42-28.98,11.22-29.12,38.77-49.74,71.06-49.74h49.33v142.83Z" }), Be.createElement("path", { className: "cls-2", d: "M1314.05,104.73h-49.33c-48.36,0-90.91,25.48-115.75,64.1-11.79,18.34-19.6,39.64-22.11,62.59-.58,5.3-.88,10.68-.88,16.14s.31,11.15,.93,16.59c4.28,38.09,23.14,71.61,50.66,94.52,2.93,2.6,6.05,4.98,9.31,7.14,12.86,8.49,28.11,13.47,44.52,13.47h0c17.99,0,34.61-5.93,48.16-15.97,16.29-11.58,28.88-28.54,34.48-47.75v50.26h-.11v11.08c0,21.84-5.71,38.27-17.34,49.36-11.61,11.08-31.04,16.63-58.25,16.63-11.12,0-28.79-.59-46.6-2.41-2.83-.29-5.46,1.5-6.27,4.22l-12.78,43.11c-1.02,3.46,1.27,7.02,4.83,7.53,21.52,3.08,42.52,4.68,54.65,4.68,48.91,0,85.16-10.75,108.89-32.21,21.48-19.41,33.15-48.89,35.2-88.52V110.63c0-3.26-2.64-5.9-5.9-5.9h-56.32Zm0,64.1s.65,139.13,0,143.36c-12.08,9.77-27.11,13.59-43.49,14.7-.16,.01-.33,.03-.49,.04-1.12,.07-2.24,.1-3.36,.1-1.32,0-2.63-.03-3.94-.1-40.41-2.11-74.52-37.26-74.52-79.38,0-10.25,1.96-20.01,5.42-28.98,11.22-29.12,38.77-49.74,71.06-49.74h49.33Z" }), Be.createElement("path", { className: "cls-1", d: "M249.83,0C113.3,0,2,110.09,.03,246.16c-2,138.19,110.12,252.7,248.33,253.5,42.68,.25,83.79-10.19,120.3-30.03,3.56-1.93,4.11-6.83,1.08-9.51l-23.38-20.72c-4.75-4.21-11.51-5.4-17.36-2.92-25.48,10.84-53.17,16.38-81.71,16.03-111.68-1.37-201.91-94.29-200.13-205.96,1.76-110.26,92-199.41,202.67-199.41h202.69V407.41l-115-102.18c-3.72-3.31-9.42-2.66-12.42,1.31-18.46,24.44-48.53,39.64-81.93,37.34-46.33-3.2-83.87-40.5-87.34-86.81-4.15-55.24,39.63-101.52,94-101.52,49.18,0,89.68,37.85,93.91,85.95,.38,4.28,2.31,8.27,5.52,11.12l29.95,26.55c3.4,3.01,8.79,1.17,9.63-3.3,2.16-11.55,2.92-23.58,2.07-35.92-4.82-70.34-61.8-126.93-132.17-131.26-80.68-4.97-148.13,58.14-150.27,137.25-2.09,77.1,61.08,143.56,138.19,145.26,32.19,.71,62.03-9.41,86.14-26.95l150.26,133.2c6.44,5.71,16.61,1.14,16.61-7.47V9.48C499.66,4.25,495.42,0,490.18,0H249.83Z" })));
+  }
+  function xn(e2) {
     return Be.createElement("svg", { width: "15", height: "15", "aria-label": e2.ariaLabel, role: "img" }, Be.createElement("g", { fill: "none", stroke: "currentColor", strokeLinecap: "round", strokeLinejoin: "round", strokeWidth: "1.2" }, e2.children));
   }
   function Tn(e2) {
     var t2 = e2.translations, n2 = void 0 === t2 ? {} : t2, r2 = n2.selectText, o2 = void 0 === r2 ? "to select" : r2, c2 = n2.selectKeyAriaLabel, i2 = void 0 === c2 ? "Enter key" : c2, a2 = n2.navigateText, u2 = void 0 === a2 ? "to navigate" : a2, l2 = n2.navigateUpKeyAriaLabel, s2 = void 0 === l2 ? "Arrow up" : l2, f2 = n2.navigateDownKeyAriaLabel, p2 = void 0 === f2 ? "Arrow down" : f2, m2 = n2.closeText, d2 = void 0 === m2 ? "to close" : m2, h2 = n2.closeKeyAriaLabel, v2 = void 0 === h2 ? "Escape key" : h2, y2 = n2.searchByText, _2 = void 0 === y2 ? "Search by" : y2;
-    return Be.createElement(Be.Fragment, null, Be.createElement("div", { className: "DocSearch-Logo" }, Be.createElement(xn, { translations: { searchByText: _2 } })), Be.createElement("ul", { className: "DocSearch-Commands" }, Be.createElement("li", null, Be.createElement("kbd", { className: "DocSearch-Commands-Key" }, Be.createElement(Nn, { ariaLabel: i2 }, Be.createElement("path", { d: "M12 3.53088v3c0 1-1 2-2 2H4M7 11.53088l-3-3 3-3" }))), Be.createElement("span", { className: "DocSearch-Label" }, o2)), Be.createElement("li", null, Be.createElement("kbd", { className: "DocSearch-Commands-Key" }, Be.createElement(Nn, { ariaLabel: p2 }, Be.createElement("path", { d: "M7.5 3.5v8M10.5 8.5l-3 3-3-3" }))), Be.createElement("kbd", { className: "DocSearch-Commands-Key" }, Be.createElement(Nn, { ariaLabel: s2 }, Be.createElement("path", { d: "M7.5 11.5v-8M10.5 6.5l-3-3-3 3" }))), Be.createElement("span", { className: "DocSearch-Label" }, u2)), Be.createElement("li", null, Be.createElement("kbd", { className: "DocSearch-Commands-Key" }, Be.createElement(Nn, { ariaLabel: v2 }, Be.createElement("path", { d: "M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956" }))), Be.createElement("span", { className: "DocSearch-Label" }, d2))));
+    return Be.createElement(Be.Fragment, null, Be.createElement("div", { className: "DocSearch-Logo" }, Be.createElement(Nn, { translations: { searchByText: _2 } })), Be.createElement("ul", { className: "DocSearch-Commands" }, Be.createElement("li", null, Be.createElement("kbd", { className: "DocSearch-Commands-Key" }, Be.createElement(xn, { ariaLabel: i2 }, Be.createElement("path", { d: "M12 3.53088v3c0 1-1 2-2 2H4M7 11.53088l-3-3 3-3" }))), Be.createElement("span", { className: "DocSearch-Label" }, o2)), Be.createElement("li", null, Be.createElement("kbd", { className: "DocSearch-Commands-Key" }, Be.createElement(xn, { ariaLabel: p2 }, Be.createElement("path", { d: "M7.5 3.5v8M10.5 8.5l-3 3-3-3" }))), Be.createElement("kbd", { className: "DocSearch-Commands-Key" }, Be.createElement(xn, { ariaLabel: s2 }, Be.createElement("path", { d: "M7.5 11.5v-8M10.5 6.5l-3-3-3 3" }))), Be.createElement("span", { className: "DocSearch-Label" }, u2)), Be.createElement("li", null, Be.createElement("kbd", { className: "DocSearch-Commands-Key" }, Be.createElement(xn, { ariaLabel: v2 }, Be.createElement("path", { d: "M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956" }))), Be.createElement("span", { className: "DocSearch-Label" }, d2))));
   }
   function Rn(e2) {
     var t2 = e2.hit, n2 = e2.children;
@@ -2650,24 +2650,24 @@
   function Vn() {
     return Be.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20" }, Be.createElement("path", { d: "M17 5H3h14zm0 5H3h14zm0 5H3h14z", stroke: "currentColor", fill: "none", fillRule: "evenodd", strokeLinejoin: "round" }));
   }
-  function zn() {
+  function Wn() {
     return Be.createElement("svg", { width: "20", height: "20", viewBox: "0 0 20 20" }, Be.createElement("path", { d: "M10 14.2L5 17l1-5.6-4-4 5.5-.7 2.5-5 2.5 5 5.6.8-4 4 .9 5.5z", stroke: "currentColor", fill: "none", fillRule: "evenodd", strokeLinejoin: "round" }));
   }
-  function Wn() {
+  function Kn() {
     return Be.createElement("svg", { width: "40", height: "40", viewBox: "0 0 20 20", fill: "none", fillRule: "evenodd", stroke: "currentColor", strokeLinecap: "round", strokeLinejoin: "round" }, Be.createElement("path", { d: "M19 4.8a16 16 0 00-2-1.2m-3.3-1.2A16 16 0 001.1 4.7M16.7 8a12 12 0 00-2.8-1.4M10 6a12 12 0 00-6.7 2M12.3 14.7a4 4 0 00-4.5 0M14.5 11.4A8 8 0 0010 10M3 16L18 2M10 18h0" }));
   }
-  function Kn() {
+  function zn() {
     return Be.createElement("svg", { width: "40", height: "40", viewBox: "0 0 20 20", fill: "none", fillRule: "evenodd", stroke: "currentColor", strokeLinecap: "round", strokeLinejoin: "round" }, Be.createElement("path", { d: "M15.5 4.8c2 3 1.7 7-1 9.7h0l4.3 4.3-4.3-4.3a7.8 7.8 0 01-9.8 1m-2.2-2.2A7.8 7.8 0 0113.2 2.4M2 18L18 2" }));
   }
   function Jn(e2) {
     var t2 = e2.translations, n2 = void 0 === t2 ? {} : t2, r2 = n2.titleText, o2 = void 0 === r2 ? "Unable to fetch results" : r2, c2 = n2.helpText, i2 = void 0 === c2 ? "You might want to check your network connection." : c2;
-    return Be.createElement("div", { className: "DocSearch-ErrorScreen" }, Be.createElement("div", { className: "DocSearch-Screen-Icon" }, Be.createElement(Wn, null)), Be.createElement("p", { className: "DocSearch-Title" }, o2), Be.createElement("p", { className: "DocSearch-Help" }, i2));
+    return Be.createElement("div", { className: "DocSearch-ErrorScreen" }, Be.createElement("div", { className: "DocSearch-Screen-Icon" }, Be.createElement(Kn, null)), Be.createElement("p", { className: "DocSearch-Title" }, o2), Be.createElement("p", { className: "DocSearch-Help" }, i2));
   }
   var $n = ["translations"];
   function Qn(e2) {
     return function(e3) {
       if (Array.isArray(e3))
-        return Yn(e3);
+        return Zn(e3);
     }(e2) || function(e3) {
       if ("undefined" != typeof Symbol && null != e3[Symbol.iterator] || null != e3["@@iterator"])
         return Array.from(e3);
@@ -2675,24 +2675,24 @@
       if (!e3)
         return;
       if ("string" == typeof e3)
-        return Yn(e3, t2);
+        return Zn(e3, t2);
       var n2 = Object.prototype.toString.call(e3).slice(8, -1);
       "Object" === n2 && e3.constructor && (n2 = e3.constructor.name);
       if ("Map" === n2 || "Set" === n2)
         return Array.from(e3);
       if ("Arguments" === n2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
-        return Yn(e3, t2);
+        return Zn(e3, t2);
     }(e2) || function() {
       throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }();
   }
-  function Yn(e2, t2) {
+  function Zn(e2, t2) {
     (null == t2 || t2 > e2.length) && (t2 = e2.length);
     for (var n2 = 0, r2 = new Array(t2); n2 < t2; n2++)
       r2[n2] = e2[n2];
     return r2;
   }
-  function Gn(e2, t2) {
+  function Yn(e2, t2) {
     if (null == e2)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -2710,9 +2710,9 @@
     }
     return o2;
   }
-  function Zn(e2) {
-    var t2 = e2.translations, n2 = void 0 === t2 ? {} : t2, r2 = Gn(e2, $n), o2 = n2.noResultsText, c2 = void 0 === o2 ? "No results for" : o2, i2 = n2.suggestedQueryText, a2 = void 0 === i2 ? "Try searching for" : i2, u2 = n2.reportMissingResultsText, l2 = void 0 === u2 ? "Believe this query should return results?" : u2, s2 = n2.reportMissingResultsLinkText, f2 = void 0 === s2 ? "Let us know." : s2, p2 = r2.state.context.searchSuggestions;
-    return Be.createElement("div", { className: "DocSearch-NoResults" }, Be.createElement("div", { className: "DocSearch-Screen-Icon" }, Be.createElement(Kn, null)), Be.createElement("p", { className: "DocSearch-Title" }, c2, ' "', Be.createElement("strong", null, r2.state.query), '"'), p2 && p2.length > 0 && Be.createElement("div", { className: "DocSearch-NoResults-Prefill-List" }, Be.createElement("p", { className: "DocSearch-Help" }, a2, ":"), Be.createElement("ul", null, p2.slice(0, 3).reduce(function(e3, t3) {
+  function Gn(e2) {
+    var t2 = e2.translations, n2 = void 0 === t2 ? {} : t2, r2 = Yn(e2, $n), o2 = n2.noResultsText, c2 = void 0 === o2 ? "No results for" : o2, i2 = n2.suggestedQueryText, a2 = void 0 === i2 ? "Try searching for" : i2, u2 = n2.reportMissingResultsText, l2 = void 0 === u2 ? "Believe this query should return results?" : u2, s2 = n2.reportMissingResultsLinkText, f2 = void 0 === s2 ? "Let us know." : s2, p2 = r2.state.context.searchSuggestions;
+    return Be.createElement("div", { className: "DocSearch-NoResults" }, Be.createElement("div", { className: "DocSearch-Screen-Icon" }, Be.createElement(zn, null)), Be.createElement("p", { className: "DocSearch-Title" }, c2, ' "', Be.createElement("strong", null, r2.state.query), '"'), p2 && p2.length > 0 && Be.createElement("div", { className: "DocSearch-NoResults-Prefill-List" }, Be.createElement("p", { className: "DocSearch-Help" }, a2, ":"), Be.createElement("ul", null, p2.slice(0, 3).reduce(function(e3, t3) {
       return [].concat(Qn(e3), [Be.createElement("li", { key: t3 }, Be.createElement("button", { className: "DocSearch-Prefill", key: t3, type: "button", onClick: function() {
         r2.setQuery(t3.toLowerCase() + " "), r2.refresh(), r2.inputRef.current.focus();
       } }, t3))]);
@@ -2923,13 +2923,13 @@
         e4.preventDefault(), e4.stopPropagation(), n3(function() {
           r2.favoriteSearches.add(t3), r2.recentSearches.remove(t3), r2.refresh();
         });
-      } }, Be.createElement(zn, null))), Be.createElement("div", { className: "DocSearch-Hit-action" }, Be.createElement("button", { className: "DocSearch-Hit-action-button", title: f2, type: "submit", onClick: function(e4) {
+      } }, Be.createElement(Wn, null))), Be.createElement("div", { className: "DocSearch-Hit-action" }, Be.createElement("button", { className: "DocSearch-Hit-action-button", title: f2, type: "submit", onClick: function(e4) {
         e4.preventDefault(), e4.stopPropagation(), o3(function() {
           r2.recentSearches.remove(t3), r2.refresh();
         });
       } }, Be.createElement(Mn, null))));
     } })), Be.createElement(lr, gr({}, r2, { title: m2, collection: r2.state.collections[1], renderIcon: function() {
-      return Be.createElement("div", { className: "DocSearch-Hit-icon" }, Be.createElement(zn, null));
+      return Be.createElement("div", { className: "DocSearch-Hit-icon" }, Be.createElement(Wn, null));
     }, renderAction: function(e3) {
       var t3 = e3.item, n3 = e3.runDeleteTransition;
       return Be.createElement("div", { className: "DocSearch-Hit-action" }, Be.createElement("button", { className: "DocSearch-Hit-action-button", title: h2, type: "submit", onClick: function(e4) {
@@ -2975,7 +2975,7 @@
     var o2 = r2.state.collections.some(function(e3) {
       return e3.items.length > 0;
     });
-    return r2.state.query ? false === o2 ? Be.createElement(Zn, wr({}, r2, { translations: null == n2 ? void 0 : n2.noResultsScreen })) : Be.createElement(_r, r2) : Be.createElement(Sr, wr({}, r2, { hasCollections: o2, translations: null == n2 ? void 0 : n2.startScreen }));
+    return r2.state.query ? false === o2 ? Be.createElement(Gn, wr({}, r2, { translations: null == n2 ? void 0 : n2.noResultsScreen })) : Be.createElement(_r, r2) : Be.createElement(Sr, wr({}, r2, { hasCollections: o2, translations: null == n2 ? void 0 : n2.startScreen }));
   }, function(e2, t2) {
     return "loading" === t2.state.status || "stalled" === t2.state.status;
   });
@@ -3016,10 +3016,10 @@
       r2.isFromSelection && r2.inputRef.current && r2.inputRef.current.select();
     }, [r2.isFromSelection, r2.inputRef]), Be.createElement(Be.Fragment, null, Be.createElement("form", { className: "DocSearch-Form", onSubmit: function(e3) {
       e3.preventDefault();
-    }, onReset: p2 }, Be.createElement("label", kr({ className: "DocSearch-MagnifierLabel" }, r2.getLabelProps()), Be.createElement(ze, null)), Be.createElement("div", { className: "DocSearch-LoadingIndicator" }, Be.createElement(Ln, null)), Be.createElement("input", kr({ className: "DocSearch-Input", ref: r2.inputRef }, r2.getInputProps({ inputElement: r2.inputRef.current, autoFocus: r2.autoFocus, maxLength: 64 }))), Be.createElement("button", { type: "reset", title: c2, className: "DocSearch-Reset", "aria-label": a2, hidden: !r2.state.query }, Be.createElement(Mn, null))), Be.createElement("button", { className: "DocSearch-Cancel", type: "reset", "aria-label": f2, onClick: r2.onClose }, l2));
+    }, onReset: p2 }, Be.createElement("label", kr({ className: "DocSearch-MagnifierLabel" }, r2.getLabelProps()), Be.createElement(We, null)), Be.createElement("div", { className: "DocSearch-LoadingIndicator" }, Be.createElement(Ln, null)), Be.createElement("input", kr({ className: "DocSearch-Input", ref: r2.inputRef }, r2.getInputProps({ inputElement: r2.inputRef.current, autoFocus: r2.autoFocus, maxLength: 64 }))), Be.createElement("button", { type: "reset", title: c2, className: "DocSearch-Reset", "aria-label": a2, hidden: !r2.state.query }, Be.createElement(Mn, null))), Be.createElement("button", { className: "DocSearch-Cancel", type: "reset", "aria-label": f2, onClick: r2.onClose }, l2));
   }
   var Ar = ["_highlightResult", "_snippetResult"];
-  function xr(e2, t2) {
+  function Nr(e2, t2) {
     if (null == e2)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -3037,7 +3037,7 @@
     }
     return o2;
   }
-  function Nr(e2) {
+  function xr(e2) {
     return false === function() {
       var e3 = "__TEST_KEY__";
       try {
@@ -3056,9 +3056,9 @@
     } };
   }
   function Tr(e2) {
-    var t2 = e2.key, n2 = e2.limit, r2 = void 0 === n2 ? 5 : n2, o2 = Nr(t2), c2 = o2.getItem().slice(0, r2);
+    var t2 = e2.key, n2 = e2.limit, r2 = void 0 === n2 ? 5 : n2, o2 = xr(t2), c2 = o2.getItem().slice(0, r2);
     return { add: function(e3) {
-      var t3 = e3, n3 = (t3._highlightResult, t3._snippetResult, xr(t3, Ar)), i2 = c2.findIndex(function(e4) {
+      var t3 = e3, n3 = (t3._highlightResult, t3._snippetResult, Nr(t3, Ar)), i2 = c2.findIndex(function(e4) {
         return e4.objectID === n3.objectID;
       });
       i2 > -1 && c2.splice(i2, 1), c2.unshift(n3), c2 = c2.slice(0, r2), o2.setItem(c2);
@@ -3195,20 +3195,20 @@
       -1 === ["timeout", "headers", "queryParameters", "data", "cacheable"].indexOf(e3) && (r2[e3] = n2[e3]);
     }), { data: Object.entries(r2).length > 0 ? r2 : void 0, timeout: n2.timeout || t2, headers: n2.headers || {}, queryParameters: n2.queryParameters || {}, cacheable: n2.cacheable };
   }
-  var zr = { Read: 1, Write: 2, Any: 3 };
-  var Wr = 1;
-  var Kr = 2;
+  var Wr = { Read: 1, Write: 2, Any: 3 };
+  var Kr = 1;
+  var zr = 2;
   var Jr = 3;
   function $r(e2) {
-    var n2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : Wr;
+    var n2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : Kr;
     return t(t({}, e2), {}, { status: n2, lastUpdate: Date.now() });
   }
   function Qr(e2) {
-    return "string" == typeof e2 ? { protocol: "https", url: e2, accept: zr.Any } : { protocol: e2.protocol || "https", url: e2.url, accept: e2.accept || zr.Any };
+    return "string" == typeof e2 ? { protocol: "https", url: e2, accept: Wr.Any } : { protocol: e2.protocol || "https", url: e2.url, accept: e2.accept || Wr.Any };
   }
-  var Yr = "GET";
-  var Gr = "POST";
-  function Zr(e2, t2) {
+  var Zr = "GET";
+  var Yr = "POST";
+  function Gr(e2, t2) {
     return Promise.all(t2.map(function(t3) {
       return e2.get(t3, function() {
         return Promise.resolve($r(t3));
@@ -3216,7 +3216,7 @@
     })).then(function(e3) {
       var n2 = e3.filter(function(e4) {
         return function(e5) {
-          return e5.status === Wr || Date.now() - e5.lastUpdate > 12e4;
+          return e5.status === Kr || Date.now() - e5.lastUpdate > 12e4;
         }(e4);
       }), r2 = e3.filter(function(e4) {
         return function(e5) {
@@ -3232,7 +3232,7 @@
   }
   function Xr(e2, n2, r2, o2) {
     var c2 = [], i2 = function(e3, n3) {
-      if (e3.method === Yr || void 0 === e3.data && void 0 === n3.data)
+      if (e3.method === Zr || void 0 === e3.data && void 0 === n3.data)
         return;
       var r3 = Array.isArray(e3.data) ? e3.data : t(t({}, e3.data), n3.data);
       return JSON.stringify(r3);
@@ -3242,7 +3242,7 @@
         var t2 = r3[e4];
         o3[e4.toLowerCase()] = t2;
       }), o3;
-    }(e2, o2), l2 = r2.method, s2 = r2.method !== Yr ? {} : t(t({}, r2.data), o2.data), f2 = t(t(t({ "x-algolia-agent": e2.userAgent.value }, e2.queryParameters), s2), o2.queryParameters), p2 = 0, m2 = function t2(n3, a2) {
+    }(e2, o2), l2 = r2.method, s2 = r2.method !== Zr ? {} : t(t({}, r2.data), o2.data), f2 = t(t(t({ "x-algolia-agent": e2.userAgent.value }, e2.queryParameters), s2), o2.queryParameters), p2 = 0, m2 = function t2(n3, a2) {
       var s3 = n3.pop();
       if (void 0 === s3)
         throw { name: "RetryError", message: "Unreachable hosts - your application id may be incorrect. If the error persists, contact support@algolia.com.", transporterStackTrace: ro(c2) };
@@ -3261,7 +3261,7 @@
         }(e3);
       }, onRetry: function(r3) {
         var o3 = d2(r3);
-        return r3.isTimedOut && p2++, Promise.all([e2.logger.info("Retryable failure", oo(o3)), e2.hostsCache.set(s3, $r(s3, r3.isTimedOut ? Jr : Kr))]).then(function() {
+        return r3.isTimedOut && p2++, Promise.all([e2.logger.info("Retryable failure", oo(o3)), e2.hostsCache.set(s3, $r(s3, r3.isTimedOut ? Jr : zr))]).then(function() {
           return t2(n3, a2);
         });
       }, onFail: function(e3) {
@@ -3288,7 +3288,7 @@
         }(e3, h2);
       });
     };
-    return Zr(e2.hostsCache, n2).then(function(e3) {
+    return Gr(e2.hostsCache, n2).then(function(e3) {
       return m2(a(e3.statelessHosts).reverse(), e3.getTimeout);
     });
   }
@@ -3332,7 +3332,7 @@
       }), read: function(e4, t3) {
         var n4 = Vr(t3, f2.timeouts.read), r4 = function() {
           return Xr(f2, f2.hosts.filter(function(e5) {
-            return 0 != (e5.accept & zr.Read);
+            return 0 != (e5.accept & Wr.Read);
           }), e4, n4);
         };
         if (true !== (void 0 !== n4.cacheable ? n4.cacheable : e4.cacheable))
@@ -3354,11 +3354,11 @@
         } });
       }, write: function(e4, t3) {
         return Xr(f2, f2.hosts.filter(function(e5) {
-          return 0 != (e5.accept & zr.Write);
+          return 0 != (e5.accept & Wr.Write);
         }), e4, Vr(t3, f2.timeouts.write));
       } };
       return f2;
-    }(t(t({ hosts: [{ url: "".concat(n2, "-dsn.algolia.net"), accept: zr.Read }, { url: "".concat(n2, ".algolia.net"), accept: zr.Write }].concat(Hr([{ url: "".concat(n2, "-1.algolianet.com") }, { url: "".concat(n2, "-2.algolianet.com") }, { url: "".concat(n2, "-3.algolianet.com") }])) }, e2), {}, { headers: t(t(t({}, r2.headers()), { "content-type": "application/x-www-form-urlencoded" }), e2.headers), queryParameters: t(t({}, r2.queryParameters()), e2.queryParameters) })), c2 = { transporter: o2, appId: n2, addAlgoliaAgent: function(e3, t2) {
+    }(t(t({ hosts: [{ url: "".concat(n2, "-dsn.algolia.net"), accept: Wr.Read }, { url: "".concat(n2, ".algolia.net"), accept: Wr.Write }].concat(Hr([{ url: "".concat(n2, "-1.algolianet.com") }, { url: "".concat(n2, "-2.algolianet.com") }, { url: "".concat(n2, "-3.algolianet.com") }])) }, e2), {}, { headers: t(t(t({}, r2.headers()), { "content-type": "application/x-www-form-urlencoded" }), e2.headers), queryParameters: t(t({}, r2.queryParameters()), e2.queryParameters) })), c2 = { transporter: o2, appId: n2, addAlgoliaAgent: function(e3, t2) {
       o2.userAgent.add({ segment: e3, version: t2 });
     }, clearCache: function() {
       return Promise.all([o2.requestsCache.clear(), o2.responsesCache.clear()]).then(function() {
@@ -3377,7 +3377,7 @@
       var o2 = n2.map(function(e3) {
         return t(t({}, e3), {}, { params: no(e3.params || {}) });
       });
-      return e2.transporter.read({ method: Gr, path: "1/indexes/*/queries", data: { requests: o2 }, cacheable: true }, r2);
+      return e2.transporter.read({ method: Yr, path: "1/indexes/*/queries", data: { requests: o2 }, cacheable: true }, r2);
     };
   };
   var uo = function(e2) {
@@ -3390,17 +3390,17 @@
   };
   var lo = function(e2) {
     return function(t2, n2, r2) {
-      return e2.transporter.read({ method: Gr, path: Fr("1/answers/%s/prediction", e2.indexName), data: { query: t2, queryLanguages: n2 }, cacheable: true }, r2);
+      return e2.transporter.read({ method: Yr, path: Fr("1/answers/%s/prediction", e2.indexName), data: { query: t2, queryLanguages: n2 }, cacheable: true }, r2);
     };
   };
   var so = function(e2) {
     return function(t2, n2) {
-      return e2.transporter.read({ method: Gr, path: Fr("1/indexes/%s/query", e2.indexName), data: { query: t2 }, cacheable: true }, n2);
+      return e2.transporter.read({ method: Yr, path: Fr("1/indexes/%s/query", e2.indexName), data: { query: t2 }, cacheable: true }, n2);
     };
   };
   var fo = function(e2) {
     return function(t2, n2, r2) {
-      return e2.transporter.read({ method: Gr, path: Fr("1/indexes/%s/facets/%s/query", e2.indexName, t2), data: { facetQuery: n2 }, cacheable: true }, r2);
+      return e2.transporter.read({ method: Yr, path: Fr("1/indexes/%s/facets/%s/query", e2.indexName, t2), data: { facetQuery: n2 }, cacheable: true }, r2);
     };
   };
   var po = 1;
@@ -3540,21 +3540,21 @@
   function jo(e2) {
     var t2 = e2.appId, n2 = e2.apiKey, r2 = e2.indexName, o2 = e2.placeholder, c2 = void 0 === o2 ? "Search docs" : o2, i2 = e2.searchParameters, a2 = e2.onClose, u2 = void 0 === a2 ? mr : a2, l2 = e2.transformItems, s2 = void 0 === l2 ? pr : l2, f2 = e2.hitComponent, p2 = void 0 === f2 ? Rn : f2, m2 = e2.resultsFooterComponent, d2 = void 0 === m2 ? function() {
       return null;
-    } : m2, h2 = e2.navigator, v2 = e2.initialScrollY, y2 = void 0 === v2 ? 0 : v2, _2 = e2.transformSearchClient, b2 = void 0 === _2 ? pr : _2, g2 = e2.disableUserPersonalization, O2 = void 0 !== g2 && g2, S2 = e2.initialQuery, E2 = void 0 === S2 ? "" : S2, w2 = e2.translations, j2 = void 0 === w2 ? {} : w2, P2 = e2.getMissingResultsUrl, I2 = j2.footer, k2 = j2.searchBox, D2 = wo(j2, yo), C2 = So(Be.useState({ query: "", collections: [], completion: null, context: {}, isOpen: false, activeItemId: null, status: "idle" }), 2), A2 = C2[0], x2 = C2[1], N2 = Be.useRef(null), T2 = Be.useRef(null), R2 = Be.useRef(null), L2 = Be.useRef(null), q2 = Be.useRef(null), M2 = Be.useRef(10), H2 = Be.useRef("undefined" != typeof window ? window.getSelection().toString().slice(0, 64) : "").current, U2 = Be.useRef(E2 || H2).current, F2 = function(e3, t3, n3) {
+    } : m2, h2 = e2.navigator, v2 = e2.initialScrollY, y2 = void 0 === v2 ? 0 : v2, _2 = e2.transformSearchClient, b2 = void 0 === _2 ? pr : _2, g2 = e2.disableUserPersonalization, O2 = void 0 !== g2 && g2, S2 = e2.initialQuery, E2 = void 0 === S2 ? "" : S2, w2 = e2.translations, j2 = void 0 === w2 ? {} : w2, P2 = e2.getMissingResultsUrl, I2 = j2.footer, k2 = j2.searchBox, D2 = wo(j2, yo), C2 = So(Be.useState({ query: "", collections: [], completion: null, context: {}, isOpen: false, activeItemId: null, status: "idle" }), 2), A2 = C2[0], N2 = C2[1], x2 = Be.useRef(null), T2 = Be.useRef(null), R2 = Be.useRef(null), L2 = Be.useRef(null), q2 = Be.useRef(null), M2 = Be.useRef(10), H2 = Be.useRef("undefined" != typeof window ? window.getSelection().toString().slice(0, 64) : "").current, U2 = Be.useRef(E2 || H2).current, F2 = function(e3, t3, n3) {
       return Be.useMemo(function() {
         var r3 = vo(e3, t3);
-        return r3.addAlgoliaAgent("docsearch", "3.2.1"), false === /docsearch.js \(.*\)/.test(r3.transporter.userAgent.value) && r3.addAlgoliaAgent("docsearch-react", "3.2.1"), n3(r3);
+        return r3.addAlgoliaAgent("docsearch", "3.2.2"), false === /docsearch.js \(.*\)/.test(r3.transporter.userAgent.value) && r3.addAlgoliaAgent("docsearch-react", "3.2.2"), n3(r3);
       }, [e3, t3, n3]);
-    }(t2, n2, b2), B2 = Be.useRef(Tr({ key: "__DOCSEARCH_FAVORITE_SEARCHES__".concat(r2), limit: 10 })).current, V2 = Be.useRef(Tr({ key: "__DOCSEARCH_RECENT_SEARCHES__".concat(r2), limit: 0 === B2.getAll().length ? 7 : 4 })).current, z2 = Be.useCallback(function(e3) {
+    }(t2, n2, b2), B2 = Be.useRef(Tr({ key: "__DOCSEARCH_FAVORITE_SEARCHES__".concat(r2), limit: 10 })).current, V2 = Be.useRef(Tr({ key: "__DOCSEARCH_RECENT_SEARCHES__".concat(r2), limit: 0 === B2.getAll().length ? 7 : 4 })).current, W2 = Be.useCallback(function(e3) {
       if (!O2) {
         var t3 = "content" === e3.type ? e3.__docsearch_parent : e3;
         t3 && -1 === B2.getAll().findIndex(function(e4) {
           return e4.objectID === t3.objectID;
         }) && V2.add(t3);
       }
-    }, [B2, V2, O2]), W2 = Be.useMemo(function() {
+    }, [B2, V2, O2]), K2 = Be.useMemo(function() {
       return An({ id: "docsearch", defaultActiveItemId: 0, placeholder: c2, openOnFocus: true, initialState: { query: U2, context: { searchSuggestions: [] } }, navigator: h2, onStateChange: function(e3) {
-        x2(e3.state);
+        N2(e3.state);
       }, getSources: function(e3) {
         var t3 = e3.query, n3 = e3.state, o3 = e3.setContext, c3 = e3.setStatus;
         return t3 ? F2.search([{ query: t3, indexName: r2, params: go({ attributesToRetrieve: ["hierarchy.lvl0", "hierarchy.lvl1", "hierarchy.lvl2", "hierarchy.lvl3", "hierarchy.lvl4", "hierarchy.lvl5", "hierarchy.lvl6", "content", "type", "url"], attributesToSnippet: ["hierarchy.lvl1:".concat(M2.current), "hierarchy.lvl2:".concat(M2.current), "hierarchy.lvl3:".concat(M2.current), "hierarchy.lvl4:".concat(M2.current), "hierarchy.lvl5:".concat(M2.current), "hierarchy.lvl6:".concat(M2.current), "content:".concat(M2.current)], snippetEllipsisText: "\u2026", highlightPreTag: "<mark>", highlightPostTag: "</mark>", hitsPerPage: 20 }, i2) }]).catch(function(e4) {
@@ -3566,7 +3566,7 @@
           return n3.context.searchSuggestions.length < Object.keys(i3).length && o3({ searchSuggestions: Object.keys(i3) }), o3({ nbHits: c4 }), Object.values(i3).map(function(e5, t5) {
             return { sourceId: "hits".concat(t5), onSelect: function(e6) {
               var t6 = e6.item, n4 = e6.event;
-              z2(t6), n4.shiftKey || n4.ctrlKey || n4.metaKey || u2();
+              W2(t6), n4.shiftKey || n4.ctrlKey || n4.metaKey || u2();
             }, getItemUrl: function(e6) {
               return e6.item.url;
             }, getItems: function() {
@@ -3583,21 +3583,21 @@
           });
         }) : O2 ? [] : [{ sourceId: "recentSearches", onSelect: function(e4) {
           var t4 = e4.item, n4 = e4.event;
-          z2(t4), n4.shiftKey || n4.ctrlKey || n4.metaKey || u2();
+          W2(t4), n4.shiftKey || n4.ctrlKey || n4.metaKey || u2();
         }, getItemUrl: function(e4) {
           return e4.item.url;
         }, getItems: function() {
           return V2.getAll();
         } }, { sourceId: "favoriteSearches", onSelect: function(e4) {
           var t4 = e4.item, n4 = e4.event;
-          z2(t4), n4.shiftKey || n4.ctrlKey || n4.metaKey || u2();
+          W2(t4), n4.shiftKey || n4.ctrlKey || n4.metaKey || u2();
         }, getItemUrl: function(e4) {
           return e4.item.url;
         }, getItems: function() {
           return B2.getAll();
         } }];
       } });
-    }, [r2, i2, F2, u2, V2, B2, z2, U2, c2, h2, s2, O2]), K2 = W2.getEnvironmentProps, J2 = W2.getRootProps, $2 = W2.refresh;
+    }, [r2, i2, F2, u2, V2, B2, W2, U2, c2, h2, s2, O2]), z2 = K2.getEnvironmentProps, J2 = K2.getRootProps, $2 = K2.refresh;
     return function(e3) {
       var t3 = e3.getEnvironmentProps, n3 = e3.panelElement, r3 = e3.formElement, o3 = e3.inputElement;
       Be.useEffect(function() {
@@ -3608,7 +3608,7 @@
           };
         }
       }, [t3, n3, r3, o3]);
-    }({ getEnvironmentProps: K2, panelElement: L2.current, formElement: R2.current, inputElement: q2.current }), function(e3) {
+    }({ getEnvironmentProps: z2, panelElement: L2.current, formElement: R2.current, inputElement: q2.current }), function(e3) {
       var t3 = e3.container;
       Be.useEffect(function() {
         if (t3) {
@@ -3621,7 +3621,7 @@
           "Tab" === e5.key && (e5.shiftKey ? document.activeElement === n3 && (e5.preventDefault(), r3.focus()) : document.activeElement === r3 && (e5.preventDefault(), n3.focus()));
         }
       }, [t3]);
-    }({ container: N2.current }), Be.useEffect(function() {
+    }({ container: x2.current }), Be.useEffect(function() {
       return document.body.classList.add("DocSearch--active"), function() {
         var e3, t3;
         document.body.classList.remove("DocSearch--active"), null === (e3 = (t3 = window).scrollTo) || void 0 === e3 || e3.call(t3, 0, y2);
@@ -3642,10 +3642,10 @@
       return e3(), window.addEventListener("resize", e3), function() {
         window.removeEventListener("resize", e3);
       };
-    }, []), Be.createElement("div", _o({ ref: N2 }, J2({ "aria-expanded": true }), { className: ["DocSearch", "DocSearch-Container", "stalled" === A2.status && "DocSearch-Container--Stalled", "error" === A2.status && "DocSearch-Container--Errored"].filter(Boolean).join(" "), role: "button", tabIndex: 0, onMouseDown: function(e3) {
+    }, []), Be.createElement("div", _o({ ref: x2 }, J2({ "aria-expanded": true }), { className: ["DocSearch", "DocSearch-Container", "stalled" === A2.status && "DocSearch-Container--Stalled", "error" === A2.status && "DocSearch-Container--Errored"].filter(Boolean).join(" "), role: "button", tabIndex: 0, onMouseDown: function(e3) {
       e3.target === e3.currentTarget && u2();
-    } }), Be.createElement("div", { className: "DocSearch-Modal", ref: T2 }, Be.createElement("header", { className: "DocSearch-SearchBar", ref: R2 }, Be.createElement(Cr, _o({}, W2, { state: A2, autoFocus: 0 === U2.length, inputRef: q2, isFromSelection: Boolean(U2) && U2 === H2, translations: k2, onClose: u2 }))), Be.createElement("div", { className: "DocSearch-Dropdown", ref: L2 }, Be.createElement(Pr, _o({}, W2, { indexName: r2, state: A2, hitComponent: p2, resultsFooterComponent: d2, disableUserPersonalization: O2, recentSearches: V2, favoriteSearches: B2, inputRef: q2, translations: D2, getMissingResultsUrl: P2, onItemClick: function(e3) {
-      z2(e3), u2();
+    } }), Be.createElement("div", { className: "DocSearch-Modal", ref: T2 }, Be.createElement("header", { className: "DocSearch-SearchBar", ref: R2 }, Be.createElement(Cr, _o({}, K2, { state: A2, autoFocus: 0 === U2.length, inputRef: q2, isFromSelection: Boolean(U2) && U2 === H2, translations: k2, onClose: u2 }))), Be.createElement("div", { className: "DocSearch-Dropdown", ref: L2 }, Be.createElement(Pr, _o({}, K2, { indexName: r2, state: A2, hitComponent: p2, resultsFooterComponent: d2, disableUserPersonalization: O2, recentSearches: V2, favoriteSearches: B2, inputRef: q2, translations: D2, getMissingResultsUrl: P2, onItemClick: function(e3) {
+      W2(e3), u2();
     } }))), Be.createElement("footer", { className: "DocSearch-Footer" }, Be.createElement(Tn, { translations: I2 }))));
   }
   function Po() {
@@ -3723,11 +3723,11 @@
       }, [t3, n3, r3, o3, c3]);
     }({ isOpen: c2, onOpen: s2, onClose: f2, onInput: Be.useCallback(function(e3) {
       i2(true), l2(e3.key);
-    }, [i2, l2]), searchButtonRef: r2 }), Be.createElement(Be.Fragment, null, Be.createElement(Ye, { ref: r2, translations: null == e2 || null === (t2 = e2.translations) || void 0 === t2 ? void 0 : t2.button, onClick: s2 }), c2 && Ie(Be.createElement(jo, Po({}, e2, { initialScrollY: window.scrollY, initialQuery: u2, translations: null == e2 || null === (n2 = e2.translations) || void 0 === n2 ? void 0 : n2.modal, onClose: f2 })), document.body));
+    }, [i2, l2]), searchButtonRef: r2 }), Be.createElement(Be.Fragment, null, Be.createElement(Ze, { ref: r2, translations: null == e2 || null === (t2 = e2.translations) || void 0 === t2 ? void 0 : t2.button, onClick: s2 }), c2 && Ie(Be.createElement(jo, Po({}, e2, { initialScrollY: window.scrollY, initialQuery: u2, translations: null == e2 || null === (n2 = e2.translations) || void 0 === n2 ? void 0 : n2.modal, onClose: f2 })), document.body));
   }
   function Co(e2) {
     Ae(Be.createElement(Do, o({}, e2, { transformSearchClient: function(t2) {
-      return t2.addAlgoliaAgent("docsearch.js", "3.2.1"), e2.transformSearchClient ? e2.transformSearchClient(t2) : t2;
+      return t2.addAlgoliaAgent("docsearch.js", "3.2.2"), e2.transformSearchClient ? e2.transformSearchClient(t2) : t2;
     } })), function(e3) {
       var t2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : window;
       return "string" == typeof e3 ? t2.document.querySelector(e3) : e3;
@@ -3833,4 +3833,4 @@
  *
  * Licensed MIT © Zeno Rocha
  */
-/*! @docsearch/js 3.2.1 | MIT License | © Algolia, Inc. and contributors | https://docsearch.algolia.com */
+/*! @docsearch/js 3.2.2 | MIT License | © Algolia, Inc. and contributors | https://docsearch.algolia.com */
