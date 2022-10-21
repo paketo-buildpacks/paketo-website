@@ -390,6 +390,16 @@ pack build my-app --buildpack paketo-buildpacks/go \
 2. To view the Go modules used in the build, inspect one of the SBOMs generated
    by the Go Mod Vendor buildpack. For instance, to view the SBOM as
    [CycloneDX][format/cyclonedx] JSON:
+
+## Enable `DEBUG` logging
+Users of the Go buildpack can access extra debug logs during the image build process by setting the `BP_LOG_LEVEL`
+environment variable to `DEBUG` at build time. Additional debug logs will
+appear in build logs if the relevant buildpacks have debug log lines.
+{{< code/copyable >}}
+pack build my-app --buildpack paketo-buildpacks/go \
+  --env BP_LOG_LEVEL=DEBUG
+{{< /code/copyable >}}
+
 <!-- spellchecker-disable -->
 {{< code/copyable >}}
 cat /tmp/sbom-output/build/paketo-buildpacks_go-mod-vendor/sbom.cdx.json

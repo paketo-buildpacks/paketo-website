@@ -424,6 +424,15 @@ of our configuration docs.
 app image by following the documentation for the [Environment Variables
 Buildpack](https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md).
 
+## Enable `DEBUG` logging
+Users of the .NET Core buildpack can access extra debug logs during the image build process by setting the `BP_LOG_LEVEL`
+environment variable to `DEBUG` at build time. Additional debug logs will
+appear in build logs if the relevant buildpacks have debug log lines.
+{{< code/copyable >}}
+pack build my-app --buildpack paketo-buildpacks/dotnet-core \
+  --env BP_LOG_LEVEL=DEBUG
+{{< /code/copyable >}}
+
 ## Add Custom Labels to the App Image
 .NET Core Buildpack users can add labels to their app image by following the
 instructions in the [Applying Custom
