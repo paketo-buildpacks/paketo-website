@@ -505,7 +505,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#install-a-custom-ca-certificate">Install a custom CA certificate</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set environment variables for app launch time</a></li>
     <li><a href="#add-custom-labels-to-the-app-image">Add custom labels to the app image</a></li>
-    <li><a href="#run-a-build-with-debug-logging">Run a build with <code>DEBUG</code> logging</a></li>
+    <li><a href="#enable-debug-logging">Enable <code>DEBUG</code> logging</a></li>
     <li><a href="#access-the-software-bill-of-materials">Access the software bill of materials</a></li>
   </ul>
 </nav>
@@ -1047,14 +1047,15 @@ Buildpack</a>.</p>
 instructions in the <a href="https://paketo.io/docs/howto/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
-<h2 id="run-a-build-with-debug-logging" class="markup-heading">
-    <a class="markup-heading__link" href="#run-a-build-with-debug-logging">
-        Run a build with <code>DEBUG</code> logging
+<h2 id="enable-debug-logging" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-debug-logging">
+        Enable <code>DEBUG</code> logging
     </a>
 </h2><p>Users of the PHP buildpack can access extra debug logs during the image build process by setting the <code>BP_LOG_LEVEL</code>
-environment variable to <code>DEBUG</code> at build time.
+environment variable to <code>DEBUG</code> at build time. Additional debug logs will
+appear in build logs if the relevant buildpacks have debug log lines.
 <div class="copyable">
-    <pre class="copyable__code">  pack build my-app --buildpack paketo-buildpacks/php \
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/php \
   --env BP_LOG_LEVEL=DEBUG
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
@@ -1086,7 +1087,7 @@ details on how to access the SBOM supplied by the buildpacks.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> October 21, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 26, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1134,7 +1135,7 @@ details on how to access the SBOM supplied by the buildpacks.</p>
     <li><a href="#install-a-custom-ca-certificate">Install a custom CA certificate</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set environment variables for app launch time</a></li>
     <li><a href="#add-custom-labels-to-the-app-image">Add custom labels to the app image</a></li>
-    <li><a href="#run-a-build-with-debug-logging">Run a build with <code>DEBUG</code> logging</a></li>
+    <li><a href="#enable-debug-logging">Enable <code>DEBUG</code> logging</a></li>
     <li><a href="#access-the-software-bill-of-materials">Access the software bill of materials</a></li>
   </ul>
 </nav>

@@ -498,6 +498,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#using-tilt-with-paketo-buildpacks">Using Tilt with Paketo Buildpacks</a></li>
       </ul>
     </li>
+    <li><a href="#enable-debug-logging">Enable <code>DEBUG</code> logging</a></li>
     <li><a href="#enable-remote-debugging">Enable Remote Debugging</a></li>
     <li><a href="#enable-jmx">Enable JMX</a></li>
     <li><a href="#enable-java-native-memory-tracking-nmt">Enable Java Native Memory Tracking (NMT)</a>
@@ -1240,6 +1241,20 @@ pack build samples/java-native \
 <p>In addition, we configure Tilt to watch <code>./bin/main/**</code>. These files when modified will trigger an update in the container. The <code>live_update</code> block indicates which files locally will update and where they will be placed in the live container. We are instructing everything under <code>./bin/main</code> to be added into <code>/workspace/BOOT-INF/classes</code> when an update is triggered. This takes classes and resources compiled locally by an IDE and injects them into the location where application classes are stored in the container image.</p>
 <p>This example is tuned for use with Visual Studio Code and its Java and Gradle extensions. These will compile code changes on save and put the compiled output in <code>./bin/main</code>. If you use a different IDE or Gradle/Maven directly, you will need to adjust the <code>deps</code> and <code>live_update</code> directories accordingly.</p>
 <p>This functionality presently depends on the support of <a href="https://github.com/watchexec/watchexec/"><code>watchexec</code></a>. It is recommend that you read the section <a href="#enable-process-reloading">Enable Process Reloading</a> for further details.</p>
+<h2 id="enable-debug-logging" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-debug-logging">
+        Enable <code>DEBUG</code> logging
+    </a>
+</h2><p>Users of the Java buildpack can access extra debug logs during the image build process by setting the <code>BP_LOG_LEVEL</code>
+environment variable to <code>DEBUG</code> at build time. Additional debug logs will
+appear in build logs if the relevant buildpacks have debug log lines.
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/java \
+  --env BP_LOG_LEVEL=DEBUG
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="enable-remote-debugging" class="markup-heading">
     <a class="markup-heading__link" href="#enable-remote-debugging">
         Enable Remote Debugging
@@ -1420,7 +1435,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> October 21, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 26, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1461,6 +1476,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
         <li><a href="#using-tilt-with-paketo-buildpacks">Using Tilt with Paketo Buildpacks</a></li>
       </ul>
     </li>
+    <li><a href="#enable-debug-logging">Enable <code>DEBUG</code> logging</a></li>
     <li><a href="#enable-remote-debugging">Enable Remote Debugging</a></li>
     <li><a href="#enable-jmx">Enable JMX</a></li>
     <li><a href="#enable-java-native-memory-tracking-nmt">Enable Java Native Memory Tracking (NMT)</a>

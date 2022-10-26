@@ -483,6 +483,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
     <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
+    <li><a href="#enable-debug-logging">Enable <code>DEBUG</code> logging</a></li>
     <li><a href="#access-the-software-bill-of-materials">Access the software bill of materials</a></li>
   </ul>
 </nav>
@@ -715,6 +716,20 @@ Buildpack</a>.</p>
 instructions in the <a href="https://paketo.io/docs/howto/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
+<h2 id="enable-debug-logging" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-debug-logging">
+        Enable <code>DEBUG</code> logging
+    </a>
+</h2><p>Users of the Python buildpack can access extra debug logs during the image build process by setting the <code>BP_LOG_LEVEL</code>
+environment variable to <code>DEBUG</code> at build time. Additional debug logs will
+appear in build logs if the relevant buildpacks have debug log lines.
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/python \
+  --env BP_LOG_LEVEL=DEBUG
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="access-the-software-bill-of-materials" class="markup-heading">
     <a class="markup-heading__link" href="#access-the-software-bill-of-materials">
         Access the software bill of materials
@@ -745,7 +760,7 @@ the upstream SBOM generation library (Syft).</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> October 21, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 26, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -771,6 +786,7 @@ the upstream SBOM generation library (Syft).</p>
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
     <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
+    <li><a href="#enable-debug-logging">Enable <code>DEBUG</code> logging</a></li>
     <li><a href="#access-the-software-bill-of-materials">Access the software bill of materials</a></li>
   </ul>
 </nav>

@@ -472,6 +472,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#procfiles">Procfiles</a></li>
       </ul>
     </li>
+    <li><a href="#enabling-debug-logging">Enabling Debug Logging</a>
+      <ul>
+        <li><a href="#environment-variable-configuration">Environment Variable Configuration</a></li>
+      </ul>
+    </li>
     <li><a href="#building-behind-a-firewall">Building Behind a Firewall</a>
       <ul>
         <li><a href="#proxy-configuration">Proxy Configuration</a></li>
@@ -732,6 +737,28 @@ docker run samples/nodejs # should print &#34;hello world&#34;
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
+<h2 id="enabling-debug-logging" class="markup-heading">
+    <a class="markup-heading__link" href="#enabling-debug-logging">
+        Enabling Debug Logging
+    </a>
+</h2><h3 id="environment-variable-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#environment-variable-configuration">
+        Environment Variable Configuration
+    </a>
+</h3><p>Paketo Buildpacks can be configured to emit additional debug logs to provide
+additional insights into the build. This setting can be configured by setting
+the <code>BP_LOG_LEVEL</code> environment variable to <code>DEBUG</code> at build-time. Any
+buildpacks that have this configuration enabled, and contain additional
+debugging logs, will emit them when this environment variable is set.</p>
+<p><strong>Example</strong>: Enabling Debug Logging
+<div class="copyable">
+    <pre class="copyable__code">pack build samples/nodejs \
+  --buildpack paketo-buildpacks/nodejs \
+  --env &#34;BP_LOG_LEVEL=DEBUG&#34; \
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="building-behind-a-firewall" class="markup-heading">
     <a class="markup-heading__link" href="#building-behind-a-firewall">
         Building Behind a Firewall
@@ -858,7 +885,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> October 21, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 26, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -871,6 +898,11 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
         <li><a href="#buildpackyml">buildpack.yml</a></li>
         <li><a href="#bindings">Bindings</a></li>
         <li><a href="#procfiles">Procfiles</a></li>
+      </ul>
+    </li>
+    <li><a href="#enabling-debug-logging">Enabling Debug Logging</a>
+      <ul>
+        <li><a href="#environment-variable-configuration">Environment Variable Configuration</a></li>
       </ul>
     </li>
     <li><a href="#building-behind-a-firewall">Building Behind a Firewall</a>

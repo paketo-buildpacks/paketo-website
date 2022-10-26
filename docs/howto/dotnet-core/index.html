@@ -509,6 +509,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
+    <li><a href="#enable-debug-logging">Enable <code>DEBUG</code> logging</a></li>
     <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
   </ul>
 </nav>
@@ -1039,6 +1040,20 @@ of our configuration docs.</p>
 </h2><p>.NET Core Buildpack users can embed launch-time environment variables in their
 app image by following the documentation for the <a href="https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md">Environment Variables
 Buildpack</a>.</p>
+<h2 id="enable-debug-logging" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-debug-logging">
+        Enable <code>DEBUG</code> logging
+    </a>
+</h2><p>Users of the .NET Core buildpack can access extra debug logs during the image build process by setting the <code>BP_LOG_LEVEL</code>
+environment variable to <code>DEBUG</code> at build time. Additional debug logs will
+appear in build logs if the relevant buildpacks have debug log lines.
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/dotnet-core \
+  --env BP_LOG_LEVEL=DEBUG
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div></p>
 <h2 id="add-custom-labels-to-the-app-image" class="markup-heading">
     <a class="markup-heading__link" href="#add-custom-labels-to-the-app-image">
         Add Custom Labels to the App Image
@@ -1062,7 +1077,7 @@ section of our configuration docs.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> October 21, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> October 26, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1114,6 +1129,7 @@ section of our configuration docs.</p>
     <li><a href="#install-a-custom-ca-certificate">Install a Custom CA Certificate</a></li>
     <li><a href="#override-the-start-process-set-by-the-buildpack">Override the Start Process Set by the Buildpack</a></li>
     <li><a href="#set-environment-variables-for-app-launch-time">Set Environment Variables for App Launch Time</a></li>
+    <li><a href="#enable-debug-logging">Enable <code>DEBUG</code> logging</a></li>
     <li><a href="#add-custom-labels-to-the-app-image">Add Custom Labels to the App Image</a></li>
   </ul>
 </nav>
