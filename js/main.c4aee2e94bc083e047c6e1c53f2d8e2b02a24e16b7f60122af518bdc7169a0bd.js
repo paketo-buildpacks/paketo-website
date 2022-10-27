@@ -1665,7 +1665,7 @@
   }
   var ct = function() {
   };
-  var it = [{ segment: "autocomplete-core", version: "1.7.1" }];
+  var it = [{ segment: "autocomplete-core", version: "1.7.2" }];
   var at = { current: {} };
   function ut(e2) {
     (function(e3, t2) {
@@ -3543,7 +3543,7 @@
     } : m2, h2 = e2.navigator, v2 = e2.initialScrollY, y2 = void 0 === v2 ? 0 : v2, _2 = e2.transformSearchClient, b2 = void 0 === _2 ? pr : _2, g2 = e2.disableUserPersonalization, O2 = void 0 !== g2 && g2, S2 = e2.initialQuery, E2 = void 0 === S2 ? "" : S2, w2 = e2.translations, j2 = void 0 === w2 ? {} : w2, P2 = e2.getMissingResultsUrl, I2 = j2.footer, k2 = j2.searchBox, D2 = wo(j2, yo), C2 = So(Be.useState({ query: "", collections: [], completion: null, context: {}, isOpen: false, activeItemId: null, status: "idle" }), 2), A2 = C2[0], N2 = C2[1], x2 = Be.useRef(null), T2 = Be.useRef(null), R2 = Be.useRef(null), L2 = Be.useRef(null), q2 = Be.useRef(null), M2 = Be.useRef(10), H2 = Be.useRef("undefined" != typeof window ? window.getSelection().toString().slice(0, 64) : "").current, U2 = Be.useRef(E2 || H2).current, F2 = function(e3, t3, n3) {
       return Be.useMemo(function() {
         var r3 = vo(e3, t3);
-        return r3.addAlgoliaAgent("docsearch", "3.2.2"), false === /docsearch.js \(.*\)/.test(r3.transporter.userAgent.value) && r3.addAlgoliaAgent("docsearch-react", "3.2.2"), n3(r3);
+        return r3.addAlgoliaAgent("docsearch", "3.3.0"), false === /docsearch.js \(.*\)/.test(r3.transporter.userAgent.value) && r3.addAlgoliaAgent("docsearch-react", "3.3.0"), n3(r3);
       }, [e3, t3, n3]);
     }(t2, n2, b2), B2 = Be.useRef(Tr({ key: "__DOCSEARCH_FAVORITE_SEARCHES__".concat(r2), limit: 10 })).current, V2 = Be.useRef(Tr({ key: "__DOCSEARCH_RECENT_SEARCHES__".concat(r2), limit: 0 === B2.getAll().length ? 7 : 4 })).current, W2 = Be.useCallback(function(e3) {
       if (!O2) {
@@ -3712,7 +3712,7 @@
       var t3 = e3.isOpen, n3 = e3.onOpen, r3 = e3.onClose, o3 = e3.onInput, c3 = e3.searchButtonRef;
       Be.useEffect(function() {
         function e4(e5) {
-          (27 === e5.keyCode && t3 || "k" === e5.key && (e5.metaKey || e5.ctrlKey) || !function(e6) {
+          (27 === e5.keyCode && t3 || "k" === e5.key.toLowerCase() && (e5.metaKey || e5.ctrlKey) || !function(e6) {
             var t4 = e6.target, n4 = t4.tagName;
             return t4.isContentEditable || "INPUT" === n4 || "SELECT" === n4 || "TEXTAREA" === n4;
           }(e5) && "/" === e5.key && !t3) && (e5.preventDefault(), t3 ? r3() : document.body.classList.contains("DocSearch--active") || document.body.classList.contains("DocSearch--active") || n3()), c3 && c3.current === document.activeElement && o3 && /[a-zA-Z0-9]/.test(String.fromCharCode(e5.keyCode)) && o3(e5);
@@ -3727,7 +3727,7 @@
   }
   function Co(e2) {
     Ae(Be.createElement(Do, o({}, e2, { transformSearchClient: function(t2) {
-      return t2.addAlgoliaAgent("docsearch.js", "3.2.2"), e2.transformSearchClient ? e2.transformSearchClient(t2) : t2;
+      return t2.addAlgoliaAgent("docsearch.js", "3.3.0"), e2.transformSearchClient ? e2.transformSearchClient(t2) : t2;
     } })), function(e3) {
       var t2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : window;
       return "string" == typeof e3 ? t2.document.querySelector(e3) : e3;
@@ -3833,4 +3833,4 @@
  *
  * Licensed MIT © Zeno Rocha
  */
-/*! @docsearch/js 3.2.2 | MIT License | © Algolia, Inc. and contributors | https://docsearch.algolia.com */
+/*! @docsearch/js 3.3.0 | MIT License | © Algolia, Inc. and contributors | https://docsearch.algolia.com */
