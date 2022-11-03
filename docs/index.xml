@@ -164,8 +164,9 @@ In some cases, a custom stack image may be useful for users who may need an extr
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://paketo.io/docs/concepts/buildpacks/</guid>
-      <description>In the Getting Started tutorial, you ran a pack build command to build a sample app. This resulted in some output similar to this block:
-... ===&amp;gt; DETECTING paketo-buildpacks/node-engine 0.1.1 paketo-buildpacks/npm-install 0.2.0 paketo-buildpacks/npm-start 0.0.2 ... ===&amp;gt; BUILDING Paketo Node Engine Buildpack 0.1.1 ... Paketo NPM Install Buildpack 0.2.0 ... Paketo NPM Start Buildpack 0.0.2 ... In this section, we will make sense of this output and explain how the buildpacks detect what dependencies are needed by your app to build it into a runnable app image.</description>
+      <description>In this section, we will use the results of the Getting started tutorial with Node.js where a simple app is built using the pack build command.
+This resulted in some output similar to this block:
+... ===&amp;gt; DETECTING paketo-buildpacks/node-engine 0.1.1 paketo-buildpacks/npm-install 0.2.0 paketo-buildpacks/npm-start 0.0.2 ... ===&amp;gt; BUILDING Paketo Node Engine Buildpack 0.1.1 ... Paketo NPM Install Buildpack 0.2.0 ... Paketo NPM Start Buildpack 0.0.2 ... Here we will make sense of this output and explain how the buildpacks detect what dependencies are needed by your app to build it into a runnable app image.</description>
     </item>
     
     <item>

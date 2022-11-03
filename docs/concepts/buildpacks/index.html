@@ -479,7 +479,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
             <div class="docs-body__markdown">
-                <p>In the Getting Started tutorial, you ran a <code>pack build</code> command to build a sample app. This resulted in some output similar to this block:</p>
+                <p>In this section, we will use the results of the <a href="https://paketo.io/docs/">Getting started tutorial</a> with <code>Node.js</code> where a simple app is built using the <code>pack build</code> command.</p>
+<p>This resulted in some output similar to this block:</p>
 <pre tabindex="0"><code>...
 ===&gt; DETECTING
 paketo-buildpacks/node-engine 0.1.1
@@ -493,7 +494,7 @@ Paketo NPM Install Buildpack 0.2.0
 ...
 Paketo NPM Start Buildpack 0.0.2
 ...
-</code></pre><p>In this section, we will make sense of this output and explain how the
+</code></pre><p>Here we will make sense of this output and explain how the
 buildpacks detect what dependencies are needed by your app to build it into a runnable app image.</p>
 <h2 id="what-are-buildpacks" class="markup-heading">
     <a class="markup-heading__link" href="#what-are-buildpacks">
@@ -530,9 +531,9 @@ will provide to the subsequent <code>build</code> phase.</p>
 </h3><p>In the <code>build</code> phase, the buildpack contributes to the final
 app image, fulfilling the contract given by the <code>detect</code> phase. These
 contributions could be adding an image layer containing a dependency binary
-(like the Node.js engine) or could be as simple as a running a command (like
+(like the Node.js engine) or could be as simple as running a command (like
 <code>npm install</code>).</p>
-<p>In the Getting Started tutorial, the <code>pack build</code> output contains a section in the
+<p>In the tutorial, the <code>pack build</code> output contains a section in the
 build phase for the NPM Install Buildpack under a &ldquo;BUILDING&rdquo; header. You can
 see that the buildpack runs <code>npm install</code> to install the app&rsquo;s dependencies.
 Subsequently, the NPM Start Buildpack sets the start command to <code>node server.js</code>.</p>
@@ -550,7 +551,7 @@ responsibility. Component buildpacks may require contributions from upstream
 buildpacks and/or provide required components to downstream buildpacks.</p>
 <p>For example, the Gradle Buildpack is a component buildpack, responsible for
 installing Gradle in the build container and using Gradle to compile and
-package a JVM application. It requires that an upstream component to provide a
+package a JVM application. It requires an upstream component to provide a
 JDK. It provides a compiled JVM application to downstream buildpacks.</p>
 <h3 id="composite-buildpacks" class="markup-heading">
     <a class="markup-heading__link" href="#composite-buildpacks">
