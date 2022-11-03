@@ -7,7 +7,7 @@ menu:
 aliases:
   - /docs/buildpacks/
 ---
-In this section, we will use the results of the [Getting started tutorial](https://paketo.io/docs/) with `Node.js` where a simple app is built using the `pack build` command.
+In this section, we will use the results of the [Getting started tutorial]({{< ref "docs" >}}) with `Node.js` where a simple app is built using the `pack build` command.
 
 This resulted in some output similar to this block:
 
