@@ -8,6 +8,6 @@
     "deploy": "node -e \"const deploy = require('./deploy.js'); deploy({expires: '8h'});\""
   },
   "devDependencies": {
-    "spellchecker-cli": "^6.0.2"
+    "spellchecker-cli": "^6.1.0"
   }
 }
