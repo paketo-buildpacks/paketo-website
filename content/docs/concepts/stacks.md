@@ -43,13 +43,12 @@ The available stacks, _**from smallest to largest**_, are:
   - Ideal for Java and .NET Core apps, Golang apps that require C libraries,
     Node.js, Python, Ruby, and JavaScript front end apps without many native
     extensions
-- [Bionic Full](https://github.com/paketo-buildpacks/full-stack-release)
+- [Bionic Full](https://github.com/paketo-buildpacks/bionic-full-stack)
   - Based on Ubuntu 18.04 Bionic Beaver
   - Ideal for PHP apps, Node.js, Python, Ruby, and JavaScript front end apps with native extensions
-<!-- - [Bionic Full](https://github.com/paketo-buildpacks/bionic-full-stack) -->
-<!-- - [Jammy Full](https://github.com/paketo-buildpacks/jammy-full-stack) -->
-  <!-- - Based on Ubuntu 22.04 Jammy Jellyfish -->
-  <!-- - Ideal for PHP apps, Node.js, Python, Ruby, and JavaScript front end apps with native extensions -->
+- [Jammy Full](https://github.com/paketo-buildpacks/jammy-full-stack)
+  - Based on Ubuntu 22.04 Jammy Jellyfish
+  - Ideal for PHP apps, Node.js, Python, Ruby, and JavaScript front end apps with native extensions
 
 In general, it is a best practice to select the smallest stack that supports
 the apps you are trying to build.
