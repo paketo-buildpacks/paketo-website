@@ -29,6 +29,7 @@
                 <div class="nav__linkarea text--400">
                     <a class="nav-link" href="/docs">docs</a>
                     <a class="nav-link" href="/community">community</a>
+                    <a class="nav-link" href="/resources">resources</a>
                     <a class="nav-link" href="https://blog.paketo.io">blog</a>
                     <a class="nav-link" href="https://github.com/paketo-buildpacks">github</a>
                 </div>
@@ -38,10 +39,13 @@
     <div class="desktop-nav">
         {{ $docs := "" }}
         {{ $community := "" }}
+        {{ $resources := "" }}
         {{ with .context.File }}{{ if in .Path "docs" }}{{ $docs = "nav-link--desktop--active" }}{{ end }}{{ end }}
         <a class="nav-link nav-link--desktop {{ $navTheme }} {{ $docs }}" href="/docs">docs</a>
         {{ with .context.File }}{{ if in .Path "community" }}{{ $community = "nav-link--desktop--active" }}{{ end }}{{ end }}
         <a class="nav-link nav-link--desktop {{ $navTheme }} {{ $community }} " href="/community">community</a>
+        {{ with .context.File }}{{ if in .Path "resources" }}{{ $resources = "nav-link--desktop--active" }}{{ end }}{{ end }}
+        <a class="nav-link nav-link--desktop {{ $navTheme }} {{ $resources }} " href="/resources">resources</a>
         <a class="nav-link nav-link--desktop {{ $navTheme }}" href="https://blog.paketo.io">blog</a>
         <a class="nav-link nav-link--desktop {{ $navTheme }}" href="https://github.com/paketo-buildpacks">github</a>
     </div>
