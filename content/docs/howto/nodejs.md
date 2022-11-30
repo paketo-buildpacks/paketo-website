@@ -179,7 +179,7 @@ then the `lint` and then `build` scripts would be run via npm or yarn, during bu
 value for `BP_NODE_RUN_SCRIPTS` must be a comma separated list of script names.
 
 
-## Build Angular apps on stacks with read-only filesystems
+## Build Angular apps on stacks with read-only file systems
 By default, when an Angular app starts up, it attempts to create a cache,
 `.angular/cache`, in the app's directory. On some stacks, (including the Paketo
 Jammy stacks) the app directory is read-only at runtime.  As a result, Angular
