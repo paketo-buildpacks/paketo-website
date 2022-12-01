@@ -258,7 +258,7 @@ pack build samples/java --volume "$(pwd)/binding:/platform/bindings/skywalking" 
 [samples/java]:https://github.com/paketo-buildpacks/samples/tree/main/java
 
 <!-- paketo docs references -->
-[base builder]:{{< ref "/docs/concepts/builders#base" >}}
+[base builder]:{{< ref "/docs/reference/builders-reference" >}}
 
 <!-- other references -->
 [apm]:https://en.wikipedia.org/wiki/Application_performance_management
