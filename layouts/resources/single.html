@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+
+<head>
+    {{ partial "head.html" . }}
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PN39N8V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    {{ partial "header-skip-link.html" .}}
+    {{ partial "header.html" (dict "headerTheme" "dark" "context" . ) }}
+
+    {{ partial "resources-body.html" .}}
+
+    {{ partial "footer.html" .}}
+    {{ partial "footer-skip-link.html" . }}
+</body>
+
+</html>
