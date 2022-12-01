@@ -477,7 +477,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
-    <li><a href="#build-an-app-from-source-in-a-subdirectory">Build an App from Source in a Subdirectory</a>
+    <li><a href="#build-one-project-in-a-multi-project-solution">Build one project in a multi-project solution</a>
       <ul>
         <li><a href="#using-bp_dotnet_project_path">Using <code>BP_DOTNET_PROJECT_PATH</code></a></li>
         <li><a href="#deprecated-using-buildpackyml-2">Deprecated: Using buildpack.yml</a></li>
@@ -668,8 +668,6 @@ version of the SDK that is compatible with the installed .NET Core runtime.
 The available SDK versions for each buildpack release can be found in the
 <a href="
 https://github.com/paketo-buildpacks/dotnet-core-sdk/releases">release notes</a>.</p>
-<p>However, the .NET Core SDK version can be explicitly set by specifying a
-version in a <code>buildpack.yml</code> file.</p>
 <h3 id="deprecated-using-buildpackyml-1" class="markup-heading">
     <a class="markup-heading__link" href="#deprecated-using-buildpackyml-1">
         Deprecated: Using buildpack.yml
@@ -682,29 +680,54 @@ tightly coupled, most users should instead use the
 the .NET Core runtime that the .NET Core Runtime Buildpack should install. The
 .NET Core SDK buildpack will automatically install an SDK version that is
 compatible with the selected .NET Core runtime version.</p>
-<h2 id="build-an-app-from-source-in-a-subdirectory" class="markup-heading">
-    <a class="markup-heading__link" href="#build-an-app-from-source-in-a-subdirectory">
-        Build an App from Source in a Subdirectory
+<h2 id="build-one-project-in-a-multi-project-solution" class="markup-heading">
+    <a class="markup-heading__link" href="#build-one-project-in-a-multi-project-solution">
+        Build one project in a multi-project solution
     </a>
-</h2><p>By default, the Paketo .NET buildpack will consider the root directory of
-your codebase to be the project directory. This directory should contain a C#,
-F#, or Visual Basic Project file. If your project directory is not located at
-the root of your source code you will need to set a custom project path.</p>
+</h2><p>By default, the Paketo .NET buildpack will consider the root of the provided
+source code to be the root of the startup project you want to build.  This
+directory should contain a C#, F#, or Visual Basic Project file. If your
+startup project directory is not located at the root of your solution, you will
+need to specify a project path.</p>
+<p>For example, the following directory structure reflects a common .NET project setup, in
+which the startup project, <code>App</code>, depends on other projects in the solution:
+<code>ComponentProject</code> and <code>OtherComponentProject</code>.</p>
+<pre tabindex="0"><code>./MultiProjectApp
+├── MultiProjectApp.sln
+├── ComponentProject
+│   ├── Component.cs
+│   └── ComponentProject.csproj
+├── OtherComponentProject
+│   ├── OtherComponent.cs
+│   └── OtherComponentProject.csproj
+└── App
+    ├── Program.cs
+    ├── appsettings.Development.json
+    ├── appsettings.json
+    └──  App.csproj
+</code></pre><p>To build the <code>App</code> project, <code>pack build</code> from the root of the <code>MultiProjectApp</code>
+directory and specify <code>App</code> as the project to build using the
+<code>BP_DOTNET_PROJECT_PATH</code> environment variable.</p>
+<p><strong>Note:</strong> <em>Do not</em> use <code>pack build myapp --path=./App</code> to build the <code>App</code>
+project. Using the <code>--path</code> flag will exclude <code>ComponentProject</code> and
+<code>OtherComponentProject</code> from the build container. If <code>App</code> depends on those
+components, the build will fail when publishing <code>App</code>, because its dependencies
+will not be present in the build container.</p>
 <h3 id="using-bp_dotnet_project_path" class="markup-heading">
     <a class="markup-heading__link" href="#using-bp_dotnet_project_path">
         Using <code>BP_DOTNET_PROJECT_PATH</code>
     </a>
-</h3><p>You can specify a project path by setting the <code>$BP_DOTNET_PROJECT_PATH</code>
-environment variable at build time, either by passing a flag to the
-<a href="https://buildpacks.io/docs/concepts/components/platform">platform</a> or by adding it to your <code>project.toml</code>. See the
-Cloud Native Buildpacks <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/">documentation</a> to learn more about
-<code>project.toml</code> files.</p>
+</h3><p>You can specify the path to the startup project you want to build by setting
+the <code>$BP_DOTNET_PROJECT_PATH</code> environment variable at build time, either by
+passing a flag to the <a href="https://buildpacks.io/docs/concepts/components/platform">platform</a> or by adding it to your
+<code>project.toml</code>. See the Cloud Native Buildpacks <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor/">documentation</a>
+to learn more about <code>project.toml</code> files.</p>
 <h4 id="with-a-pack-build-flag-1" class="markup-heading">
     <a class="markup-heading__link" href="#with-a-pack-build-flag-1">
         With a <code>pack build</code> flag
     </a>
 </h4><div class="copyable">
-    <pre class="copyable__code">pack build my-app --env BP_DOTNET_PROJECT_PATH=./src
+    <pre class="copyable__code">pack build my-app --env BP_DOTNET_PROJECT_PATH=./App
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -716,7 +739,7 @@ Cloud Native Buildpacks <a href="https://buildpacks.io/docs/app-developer-guide/
 </h4><div class="copyable">
     <pre class="copyable__code">[[ build.env ]]
   name = &#39;BP_DOTNET_PROJECT_PATH&#39;
-  value = &#39;./src&#39;
+  value = &#39;./App&#39;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -1077,7 +1100,7 @@ section of our configuration docs.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> November 29, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> December 1, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1097,7 +1120,7 @@ section of our configuration docs.</p>
         <li><a href="#deprecated-using-buildpackyml-1">Deprecated: Using buildpack.yml</a></li>
       </ul>
     </li>
-    <li><a href="#build-an-app-from-source-in-a-subdirectory">Build an App from Source in a Subdirectory</a>
+    <li><a href="#build-one-project-in-a-multi-project-solution">Build one project in a multi-project solution</a>
       <ul>
         <li><a href="#using-bp_dotnet_project_path">Using <code>BP_DOTNET_PROJECT_PATH</code></a></li>
         <li><a href="#deprecated-using-buildpackyml-2">Deprecated: Using buildpack.yml</a></li>
