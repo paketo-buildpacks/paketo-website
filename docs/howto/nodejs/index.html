@@ -481,6 +481,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </li>
     <li><a href="#build-an-app-from-source-in-a-subdirectory">Build an App From Source in a Subdirectory</a></li>
     <li><a href="#run-scripts-during-build-phase">Run Scripts During Build Phase</a></li>
+    <li><a href="#build-angular-apps-on-stacks-with-read-only-file-systems">Build Angular apps on stacks with read-only file systems</a>
+      <ul>
+        <li><a href="#setting-an-angular-cache-path-in-angularjson">Setting an Angular cache path in <code>angular.json</code></a></li>
+      </ul>
+    </li>
     <li><a href="#build-an-app-that-uses-npm">Build an App that Uses NPM</a>
       <ul>
         <li><a href="#configure-npm-during-the-build">Configure NPM During the Build</a></li>
@@ -704,6 +709,35 @@ scripts to build your app into a production state.</p>
 <pre tabindex="0"><code>$BP_NODE_RUN_SCRIPTS=lint,build
 </code></pre><p>then the <code>lint</code> and then <code>build</code> scripts would be run via npm or yarn, during build phase. Note that the
 value for <code>BP_NODE_RUN_SCRIPTS</code> must be a comma separated list of script names.</p>
+<h2 id="build-angular-apps-on-stacks-with-read-only-file-systems" class="markup-heading">
+    <a class="markup-heading__link" href="#build-angular-apps-on-stacks-with-read-only-file-systems">
+        Build Angular apps on stacks with read-only file systems
+    </a>
+</h2><p>By default, when an Angular app starts up, it attempts to create a cache,
+<code>.angular/cache</code>, in the app&rsquo;s directory. On some stacks, (including the Paketo
+Jammy stacks) the app directory is read-only at runtime.  As a result, Angular
+apps will fail to start with errors like <code> Error: EACCES: permission denied, open '/workspace/.angular/cache</code>.</p>
+<p>To avoid this failure, configure Angular to create the cache in a writeable
+location, like <code>/tmp</code>.</p>
+<h3 id="setting-an-angular-cache-path-in-angularjson" class="markup-heading">
+    <a class="markup-heading__link" href="#setting-an-angular-cache-path-in-angularjson">
+        Setting an Angular cache path in <code>angular.json</code>
+    </a>
+</h3><p>To configure the location of the Angular cache, set the <code>cli.cache.path</code>
+parameter in your app&rsquo;s <code>angular.json</code>. Add the following snippet to your
+<code>angular.json</code>:</p>
+<div class="copyable">
+    <pre class="copyable__code">  &#34;cli&#34;:{
+    &#34;cache&#34;: {
+      &#34;path&#34;: &#34;/tmp/.angular/cache&#34;
+    }
+  },
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<p>With this setting, the Angular app will start successfully and write cache
+artifacts to the <code>/tmp</code> directory.</p>
 <h2 id="build-an-app-that-uses-npm" class="markup-heading">
     <a class="markup-heading__link" href="#build-an-app-that-uses-npm">
         Build an App that Uses NPM
@@ -961,7 +995,7 @@ appear in build logs if the relevant buildpacks have debug log lines.
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> December 1, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> December 2, 2022</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -985,6 +1019,11 @@ appear in build logs if the relevant buildpacks have debug log lines.
     </li>
     <li><a href="#build-an-app-from-source-in-a-subdirectory">Build an App From Source in a Subdirectory</a></li>
     <li><a href="#run-scripts-during-build-phase">Run Scripts During Build Phase</a></li>
+    <li><a href="#build-angular-apps-on-stacks-with-read-only-file-systems">Build Angular apps on stacks with read-only file systems</a>
+      <ul>
+        <li><a href="#setting-an-angular-cache-path-in-angularjson">Setting an Angular cache path in <code>angular.json</code></a></li>
+      </ul>
+    </li>
     <li><a href="#build-an-app-that-uses-npm">Build an App that Uses NPM</a>
       <ul>
         <li><a href="#configure-npm-during-the-build">Configure NPM During the Build</a></li>
