@@ -365,7 +365,7 @@ This isn't always necessary but can impact output from your application. For exa
 [samples]:https://github.com/paketo-buildpacks/samples
 
 <!-- paketo docs references -->
-[base builder]:{{< ref "/docs/concepts/builders#base" >}}
+[base builder]:{{< ref "/docs/reference/builders-reference" >}}
 [language family buildpacks]:{{< ref "/docs/concepts/buildpacks" >}}
 
 <!-- cnb references -->
