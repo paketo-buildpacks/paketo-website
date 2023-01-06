@@ -117,6 +117,16 @@ Examples assume that the Paketo Base builder is the default builder: pack config
     </item>
     
     <item>
+      <title>How to Use Paketo Builders</title>
+      <link>https://paketo.io/docs/howto/builders/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/howto/builders/</guid>
+      <description>Paketo distributes several builders. This documentation explains how to use the Paketo builders to build applications and how create your own builders. For a full list of available Paketo builders, see the Builders reference documentation.
+Use a Paketo builder Paketo provides several builders that are compatible with Paketo buildpacks. You can choose which builder you want to use based on what packages you want available in your stack and which Paketo buildpacks you want to use.</description>
+    </item>
+    
+    <item>
       <title>How To Use Application Monitoring With Paketo Buildpacks</title>
       <link>https://paketo.io/docs/howto/app-monitor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -263,6 +273,16 @@ Supported Dependencies The NGINX Paketo Buildpack supports several versions of N
       <description>This reference documentation offers an in-depth description of the behavior and configuration options of the Paketo Node.js Buildpack. For explanations of how to use the buildpack for several common use-cases, see the Paketo Node.js Buildpack How To documentation.
 Supported Dependencies The Node.js buildpack supports several versions of Node.js. For more details on the specific versions supported in a given buildpack version, see the release notes.
 Supported Service Bindings The Node.js buildpack can be configured using service bindings.</description>
+    </item>
+    
+    <item>
+      <title>Paketo Builders Reference</title>
+      <link>https://paketo.io/docs/reference/builders-reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://paketo.io/docs/reference/builders-reference/</guid>
+      <description>This reference documentation enumerates and briefly describes the available Paketo builders. For explanations of how to use the builders for several common use-cases, see the Paketo Builders How To documentation.
+Available Paketo Builders Name Stack Use cases DockerHub Distribution Github Repository Full Builder Ubuntu 18.04 PHP, Java, Node.js, Go, .NET Core, Ruby, NGINX, and HTTPD buildpacks and common C libraries. paketobuildpacks/builder:full https://github.com/paketo-buildpacks/full-builder Buildpackless Full Builder Ubuntu 18.04 No buildpacks included. Compatible with the same buildpacks as the Full Builder.</description>
     </item>
     
     <item>

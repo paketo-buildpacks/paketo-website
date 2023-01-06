@@ -204,6 +204,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
+            <a href="/docs/howto/builders/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Builders</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
             <a href="/docs/howto/configuration/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Configure Paketo Buildpacks</span>
@@ -356,6 +366,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
+            <a href="/docs/reference/builders-reference/" class="docs-menu__item docs-menu__link ">
+                
+                <span>Builders</span>
+            </a>
+        </li>
+    
+                
+                    
+    
+        <li class="docs-menu__leaf">
             <a href="/docs/reference/go-reference/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Go Buildpack</span>
@@ -468,13 +488,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <nav id="TableOfContents">
   <ul>
     <li><a href="#what-is-a-builder">What is a builder?</a></li>
-    <li><a href="#what-paketo-builders-are-available">What Paketo builders are available?</a>
-      <ul>
-        <li><a href="#full">Full</a></li>
-        <li><a href="#base">Base</a></li>
-        <li><a href="#tiny">Tiny</a></li>
-      </ul>
-    </li>
+    <li><a href="#what-paketo-builders-are-available">What Paketo builders are available?</a></li>
   </ul>
 </nav>
 </div>
@@ -491,59 +505,21 @@ to create a runnable image with your application. This section explains what
 <ul>
 <li>a set of <code>buildpacks</code>, which provide your app&rsquo;s dependencies</li>
 <li>a <code>stack</code>, which provides the OS layer for your app image</li>
-<li>the <a href="https://buildpacks.io/docs/concepts/components/lifecycle/">CNB lifecycle</a>, which puts everything together to produce your final app image</li>
+<li>the <a href="https://buildpacks.io/docs/concepts/components/lifecycle/">CNB
+lifecycle</a>, which
+puts everything together to produce your final app image</li>
 </ul>
-<p>For more information about <code>builders</code>, see <a href="https://buildpacks.io/docs/concepts/components/builder/">buildpacks.io</a>.</p>
+<p>For more information about <code>builders</code>, see
+<a href="https://buildpacks.io/docs/concepts/components/builder/">buildpacks.io</a>.</p>
 <h2 id="what-paketo-builders-are-available" class="markup-heading">
     <a class="markup-heading__link" href="#what-paketo-builders-are-available">
         What Paketo builders are available?
     </a>
 </h2><p>The Paketo project releases several builder images to choose from depending on
-your application needs. These are:</p>
-<h3 id="full" class="markup-heading">
-    <a class="markup-heading__link" href="#full">
-        Full
-    </a>
-</h3><p>Builder based off of the <code>ubuntu:bionic</code> stack. Consists of buildpacks to build
-most <strong>PHP, Java, Node.js, Go, .NET Core, Ruby, NGINX,</strong> and <strong>HTTPD</strong> apps
-<em><strong>with</strong></em> common C libraries. To build your app with it locally using <code>pack</code>,
-run:</p>
-<div class="copyable">
-    <pre class="copyable__code">pack build my-app-image --builder paketobuildpacks/builder:full
-</pre>
-    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
-    <div class="copyable__copied copied">Copied!</div>
-</div>
-<p>Paketo Full Builder <a href="https://github.com/paketo-buildpacks/full-builder">Github Repo</a></p>
-<h3 id="base" class="markup-heading">
-    <a class="markup-heading__link" href="#base">
-        Base
-    </a>
-</h3><p>Builder based off of the <code>ubuntu:bionic</code> stack. Consists of buildpacks to build
-most <strong>Java, Node.js, Go, .NET Core, Ruby,</strong> and <strong>NGINX</strong> apps <em><strong>without</strong></em>
-common C libraries. To build your app with it locally using <code>pack</code>, run:</p>
-<div class="copyable">
-    <pre class="copyable__code">pack build my-app-image --builder paketobuildpacks/builder:base
-</pre>
-    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
-    <div class="copyable__copied copied">Copied!</div>
-</div>
-<p>Paketo Base Builder <a href="https://github.com/paketo-buildpacks/base-builder">Github Repo</a></p>
-<h3 id="tiny" class="markup-heading">
-    <a class="markup-heading__link" href="#tiny">
-        Tiny
-    </a>
-</h3><p>Builder based off of a Distroless <code>ubuntu:bionic</code> stack. Consists of buildpacks
-to build most <strong>Go</strong> and <strong>Java</strong> <a href="https://www.graalvm.org/reference-manual/native-image/">GraalVM Native
-Image</a> apps. To build
-your app with it locally using <code>pack</code>, run:</p>
-<div class="copyable">
-    <pre class="copyable__code">pack build my-app-image --builder paketobuildpacks/builder:tiny
-</pre>
-    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
-    <div class="copyable__copied copied">Copied!</div>
-</div>
-<p>Paketo Tiny Builder <a href="https://github.com/paketo-buildpacks/tiny-builder">Github Repo</a></p>
+your application needs. See the Builders reference
+<a href="https://paketo.io/docs/reference/builders-reference/">documentation</a> for a complete list of available Paketo
+builders.</p>
+<!-- raw HTML omitted -->
 
             </div>
             
@@ -556,20 +532,14 @@ your app with it locally using <code>pack</code>, run:</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> December 22, 2022</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> January 6, 2023</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
     <li><a href="#what-is-a-builder">What is a builder?</a></li>
-    <li><a href="#what-paketo-builders-are-available">What Paketo builders are available?</a>
-      <ul>
-        <li><a href="#full">Full</a></li>
-        <li><a href="#base">Base</a></li>
-        <li><a href="#tiny">Tiny</a></li>
-      </ul>
-    </li>
+    <li><a href="#what-paketo-builders-are-available">What Paketo builders are available?</a></li>
   </ul>
 </nav>
 </div>

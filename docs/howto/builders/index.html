@@ -11,17 +11,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PN39N8V');</script>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Python Buildpack Reference - Paketo Buildpacks</title>
+<title>How to Use Paketo Builders - Paketo Buildpacks</title>
 <meta name="viewport" content="width=device-width, initial-scale=1 viewport-fit=cover">
 
 
 
 
 <meta name="og:site_name" content="Paketo Buildpacks">
-<meta name="og:title" content="Python Buildpack Reference">
-<meta name="og:url" content="https://paketo.io/docs/reference/python-reference/">
+<meta name="og:title" content="How to Use Paketo Builders">
+<meta name="og:url" content="https://paketo.io/docs/howto/builders/">
 <meta name="twitter:title" content="Paketo Buildpacks" />
-<meta name="twitter:url" content="https://paketo.io/docs/reference/python-reference/" />
+<meta name="twitter:url" content="https://paketo.io/docs/howto/builders/" />
 <meta name="twitter:card" content="" />
 
 
@@ -108,18 +108,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
         <li class="docs-menu__item docs-menu__parent">
             
-            <div class="docs-menu__section-header ">
+            <div class="docs-menu__section-header docs-menu__section-header--opened">
                 
                 <span>How To</span>
-                <button class="expander-button  docs-menu__expander-button">
-                    <svg class="expander-button__triangle " width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button class="expander-button expander-button--opened docs-menu__expander-button">
+                    <svg class="expander-button__triangle expander-button__triangle--opened" width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.140625" width="37.0257" height="34" rx="8" fill="#888888" fill-opacity="0.25"/>
                         <path d="M28.1604 13H8.14648L18.6538 22.5L28.1604 13Z" fill="#FEFCFC"/>
                         </svg>
                 </button>
             </div>
             
-            <ul class="docs-menu__children-list ">
+            <ul class="docs-menu__children-list docs-menu__children-list--opened">
                 
                     
     
@@ -204,7 +204,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/howto/builders/" class="docs-menu__item docs-menu__link ">
+            <a href="/docs/howto/builders/" class="docs-menu__item docs-menu__link docs-menu__link--active">
                 
                 <span>Builders</span>
             </a>
@@ -330,18 +330,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
         <li class="docs-menu__item docs-menu__parent">
             
-            <div class="docs-menu__section-header docs-menu__section-header--opened">
+            <div class="docs-menu__section-header ">
                 
                 <span>Reference</span>
-                <button class="expander-button expander-button--opened docs-menu__expander-button">
-                    <svg class="expander-button__triangle expander-button__triangle--opened" width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <button class="expander-button  docs-menu__expander-button">
+                    <svg class="expander-button__triangle " width="38" height="34" viewBox="0 0 38 34" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="0.140625" width="37.0257" height="34" rx="8" fill="#888888" fill-opacity="0.25"/>
                         <path d="M28.1604 13H8.14648L18.6538 22.5L28.1604 13Z" fill="#FEFCFC"/>
                         </svg>
                 </button>
             </div>
             
-            <ul class="docs-menu__children-list docs-menu__children-list--opened">
+            <ul class="docs-menu__children-list ">
                 
                     
     
@@ -436,7 +436,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     
     
         <li class="docs-menu__leaf">
-            <a href="/docs/reference/python-reference/" class="docs-menu__item docs-menu__link docs-menu__link--active">
+            <a href="/docs/reference/python-reference/" class="docs-menu__item docs-menu__link ">
                 
                 <span>Python Buildpack</span>
             </a>
@@ -473,7 +473,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="docs-body">
         <div class="docs-body__container">
             
-  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/python-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/builders.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -482,113 +482,124 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 </a>
 
-            <h1 id="title">Python Buildpack Reference</h1>
+            <h1 id="title">How to Use Paketo Builders</h1>
             
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--mobile">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+    <li><a href="#use-a-paketo-builder">Use a Paketo builder</a>
       <ul>
-        <li><a href="#pythonpath">PYTHONPATH</a></li>
-        <li><a href="#pythonuserbase">PYTHONUSERBASE</a></li>
+        <li><a href="#with-pack">With <code>pack</code></a></li>
+        <li><a href="#with-tekton">With Tekton</a></li>
       </ul>
     </li>
-    <li><a href="#start-command">Start Command</a></li>
-    <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
+    <li><a href="#extend-a-paketo-builder">Extend a Paketo builder</a></li>
+    <li><a href="#create-your-own-builder">Create your own builder</a></li>
   </ul>
 </nav>
 </div>
 
             <div class="docs-body__markdown">
-                <p>This reference documentation offers an in-depth description of the behavior
-and configuration options of the
-<a href="https://github.com/paketo-buildpacks/python">Paketo Python Buildpack</a>. For explanations of how to use the buildpack for several common use-cases, see
-the  Paketo Python Buildpack  How To <a href="/docs/howto/python">documentation</a>.</p>
-<h2 id="supported-dependencies" class="markup-heading">
-    <a class="markup-heading__link" href="#supported-dependencies">
-        Supported Dependencies
+                <p>Paketo distributes several <a href="https://paketo.io/docs/concepts/builders/">builders</a>. This documentation
+explains how to use the Paketo builders to build applications and how create
+your own builders. For a full list of available Paketo builders, see the
+Builders reference <a href="https://paketo.io/docs/reference/builders-reference/">documentation</a>.</p>
+<h2 id="use-a-paketo-builder" class="markup-heading">
+    <a class="markup-heading__link" href="#use-a-paketo-builder">
+        Use a Paketo builder
     </a>
-</h2><p>The Python buildpack supports several versions of CPython, as well as tools
-like Pip and Pipenv. For more details on the specific versions supported in a
-given buildpack version, see the <a href="https://github.com/paketo-buildpacks/python/releases">release
-notes</a>.</p>
-<h2 id="buildpack-set-environment-variables" class="markup-heading">
-    <a class="markup-heading__link" href="#buildpack-set-environment-variables">
-        Buildpack-Set Environment Variables
+</h2><p>Paketo provides several builders that are compatible with Paketo buildpacks.
+You can choose which builder you want to use based on what packages you want
+available in your <a href="https://paketo.io/docs/concepts/stacks/">stack</a> and which Paketo buildpacks you want
+to use. The available builders are listed in the builders <a href="https://paketo.io/docs/reference/builders-reference/">reference
+documentation</a>.</p>
+<h3 id="with-pack" class="markup-heading">
+    <a class="markup-heading__link" href="#with-pack">
+        With <code>pack</code>
     </a>
-</h2><p>The Python Buildpack sets a few environment variables during the <code>build</code> and
-<code>launch</code> phases of the app lifecycle. The sections below describe each
-environment variable and its impact on your app.</p>
-<h3 id="pythonpath" class="markup-heading">
-    <a class="markup-heading__link" href="#pythonpath">
-        PYTHONPATH
+</h3><p>To build an app with the <code>pack</code> CLI and a specific Paketo builder, use the
+<code>--builder</code> flag at build time.</p>
+<!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">pack build my-nodejs-app --builder paketobuildpacks/builder-jammy-base:latest
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<!-- raw HTML omitted -->
+<h3 id="with-tekton" class="markup-heading">
+    <a class="markup-heading__link" href="#with-tekton">
+        With Tekton
     </a>
-</h3><p>The <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH"><code>PYTHONPATH</code></a>
-environment variable is used to add directories where python will look for
-modules.</p>
-<ul>
-<li>Set by: <code>CPython</code>, <code>Pip</code>, <code>Pipenv</code>, <code>Poetry</code>, and <code>Poetry-Install</code></li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-</ul>
-<p>The CPython buildpack sets the <code>PYTHONPATH</code> value to its installation location,
-and the Pip, Pipenv buildpack prepends their <code>site-packages</code> location to it.
-<code>site-packages</code> is the target directory where packages are installed to.</p>
-<h3 id="pythonuserbase" class="markup-heading">
-    <a class="markup-heading__link" href="#pythonuserbase">
-        PYTHONUSERBASE
+</h3><p>To use a Paketo builder image to build apps in a Tekton pipeline, follow the
+Cloud Native Buildpacks <a href="https://buildpacks.io/docs/tools/tekton">documentation</a> for creating a Tekton
+pipeline and set the <code>BUILDER_IMAGE</code> parameter of the <a href="https://buildpacks.io/docs/tools/tekton/#43-pipeline"><code>buildpacks</code> task</a>
+to point to a published Paketo builder.</p>
+<!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">- name: buildpacks # This task uses the `buildpacks` task to build the application
+      taskRef:
+        name: buildpacks
+      params:
+        - name: BUILDER_IMAGE
+          value: paketobuildpacks/builder-jammy-base:latest # This is the builder we want the task to use (REQUIRED)
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<!-- raw HTML omitted -->
+<h2 id="extend-a-paketo-builder" class="markup-heading">
+    <a class="markup-heading__link" href="#extend-a-paketo-builder">
+        Extend a Paketo builder
     </a>
-</h3><p>The <a href="https://docs.python.org/3/using/cmdline.html#envvar-PYTHONUSERBASE"><code>PYTHONUSERBASE</code></a>
-environment variable is used to set the user base directory.</p>
-<ul>
-<li>Set by: <code>Pip</code>, <code>Pipenv</code>, <code>Poetry</code>, <code>Pip Install</code>, <code>Pipenv Install</code>, and <code>Conda Env Update</code></li>
-<li>Phases: <code>build</code> and <code>launch</code></li>
-</ul>
-<p>The value of <code>PYTHONUSERBASE</code> is set to the location where these buildpacks install
-the application packages so that it can be consumed by the app source code.</p>
-<h2 id="start-command" class="markup-heading">
-    <a class="markup-heading__link" href="#start-command">
-        Start Command
+</h2><p>Paketo builders are OCI images like any others, which means you can extend them with a Dockerfile.
+To extend a Paketo builder, use a Dockerfile as follows:</p>
+<!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">cat &gt; builder.Dockerfile &lt;&lt; EOF
+# pick a Paketo builder that suits your needs
+FROM paketobuildpacks/builder-jammy-base:latest
+
+# use the root user to enable privileged actions
+USER 0:0
+
+# install packages
+RUN apt-get update &amp;&amp; apt-get install \
+  -y --no-install-recommends \
+  git &amp;&amp; \
+  apt-get clean &amp;&amp; \
+  rm -rf /var/lib/apt/lists/*
+
+# switch back to the cnb user to prevent
+# consumers from executing privileged actions
+USER cnb
+EOF
+
+docker build -t my-builder-image -f builder.Dockerfile .
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<!-- raw HTML omitted -->
+<p><strong>Note:</strong> Extending a builder in this way will only add packages to the build
+environment where buildpacks run. Installed packages <strong>will not</strong> be available
+at runtime, because the builder&rsquo;s <a href="https://buildpacks.io/docs/reference/config/builder-config/#stack-_required_">run image</a> will be
+unaffected. For more control over build- and runtime packages, see the
+<a href="https://paketo.io/docs/howto/create-custom-stack/">documentation</a> on creating your own stack.</p>
+<h2 id="create-your-own-builder" class="markup-heading">
+    <a class="markup-heading__link" href="#create-your-own-builder">
+        Create your own builder
     </a>
-</h2><p>The Python Buildpack sets the default start command <code>python</code>. This starts the Python
-REPL (read-eval-print loop) at launch.</p>
-<p>If the application uses <code>poetry</code>, the <code>Poetry Run</code> buildpack can also be used
-to create a start command from single script defined in the <code>pyproject.toml</code>
-file. See the <a href="https://github.com/paketo-buildpacks/poetry-run/blob/main/README.md"><code>poetry-run</code>
-documentation</a>
-for more details.</p>
-<p>The Python Buildpack comes with support for
-<a href="https://paketo.io/docs/howto/configuration/#procfiles"><code>Procfile</code></a>
-that lets users set custom start commands easily.</p>
-<h2 id="software-bill-of-materials" class="markup-heading">
-    <a class="markup-heading__link" href="#software-bill-of-materials">
-        Software Bill of Materials
-    </a>
-</h2><p>The Python buildpack supports the full <a href="https://paketo.io/docs/concepts/sbom/">software bill of
-materials</a> (SBOM) in <a href="https://github.com/anchore/syft/tree/main/schema/json">Syft</a>,
-<a href="https://cyclonedx.org/">CycloneDX</a>, and <a href="https://spdx.dev/">SPDX</a> formats. The Python
-buildpack also includes limited support for the
-<a href="https://paketo.io/docs/concepts/sbom/#paketo-specific-sbom-format">Paketo-specific</a> SBOM format. This Paketo-specific SBOM format
-does not include information about the application dependencies.</p>
-<p>SBOMs will be generated for applications which leverage <code>Pip</code>, <code>Pipenv</code>, or
-<code>Poetry</code>.</p>
-<p>Check out the <a href="https://paketo.io/docs/howto/sbom/">Access the Software Bill of Materials
-guide</a> for more information about how to retrieve
-the SBOM for your Python app image.</p>
-<p>Currently the Python buildpack has limited support for generating an SBOM for
-applications which leverage <code>Miniconda</code>. Specifically - in order to generate an
-SBOM for a <code>Miniconda</code> application, applications must vendor their dependencies
-in addition to defining them via a <code>package-list.txt</code> file. <code>Miniconda</code>
-applications that declare their dependencies via a <code>package-list.txt</code> file but
-do not vendor them will result in an empty SBOM. This is due to a limitation in
-the upstream SBOM generation library (Syft).</p>
+</h2><p>To create your own builder, follow the Cloud Native Buildpacks
+<a href="https://buildpacks.io/docs/operator-guide/create-a-builder/">documentation</a>.  You can still use Paketo <a href="https://github.com/paketo-buildpacks/github-config/tree/main/builder/.github/workflows">builder
+repository automation</a> to maintain your builder.</p>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
             </div>
             
-  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/reference/python-reference.md" target="_blank" class="github-edit" style="text-decoration:none">
+  <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/builders.md" target="_blank" class="github-edit" style="text-decoration:none">
     <div class="github-edit__content">
       <div class="github-edit__logo-container">
         <img class="github-edit__logo" src="/images/github-mark.png">
@@ -603,15 +614,14 @@ the upstream SBOM generation library (Syft).</p>
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
     <nav id="TableOfContents">
   <ul>
-    <li><a href="#supported-dependencies">Supported Dependencies</a></li>
-    <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
+    <li><a href="#use-a-paketo-builder">Use a Paketo builder</a>
       <ul>
-        <li><a href="#pythonpath">PYTHONPATH</a></li>
-        <li><a href="#pythonuserbase">PYTHONUSERBASE</a></li>
+        <li><a href="#with-pack">With <code>pack</code></a></li>
+        <li><a href="#with-tekton">With Tekton</a></li>
       </ul>
     </li>
-    <li><a href="#start-command">Start Command</a></li>
-    <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
+    <li><a href="#extend-a-paketo-builder">Extend a Paketo builder</a></li>
+    <li><a href="#create-your-own-builder">Create your own builder</a></li>
   </ul>
 </nav>
 </div>
