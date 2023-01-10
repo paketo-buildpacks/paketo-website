@@ -744,7 +744,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [samples]:https://github.com/paketo-buildpacks/samples
 
 <!-- paketo docs references -->
-[base builder]:{{< ref "/docs/concepts/builders#base" >}}
+[base builder]:{{< ref "/docs/reference/builders-reference" >}}
 [bindings]:{{< ref "/docs/howto/configuration#bindings" >}}
 [build-from-compiled-artifact]:{{< relref "#build-from-a-compiled-artifact" >}}
 [building-from-source]:{{< relref "#build-from-source" >}}
