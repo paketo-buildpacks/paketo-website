@@ -63,7 +63,7 @@ When building with the pack CLI, create a [project.toml][cnb/project-file] file 
 [ build ]
   [[ build.env ]]
     name="BP_GO_VERSION"
-    value="1.41.1"
+    value="1.14.1"
 {{< /code/copyable >}}
 
 
