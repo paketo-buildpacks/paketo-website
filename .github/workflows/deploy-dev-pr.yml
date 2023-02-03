@@ -55,7 +55,7 @@ jobs:
         credentials_json: ${{ secrets.GCP_SA_KEY }}
 
     - name: Setup GCloud
-      uses: google-github-actions/setup-gcloud@v1.0.1
+      uses: google-github-actions/setup-gcloud@v1.1.0
       with:
         export_default_credentials: true
 
