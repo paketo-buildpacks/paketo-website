@@ -30,7 +30,7 @@ jobs:
       id: hugo-version
       run: |
         version=$(jq -r .hugo "scripts/.util/tools.json")
-        echo "::set-output name=version::${version#v}"
+        echo "version=${version#v}" >> "$GITHUB_OUTPUT"
 
     - name: Checkout PR
       if: github.event_name == 'workflow_dispatch'
