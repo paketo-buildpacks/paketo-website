@@ -35,5 +35,5 @@ Would you like to talk about Paketo Buildpacks? Feel free to chime in on [this d
 * Cloud Foundry Summit 2020: ["Paketo Buildpacks: from source code to application images"](https://www.youtube.com/watch?v=JVUh9OuA5N4) by Daniel Thornton
 * TFIR.io podcast: ["What does Paketo mean for developers and operators?"](https://www.youtube.com/watch?v=kyQfP1ffjSQ&ab_channel=TheLinuxFoundation)
 * The DevOps Toolkit Youtube episode ["Container (Docker) Images Without Dockerfile With Buildpacks and kpack"](https://www.youtube.com/watch?v=fbSoKu8NGSU&t=1439s&ab_channel=DevOpsToolkit)
-* * The DevOps Toolkit Youtube episode ["Build Container Image - Feat. Carvel kbld, Buildpacks, and Lima (You Choose!, Ch. 1, Ep. 1)"](https://www.youtube.com/watch?v=GDInFocQJTU&t=0s)
+* The DevOps Toolkit Youtube episode ["Build Container Image - Feat. Carvel kbld, Buildpacks, and Lima (You Choose!, Ch. 1, Ep. 1)"](https://www.youtube.com/watch?v=GDInFocQJTU&t=0s)
 <!-- spellchecker-enable -->
