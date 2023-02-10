@@ -7,8 +7,9 @@ menu:
 aliases:
   - /docs/buildpacks/
 ---
+In this section, we will use the results of the [Getting started tutorial]({{< ref "docs" >}}) with `Node.js` where a simple app is built using the `pack build` command.
 
-In the Getting Started tutorial, you ran a `pack build` command to build a sample app. This resulted in some output similar to this block:
+This resulted in some output similar to this block:
 
 ```
 ...
@@ -26,7 +27,7 @@ Paketo NPM Start Buildpack 0.0.2
 ...
 ```
 
-In this section, we will make sense of this output and explain how the
+Here we will make sense of this output and explain how the
 buildpacks detect what dependencies are needed by your app to build it into a runnable app image.
 
 ## What are Buildpacks?
@@ -62,10 +63,10 @@ will provide to the subsequent `build` phase.
 In the `build` phase, the buildpack contributes to the final
 app image, fulfilling the contract given by the `detect` phase. These
 contributions could be adding an image layer containing a dependency binary
-(like the Node.js engine) or could be as simple as a running a command (like
+(like the Node.js engine) or could be as simple as running a command (like
 `npm install`).
 
-In the Getting Started tutorial, the `pack build` output contains a section in the
+In the tutorial, the `pack build` output contains a section in the
 build phase for the NPM Install Buildpack under a "BUILDING" header. You can
 see that the buildpack runs `npm install` to install the app's dependencies.
 Subsequently, the NPM Start Buildpack sets the start command to `node server.js`.
@@ -85,7 +86,7 @@ buildpacks and/or provide required components to downstream buildpacks.
 
 For example, the Gradle Buildpack is a component buildpack, responsible for
 installing Gradle in the build container and using Gradle to compile and
-package a JVM application. It requires that an upstream component to provide a
+package a JVM application. It requires an upstream component to provide a
 JDK. It provides a compiled JVM application to downstream buildpacks.
 
 ### Composite Buildpacks

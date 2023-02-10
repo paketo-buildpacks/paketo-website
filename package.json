@@ -1,13 +1,14 @@
 {
   "dependencies": {
-    "@docsearch/js": "^3.2.1",
+    "@actions/core": "^1.10.0",
+    "@docsearch/js": "^3.3.3",
     "clipboard": "^2.0.11",
-    "firebase-tools": "^11.13.0"
+    "firebase-tools": "^11.22.0"
   },
   "scripts": {
     "deploy": "node -e \"const deploy = require('./deploy.js'); deploy({expires: '8h'});\""
   },
   "devDependencies": {
-    "spellchecker-cli": "^6.0.2"
+    "spellchecker-cli": "^6.1.1"
   }
 }

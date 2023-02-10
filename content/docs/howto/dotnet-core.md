@@ -135,9 +135,6 @@ version of the SDK that is compatible with the installed .NET Core runtime.
 The available SDK versions for each buildpack release can be found in the
 [release notes][bp/dotnet-core-sdk/releases].
 
-However, the .NET Core SDK version can be explicitly set by specifying a
-version in a `buildpack.yml` file.
-
 ### Deprecated: Using buildpack.yml
 
 Specifying the .NET Core SDK version through `buildpack.yml` configuration will
@@ -150,24 +147,55 @@ the .NET Core runtime that the .NET Core Runtime Buildpack should install. The
 .NET Core SDK buildpack will automatically install an SDK version that is
 compatible with the selected .NET Core runtime version.
 
-## Build an App from Source in a Subdirectory
+## Build one project in a multi-project solution
 
-By default, the Paketo .NET buildpack will consider the root directory of
-your codebase to be the project directory. This directory should contain a C#,
-F#, or Visual Basic Project file. If your project directory is not located at
-the root of your source code you will need to set a custom project path.
+By default, the Paketo .NET buildpack will consider the root of the provided
+source code to be the root of the startup project you want to build.  This
+directory should contain a C#, F#, or Visual Basic Project file. If your
+startup project directory is not located at the root of your solution, you will
+need to specify a project path.
+
+For example, the following directory structure reflects a common .NET project setup, in
+which the startup project, `App`, depends on other projects in the solution:
+`ComponentProject` and `OtherComponentProject`.
+
+```
+./MultiProjectApp
+├── MultiProjectApp.sln
+├── ComponentProject
+│   ├── Component.cs
+│   └── ComponentProject.csproj
+├── OtherComponentProject
+│   ├── OtherComponent.cs
+│   └── OtherComponentProject.csproj
+└── App
+    ├── Program.cs
+    ├── appsettings.Development.json
+    ├── appsettings.json
+    └──  App.csproj
+```
+
+To build the `App` project, `pack build` from the root of the `MultiProjectApp`
+directory and specify `App` as the project to build using the
+`BP_DOTNET_PROJECT_PATH` environment variable.
+
+**Note:** _Do not_ use `pack build myapp --path=./App` to build the `App`
+project. Using the `--path` flag will exclude `ComponentProject` and
+`OtherComponentProject` from the build container. If `App` depends on those
+components, the build will fail when publishing `App`, because its dependencies
+will not be present in the build container.
 
 ### Using `BP_DOTNET_PROJECT_PATH`
 
-You can specify a project path by setting the `$BP_DOTNET_PROJECT_PATH`
-environment variable at build time, either by passing a flag to the
-[platform][definition/platform] or by adding it to your `project.toml`. See the
-Cloud Native Buildpacks [documentation][project-file] to learn more about
-`project.toml` files.
+You can specify the path to the startup project you want to build by setting
+the `$BP_DOTNET_PROJECT_PATH` environment variable at build time, either by
+passing a flag to the [platform][definition/platform] or by adding it to your
+`project.toml`. See the Cloud Native Buildpacks [documentation][project-file]
+to learn more about `project.toml` files.
 
 #### With a `pack build` flag
 {{< code/copyable >}}
-pack build my-app --env BP_DOTNET_PROJECT_PATH=./src
+pack build my-app --env BP_DOTNET_PROJECT_PATH=./App
 {{< /code/copyable >}}
 
 
@@ -175,7 +203,7 @@ pack build my-app --env BP_DOTNET_PROJECT_PATH=./src
 {{< code/copyable >}}
 [[ build.env ]]
   name = 'BP_DOTNET_PROJECT_PATH'
-  value = './src'
+  value = './App'
 {{< /code/copyable >}}
 
 ### Deprecated: Using buildpack.yml
@@ -423,6 +451,15 @@ of our configuration docs.
 .NET Core Buildpack users can embed launch-time environment variables in their
 app image by following the documentation for the [Environment Variables
 Buildpack](https://github.com/paketo-buildpacks/environment-variables/blob/main/README.md).
+
+## Enable `DEBUG` logging
+Users of the .NET Core buildpack can access extra debug logs during the image build process by setting the `BP_LOG_LEVEL`
+environment variable to `DEBUG` at build time. Additional debug logs will
+appear in build logs if the relevant buildpacks have debug log lines.
+{{< code/copyable >}}
+pack build my-app --buildpack paketo-buildpacks/dotnet-core \
+  --env BP_LOG_LEVEL=DEBUG
+{{< /code/copyable >}}
 
 ## Add Custom Labels to the App Image
 .NET Core Buildpack users can add labels to their app image by following the

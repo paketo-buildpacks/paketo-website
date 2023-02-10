@@ -33,9 +33,9 @@ function main() {
 
   refMessage="Found internal links not wrapped in {{< ref >}} or {{< relref >}}:"
 
-  if grep -irn "paketo.io" "${CONTENTDIR}" | grep -v "deps.paketo.io" | grep -qv "paketo.io/images" ; then
+  if grep -rn "paketo.io" "${CONTENTDIR}" | grep -v "deps.paketo.io" | grep -qv "paketo.io/images" ; then
     util::print::title "${refMessage}";
-    grep -irn "paketo.io" "${CONTENTDIR}" | grep -v "deps.paketo.io" | grep -v "paketo.io/images";
+    grep -rn "paketo.io" "${CONTENTDIR}" | grep -v "deps.paketo.io" | grep -v "paketo.io/images";
     clean=1;
   fi
 

@@ -404,11 +404,12 @@ instructions in the [Applying Custom
 Labels]({{< ref "/docs/howto/configuration#applying-custom-labels" >}})
 section of our configuration docs.
 
-## Run a build with `DEBUG` logging
+## Enable `DEBUG` logging
 Users of the PHP buildpack can access extra debug logs during the image build process by setting the `BP_LOG_LEVEL`
-environment variable to `DEBUG` at build time.
+environment variable to `DEBUG` at build time. Additional debug logs will
+appear in build logs if the relevant buildpacks have debug log lines.
 {{< code/copyable >}}
-  pack build my-app --buildpack paketo-buildpacks/php \
+pack build my-app --buildpack paketo-buildpacks/php \
   --env BP_LOG_LEVEL=DEBUG
 {{< /code/copyable >}}
 

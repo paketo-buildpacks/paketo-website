@@ -178,6 +178,34 @@ $BP_NODE_RUN_SCRIPTS=lint,build
 then the `lint` and then `build` scripts would be run via npm or yarn, during build phase. Note that the 
 value for `BP_NODE_RUN_SCRIPTS` must be a comma separated list of script names.
 
+
+## Build Angular apps on stacks with read-only file systems
+By default, when an Angular app starts up, it attempts to create a cache,
+`.angular/cache`, in the app's directory. On some stacks, (including the Paketo
+Jammy stacks) the app directory is read-only at runtime.  As a result, Angular
+apps will fail to start with errors like ` Error: EACCES: permission denied,
+open '/workspace/.angular/cache`.
+
+To avoid this failure, configure Angular to create the cache in a writeable
+location, like `/tmp`.
+
+### Setting an Angular cache path in `angular.json`
+To configure the location of the Angular cache, set the `cli.cache.path`
+parameter in your app's `angular.json`. Add the following snippet to your
+`angular.json`:
+
+{{< code/copyable >}}
+  "cli":{
+    "cache": {
+      "path": "/tmp/.angular/cache"
+    }
+  },
+{{< /code/copyable >}}
+
+With this setting, the Angular app will start successfully and write cache
+artifacts to the `/tmp` directory.
+
+
 ## Build an App that Uses NPM
 The Node.js buildpack can detect automatically if an app requires `npm`.
 
@@ -343,6 +371,15 @@ Node.js Buildpack users can add labels to their app image by following the
 instructions in the [Applying Custom
 Labels]({{< ref "/docs/howto/configuration#applying-custom-labels" >}})
 section of our configuration docs.
+
+## Enable `DEBUG` logging
+Users of the Node.js buildpack can access extra debug logs during the image build process by setting the `BP_LOG_LEVEL`
+environment variable to `DEBUG` at build time. Additional debug logs will
+appear in build logs if the relevant buildpacks have debug log lines.
+{{< code/copyable >}}
+pack build my-app --buildpack paketo-buildpacks/nodejs \
+  --env BP_LOG_LEVEL=DEBUG
+{{< /code/copyable >}}
 
 <!-- spellchecker-disable -->
 <!-- References -->

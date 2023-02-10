@@ -28,6 +28,7 @@ Buildpack
 Buildpack's
 Buildpack\-[a-z]+
 Buildpacks
+Buildpackless
 BurntSushi's
 COMPOSER_AUTH
 CPE
@@ -45,6 +46,7 @@ DistZip
 DistZip(\-[a-z]+)?
 Distroless
 Dockerfile(s)?
+DockerHub
 Dotnet
 Dragonwell
 Dynatrace
@@ -146,6 +148,7 @@ Skywalking
 Stackdriver
 Subdirectory
 Syft
+Tekton
 TLS
 TOML
 Tomee
@@ -251,6 +254,7 @@ filesystem
 flagset
 flavour(s)?
 frontend
+frontend-app
 func
 github
 glibc
@@ -382,5 +386,6 @@ vendoring
 watchexec
 webserver
 webservers
+writeable
 yarnrc
 yourkit

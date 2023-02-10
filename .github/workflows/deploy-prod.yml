@@ -22,7 +22,7 @@ jobs:
         ref: main
         path: build-environment
 
-    - uses: actions/setup-node@v3.5.0
+    - uses: actions/setup-node@v3.6.0
       with:
         node-version: 16
         check-latest: true
@@ -31,7 +31,7 @@ jobs:
       id: hugo-version
       run: |
         version=$(jq -r .hugo "build-environment/scripts/.util/tools.json")
-        echo "::set-output name=version::${version#v}"
+        echo "version=${version#v}" >> "$GITHUB_OUTPUT"
 
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
@@ -57,7 +57,7 @@ jobs:
         if [[ -n "$(git status --short)" ]]; then
           git add --all .
           git commit --message "Deploying"
-          echo "::set-output name=commit_sha::$(git rev-parse HEAD)"
+          echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
         fi
 
     - name: Push
