@@ -518,10 +518,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#build-an-app-that-uses-yarn">Build an App that Uses Yarn</a>
       <ul>
         <li><a href="#configure-yarn-during-the-build">Configure Yarn During the Build</a></li>
-      </ul>
-    </li>
-    <li><a href="#compile-native-extensions-with-node-gyp">Compile Native Extensions with <code>node-gyp</code></a>
-      <ul>
         <li><a href="#with-pack-and-a-command-line-flag">With pack and a Command-Line Flag</a></li>
       </ul>
     </li>
@@ -838,13 +834,6 @@ To <code>pack build</code> with the binding:
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
-<h2 id="compile-native-extensions-with-node-gyp" class="markup-heading">
-    <a class="markup-heading__link" href="#compile-native-extensions-with-node-gyp">
-        Compile Native Extensions with <code>node-gyp</code>
-    </a>
-</h2><p>If your app requires compilation of native extensions using <code>node-gyp</code>, the Node.js buildpack requires that
-you use the Paketo Full Builder. This is because <code>node-gyp</code> requires <code>python</code> which is excluded from
-the Paketo Base Builder&rsquo;s stack, and the module may require other shared objects.</p>
 <h3 id="with-pack-and-a-command-line-flag" class="markup-heading">
     <a class="markup-heading__link" href="#with-pack-and-a-command-line-flag">
         With pack and a Command-Line Flag
@@ -1056,10 +1045,6 @@ appear in build logs if the relevant buildpacks have debug log lines.
     <li><a href="#build-an-app-that-uses-yarn">Build an App that Uses Yarn</a>
       <ul>
         <li><a href="#configure-yarn-during-the-build">Configure Yarn During the Build</a></li>
-      </ul>
-    </li>
-    <li><a href="#compile-native-extensions-with-node-gyp">Compile Native Extensions with <code>node-gyp</code></a>
-      <ul>
         <li><a href="#with-pack-and-a-command-line-flag">With pack and a Command-Line Flag</a></li>
       </ul>
     </li>
