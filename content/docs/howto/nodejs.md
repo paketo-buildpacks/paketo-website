@@ -260,11 +260,6 @@ pack build myapp \
     --volume <absolute-path-to-binding-dir>:/bindings/yarnrc
 {{< /code/copyable >}}
 
-## Compile Native Extensions with `node-gyp`
-If your app requires compilation of native extensions using `node-gyp`, the Node.js buildpack requires that
-you use the Paketo Full Builder. This is because `node-gyp` requires `python` which is excluded from
-the Paketo Base Builder's stack, and the module may require other shared objects.
-
 ### With pack and a Command-Line Flag
 When building with the pack CLI, specify the latest Paketo Full Builder at build time
 with the `--builder` flag.
