@@ -15,6 +15,15 @@ This documentation explains how to use the Paketo buildpacks
 to build Java applications for several common use-cases. For more in-depth
 description of the buildpacks' behavior and configuration see the [Paketo Java Buildpack][reference/java] and [Paketo Java Native Image Buildpack][reference/java-native-image] reference documentation.
 
+## Prerequisites
+
+The [pack CLI][pack] is used throughout the examples. `pack` is just one of several Cloud Native Buildpack [platforms][platforms] than can execute builds with the Java Buildpacks. For example, Spring Boot developers may want to explore the [Spring Boot Maven Plugin][spring boot maven plugin] or [Spring Boot Gradle Plugin][spring boot gradle plugin] .
+
+Examples assume that the [Paketo Base builder][base builder] is the default builder:
+{{< code/copyable >}}
+pack config default-builder paketobuildpacks/builder-jammy-base
+{{< /code/copyable >}}
+
 ## About the Examples
 
 All Java Buildpack examples will use the Paketo [sample applications][samples].
@@ -23,13 +32,6 @@ Examples assume that the root of this repository is the working directory:
 {{< code/copyable >}}
 git clone https://github.com/paketo-buildpacks/samples
 cd samples
-{{< /code/copyable >}}
-
-The [pack CLI][pack] is used throughout the examples. `pack` is just one of several Cloud Native Buildpack [platforms][platforms] than can execute builds with the Java Buildpacks. For example, Spring Boot developers may want to explore the [Spring Boot Maven Plugin][spring boot maven plugin] or [Spring Boot Gradle Plugin][spring boot gradle plugin] .
-
-Examples assume that the [Paketo Base builder][base builder] is the default builder:
-{{< code/copyable >}}
-pack config default-builder paketobuildpacks/builder:base
 {{< /code/copyable >}}
 
 All java example images should return `{"status":"UP"}` from the [actuator health endpoint][spring boot actuator endpoints].
