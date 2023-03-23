@@ -108,6 +108,7 @@ OCI\-[a-z]+
 OneAgent
 OpenJ9
 OpenJDK
+OpenTelemetry
 PEM
 PHPRC
 PHP_FPM_PATH
@@ -311,6 +312,7 @@ npm-start
 npmrc
 nugetconfig
 openssl
+opentelemetry
 orchestrator
 os
 packit

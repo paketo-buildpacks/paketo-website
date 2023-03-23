@@ -126,11 +126,19 @@ Connection credentials will be read from the binding at runtime, with the bindin
 
 The buildpack supports the Java, Node.js and PHP languages.
 
+## OpenTelemetry
+
+The [OpenTelemetry][opentelemetry] integration is enabled by setting an environment variable for the [OpenTelemetry Buildpack][bp/opentelemetry]. If the environment variable `BP_OPENTELEMETRY_ENABLED` is set to a truthy value (i.e. true, t, 1 ignoring case) at build-time then an agent appropriate for the application will be contributed to the application image.
+
+One contributed to an application image, the OpenTelemetry support can be toggled on/off by setting `OTEL_JAVAAGENT_ENABLED` to a true or false value, it defaults to false. You may also turn on/off metric exporting by setting `OTEL_METRICS_EXPORTER` to a true or false value. You may configure any of the [OpenTelemetry configuration settings the same way](https://opentelemetry.io/docs/instrumentation/java/automatic/agent-config/). 
+
+You may also configure OpenTelemetry settings via [bindings][bindings] passed into the application. The binding requires a type of `opentelemetry`. Binding key/values map directly to OpenTelemetry Java agent configuration properties, for example a binding key of `OTEL_JAVAAGENT_ENABLED` and a value of `true` could also be used to enable the agent. See the [project documentation](https://opentelemetry.io/docs/instrumentation/java/automatic/agent-config/) for a complete list of available properties. 
+
 ## YourKit
 
 The [YourKit][yourkit] profiler integration is enabled by setting an environment variable for the [YourKit buildpack][bp/yourkit]. If the environment variable `BP_YOURKIT_ENABLED` is set to a truthy value (i.e. true, t, 1 ignoring case) at build-time then an agent appropriate for the application will be contributed to the application image.
 
-Once contributed to an application image, the JProfiler support can be toggled on/off by setting `BPL_YOURKIT_ENABLED` to a true or false value at runtime. Additionally, `BPL_YOURKIT_PORT` can be set at runtime to customize the port on which the agent listens, defaults to 10001, and `BPL_YOURKIT_SESSION_NAME` can be used to set the session name.
+Once contributed to an application image, the YourKit support can be toggled on/off by setting `BPL_YOURKIT_ENABLED` to a true or false value at runtime. Additionally, `BPL_YOURKIT_PORT` can be set at runtime to customize the port on which the agent listens, defaults to 10001, and `BPL_YOURKIT_SESSION_NAME` can be used to set the session name.
 
 The buildpack supports the Java language.
 
@@ -246,6 +254,7 @@ pack build samples/java --volume "$(pwd)/binding:/platform/bindings/skywalking" 
 [bp/google-stackdriver]:https://github.com/paketo-buildpacks/google-stackdriver
 [bp/jprofiler]:https://github.com/paketo-buildpacks/jprofiler
 [bp/new-relic]:https://github.com/paketo-buildpacks/new-relic
+[bp/opentelemetry]:https://github.com/paketo-buildpacks/opentelemetry
 [bp/yourkit]:https://github.com/paketo-buildpacks/yourkit
 
 <!-- cnb references -->
@@ -273,6 +282,7 @@ pack build samples/java --volume "$(pwd)/binding:/platform/bindings/skywalking" 
 [google stackdriver]:https://cloud.google.com/products/operations
 [jprofiler]:https://www.ej-technologies.com/products/jprofiler/overview.html
 [new relic]:https://newrelic.com/
+[opentelemetry]:https://opentelemetry.io/
 [yourkit]:https://www.yourkit.com/
 [spring boot gradle plugin]:https://docs.spring.io/spring-boot/docs/current/gradle-plugin/reference/html/#build-image
 [spring boot maven plugin]:https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/html/#build-image
