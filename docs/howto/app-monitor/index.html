@@ -506,6 +506,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
     </li>
     <li><a href="#new-relic">New Relic</a></li>
+    <li><a href="#opentelemetry">OpenTelemetry</a></li>
     <li><a href="#yourkit">YourKit</a>
       <ul>
         <li><a href="#connecting-with-yourkit">Connecting with YourKit</a></li>
@@ -627,12 +628,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </h2><p>The <a href="https://newrelic.com/">New Relic</a> integration is enabled with <a href="https://paketo.io/docs/howto/configuration/#bindings">bindings</a> through the <a href="https://github.com/paketo-buildpacks/new-relic">New Relic Buildpack</a>. If a binding of the correct type, <code>NewRelic</code>, is provided at build-time then an agent appropriate for the application will be contributed to the application image, as well as any required configuration files.</p>
 <p>Connection credentials will be read from the binding at runtime, with the binding secrets being transformed to system properties with the following the pattern <code>NEW_RELIC_&lt;KEY&gt;=&lt;VALUE&gt;</code>.</p>
 <p>The buildpack supports the Java, Node.js and PHP languages.</p>
+<h2 id="opentelemetry" class="markup-heading">
+    <a class="markup-heading__link" href="#opentelemetry">
+        OpenTelemetry
+    </a>
+</h2><p>The <a href="https://opentelemetry.io/">OpenTelemetry</a> integration is enabled by setting an environment variable for the <a href="https://github.com/paketo-buildpacks/opentelemetry">OpenTelemetry Buildpack</a>. If the environment variable <code>BP_OPENTELEMETRY_ENABLED</code> is set to a truthy value (i.e. true, t, 1 ignoring case) at build-time then an agent appropriate for the application will be contributed to the application image.</p>
+<p>One contributed to an application image, the OpenTelemetry support can be toggled on/off by setting <code>OTEL_JAVAAGENT_ENABLED</code> to a true or false value, it defaults to false. You may also turn on/off metric exporting by setting <code>OTEL_METRICS_EXPORTER</code> to a true or false value. You may configure any of the <a href="https://opentelemetry.io/docs/instrumentation/java/automatic/agent-config/">OpenTelemetry configuration settings the same way</a>.</p>
+<p>You may also configure OpenTelemetry settings via <a href="https://paketo.io/docs/howto/configuration/#bindings">bindings</a> passed into the application. The binding requires a type of <code>opentelemetry</code>. Binding key/values map directly to OpenTelemetry Java agent configuration properties, for example a binding key of <code>OTEL_JAVAAGENT_ENABLED</code> and a value of <code>true</code> could also be used to enable the agent. See the <a href="https://opentelemetry.io/docs/instrumentation/java/automatic/agent-config/">project documentation</a> for a complete list of available properties.</p>
 <h2 id="yourkit" class="markup-heading">
     <a class="markup-heading__link" href="#yourkit">
         YourKit
     </a>
 </h2><p>The <a href="https://www.yourkit.com/">YourKit</a> profiler integration is enabled by setting an environment variable for the <a href="https://github.com/paketo-buildpacks/yourkit">YourKit buildpack</a>. If the environment variable <code>BP_YOURKIT_ENABLED</code> is set to a truthy value (i.e. true, t, 1 ignoring case) at build-time then an agent appropriate for the application will be contributed to the application image.</p>
-<p>Once contributed to an application image, the JProfiler support can be toggled on/off by setting <code>BPL_YOURKIT_ENABLED</code> to a true or false value at runtime. Additionally, <code>BPL_YOURKIT_PORT</code> can be set at runtime to customize the port on which the agent listens, defaults to 10001, and <code>BPL_YOURKIT_SESSION_NAME</code> can be used to set the session name.</p>
+<p>Once contributed to an application image, the YourKit support can be toggled on/off by setting <code>BPL_YOURKIT_ENABLED</code> to a true or false value at runtime. Additionally, <code>BPL_YOURKIT_PORT</code> can be set at runtime to customize the port on which the agent listens, defaults to 10001, and <code>BPL_YOURKIT_SESSION_NAME</code> can be used to set the session name.</p>
 <p>The buildpack supports the Java language.</p>
 <h3 id="connecting-with-yourkit" class="markup-heading">
     <a class="markup-heading__link" href="#connecting-with-yourkit">
@@ -777,7 +785,7 @@ docker run --rm --tty --publish 8080:8080 \
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> March 16, 2023</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> March 23, 2023</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -802,6 +810,7 @@ docker run --rm --tty --publish 8080:8080 \
       </ul>
     </li>
     <li><a href="#new-relic">New Relic</a></li>
+    <li><a href="#opentelemetry">OpenTelemetry</a></li>
     <li><a href="#yourkit">YourKit</a>
       <ul>
         <li><a href="#connecting-with-yourkit">Connecting with YourKit</a></li>
