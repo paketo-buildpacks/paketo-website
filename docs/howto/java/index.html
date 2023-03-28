@@ -811,6 +811,13 @@ pack build samples/java \
 </ul>
 </li>
 </ul>
+<h4 id="jvm-default-version" class="markup-heading">
+    <a class="markup-heading__link" href="#jvm-default-version">
+        JVM Default Version
+    </a>
+</h4><p>The Java buildpack&rsquo;s default version will change periodically. The Paketo buildpack will change the default version of Java once the most recently released LTS version of Java is at least one year old. For example, Java 21 will release in September 2023. It will be added to the Paketo buildpacks immediately, but will not become the default until September 2024.</p>
+<p>Exceptions are permitted for a shorter change cycle when deemed sufficiently urgent by a majority vote of Java sub-team contributors and maintainers.</p>
+<p>When the default version of Java changes, the team will bump the major version of the Java buildpack and include details of the change in the release notes. In addition, the team will write a blog post and update our Slack channels prior to the change to alert community members of the upcoming change.</p>
 <h3 id="install-a-specific-jvm-type" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-specific-jvm-type">
         Install a Specific JVM Type
@@ -1086,6 +1093,10 @@ pack build samples/java-native \
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>22.3</td>
+<td>7.44.3</td>
+</tr>
 <tr>
 <td>22.2</td>
 <td>7.26.1</td>
