@@ -234,6 +234,14 @@ The following environment variable configures the JVM version at build-time.
   * Configures a specific JDK or JRE version (specify only the major version).
   * *Example*: Given `BP_JVM_VERSION=8` or `BP_JVM_VERSION=8.*` the buildpack will install the latest patch releases of the Java 8 JDK and JRE.
 
+#### JVM Default Version
+
+The Java buildpack's default version will change periodically. The Paketo buildpack will change the default version of Java once the most recently released LTS version of Java is at least one year old. For example, Java 21 will release in September 2023. It will be added to the Paketo buildpacks immediately, but will not become the default until September 2024. 
+
+Exceptions are permitted for a shorter change cycle when deemed sufficiently urgent by a majority vote of Java sub-team contributors and maintainers.
+
+When the default version of Java changes, the team will bump the major version of the Java buildpack and include details of the change in the release notes. In addition, the team will write a blog post and update our Slack channels prior to the change to alert community members of the upcoming change.
+
 ### Install a Specific JVM Type
 
 The following environment variable configures whether a JDK or a JRE is installed at runtime.
@@ -416,7 +424,8 @@ The following table documents the versions available.
 
 | GraalVM Version | Java Native Image Buildpack Version |
 | --------------- | ----------------------------------- |
-| 22.2           | 7.26.1                              |
+| 22.3            | 7.44.3                              |
+| 22.2            | 7.26.1                              |
 | 22.1            | 7.16.2                              |
 | 22.0            | 7.8.1                               |
 | 21.3            | 5.12.0                              |
