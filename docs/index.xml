@@ -12,8 +12,7 @@
       
       <guid>https://paketo.io/docs/howto/java/</guid>
       <description>This documentation explains how to use the Paketo buildpacks to build Java applications for several common use-cases. For more in-depth description of the buildpacks&amp;rsquo; behavior and configuration see the Paketo Java Buildpack and Paketo Java Native Image Buildpack reference documentation.
-About the Examples All Java Buildpack examples will use the Paketo sample applications.
-Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied!</description>
+Prerequisites The pack CLI is used throughout the examples. pack is just one of several Cloud Native Buildpack platforms than can execute builds with the Java Buildpacks. For example, Spring Boot developers may want to explore the Spring Boot Maven Plugin or Spring Boot Gradle Plugin .</description>
     </item>
     
     <item>
