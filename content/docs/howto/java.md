@@ -176,7 +176,7 @@ pack build samples/java \
   -e BP_INCLUDE_FILES='foo/*'
 {{< /code/copyable >}}
 
-**NOTE:** It is important to properly quote values for `BP_INCLUDE_FILES` and `BP_EXCLUDE_FILES` as they may contain wild card characters like `*` which the shell my interpret. Proper quoting ensures the actual characters are passed through to the buildpack.
+**NOTE:** It is important to properly quote values for `BP_INCLUDE_FILES` and `BP_EXCLUDE_FILES` as they may contain wild card characters like `*` which the shell may interpret. Proper quoting ensures the actual characters are passed through to the buildpack.
 
 ### Build from a Compiled Artifact
 
