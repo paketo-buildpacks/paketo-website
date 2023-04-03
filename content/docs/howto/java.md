@@ -220,10 +220,7 @@ The exact JRE version that was contributed to a given image can be read from the
 
 **Example** Inspecting the JRE Version
 
-Given an image named `samples/java` built from one of examples above, the following command should print the exact version of the installed JRE.
-{{< code/copyable >}}
-pack inspect-image samples/app --bom | jq '.local[] | select(.name=="jre") | .metadata.version'
-{{< /code/copyable >}}
+Please refer to the [Access the SBOM article][howto/sbom] to find out how you can inspect the embedded JRE using SBOM information.
 
 ### Install a Specific JVM Version
 
@@ -411,10 +408,7 @@ The exact substrate VM version that was contributed to a given image can be read
 
 **Example** Inspecting the JRE Version
 
-Given an image named `samples/java-native` built from one of examples above, the following command will print the exact version of the installed substrate VM.
-{{< code/copyable >}}
-pack inspect-image samples/java-native --bom | jq '.local[] | select(.name=="native-image-svm") | .metadata.version'
-{{< /code/copyable >}}
+Please refer to the [Access the SBOM article][howto/sbom] to find out how you can inspect the JRE using SBOM information.
 
 ### Configure the GraalVM Version
 
@@ -474,10 +468,7 @@ It does not hurt to use this command for all situations, it is just more verbose
 
 ### Inspect Spring Boot Application Dependencies
 
-The following command uses `pack` to list every dependency of a sample application.
-{{< code/copyable >}}
-pack inspect-image samples/java --bom | jq '.local[] | select(.name=="dependencies") | .metadata.dependencies[].name'
-{{< /code/copyable >}}
+Please refer to the [Access the SBOM article][howto/sbom] to find out how you can inspect the Spring Boot application dependencies using SBOM information.
 
 ### Disable Spring Boot Auto-Configuration
 
@@ -760,6 +751,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [build-from-compiled-artifact]:{{< relref "#build-from-a-compiled-artifact" >}}
 [building-from-source]:{{< relref "#build-from-source" >}}
 [howto/app-monitor]:{{< relref "/docs/howto/app-monitor" >}}
+[howto/sbom]:{{< relref "/docs/howto/sbom" >}}
 [install-jvm-type]:{{< relref "#install-a-specific-jvm-type" >}}
 [components]:{{< ref "/docs/reference/java-native-image-reference#components" >}}
 [composite buildpack]:{{< ref "/docs/concepts/buildpacks#composite-buildpacks" >}}
