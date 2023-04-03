@@ -214,6 +214,68 @@ indicate which SBOMs it supports.
    `buildpack.sbom-formats` array in the `buildpack.toml`. This will enumerate the SBOM formats that the
    buildpack is capable of generating.
 
+## Use external tooling to merge and visualize the SBOMs
+After you run
+<!-- spellchecker-disable -->
+{{< code/copyable >}}
+pack sbom download paketo-demo-app --output-dir /tmp/demo-app-sbom
+{{< /code/copyable >}}
+
+You will get similar results:
+```shell           
+/tmp/demo-app-sbom
+└── layers
+    └── sbom
+        └── launch
+            ├── paketo-buildpacks_bellsoft-liberica
+            │   ├── helper
+            │   │   └── sbom.syft.json
+            │   └── jre
+            │       └── sbom.syft.json
+            ├── paketo-buildpacks_ca-certificates
+            │   └── helper
+            │       └── sbom.syft.json
+            ├── paketo-buildpacks_executable-jar
+            │   ├── sbom.cdx.json
+            │   └── sbom.syft.json
+            ├── paketo-buildpacks_spring-boot
+            │   ├── helper
+            │   │   └── sbom.syft.json
+            │   └── spring-cloud-bindings
+            │       └── sbom.syft.json
+            └── sbom.legacy.json
+
+13 directories, 8 files
+```
+
+For the `CycloneDX` reports (ending with `cdx.json`) you can download and use the [CycleDX CLI](https://github.com/CycloneDX/cyclonedx-cli) or even send the result to the [BOM Doctor](https://bomdoctor.sonatype.com/#/home)
+
+For the `Syft` reports (ending with `syft.json`) you can download and use the [Syft CLI](https://github.com/anchore/syft) and the [Grype CLI](https://github.com/anchore/grype).
+
+### Merge all Syft reports into one
+
+```shell
+syft ./app-sbom -o syft-json > syft.json
+```
+
+### Converting the Syft reports into one CycloneDX report
+
+```shell
+syft /tmp/demo-app-sbom -o cyclonedx-json > cyclone.json
+```
+
+### Use Grype to evaluate the CVEs from your SBOMs
+
+Read Syft JSON from path on disk:
+```shell
+grype sbom:path/to/syft.json
+```
+
+You can also pipe in Syft JSON directly:
+```shell
+syft /tmp/demo-app-sbom -o json | grype
+```
+
 <!-- References -->
 <!-- spellchecker-disable -->
 [concepts/bom]:{{< ref "docs/concepts/sbom" >}}
