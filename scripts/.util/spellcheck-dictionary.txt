@@ -358,6 +358,7 @@ relref
 repo
 runnable
 runtimes
+sbom
 sbom-output-dir
 sbt
 self-vendored
