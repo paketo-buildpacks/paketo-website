@@ -500,6 +500,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
     </li>
     <li><a href="#determine-which-sbom-formats-a-buildpack-will-generate">Determine Which SBOM Formats a Buildpack Will Generate</a></li>
+    <li><a href="#use-external-tooling-to-merge-and-visualize-the-sboms">Use external tooling to merge and visualize the SBOMs</a>
+      <ul>
+        <li><a href="#merge-all-syft-reports-into-one">Merge all Syft reports into one</a></li>
+        <li><a href="#converting-the-syft-reports-into-one-cyclonedx-report">Converting the Syft reports into one CycloneDX report</a></li>
+        <li><a href="#use-grype-to-evaluate-the-cves-from-your-sboms">Use Grype to evaluate the CVEs from your SBOMs</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div>
@@ -755,7 +762,63 @@ than <code>0.7</code>, it only supports the <a href="https://paketo.io/docs/conc
 <code>buildpack.sbom-formats</code> array in the <code>buildpack.toml</code>. This will enumerate the SBOM formats that the
 buildpack is capable of generating.</li>
 </ol>
+<h2 id="use-external-tooling-to-merge-and-visualize-the-sboms" class="markup-heading">
+    <a class="markup-heading__link" href="#use-external-tooling-to-merge-and-visualize-the-sboms">
+        Use external tooling to merge and visualize the SBOMs
+    </a>
+</h2><p>After you run</p>
 <!-- raw HTML omitted -->
+<div class="copyable">
+    <pre class="copyable__code">pack sbom download paketo-demo-app --output-dir /tmp/demo-app-sbom
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<p>You will get similar results:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">/tmp/demo-app-sbom
+</span></span><span class="line"><span class="cl">└── layers
+</span></span><span class="line"><span class="cl">    └── sbom
+</span></span><span class="line"><span class="cl">        └── launch
+</span></span><span class="line"><span class="cl">            ├── paketo-buildpacks_bellsoft-liberica
+</span></span><span class="line"><span class="cl">            │   ├── helper
+</span></span><span class="line"><span class="cl">            │   │   └── sbom.syft.json
+</span></span><span class="line"><span class="cl">            │   └── jre
+</span></span><span class="line"><span class="cl">            │       └── sbom.syft.json
+</span></span><span class="line"><span class="cl">            ├── paketo-buildpacks_ca-certificates
+</span></span><span class="line"><span class="cl">            │   └── helper
+</span></span><span class="line"><span class="cl">            │       └── sbom.syft.json
+</span></span><span class="line"><span class="cl">            ├── paketo-buildpacks_executable-jar
+</span></span><span class="line"><span class="cl">            │   ├── sbom.cdx.json
+</span></span><span class="line"><span class="cl">            │   └── sbom.syft.json
+</span></span><span class="line"><span class="cl">            ├── paketo-buildpacks_spring-boot
+</span></span><span class="line"><span class="cl">            │   ├── helper
+</span></span><span class="line"><span class="cl">            │   │   └── sbom.syft.json
+</span></span><span class="line"><span class="cl">            │   └── spring-cloud-bindings
+</span></span><span class="line"><span class="cl">            │       └── sbom.syft.json
+</span></span><span class="line"><span class="cl">            └── sbom.legacy.json
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">13</span> directories, <span class="m">8</span> files
+</span></span></code></pre></div><p>For the <code>CycloneDX</code> reports (ending with <code>cdx.json</code>) you can download and use the <a href="https://github.com/CycloneDX/cyclonedx-cli">CycleDX CLI</a> or even send the result to the <a href="https://bomdoctor.sonatype.com/#/home">BOM Doctor</a></p>
+<p>For the <code>Syft</code> reports (ending with <code>syft.json</code>) you can download and use the <a href="https://github.com/anchore/syft">Syft CLI</a> and the <a href="https://github.com/anchore/grype">Grype CLI</a>.</p>
+<h3 id="merge-all-syft-reports-into-one" class="markup-heading">
+    <a class="markup-heading__link" href="#merge-all-syft-reports-into-one">
+        Merge all Syft reports into one
+    </a>
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">syft ./app-sbom -o syft-json &gt; syft.json
+</span></span></code></pre></div><h3 id="converting-the-syft-reports-into-one-cyclonedx-report" class="markup-heading">
+    <a class="markup-heading__link" href="#converting-the-syft-reports-into-one-cyclonedx-report">
+        Converting the Syft reports into one CycloneDX report
+    </a>
+</h3><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">syft /tmp/demo-app-sbom -o cyclonedx-json &gt; cyclone.json
+</span></span></code></pre></div><h3 id="use-grype-to-evaluate-the-cves-from-your-sboms" class="markup-heading">
+    <a class="markup-heading__link" href="#use-grype-to-evaluate-the-cves-from-your-sboms">
+        Use Grype to evaluate the CVEs from your SBOMs
+    </a>
+</h3><p>Read Syft JSON from path on disk:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">grype sbom:path/to/syft.json
+</span></span></code></pre></div><p>You can also pipe in Syft JSON directly:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">syft /tmp/demo-app-sbom -o json <span class="p">|</span> grype
+</span></span></code></pre></div><!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
 
@@ -770,7 +833,7 @@ buildpack is capable of generating.</li>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> March 30, 2023</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> April 4, 2023</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -789,6 +852,13 @@ buildpack is capable of generating.</li>
       </ul>
     </li>
     <li><a href="#determine-which-sbom-formats-a-buildpack-will-generate">Determine Which SBOM Formats a Buildpack Will Generate</a></li>
+    <li><a href="#use-external-tooling-to-merge-and-visualize-the-sboms">Use external tooling to merge and visualize the SBOMs</a>
+      <ul>
+        <li><a href="#merge-all-syft-reports-into-one">Merge all Syft reports into one</a></li>
+        <li><a href="#converting-the-syft-reports-into-one-cyclonedx-report">Converting the Syft reports into one CycloneDX report</a></li>
+        <li><a href="#use-grype-to-evaluate-the-cves-from-your-sboms">Use Grype to evaluate the CVEs from your SBOMs</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div>

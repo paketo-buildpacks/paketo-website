@@ -790,13 +790,7 @@ pack build samples/java \
     </a>
 </h3><p>The exact JRE version that was contributed to a given image can be read from the Bill-of-Materials.</p>
 <p><strong>Example</strong> Inspecting the JRE Version</p>
-<p>Given an image named <code>samples/java</code> built from one of examples above, the following command should print the exact version of the installed JRE.
-<div class="copyable">
-    <pre class="copyable__code">pack inspect-image samples/app --bom | jq &#39;.local[] | select(.name==&#34;jre&#34;) | .metadata.version&#39;
-</pre>
-    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
-    <div class="copyable__copied copied">Copied!</div>
-</div></p>
+<p>Please refer to the <a href="/docs/howto/sbom/">Access the SBOM article</a> to find out how you can inspect the embedded JRE using SBOM information.</p>
 <h3 id="install-a-specific-jvm-version" class="markup-heading">
     <a class="markup-heading__link" href="#install-a-specific-jvm-version">
         Install a Specific JVM Version
@@ -1072,13 +1066,7 @@ pack build samples/java-native \
     </a>
 </h3><p>The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.</p>
 <p><strong>Example</strong> Inspecting the JRE Version</p>
-<p>Given an image named <code>samples/java-native</code> built from one of examples above, the following command will print the exact version of the installed substrate VM.
-<div class="copyable">
-    <pre class="copyable__code">pack inspect-image samples/java-native --bom | jq &#39;.local[] | select(.name==&#34;native-image-svm&#34;) | .metadata.version&#39;
-</pre>
-    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
-    <div class="copyable__copied copied">Copied!</div>
-</div></p>
+<p>Please refer to the <a href="/docs/howto/sbom/">Access the SBOM article</a> to find out how you can inspect the JRE using SBOM information.</p>
 <h3 id="configure-the-graalvm-version" class="markup-heading">
     <a class="markup-heading__link" href="#configure-the-graalvm-version">
         Configure the GraalVM Version
@@ -1185,13 +1173,7 @@ pack build samples/java-native \
     <a class="markup-heading__link" href="#inspect-spring-boot-application-dependencies">
         Inspect Spring Boot Application Dependencies
     </a>
-</h3><p>The following command uses <code>pack</code> to list every dependency of a sample application.
-<div class="copyable">
-    <pre class="copyable__code">pack inspect-image samples/java --bom | jq &#39;.local[] | select(.name==&#34;dependencies&#34;) | .metadata.dependencies[].name&#39;
-</pre>
-    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
-    <div class="copyable__copied copied">Copied!</div>
-</div></p>
+</h3><p>Please refer to the <a href="/docs/howto/sbom/">Access the SBOM article</a> to find out how you can inspect the Spring Boot application dependencies using SBOM information.</p>
 <h3 id="disable-spring-boot-auto-configuration" class="markup-heading">
     <a class="markup-heading__link" href="#disable-spring-boot-auto-configuration">
         Disable Spring Boot Auto-Configuration
@@ -1475,7 +1457,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> March 30, 2023</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> April 4, 2023</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
