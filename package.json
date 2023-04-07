@@ -3,7 +3,7 @@
     "@actions/core": "^1.10.0",
     "@docsearch/js": "^3.3.3",
     "clipboard": "^2.0.11",
-    "firebase-tools": "^11.25.2"
+    "firebase-tools": "^11.25.3"
   },
   "scripts": {
     "deploy": "node -e \"const deploy = require('./deploy.js'); deploy({expires: '8h'});\""
