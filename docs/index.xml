@@ -281,7 +281,7 @@ Supported Service Bindings The Node.js buildpack can be configured using service
       
       <guid>https://paketo.io/docs/reference/builders-reference/</guid>
       <description>This reference documentation enumerates and briefly describes the available Paketo builders. For explanations of how to use the builders for several common use-cases, see the Paketo Builders How To documentation.
-Available Paketo Builders Name Stack Use cases DockerHub Distribution Github Repository Full Builder Ubuntu 18.04 PHP, Java, Node.js, Go, .NET Core, Ruby, NGINX, and HTTPD buildpacks and common C libraries. paketobuildpacks/builder:full https://github.com/paketo-buildpacks/full-builder Buildpackless Full Builder Ubuntu 18.04 No buildpacks included. Compatible with the same buildpacks as the Full Builder.</description>
+Available Paketo Builders Name Stack Use cases DockerHub Distribution Github Repository Full Builder Ubuntu 18.04 PHP, Java, Node.js, Go, Python, .NET Core, Ruby, NGINX, and HTTPD buildpacks and common C libraries. paketobuildpacks/builder:full https://github.com/paketo-buildpacks/full-builder Buildpackless Full Builder Ubuntu 18.04 No buildpacks included.</description>
     </item>
     
     <item>
