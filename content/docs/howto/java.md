@@ -227,7 +227,7 @@ Please refer to the [Access the SBOM article][howto/sbom] to find out how you ca
 The following environment variable configures the JVM version at build-time.
 
 * `BP_JVM_VERSION`
-  * Defaults to the latest 11.x version at the time of release.
+  * Defaults to the latest 17.x version at the time of release.
   * Configures a specific JDK or JRE version (specify only the major version).
   * *Example*: Given `BP_JVM_VERSION=8` or `BP_JVM_VERSION=8.*` the buildpack will install the latest patch releases of the Java 8 JDK and JRE.
 
@@ -302,21 +302,20 @@ By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The 
 <!-- spellchecker-disable -->
 | JVM                                                                                                                                     | Buildpack                                                            |
 | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| [Adoptium](https://adoptium.net/) {{< text/sup >}}1{{< /text/sup >}}                                                                    | [Paketo Adoptium Buildpack][bp/adoptium]                             |
-| [Alibaba Dragonwell](https://github.com/alibaba/dragonwell8) {{< text/sup >}}2{{< /text/sup >}}                                         | [Paketo Alibaba Dragonwell Buildpack][bp/dragonwell]                 |
-| [Amazon Corretto](https://aws.amazon.com/corretto/) {{< text/sup >}}2{{< /text/sup >}}                                                  | [Paketo Amazon Corretto Buildpack][bp/amazon-corretto]               |
+| [Adoptium](https://adoptium.net/)                                                                                                       | [Paketo Adoptium Buildpack][bp/adoptium]                             |
+| [Alibaba Dragonwell](https://github.com/alibaba/dragonwell8) {{< text/sup >}}1{{< /text/sup >}}                                         | [Paketo Alibaba Dragonwell Buildpack][bp/dragonwell]                 |
+| [Amazon Corretto](https://aws.amazon.com/corretto/) {{< text/sup >}}1{{< /text/sup >}}                                                  | [Paketo Amazon Corretto Buildpack][bp/amazon-corretto]               |
 | [Azul Zulu](https://www.azul.com/downloads/zulu-community/)                                                                             | [Paketo Azul Zulu Buildpack][bp/azul-zulu]                           |
 | [BellSoft Liberica](https://bell-sw.com/pages/libericajdk/)                                                                             | [Paketo BellSoft Liberica Buildpack - Default][bp/bellsoft-liberica] |
 | [Eclipse OpenJ9](https://www.eclipse.org/openj9/)                                                                                       | [Paketo Eclipse OpenJ9 Buildpack][bp/eclipse-openj9]                 |
-| [GraalVM](https://www.graalvm.org/) {{< text/sup >}}2{{< /text/sup >}}                                                                  | [Paketo GraalVM Buildpack][bp/graalvm]                               |
-| [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) {{< text/sup >}}2{{< /text/sup >}} {{< text/sup >}}3{{< /text/sup >}} | [Paketo Oracle Buildpack][bp/oracle]                                 |
-| [Microsoft OpenJDK](https://www.microsoft.com/openjdk) {{< text/sup >}}2{{< /text/sup >}}                                               | [Paketo Microsoft OpenJDK Buildpack][bp/microsoft]                   |
+| [GraalVM](https://www.graalvm.org/) {{< text/sup >}}1{{< /text/sup >}}                                                                  | [Paketo GraalVM Buildpack][bp/graalvm]                               |
+| [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) {{< text/sup >}}1{{< /text/sup >}} {{< text/sup >}}2{{< /text/sup >}} | [Paketo Oracle Buildpack][bp/oracle]                                 |
+| [Microsoft OpenJDK](https://www.microsoft.com/openjdk) {{< text/sup >}}1{{< /text/sup >}}                                               | [Paketo Microsoft OpenJDK Buildpack][bp/microsoft]                   |
 | [SapMachine](https://sap.github.io/SapMachine/)                                                                                         | [Paketo SapMachine Buildpack][bp/sap-machine]                        |
 <!-- spellchecker-enable -->
 
-1. *{{< text/sub >}}Only provides JRE and JDK releases for Java 8 and 11, Java 16+ is JDK only{{< /text/sub >}}*
-2. *{{< text/sub >}}Only provides JDK releases{{< /text/sub >}}*
-3. *{{< text/sub >}}Only provides Java 17{{< /text/sub >}}*
+1. *{{< text/sub >}}Only provides JDK releases{{< /text/sub >}}*
+2. *{{< text/sub >}}Only provides Java 17+{{< /text/sub >}}*
 
 To use an alternative JVM, you will need to set two `--buildpack` arguments to `pack build`, one for the alternative JVM buildpack you'd like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you're specifying will claim the build plan entries so the second one will end up being a no-op and doing nothing.
 
