@@ -323,7 +323,10 @@ pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
 
 #### In a `project.toml` file
 {{< code/copyable >}}
-[[ build.env ]]
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
   name = 'BP_LIVE_RELOAD_ENABLED'
   value = 'true'
 {{< /code/copyable >}}

@@ -41,10 +41,12 @@ a [`project.toml`](https://buildpacks.io/docs/app-developer-guide/using-project-
 as shown in the following example:
 
 {{< code/copyable >}}
-[build]
-  [[build.env]]
-    name = "BP_CPYTHON_VERSION"
-    value = "3.6.*" # any valid semver constraints (e.g. 3.6.7, 3.*) are acceptable
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
+  name = "BP_CPYTHON_VERSION"
+  value = "3.6.*" # any valid semver constraints (e.g. 3.6.7, 3.*) are acceptable
 {{< /code/copyable >}}
 
 Specifying a version of CPython is not required. In the case this is not
@@ -144,7 +146,10 @@ pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
 
 #### In a `project.toml` file
 {{< code/copyable >}}
-[[ build.env ]]
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
   name = 'BP_LIVE_RELOAD_ENABLED'
   value = 'true'
 {{< /code/copyable >}}

@@ -60,10 +60,12 @@ pack build my-app --buildpack paketo-buildpacks/go \
 When building with the pack CLI, create a [project.toml][cnb/project-file] file in your app directory that sets `BP_GO_VERSION` at build time.
 {{< code/copyable >}}
 # project.toml
-[ build ]
-  [[ build.env ]]
-    name="BP_GO_VERSION"
-    value="1.14.1"
+[ _ ]
+schema-version = "0.2
+
+[[ io.buildpacks.build.env ]]
+  name="BP_GO_VERSION"
+  value="1.14.1"
 {{< /code/copyable >}}
 
 
@@ -88,10 +90,12 @@ pack build my-app --buildpack paketo-buildpacks/go \
 When building with the pack CLI, create a [project.toml][cnb/project-file] file in your app directory that sets `BP_GO_BUILD_LDFLAGS` at build time. For example, to add `-ldflags="-X main.variable=some-value"` to the build flagset, set the environment variable as follows:
 {{< code/copyable >}}
 # project.toml
-[ build ]
-  [[ build.env ]]
-    name="BP_GO_BUILD_LDFLAGS"
-    value="-X main.variable=some-value"
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
+  name="BP_GO_BUILD_LDFLAGS"
+  value="-X main.variable=some-value"
 {{< /code/copyable >}}
 
 The pack CLI will automatically detect the project file at build time.
@@ -110,10 +114,12 @@ pack build my-app --buildpack paketo-buildpacks/go \
 When building with the pack CLI, create a [project.toml][cnb/project-file] file in your app directory that sets `BP_GO_BUILD_FLAGS` at build time. For example, to add `-buildmode=default -tags=paketo` to the build flagset, set the environment variable as follows:
 {{< code/copyable >}}
 # project.toml
-[ build ]
-  [[ build.env ]]
-    name="BP_GO_BUILD_FLAGS"
-    value="-buildmode=default -tags=paketo"
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
+  name="BP_GO_BUILD_FLAGS"
+  value="-buildmode=default -tags=paketo"
 {{< /code/copyable >}}
 
 The pack CLI will automatically detect the project file at build time.
@@ -146,10 +152,12 @@ pack build my-app --buildpack paketo-buildpacks/go \
 When building with the pack CLI, create a [project.toml][cnb/project-file] file in your app directory that sets `BP_GO_TARGETS` at build time.
 {{< code/copyable >}}
 # project.toml
-[ build ]
-  [[ build.env ]]
-    name="BP_GO_TARGETS"
-    value="./second"
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
+  name="BP_GO_TARGETS"
+  value="./second"
 {{< /code/copyable >}}
 
 The pack CLI will automatically detect the project file at build time.
@@ -172,10 +180,12 @@ pack build my-app --buildpack paketo-buildpacks/go \
 When building with the pack CLI, create a [project.toml][cnb/project-file] file in your app directory that sets `BP_GO_TARGETS` at build time.
 {{< code/copyable >}}
 # project.toml
-[ build ]
-  [[ build.env ]]
-    name="BP_GO_TARGETS"
-    value="./first:./second"
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
+  name="BP_GO_TARGETS"
+  value="./first:./second"
 {{< /code/copyable >}}
 
 ## Import Private Go Modules
@@ -250,10 +260,12 @@ pack build my-app --buildpack paketo-buildpacks/go \
 When building with the pack CLI, create a [project.toml][cnb/project-file] file in your app directory that sets `$BP_GO_BUILD_IMPORT_PATH` at build time.
 {{< code/copyable >}}
 # project.toml
-[ build ]
-  [[ build.env ]]
-    name="BP_GO_BUILD_IMPORT_PATH"
-    value="github.com/app-developer/app-directory"
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
+  name="BP_GO_BUILD_IMPORT_PATH"
+  value="github.com/app-developer/app-directory"
 {{< /code/copyable >}}
 
 ## Prevent Source Files From Being Deleted
@@ -278,10 +290,12 @@ pack build my-app --buildpack paketo-buildpacks/go \
 When building with the pack CLI, create a [project.toml][cnb/project-file] file in your app directory that sets `$BP_KEEP_FILES` at build time.
 {{< code/copyable >}}
 # project.toml
-[ build ]
-  [[ build.env ]]
-    name="BP_KEEP_FILES"
-    value="assets/*:public/*"
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
+  name="BP_KEEP_FILES"
+  value="assets/*:public/*"
 {{< /code/copyable >}}
 
 ## Enable Process Reloading
@@ -306,7 +320,10 @@ pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
 
 #### In a `project.toml` file
 {{< code/copyable >}}
-[[ build.env ]]
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
   name = 'BP_LIVE_RELOAD_ENABLED'
   value = 'true'
 {{< /code/copyable >}}
