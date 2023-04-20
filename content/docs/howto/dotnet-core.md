@@ -59,7 +59,10 @@ pack build myapp --env BP_DOTNET_FRAMEWORK_VERSION=5.0.4
 
 #### In a `project.toml` file
 {{< code/copyable >}}
-[[ build.env ]]
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
   name = 'BP_DOTNET_FRAMEWORK_VERSION'
   value = '5.0.4'
 {{< /code/copyable >}}
@@ -201,7 +204,10 @@ pack build my-app --env BP_DOTNET_PROJECT_PATH=./App
 
 #### In a `project.toml` file
 {{< code/copyable >}}
-[[ build.env ]]
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
   name = 'BP_DOTNET_PROJECT_PATH'
   value = './App'
 {{< /code/copyable >}}
@@ -230,8 +236,10 @@ pack build my-app --buildpack paketo-buildpacks/dotnet-core \
 When building with the pack CLI, create a [project.toml][cnb/project-file] file in your app directory that sets `BP_DOTNET_PUBLISH_FLAGS` at build time. For example, to add `--verbosity=normal` and `--self-contained=true` to the build flagset, set the environment variable as follows:
 {{< code/copyable >}}
 # project.toml
-[ build ]
-  [[ build.env ]]
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
     name="BP_DOTNET_PUBLISH_FLAGS"
     value="--verbosity=normal --self-contained=true"
 {{< /code/copyable >}}
@@ -287,7 +295,10 @@ pack build myapp --env BP_LIVE_RELOAD_ENABLED=true
 
 #### In a `project.toml` file
 {{< code/copyable >}}
-[[ build.env ]]
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
   name = 'BP_LIVE_RELOAD_ENABLED'
   value = 'true'
 {{< /code/copyable >}}
@@ -369,7 +380,10 @@ pack build myapp --env BP_DEBUG_ENABLED=true
 #### In a `project.toml` file
 <!-- spellchecker-disable -->
 {{< code/copyable >}}
-[[ build.env ]]
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
   name = 'BP_DEBUG_ENABLED'
   value = 'true'
 {{< /code/copyable >}}

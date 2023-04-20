@@ -69,10 +69,12 @@ When building with the pack CLI, create a [project.toml][cnb/project-file] file
 in your app directory that sets `BP_MRI_VERSION` at build time.
 {{< code/copyable >}}
 # project.toml
-[ build ]
-  [[ build.env ]]
-    name="BP_MRI_VERSION"
-    value="2.7.1"
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
+  name="BP_MRI_VERSION"
+  value="2.7.1"
 {{< /code/copyable >}}
 
 The pack CLI will automatically detect the project file at build time.
@@ -120,10 +122,12 @@ When building with the pack CLI, create a [project.toml][cnb/project-file] file
 in your app directory that sets `BP_BUNDLER_VERSION` at build time.
 {{< code/copyable >}}
 # project.toml
-[ build ]
-  [[ build.env ]]
-    name="BP_BUNDLER_VERSION"
-    value="2.1.4"
+[ _ ]
+schema-version = "0.2"
+
+[[ io.buildpacks.build.env ]]
+  name="BP_BUNDLER_VERSION"
+  value="2.1.4"
 {{< /code/copyable >}}
 
 The pack CLI will automatically detect the project file at build time.
