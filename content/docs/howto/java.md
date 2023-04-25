@@ -178,11 +178,11 @@ pack build samples/java \
 
 **NOTE:** It is important to properly quote values for `BP_INCLUDE_FILES` and `BP_EXCLUDE_FILES` as they may contain wild card characters like `*` which the shell may interpret. Proper quoting ensures the actual characters are passed through to the buildpack.
 
+<!-- spellchecker-disable -->
+##### Enable Maven or Gradle to build Javascript assets with Node/Yarn 
 
-##### Enable Maven or Gradle to build javascript assets with Node/Yarn 
-
-Build tools such as Maven & Gradle can configure plugins & tasks that build javascript assets for the frontend part of an app. The Java Buildpack can now install the `node` and `yarn` binaries for build tools to use in such tasks. 
-
+Build tools such as Maven & Gradle can configure plugins & tasks that build Javascript assets for the frontend part of an app. The Java Buildpack can now install the `node` and `yarn` binaries for build tools to use in such tasks. 
+<!-- spellchecker-enable -->
 When building from source with the Maven or Gradle buildpacks, you can enable installation of Node and/or Yarn using the following environment variable:
 
 * `BP_JAVA_INSTALL_NODE` - set to `true` to enable, defaults to `false`.
