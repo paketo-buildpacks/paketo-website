@@ -178,6 +178,56 @@ pack build samples/java \
 
 **NOTE:** It is important to properly quote values for `BP_INCLUDE_FILES` and `BP_EXCLUDE_FILES` as they may contain wild card characters like `*` which the shell may interpret. Proper quoting ensures the actual characters are passed through to the buildpack.
 
+<!-- spellchecker-disable -->
+##### Enable Maven or Gradle to build Javascript assets with Node/Yarn 
+
+Build tools such as Maven & Gradle can configure plugins & tasks that build Javascript assets for the frontend part of an app. The Java Buildpack can now install the `node` and `yarn` binaries for build tools to use in such tasks. 
+<!-- spellchecker-enable -->
+When building from source with the Maven or Gradle buildpacks, you can enable installation of Node and/or Yarn using the following environment variable:
+
+* `BP_JAVA_INSTALL_NODE` - set to `true` to enable, defaults to `false`.
+
+When this is set to `true`, the buildpack will check for the following files:
+
+* `yarn.lock` - both Yarn and Node will be installed via the [Yarn Buildpack][bp/yarn] & [Node Engine Buildpack][bp/node-engine]
+* `package.json` - only Node will be installed via the [Node Engine Buildpack][bp/node-engine]
+
+By default, the above files are expected to be in the application root directory. You can configure a specific sub-directory for these files using the environment variable supported by the node-engine buildpack:
+
+* `BP_NODE_PROJECT_PATH` - see [nodejs - Build an App from Source in a Subdirectory][nodejs-from-source]
+
+Example: Building a Java app & installing Yarn dependencies
+
+Sample Maven Plugin configuration (pom.xml):
+
+```plain
+<plugin>
+<groupId>org.codehaus.mojo</groupId>
+<artifactId>exec-maven-plugin</artifactId>
+<version>${exec-maven.version}</version>
+  <executions>
+      <execution>
+      <id>exec-yarn-install</id>
+      <phase>generate-sources</phase>
+          <goals>
+              <goal>exec</goal>
+          </goals>
+          <configuration>
+              <executable>yarn</executable>
+              <arguments>
+                  <argument>install</argument>
+              </arguments>
+          </configuration>
+      </execution>
+  </executions>
+</plugin>
+```
+Build Command:
+
+{{< code/copyable >}} pack build samples/java
+--path java/maven-yarn --env BP_JAVA_INSTALL_NODE=true
+{{< /code/copyable >}}
+
 ### Build from a Compiled Artifact
 
 An application developer may build an image from following archive formats:
@@ -735,11 +785,13 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [bp/maven]:https://github.com/paketo-buildpacks/maven
 [bp/microsoft]:https://github.com/paketo-buildpacks/microsoft-openjdk
 [bp/native-image]:https://github.com/paketo-buildpacks/spring-boot-native-image
+[bp/node-engine]:https://github.com/paketo-buildpacks/node-engine
 [bp/oracle]:https://github.com/paketo-buildpacks/oracle
 [bp/procfile]:https://github.com/paketo-buildpacks/procfile
 [bp/sap-machine]:https://github.com/paketo-buildpacks/sap-machine
 [bp/sbt]:https://github.com/paketo-buildpacks/sbt
 [bp/spring-boot]:https://github.com/paketo-buildpacks/spring-boot
+[bp/yarn]:https://github.com/paketo-buildpacks/yarn
 
 <!-- paketo references -->
 [bp/java/releases]:https://github.com/paketo-buildpacks/java/releases
@@ -757,6 +809,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [composite buildpack]:{{< ref "/docs/concepts/buildpacks#composite-buildpacks" >}}
 [java/building from source]:{{< ref "/docs/howto/java#build-from-source" >}}
 [java/spring boot applications]:{{< ref "/docs/howto/java#spring-boot-applications" >}}
+[nodejs-from-source]:{{< ref "/docs/howto/nodejs#build-an-app-from-source-in-a-subdirectory" >}}
 [reference/java-native-image]:{{< ref "/docs/reference/java-native-image-reference" >}}
 [reference/java]:{{< ref "/docs/reference/java-reference" >}}
 
