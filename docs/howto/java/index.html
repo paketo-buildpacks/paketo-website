@@ -749,6 +749,56 @@ Artifact</a>.</p>
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <p><strong>NOTE:</strong> It is important to properly quote values for <code>BP_INCLUDE_FILES</code> and <code>BP_EXCLUDE_FILES</code> as they may contain wild card characters like <code>*</code> which the shell may interpret. Proper quoting ensures the actual characters are passed through to the buildpack.</p>
+<!-- raw HTML omitted -->
+<h5 id="enable-maven-or-gradle-to-build-javascript-assets-with-nodeyarn" class="markup-heading">
+    <a class="markup-heading__link" href="#enable-maven-or-gradle-to-build-javascript-assets-with-nodeyarn">
+        Enable Maven or Gradle to build Javascript assets with Node/Yarn
+    </a>
+</h5><p>Build tools such as Maven &amp; Gradle can configure plugins &amp; tasks that build Javascript assets for the frontend part of an app. The Java Buildpack can now install the <code>node</code> and <code>yarn</code> binaries for build tools to use in such tasks.</p>
+<!-- raw HTML omitted -->
+<p>When building from source with the Maven or Gradle buildpacks, you can enable installation of Node and/or Yarn using the following environment variable:</p>
+<ul>
+<li><code>BP_JAVA_INSTALL_NODE</code> - set to <code>true</code> to enable, defaults to <code>false</code>.</li>
+</ul>
+<p>When this is set to <code>true</code>, the buildpack will check for the following files:</p>
+<ul>
+<li><code>yarn.lock</code> - both Yarn and Node will be installed via the <a href="https://github.com/paketo-buildpacks/yarn">Yarn Buildpack</a> &amp; <a href="https://github.com/paketo-buildpacks/node-engine">Node Engine Buildpack</a></li>
+<li><code>package.json</code> - only Node will be installed via the <a href="https://github.com/paketo-buildpacks/node-engine">Node Engine Buildpack</a></li>
+</ul>
+<p>By default, the above files are expected to be in the application root directory. You can configure a specific sub-directory for these files using the environment variable supported by the node-engine buildpack:</p>
+<ul>
+<li><code>BP_NODE_PROJECT_PATH</code> - see <a href="https://paketo.io/docs/howto/nodejs/#build-an-app-from-source-in-a-subdirectory">nodejs - Build an App from Source in a Subdirectory</a></li>
+</ul>
+<p>Example: Building a Java app &amp; installing Yarn dependencies</p>
+<p>Sample Maven Plugin configuration (pom.xml):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-plain" data-lang="plain"><span class="line"><span class="cl">&lt;plugin&gt;
+</span></span><span class="line"><span class="cl">&lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
+</span></span><span class="line"><span class="cl">&lt;artifactId&gt;exec-maven-plugin&lt;/artifactId&gt;
+</span></span><span class="line"><span class="cl">&lt;version&gt;${exec-maven.version}&lt;/version&gt;
+</span></span><span class="line"><span class="cl">  &lt;executions&gt;
+</span></span><span class="line"><span class="cl">      &lt;execution&gt;
+</span></span><span class="line"><span class="cl">      &lt;id&gt;exec-yarn-install&lt;/id&gt;
+</span></span><span class="line"><span class="cl">      &lt;phase&gt;generate-sources&lt;/phase&gt;
+</span></span><span class="line"><span class="cl">          &lt;goals&gt;
+</span></span><span class="line"><span class="cl">              &lt;goal&gt;exec&lt;/goal&gt;
+</span></span><span class="line"><span class="cl">          &lt;/goals&gt;
+</span></span><span class="line"><span class="cl">          &lt;configuration&gt;
+</span></span><span class="line"><span class="cl">              &lt;executable&gt;yarn&lt;/executable&gt;
+</span></span><span class="line"><span class="cl">              &lt;arguments&gt;
+</span></span><span class="line"><span class="cl">                  &lt;argument&gt;install&lt;/argument&gt;
+</span></span><span class="line"><span class="cl">              &lt;/arguments&gt;
+</span></span><span class="line"><span class="cl">          &lt;/configuration&gt;
+</span></span><span class="line"><span class="cl">      &lt;/execution&gt;
+</span></span><span class="line"><span class="cl">  &lt;/executions&gt;
+</span></span><span class="line"><span class="cl">&lt;/plugin&gt;
+</span></span></code></pre></div><p>Build Command:</p>
+<div class="copyable">
+    <pre class="copyable__code"> pack build samples/java
+--path java/maven-yarn --env BP_JAVA_INSTALL_NODE=true
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h3 id="build-from-a-compiled-artifact" class="markup-heading">
     <a class="markup-heading__link" href="#build-from-a-compiled-artifact">
         Build from a Compiled Artifact
@@ -1457,7 +1507,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> April 19, 2023</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> April 26, 2023</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
