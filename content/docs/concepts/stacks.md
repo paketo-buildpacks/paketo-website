@@ -15,7 +15,7 @@ A `stack` consists of two images:
 * `build image`: the environment in which your app is built
 * `run image`: the OS layer on which your app runs
 
-To learn more about the concept of`stacks`, see
+To learn more about the concept of `stacks`, see
 [buildpacks.io](https://buildpacks.io/docs/concepts/components/stack/).
 
 ## What Paketo stacks are available?
