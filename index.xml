@@ -197,7 +197,7 @@ a set of buildpacks, which provide your app&amp;rsquo;s dependencies a stack, wh
       <guid>https://paketo.io/docs/concepts/stacks/</guid>
       <description>In the Getting Started tutorial, you used the Paketo builder to build a Node.js app. One of the core pieces to Buildpacks and Builders are Stack Images. Stacks provide the buildpack lifecycle with build-time and run-time environments in the form of images.
 What is a stack? A stack consists of two images:
-build image: the environment in which your app is built run image: the OS layer on which your app runs To learn more about the concept ofstacks, see buildpacks.</description>
+build image: the environment in which your app is built run image: the OS layer on which your app runs To learn more about the concept of stacks, see buildpacks.</description>
     </item>
     
     <item>
