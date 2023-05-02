@@ -108,6 +108,12 @@ Additionally, for `MAVEN`, we support two other environment variables at build-t
   * Configures active profiles to pass to the maven build tool; it defaults to empty string and can be handy when you want to keep the default `BP_MAVEN_BUILD_ARGUMENTS` but just need several profiles (de)activated.
   * *Example*: Given `BP_MAVEN_ACTIVE_PROFILES=p1,!p2,?p3`, you could activate the `p1` profile, deactivate the `p2` profile, and optionally activate the `p3` profile, without changing `BP_MAVEN_BUILD_ARGUMENTS`.
 
+And similarly, for `GRADLE`, we support one other environment variable at build-time:
+
+* `BP_GRADLE_ADDITIONAL_BUILD_ARGUMENTS`
+  * Configures additional arguments to pass to the gradle build tool; it defaults to empty string and can be handy when you want to keep the default `BP_GRADLE_BUILD_ARGUMENTS` but just need one additional argument.
+  * *Example*: Given `BP_GRADLE_ADDITIONAL_BUILD_ARGUMENTS=--no-build-cache`, you could disable build cache without changing `BP_GRADLE_BUILD_ARGUMENTS`.
+
 ##### Connect to a Private Maven Repository
 
 A [binding][bindings] with type `maven` and key `settings.xml` can be used to provide custom [Maven settings][maven settings].
