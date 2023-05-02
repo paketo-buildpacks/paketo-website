@@ -920,7 +920,10 @@ adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
         In a <code>project.toml</code> file
     </a>
 </h4><div class="copyable">
-    <pre class="copyable__code">[[ build.env ]]
+    <pre class="copyable__code">[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
   name = &#39;BP_LIVE_RELOAD_ENABLED&#39;
   value = &#39;true&#39;
 </pre>

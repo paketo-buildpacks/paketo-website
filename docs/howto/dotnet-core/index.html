@@ -606,7 +606,10 @@ Cloud Native Buildpacks <a href="https://buildpacks.io/docs/app-developer-guide/
         In a <code>project.toml</code> file
     </a>
 </h4><div class="copyable">
-    <pre class="copyable__code">[[ build.env ]]
+    <pre class="copyable__code">[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
   name = &#39;BP_DOTNET_FRAMEWORK_VERSION&#39;
   value = &#39;5.0.4&#39;
 </pre>
@@ -761,7 +764,10 @@ to learn more about <code>project.toml</code> files.</p>
         In a <code>project.toml</code> file
     </a>
 </h4><div class="copyable">
-    <pre class="copyable__code">[[ build.env ]]
+    <pre class="copyable__code">[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
   name = &#39;BP_DOTNET_PROJECT_PATH&#39;
   value = &#39;./App&#39;
 </pre>
@@ -805,8 +811,10 @@ v1.0.0. To migrate from using <code>buildpack.yml</code>, please set the
 </h4><p>When building with the pack CLI, create a [project.toml][cnb/project-file] file in your app directory that sets <code>BP_DOTNET_PUBLISH_FLAGS</code> at build time. For example, to add <code>--verbosity=normal</code> and <code>--self-contained=true</code> to the build flagset, set the environment variable as follows:
 <div class="copyable">
     <pre class="copyable__code"># project.toml
-[ build ]
-  [[ build.env ]]
+[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
     name=&#34;BP_DOTNET_PUBLISH_FLAGS&#34;
     value=&#34;--verbosity=normal --self-contained=true&#34;
 </pre>
@@ -882,7 +890,10 @@ adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
         In a <code>project.toml</code> file
     </a>
 </h4><div class="copyable">
-    <pre class="copyable__code">[[ build.env ]]
+    <pre class="copyable__code">[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
   name = &#39;BP_LIVE_RELOAD_ENABLED&#39;
   value = &#39;true&#39;
 </pre>
@@ -986,7 +997,10 @@ by adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
     </a>
 </h4><!-- raw HTML omitted -->
 <div class="copyable">
-    <pre class="copyable__code">[[ build.env ]]
+    <pre class="copyable__code">[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
   name = &#39;BP_DEBUG_ENABLED&#39;
   value = &#39;true&#39;
 </pre>

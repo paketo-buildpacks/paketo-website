@@ -597,10 +597,12 @@ highest to lowest: <code>BP_MRI_VERSION</code>, <code>Gemfile</code>.</p>
 in your app directory that sets <code>BP_MRI_VERSION</code> at build time.
 <div class="copyable">
     <pre class="copyable__code"># project.toml
-[ build ]
-  [[ build.env ]]
-    name=&#34;BP_MRI_VERSION&#34;
-    value=&#34;2.7.1&#34;
+[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
+  name=&#34;BP_MRI_VERSION&#34;
+  value=&#34;2.7.1&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -663,10 +665,12 @@ location with the following precedence, from highest to lowest:
 in your app directory that sets <code>BP_BUNDLER_VERSION</code> at build time.
 <div class="copyable">
     <pre class="copyable__code"># project.toml
-[ build ]
-  [[ build.env ]]
-    name=&#34;BP_BUNDLER_VERSION&#34;
-    value=&#34;2.1.4&#34;
+[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
+  name=&#34;BP_BUNDLER_VERSION&#34;
+  value=&#34;2.1.4&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>

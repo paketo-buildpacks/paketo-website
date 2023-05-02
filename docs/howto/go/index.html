@@ -609,10 +609,12 @@ the buildpack will provide the default version, which can be seen in the
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_VERSION</code> at build time.
 <div class="copyable">
     <pre class="copyable__code"># project.toml
-[ build ]
-  [[ build.env ]]
-    name=&#34;BP_GO_VERSION&#34;
-    value=&#34;1.14.1&#34;
+[ _ ]
+schema-version = &#34;0.2
+
+[[ io.buildpacks.build.env ]]
+  name=&#34;BP_GO_VERSION&#34;
+  value=&#34;1.14.1&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -648,10 +650,12 @@ environment variables at build time.</p>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_BUILD_LDFLAGS</code> at build time. For example, to add <code>-ldflags=&quot;-X main.variable=some-value&quot;</code> to the build flagset, set the environment variable as follows:
 <div class="copyable">
     <pre class="copyable__code"># project.toml
-[ build ]
-  [[ build.env ]]
-    name=&#34;BP_GO_BUILD_LDFLAGS&#34;
-    value=&#34;-X main.variable=some-value&#34;
+[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
+  name=&#34;BP_GO_BUILD_LDFLAGS&#34;
+  value=&#34;-X main.variable=some-value&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -681,10 +685,12 @@ environment variables at build time.</p>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_BUILD_FLAGS</code> at build time. For example, to add <code>-buildmode=default -tags=paketo</code> to the build flagset, set the environment variable as follows:
 <div class="copyable">
     <pre class="copyable__code"># project.toml
-[ build ]
-  [[ build.env ]]
-    name=&#34;BP_GO_BUILD_FLAGS&#34;
-    value=&#34;-buildmode=default -tags=paketo&#34;
+[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
+  name=&#34;BP_GO_BUILD_FLAGS&#34;
+  value=&#34;-buildmode=default -tags=paketo&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -724,10 +730,12 @@ setting the <code>BP_GO_TARGETS</code> environment variable at build time.</p>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_TARGETS</code> at build time.
 <div class="copyable">
     <pre class="copyable__code"># project.toml
-[ build ]
-  [[ build.env ]]
-    name=&#34;BP_GO_TARGETS&#34;
-    value=&#34;./second&#34;
+[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
+  name=&#34;BP_GO_TARGETS&#34;
+  value=&#34;./second&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -759,10 +767,12 @@ the app image. The following examples will build <em>both</em> the <code>first</
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>BP_GO_TARGETS</code> at build time.
 <div class="copyable">
     <pre class="copyable__code"># project.toml
-[ build ]
-  [[ build.env ]]
-    name=&#34;BP_GO_TARGETS&#34;
-    value=&#34;./first:./second&#34;
+[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
+  name=&#34;BP_GO_TARGETS&#34;
+  value=&#34;./first:./second&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -857,10 +867,12 @@ directory structure looks like:</p>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>$BP_GO_BUILD_IMPORT_PATH</code> at build time.
 <div class="copyable">
     <pre class="copyable__code"># project.toml
-[ build ]
-  [[ build.env ]]
-    name=&#34;BP_GO_BUILD_IMPORT_PATH&#34;
-    value=&#34;github.com/app-developer/app-directory&#34;
+[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
+  name=&#34;BP_GO_BUILD_IMPORT_PATH&#34;
+  value=&#34;github.com/app-developer/app-directory&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -894,10 +906,12 @@ variable at build time.</p>
 </h4><p>When building with the pack CLI, create a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor">project.toml</a> file in your app directory that sets <code>$BP_KEEP_FILES</code> at build time.
 <div class="copyable">
     <pre class="copyable__code"># project.toml
-[ build ]
-  [[ build.env ]]
-    name=&#34;BP_KEEP_FILES&#34;
-    value=&#34;assets/*:public/*&#34;
+[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
+  name=&#34;BP_KEEP_FILES&#34;
+  value=&#34;assets/*:public/*&#34;
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -935,7 +949,10 @@ adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
         In a <code>project.toml</code> file
     </a>
 </h4><div class="copyable">
-    <pre class="copyable__code">[[ build.env ]]
+    <pre class="copyable__code">[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
   name = &#39;BP_LIVE_RELOAD_ENABLED&#39;
   value = &#39;true&#39;
 </pre>

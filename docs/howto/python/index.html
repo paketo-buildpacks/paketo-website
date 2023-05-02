@@ -551,10 +551,12 @@ available within the buildpack. The supported versions can be found in the
 a <a href="https://buildpacks.io/docs/app-developer-guide/using-project-descriptor"><code>project.toml</code></a>
 as shown in the following example:</p>
 <div class="copyable">
-    <pre class="copyable__code">[build]
-  [[build.env]]
-    name = &#34;BP_CPYTHON_VERSION&#34;
-    value = &#34;3.6.*&#34; # any valid semver constraints (e.g. 3.6.7, 3.*) are acceptable
+    <pre class="copyable__code">[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
+  name = &#34;BP_CPYTHON_VERSION&#34;
+  value = &#34;3.6.*&#34; # any valid semver constraints (e.g. 3.6.7, 3.*) are acceptable
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -665,7 +667,10 @@ adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
         In a <code>project.toml</code> file
     </a>
 </h4><div class="copyable">
-    <pre class="copyable__code">[[ build.env ]]
+    <pre class="copyable__code">[ _ ]
+schema-version = &#34;0.2&#34;
+
+[[ io.buildpacks.build.env ]]
   name = &#39;BP_LIVE_RELOAD_ENABLED&#39;
   value = &#39;true&#39;
 </pre>
