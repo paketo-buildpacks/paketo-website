@@ -98,6 +98,16 @@ For a given build `<TOOL>`, where `<TOOL>` is one of `MAVEN`, `GRADLE`, `LEIN` o
   * Configures the arguments to pass to the build tool.
   * *Example*: Given `BP_GRADLE_BUILD_ARGUMENTS=war`, the Paketo Gradle Buildpack will execute `./gradlew war` or `gradle war` (depending on the presence of the gradle wrapper).
 
+Additionally, for `MAVEN`, we support two other environment variables at build-time:
+
+* `BP_MAVEN_ADDITIONAL_BUILD_ARGUMENTS`
+  * Configures additional arguments to pass to the maven build tool; it defaults to empty string and can be handy when you want to keep the default `BP_MAVEN_BUILD_ARGUMENTS` but just need one additional argument.
+  * *Example*: Given `BP_MAVEN_ADDITIONAL_BUILD_ARGUMENTS=-DskipTool`, you could disable a plugin, without changing `BP_MAVEN_BUILD_ARGUMENTS`.
+
+* `BP_MAVEN_ACTIVE_PROFILES`
+  * Configures active profiles to pass to the maven build tool; it defaults to empty string and can be handy when you want to keep the default `BP_MAVEN_BUILD_ARGUMENTS` but just need several profiles (de)activated.
+  * *Example*: Given `BP_MAVEN_ACTIVE_PROFILES=p1,!p2,?p3`, you could activate the `p1` profile, deactivate the `p2` profile, and optionally activate the `p3` profile, without changing `BP_MAVEN_BUILD_ARGUMENTS`.
+
 ##### Connect to a Private Maven Repository
 
 A [binding][bindings] with type `maven` and key `settings.xml` can be used to provide custom [Maven settings][maven settings].
@@ -178,6 +188,56 @@ pack build samples/java \
 
 **NOTE:** It is important to properly quote values for `BP_INCLUDE_FILES` and `BP_EXCLUDE_FILES` as they may contain wild card characters like `*` which the shell may interpret. Proper quoting ensures the actual characters are passed through to the buildpack.
 
+<!-- spellchecker-disable -->
+##### Enable Maven or Gradle to build Javascript assets with Node/Yarn 
+
+Build tools such as Maven & Gradle can configure plugins & tasks that build Javascript assets for the frontend part of an app. The Java Buildpack can now install the `node` and `yarn` binaries for build tools to use in such tasks. 
+<!-- spellchecker-enable -->
+When building from source with the Maven or Gradle buildpacks, you can enable installation of Node and/or Yarn using the following environment variable:
+
+* `BP_JAVA_INSTALL_NODE` - set to `true` to enable, defaults to `false`.
+
+When this is set to `true`, the buildpack will check for the following files:
+
+* `yarn.lock` - both Yarn and Node will be installed via the [Yarn Buildpack][bp/yarn] & [Node Engine Buildpack][bp/node-engine]
+* `package.json` - only Node will be installed via the [Node Engine Buildpack][bp/node-engine]
+
+By default, the above files are expected to be in the application root directory. You can configure a specific sub-directory for these files using the environment variable supported by the node-engine buildpack:
+
+* `BP_NODE_PROJECT_PATH` - see [nodejs - Build an App from Source in a Subdirectory][nodejs-from-source]
+
+Example: Building a Java app & installing Yarn dependencies
+
+Sample Maven Plugin configuration (pom.xml):
+
+```plain
+<plugin>
+<groupId>org.codehaus.mojo</groupId>
+<artifactId>exec-maven-plugin</artifactId>
+<version>${exec-maven.version}</version>
+  <executions>
+      <execution>
+      <id>exec-yarn-install</id>
+      <phase>generate-sources</phase>
+          <goals>
+              <goal>exec</goal>
+          </goals>
+          <configuration>
+              <executable>yarn</executable>
+              <arguments>
+                  <argument>install</argument>
+              </arguments>
+          </configuration>
+      </execution>
+  </executions>
+</plugin>
+```
+Build Command:
+
+{{< code/copyable >}} pack build samples/java
+--path java/maven-yarn --env BP_JAVA_INSTALL_NODE=true
+{{< /code/copyable >}}
+
 ### Build from a Compiled Artifact
 
 An application developer may build an image from following archive formats:
@@ -227,7 +287,7 @@ Please refer to the [Access the SBOM article][howto/sbom] to find out how you ca
 The following environment variable configures the JVM version at build-time.
 
 * `BP_JVM_VERSION`
-  * Defaults to the latest 11.x version at the time of release.
+  * Defaults to the latest 17.x version at the time of release.
   * Configures a specific JDK or JRE version (specify only the major version).
   * *Example*: Given `BP_JVM_VERSION=8` or `BP_JVM_VERSION=8.*` the buildpack will install the latest patch releases of the Java 8 JDK and JRE.
 
@@ -302,21 +362,20 @@ By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The 
 <!-- spellchecker-disable -->
 | JVM                                                                                                                                     | Buildpack                                                            |
 | --------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| [Adoptium](https://adoptium.net/) {{< text/sup >}}1{{< /text/sup >}}                                                                    | [Paketo Adoptium Buildpack][bp/adoptium]                             |
-| [Alibaba Dragonwell](https://github.com/alibaba/dragonwell8) {{< text/sup >}}2{{< /text/sup >}}                                         | [Paketo Alibaba Dragonwell Buildpack][bp/dragonwell]                 |
-| [Amazon Corretto](https://aws.amazon.com/corretto/) {{< text/sup >}}2{{< /text/sup >}}                                                  | [Paketo Amazon Corretto Buildpack][bp/amazon-corretto]               |
+| [Adoptium](https://adoptium.net/)                                                                                                       | [Paketo Adoptium Buildpack][bp/adoptium]                             |
+| [Alibaba Dragonwell](https://github.com/alibaba/dragonwell8) {{< text/sup >}}1{{< /text/sup >}}                                         | [Paketo Alibaba Dragonwell Buildpack][bp/dragonwell]                 |
+| [Amazon Corretto](https://aws.amazon.com/corretto/) {{< text/sup >}}1{{< /text/sup >}}                                                  | [Paketo Amazon Corretto Buildpack][bp/amazon-corretto]               |
 | [Azul Zulu](https://www.azul.com/downloads/zulu-community/)                                                                             | [Paketo Azul Zulu Buildpack][bp/azul-zulu]                           |
 | [BellSoft Liberica](https://bell-sw.com/pages/libericajdk/)                                                                             | [Paketo BellSoft Liberica Buildpack - Default][bp/bellsoft-liberica] |
 | [Eclipse OpenJ9](https://www.eclipse.org/openj9/)                                                                                       | [Paketo Eclipse OpenJ9 Buildpack][bp/eclipse-openj9]                 |
-| [GraalVM](https://www.graalvm.org/) {{< text/sup >}}2{{< /text/sup >}}                                                                  | [Paketo GraalVM Buildpack][bp/graalvm]                               |
-| [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) {{< text/sup >}}2{{< /text/sup >}} {{< text/sup >}}3{{< /text/sup >}} | [Paketo Oracle Buildpack][bp/oracle]                                 |
-| [Microsoft OpenJDK](https://www.microsoft.com/openjdk) {{< text/sup >}}2{{< /text/sup >}}                                               | [Paketo Microsoft OpenJDK Buildpack][bp/microsoft]                   |
+| [GraalVM](https://www.graalvm.org/) {{< text/sup >}}1{{< /text/sup >}}                                                                  | [Paketo GraalVM Buildpack][bp/graalvm]                               |
+| [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) {{< text/sup >}}1{{< /text/sup >}} {{< text/sup >}}2{{< /text/sup >}} | [Paketo Oracle Buildpack][bp/oracle]                                 |
+| [Microsoft OpenJDK](https://www.microsoft.com/openjdk) {{< text/sup >}}1{{< /text/sup >}}                                               | [Paketo Microsoft OpenJDK Buildpack][bp/microsoft]                   |
 | [SapMachine](https://sap.github.io/SapMachine/)                                                                                         | [Paketo SapMachine Buildpack][bp/sap-machine]                        |
 <!-- spellchecker-enable -->
 
-1. *{{< text/sub >}}Only provides JRE and JDK releases for Java 8 and 11, Java 16+ is JDK only{{< /text/sub >}}*
-2. *{{< text/sub >}}Only provides JDK releases{{< /text/sub >}}*
-3. *{{< text/sub >}}Only provides Java 17{{< /text/sub >}}*
+1. *{{< text/sub >}}Only provides JDK releases{{< /text/sub >}}*
+2. *{{< text/sub >}}Only provides Java 17+{{< /text/sub >}}*
 
 To use an alternative JVM, you will need to set two `--buildpack` arguments to `pack build`, one for the alternative JVM buildpack you'd like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you're specifying will claim the build plan entries so the second one will end up being a no-op and doing nothing.
 
@@ -735,11 +794,13 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [bp/maven]:https://github.com/paketo-buildpacks/maven
 [bp/microsoft]:https://github.com/paketo-buildpacks/microsoft-openjdk
 [bp/native-image]:https://github.com/paketo-buildpacks/spring-boot-native-image
+[bp/node-engine]:https://github.com/paketo-buildpacks/node-engine
 [bp/oracle]:https://github.com/paketo-buildpacks/oracle
 [bp/procfile]:https://github.com/paketo-buildpacks/procfile
 [bp/sap-machine]:https://github.com/paketo-buildpacks/sap-machine
 [bp/sbt]:https://github.com/paketo-buildpacks/sbt
 [bp/spring-boot]:https://github.com/paketo-buildpacks/spring-boot
+[bp/yarn]:https://github.com/paketo-buildpacks/yarn
 
 <!-- paketo references -->
 [bp/java/releases]:https://github.com/paketo-buildpacks/java/releases
@@ -757,6 +818,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [composite buildpack]:{{< ref "/docs/concepts/buildpacks#composite-buildpacks" >}}
 [java/building from source]:{{< ref "/docs/howto/java#build-from-source" >}}
 [java/spring boot applications]:{{< ref "/docs/howto/java#spring-boot-applications" >}}
+[nodejs-from-source]:{{< ref "/docs/howto/nodejs#build-an-app-from-source-in-a-subdirectory" >}}
 [reference/java-native-image]:{{< ref "/docs/reference/java-native-image-reference" >}}
 [reference/java]:{{< ref "/docs/reference/java-reference" >}}
 
