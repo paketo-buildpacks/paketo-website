@@ -656,6 +656,23 @@ Artifact</a>.</p>
 </ul>
 </li>
 </ul>
+<p>Additionally, for <code>MAVEN</code>, we support two other environment variables at build-time:</p>
+<ul>
+<li>
+<p><code>BP_MAVEN_ADDITIONAL_BUILD_ARGUMENTS</code></p>
+<ul>
+<li>Configures additional arguments to pass to the maven build tool; it defaults to empty string and can be handy when you want to keep the default <code>BP_MAVEN_BUILD_ARGUMENTS</code> but just need one additional argument.</li>
+<li><em>Example</em>: Given <code>BP_MAVEN_ADDITIONAL_BUILD_ARGUMENTS=-DskipTool</code>, you could disable a plugin, without changing <code>BP_MAVEN_BUILD_ARGUMENTS</code>.</li>
+</ul>
+</li>
+<li>
+<p><code>BP_MAVEN_ACTIVE_PROFILES</code></p>
+<ul>
+<li>Configures active profiles to pass to the maven build tool; it defaults to empty string and can be handy when you want to keep the default <code>BP_MAVEN_BUILD_ARGUMENTS</code> but just need several profiles (de)activated.</li>
+<li><em>Example</em>: Given <code>BP_MAVEN_ACTIVE_PROFILES=p1,!p2,?p3</code>, you could activate the <code>p1</code> profile, deactivate the <code>p2</code> profile, and optionally activate the <code>p3</code> profile, without changing <code>BP_MAVEN_BUILD_ARGUMENTS</code>.</li>
+</ul>
+</li>
+</ul>
 <h5 id="connect-to-a-private-maven-repository" class="markup-heading">
     <a class="markup-heading__link" href="#connect-to-a-private-maven-repository">
         Connect to a Private Maven Repository
@@ -849,7 +866,7 @@ pack build samples/java \
 <ul>
 <li><code>BP_JVM_VERSION</code>
 <ul>
-<li>Defaults to the latest 11.x version at the time of release.</li>
+<li>Defaults to the latest 17.x version at the time of release.</li>
 <li>Configures a specific JDK or JRE version (specify only the major version).</li>
 <li><em>Example</em>: Given <code>BP_JVM_VERSION=8</code> or <code>BP_JVM_VERSION=8.*</code> the buildpack will install the latest patch releases of the Java 8 JDK and JRE.</li>
 </ul>
@@ -949,17 +966,16 @@ pack build samples/java \
 </thead>
 <tbody>
 <tr>
-<td><a href="https://adoptium.net/">Adoptium</a> <span class="sup">1</span>
-</td>
+<td><a href="https://adoptium.net/">Adoptium</a></td>
 <td><a href="https://github.com/paketo-buildpacks/adoptium">Paketo Adoptium Buildpack</a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/alibaba/dragonwell8">Alibaba Dragonwell</a> <span class="sup">2</span>
+<td><a href="https://github.com/alibaba/dragonwell8">Alibaba Dragonwell</a> <span class="sup">1</span>
 </td>
 <td><a href="https://github.com/paketo-buildpacks/alibaba-dragonwell">Paketo Alibaba Dragonwell Buildpack</a></td>
 </tr>
 <tr>
-<td><a href="https://aws.amazon.com/corretto/">Amazon Corretto</a> <span class="sup">2</span>
+<td><a href="https://aws.amazon.com/corretto/">Amazon Corretto</a> <span class="sup">1</span>
 </td>
 <td><a href="https://github.com/paketo-buildpacks/amazon-corretto">Paketo Amazon Corretto Buildpack</a></td>
 </tr>
@@ -976,18 +992,18 @@ pack build samples/java \
 <td><a href="https://github.com/paketo-buildpacks/eclipse-openj9">Paketo Eclipse OpenJ9 Buildpack</a></td>
 </tr>
 <tr>
-<td><a href="https://www.graalvm.org/">GraalVM</a> <span class="sup">2</span>
+<td><a href="https://www.graalvm.org/">GraalVM</a> <span class="sup">1</span>
 </td>
 <td><a href="https://github.com/paketo-buildpacks/graalvm">Paketo GraalVM Buildpack</a></td>
 </tr>
 <tr>
-<td><a href="https://www.oracle.com/java/technologies/downloads/">Oracle JDK</a> <span class="sup">2</span>
- <span class="sup">3</span>
+<td><a href="https://www.oracle.com/java/technologies/downloads/">Oracle JDK</a> <span class="sup">1</span>
+ <span class="sup">2</span>
 </td>
 <td><a href="https://github.com/paketo-buildpacks/oracle">Paketo Oracle Buildpack</a></td>
 </tr>
 <tr>
-<td><a href="https://www.microsoft.com/openjdk">Microsoft OpenJDK</a> <span class="sup">2</span>
+<td><a href="https://www.microsoft.com/openjdk">Microsoft OpenJDK</a> <span class="sup">1</span>
 </td>
 <td><a href="https://github.com/paketo-buildpacks/microsoft-openjdk">Paketo Microsoft OpenJDK Buildpack</a></td>
 </tr>
@@ -999,11 +1015,9 @@ pack build samples/java \
 </table>
 <!-- raw HTML omitted -->
 <ol>
-<li><em><span class="sub">Only provides JRE and JDK releases for Java 8 and 11, Java 16+ is JDK only</span>
-</em></li>
 <li><em><span class="sub">Only provides JDK releases</span>
 </em></li>
-<li><em><span class="sub">Only provides Java 17</span>
+<li><em><span class="sub">Only provides Java 17+</span>
 </em></li>
 </ol>
 <p>To use an alternative JVM, you will need to set two <code>--buildpack</code> arguments to <code>pack build</code>, one for the alternative JVM buildpack you&rsquo;d like to use and one for the Paketo Java buildpack (in that order). This works because while you end up with two JVM buildpacks, the first one, the one you&rsquo;re specifying will claim the build plan entries so the second one will end up being a no-op and doing nothing.</p>
@@ -1507,7 +1521,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> May 1, 2023</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> May 2, 2023</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
