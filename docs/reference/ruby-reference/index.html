@@ -496,6 +496,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
     </li>
     <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
+    <li><a href="#reproducible-builds-and-limitations">Reproducible Builds and Limitations</a></li>
     <li><a href="#vendored-gem-behavior">Vendored Gem Behavior</a></li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
       <ul>
@@ -566,6 +567,17 @@ application will be assigned when building your application container.</p>
 with any of the supported Ruby webservers listed above. The Paketo Ruby
 Buildpack pulls in this buildpack, as well as the <a href="https://github.com/paketo-buildpacks/node-engine">Paketo Node Engine
 Buildpack</a> to support asset compilation.</p>
+<h2 id="reproducible-builds-and-limitations" class="markup-heading">
+    <a class="markup-heading__link" href="#reproducible-builds-and-limitations">
+        Reproducible Builds and Limitations
+    </a>
+</h2><p>The Paketo Ruby Buildpack supports reproducible builds for <strong>most</strong> use cases,
+meaning application images produced with identical inputs will produce images
+with the same digests.</p>
+<p>Builds that leverage the Paketo Rails Assets Buildpack <strong>are unfortunately NOT
+reproducible</strong>, due to limitations in the Rails implementation related to the
+usage of the <code>sprockets</code> gem. There is no known workaround for this limitation,
+unless the Rails project itself undergoes changes to enable reproducible builds.</p>
 <h2 id="vendored-gem-behavior" class="markup-heading">
     <a class="markup-heading__link" href="#vendored-gem-behavior">
         Vendored Gem Behavior
@@ -629,7 +641,7 @@ the SBOM for your Ruby app image.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> May 2, 2023</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> May 3, 2023</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -644,6 +656,7 @@ the SBOM for your Ruby app image.</p>
       </ul>
     </li>
     <li><a href="#rails-asset-pipeline">Rails Asset Pipeline</a></li>
+    <li><a href="#reproducible-builds-and-limitations">Reproducible Builds and Limitations</a></li>
     <li><a href="#vendored-gem-behavior">Vendored Gem Behavior</a></li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
       <ul>
