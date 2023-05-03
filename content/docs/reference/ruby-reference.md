@@ -52,6 +52,16 @@ with any of the supported Ruby webservers listed above. The Paketo Ruby
 Buildpack pulls in this buildpack, as well as the [Paketo Node Engine
 Buildpack](https://github.com/paketo-buildpacks/node-engine) to support asset compilation.
 
+## Reproducible Builds and Limitations
+The Paketo Ruby Buildpack supports reproducible builds for **most** use cases,
+meaning application images produced with identical inputs will produce images
+with the same digests.
+
+Builds that leverage the Paketo Rails Assets Buildpack **are unfortunately NOT
+reproducible**, due to limitations in the Rails implementation related to the
+usage of the `sprockets` gem. There is no known workaround for this limitation,
+unless the Rails project itself undergoes changes to enable reproducible builds.
+
 ## Vendored Gem Behavior
 Per the Ruby [How To Guide]({{< ref "docs/howto/ruby" >}}), the Paketo Ruby
 Buildpack supports building apps with vendored gems. Behind the scenes,
