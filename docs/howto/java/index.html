@@ -673,6 +673,15 @@ Artifact</a>.</p>
 </ul>
 </li>
 </ul>
+<p>And similarly, for <code>GRADLE</code>, we support one other environment variable at build-time:</p>
+<ul>
+<li><code>BP_GRADLE_ADDITIONAL_BUILD_ARGUMENTS</code>
+<ul>
+<li>Configures additional arguments to pass to the gradle build tool; it defaults to empty string and can be handy when you want to keep the default <code>BP_GRADLE_BUILD_ARGUMENTS</code> but just need one additional argument.</li>
+<li><em>Example</em>: Given <code>BP_GRADLE_ADDITIONAL_BUILD_ARGUMENTS=--no-build-cache</code>, you could disable build cache without changing <code>BP_GRADLE_BUILD_ARGUMENTS</code>.</li>
+</ul>
+</li>
+</ul>
 <h5 id="connect-to-a-private-maven-repository" class="markup-heading">
     <a class="markup-heading__link" href="#connect-to-a-private-maven-repository">
         Connect to a Private Maven Repository
