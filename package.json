@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@docsearch/js": "^3.3.5",
+    "@docsearch/js": "^3.4.0",
     "clipboard": "^2.0.11",
     "firebase-tools": "^12.2.1"
   },
