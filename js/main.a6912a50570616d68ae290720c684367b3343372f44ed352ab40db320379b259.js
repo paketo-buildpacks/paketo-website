@@ -2958,10 +2958,10 @@
       d2(true), h2.current = e3;
     } }))));
   }
-  function dr(e2, t2) {
-    return e2.reduce(function(e3, n2) {
-      var r2 = t2(n2);
-      return e3.hasOwnProperty(r2) || (e3[r2] = []), e3[r2].length < 5 && e3[r2].push(n2), e3;
+  function dr(e2, t2, n2) {
+    return e2.reduce(function(e3, r2) {
+      var o2 = t2(r2);
+      return e3.hasOwnProperty(o2) || (e3[o2] = []), e3[o2].length < (n2 || 5) && e3[o2].push(r2), e3;
     }, {});
   }
   function hr(e2) {
@@ -3658,41 +3658,41 @@
     return o2;
   }
   function Do(e2) {
-    var t2 = e2.appId, n2 = e2.apiKey, r2 = e2.indexName, o2 = e2.placeholder, c2 = void 0 === o2 ? "Search docs" : o2, i2 = e2.searchParameters, a2 = e2.onClose, u2 = void 0 === a2 ? yr : a2, l2 = e2.transformItems, s2 = void 0 === l2 ? hr : l2, f2 = e2.hitComponent, p2 = void 0 === f2 ? Mn : f2, m2 = e2.resultsFooterComponent, d2 = void 0 === m2 ? function() {
+    var t2 = e2.appId, n2 = e2.apiKey, r2 = e2.indexName, o2 = e2.placeholder, c2 = void 0 === o2 ? "Search docs" : o2, i2 = e2.searchParameters, a2 = e2.maxResultsPerGroup, u2 = e2.onClose, l2 = void 0 === u2 ? yr : u2, s2 = e2.transformItems, f2 = void 0 === s2 ? hr : s2, p2 = e2.hitComponent, m2 = void 0 === p2 ? Mn : p2, d2 = e2.resultsFooterComponent, h2 = void 0 === d2 ? function() {
       return null;
-    } : m2, h2 = e2.navigator, v2 = e2.initialScrollY, y2 = void 0 === v2 ? 0 : v2, _2 = e2.transformSearchClient, b2 = void 0 === _2 ? hr : _2, g2 = e2.disableUserPersonalization, O2 = void 0 !== g2 && g2, S2 = e2.initialQuery, E2 = void 0 === S2 ? "" : S2, w2 = e2.translations, j2 = void 0 === w2 ? {} : w2, P2 = e2.getMissingResultsUrl, I2 = j2.footer, k2 = j2.searchBox, D2 = ko(j2, Oo), C2 = Po(Be.useState({ query: "", collections: [], completion: null, context: {}, isOpen: false, activeItemId: null, status: "idle" }), 2), A2 = C2[0], x2 = C2[1], N2 = Be.useRef(null), R2 = Be.useRef(null), T2 = Be.useRef(null), L2 = Be.useRef(null), q2 = Be.useRef(null), M2 = Be.useRef(10), H2 = Be.useRef("undefined" != typeof window ? window.getSelection().toString().slice(0, 64) : "").current, U2 = Be.useRef(E2 || H2).current, F2 = function(e3, t3, n3) {
+    } : d2, v2 = e2.navigator, y2 = e2.initialScrollY, _2 = void 0 === y2 ? 0 : y2, b2 = e2.transformSearchClient, g2 = void 0 === b2 ? hr : b2, O2 = e2.disableUserPersonalization, S2 = void 0 !== O2 && O2, E2 = e2.initialQuery, w2 = void 0 === E2 ? "" : E2, j2 = e2.translations, P2 = void 0 === j2 ? {} : j2, I2 = e2.getMissingResultsUrl, k2 = P2.footer, D2 = P2.searchBox, C2 = ko(P2, Oo), A2 = Po(Be.useState({ query: "", collections: [], completion: null, context: {}, isOpen: false, activeItemId: null, status: "idle" }), 2), x2 = A2[0], N2 = A2[1], R2 = Be.useRef(null), T2 = Be.useRef(null), L2 = Be.useRef(null), q2 = Be.useRef(null), M2 = Be.useRef(null), H2 = Be.useRef(10), U2 = Be.useRef("undefined" != typeof window ? window.getSelection().toString().slice(0, 64) : "").current, F2 = Be.useRef(w2 || U2).current, B2 = function(e3, t3, n3) {
       return Be.useMemo(function() {
         var r3 = go(e3, t3);
-        return r3.addAlgoliaAgent("docsearch", "3.3.5"), false === /docsearch.js \(.*\)/.test(r3.transporter.userAgent.value) && r3.addAlgoliaAgent("docsearch-react", "3.3.5"), n3(r3);
+        return r3.addAlgoliaAgent("docsearch", "3.4.0"), false === /docsearch.js \(.*\)/.test(r3.transporter.userAgent.value) && r3.addAlgoliaAgent("docsearch-react", "3.4.0"), n3(r3);
       }, [e3, t3, n3]);
-    }(t2, n2, b2), B2 = Be.useRef(Mr({ key: "__DOCSEARCH_FAVORITE_SEARCHES__".concat(r2), limit: 10 })).current, V2 = Be.useRef(Mr({ key: "__DOCSEARCH_RECENT_SEARCHES__".concat(r2), limit: 0 === B2.getAll().length ? 7 : 4 })).current, W2 = Be.useCallback(function(e3) {
-      if (!O2) {
+    }(t2, n2, g2), V2 = Be.useRef(Mr({ key: "__DOCSEARCH_FAVORITE_SEARCHES__".concat(r2), limit: 10 })).current, W2 = Be.useRef(Mr({ key: "__DOCSEARCH_RECENT_SEARCHES__".concat(r2), limit: 0 === V2.getAll().length ? 7 : 4 })).current, K2 = Be.useCallback(function(e3) {
+      if (!S2) {
         var t3 = "content" === e3.type ? e3.__docsearch_parent : e3;
-        t3 && -1 === B2.getAll().findIndex(function(e4) {
+        t3 && -1 === V2.getAll().findIndex(function(e4) {
           return e4.objectID === t3.objectID;
-        }) && V2.add(t3);
+        }) && W2.add(t3);
       }
-    }, [B2, V2, O2]), K2 = Be.useMemo(function() {
-      return Rn({ id: "docsearch", defaultActiveItemId: 0, placeholder: c2, openOnFocus: true, initialState: { query: U2, context: { searchSuggestions: [] } }, navigator: h2, onStateChange: function(e3) {
-        x2(e3.state);
+    }, [V2, W2, S2]), z2 = Be.useMemo(function() {
+      return Rn({ id: "docsearch", defaultActiveItemId: 0, placeholder: c2, openOnFocus: true, initialState: { query: F2, context: { searchSuggestions: [] } }, navigator: v2, onStateChange: function(e3) {
+        N2(e3.state);
       }, getSources: function(e3) {
         var t3 = e3.query, n3 = e3.state, o3 = e3.setContext, c3 = e3.setStatus;
-        return t3 ? F2.search([{ query: t3, indexName: r2, params: wo({ attributesToRetrieve: ["hierarchy.lvl0", "hierarchy.lvl1", "hierarchy.lvl2", "hierarchy.lvl3", "hierarchy.lvl4", "hierarchy.lvl5", "hierarchy.lvl6", "content", "type", "url"], attributesToSnippet: ["hierarchy.lvl1:".concat(M2.current), "hierarchy.lvl2:".concat(M2.current), "hierarchy.lvl3:".concat(M2.current), "hierarchy.lvl4:".concat(M2.current), "hierarchy.lvl5:".concat(M2.current), "hierarchy.lvl6:".concat(M2.current), "content:".concat(M2.current)], snippetEllipsisText: "\u2026", highlightPreTag: "<mark>", highlightPostTag: "</mark>", hitsPerPage: 20 }, i2) }]).catch(function(e4) {
+        return t3 ? B2.search([{ query: t3, indexName: r2, params: wo({ attributesToRetrieve: ["hierarchy.lvl0", "hierarchy.lvl1", "hierarchy.lvl2", "hierarchy.lvl3", "hierarchy.lvl4", "hierarchy.lvl5", "hierarchy.lvl6", "content", "type", "url"], attributesToSnippet: ["hierarchy.lvl1:".concat(H2.current), "hierarchy.lvl2:".concat(H2.current), "hierarchy.lvl3:".concat(H2.current), "hierarchy.lvl4:".concat(H2.current), "hierarchy.lvl5:".concat(H2.current), "hierarchy.lvl6:".concat(H2.current), "content:".concat(H2.current)], snippetEllipsisText: "\u2026", highlightPreTag: "<mark>", highlightPostTag: "</mark>", hitsPerPage: 20 }, i2) }]).catch(function(e4) {
           throw "RetryError" === e4.name && c3("error"), e4;
         }).then(function(e4) {
           var t4 = e4.results[0], r3 = t4.hits, c4 = t4.nbHits, i3 = dr(r3, function(e5) {
             return gr(e5);
-          });
+          }, a2);
           return n3.context.searchSuggestions.length < Object.keys(i3).length && o3({ searchSuggestions: Object.keys(i3) }), o3({ nbHits: c4 }), Object.values(i3).map(function(e5, t5) {
             return { sourceId: "hits".concat(t5), onSelect: function(e6) {
               var t6 = e6.item, n4 = e6.event;
-              W2(t6), vr(n4) || u2();
+              K2(t6), vr(n4) || l2();
             }, getItemUrl: function(e6) {
               return e6.item.url;
             }, getItems: function() {
               return Object.values(dr(e5, function(e6) {
                 return e6.hierarchy.lvl1;
-              })).map(s2).map(function(e6) {
+              }, a2)).map(f2).map(function(e6) {
                 return e6.map(function(t6) {
                   return wo(wo({}, t6), {}, { __docsearch_parent: "lvl1" !== t6.type && e6.find(function(e7) {
                     return "lvl1" === e7.type && e7.hierarchy.lvl1 === t6.hierarchy.lvl1;
@@ -3701,23 +3701,23 @@
               }).flat();
             } };
           });
-        }) : O2 ? [] : [{ sourceId: "recentSearches", onSelect: function(e4) {
+        }) : S2 ? [] : [{ sourceId: "recentSearches", onSelect: function(e4) {
           var t4 = e4.item, n4 = e4.event;
-          W2(t4), vr(n4) || u2();
+          K2(t4), vr(n4) || l2();
+        }, getItemUrl: function(e4) {
+          return e4.item.url;
+        }, getItems: function() {
+          return W2.getAll();
+        } }, { sourceId: "favoriteSearches", onSelect: function(e4) {
+          var t4 = e4.item, n4 = e4.event;
+          K2(t4), vr(n4) || l2();
         }, getItemUrl: function(e4) {
           return e4.item.url;
         }, getItems: function() {
           return V2.getAll();
-        } }, { sourceId: "favoriteSearches", onSelect: function(e4) {
-          var t4 = e4.item, n4 = e4.event;
-          W2(t4), vr(n4) || u2();
-        }, getItemUrl: function(e4) {
-          return e4.item.url;
-        }, getItems: function() {
-          return B2.getAll();
         } }];
       } });
-    }, [r2, i2, F2, u2, V2, B2, W2, U2, c2, h2, s2, O2]), z2 = K2.getEnvironmentProps, J2 = K2.getRootProps, $2 = K2.refresh;
+    }, [r2, i2, a2, B2, l2, W2, V2, K2, F2, c2, v2, f2, S2]), J2 = z2.getEnvironmentProps, $2 = z2.getRootProps, Q2 = z2.refresh;
     return function(e3) {
       var t3 = e3.getEnvironmentProps, n3 = e3.panelElement, r3 = e3.formElement, o3 = e3.inputElement;
       Be.useEffect(function() {
@@ -3728,7 +3728,7 @@
           };
         }
       }, [t3, n3, r3, o3]);
-    }({ getEnvironmentProps: z2, panelElement: L2.current, formElement: T2.current, inputElement: q2.current }), function(e3) {
+    }({ getEnvironmentProps: J2, panelElement: q2.current, formElement: L2.current, inputElement: M2.current }), function(e3) {
       var t3 = e3.container;
       Be.useEffect(function() {
         if (t3) {
@@ -3741,32 +3741,32 @@
           "Tab" === e5.key && (e5.shiftKey ? document.activeElement === n3 && (e5.preventDefault(), r3.focus()) : document.activeElement === r3 && (e5.preventDefault(), n3.focus()));
         }
       }, [t3]);
-    }({ container: N2.current }), Be.useEffect(function() {
+    }({ container: R2.current }), Be.useEffect(function() {
       return document.body.classList.add("DocSearch--active"), function() {
         var e3, t3;
-        document.body.classList.remove("DocSearch--active"), null === (e3 = (t3 = window).scrollTo) || void 0 === e3 || e3.call(t3, 0, y2);
+        document.body.classList.remove("DocSearch--active"), null === (e3 = (t3 = window).scrollTo) || void 0 === e3 || e3.call(t3, 0, _2);
       };
     }, []), Be.useEffect(function() {
-      window.matchMedia("(max-width: 768px)").matches && (M2.current = 5);
+      window.matchMedia("(max-width: 768px)").matches && (H2.current = 5);
     }, []), Be.useEffect(function() {
-      L2.current && (L2.current.scrollTop = 0);
-    }, [A2.query]), Be.useEffect(function() {
-      U2.length > 0 && ($2(), q2.current && q2.current.focus());
-    }, [U2, $2]), Be.useEffect(function() {
+      q2.current && (q2.current.scrollTop = 0);
+    }, [x2.query]), Be.useEffect(function() {
+      F2.length > 0 && (Q2(), M2.current && M2.current.focus());
+    }, [F2, Q2]), Be.useEffect(function() {
       function e3() {
-        if (R2.current) {
+        if (T2.current) {
           var e4 = 0.01 * window.innerHeight;
-          R2.current.style.setProperty("--docsearch-vh", "".concat(e4, "px"));
+          T2.current.style.setProperty("--docsearch-vh", "".concat(e4, "px"));
         }
       }
       return e3(), window.addEventListener("resize", e3), function() {
         window.removeEventListener("resize", e3);
       };
-    }, []), Be.createElement("div", So({ ref: N2 }, J2({ "aria-expanded": true }), { className: ["DocSearch", "DocSearch-Container", "stalled" === A2.status && "DocSearch-Container--Stalled", "error" === A2.status && "DocSearch-Container--Errored"].filter(Boolean).join(" "), role: "button", tabIndex: 0, onMouseDown: function(e3) {
-      e3.target === e3.currentTarget && u2();
-    } }), Be.createElement("div", { className: "DocSearch-Modal", ref: R2 }, Be.createElement("header", { className: "DocSearch-SearchBar", ref: T2 }, Be.createElement(Rr, So({}, K2, { state: A2, autoFocus: 0 === U2.length, inputRef: q2, isFromSelection: Boolean(U2) && U2 === H2, translations: k2, onClose: u2 }))), Be.createElement("div", { className: "DocSearch-Dropdown", ref: L2 }, Be.createElement(Cr, So({}, K2, { indexName: r2, state: A2, hitComponent: p2, resultsFooterComponent: d2, disableUserPersonalization: O2, recentSearches: V2, favoriteSearches: B2, inputRef: q2, translations: D2, getMissingResultsUrl: P2, onItemClick: function(e3, t3) {
-      W2(e3), vr(t3) || u2();
-    } }))), Be.createElement("footer", { className: "DocSearch-Footer" }, Be.createElement(qn, { translations: I2 }))));
+    }, []), Be.createElement("div", So({ ref: R2 }, $2({ "aria-expanded": true }), { className: ["DocSearch", "DocSearch-Container", "stalled" === x2.status && "DocSearch-Container--Stalled", "error" === x2.status && "DocSearch-Container--Errored"].filter(Boolean).join(" "), role: "button", tabIndex: 0, onMouseDown: function(e3) {
+      e3.target === e3.currentTarget && l2();
+    } }), Be.createElement("div", { className: "DocSearch-Modal", ref: T2 }, Be.createElement("header", { className: "DocSearch-SearchBar", ref: L2 }, Be.createElement(Rr, So({}, z2, { state: x2, autoFocus: 0 === F2.length, inputRef: M2, isFromSelection: Boolean(F2) && F2 === U2, translations: D2, onClose: l2 }))), Be.createElement("div", { className: "DocSearch-Dropdown", ref: q2 }, Be.createElement(Cr, So({}, z2, { indexName: r2, state: x2, hitComponent: m2, resultsFooterComponent: h2, disableUserPersonalization: S2, recentSearches: W2, favoriteSearches: V2, inputRef: M2, translations: C2, getMissingResultsUrl: I2, onItemClick: function(e3, t3) {
+      K2(e3), vr(t3) || l2();
+    } }))), Be.createElement("footer", { className: "DocSearch-Footer" }, Be.createElement(qn, { translations: k2 }))));
   }
   function Co() {
     return Co = Object.assign || function(e2) {
@@ -3848,7 +3848,7 @@
   }
   function Ro(e2) {
     Ae(Be.createElement(No, o({}, e2, { transformSearchClient: function(t2) {
-      return t2.addAlgoliaAgent("docsearch.js", "3.3.5"), e2.transformSearchClient ? e2.transformSearchClient(t2) : t2;
+      return t2.addAlgoliaAgent("docsearch.js", "3.4.0"), e2.transformSearchClient ? e2.transformSearchClient(t2) : t2;
     } })), function(e3) {
       var t2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : window;
       return "string" == typeof e3 ? t2.document.querySelector(e3) : e3;
@@ -3959,5 +3959,5 @@ clipboard/dist/clipboard.js:
    *)
 
 @docsearch/js/dist/esm/index.js:
-  (*! @docsearch/js 3.3.5 | MIT License | © Algolia, Inc. and contributors | https://docsearch.algolia.com *)
+  (*! @docsearch/js 3.4.0 | MIT License | © Algolia, Inc. and contributors | https://docsearch.algolia.com *)
 */
