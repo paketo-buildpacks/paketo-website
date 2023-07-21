@@ -310,6 +310,11 @@ You can use templates to set the path to a dynamic module using the
 {{module "ngx_stream_module"}}
 {{< /code/copyable >}}
 
+NGINX requires that the dynamic module be built against the exact version of
+NGINX that your're targeting, and be built on the same arch/platform.
+See [this NGINX blog post](https://www.nginx.com/blog/compiling-dynamic-modules-nginx-plus)
+on how to compile third-party dynamic modules.
+
 See the [NGINX
 docs](https://nginx.org/en/docs/beginners_guide.html#conf_structure) for more
 information about how to set up an `nginx.conf` file.
