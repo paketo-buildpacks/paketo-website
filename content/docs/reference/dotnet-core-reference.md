@@ -52,7 +52,7 @@ as the default build artifact, while [an FDE is
 produced](https://docs.microsoft.com/en-us/dotnet/core/deploying/deploy-with-cli#framework-dependent-executable)
 when the application source is for .NET Core Framework 3.x. The buildpack sets the following `dotnet publish` flags by default:
 - `--configuration Release`
-- `--runtime ubuntu.18.04-x64`
+- `--runtime linux-x64`
 - `--self-contained false`
 - `--output <temp-directory>`
 
