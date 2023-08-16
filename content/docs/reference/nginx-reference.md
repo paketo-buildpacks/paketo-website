@@ -25,11 +25,11 @@ notes](https://github.com/paketo-buildpacks/nginx/releases).
 ### BP_LIVE_RELOAD_ENABLED
 Enables reloadable processes.
 
-### BP_HTTPD_VERSION
-Allows you to specify the version of Apache HTTP Server that is installed.
+### BP_NGINX_VERSION
+Allows you to specify the version of the NGINX Server that is installed.
 
 ### BP_WEB_SERVER
-When the value is set to `httpd` the buildpack will generate a default `httpd.conf`.
+When the value is set to `nginx` the buildpack will generate a default `nginx.conf`.
 
 ### BP_WEB_SERVER_ROOT
 Defaults to `public`, setting this allows you to modify the location of the
@@ -44,7 +44,7 @@ Allows you to enforce HTTPS for server connections by redirecting all requests
 to use the HTTPS protocol.
 
 ## Supported Service Bindings
-The HTTPD buildpack can be configured using [service bindings][service-binding].
+The NGINX buildpack can be configured using [service bindings][service-binding].
 ####
 | `type`                 | Required Files      | # Bindings of This Type Accepted |
 |------------------------|---------------------|----------------------------------|
