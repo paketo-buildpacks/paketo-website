@@ -491,7 +491,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#supported-environment-variable-configuration">Supported Environment Variable Configuration</a>
       <ul>
         <li><a href="#bp_live_reload_enabled">BP_LIVE_RELOAD_ENABLED</a></li>
-        <li><a href="#bp_httpd_version">BP_HTTPD_VERSION</a></li>
+        <li><a href="#bp_nginx_version">BP_NGINX_VERSION</a></li>
         <li><a href="#bp_web_server">BP_WEB_SERVER</a></li>
         <li><a href="#bp_web_server_root">BP_WEB_SERVER_ROOT</a></li>
         <li><a href="#bp_web_server_enable_push_state">BP_WEB_SERVER_ENABLE_PUSH_STATE</a></li>
@@ -533,16 +533,16 @@ notes</a>.</p>
         BP_LIVE_RELOAD_ENABLED
     </a>
 </h3><p>Enables reloadable processes.</p>
-<h3 id="bp_httpd_version" class="markup-heading">
-    <a class="markup-heading__link" href="#bp_httpd_version">
-        BP_HTTPD_VERSION
+<h3 id="bp_nginx_version" class="markup-heading">
+    <a class="markup-heading__link" href="#bp_nginx_version">
+        BP_NGINX_VERSION
     </a>
-</h3><p>Allows you to specify the version of Apache HTTP Server that is installed.</p>
+</h3><p>Allows you to specify the version of the NGINX Server that is installed.</p>
 <h3 id="bp_web_server" class="markup-heading">
     <a class="markup-heading__link" href="#bp_web_server">
         BP_WEB_SERVER
     </a>
-</h3><p>When the value is set to <code>httpd</code> the buildpack will generate a default <code>httpd.conf</code>.</p>
+</h3><p>When the value is set to <code>nginx</code> the buildpack will generate a default <code>nginx.conf</code>.</p>
 <h3 id="bp_web_server_root" class="markup-heading">
     <a class="markup-heading__link" href="#bp_web_server_root">
         BP_WEB_SERVER_ROOT
@@ -565,7 +565,7 @@ to use the HTTPS protocol.</p>
     <a class="markup-heading__link" href="#supported-service-bindings">
         Supported Service Bindings
     </a>
-</h2><p>The HTTPD buildpack can be configured using <a href="https://paketo.io/docs/howto/configuration/#bindings">service bindings</a>.</p>
+</h2><p>The NGINX buildpack can be configured using <a href="https://paketo.io/docs/howto/configuration/#bindings">service bindings</a>.</p>
 <h4 id="heading" class="markup-heading">
     <a class="markup-heading__link" href="#heading">
         
@@ -619,7 +619,7 @@ NGINX server with a default configuration.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> August 16, 2023</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> August 17, 2023</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -629,7 +629,7 @@ NGINX server with a default configuration.</p>
     <li><a href="#supported-environment-variable-configuration">Supported Environment Variable Configuration</a>
       <ul>
         <li><a href="#bp_live_reload_enabled">BP_LIVE_RELOAD_ENABLED</a></li>
-        <li><a href="#bp_httpd_version">BP_HTTPD_VERSION</a></li>
+        <li><a href="#bp_nginx_version">BP_NGINX_VERSION</a></li>
         <li><a href="#bp_web_server">BP_WEB_SERVER</a></li>
         <li><a href="#bp_web_server_root">BP_WEB_SERVER_ROOT</a></li>
         <li><a href="#bp_web_server_enable_push_state">BP_WEB_SERVER_ENABLE_PUSH_STATE</a></li>
