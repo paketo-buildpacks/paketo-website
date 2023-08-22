@@ -3596,11 +3596,11 @@
   var eo = /(<mark>|<\/mark>)/g;
   var to = RegExp(eo.source);
   function no(e2) {
-    var t2, n2, r2, o2, i2, c2 = e2;
-    if (!c2.__docsearch_parent && !e2._highlightResult)
+    var t2, n2, r2 = e2;
+    if (!r2.__docsearch_parent && !e2._highlightResult)
       return e2.hierarchy.lvl0;
-    var a2 = ((c2.__docsearch_parent ? null === (t2 = c2.__docsearch_parent) || void 0 === t2 || null === (n2 = t2._highlightResult) || void 0 === n2 || null === (r2 = n2.hierarchy) || void 0 === r2 ? void 0 : r2.lvl0 : null === (o2 = e2._highlightResult) || void 0 === o2 || null === (i2 = o2.hierarchy) || void 0 === i2 ? void 0 : i2.lvl0) || {}).value;
-    return a2 && to.test(a2) ? a2.replace(eo, "") : a2;
+    var o2 = ((r2.__docsearch_parent ? null === (t2 = r2.__docsearch_parent) || void 0 === t2 || null === (t2 = t2._highlightResult) || void 0 === t2 || null === (t2 = t2.hierarchy) || void 0 === t2 ? void 0 : t2.lvl0 : null === (n2 = e2._highlightResult) || void 0 === n2 || null === (n2 = n2.hierarchy) || void 0 === n2 ? void 0 : n2.lvl0) || {}).value;
+    return o2 && to.test(o2) ? o2.replace(eo, "") : o2;
   }
   function ro() {
     return ro = Object.assign || function(e2) {
@@ -3817,14 +3817,30 @@
       return void 0 === t2 && (t2 = e2.localStorage || window.localStorage), t2;
     }, o2 = function() {
       return JSON.parse(r2().getItem(n2) || "{}");
+    }, i2 = function(e3) {
+      r2().setItem(n2, JSON.stringify(e3));
+    }, a2 = function() {
+      var t3 = e2.timeToLive ? 1e3 * e2.timeToLive : null, n3 = o2(), r3 = Object.fromEntries(Object.entries(n3).filter(function(e3) {
+        return void 0 !== c(e3, 2)[1].timestamp;
+      }));
+      if (i2(r3), t3) {
+        var a3 = Object.fromEntries(Object.entries(r3).filter(function(e3) {
+          var n4 = c(e3, 2)[1], r4 = (/* @__PURE__ */ new Date()).getTime();
+          return !(n4.timestamp + t3 < r4);
+        }));
+        i2(a3);
+      }
     };
     return { get: function(e3, t3) {
       var n3 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : { miss: function() {
         return Promise.resolve();
       } };
       return Promise.resolve().then(function() {
-        var n4 = JSON.stringify(e3), r3 = o2()[n4];
-        return Promise.all([r3 || t3(), void 0 !== r3]);
+        a2();
+        var t4 = JSON.stringify(e3);
+        return o2()[t4];
+      }).then(function(e4) {
+        return Promise.all([e4 ? e4.value : t3(), void 0 !== e4]);
       }).then(function(e4) {
         var t4 = c(e4, 2), r3 = t4[0], o3 = t4[1];
         return Promise.all([r3, o3 || n3.miss(r3)]);
@@ -3833,8 +3849,8 @@
       });
     }, set: function(e3, t3) {
       return Promise.resolve().then(function() {
-        var i2 = o2();
-        return i2[JSON.stringify(e3)] = t3, r2().setItem(n2, JSON.stringify(i2)), t3;
+        var i3 = o2();
+        return i3[JSON.stringify(e3)] = { timestamp: (/* @__PURE__ */ new Date()).getTime(), value: t3 }, r2().setItem(n2, JSON.stringify(i3)), t3;
       });
     }, delete: function(e3) {
       return Promise.resolve().then(function() {
@@ -3990,7 +4006,7 @@
       var m3 = { data: c2, headers: u2, method: l2, url: Bo(s3, r2.path, f2), connectTimeout: a2(p2, e2.timeouts.connect), responseTimeout: a2(p2, o2.timeout) }, v2 = function(e3) {
         var t3 = { request: m3, response: e3, host: s3, triesLeft: n3.length };
         return i2.push(t3), t3;
-      }, d2 = { onSucess: function(e3) {
+      }, d2 = { onSuccess: function(e3) {
         return function(e4) {
           try {
             return JSON.parse(e4.content);
@@ -4025,7 +4041,7 @@
               var t5 = e6.isTimedOut, n4 = e6.status;
               return !t5 && 0 == ~~n4;
             }(e5) || 2 != ~~(t4 / 100) && 4 != ~~(t4 / 100);
-          }(e4) ? t3.onRetry(e4) : 2 == ~~(e4.status / 100) ? t3.onSucess(e4) : t3.onFail(e4);
+          }(e4) ? t3.onRetry(e4) : 2 == ~~(e4.status / 100) ? t3.onSuccess(e4) : t3.onFail(e4);
         }(e3, d2);
       });
     };
@@ -4108,12 +4124,17 @@
     return Io(i2, e2.methods);
   };
   var Jo = function(e2) {
+    return function(t2, n2) {
+      return t2.method === Lo ? e2.transporter.read(t2, n2) : e2.transporter.write(t2, n2);
+    };
+  };
+  var $o = function(e2) {
     return function(t2) {
       var n2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {}, r2 = { transporter: e2.transporter, appId: e2.appId, indexName: t2 };
       return Io(r2, n2.methods);
     };
   };
-  var $o = function(e2) {
+  var Qo = function(e2) {
     return function(n2, r2) {
       var o2 = n2.map(function(e3) {
         return t(t({}, e3), {}, { params: Vo(e3.params || {}) });
@@ -4121,33 +4142,33 @@
       return e2.transporter.read({ method: Mo, path: "1/indexes/*/queries", data: { requests: o2 }, cacheable: true }, r2);
     };
   };
-  var Qo = function(e2) {
+  var Zo = function(e2) {
     return function(n2, r2) {
       return Promise.all(n2.map(function(n3) {
         var o2 = n3.params, c2 = o2.facetName, a2 = o2.facetQuery, u2 = i(o2, So);
-        return Jo(e2)(n3.indexName, { methods: { searchForFacetValues: Go } }).searchForFacetValues(c2, a2, t(t({}, r2), u2));
+        return $o(e2)(n3.indexName, { methods: { searchForFacetValues: Xo } }).searchForFacetValues(c2, a2, t(t({}, r2), u2));
       }));
     };
   };
-  var Zo = function(e2) {
+  var Yo = function(e2) {
     return function(t2, n2, r2) {
       return e2.transporter.read({ method: Mo, path: Do("1/answers/%s/prediction", e2.indexName), data: { query: t2, queryLanguages: n2 }, cacheable: true }, r2);
     };
   };
-  var Yo = function(e2) {
+  var Go = function(e2) {
     return function(t2, n2) {
       return e2.transporter.read({ method: Mo, path: Do("1/indexes/%s/query", e2.indexName), data: { query: t2 }, cacheable: true }, n2);
     };
   };
-  var Go = function(e2) {
+  var Xo = function(e2) {
     return function(t2, n2, r2) {
       return e2.transporter.read({ method: Mo, path: Do("1/indexes/%s/facets/%s/query", e2.indexName, t2), data: { facetQuery: n2 }, cacheable: true }, r2);
     };
   };
-  var Xo = 1;
-  var ei = 2;
-  var ti = 3;
-  function ni(e2, n2, r2) {
+  var ei = 1;
+  var ti = 2;
+  var ni = 3;
+  function ri(e2, n2, r2) {
     var o2, i2 = { appId: e2, apiKey: n2, timeouts: { connect: 1, read: 2, write: 30 }, requester: { send: function(e3) {
       return new Promise(function(t2) {
         var n3 = new XMLHttpRequest();
@@ -4167,32 +4188,32 @@
           clearTimeout(i3), clearTimeout(r3), t2({ content: n3.responseText, status: n3.status, isTimedOut: false });
         }, n3.send(e3.data);
       });
-    } }, logger: (o2 = ti, { debug: function(e3, t2) {
-      return Xo >= o2 && console.debug(e3, t2), Promise.resolve();
+    } }, logger: (o2 = ni, { debug: function(e3, t2) {
+      return ei >= o2 && console.debug(e3, t2), Promise.resolve();
     }, info: function(e3, t2) {
-      return ei >= o2 && console.info(e3, t2), Promise.resolve();
+      return ti >= o2 && console.info(e3, t2), Promise.resolve();
     }, error: function(e3, t2) {
       return console.error(e3, t2), Promise.resolve();
-    } }), responsesCache: Eo(), requestsCache: Eo({ serializable: false }), hostsCache: jo({ caches: [wo({ key: "".concat("4.8.5", "-").concat(e2) }), Eo()] }), userAgent: Fo("4.8.5").add({ segment: "Browser", version: "lite" }), authMode: ko.WithinQueryParameters };
-    return zo(t(t(t({}, i2), r2), {}, { methods: { search: $o, searchForFacetValues: Qo, multipleQueries: $o, multipleSearchForFacetValues: Qo, initIndex: function(e3) {
+    } }), responsesCache: Eo(), requestsCache: Eo({ serializable: false }), hostsCache: jo({ caches: [wo({ key: "".concat("4.19.1", "-").concat(e2) }), Eo()] }), userAgent: Fo("4.19.1").add({ segment: "Browser", version: "lite" }), authMode: ko.WithinQueryParameters };
+    return zo(t(t(t({}, i2), r2), {}, { methods: { search: Qo, searchForFacetValues: Zo, multipleQueries: Qo, multipleSearchForFacetValues: Zo, customRequest: Jo, initIndex: function(e3) {
       return function(t2) {
-        return Jo(e3)(t2, { methods: { search: Yo, searchForFacetValues: Go, findAnswers: Zo } });
+        return $o(e3)(t2, { methods: { search: Go, searchForFacetValues: Xo, findAnswers: Yo } });
       };
     } } }));
   }
-  ni.version = "4.8.5";
-  var ri = ["footer", "searchBox"];
-  function oi() {
-    return oi = Object.assign || function(e2) {
+  ri.version = "4.19.1";
+  var oi = ["footer", "searchBox"];
+  function ii() {
+    return ii = Object.assign || function(e2) {
       for (var t2 = 1; t2 < arguments.length; t2++) {
         var n2 = arguments[t2];
         for (var r2 in n2)
           Object.prototype.hasOwnProperty.call(n2, r2) && (e2[r2] = n2[r2]);
       }
       return e2;
-    }, oi.apply(this, arguments);
+    }, ii.apply(this, arguments);
   }
-  function ii(e2, t2) {
+  function ci(e2, t2) {
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
@@ -4202,21 +4223,21 @@
     }
     return n2;
   }
-  function ci(e2) {
+  function ai(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? ii(Object(n2), true).forEach(function(t3) {
-        ai(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : ii(Object(n2)).forEach(function(t3) {
+      t2 % 2 ? ci(Object(n2), true).forEach(function(t3) {
+        ui(e2, t3, n2[t3]);
+      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : ci(Object(n2)).forEach(function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
       });
     }
     return e2;
   }
-  function ai(e2, t2, n2) {
+  function ui(e2, t2, n2) {
     return t2 in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
-  function ui(e2, t2) {
+  function li(e2, t2) {
     return function(e3) {
       if (Array.isArray(e3))
         return e3;
@@ -4243,24 +4264,24 @@
       if (!e3)
         return;
       if ("string" == typeof e3)
-        return li(e3, t3);
+        return si(e3, t3);
       var n2 = Object.prototype.toString.call(e3).slice(8, -1);
       "Object" === n2 && e3.constructor && (n2 = e3.constructor.name);
       if ("Map" === n2 || "Set" === n2)
         return Array.from(e3);
       if ("Arguments" === n2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
-        return li(e3, t3);
+        return si(e3, t3);
     }(e2, t2) || function() {
       throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }();
   }
-  function li(e2, t2) {
+  function si(e2, t2) {
     (null == t2 || t2 > e2.length) && (t2 = e2.length);
     for (var n2 = 0, r2 = new Array(t2); n2 < t2; n2++)
       r2[n2] = e2[n2];
     return r2;
   }
-  function si(e2, t2) {
+  function fi(e2, t2) {
     if (null == e2)
       return {};
     var n2, r2, o2 = function(e3, t3) {
@@ -4278,13 +4299,13 @@
     }
     return o2;
   }
-  function fi(e2) {
+  function pi(e2) {
     var t2 = e2.appId, n2 = e2.apiKey, r2 = e2.indexName, o2 = e2.placeholder, i2 = void 0 === o2 ? "Search docs" : o2, c2 = e2.searchParameters, a2 = e2.maxResultsPerGroup, u2 = e2.onClose, l2 = void 0 === u2 ? Xr : u2, s2 = e2.transformItems, f2 = void 0 === s2 ? Yr : s2, p2 = e2.hitComponent, m2 = void 0 === p2 ? _r : p2, v2 = e2.resultsFooterComponent, d2 = void 0 === v2 ? function() {
       return null;
-    } : v2, h2 = e2.navigator, y2 = e2.initialScrollY, b2 = void 0 === y2 ? 0 : y2, g2 = e2.transformSearchClient, _2 = void 0 === g2 ? Yr : g2, O2 = e2.disableUserPersonalization, S2 = void 0 !== O2 && O2, w2 = e2.initialQuery, j2 = void 0 === w2 ? "" : w2, E2 = e2.translations, P2 = void 0 === E2 ? {} : E2, I2 = e2.getMissingResultsUrl, D2 = e2.insights, k2 = void 0 !== D2 && D2, A2 = P2.footer, C2 = P2.searchBox, N2 = si(P2, ri), x2 = ui(Be.useState({ query: "", collections: [], completion: null, context: {}, isOpen: false, activeItemId: null, status: "idle" }), 2), T2 = x2[0], R2 = x2[1], q2 = Be.useRef(null), L2 = Be.useRef(null), M2 = Be.useRef(null), H2 = Be.useRef(null), U2 = Be.useRef(null), F2 = Be.useRef(10), B2 = Be.useRef("undefined" != typeof window ? window.getSelection().toString().slice(0, 64) : "").current, V2 = Be.useRef(j2 || B2).current, W2 = function(e3, t3, n3) {
+    } : v2, h2 = e2.navigator, y2 = e2.initialScrollY, b2 = void 0 === y2 ? 0 : y2, g2 = e2.transformSearchClient, _2 = void 0 === g2 ? Yr : g2, O2 = e2.disableUserPersonalization, S2 = void 0 !== O2 && O2, w2 = e2.initialQuery, j2 = void 0 === w2 ? "" : w2, E2 = e2.translations, P2 = void 0 === E2 ? {} : E2, I2 = e2.getMissingResultsUrl, D2 = e2.insights, k2 = void 0 !== D2 && D2, A2 = P2.footer, C2 = P2.searchBox, N2 = fi(P2, oi), x2 = li(Be.useState({ query: "", collections: [], completion: null, context: {}, isOpen: false, activeItemId: null, status: "idle" }), 2), T2 = x2[0], R2 = x2[1], q2 = Be.useRef(null), L2 = Be.useRef(null), M2 = Be.useRef(null), H2 = Be.useRef(null), U2 = Be.useRef(null), F2 = Be.useRef(10), B2 = Be.useRef("undefined" != typeof window ? window.getSelection().toString().slice(0, 64) : "").current, V2 = Be.useRef(j2 || B2).current, W2 = function(e3, t3, n3) {
       return Be.useMemo(function() {
-        var r3 = ni(e3, t3);
-        return r3.addAlgoliaAgent("docsearch", "3.5.1"), false === /docsearch.js \(.*\)/.test(r3.transporter.userAgent.value) && r3.addAlgoliaAgent("docsearch-react", "3.5.1"), n3(r3);
+        var r3 = ri(e3, t3);
+        return r3.addAlgoliaAgent("docsearch", "3.5.2"), false === /docsearch.js \(.*\)/.test(r3.transporter.userAgent.value) && r3.addAlgoliaAgent("docsearch-react", "3.5.2"), n3(r3);
       }, [e3, t3, n3]);
     }(t2, n2, _2), K2 = Be.useRef(Oo({ key: "__DOCSEARCH_FAVORITE_SEARCHES__".concat(r2), limit: 10 })).current, z2 = Be.useRef(Oo({ key: "__DOCSEARCH_RECENT_SEARCHES__".concat(r2), limit: 0 === K2.getAll().length ? 7 : 4 })).current, J2 = Be.useCallback(function(e3) {
       if (!S2) {
@@ -4320,15 +4341,15 @@
             return K2.getAll();
           } }];
         var p3 = Boolean(k2);
-        return W2.search([{ query: o3, indexName: r2, params: ci({ attributesToRetrieve: ["hierarchy.lvl0", "hierarchy.lvl1", "hierarchy.lvl2", "hierarchy.lvl3", "hierarchy.lvl4", "hierarchy.lvl5", "hierarchy.lvl6", "content", "type", "url"], attributesToSnippet: ["hierarchy.lvl1:".concat(F2.current), "hierarchy.lvl2:".concat(F2.current), "hierarchy.lvl3:".concat(F2.current), "hierarchy.lvl4:".concat(F2.current), "hierarchy.lvl5:".concat(F2.current), "hierarchy.lvl6:".concat(F2.current), "content:".concat(F2.current)], snippetEllipsisText: "\u2026", highlightPreTag: "<mark>", highlightPostTag: "</mark>", hitsPerPage: 20, clickAnalytics: p3 }, c2) }]).catch(function(e4) {
+        return W2.search([{ query: o3, indexName: r2, params: ai({ attributesToRetrieve: ["hierarchy.lvl0", "hierarchy.lvl1", "hierarchy.lvl2", "hierarchy.lvl3", "hierarchy.lvl4", "hierarchy.lvl5", "hierarchy.lvl6", "content", "type", "url"], attributesToSnippet: ["hierarchy.lvl1:".concat(F2.current), "hierarchy.lvl2:".concat(F2.current), "hierarchy.lvl3:".concat(F2.current), "hierarchy.lvl4:".concat(F2.current), "hierarchy.lvl5:".concat(F2.current), "hierarchy.lvl6:".concat(F2.current), "content:".concat(F2.current)], snippetEllipsisText: "\u2026", highlightPreTag: "<mark>", highlightPostTag: "</mark>", hitsPerPage: 20, clickAnalytics: p3 }, c2) }]).catch(function(e4) {
           throw "RetryError" === e4.name && s3("error"), e4;
         }).then(function(e4) {
-          var o4 = e4.results, c3 = o4[0], s4 = c3.hits, m3 = c3.nbHits, v3 = Zr(s4, function(e5) {
+          var o4 = e4.results[0], c3 = o4.hits, s4 = o4.nbHits, m3 = Zr(c3, function(e5) {
             return no(e5);
           }, a2);
-          i3.context.searchSuggestions.length < Object.keys(v3).length && u3({ searchSuggestions: Object.keys(v3) }), u3({ nbHits: m3 });
-          var d3 = {};
-          return p3 && (d3 = { __autocomplete_indexName: r2, __autocomplete_queryID: o4[0].queryID, __autocomplete_algoliaCredentials: { appId: t2, apiKey: n2 } }), Object.values(v3).map(function(e5, t3) {
+          i3.context.searchSuggestions.length < Object.keys(m3).length && u3({ searchSuggestions: Object.keys(m3) }), u3({ nbHits: s4 });
+          var v3 = {};
+          return p3 && (v3 = { __autocomplete_indexName: r2, __autocomplete_queryID: o4.queryID, __autocomplete_algoliaCredentials: { appId: t2, apiKey: n2 } }), Object.values(m3).map(function(e5, t3) {
             return { sourceId: "hits".concat(t3), onSelect: function(e6) {
               var t4 = e6.item, n3 = e6.event;
               J2(t4), Gr(n3) || l2();
@@ -4342,7 +4363,7 @@
                   var n3 = null, r3 = e6.find(function(e7) {
                     return "lvl1" === e7.type && e7.hierarchy.lvl1 === t4.hierarchy.lvl1;
                   });
-                  return "lvl1" !== t4.type && r3 && (n3 = r3), ci(ci({}, t4), {}, { __docsearch_parent: n3 }, d3);
+                  return "lvl1" !== t4.type && r3 && (n3 = r3), ai(ai({}, t4), {}, { __docsearch_parent: n3 }, v3);
                 });
               }).flat();
             } };
@@ -4394,23 +4415,23 @@
       return e3(), window.addEventListener("resize", e3), function() {
         window.removeEventListener("resize", e3);
       };
-    }, []), Be.createElement("div", oi({ ref: q2 }, Y2({ "aria-expanded": true }), { className: ["DocSearch", "DocSearch-Container", "stalled" === T2.status && "DocSearch-Container--Stalled", "error" === T2.status && "DocSearch-Container--Errored"].filter(Boolean).join(" "), role: "button", tabIndex: 0, onMouseDown: function(e3) {
+    }, []), Be.createElement("div", ii({ ref: q2 }, Y2({ "aria-expanded": true }), { className: ["DocSearch", "DocSearch-Container", "stalled" === T2.status && "DocSearch-Container--Stalled", "error" === T2.status && "DocSearch-Container--Errored"].filter(Boolean).join(" "), role: "button", tabIndex: 0, onMouseDown: function(e3) {
       e3.target === e3.currentTarget && l2();
-    } }), Be.createElement("div", { className: "DocSearch-Modal", ref: L2 }, Be.createElement("header", { className: "DocSearch-SearchBar", ref: M2 }, Be.createElement(yo, oi({}, Q2, { state: T2, autoFocus: 0 === V2.length, inputRef: U2, isFromSelection: Boolean(V2) && V2 === B2, translations: C2, onClose: l2 }))), Be.createElement("div", { className: "DocSearch-Dropdown", ref: H2 }, Be.createElement(po, oi({}, Q2, { indexName: r2, state: T2, hitComponent: m2, resultsFooterComponent: d2, disableUserPersonalization: S2, recentSearches: z2, favoriteSearches: K2, inputRef: U2, translations: N2, getMissingResultsUrl: I2, onItemClick: function(e3, t3) {
+    } }), Be.createElement("div", { className: "DocSearch-Modal", ref: L2 }, Be.createElement("header", { className: "DocSearch-SearchBar", ref: M2 }, Be.createElement(yo, ii({}, Q2, { state: T2, autoFocus: 0 === V2.length, inputRef: U2, isFromSelection: Boolean(V2) && V2 === B2, translations: C2, onClose: l2 }))), Be.createElement("div", { className: "DocSearch-Dropdown", ref: H2 }, Be.createElement(po, ii({}, Q2, { indexName: r2, state: T2, hitComponent: m2, resultsFooterComponent: d2, disableUserPersonalization: S2, recentSearches: z2, favoriteSearches: K2, inputRef: U2, translations: N2, getMissingResultsUrl: I2, onItemClick: function(e3, t3) {
       $2(e3), J2(e3), Gr(t3) || l2();
     } }))), Be.createElement("footer", { className: "DocSearch-Footer" }, Be.createElement(gr, { translations: A2 }))));
   }
-  function pi() {
-    return pi = Object.assign || function(e2) {
+  function mi() {
+    return mi = Object.assign || function(e2) {
       for (var t2 = 1; t2 < arguments.length; t2++) {
         var n2 = arguments[t2];
         for (var r2 in n2)
           Object.prototype.hasOwnProperty.call(n2, r2) && (e2[r2] = n2[r2]);
       }
       return e2;
-    }, pi.apply(this, arguments);
+    }, mi.apply(this, arguments);
   }
-  function mi(e2, t2) {
+  function vi(e2, t2) {
     return function(e3) {
       if (Array.isArray(e3))
         return e3;
@@ -4437,25 +4458,25 @@
       if (!e3)
         return;
       if ("string" == typeof e3)
-        return vi(e3, t3);
+        return di(e3, t3);
       var n2 = Object.prototype.toString.call(e3).slice(8, -1);
       "Object" === n2 && e3.constructor && (n2 = e3.constructor.name);
       if ("Map" === n2 || "Set" === n2)
         return Array.from(e3);
       if ("Arguments" === n2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
-        return vi(e3, t3);
+        return di(e3, t3);
     }(e2, t2) || function() {
       throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
     }();
   }
-  function vi(e2, t2) {
+  function di(e2, t2) {
     (null == t2 || t2 > e2.length) && (t2 = e2.length);
     for (var n2 = 0, r2 = new Array(t2); n2 < t2; n2++)
       r2[n2] = e2[n2];
     return r2;
   }
-  function di(e2) {
-    var t2, n2, r2 = Be.useRef(null), o2 = mi(Be.useState(false), 2), i2 = o2[0], c2 = o2[1], a2 = mi(Be.useState((null == e2 ? void 0 : e2.initialQuery) || void 0), 2), u2 = a2[0], l2 = a2[1], s2 = Be.useCallback(function() {
+  function hi(e2) {
+    var t2, n2, r2 = Be.useRef(null), o2 = vi(Be.useState(false), 2), i2 = o2[0], c2 = o2[1], a2 = vi(Be.useState((null == e2 ? void 0 : e2.initialQuery) || void 0), 2), u2 = a2[0], l2 = a2[1], s2 = Be.useCallback(function() {
       c2(true);
     }, [c2]), f2 = Be.useCallback(function() {
       c2(false);
@@ -4476,17 +4497,17 @@
       }, [t3, n3, r3, o3, i3]);
     }({ isOpen: i2, onOpen: s2, onClose: f2, onInput: Be.useCallback(function(e3) {
       c2(true), l2(e3.key);
-    }, [c2, l2]), searchButtonRef: r2 }), Be.createElement(Be.Fragment, null, Be.createElement(Ze, { ref: r2, translations: null == e2 || null === (t2 = e2.translations) || void 0 === t2 ? void 0 : t2.button, onClick: s2 }), i2 && Ie(Be.createElement(fi, pi({}, e2, { initialScrollY: window.scrollY, initialQuery: u2, translations: null == e2 || null === (n2 = e2.translations) || void 0 === n2 ? void 0 : n2.modal, onClose: f2 })), document.body));
+    }, [c2, l2]), searchButtonRef: r2 }), Be.createElement(Be.Fragment, null, Be.createElement(Ze, { ref: r2, translations: null == e2 || null === (t2 = e2.translations) || void 0 === t2 ? void 0 : t2.button, onClick: s2 }), i2 && Ie(Be.createElement(pi, mi({}, e2, { initialScrollY: window.scrollY, initialQuery: u2, translations: null == e2 || null === (n2 = e2.translations) || void 0 === n2 ? void 0 : n2.modal, onClose: f2 })), document.body));
   }
-  function hi(e2) {
-    Ce(Be.createElement(di, o({}, e2, { transformSearchClient: function(t2) {
-      return t2.addAlgoliaAgent("docsearch.js", "3.5.1"), e2.transformSearchClient ? e2.transformSearchClient(t2) : t2;
+  function yi(e2) {
+    Ce(Be.createElement(hi, o({}, e2, { transformSearchClient: function(t2) {
+      return t2.addAlgoliaAgent("docsearch.js", "3.5.2"), e2.transformSearchClient ? e2.transformSearchClient(t2) : t2;
     } })), function(e3) {
       var t2 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : window;
       return "string" == typeof e3 ? t2.document.querySelector(e3) : e3;
     }(e2.container, e2.environment));
   }
-  var esm_default = hi;
+  var esm_default = yi;
 
   // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/search.js
   function Search({ element }) {
@@ -4591,5 +4612,5 @@ clipboard/dist/clipboard.js:
    *)
 
 @docsearch/js/dist/esm/index.js:
-  (*! @docsearch/js 3.5.1 | MIT License | © Algolia, Inc. and contributors | https://docsearch.algolia.com *)
+  (*! @docsearch/js 3.5.2 | MIT License | © Algolia, Inc. and contributors | https://docsearch.algolia.com *)
 */
