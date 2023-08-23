@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@docsearch/js": "^3.5.1",
+    "@docsearch/js": "^3.5.2",
     "clipboard": "^2.0.11",
-    "firebase-tools": "^12.4.8"
+    "firebase-tools": "^12.5.0"
   },
   "scripts": {
     "deploy": "node -e \"const deploy = require('./deploy.js'); deploy({expires: '8h'});\""
