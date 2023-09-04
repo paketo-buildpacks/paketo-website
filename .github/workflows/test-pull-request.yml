@@ -10,7 +10,7 @@ jobs:
     name: Check Links
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Check For Internal Links without Shortcodes
       run: scripts/check-internal-links.sh
@@ -19,7 +19,7 @@ jobs:
     name: Check Spelling in Docs
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Check Spelling in Content Dir
       run: scripts/check-spelling.sh
