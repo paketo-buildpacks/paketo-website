@@ -34,7 +34,7 @@ still apply.
 This guide assumes you know the basics of stacks from the [stacks concept page][concepts/stacks].
 1. Create a `Dockerfile` and define the `base` image as one of the Paketo stacks. For example:
 {{< code/copyable >}}
-FROM paketobuildpacks:full-cnb as base
+FROM paketobuildpacks/run:full-cnb as base
 {{< /code/copyable >}}
 
 There are two different options for each of the three (tiny, base, full) stacks you can use.
