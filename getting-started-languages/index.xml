@@ -5,50 +5,43 @@
     <link>https://paketo.io/getting-started-languages/</link>
     <description>Recent content in Getting-started-languages on Paketo Buildpacks</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://paketo.io/getting-started-languages/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <atom:link href="https://paketo.io/getting-started-languages/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>.NET Core</title>
       <link>https://paketo.io/getting-started-languages/dotnet_core/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://paketo.io/getting-started-languages/dotnet_core/</guid>
       <description>.NET Core Let&amp;rsquo;s use the base Paketo Builder and the pack CLI to build an ASP.NET app as a runnable container image.
 Prerequisites Install Docker by following this guide. Install the pack CLI by following this guide. Build the App Image From Source Code Clone the Paketo samples repository and navigate to the source code for the sample ASP.NET app.
 git clone https://github.com/paketo-buildpacks/samples \ &amp;amp;&amp;amp; cd samples/dotnet-core/aspnet Copied! From the sample app directory, use the pack CLI to build an app image.</description>
     </item>
-    
     <item>
       <title>Java</title>
       <link>https://paketo.io/getting-started-languages/java/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://paketo.io/getting-started-languages/java/</guid>
       <description>Java Let&amp;rsquo;s use the base Paketo Builder and the pack CLI to build a Java app as a runnable container image.
 Prerequisites Install Docker by following this guide. Install the pack CLI by following this guide. Build the App Image From Source Code Clone the Paketo samples repository and navigate to the source code for the sample Java app.
 git clone https://github.com/paketo-buildpacks/samples \ &amp;amp;&amp;amp; cd samples/java/maven Copied! From the sample app directory, use the pack CLI to build an app image.</description>
     </item>
-    
     <item>
       <title>Node.js</title>
       <link>https://paketo.io/getting-started-languages/nodejs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://paketo.io/getting-started-languages/nodejs/</guid>
       <description>Node.js Let&amp;rsquo;s use the base Paketo Builder and the pack CLI to build a Node.js app as a runnable container image.
 Prerequisites Install Docker by following this guide. Install the pack CLI by following this guide. Build the App Image From Source Code Clone the Paketo samples repository and navigate to the source code for the sample Node.js app.
 git clone https://github.com/paketo-buildpacks/samples \ &amp;amp;&amp;amp; cd samples/nodejs/npm Copied! From the sample app directory, use the pack CLI to build an app image.</description>
     </item>
-    
     <item>
       <title>Python</title>
       <link>https://paketo.io/getting-started-languages/python/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://paketo.io/getting-started-languages/python/</guid>
       <description>Python Let&amp;rsquo;s use the base Paketo Builder and the pack CLI to build a Python app as a runnable container image.
 Prerequisites Install Docker by following this guide. Install the pack CLI by following this guide. Build the App Image From Source Code Clone the Paketo samples repository and navigate to the source code for the sample Python app.
 git clone https://github.com/paketo-buildpacks/samples \ &amp;amp;&amp;amp; cd samples/python/pipenv Copied! From the sample app directory, use the pack CLI to build an app image.</description>
     </item>
-    
   </channel>
 </rss>

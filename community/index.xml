@@ -5,6 +5,7 @@
     <link>https://paketo.io/community/</link>
     <description>Recent content in Community on Paketo Buildpacks</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://paketo.io/community/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <atom:link href="https://paketo.io/community/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
