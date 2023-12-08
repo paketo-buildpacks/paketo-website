@@ -233,7 +233,7 @@ Paketo Buildpacks can be configured to route traffic through a proxy using the `
 
 ### Dependency Mappings
 
-Paketo Buildpacks may download dependencies from the internet. For example, the Java Buildpack with download the BellSoft Liberica JRE will from the Liberica [github releases][liberica releases] by default.
+Paketo Buildpacks may download dependencies from the internet. For example, the Java Buildpack will download the BellSoft Liberica JRE from the Liberica [github releases][liberica releases] by default.
 
 If a dependency URI is inaccessible from the build environment, a [binding]({{< relref "#bindings" >}}) can be used to map a new URI to a given dependency. This allows organizations to upload a copies of vetted dependencies to an accessible location and provide developers and CI/CD pipelines with configuration pointing the buildpack at the accessible dependencies.
 
