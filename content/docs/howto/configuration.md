@@ -21,7 +21,7 @@ git clone https://github.com/paketo-buildpacks/samples
 cd samples
 {{< /code/copyable >}}
 
-The [pack CLI][pack] is used throughout the examples. `pack` is just one of several Cloud Native Buildpack [platforms][platforms] than can execute builds with Paketo Buildpacks.
+The [pack CLI][pack] is used throughout the examples. `pack` is just one of several Cloud Native Buildpack [platforms][platforms] that can execute builds with Paketo Buildpacks.
 
 Examples assume that the [Paketo Base builder][base builder] is the default builder:
 {{< code/copyable >}}
