@@ -94,7 +94,7 @@ docker CLI pack CLI Clone the Paketo samples and navigate to a Ruby sample app.<
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://paketo.io/docs/howto/configuration/</guid>
       <description>About the Examples Configuration examples will use the Paketo sample applications.
-Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied! The pack CLI is used throughout the examples. pack is just one of several Cloud Native Buildpack platforms than can execute builds with Paketo Buildpacks.
+Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied! The pack CLI is used throughout the examples. pack is just one of several Cloud Native Buildpack platforms that can execute builds with Paketo Buildpacks.
 Examples assume that the Paketo Base builder is the default builder: pack config default-builder paketobuildpacks/builder:base Copied!</description>
     </item>
     <item>
