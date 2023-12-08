@@ -796,7 +796,7 @@ debugging logs, will emit them when this environment variable is set.</p>
     <a class="markup-heading__link" href="#dependency-mappings">
         Dependency Mappings
     </a>
-</h3><p>Paketo Buildpacks may download dependencies from the internet. For example, the Java Buildpack with download the BellSoft Liberica JRE will from the Liberica <a href="https://github.com/bell-sw/Liberica/releases">github releases</a> by default.</p>
+</h3><p>Paketo Buildpacks may download dependencies from the internet. For example, the Java Buildpack will download the BellSoft Liberica JRE from the Liberica <a href="https://github.com/bell-sw/Liberica/releases">github releases</a> by default.</p>
 <p>If a dependency URI is inaccessible from the build environment, a <a href="#bindings">binding</a> can be used to map a new URI to a given dependency. This allows organizations to upload a copies of vetted dependencies to an accessible location and provide developers and CI/CD pipelines with configuration pointing the buildpack at the accessible dependencies.</p>
 <p>The URI mappings can be configured with one or more bindings of <code>type</code> <code>dependency-mapping</code>. Each key value pair in the binding should map the <code>sha256</code> of a dependency to a URI. Information about the dependencies a buildpack may download (including the <code>sha256</code> and the current default <code>uri</code>) can be found in the <code>buildpack.toml</code> of each component buildpack.</p>
 <p><strong>Example</strong> Mapping the JRE to an internal URI</p>
@@ -909,7 +909,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> November 20, 2023</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> December 8, 2023</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
