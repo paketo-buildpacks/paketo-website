@@ -4011,7 +4011,7 @@
           try {
             return JSON.parse(e4.content);
           } catch (t3) {
-            throw function(e5, t4) {
+            throw /* @__PURE__ */ function(e5, t4) {
               return { name: "DeserializationError", message: e5, response: t4 };
             }(t3.message, e4);
           }
@@ -4028,7 +4028,7 @@
             o3 = JSON.parse(n4).message;
           } catch (e5) {
           }
-          return function(e5, t4, n5) {
+          return /* @__PURE__ */ function(e5, t4, n5) {
             return { name: "ApiError", message: e5, status: t4, transporterStackTrace: n5 };
           }(o3, r3, t3);
         }(e3, Wo(i2));
@@ -4076,7 +4076,7 @@
     return t(t({}, e2), {}, { request: t(t({}, e2.request), {}, { headers: t(t({}, e2.request.headers), n2) }) });
   }
   var zo = function(e2) {
-    var n2 = e2.appId, r2 = function(e3, t2, n3) {
+    var n2 = e2.appId, r2 = /* @__PURE__ */ function(e3, t2, n3) {
       var r3 = { "x-algolia-api-key": n3, "x-algolia-application-id": t2 };
       return { headers: function() {
         return e3 === ko.WithinHeaders ? r3 : {};
