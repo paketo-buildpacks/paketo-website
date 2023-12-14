@@ -21,7 +21,7 @@ git clone https://github.com/paketo-buildpacks/samples
 cd samples
 {{< /code/copyable >}}
 
-The [pack CLI][pack] is used throughout the examples. `pack` is just one of several Cloud Native Buildpack [platforms][platforms] than can execute builds with Paketo Buildpacks.
+The [pack CLI][pack] is used throughout the examples. `pack` is just one of several Cloud Native Buildpack [platforms][platforms] that can execute builds with Paketo Buildpacks.
 
 Examples assume that the [Paketo Base builder][base builder] is the default builder:
 {{< code/copyable >}}
@@ -233,7 +233,7 @@ Paketo Buildpacks can be configured to route traffic through a proxy using the `
 
 ### Dependency Mappings
 
-Paketo Buildpacks may download dependencies from the internet. For example, the Java Buildpack with download the BellSoft Liberica JRE will from the Liberica [github releases][liberica releases] by default.
+Paketo Buildpacks may download dependencies from the internet. For example, the Java Buildpack will download the BellSoft Liberica JRE from the Liberica [github releases][liberica releases] by default.
 
 If a dependency URI is inaccessible from the build environment, a [binding]({{< relref "#bindings" >}}) can be used to map a new URI to a given dependency. This allows organizations to upload a copies of vetted dependencies to an accessible location and provide developers and CI/CD pipelines with configuration pointing the buildpack at the accessible dependencies.
 
