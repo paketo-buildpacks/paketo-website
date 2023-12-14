@@ -32,7 +32,7 @@ also compatible with the Paketo Full builder.**
 The .NET Core Runtime and .NET Core ASP.NET Buildpacks allow you to specify a
 version of the .NET Core Runtime and ASP.NET to use during deployment. This
 version can be specified in several ways including through a
-`runtimeconfig.json`, MSBuild Project file, or build-time environment
+`runtimeconfig.json`, MSBuild Project file (e.g. `*.csproj`, `*.fsproj`, or `*.vbproj`), or build-time environment
 variables. When specifying a version of the .NET Core Runtime and ASP.NET, you
 must choose a version that is available within these buildpacks. These versions
 can be found in the [.NET Core Runtime release
@@ -92,7 +92,7 @@ Core Runtime v2.1.14 when deploying your app, include the values below in your
 
 ### Using a Project file
 
-If you are using a Project file (e.g. `*.csproj`, `*.fsproj`, or `*.vbproj`), you can specify
+If you are using an MSBuild Project file (e.g. `*.csproj`, `*.fsproj`, or `*.vbproj`), you can specify
 the .NET Core Runtime version within that file. To configure the buildpack to
 use .NET Core Runtime v2.1.14 when deploying your app, include the values below
 in your Project file:
