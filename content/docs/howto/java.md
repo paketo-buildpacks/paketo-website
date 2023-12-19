@@ -469,7 +469,7 @@ The resulting application image will be identical to that built in the "Building
 
 ### Inspect the Native Image Tools Version
 
-The exact Native Image Toolkit version that was contributed to a given image can be read from the Bill-of-Materials.
+The exact Native Image version that was contributed to a given image can be read from the Bill-of-Materials.
 
 **Example** Inspecting the JRE Version
 
