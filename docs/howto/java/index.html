@@ -507,7 +507,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#build-from-source-1">Build From Source</a></li>
         <li><a href="#build-from-an-executable-jar">Build From an Executable JAR</a></li>
         <li><a href="#inspect-the-native-image-tools-version">Inspect the Native Image Tools Version</a></li>
-        <li><a href="#configure-the-graalvm-version">Configure the GraalVM Version</a></li>
         <li><a href="#use-an-alternative-java-native-image-toolkit">Use an Alternative Java Native Image Toolkit</a></li>
       </ul>
     </li>
@@ -1137,64 +1136,9 @@ pack build samples/java-native \
     <a class="markup-heading__link" href="#inspect-the-native-image-tools-version">
         Inspect the Native Image Tools Version
     </a>
-</h3><p>The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.</p>
+</h3><p>The exact Native Image version that was contributed to a given image can be read from the Bill-of-Materials.</p>
 <p><strong>Example</strong> Inspecting the JRE Version</p>
 <p>Please refer to the <a href="/docs/howto/sbom/">Access the SBOM article</a> to find out how you can inspect the JRE using SBOM information.</p>
-<h3 id="configure-the-graalvm-version" class="markup-heading">
-    <a class="markup-heading__link" href="#configure-the-graalvm-version">
-        Configure the GraalVM Version
-    </a>
-</h3><p>Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a specific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.</p>
-<p>The following table documents the versions available.</p>
-<table>
-<thead>
-<tr>
-<th>GraalVM Version</th>
-<th>Java Native Image Buildpack Version</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>22.3</td>
-<td>7.44.3</td>
-</tr>
-<tr>
-<td>22.2</td>
-<td>7.26.1</td>
-</tr>
-<tr>
-<td>22.1</td>
-<td>7.16.2</td>
-</tr>
-<tr>
-<td>22.0</td>
-<td>7.8.1</td>
-</tr>
-<tr>
-<td>21.3</td>
-<td>5.12.0</td>
-</tr>
-<tr>
-<td>21.2</td>
-<td>5.5.0</td>
-</tr>
-<tr>
-<td>21.1</td>
-<td>5.4.0</td>
-</tr>
-<tr>
-<td>21.0</td>
-<td>5.3.0</td>
-</tr>
-</tbody>
-</table>
-<p>For example, to select GraalVM 22.1:</p>
-<div class="copyable">
-    <pre class="copyable__code">pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack paketo-buildpacks/ca-certificates --buildpack paketo-buildpacks/java-native-image@7.16.2
-</pre>
-    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
-    <div class="copyable__copied copied">Copied!</div>
-</div>
 <h3 id="use-an-alternative-java-native-image-toolkit" class="markup-heading">
     <a class="markup-heading__link" href="#use-an-alternative-java-native-image-toolkit">
         Use an Alternative Java Native Image Toolkit
@@ -1210,16 +1154,20 @@ pack build samples/java-native \
 <tbody>
 <tr>
 <td><a href="https://bell-sw.com/pages/liberica-native-image-kit/">BellSoft Liberica</a></td>
-<td><a href="https://github.com/paketo-buildpacks/bellsoft-liberica">Paketo BellSoft Liberica Buildpack</a></td>
+<td><a href="https://github.com/paketo-buildpacks/bellsoft-liberica">Paketo Buildpack for BellSoft Liberica</a></td>
 </tr>
 <tr>
-<td><a href="https://www.graalvm.org/docs/introduction/">GraalVM</a></td>
-<td><a href="https://github.com/paketo-buildpacks/graalvm">Paketo GraalVM Buildpack</a></td>
+<td><a href="https://www.graalvm.org/docs/introduction/">GraalVM Community Edition</a></td>
+<td><a href="https://github.com/paketo-buildpacks/graalvm">Paketo Buildpack for GraalVM Community Edition</a></td>
+</tr>
+<tr>
+<td><a href="https://www.oracle.com/java/graalvm/">Oracle GraalVM</a></td>
+<td><a href="https://github.com/paketo-buildpacks/oracle">Paketo Buildpack for Oracle</a></td>
 </tr>
 </tbody>
 </table>
 <p>To use an alternative Java Native Image Toolkit, you will need to set two <code>--buildpack</code> arguments to <code>pack build</code>, one for the alternative Java Native Image Toolkit buildpack you&rsquo;d like to use and one for the Paketo Java Native Image buildpack (in that order). This works because while you end up with two Java Native Image Toolkit buildpacks, the first one, the one you&rsquo;re specifying will claim the build plan entries so the second one will end up being a no-op and doing nothing.</p>
-<p>This example will switch in the GraalVM buildpack:</p>
+<p>This example will switch in the GraalVM Community Edition buildpack:</p>
 <!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack build samples/native-image --buildpack paketo-buildpacks/graalvm --buildpack paketo-buildpacks/java-native-image`
@@ -1530,7 +1478,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> December 14, 2023</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> December 19, 2023</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1556,7 +1504,6 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
         <li><a href="#build-from-source-1">Build From Source</a></li>
         <li><a href="#build-from-an-executable-jar">Build From an Executable JAR</a></li>
         <li><a href="#inspect-the-native-image-tools-version">Inspect the Native Image Tools Version</a></li>
-        <li><a href="#configure-the-graalvm-version">Configure the GraalVM Version</a></li>
         <li><a href="#use-an-alternative-java-native-image-toolkit">Use an Alternative Java Native Image Toolkit</a></li>
       </ul>
     </li>
