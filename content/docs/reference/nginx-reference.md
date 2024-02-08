@@ -36,12 +36,18 @@ Defaults to `public`, setting this allows you to modify the location of the
 static files served by the web server with either an absolute file path or a
 file path relative to `/workspace`.
 
+### BP_WEB_SERVER_LOCATION_PATH
+Set server's location directive.
+
 ### BP_WEB_SERVER_ENABLE_PUSH_STATE
 Enables push state routing functionality.
 
 ### BP_WEB_SERVER_FORCE_HTTPS
 Allows you to enforce HTTPS for server connections by redirecting all requests
 to use the HTTPS protocol.
+
+### BP_NGINX_STUB_STATUS_PORT
+Gets NGINX basic status info via [`stub_status`](https://nginx.org/en/docs/http/ngx_http_stub_status_module.html#stub_status).
 
 ## Supported Service Bindings
 The NGINX buildpack can be configured using [service bindings][service-binding].
