@@ -619,6 +619,28 @@ by the Python buildpack. The buildpack will create or update a conda environment
 from an <code>environment.yml</code> file or a <code>package-list.txt</code> file located at the root
 of the app source code.</p>
 <p>Configuring a version of miniconda is not supported.</p>
+<h4 id="using-bp_conda_solver" class="markup-heading">
+    <a class="markup-heading__link" href="#using-bp_conda_solver">
+        Using <code>BP_CONDA_SOLVER</code>
+    </a>
+</h4><p>The original conda solver may suffer slowdowns depending on various factors such
+as number of channels configured, package pinning precision, etc. This is an
+issue that has been worked on and since a couple of releases, the mamba solver
+can be used in place of the original.</p>
+<p>To change the default solver used to create the conda environment, set the
+<code>BP_CONDA_SOLVER</code> environment variable to &ldquo;mamba&rdquo;. This is the currently only
+value supported.</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --env BP_CONDA_SOLVER=mamba --buildpack paketo-buildpacks/python \
+  --builder paketobuildpacks/builder:base
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<p><strong>Note:</strong> This does not change the buildpack to be mamba based, only their solver
+is used.</p>
+<p>More information can be found in the [release notes]
+(<a href="https://github.com/paketo-buildpacks/miniconda/releases/latest">https://github.com/paketo-buildpacks/miniconda/releases/latest</a>)</p>
 <h3 id="poetry" class="markup-heading">
     <a class="markup-heading__link" href="#poetry">
         Poetry
@@ -789,7 +811,7 @@ the upstream SBOM generation library (Syft).</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> January 29, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 8, 2024</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
