@@ -745,6 +745,20 @@ files to <code>/workspace/my-build-directory</code>.</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
+<h4 id="set-location-path-for-the-server" class="markup-heading">
+    <a class="markup-heading__link" href="#set-location-path-for-the-server">
+        Set Location Path for the Server
+    </a>
+</h4><p>In auto-generated <code>nginx.conf</code>, the
+<a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#location"><code>server.location</code></a>
+directive is set to the catch-all or default location block. You can override
+this by setting the <code>BP_WEB_SERVER_LOCATION_PATH</code> variable.</p>
+<div class="copyable">
+    <pre class="copyable__code">BP_WEB_SERVER_LOCATION_PATH=&#34;/custom&#34;
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h4 id="enable-push-state-routing-1" class="markup-heading">
     <a class="markup-heading__link" href="#enable-push-state-routing-1">
         Enable Push-State Routing
@@ -766,6 +780,24 @@ connections. HTTP requests will be redirected to the corresponding HTTPS
 endpoint.</p>
 <div class="copyable">
     <pre class="copyable__code">BP_WEB_SERVER_FORCE_HTTPS=true
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<h4 id="obtain-real-time-status-info" class="markup-heading">
+    <a class="markup-heading__link" href="#obtain-real-time-status-info">
+        Obtain real-time status info
+    </a>
+</h4><p>The <code>BP_NGINX_STUB_STATUS_PORT</code> variable exposes a handful of NGINX Server
+metrics via the
+<a href="https://nginx.org/en/docs/http/ngx_http_stub_status_module.html#stub_status"><code>stub_status</code></a>
+module which provides basic status information on provided port. This comes
+handy for monitoring the server. For example using <a href="https://github.com/nginxinc/nginx-prometheus-exporter">NGINX Prometheus
+Exporter</a></p>
+<p>The info will be made available at the path <code>/stub_status</code> at the specified
+port. Make sure that this port isn&rsquo;t used anywhere else in your application.</p>
+<div class="copyable">
+    <pre class="copyable__code">BP_NGINX_STUB_STATUS_PORT=8083
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -976,7 +1008,7 @@ appear in build logs if the relevant buildpacks have debug log lines.
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> February 8, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 9, 2024</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">

@@ -494,8 +494,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#bp_nginx_version">BP_NGINX_VERSION</a></li>
         <li><a href="#bp_web_server">BP_WEB_SERVER</a></li>
         <li><a href="#bp_web_server_root">BP_WEB_SERVER_ROOT</a></li>
+        <li><a href="#bp_web_server_location_path">BP_WEB_SERVER_LOCATION_PATH</a></li>
         <li><a href="#bp_web_server_enable_push_state">BP_WEB_SERVER_ENABLE_PUSH_STATE</a></li>
         <li><a href="#bp_web_server_force_https">BP_WEB_SERVER_FORCE_HTTPS</a></li>
+        <li><a href="#bp_nginx_stub_status_port">BP_NGINX_STUB_STATUS_PORT</a></li>
       </ul>
     </li>
     <li><a href="#supported-service-bindings">Supported Service Bindings</a>
@@ -550,6 +552,11 @@ notes</a>.</p>
 </h3><p>Defaults to <code>public</code>, setting this allows you to modify the location of the
 static files served by the web server with either an absolute file path or a
 file path relative to <code>/workspace</code>.</p>
+<h3 id="bp_web_server_location_path" class="markup-heading">
+    <a class="markup-heading__link" href="#bp_web_server_location_path">
+        BP_WEB_SERVER_LOCATION_PATH
+    </a>
+</h3><p>Set server&rsquo;s location directive.</p>
 <h3 id="bp_web_server_enable_push_state" class="markup-heading">
     <a class="markup-heading__link" href="#bp_web_server_enable_push_state">
         BP_WEB_SERVER_ENABLE_PUSH_STATE
@@ -561,6 +568,11 @@ file path relative to <code>/workspace</code>.</p>
     </a>
 </h3><p>Allows you to enforce HTTPS for server connections by redirecting all requests
 to use the HTTPS protocol.</p>
+<h3 id="bp_nginx_stub_status_port" class="markup-heading">
+    <a class="markup-heading__link" href="#bp_nginx_stub_status_port">
+        BP_NGINX_STUB_STATUS_PORT
+    </a>
+</h3><p>Gets NGINX basic status info via <a href="https://nginx.org/en/docs/http/ngx_http_stub_status_module.html#stub_status"><code>stub_status</code></a>.</p>
 <h2 id="supported-service-bindings" class="markup-heading">
     <a class="markup-heading__link" href="#supported-service-bindings">
         Supported Service Bindings
@@ -619,7 +631,7 @@ NGINX server with a default configuration.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> February 8, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 9, 2024</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -632,8 +644,10 @@ NGINX server with a default configuration.</p>
         <li><a href="#bp_nginx_version">BP_NGINX_VERSION</a></li>
         <li><a href="#bp_web_server">BP_WEB_SERVER</a></li>
         <li><a href="#bp_web_server_root">BP_WEB_SERVER_ROOT</a></li>
+        <li><a href="#bp_web_server_location_path">BP_WEB_SERVER_LOCATION_PATH</a></li>
         <li><a href="#bp_web_server_enable_push_state">BP_WEB_SERVER_ENABLE_PUSH_STATE</a></li>
         <li><a href="#bp_web_server_force_https">BP_WEB_SERVER_FORCE_HTTPS</a></li>
+        <li><a href="#bp_nginx_stub_status_port">BP_NGINX_STUB_STATUS_PORT</a></li>
       </ul>
     </li>
     <li><a href="#supported-service-bindings">Supported Service Bindings</a>
