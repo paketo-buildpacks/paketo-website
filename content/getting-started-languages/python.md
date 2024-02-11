@@ -23,7 +23,7 @@ git clone https://github.com/paketo-buildpacks/samples \
 From the sample app directory, use the pack CLI to build an app image.
 
 {{< code/copyable >}}
-pack build paketo-demo-app --builder paketobuildpacks/builder:base
+pack build paketo-demo-app --builder paketobuildpacks/builder-jammy-base
 {{< /code/copyable >}}
 
 <!-- spellchecker-disable -->

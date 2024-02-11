@@ -176,7 +176,7 @@ cd samples/java
 Both of the examples assume that the [Paketo Base builder][base builder] is the default builder. If you haven't already, set it as the default now.
 
 {{< code/copyable >}}
-pack config default-builder paketobuildpacks/builder:base
+pack config default-builder paketobuildpacks/builder-jammy-base
 {{< /code/copyable >}}
 
 ### Example with a Binding
