@@ -18,7 +18,7 @@ To build a sample app locally with this buildpack using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/nodejs/npm
 pack build my-app --buildpack paketo-buildpacks/nodejs \
-  --builder paketobuildpacks/builder:base
+  --builder paketobuildpacks/builder-jammy-base
 {{< /code/copyable >}}
 
 See [samples](https://github.com/paketo-buildpacks/samples/tree/main/nodejs/npm)
@@ -265,7 +265,7 @@ When building with the pack CLI, specify the latest Paketo Full Builder at build
 with the `--builder` flag.
 
 {{< code/copyable >}}
-pack build my-app --builder paketobuildpacks/builder:full
+pack build my-app --builder paketobuildpacks/builder-jammy-full
 {{< /code/copyable >}}
 
 ## Build an App Without Package Management
