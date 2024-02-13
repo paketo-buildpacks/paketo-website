@@ -389,6 +389,7 @@ vendoring
 watchexec
 webserver
 webservers
+workspaces
 writeable
 yarnrc
 yourkit
