@@ -531,6 +531,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
     </li>
     <li><a href="#enable-debug-logging">Enable <code>DEBUG</code> logging</a></li>
+    <li><a href="#use-workspace-modules">Use workspace modules</a></li>
   </ul>
 </nav>
 </div>
@@ -1089,6 +1090,23 @@ appear in build logs if the relevant buildpacks have debug log lines.
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <!-- raw HTML omitted -->
+<h2 id="use-workspace-modules" class="markup-heading">
+    <a class="markup-heading__link" href="#use-workspace-modules">
+        Use workspace modules
+    </a>
+</h2><p>Some projects depend on multi-module workspaces and use relative <code>replace</code> directives within the same repository.
+An example for this is <a href="https://github.com/cert-manager/cert-manager/tree/v1.13.3">cert-manager@v1.13.3</a>.
+In such case you may want to initialize and use workspace modules prior to building.</p>
+<p>With <code>BP_GO_WORK_USE</code> the Go buildpack can be configured to <code>go work use (...)</code> certain modules before building.</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/go \
+  --env BP_GO_WORK_USE=./cmd/my-module \
+  --env BP_GO_TARGETS=./cmd/my-module
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
+<p>It will run <code>go work init</code> before running <code>go work use (...)</code>.</p>
 <!-- raw HTML omitted -->
 
             </div>
@@ -1102,7 +1120,7 @@ appear in build logs if the relevant buildpacks have debug log lines.
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> February 9, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 13, 2024</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1152,6 +1170,7 @@ appear in build logs if the relevant buildpacks have debug log lines.
       </ul>
     </li>
     <li><a href="#enable-debug-logging">Enable <code>DEBUG</code> logging</a></li>
+    <li><a href="#use-workspace-modules">Use workspace modules</a></li>
   </ul>
 </nav>
 </div>
