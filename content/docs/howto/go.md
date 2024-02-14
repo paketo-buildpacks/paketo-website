@@ -423,6 +423,21 @@ cat /tmp/sbom-output/build/paketo-buildpacks_go-mod-vendor/sbom.cdx.json
 {{< /code/copyable >}}
 <!-- spellchecker-enable -->
 
+## Use workspace modules
+Some projects depend on multi-module workspaces and use relative `replace` directives within the same repository.
+An example for this is [cert-manager@v1.13.3](https://github.com/cert-manager/cert-manager/tree/v1.13.3).
+In such case you may want to initialize and use workspace modules prior to building.
+
+With `BP_GO_WORK_USE` the Go buildpack can be configured to `go work use (...)` certain modules before building.
+
+{{< code/copyable >}}
+pack build my-app --buildpack paketo-buildpacks/go \
+  --env BP_GO_WORK_USE=./cmd/my-module \
+  --env BP_GO_TARGETS=./cmd/my-module
+{{< /code/copyable >}}
+
+It will run `go work init` before running `go work use (...)`.
+
 <!-- References -->
 [cnb/launch-process]:https://buildpacks.io/docs/app-developer-guide/run-an-app/
 
