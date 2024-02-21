@@ -556,7 +556,7 @@ Reference <a href="/docs/reference/nodejs-reference">documentation</a>.</p>
     <pre class="copyable__code">git clone https://github.com/paketo-buildpacks/samples
 cd samples/nodejs/npm
 pack build my-app --buildpack paketo-buildpacks/nodejs \
-  --builder paketobuildpacks/builder:base
+  --builder paketobuildpacks/builder-jammy-base
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -841,7 +841,7 @@ To <code>pack build</code> with the binding:
 </h3><p>When building with the pack CLI, specify the latest Paketo Full Builder at build time
 with the <code>--builder</code> flag.</p>
 <div class="copyable">
-    <pre class="copyable__code">pack build my-app --builder paketobuildpacks/builder:full
+    <pre class="copyable__code">pack build my-app --builder paketobuildpacks/builder-jammy-full
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
@@ -1011,7 +1011,7 @@ appear in build logs if the relevant buildpacks have debug log lines.
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> February 13, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 21, 2024</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">

@@ -19,14 +19,14 @@
       <link>https://paketo.io/docs/howto/nodejs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://paketo.io/docs/howto/nodejs/</guid>
-      <description>This documentation explains how to use the Paketo Node.js Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Node.js Buildpack Reference documentation.&#xA;Build a Sample App To build a sample app locally with this buildpack using the pack CLI, run&#xA;git clone https://github.com/paketo-buildpacks/samples cd samples/nodejs/npm pack build my-app --buildpack paketo-buildpacks/nodejs \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
+      <description>This documentation explains how to use the Paketo Node.js Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Node.js Buildpack Reference documentation.&#xA;Build a Sample App To build a sample app locally with this buildpack using the pack CLI, run&#xA;git clone https://github.com/paketo-buildpacks/samples cd samples/nodejs/npm pack build my-app --buildpack paketo-buildpacks/nodejs \ --builder paketobuildpacks/builder-jammy-base Copied! See samples for how to run the app.</description>
     </item>
     <item>
       <title>How to Build .NET Core Apps with Paketo Buildpacks</title>
       <link>https://paketo.io/docs/howto/dotnet-core/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://paketo.io/docs/howto/dotnet-core/</guid>
-      <description>This documentation explains how to use the Paketo .NET Core Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo .NET Core Buildpack Reference documentation.&#xA;Build a Sample App To build your app locally with the buildpack using the pack CLI, run&#xA;git clone https://github.com/paketo-buildpacks/samples cd samples/dotnet-core/aspnet pack build my-app --buildpack paketo-buildpacks/dotnet-core \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
+      <description>This documentation explains how to use the Paketo .NET Core Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo .NET Core Buildpack Reference documentation.&#xA;Build a Sample App To build your app locally with the buildpack using the pack CLI, run&#xA;git clone https://github.com/paketo-buildpacks/samples cd samples/dotnet-core/aspnet pack build my-app --buildpack paketo-buildpacks/dotnet-core \ --builder paketobuildpacks/builder-jammy-base Copied! See samples for how to run the app.</description>
     </item>
     <item>
       <title>HTTPD Buildpack Reference</title>
@@ -54,14 +54,14 @@
       <link>https://paketo.io/docs/howto/python/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://paketo.io/docs/howto/python/</guid>
-      <description>This documentation explains how to use the Paketo Python Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Python Buildpack Reference documentation.&#xA;Build a Sample App To build a sample app locally with this buildpack using the pack CLI, run&#xA;git clone https://github.com/paketo-buildpacks/samples cd samples/python/pip pack build my-app --buildpack paketo-buildpacks/python \ --builder paketobuildpacks/builder:base Copied! See samples for how to run the app.</description>
+      <description>This documentation explains how to use the Paketo Python Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo Python Buildpack Reference documentation.&#xA;Build a Sample App To build a sample app locally with this buildpack using the pack CLI, run&#xA;git clone https://github.com/paketo-buildpacks/samples cd samples/python/pip pack build my-app --buildpack paketo-buildpacks/python \ --builder paketobuildpacks/builder-jammy-base Copied! See samples for how to run the app.</description>
     </item>
     <item>
       <title>How to Build PHP Apps with Paketo Buildpacks</title>
       <link>https://paketo.io/docs/howto/php/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://paketo.io/docs/howto/php/</guid>
-      <description>This documentation explains how to use the Paketo PHP Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo PHP Buildpack Reference documentation.&#xA;Build a Sample App To build a sample app locally with this CNB using the pack CLI, run&#xA;git clone https://github.com/paketo-buildpacks/samples cd samples/php/builtin-server pack build my-app --buildpack paketo-buildpacks/php \ --builder paketobuildpacks/builder:full Copied! See samples for how to run the app.</description>
+      <description>This documentation explains how to use the Paketo PHP Buildpack to build applications for several common use-cases. For more in-depth description of the buildpack&amp;rsquo;s behavior and configuration see the Paketo PHP Buildpack Reference documentation.&#xA;Build a Sample App To build a sample app locally with this CNB using the pack CLI, run&#xA;git clone https://github.com/paketo-buildpacks/samples cd samples/php/builtin-server pack build my-app --buildpack paketo-buildpacks/php \ --builder paketobuildpacks/builder-jammy-full Copied! See samples for how to run the app.</description>
     </item>
     <item>
       <title>How to Build Ruby Apps with Paketo Buildpacks</title>
@@ -75,7 +75,7 @@
       <link>https://paketo.io/docs/howto/configuration/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://paketo.io/docs/howto/configuration/</guid>
-      <description>About the Examples Configuration examples will use the Paketo sample applications.&#xA;Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied! The pack CLI is used throughout the examples. pack is just one of several Cloud Native Buildpack platforms that can execute builds with Paketo Buildpacks.&#xA;Examples assume that the Paketo Base builder is the default builder: pack config default-builder paketobuildpacks/builder:base Copied!</description>
+      <description>About the Examples Configuration examples will use the Paketo sample applications.&#xA;Examples assume that the root of this repository is the working directory: git clone https://github.com/paketo-buildpacks/samples cd samples Copied! The pack CLI is used throughout the examples. pack is just one of several Cloud Native Buildpack platforms that can execute builds with Paketo Buildpacks.&#xA;Examples assume that the Paketo Base builder is the default builder: pack config default-builder paketobuildpacks/builder-jammy-base Copied!</description>
     </item>
     <item>
       <title>How to Use Paketo Builders</title>
@@ -208,7 +208,7 @@
       <link>https://paketo.io/docs/reference/builders-reference/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://paketo.io/docs/reference/builders-reference/</guid>
-      <description>This reference documentation enumerates and briefly describes the available Paketo builders. For explanations of how to use the builders for several common use-cases, see the Paketo Builders How To documentation.&#xA;Available Paketo Builders Name Stack Use cases DockerHub Distribution Github Repository Full Builder Ubuntu 18.04 PHP, Java, Node.js, Go, Python, .NET Core, Ruby, NGINX, and HTTPD buildpacks and common C libraries. paketobuildpacks/builder:full https://github.com/paketo-buildpacks/full-builder Buildpackless Full Builder Ubuntu 18.04 No buildpacks included.</description>
+      <description>This reference documentation enumerates and briefly describes the available Paketo builders. For explanations of how to use the builders for several common use-cases, see the Paketo Builders How To documentation.&#xA;Available Paketo Builders Name Stack Use cases DockerHub Distribution Github Repository Jammy Full Builder Ubuntu 22.04 PHP, Java, Node.js, Go, Python, .NET Core, Ruby, NGINX, and HTTPD buildpacks and common C libraries. paketobuildpacks/builder-jammy-full https://github.com/paketo-buildpacks/builder-jammy-full Buildpackless Jammy Full Builder Ubuntu 22.04 No buildpacks included.</description>
     </item>
     <item>
       <title>PHP Buildpack Reference</title>
