@@ -18,7 +18,7 @@ To build your app locally with the buildpack using the `pack` CLI, run
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/dotnet-core/aspnet
 pack build my-app --buildpack paketo-buildpacks/dotnet-core \
-  --builder paketobuildpacks/builder:base
+  --builder paketobuildpacks/builder-jammy-base
 {{< /code/copyable >}}
 
 See

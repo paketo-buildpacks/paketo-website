@@ -30,7 +30,7 @@ cd samples/go/mod
 1. Use the pack CLI with the Paketo Go Buildpack to build the sample app.
 {{< code/copyable >}}
 pack build my-app --buildpack paketo-buildpacks/go \
-  --builder paketobuildpacks/builder:base
+  --builder paketobuildpacks/builder-jammy-base
 {{< /code/copyable >}}
 
 1. Run the app using instructions found in its `README`.

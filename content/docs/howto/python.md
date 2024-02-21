@@ -18,7 +18,7 @@ To build a sample app locally with this buildpack using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/python/pip
 pack build my-app --buildpack paketo-buildpacks/python \
-  --builder paketobuildpacks/builder:base
+  --builder paketobuildpacks/builder-jammy-base
 {{< /code/copyable >}}
 
 See
@@ -122,7 +122,7 @@ value supported.
 
 {{< code/copyable >}}
 pack build my-app --env BP_CONDA_SOLVER=mamba --buildpack paketo-buildpacks/python \
-  --builder paketobuildpacks/builder:base
+  --builder paketobuildpacks/builder-jammy-base
 {{< /code/copyable >}}
 
 **Note:** This does not change the buildpack to be mamba based, only their solver
