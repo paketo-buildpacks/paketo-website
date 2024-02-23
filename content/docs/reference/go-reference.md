@@ -47,8 +47,8 @@ require third-party packages. In this case there is no vendoring step, and the
 
 ### Compilation
 The buildpack runs `go build` to compile Go source code into executables. By
-default, it sets the flag `-buildmode=pie`. If there is a `go.mod` present in
-the app's root directory, it also builds with `mod=vendor`. See the Go tool's [documentation][Golang/tool-docs] for details about build configuration.
+default, it sets the flag `-buildmode=pie`. See the Go tool's [documentation][Golang/tool-docs]
+for details about build configuration.
 
 ## Buildpack-Set Environment Variables
 
