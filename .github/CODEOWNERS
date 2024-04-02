@@ -1,4 +1,4 @@
-*                                            @paketo-buildpacks/content-maintainers
+*                                            @paketo-buildpacks/content-maintainers @paketo-buildpacks/steering-committee
 
 content/getting-started-languages/java.md         @paketo-buildpacks/java-buildpacks
 content/getting-started-languages/nodejs.md       @paketo-buildpacks/nodejs-maintainers
