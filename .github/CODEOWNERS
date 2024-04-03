@@ -1,6 +1,6 @@
 *                                            @paketo-buildpacks/content-maintainers @paketo-buildpacks/steering-committee
 
-content/getting-started-languages/java.md         @paketo-buildpacks/java-buildpacks
+content/getting-started-languages/java.md         @paketo-buildpacks/java-maintainers
 content/getting-started-languages/nodejs.md       @paketo-buildpacks/nodejs-maintainers
 content/getting-started-languages/python.md       @paketo-buildpacks/python-maintainers
 content/getting-started-languages/dotnet_core.md  @paketo-buildpacks/dotnet-core-maintainers
