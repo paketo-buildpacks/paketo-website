@@ -5,7 +5,7 @@ content/getting-started-languages/nodejs.md       @paketo-buildpacks/nodejs-main
 content/getting-started-languages/python.md       @paketo-buildpacks/python-maintainers
 content/getting-started-languages/dotnet_core.md  @paketo-buildpacks/dotnet-core-maintainers
 
-content/docs/howto/java.md                   @paketo-buildpacks/java-buildpacks
+content/docs/howto/java.md                   @paketo-buildpacks/java-maintainers
 content/docs/howto/nodejs.md                 @paketo-buildpacks/nodejs-maintainers
 content/docs/howto/python.md                 @paketo-buildpacks/python-maintainers
 content/docs/howto/ruby.md                   @paketo-buildpacks/ruby-maintainers
@@ -16,8 +16,8 @@ content/docs/howto/dotnet-core.md            @paketo-buildpacks/dotnet-core-main
 content/docs/howto/configuration.md          @paketo-buildpacks/utilities-maintainers
 content/docs/howto/app-monitor.md            @paketo-buildpacks/app-monitoring-maintainers
 
-content/docs/reference/java-reference.md               @paketo-buildpacks/java-buildpacks
-content/docs/reference/java-native-image-reference.md  @paketo-buildpacks/java-buildpacks
+content/docs/reference/java-reference.md               @paketo-buildpacks/java-maintainers
+content/docs/reference/java-native-image-reference.md  @paketo-buildpacks/java-maintainers
 content/docs/reference/nodejs-reference.md             @paketo-buildpacks/nodejs-maintainers
 content/docs/reference/python-reference.md             @paketo-buildpacks/python-maintainers
 content/docs/reference/ruby-reference.md               @paketo-buildpacks/ruby-maintainers
