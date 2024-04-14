@@ -252,6 +252,13 @@ For example, to make the BellSoft Liberica JRE dependency accessible available t
    * A key/value pair where the key is equal to the `sha256` of the dependency and the value is equal to the new URI.
 4. Configure all builds with this binding.
 
+### Dependency Mirrors
+The above mentioned [dependency mappings](#dependency-mappings) serve best for mapping a specific version of a dependency to a location reachable within an air-gapped environment.
+
+Larger (corporate) networks might have a central mirror server available to cache dependencies for access from within the local network. Dependency mirrors can be used to download all (or some) buildpack dependencies from such alternative locations regardless of their versions.
+
+<< WORK IN PROGRESS >>
+
 ## CA Certificates
 
 Additional CA certificates may be added to the system truststore using the [Paketo CA Certificates Buildpack][bp/ca-certificates].
