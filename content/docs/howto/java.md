@@ -344,10 +344,12 @@ The Java Buildpack configures the JVM by setting `JAVA_TOOL_OPTIONS` in the JVM 
 
 The runtime JVM can be configured in two ways:
 
-1. Buildpack-provided runtime components including the Memory Calculator accept semantically named environment variables which are then used to derive `JAVA_TOOL_OPTIONS` flags. Examples include:
+1. Buildpack-provided runtime components including the Memory Calculator accept [semantically named environment variables](https://github.com/paketo-buildpacks/bellsoft-liberica?tab=readme-ov-file#configuration) which are then used to derive `JAVA_TOOL_OPTIONS` flags. Examples include:
+
     * `BPL_JVM_HEAD_ROOM`
     * `BPL_JVM_LOADED_CLASS_COUNT`
     * `BPL_JVM_THREAD_COUNT`
+    * `BPL_JVM_CLASS_ADJUSTMENT`
 
 2. Flags can be set directly at runtime with the `JAVA_TOOL_OPTIONS` environment variable. User-provided flags will be appended to buildpack-provided flags. If the user and a buildpack set the same flag, user-provided flags take precedence.
 
@@ -362,6 +364,7 @@ docker run --rm --tty \
   samples/java
 {{< /code/copyable >}}
 <!-- spellchecker-enable -->
+
 ### Use an Alternative JVM
 
 By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implementations in place of Liberica's JVM.
