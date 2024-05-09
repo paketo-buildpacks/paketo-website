@@ -253,11 +253,71 @@ For example, to make the BellSoft Liberica JRE dependency accessible available t
 4. Configure all builds with this binding.
 
 ### Dependency Mirrors
-The above mentioned [dependency mappings](#dependency-mappings) serve best for mapping a specific version of a dependency to a location reachable within an air-gapped environment.
+Larger (corporate) networks might have a mirror server available to cache dependencies for access from within the local network. Dependency mirrors can be used to download all (or some) buildpack dependencies from such alternative locations regardless of their versions.
 
-Larger (corporate) networks might have a central mirror server available to cache dependencies for access from within the local network. Dependency mirrors can be used to download all (or some) buildpack dependencies from such alternative locations regardless of their versions.
+If dependency mirrors and dependency mappings are defined at the same time, those artifacts specifically mapped as described in [Dependency Mappings]({{< relref "#dependency-mappings" >}}) are loaded accordingly. All other dependencies are downloaded from the mirror, should one apply.
 
-<< WORK IN PROGRESS >>
+Mirrors can be defined in two ways.
+1. Setting the `BP_DEPENDENCY_MIRROR` environment variable(s).
+2. Including a binding with a type of `dependency-mirror`.
+
+#### Setting Default Mirror
+In most cases, it is sufficient to set just one mirror from which all dependencies should be downloaded.  
+
+**Example**: Using Environment Variable
+
+Using the environment variable `BP_DEPENDENCY_MIRROR=https://mirror.example.org` would override the original URIs and download all dependencies from this host, whilst preserving the original paths.
+
+Let's assume, we have a dependency with the original URI of `https://github.com/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`.  
+This setting would download the dependency from `https://mirror.example.org/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`.
+
+**Example**: Using a Binding
+
+Instead of using the environment variable, we could achieve the same by setting a binding of type `dependency-mirror` using the `default` key and the mirror URI as the file content.
+```
+/platform
+    └── bindings
+        └── dependency-mirror
+            ├── default                https://mirror.example.org
+            └── type                   dependency-mirror
+```
+
+#### Path Prefix and Hostname Placeholder
+The mirror URI may also include a prefix. Using the above example, a value of `https://mirror.example.org/buildpack-dependencies` would lead to downloads from `https://mirror.example.org/buildpack-dependencies/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`.  
+
+Similarly, including the placeholder `{originalHost}` as in `https://mirror.example.org/{originalHost}` would preserve the original URI's hostname and download from `https://mirror.example.org/github.com/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`.  
+
+This placeholder can also be used together with a path prefix. E.g.: `https://mirror.example.org/buildpack-dependencies/{originalHost}`
+
+#### Schemes and Authentication
+Dependency mirror URIs can either use the `https` or `file` schemes and include basic authentication credentials, should the mirror require them.  
+The credentials can be passed to the server using the format `https://[username]:[password]@mirror.example.org`.
+
+#### Setting Hostname Mirrors
+Individual mirrors may be set for each hostname of the dependencies' original URIs.  
+This can be handy in case dependencies from the original host A must be downloaded from one location whilst dependencies from the original host B from another. Or if certain hosts are mirrored at a specific local server and all others should be downloaded from either their original location or a default mirror.  
+
+Special attention needs to be paid when setting hostname specific mirrors using environment variables due to naming restrictions.  
+Dots (`.`) of the original hostname must be replaced with a single underscore (`_`) whilst dashes (`-`) are replaced with a double underscore (`__`).  
+In the below example, dependencies with `github.com` as their hostname in the original location would be downloaded from `https://mirror.example.org/public-github`, dependencies with hostname `download.bell-sw.com` from `https://mirror.example.org/bell-sw`, and all others from `https://mirror.example.org/{originalHost}`.
+
+```
+BP_DEPENDENCY_MIRROR                        https://mirror.example.org/{originalHost}
+BP_DEPENDENCY_MIRROR_GITHUB_COM             https://mirror.example.org/public-github
+BP_DEPENDENCY_MIRROR_DOWNLOAD_BELL__SW_COM  https://mirror.example.org/bell-sw
+```
+
+When using bindings to set hostname specific mirrors, their keys must match the original URI's hostname. E.g.:
+```
+/platform
+    └── bindings
+        └── dependency-mirror
+            ├── default                     https://mirror.example.org/{originalHost}
+            ├── github.com                  https://mirror.example.org/public-github
+            ├── download.bell-sw.com        https://mirror.example.org/bell-sw
+            └── type                        dependency-mirror
+```
+If no default mirror is set, dependencies not matching any mirror, are downloaded from their original public location.
 
 ## CA Certificates
 
