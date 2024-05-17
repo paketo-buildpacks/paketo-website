@@ -253,7 +253,7 @@ For example, to make the BellSoft Liberica JRE dependency accessible available t
 4. Configure all builds with this binding.
 
 ### Dependency Mirrors
-Larger (corporate) networks might have a mirror server available to cache dependencies for access from within the local network. Dependency mirrors can be used to download all (or some) buildpack dependencies from such alternative locations regardless of their versions.
+Larger networks might have a mirror server available to cache dependencies for access from within the local network. Dependency mirrors can be used to download buildpack dependencies from such alternative locations regardless of their versions.
 
 If dependency mirrors and dependency mappings are defined at the same time, those artifacts specifically mapped as described in [Dependency Mappings]({{< relref "#dependency-mappings" >}}) are loaded accordingly. All other dependencies are downloaded from the mirror, should one apply.
 
