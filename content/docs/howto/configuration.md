@@ -299,14 +299,35 @@ This can be handy in case dependencies from the original host A must be download
 
 Special attention needs to be paid when setting hostname specific mirrors using environment variables due to naming restrictions.  
 Dots (`.`) of the original hostname must be replaced with a single underscore (`_`) whilst dashes (`-`) are replaced with a double underscore (`__`).  
-In the below example, dependencies with `github.com` as their hostname in the original location would be downloaded from `https://mirror.example.org/public-github`, dependencies with hostname `download.bell-sw.com` from `https://mirror.example.org/bell-sw`, and all others from `https://mirror.example.org/{originalHost}`.
 
+**Example**
+Let's assume a buildpack relies on three dependencies from these original locations:
+1) `https://github.com/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`
+2) `https://download.bell-sw.com/vm/22.3.5/bellsoft-liberica-vm-core-openjdk11.0.22+12-22.3.5+1-linux-amd64.tar.gz`
+3) `https://repo1.maven.org/maven2/org/apache/maven/apache-maven/3.9.6/apache-maven-3.9.6-bin.tar.gz`
+Two scenarios using a hostname mirror can be thought of.
+
+**Scenario A: Hostname Mirror(s) only**  
+If hostname specific mirrors are defined for `github.com` and `download.bell-sw.com` only as in:
+```
+BP_DEPENDENCY_MIRROR_GITHUB_COM             https://mirror.example.org/public-github
+BP_DEPENDENCY_MIRROR_DOWNLOAD_BELL__SW_COM  https://mirror.example.org/bell-sw
+```
+The URI of dependency 1 would be transformed to: `https://mirror.example.org/public-github/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`.  
+The URI of dependency 2 would be changed to `https://mirror.example.org/bell-sw/vm/22.3.5/bellsoft-liberica-vm-core-openjdk11.0.22+12-22.3.5+1-linux-amd64.tar.gz`.  
+The URI of dependency 3 would stay unchanged and downloads would be made from the original location.
+
+**Scenario B: Hostname Mirror(s) with Default Mirror**  
+If we add a default mirror to scenario A like this:
 ```
 BP_DEPENDENCY_MIRROR                        https://mirror.example.org/{originalHost}
 BP_DEPENDENCY_MIRROR_GITHUB_COM             https://mirror.example.org/public-github
 BP_DEPENDENCY_MIRROR_DOWNLOAD_BELL__SW_COM  https://mirror.example.org/bell-sw
 ```
+The download URIs of dependencies 1 and 2 would be translated like before.  
+But since there is a default mirror defined, which acts for all other hostnames, dependency 3 would be downloaded from `https://mirror.example.org/repo1.maven.org/maven2/org/apache/maven/apache-maven/3.9.6/apache-maven-3.9.6-bin.tar.gz`, rather than from it's original location.
 
+**Hostname Mirrors from Bindings**  
 When using bindings to set hostname specific mirrors, their keys must match the original URI's hostname. E.g.:
 ```
 /platform
@@ -317,7 +338,6 @@ When using bindings to set hostname specific mirrors, their keys must match the 
             ├── download.bell-sw.com        https://mirror.example.org/bell-sw
             └── type                        dependency-mirror
 ```
-If no default mirror is set, dependencies not matching any mirror, are downloaded from their original public location.
 
 ## CA Certificates
 
