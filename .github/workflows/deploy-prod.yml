@@ -34,7 +34,7 @@ jobs:
         echo "version=${version#v}" >> "$GITHUB_OUTPUT"
 
     - name: Setup Hugo
-      uses: peaceiris/actions-hugo@v2
+      uses: peaceiris/actions-hugo@v3
       with:
         hugo-version: ${{ steps.hugo-version.outputs.version }}
         extended: true
