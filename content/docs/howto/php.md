@@ -460,6 +460,6 @@ details on how to access the SBOM supplied by the buildpacks.
 <!-- Paketo -->
 [paketo/PHP-scan-directory]:{{< ref "docs/reference/php-reference#php_ini_scan_dir" >}}
 [paketo/custom-PHP-configuration]:{{< ref "docs/reference/php-reference#configure-php-with-a-custom-ini-file">}}
-[paketo/override-FPM-configuration]:{{< ref" docs/howto/php#override-default-fpm-configuration" >}}
+[paketo/override-FPM-configuration]:{{< ref "docs/howto/php#override-default-fpm-configuration" >}}
 [paketo/SBOM]:{{< ref "/docs/howto/sbom" >}}
 <!-- spellchecker-enable -->
