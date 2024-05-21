@@ -38,7 +38,6 @@ function main() {
                                    --frontmatter-keys title
 }
 
-
 function usage() {
   cat <<-USAGE
 check-spelling.sh [OPTIONS]
