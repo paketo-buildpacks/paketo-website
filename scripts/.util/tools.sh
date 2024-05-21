@@ -83,11 +83,11 @@ function util::tools::muffet::install() {
   local os
   case "$(uname)" in
     "Darwin")
-      os="Darwin_x86_64"
+      os="darwin_amd64"
       ;;
 
     "Linux")
-      os="Linux_x86_64"
+      os="linux_amd64"
       ;;
 
     *)
@@ -100,7 +100,7 @@ function util::tools::muffet::install() {
     version="$(jq -r .muffet "$(dirname "${BASH_SOURCE[0]}")/tools.json")"
 
     util::print::title "Installing muffet ${version}"
-    curl "https://github.com/raviqqe/muffet/releases/download/${version}/muffet_${version#v}_${os}.tar.gz" \
+    curl "https://github.com/raviqqe/muffet/releases/download/${version}/muffet_${os}.tar.gz" \
       --silent \
       --location \
       --output /tmp/muffet.tgz
