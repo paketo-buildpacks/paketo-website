@@ -67,6 +67,7 @@ Golang
 GraalVM
 Gradle
 Gradle-based
+Hostname
 HTTPD
 HTTPS
 InstrumentationKey
@@ -155,7 +156,8 @@ TOML
 Tomee
 Trivy
 UI
-URI
+URI(s)?
+URI's
 UTF-8
 VM
 Vendored
@@ -267,6 +269,7 @@ gzipping
 howto
 howto_docs_path
 howto_exec_summary
+hostname(s)?
 http
 https
 icu
