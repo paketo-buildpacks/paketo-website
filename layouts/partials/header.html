@@ -9,7 +9,7 @@
     {{ $navTheme = "nav-link--desktop--dark" }}
 {{ end }}
 <header class="{{ $backgroundColor }}{{ with .context.File }}{{ if in .Path "docs" }}{{ "header--narrow" }}{{ end }}{{ end }}">
-    {{ if in .context.File.Path "docs" }}
+    {{ if in .File.Path "docs" }}
     <a class="paketo-p-logo" href="/">
         <img class="paketo-p-logo__image" src="/v2/images/logo-paketo-p.svg" alt="Paketo Buildpacks Homepage">
     </a>
