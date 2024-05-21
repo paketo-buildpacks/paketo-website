@@ -27,7 +27,7 @@ To build a sample app locally with this CNB using the `pack` CLI, run
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/httpd
 pack build my-app --buildpack paketo-buildpacks/httpd \
-  --builder paketobuildpacks/builder:full
+  --builder paketobuildpacks/builder-jammy-full
 {{< /code/copyable >}}
 
 See [samples](https://github.com/paketo-buildpacks/samples/tree/main/web-servers)
@@ -137,7 +137,7 @@ To build a sample app locally with this CNB using the `pack` CLI, run
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/nginx
 pack build my-app --buildpack paketo-buildpacks/nginx \
-  --builder paketobuildpacks/builder:base
+  --builder paketobuildpacks/builder-jammy-base
 {{< /code/copyable >}}
 
 See [samples](https://github.com/paketo-buildpacks/samples/tree/main/web-servers)
@@ -204,6 +204,16 @@ files to `/workspace/my-build-directory`.
 BP_WEB_SERVER_ROOT=htdocs
 {{< /code/copyable >}}
 
+#### Set Location Path for the Server
+In auto-generated `nginx.conf`, the
+[`server.location`](https://nginx.org/en/docs/http/ngx_http_core_module.html#location)
+directive is set to the catch-all or default location block. You can override
+this by setting the `BP_WEB_SERVER_LOCATION_PATH` variable.
+
+{{< code/copyable >}}
+BP_WEB_SERVER_LOCATION_PATH="/custom"
+{{< /code/copyable >}}
+
 #### Enable Push-State Routing
 The `BP_WEB_SERVER_ENABLE_PUSH_STATE` variable enables push state routing
 functionality. This is useful for single-page web applications.
@@ -219,6 +229,21 @@ endpoint.
 
 {{< code/copyable >}}
 BP_WEB_SERVER_FORCE_HTTPS=true
+{{< /code/copyable >}}
+
+#### Obtain real-time status info
+The `BP_NGINX_STUB_STATUS_PORT` variable exposes a handful of NGINX Server
+metrics via the
+[`stub_status`](https://nginx.org/en/docs/http/ngx_http_stub_status_module.html#stub_status)
+module which provides basic status information on provided port. This comes
+handy for monitoring the server. For example using [NGINX Prometheus
+Exporter](https://github.com/nginxinc/nginx-prometheus-exporter)
+
+The info will be made available at the path `/stub_status` at the specified
+port. Make sure that this port isn't used anywhere else in your application.
+
+{{< code/copyable >}}
+BP_NGINX_STUB_STATUS_PORT=8083
 {{< /code/copyable >}}
 
 #### Set Up Basic Authentication

@@ -18,7 +18,7 @@ To build a sample app locally with this buildpack using the pack CLI, run
 git clone https://github.com/paketo-buildpacks/samples
 cd samples/python/pip
 pack build my-app --buildpack paketo-buildpacks/python \
-  --builder paketobuildpacks/builder:base
+  --builder paketobuildpacks/builder-jammy-base
 {{< /code/copyable >}}
 
 See
@@ -108,6 +108,28 @@ from an `environment.yml` file or a `package-list.txt` file located at the root
 of the app source code.
 
 Configuring a version of miniconda is not supported.
+
+#### Using `BP_CONDA_SOLVER`
+
+The original conda solver may suffer slowdowns depending on various factors such
+as number of channels configured, package pinning precision, etc. This is an
+issue that has been worked on and since a couple of releases, the mamba solver
+can be used in place of the original.
+
+To change the default solver used to create the conda environment, set the
+`BP_CONDA_SOLVER` environment variable to "mamba". This is the currently only
+value supported.
+
+{{< code/copyable >}}
+pack build my-app --env BP_CONDA_SOLVER=mamba --buildpack paketo-buildpacks/python \
+  --builder paketobuildpacks/builder-jammy-base
+{{< /code/copyable >}}
+
+**Note:** This does not change the buildpack to be mamba based, only their solver
+  is used.
+
+More information can be found in the [release notes]
+(https://github.com/paketo-buildpacks/miniconda/releases/latest)
 
 ### Poetry
 

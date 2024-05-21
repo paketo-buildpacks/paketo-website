@@ -344,10 +344,12 @@ The Java Buildpack configures the JVM by setting `JAVA_TOOL_OPTIONS` in the JVM 
 
 The runtime JVM can be configured in two ways:
 
-1. Buildpack-provided runtime components including the Memory Calculator accept semantically named environment variables which are then used to derive `JAVA_TOOL_OPTIONS` flags. Examples include:
+1. Buildpack-provided runtime components including the Memory Calculator accept [semantically named environment variables](https://github.com/paketo-buildpacks/bellsoft-liberica?tab=readme-ov-file#configuration) which are then used to derive `JAVA_TOOL_OPTIONS` flags. Examples include:
+
     * `BPL_JVM_HEAD_ROOM`
     * `BPL_JVM_LOADED_CLASS_COUNT`
     * `BPL_JVM_THREAD_COUNT`
+    * `BPL_JVM_CLASS_ADJUSTMENT`
 
 2. Flags can be set directly at runtime with the `JAVA_TOOL_OPTIONS` environment variable. User-provided flags will be appended to buildpack-provided flags. If the user and a buildpack set the same flag, user-provided flags take precedence.
 
@@ -362,6 +364,7 @@ docker run --rm --tty \
   samples/java
 {{< /code/copyable >}}
 <!-- spellchecker-enable -->
+
 ### Use an Alternative JVM
 
 By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implementations in place of Liberica's JVM.
@@ -469,47 +472,25 @@ The resulting application image will be identical to that built in the "Building
 
 ### Inspect the Native Image Tools Version
 
-The exact substrate VM version that was contributed to a given image can be read from the Bill-of-Materials.
+The exact Native Image version that was contributed to a given image can be read from the Bill-of-Materials.
 
 **Example** Inspecting the JRE Version
 
 Please refer to the [Access the SBOM article][howto/sbom] to find out how you can inspect the JRE using SBOM information.
 
-### Configure the GraalVM Version
-
-Because GraalVM is evolving rapidly you may on occasion need to, for compatibility reasons, select a specific version of the GraalVM and associated tools to use when building an image. This is not a directly configurable option like the JVM version, however, you can pick a specific version by changing the version of the Java Native Image Buildpack you use.
-
-The following table documents the versions available.
-
-| GraalVM Version | Java Native Image Buildpack Version |
-| --------------- | ----------------------------------- |
-| 22.3            | 7.44.3                              |
-| 22.2            | 7.26.1                              |
-| 22.1            | 7.16.2                              |
-| 22.0            | 7.8.1                               |
-| 21.3            | 5.12.0                              |
-| 21.2            | 5.5.0                               |
-| 21.1            | 5.4.0                               |
-| 21.0            | 5.3.0                               |
-
-For example, to select GraalVM 22.1:
-
-{{< code/copyable >}}
-pack build samples/native -e BP_NATIVE_IMAGE=true --buildpack paketo-buildpacks/ca-certificates --buildpack paketo-buildpacks/java-native-image@7.16.2
-{{< /code/copyable >}}
-
 ### Use an Alternative Java Native Image Toolkit
 
 By default, the [Paketo Java Native Image buildpack][bp/java-native-image] will use BellSoft's Native Image Toolkit. The following Paketo JVM buildpacks may be used to substitute alternate Native Image Toolkit implementations in place of the default.
 
-| JVM                                                                       | Buildpack                                                  |
-| ------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| [BellSoft Liberica](https://bell-sw.com/pages/liberica-native-image-kit/) | [Paketo BellSoft Liberica Buildpack][bp/bellsoft-liberica] |
-| [GraalVM][graalvm]                                                        | [Paketo GraalVM Buildpack][bp/graalvm]                     |
+| JVM                                                                       | Buildpack                                                      |
+| ------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| [BellSoft Liberica](https://bell-sw.com/pages/liberica-native-image-kit/) | [Paketo Buildpack for BellSoft Liberica][bp/bellsoft-liberica] |
+| [GraalVM Community Edition][graalvm]                                      | [Paketo Buildpack for GraalVM Community Edition][bp/graalvm]   |
+| [Oracle GraalVM][oracle-graalvm]                                          | [Paketo Buildpack for Oracle][bp/oracle]                       |
 
 To use an alternative Java Native Image Toolkit, you will need to set two `--buildpack` arguments to `pack build`, one for the alternative Java Native Image Toolkit buildpack you'd like to use and one for the Paketo Java Native Image buildpack (in that order). This works because while you end up with two Java Native Image Toolkit buildpacks, the first one, the one you're specifying will claim the build plan entries so the second one will end up being a no-op and doing nothing.
 
-This example will switch in the GraalVM buildpack:
+This example will switch in the GraalVM Community Edition buildpack:
 
 <!-- spellchecker-disable -->
 {{< code/copyable >}}
@@ -839,8 +820,8 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 [executable jar]:https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files
 [graalvm feature]:https://www.graalvm.org/sdk/javadoc/org/graalvm/nativeimage/hosted/Feature.html
 [graalvm native image]:https://www.graalvm.org/reference-manual/native-image/
-[graalvm substrate vm]:https://www.graalvm.org/reference-manual/native-image/SubstrateVM/
 [graalvm]:https://www.graalvm.org/docs/introduction/
+[oracle-graalvm]:https://www.oracle.com/java/graalvm/
 [gradle]:https://gradle.org/
 [java]:https://github.com/paketo-buildpacks/java
 [jconsole]:https://openjdk.java.net/tools/svc/jconsole/

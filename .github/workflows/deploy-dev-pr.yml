@@ -20,7 +20,7 @@ jobs:
       with:
         submodules: false
 
-    - uses: actions/setup-node@v4.0.0
+    - uses: actions/setup-node@v4.0.2
       with:
         node-version: 16
         check-latest: true
@@ -50,12 +50,12 @@ jobs:
 
     - name: Setup GCP Auth
       id: auth
-      uses: google-github-actions/auth@v1
+      uses: google-github-actions/auth@v2
       with:
         credentials_json: ${{ secrets.GCP_SA_KEY }}
 
     - name: Setup GCloud
-      uses: google-github-actions/setup-gcloud@v1.1.1
+      uses: google-github-actions/setup-gcloud@v2.1.0
       with:
         export_default_credentials: true
 

@@ -25,7 +25,7 @@ The [pack CLI][pack] is used throughout the examples. `pack` is just one of seve
 
 Examples assume that the [Paketo Base builder][base builder] is the default builder:
 {{< code/copyable >}}
-pack config default-builder paketobuildpacks/builder:base
+pack config default-builder paketobuildpacks/builder-jammy-base
 {{< /code/copyable >}}
 
 ## Types of Configuration
@@ -251,6 +251,93 @@ For example, to make the BellSoft Liberica JRE dependency accessible available t
    * `type` equal to `dependency-mapping`
    * A key/value pair where the key is equal to the `sha256` of the dependency and the value is equal to the new URI.
 4. Configure all builds with this binding.
+
+### Dependency Mirrors
+Larger networks might have a mirror server available to cache dependencies for access from within the local network. Dependency mirrors can be used to download buildpack dependencies from such alternative locations regardless of their versions.
+
+If dependency mirrors and dependency mappings are defined at the same time, those artifacts specifically mapped as described in [Dependency Mappings]({{< relref "#dependency-mappings" >}}) are loaded accordingly. All other dependencies are downloaded from the mirror, should one apply.
+
+Mirrors can be defined in two ways.
+1. Setting the `BP_DEPENDENCY_MIRROR` environment variable(s).
+2. Including a binding with a type of `dependency-mirror`.
+
+#### Setting Default Mirror
+In most cases, it is sufficient to set just one mirror from which all dependencies should be downloaded.  
+
+**Example**: Using Environment Variable
+
+Using the environment variable `BP_DEPENDENCY_MIRROR=https://mirror.example.org` would override the original URIs and download all dependencies from this host, whilst preserving the original paths.
+
+Let's assume, we have a dependency with the original URI of `https://github.com/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`.  
+This setting would download the dependency from `https://mirror.example.org/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`.
+
+**Example**: Using a Binding
+
+Instead of using the environment variable, we could achieve the same by setting a binding of type `dependency-mirror` using the `default` key and the mirror URI as the file content.
+```
+/platform
+    └── bindings
+        └── dependency-mirror
+            ├── default                https://mirror.example.org
+            └── type                   dependency-mirror
+```
+
+#### Path Prefix and Hostname Placeholder
+The mirror URI may also include a prefix. Using the above example, a value of `https://mirror.example.org/buildpack-dependencies` would lead to downloads from `https://mirror.example.org/buildpack-dependencies/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`.  
+
+Similarly, including the placeholder `{originalHost}` as in `https://mirror.example.org/{originalHost}` would preserve the original URI's hostname and download from `https://mirror.example.org/github.com/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`.  
+
+This placeholder can also be used together with a path prefix. E.g.: `https://mirror.example.org/buildpack-dependencies/{originalHost}`
+
+#### Schemes and Authentication
+Dependency mirror URIs can either use the `https` or `file` schemes and include basic authentication credentials, should the mirror require them.  
+The credentials can be passed to the server using the format `https://[username]:[password]@mirror.example.org`.
+
+#### Setting Hostname Mirrors
+Individual mirrors may be set for each hostname of the dependencies' original URIs.  
+This can be handy in case dependencies from the original host A must be downloaded from one location whilst dependencies from the original host B from another. Or if certain hosts are mirrored at a specific local server and all others should be downloaded from either their original location or a default mirror.  
+
+Special attention needs to be paid when setting hostname specific mirrors using environment variables due to naming restrictions.  
+Dots (`.`) of the original hostname must be replaced with a single underscore (`_`) whilst dashes (`-`) are replaced with a double underscore (`__`).  
+
+**Example**
+Let's assume a buildpack relies on three dependencies from these original locations:
+1) `https://github.com/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`
+2) `https://download.bell-sw.com/vm/22.3.5/bellsoft-liberica-vm-core-openjdk11.0.22+12-22.3.5+1-linux-amd64.tar.gz`
+3) `https://repo1.maven.org/maven2/org/apache/maven/apache-maven/3.9.6/apache-maven-3.9.6-bin.tar.gz`
+Two scenarios using a hostname mirror can be thought of.
+
+**Scenario A: Hostname Mirror(s) only**  
+If hostname specific mirrors are defined for `github.com` and `download.bell-sw.com` only as in:
+```
+BP_DEPENDENCY_MIRROR_GITHUB_COM             https://mirror.example.org/public-github
+BP_DEPENDENCY_MIRROR_DOWNLOAD_BELL__SW_COM  https://mirror.example.org/bell-sw
+```
+The URI of dependency 1 would be transformed to: `https://mirror.example.org/public-github/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz`.  
+The URI of dependency 2 would be changed to `https://mirror.example.org/bell-sw/vm/22.3.5/bellsoft-liberica-vm-core-openjdk11.0.22+12-22.3.5+1-linux-amd64.tar.gz`.  
+The URI of dependency 3 would stay unchanged and downloads would be made from the original location.
+
+**Scenario B: Hostname Mirror(s) with Default Mirror**  
+If we add a default mirror to scenario A like this:
+```
+BP_DEPENDENCY_MIRROR                        https://mirror.example.org/{originalHost}
+BP_DEPENDENCY_MIRROR_GITHUB_COM             https://mirror.example.org/public-github
+BP_DEPENDENCY_MIRROR_DOWNLOAD_BELL__SW_COM  https://mirror.example.org/bell-sw
+```
+The download URIs of dependencies 1 and 2 would be translated like before.  
+But since there is a default mirror defined, which acts for all other hostnames, dependency 3 would be downloaded from `https://mirror.example.org/repo1.maven.org/maven2/org/apache/maven/apache-maven/3.9.6/apache-maven-3.9.6-bin.tar.gz`, rather than from it's original location.
+
+**Hostname Mirrors from Bindings**  
+When using bindings to set hostname specific mirrors, their keys must match the original URI's hostname. E.g.:
+```
+/platform
+    └── bindings
+        └── dependency-mirror
+            ├── default                     https://mirror.example.org/{originalHost}
+            ├── github.com                  https://mirror.example.org/public-github
+            ├── download.bell-sw.com        https://mirror.example.org/bell-sw
+            └── type                        dependency-mirror
+```
 
 ## CA Certificates
 
