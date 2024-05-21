@@ -505,6 +505,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul>
         <li><a href="#proxy-configuration">Proxy Configuration</a></li>
         <li><a href="#dependency-mappings">Dependency Mappings</a></li>
+        <li><a href="#dependency-mirrors">Dependency Mirrors</a></li>
       </ul>
     </li>
     <li><a href="#ca-certificates">CA Certificates</a></li>
@@ -817,7 +818,86 @@ debugging logs, will emit them when this environment variable is set.</p>
 </li>
 <li>Configure all builds with this binding.</li>
 </ol>
-<h2 id="ca-certificates" class="markup-heading">
+<h3 id="dependency-mirrors" class="markup-heading">
+    <a class="markup-heading__link" href="#dependency-mirrors">
+        Dependency Mirrors
+    </a>
+</h3><p>Larger networks might have a mirror server available to cache dependencies for access from within the local network. Dependency mirrors can be used to download buildpack dependencies from such alternative locations regardless of their versions.</p>
+<p>If dependency mirrors and dependency mappings are defined at the same time, those artifacts specifically mapped as described in <a href="#dependency-mappings">Dependency Mappings</a> are loaded accordingly. All other dependencies are downloaded from the mirror, should one apply.</p>
+<p>Mirrors can be defined in two ways.</p>
+<ol>
+<li>Setting the <code>BP_DEPENDENCY_MIRROR</code> environment variable(s).</li>
+<li>Including a binding with a type of <code>dependency-mirror</code>.</li>
+</ol>
+<h4 id="setting-default-mirror" class="markup-heading">
+    <a class="markup-heading__link" href="#setting-default-mirror">
+        Setting Default Mirror
+    </a>
+</h4><p>In most cases, it is sufficient to set just one mirror from which all dependencies should be downloaded.</p>
+<p><strong>Example</strong>: Using Environment Variable</p>
+<p>Using the environment variable <code>BP_DEPENDENCY_MIRROR=https://mirror.example.org</code> would override the original URIs and download all dependencies from this host, whilst preserving the original paths.</p>
+<p>Let&rsquo;s assume, we have a dependency with the original URI of <code>https://github.com/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz</code>.<br>
+This setting would download the dependency from <code>https://mirror.example.org/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz</code>.</p>
+<p><strong>Example</strong>: Using a Binding</p>
+<p>Instead of using the environment variable, we could achieve the same by setting a binding of type <code>dependency-mirror</code> using the <code>default</code> key and the mirror URI as the file content.</p>
+<pre tabindex="0"><code>/platform
+    └── bindings
+        └── dependency-mirror
+            ├── default                https://mirror.example.org
+            └── type                   dependency-mirror
+</code></pre><h4 id="path-prefix-and-hostname-placeholder" class="markup-heading">
+    <a class="markup-heading__link" href="#path-prefix-and-hostname-placeholder">
+        Path Prefix and Hostname Placeholder
+    </a>
+</h4><p>The mirror URI may also include a prefix. Using the above example, a value of <code>https://mirror.example.org/buildpack-dependencies</code> would lead to downloads from <code>https://mirror.example.org/buildpack-dependencies/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz</code>.</p>
+<p>Similarly, including the placeholder <code>{originalHost}</code> as in <code>https://mirror.example.org/{originalHost}</code> would preserve the original URI&rsquo;s hostname and download from <code>https://mirror.example.org/github.com/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz</code>.</p>
+<p>This placeholder can also be used together with a path prefix. E.g.: <code>https://mirror.example.org/buildpack-dependencies/{originalHost}</code></p>
+<h4 id="schemes-and-authentication" class="markup-heading">
+    <a class="markup-heading__link" href="#schemes-and-authentication">
+        Schemes and Authentication
+    </a>
+</h4><p>Dependency mirror URIs can either use the <code>https</code> or <code>file</code> schemes and include basic authentication credentials, should the mirror require them.<br>
+The credentials can be passed to the server using the format <code>https://[username]:[password]@mirror.example.org</code>.</p>
+<h4 id="setting-hostname-mirrors" class="markup-heading">
+    <a class="markup-heading__link" href="#setting-hostname-mirrors">
+        Setting Hostname Mirrors
+    </a>
+</h4><p>Individual mirrors may be set for each hostname of the dependencies&rsquo; original URIs.<br>
+This can be handy in case dependencies from the original host A must be downloaded from one location whilst dependencies from the original host B from another. Or if certain hosts are mirrored at a specific local server and all others should be downloaded from either their original location or a default mirror.</p>
+<p>Special attention needs to be paid when setting hostname specific mirrors using environment variables due to naming restrictions.<br>
+Dots (<code>.</code>) of the original hostname must be replaced with a single underscore (<code>_</code>) whilst dashes (<code>-</code>) are replaced with a double underscore (<code>__</code>).</p>
+<p><strong>Example</strong>
+Let&rsquo;s assume a buildpack relies on three dependencies from these original locations:</p>
+<ol>
+<li><code>https://github.com/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz</code></li>
+<li><code>https://download.bell-sw.com/vm/22.3.5/bellsoft-liberica-vm-core-openjdk11.0.22+12-22.3.5+1-linux-amd64.tar.gz</code></li>
+<li><code>https://repo1.maven.org/maven2/org/apache/maven/apache-maven/3.9.6/apache-maven-3.9.6-bin.tar.gz</code>
+Two scenarios using a hostname mirror can be thought of.</li>
+</ol>
+<p><strong>Scenario A: Hostname Mirror(s) only</strong><br>
+If hostname specific mirrors are defined for <code>github.com</code> and <code>download.bell-sw.com</code> only as in:</p>
+<pre tabindex="0"><code>BP_DEPENDENCY_MIRROR_GITHUB_COM             https://mirror.example.org/public-github
+BP_DEPENDENCY_MIRROR_DOWNLOAD_BELL__SW_COM  https://mirror.example.org/bell-sw
+</code></pre><p>The URI of dependency 1 would be transformed to: <code>https://mirror.example.org/public-github/bell-sw/Liberica/releases/download/11.0.8+10/bellsoft-jre11.0.8+10-linux-amd64.tar.gz</code>.<br>
+The URI of dependency 2 would be changed to <code>https://mirror.example.org/bell-sw/vm/22.3.5/bellsoft-liberica-vm-core-openjdk11.0.22+12-22.3.5+1-linux-amd64.tar.gz</code>.<br>
+The URI of dependency 3 would stay unchanged and downloads would be made from the original location.</p>
+<p><strong>Scenario B: Hostname Mirror(s) with Default Mirror</strong><br>
+If we add a default mirror to scenario A like this:</p>
+<pre tabindex="0"><code>BP_DEPENDENCY_MIRROR                        https://mirror.example.org/{originalHost}
+BP_DEPENDENCY_MIRROR_GITHUB_COM             https://mirror.example.org/public-github
+BP_DEPENDENCY_MIRROR_DOWNLOAD_BELL__SW_COM  https://mirror.example.org/bell-sw
+</code></pre><p>The download URIs of dependencies 1 and 2 would be translated like before.<br>
+But since there is a default mirror defined, which acts for all other hostnames, dependency 3 would be downloaded from <code>https://mirror.example.org/repo1.maven.org/maven2/org/apache/maven/apache-maven/3.9.6/apache-maven-3.9.6-bin.tar.gz</code>, rather than from it&rsquo;s original location.</p>
+<p><strong>Hostname Mirrors from Bindings</strong><br>
+When using bindings to set hostname specific mirrors, their keys must match the original URI&rsquo;s hostname. E.g.:</p>
+<pre tabindex="0"><code>/platform
+    └── bindings
+        └── dependency-mirror
+            ├── default                     https://mirror.example.org/{originalHost}
+            ├── github.com                  https://mirror.example.org/public-github
+            ├── download.bell-sw.com        https://mirror.example.org/bell-sw
+            └── type                        dependency-mirror
+</code></pre><h2 id="ca-certificates" class="markup-heading">
     <a class="markup-heading__link" href="#ca-certificates">
         CA Certificates
     </a>
@@ -909,7 +989,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> April 29, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> May 21, 2024</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -933,6 +1013,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
       <ul>
         <li><a href="#proxy-configuration">Proxy Configuration</a></li>
         <li><a href="#dependency-mappings">Dependency Mappings</a></li>
+        <li><a href="#dependency-mirrors">Dependency Mirrors</a></li>
       </ul>
     </li>
     <li><a href="#ca-certificates">CA Certificates</a></li>
