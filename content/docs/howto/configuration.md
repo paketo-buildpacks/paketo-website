@@ -377,7 +377,7 @@ Run the sample application, providing the binding, and passing the URL as a posi
 ```bash
 docker run --rm \
   --env SERVICE_BINDING_ROOT=/bindings \
-  --volume "$(pwd)/ca-certficates/binding:/bindings/ca-certificates" \
+  --volume "$(pwd)/ca-certificates/binding:/bindings/ca-certificates" \
   samples/ca-certificates <url>
 ```
 
