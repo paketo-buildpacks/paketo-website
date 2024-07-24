@@ -919,7 +919,7 @@ When using bindings to set hostname specific mirrors, their keys must match the 
 </span></span></code></pre></div><p>Run the sample application, providing the binding, and passing the URL as a positional argument (should print <code>SUCCESS!</code>).</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker run --rm <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --env <span class="nv">SERVICE_BINDING_ROOT</span><span class="o">=</span>/bindings <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --volume <span class="s2">&#34;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/ca-certficates/binding:/bindings/ca-certificates&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --volume <span class="s2">&#34;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/ca-certificates/binding:/bindings/ca-certificates&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  samples/ca-certificates &lt;url&gt;
 </span></span></code></pre></div><p><strong>Disabling CA Certificates</strong></p>
 <p>If a language family buildpack contains the Paketo CA Certificates Buildpack,
@@ -989,7 +989,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> July 22, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> July 24, 2024</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
