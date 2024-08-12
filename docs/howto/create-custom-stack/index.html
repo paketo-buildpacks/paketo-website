@@ -530,25 +530,17 @@ still apply.</p>
 <ol>
 <li>Create a <code>Dockerfile</code> and define the <code>base</code> image as one of the Paketo stacks. For example:
 <div class="copyable">
-    <pre class="copyable__code">FROM paketobuildpacks:full-cnb as base
+    <pre class="copyable__code">FROM paketobuildpacks/build-jammy-tiny as base
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div></li>
 </ol>
-<p>There are two different options for each of the three (tiny, base, full) stacks you can use.</p>
-<ul>
-<li>The first option is the stack without the <code>-cnb</code> suffix, which can be used as a base image
-without any CNB metadata added at all. Ex. <code>docker.io/paketobuildpacks/run:full</code></li>
-<li>The second option is to use the stack with the <code>-cnb</code> suffix at the end.
-This will be the stack that contains <a href="https://github.com/buildpacks/spec/blob/main/platform.md#stacks">buildpack specific
-metadata</a>
-already added, and is based off of the non-CNB stack image. Ex.
-<code>docker.io/paketobuildpacks/run:full-cnb</code></li>
-</ul>
-<p>Check out the <code>bionic</code> and <code>tiny</code> directories in
-<a href="https://github.com/paketo-buildpacks/stacks">github.com/paketo-buildpacks/stacks</a>
-repo to view the Dockerfiles we have defined for both the base image and CNB images.</p>
+<p>There are multiple stack variants to choose from (tiny, base, full). Check out
+the stack&rsquo;s Github repository (for example,
+<a href="https://github.com/paketo-buildpacks/jammy-tiny-stack">github.com/paketo-buildpacks/jammy-tiny-stack</a>
+for the Jammy Tiny Stack) <code>stack</code> directory to see the definitions for the
+build and run images.</p>
 <ol start="2">
 <li>
 <p>Add your desired custom stack change to the Dockerfile such as labels,
@@ -589,7 +581,7 @@ the <code>CNB_USER_ID</code> to root isn’t allowed.</p>
 </ol>
 <!-- raw HTML omitted -->
 <div class="copyable">
-    <pre class="copyable__code">id = &#34;io.paketo.stacks.tiny&#34;
+    <pre class="copyable__code">id = &#34;io.buildpacks.stacks.jammy.tiny&#34;
 
 platforms = [&#34;linux/amd64&#34;]
 
@@ -601,9 +593,9 @@ platforms = [&#34;linux/amd64&#34;]
 
   [build.args]
     sources = &#34;&#34;&#34;
-    deb http://archive.ubuntu.com/ubuntu bionic main universe multiverse
-    deb http://archive.ubuntu.com/ubuntu bionic-updates main universe multiverse
-    deb http://archive.ubuntu.com/ubuntu bionic-security main universe multiverse
+    deb http://archive.ubuntu.com/ubuntu jammy main universe multiverse
+    deb http://archive.ubuntu.com/ubuntu jammy-updates main universe multiverse
+    deb http://archive.ubuntu.com/ubuntu jammy-security main universe multiverse
     &#34;&#34;&#34;
 
     # List of packages which should be included in the stack build image
@@ -620,9 +612,9 @@ platforms = [&#34;linux/amd64&#34;]
 
   [run.args]
     sources = &#34;&#34;&#34;
-    deb http://archive.ubuntu.com/ubuntu bionic main universe multiverse
-    deb http://archive.ubuntu.com/ubuntu bionic-updates main universe multiverse
-    deb http://archive.ubuntu.com/ubuntu bionic-security main universe multiverse
+    deb http://ports.ubuntu.com/ubuntu-ports/ jammy main universe multiverse
+    deb http://ports.ubuntu.com/ubuntu-ports/ jammy-updates main universe multiverse
+    deb http://ports.ubuntu.com/ubuntu-ports/ jammy-security main universe multiverse
     &#34;&#34;&#34;
 
     # List of packages which should be included in the stack run image
@@ -682,15 +674,16 @@ to the desired registry:</p>
 builders.</p>
 <ol>
 <li>Clone the builder you want to use, and modify the <code>builder.toml</code> file. For
-example, if you have built a custom stack based off of the Paketo Full
-stack, you will want to add it to the <a href="https://github.com/paketo-buildpacks/full-builder">Full
-builder</a> builder.toml
-file. Modify the bottom <code>[stack]</code> section to point to the registry location
-of the build and run images you have pushed to a registry.  The <code>id</code> should
-match the stack ID if you specified one in the Dockerfile, or in the base
-image you used. It will be <code>io.buildpacks.stacks.bionic</code> if your base image
-was one of the CNB stack images. This ID implies compatibility with the
-official <code>io.buildpacks.stacks.bionic</code> stack.</li>
+example, if you have built a custom stack based off of the Paketo Jammy Tiny
+stack, you will want to add it to the <a href="https://github.com/paketo-buildpacks/builder-jammy-tiny">Jammy Tiny
+builder</a>
+builder.toml file. Modify the bottom <code>[stack]</code> section to point to the
+registry location of the build and run images you have pushed to a registry.
+The <code>id</code> should match the stack ID if you specified one in the Dockerfile,
+or in the base image you used. It will be something along the lines of
+<code>io.buildpacks.stacks.jammy</code> (or <code>io.buildpacks.stacks.jammy.tiny</code> if using
+Tiny stack). This ID implies compatibility with the official Paketo stack
+with that label.</li>
 <li>Create the builder with the pack CLI.
 <div class="copyable">
     <pre class="copyable__code">pack builder create &lt;builder-name&gt; —config &lt;path to builder.toml&gt;
@@ -700,11 +693,9 @@ official <code>io.buildpacks.stacks.bionic</code> stack.</li>
 </div></li>
 <li>Ensure the buildpacks of interest support the wildcard (“*”) stack or
 support the stack ID you provided in the <code>builder.toml</code> by checking the buildpack <code>stacks</code> section. For example, the
-<a href="https://github.com/paketo-buildpacks/node-engine/blob/8f9743093c6696c365baf1739622889c61280bff/buildpack.toml#L129-L130">node-engine
+<a href="https://github.com/paketo-buildpacks/node-engine/blob/cfa6fe4d837aeb457d15b08716edb38297199460/buildpack.toml#L72">node-engine
 buildpack</a>
-only supports stacks with ID <code>io.buildpacks.stacks.bionic</code>. If you build
-upon one of the Paketo <code>-cnb</code> stacks, your custom stack will be
-compatible already, since part of the CNB metadata added is the ID.</li>
+supports both stacks with ID <code>io.buildpacks.stacks.jammy</code> and <code>*</code>.</li>
 <li>Perform builds with the newly created builder image, which uses the custom stack images.</li>
 </ol>
 <!-- raw HTML omitted -->
@@ -720,7 +711,7 @@ compatible already, since part of the CNB metadata added is the ID.</li>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> August 7, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> August 12, 2024</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
