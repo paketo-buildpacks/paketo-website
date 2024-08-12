@@ -19,33 +19,20 @@ To learn more about the concept of `stacks`, see
 [buildpacks.io](https://buildpacks.io/docs/concepts/components/stack/).
 
 ## What Paketo stacks are available?
-The Paketo project releases several stacks. We currently support two Ubuntu
-distributions: 18.04 Bionic Beaver and 22.04 Jammy Jellyfish. Tiny, Base, and
-Full stack variants differ in the number of packages installed in the OS layer.
+The Paketo project releases several stacks. We currently officially support
+Ubuntu 22.04 (Jammy Jellyfish). Tiny, Base, and Full stack variants differ in
+the number of packages installed in the OS layer.
 The available stacks, _**from smallest to largest**_, are:
-- [Bionic Tiny](https://github.com/paketo-buildpacks/bionic-tiny-stack):
-  - Build image based on Ubuntu 18.04 Bionic Beaver; run image comparable to [distroless](https://github.com/GoogleContainerTools/distroless)
-  - Ideal for most Golang apps, Java
-    [GraalVM Native
-    Images](https://www.graalvm.org/latest/reference-manual/native-image/)
 - [Jammy Tiny](https://github.com/paketo-buildpacks/jammy-tiny-stack)
   - Build image based on Ubuntu 22.04 Jammy Jellyfish; run image comparable to [distroless](https://github.com/GoogleContainerTools/distroless)
   - Ideal for most Golang apps, Java
     [GraalVM Native
     Images](https://www.graalvm.org/latest/reference-manual/native-image/)
-- [Bionic Base](https://github.com/paketo-buildpacks/bionic-base-stack)
-  - Based on Ubuntu 18.04 Bionic Beaver
-  - Ideal for Java and .NET Core apps, Golang apps that require C libraries,
-    Node.js, Python, Ruby, and JavaScript front end apps without many native
-    extensions
 - [Jammy Base](https://github.com/paketo-buildpacks/jammy-base-stack)
   - Based on Ubuntu 22.04 Jammy Jellyfish
   - Ideal for Java and .NET Core apps, Golang apps that require C libraries,
     Node.js, Python, Ruby, and JavaScript front end apps without many native
     extensions
-- [Bionic Full](https://github.com/paketo-buildpacks/bionic-full-stack)
-  - Based on Ubuntu 18.04 Bionic Beaver
-  - Ideal for PHP apps, Node.js, Python, Ruby, and JavaScript front end apps with native extensions
 - [Jammy Full](https://github.com/paketo-buildpacks/jammy-full-stack)
   - Based on Ubuntu 22.04 Jammy Jellyfish
   - Ideal for PHP apps, Node.js, Python, Ruby, and JavaScript front end apps with native extensions

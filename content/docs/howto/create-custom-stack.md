@@ -34,21 +34,14 @@ still apply.
 This guide assumes you know the basics of stacks from the [stacks concept page][concepts/stacks].
 1. Create a `Dockerfile` and define the `base` image as one of the Paketo stacks. For example:
 {{< code/copyable >}}
-FROM paketobuildpacks:full-cnb as base
+FROM paketobuildpacks/build-jammy-tiny as base
 {{< /code/copyable >}}
 
-There are two different options for each of the three (tiny, base, full) stacks you can use.
-- The first option is the stack without the `-cnb` suffix, which can be used as a base image
-without any CNB metadata added at all. Ex. `docker.io/paketobuildpacks/run:full`
- - The second option is to use the stack with the `-cnb` suffix at the end.
-   This will be the stack that contains [buildpack specific
-   metadata](https://github.com/buildpacks/spec/blob/main/platform.md#stacks)
-   already added, and is based off of the non-CNB stack image. Ex.
-   `docker.io/paketobuildpacks/run:full-cnb`
-
-Check out the `bionic` and `tiny` directories in
-[github.com/paketo-buildpacks/stacks](https://github.com/paketo-buildpacks/stacks)
-repo to view the Dockerfiles we have defined for both the base image and CNB images.
+There are multiple stack variants to choose from (tiny, base, full). Check out
+the stack's Github repository (for example,
+[github.com/paketo-buildpacks/jammy-tiny-stack](https://github.com/paketo-buildpacks/jammy-tiny-stack)
+for the Jammy Tiny Stack) `stack` directory to see the definitions for the
+build and run images.
 
 2. Add your desired custom stack change to the Dockerfile such as labels,
    environment variables, and/or packages. There are examples in the [CNB
@@ -77,7 +70,7 @@ You will need the following tools installed on your machine:
 <!-- spellchecker-disable -->
 
 {{< code/copyable >}}
-id = "io.paketo.stacks.tiny"
+id = "io.buildpacks.stacks.jammy.tiny"
 
 platforms = ["linux/amd64"]
 
@@ -89,9 +82,9 @@ platforms = ["linux/amd64"]
 
   [build.args]
     sources = """
-    deb http://archive.ubuntu.com/ubuntu bionic main universe multiverse
-    deb http://archive.ubuntu.com/ubuntu bionic-updates main universe multiverse
-    deb http://archive.ubuntu.com/ubuntu bionic-security main universe multiverse
+    deb http://archive.ubuntu.com/ubuntu jammy main universe multiverse
+    deb http://archive.ubuntu.com/ubuntu jammy-updates main universe multiverse
+    deb http://archive.ubuntu.com/ubuntu jammy-security main universe multiverse
     """
 
     # List of packages which should be included in the stack build image
@@ -108,9 +101,9 @@ platforms = ["linux/amd64"]
 
   [run.args]
     sources = """
-    deb http://archive.ubuntu.com/ubuntu bionic main universe multiverse
-    deb http://archive.ubuntu.com/ubuntu bionic-updates main universe multiverse
-    deb http://archive.ubuntu.com/ubuntu bionic-security main universe multiverse
+    deb http://ports.ubuntu.com/ubuntu-ports/ jammy main universe multiverse
+    deb http://ports.ubuntu.com/ubuntu-ports/ jammy-updates main universe multiverse
+    deb http://ports.ubuntu.com/ubuntu-ports/ jammy-security main universe multiverse
     """
 
     # List of packages which should be included in the stack run image
@@ -157,18 +150,19 @@ skopeo copy oci-archive:///<path/to/oci/archive> docker-daemon:<stack-image-name
 ## Create a custom builder with the custom stack
 
 Check out the [builder documentation][concepts/builders] for details on
-builders. 
+builders.
 
 1. Clone the builder you want to use, and modify the `builder.toml` file. For
-   example, if you have built a custom stack based off of the Paketo Full
-   stack, you will want to add it to the [Full
-   builder](https://github.com/paketo-buildpacks/full-builder) builder.toml
-   file. Modify the bottom `[stack]` section to point to the registry location
-   of the build and run images you have pushed to a registry.  The `id` should
-   match the stack ID if you specified one in the Dockerfile, or in the base
-   image you used. It will be `io.buildpacks.stacks.bionic` if your base image
-   was one of the CNB stack images. This ID implies compatibility with the
-   official `io.buildpacks.stacks.bionic` stack.
+   example, if you have built a custom stack based off of the Paketo Jammy Tiny
+   stack, you will want to add it to the [Jammy Tiny
+   builder](https://github.com/paketo-buildpacks/builder-jammy-tiny)
+   builder.toml file. Modify the bottom `[stack]` section to point to the
+   registry location of the build and run images you have pushed to a registry.
+   The `id` should match the stack ID if you specified one in the Dockerfile,
+   or in the base image you used. It will be something along the lines of
+   `io.buildpacks.stacks.jammy` (or `io.buildpacks.stacks.jammy.tiny` if using
+   Tiny stack). This ID implies compatibility with the official Paketo stack
+   with that label.
 2. Create the builder with the pack CLI.
 {{< code/copyable >}}
 pack builder create <builder-name> —config <path to builder.toml>
@@ -176,10 +170,8 @@ pack builder create <builder-name> —config <path to builder.toml>
 3. Ensure the buildpacks of interest support the wildcard (“*”) stack or
    support the stack ID you provided in the `builder.toml` by checking the buildpack `stacks` section. For example, the
    [node-engine
-   buildpack](https://github.com/paketo-buildpacks/node-engine/blob/8f9743093c6696c365baf1739622889c61280bff/buildpack.toml#L129-L130)
-   only supports stacks with ID `io.buildpacks.stacks.bionic`. If you build
-   upon one of the Paketo `-cnb` stacks, your custom stack will be
-   compatible already, since part of the CNB metadata added is the ID.
+   buildpack](https://github.com/paketo-buildpacks/node-engine/blob/cfa6fe4d837aeb457d15b08716edb38297199460/buildpack.toml#L72)
+   supports both stacks with ID `io.buildpacks.stacks.jammy` and `*`.
 4. Perform builds with the newly created builder image, which uses the custom stack images.
 
 

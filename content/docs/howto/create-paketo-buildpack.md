@@ -66,7 +66,7 @@ api = "0.2"
 
 # The list of stacks that the buildpack itself is compatible with
 [[stacks]]
-  id = "io.buildpacks.stacks.bionic"
+  id = "io.buildpacks.stacks.jammy"
 {{< /code/copyable >}}
 
 ### `bin/detect`
