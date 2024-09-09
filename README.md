@@ -80,7 +80,7 @@ dictionary is usually preferred.
       staging URL.
 * Join website-related conversations in the
   [#website](https://paketobuildpacks.slack.com/archives/C0229DVMFM5) channel
-  of the [Paketo slack instance](https://slack.paketo.io/).
+  of the [Paketo slack instance](https://join.slack.com/t/paketobuildpacks/shared_invite/zt-2jayv12ro-eTP8AtcmvyIpEtlANfIb~g).
 
 ## Deployment
 This repo uses a GHA workflow to automatically deploy commits on `main` to the
