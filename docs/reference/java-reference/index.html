@@ -551,35 +551,35 @@ the  Paketo Java Buildpack  How To <a href="/docs/howto/java">documentation</a>.
 </h3><p>The below table lists the component parts of the Non-Heap value, the equivalent JVM flags, and their defaults. Where one exists, the JVM default value is used.</p>
 <!-- raw HTML omitted -->
 <table>
-<thead>
-<tr>
-<th>Memory Region</th>
-<th>JVM Flag</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Direct Memory</td>
-<td><code>-XX:MaxDirectMemorySize</code></td>
-<td>10MB (JVM Default)</td>
-</tr>
-<tr>
-<td>Metaspace</td>
-<td><code>-XX:MaxMetaspaceSize</code></td>
-<td>Automatically calculated based on class count</td>
-</tr>
-<tr>
-<td>Reserved Code Cache</td>
-<td><code>-XX:ReservedCodeCacheSize</code></td>
-<td>240MB (JVM Default)</td>
-</tr>
-<tr>
-<td>Thread Stack</td>
-<td><code>-Xss</code></td>
-<td>1M * 250  (JVM Default Thread Stack Size * Default Optimum Thread Count for Tomcat)</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Memory Region</th>
+          <th style="text-align: left">JVM Flag</th>
+          <th style="text-align: left">Default</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Direct Memory</td>
+          <td style="text-align: left"><code>-XX:MaxDirectMemorySize</code></td>
+          <td style="text-align: left">10MB (JVM Default)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Metaspace</td>
+          <td style="text-align: left"><code>-XX:MaxMetaspaceSize</code></td>
+          <td style="text-align: left">Automatically calculated based on class count</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Reserved Code Cache</td>
+          <td style="text-align: left"><code>-XX:ReservedCodeCacheSize</code></td>
+          <td style="text-align: left">240MB (JVM Default)</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Thread Stack</td>
+          <td style="text-align: left"><code>-Xss</code></td>
+          <td style="text-align: left">1M * 250  (JVM Default Thread Stack Size * Default Optimum Thread Count for Tomcat)</td>
+      </tr>
+  </tbody>
 </table>
 <!-- raw HTML omitted -->
 <p>The outputs of the tool are the above JVM flags and their calculated values.</p>
@@ -606,35 +606,35 @@ Therefore, setting <code>-Xmx</code> directly could either:</p>
     </a>
 </h2><p>The Paketo Java buildpack supports multiple application servers. Each application server has different capabilities and configuration options. The following are a list of supported application servers and links to reference documentation for each one.</p>
 <table>
-<thead>
-<tr>
-<th>Application Server</th>
-<th>Buildpack Documentation</th>
-<th>Server Documentation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Apache Tomcat</td>
-<td><a href="https://github.com/paketo-buildpacks/apache-tomcat/blob/main/README.md">link</a></td>
-<td><a href="https://tomcat.apache.org/tomcat-9.0-doc/index.html">link</a></td>
-</tr>
-<tr>
-<td>Apache Tomee</td>
-<td><a href="https://github.com/paketo-buildpacks/apache-tomee/blob/main/README.md">link</a></td>
-<td><a href="https://tomee.apache.org/tomee-8.0/docs/">link</a></td>
-</tr>
-<tr>
-<td>Open Liberty</td>
-<td><a href="https://github.com/paketo-buildpacks/liberty/blob/main/README.md">link</a></td>
-<td><a href="https://openliberty.io/">link</a></td>
-</tr>
-<tr>
-<td>WebSphere Liberty</td>
-<td><a href="https://github.com/paketo-buildpacks/liberty/blob/main/README.md">link</a></td>
-<td><a href="https://www.ibm.com/cloud/websphere-liberty">link</a></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Application Server</th>
+          <th style="text-align: left">Buildpack Documentation</th>
+          <th style="text-align: left">Server Documentation</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Apache Tomcat</td>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/apache-tomcat/blob/main/README.md">link</a></td>
+          <td style="text-align: left"><a href="https://tomcat.apache.org/tomcat-9.0-doc/index.html">link</a></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Apache Tomee</td>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/apache-tomee/blob/main/README.md">link</a></td>
+          <td style="text-align: left"><a href="https://tomee.apache.org/tomee-8.0/docs/">link</a></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Open Liberty</td>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/liberty/blob/main/README.md">link</a></td>
+          <td style="text-align: left"><a href="https://openliberty.io/">link</a></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">WebSphere Liberty</td>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/liberty/blob/main/README.md">link</a></td>
+          <td style="text-align: left"><a href="https://www.ibm.com/cloud/websphere-liberty">link</a></td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="spring-boot-applications" class="markup-heading">
     <a class="markup-heading__link" href="#spring-boot-applications">
@@ -666,135 +666,135 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
     </a>
 </h2><p>The following component buildpacks compose the Java Buildpack. Buildpacks are listed in the order they are executed.</p>
 <table>
-<thead>
-<tr>
-<th>Buildpack</th>
-<th>Required/Optional</th>
-<th>Responsibility</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Buildpack</a></td>
-<td>Optional</td>
-<td>Adds CA certificates to the system truststore at build and runtime.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/bellsoft-liberica">Paketo BellSoft Liberica Buildpack</a></td>
-<td><strong>Required</strong></td>
-<td>Provides the JDK and/or JRE.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/syft">Paketo Syft</a></td>
-<td>Optional</td>
-<td>Provides the Syft CLI which can be used to generate SBOM information.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/leiningen">Paketo Leiningen Buildpack</a></td>
-<td>Optional</td>
-<td>Builds Leiningen-based applications from source.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/clojure-tools">Paketo Clojure Tools Buildpack</a></td>
-<td>Optional</td>
-<td>Builds Clojure applications from source.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/gradle">Paketo Gradle Buildpack</a></td>
-<td>Optional</td>
-<td>Builds Gradle-based applications from source.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/maven">Paketo Maven Buildpack</a></td>
-<td>Optional</td>
-<td>Builds Maven-based applications from source.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/sbt">Paketo SBT Buildpack</a></td>
-<td>Optional</td>
-<td>Builds SBT-based applications from source.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/watchexec">Paketo Watchexec Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes the <code>watchexec</code> binary for process reloading.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/executable-jar">Paketo Executable JAR Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes a process Type that launches an executable JAR.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/apache-tomcat">Paketo Apache Tomcat Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes Apache Tomcat and a process type that launches a WAR with Tomcat.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/apache-tomee">Paketo Apache Tomee Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes Apache Tomee and a process type that launches a WAR with Tomee.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/liberty">Paketo Liberty Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes Open Liberty and a process type that launches a WAR with Open Liberty.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/dist-zip">Paketo DistZip Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes a process type that launches a DistZip-style application.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/spring-boot">Paketo Spring Boot Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes configuration and metadata to Spring Boot applications.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a></td>
-<td>Optional</td>
-<td>Allows the application to define or redefine process types with a [Procfile][procfiles]</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/jattach">Paketo JAttach</a></td>
-<td>Optional</td>
-<td>Provides the JAttach binary to send commands to a remote JVM via Dynamic Attach mechanism</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/azure-application-insights">Paketo Azure Application Insights Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes the Application Insights Agent and configures it to connect to the service.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/google-stackdriver">Paketo Google Stackdriver Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes Stackdriver agents and configures them to connect to the service.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/datadog">Paketo Datadog Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes Datadog trace agent and configures it to connect to the service.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/java-memory-assistant">Paketo Java Memory Assistant Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes and configures the SAP Java Memory Assistant (JMA) Agent for Java applications.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/encrypt-at-rest">Paketo Encrypt At Rest Buildpack</a></td>
-<td>Optional</td>
-<td>Encrypts an application layer and contributes a profile script that decrypts it at launch time.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/environment-variables">Paketo Environment Variables Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes arbitrary user-provided environment variables to the image.</td>
-</tr>
-<tr>
-<td><a href="https://github.com/paketo-buildpacks/image-labels">Paketo Image Labels Buildpack</a></td>
-<td>Optional</td>
-<td>Contributes OCI-specific and arbitrary user-provided labels to the image.</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left">Buildpack</th>
+          <th style="text-align: left">Required/Optional</th>
+          <th style="text-align: left">Responsibility</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Adds CA certificates to the system truststore at build and runtime.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/bellsoft-liberica">Paketo BellSoft Liberica Buildpack</a></td>
+          <td style="text-align: left"><strong>Required</strong></td>
+          <td style="text-align: left">Provides the JDK and/or JRE.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/syft">Paketo Syft</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Provides the Syft CLI which can be used to generate SBOM information.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/leiningen">Paketo Leiningen Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Builds Leiningen-based applications from source.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/clojure-tools">Paketo Clojure Tools Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Builds Clojure applications from source.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/gradle">Paketo Gradle Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Builds Gradle-based applications from source.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/maven">Paketo Maven Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Builds Maven-based applications from source.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/sbt">Paketo SBT Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Builds SBT-based applications from source.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/watchexec">Paketo Watchexec Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Contributes the <code>watchexec</code> binary for process reloading.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/executable-jar">Paketo Executable JAR Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Contributes a process Type that launches an executable JAR.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/apache-tomcat">Paketo Apache Tomcat Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Contributes Apache Tomcat and a process type that launches a WAR with Tomcat.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/apache-tomee">Paketo Apache Tomee Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Contributes Apache Tomee and a process type that launches a WAR with Tomee.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/liberty">Paketo Liberty Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Contributes Open Liberty and a process type that launches a WAR with Open Liberty.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/dist-zip">Paketo DistZip Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Contributes a process type that launches a DistZip-style application.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/spring-boot">Paketo Spring Boot Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Contributes configuration and metadata to Spring Boot applications.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Allows the application to define or redefine process types with a [Procfile][procfiles]</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/jattach">Paketo JAttach</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Provides the JAttach binary to send commands to a remote JVM via Dynamic Attach mechanism</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/azure-application-insights">Paketo Azure Application Insights Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Contributes the Application Insights Agent and configures it to connect to the service.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/google-stackdriver">Paketo Google Stackdriver Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Contributes Stackdriver agents and configures them to connect to the service.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/datadog">Paketo Datadog Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Contributes Datadog trace agent and configures it to connect to the service.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/java-memory-assistant">Paketo Java Memory Assistant Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Contributes and configures the SAP Java Memory Assistant (JMA) Agent for Java applications.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/encrypt-at-rest">Paketo Encrypt At Rest Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Encrypts an application layer and contributes a profile script that decrypts it at launch time.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/environment-variables">Paketo Environment Variables Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Contributes arbitrary user-provided environment variables to the image.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://github.com/paketo-buildpacks/image-labels">Paketo Image Labels Buildpack</a></td>
+          <td style="text-align: left">Optional</td>
+          <td style="text-align: left">Contributes OCI-specific and arbitrary user-provided labels to the image.</td>
+      </tr>
+  </tbody>
 </table>
 <!-- raw HTML omitted -->
 <!-- raw HTML omitted -->
@@ -813,7 +813,7 @@ applying Boot-specific performance optimizations, and enabling runtime auto-conf
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> September 9, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> September 10, 2024</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">

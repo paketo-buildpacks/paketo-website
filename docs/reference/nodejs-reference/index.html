@@ -550,25 +550,25 @@ notes</a>.</p>
         
     </a>
 </h4><table>
-<thead>
-<tr>
-<th><code>type</code></th>
-<th>Required Files</th>
-<th># Bindings of This Type Accepted</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://paketo.io/docs/howto/nodejs/#configure-npm-during-the-build"><code>npmrc</code></a></td>
-<td><code>type</code>, <code>.npmrc</code></td>
-<td>0 or 1</td>
-</tr>
-<tr>
-<td><a href="https://paketo.io/docs/howto/nodejs/#configure-yarn-during-the-build"><code>yarnrc</code></a></td>
-<td><code>type</code>, <code>.yarnrc</code></td>
-<td>0 or 1</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><code>type</code></th>
+          <th style="text-align: left">Required Files</th>
+          <th style="text-align: left"># Bindings of This Type Accepted</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><a href="https://paketo.io/docs/howto/nodejs/#configure-npm-during-the-build"><code>npmrc</code></a></td>
+          <td style="text-align: left"><code>type</code>, <code>.npmrc</code></td>
+          <td style="text-align: left">0 or 1</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><a href="https://paketo.io/docs/howto/nodejs/#configure-yarn-during-the-build"><code>yarnrc</code></a></td>
+          <td style="text-align: left"><code>type</code>, <code>.yarnrc</code></td>
+          <td style="text-align: left">0 or 1</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="buildpack-set-environment-variables" class="markup-heading">
     <a class="markup-heading__link" href="#buildpack-set-environment-variables">
@@ -679,64 +679,64 @@ directories listed in the table below are present in your app source code,
 the Node.js buildpack uses an installation process that ensures the
 correct third-party dependencies are installed during the build process.</p>
 <table>
-<thead>
-<tr>
-<th><code>package-lock.json</code></th>
-<th><code>node_modules</code></th>
-<th><code>npm-cache</code></th>
-<th>Command</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>X</td>
-<td>X</td>
-<td>X</td>
-<td><code>npm install</code></td>
-</tr>
-<tr>
-<td>X</td>
-<td>X</td>
-<td>✓</td>
-<td><code>npm install</code></td>
-</tr>
-<tr>
-<td>X</td>
-<td>✓</td>
-<td>X</td>
-<td><code>npm rebuild</code></td>
-</tr>
-<tr>
-<td>X</td>
-<td>✓</td>
-<td>✓</td>
-<td><code>npm rebuild</code></td>
-</tr>
-<tr>
-<td>✓</td>
-<td>X</td>
-<td>X</td>
-<td><code>npm ci</code></td>
-</tr>
-<tr>
-<td>✓</td>
-<td>X</td>
-<td>✓</td>
-<td><code>npm ci</code></td>
-</tr>
-<tr>
-<td>✓</td>
-<td>✓</td>
-<td>X</td>
-<td><code>npm rebuild</code></td>
-</tr>
-<tr>
-<td>✓</td>
-<td>✓</td>
-<td>✓</td>
-<td><code>npm ci</code></td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: left"><code>package-lock.json</code></th>
+          <th style="text-align: left"><code>node_modules</code></th>
+          <th style="text-align: left"><code>npm-cache</code></th>
+          <th style="text-align: left">Command</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left"><code>npm install</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left">✓</td>
+          <td style="text-align: left"><code>npm install</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left">✓</td>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left"><code>npm rebuild</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left">✓</td>
+          <td style="text-align: left">✓</td>
+          <td style="text-align: left"><code>npm rebuild</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">✓</td>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left"><code>npm ci</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">✓</td>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left">✓</td>
+          <td style="text-align: left"><code>npm ci</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">✓</td>
+          <td style="text-align: left">✓</td>
+          <td style="text-align: left">X</td>
+          <td style="text-align: left"><code>npm rebuild</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left">✓</td>
+          <td style="text-align: left">✓</td>
+          <td style="text-align: left">✓</td>
+          <td style="text-align: left"><code>npm ci</code></td>
+      </tr>
+  </tbody>
 </table>
 <p>The following sections give more information about the files listed in the
 table above, including how to generate them, if desired.</p>
@@ -871,7 +871,7 @@ the SBOM for your Node.js app image.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> September 9, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> September 10, 2024</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
