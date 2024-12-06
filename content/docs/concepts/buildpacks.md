@@ -108,7 +108,7 @@ each buildpack's requirements (mentioned in the  `detect` section).
 Paketo Buildpacks implement the Buildpack API described in the [Cloud Native Buildpacks
 Specification](https://github.com/buildpacks/spec). The `build` and `detect`
 phases of Paketo Buildpacks are designed to be run by the [CNB
-lifecycle](https://buildpacks.io/docs/concepts/components/lifecycle/).
+lifecycle](https://buildpacks.io/docs/for-platform-operators/concepts/lifecycle/).
 
 ## How are Paketo Buildpacks different from Cloud Foundry Buildpacks?
 
