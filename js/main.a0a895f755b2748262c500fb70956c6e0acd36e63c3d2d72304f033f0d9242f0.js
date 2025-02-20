@@ -691,7 +691,7 @@
   // <stdin>
   init_shims();
 
-  // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/navigation.js
+  // ns-hugo-imp:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/navigation.js
   init_shims();
   var Navigation = class {
     constructor({ element }) {
@@ -707,7 +707,7 @@
     }
   };
 
-  // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/links.js
+  // ns-hugo-imp:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/links.js
   init_shims();
   function OpenExternalLinksInNewTab({ links, hostname }) {
     for (const link of links) {
@@ -721,7 +721,7 @@
     }
   }
 
-  // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/code_snippet.js
+  // ns-hugo-imp:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/code_snippet.js
   init_shims();
   var import_clipboard = __toESM(require_clipboard());
   var CodeSnippet = class {
@@ -770,7 +770,7 @@
     }
   };
 
-  // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/docs-sidebar.js
+  // ns-hugo-imp:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/docs-sidebar.js
   init_shims();
   var DocsSidebarExpander = class {
     constructor({ element }) {
@@ -788,7 +788,7 @@
     }
   };
 
-  // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/search.js
+  // ns-hugo-imp:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/search.js
   init_shims();
 
   // node_modules/@docsearch/js/dist/esm/index.js
@@ -4263,7 +4263,7 @@
   }
   var esm_default = ei;
 
-  // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/search.js
+  // ns-hugo-imp:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/search.js
   function Search({ element }) {
     esm_default({
       container: element,
@@ -4274,7 +4274,7 @@
     });
   }
 
-  // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/docs_nav.js
+  // ns-hugo-imp:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/docs_nav.js
   init_shims();
   var DocsNav = class {
     constructor({ element }) {
@@ -4287,7 +4287,7 @@
     }
   };
 
-  // ns-hugo:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/docs_getting_started.js
+  // ns-hugo-imp:/home/runner/work/paketo-website/paketo-website/build-environment/assets/js/components/docs_getting_started.js
   init_shims();
   var GettingStarted = class {
     constructor({ element }) {

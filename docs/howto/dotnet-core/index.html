@@ -664,7 +664,6 @@ Runtime patch version, you can specify the Target Framework and the buildpack
 will choose the appropriate .NET Core Runtime version. To configure the
 buildpack to use a .NET Core Runtime version in the 2.1 .NET Core Target Framework
 when deploying your app, include the values below in your Project file:</p>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">&lt;Project&gt;
   &lt;PropertyGroup&gt;
@@ -675,7 +674,6 @@ when deploying your app, include the values below in your Project file:</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <p>For more details about specifying a .NET Core version using a Project file,
 please review the <a href="https://docs.microsoft.com/en-us/dotnet/core/versions/selection">Microsoft documentation</a>.</p>
 <h3 id="deprecated-using-buildpackyml" class="markup-heading">
@@ -906,7 +904,6 @@ schema-version = &#34;0.2&#34;
     </a>
 </h4><p>You can use the Paketo .NET Core buildpack with <a href="https://tilt.dev/">Tilt</a>. This example
 uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt, and shows how to configure watched files.</p>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack(
   &#39;myapp&#39;,
@@ -934,7 +931,6 @@ local_resource(
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <h5 id="notes" class="markup-heading">
     <a class="markup-heading__link" href="#notes">
         Notes
@@ -942,9 +938,7 @@ local_resource(
 </h5><ul>
 <li>The .NET Paketo buildpack works best with Tilt and hot reloading when all of
 your app&rsquo;s source code is in a subdirectory (<code>./src</code> in the above example).
-<!-- raw HTML omitted -->
 Use <a href="#build-an-app-from-source-in-a-subdirectory"><code>BP_DOTNET_PROJECT_PATH</code></a>
-<!-- raw HTML omitted -->
 to indicate the location of the source code.</li>
 <li>The .NET Paketo buildpack will not recompile your source code inside the
 running app container. You must use a <code>local_resource</code> to rebuild your app
@@ -983,20 +977,17 @@ by adding it to your <code>project.toml</code>. See the Cloud Native Buildpacks
     <a class="markup-heading__link" href="#with-a-pack-build-flag-3">
         With a <code>pack build</code> flag
     </a>
-</h4><!-- raw HTML omitted -->
-<div class="copyable">
+</h4><div class="copyable">
     <pre class="copyable__code">pack build myapp --env BP_DEBUG_ENABLED=true
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <h4 id="in-a-projecttoml-file-3" class="markup-heading">
     <a class="markup-heading__link" href="#in-a-projecttoml-file-3">
         In a <code>project.toml</code> file
     </a>
-</h4><!-- raw HTML omitted -->
-<div class="copyable">
+</h4><div class="copyable">
     <pre class="copyable__code">[ _ ]
 schema-version = &#34;0.2&#34;
 
@@ -1007,7 +998,6 @@ schema-version = &#34;0.2&#34;
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <h3 id="setting-up-visual-studio-code-for-remote-debugging" class="markup-heading">
     <a class="markup-heading__link" href="#setting-up-visual-studio-code-for-remote-debugging">
         Setting up Visual Studio Code for Remote Debugging
@@ -1019,7 +1009,6 @@ Code for remote debugging.</p>
 <ol>
 <li>Add <code>.vscode/launch.json</code> to app source directory</li>
 </ol>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">{
   &#34;configurations&#34;: [
@@ -1045,7 +1034,6 @@ Code for remote debugging.</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <ol start="2">
 <li>Install the Microsoft C# extension</li>
 </ol>
@@ -1123,9 +1111,6 @@ appear in build logs if the relevant buildpacks have debug log lines.
 instructions in the <a href="https://paketo.io/docs/howto/configuration/#applying-custom-labels">Applying Custom
 Labels</a>
 section of our configuration docs.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 
             </div>
             
@@ -1138,7 +1123,7 @@ section of our configuration docs.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> December 6, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 20, 2025</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1238,7 +1223,7 @@ section of our configuration docs.</p>
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.1a875076df82aad7fc2a5f837bedc0dafb768061414d083e7118498c5e5be59e.js"></script>
+</footer><script src="/js/main.a0a895f755b2748262c500fb70956c6e0acd36e63c3d2d72304f033f0d9242f0.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

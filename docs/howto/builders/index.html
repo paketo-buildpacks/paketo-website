@@ -519,14 +519,12 @@ documentation</a>.</p>
     </a>
 </h3><p>To build an app with the <code>pack</code> CLI and a specific Paketo builder, use the
 <code>--builder</code> flag at build time.</p>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack build my-nodejs-app --builder paketobuildpacks/builder-jammy-base:latest
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <h3 id="with-tekton" class="markup-heading">
     <a class="markup-heading__link" href="#with-tekton">
         With Tekton
@@ -535,7 +533,6 @@ documentation</a>.</p>
 Cloud Native Buildpacks <a href="https://buildpacks.io/docs/tools/tekton">documentation</a> for creating a Tekton
 pipeline and set the <code>BUILDER_IMAGE</code> parameter of the <a href="https://buildpacks.io/docs/tools/tekton/#43-pipeline"><code>buildpacks</code> task</a>
 to point to a published Paketo builder.</p>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">- name: buildpacks # This task uses the `buildpacks` task to build the application
       taskRef:
@@ -547,14 +544,12 @@ to point to a published Paketo builder.</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <h2 id="extend-a-paketo-builder" class="markup-heading">
     <a class="markup-heading__link" href="#extend-a-paketo-builder">
         Extend a Paketo builder
     </a>
 </h2><p>Paketo builders are OCI images like any others, which means you can extend them with a Dockerfile.
 To extend a Paketo builder, use a Dockerfile as follows:</p>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">cat &gt; builder.Dockerfile &lt;&lt; EOF
 # pick a Paketo builder that suits your needs
@@ -580,7 +575,6 @@ docker build -t my-builder-image -f builder.Dockerfile .
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <p><strong>Note:</strong> Extending a builder in this way will only add packages to the build
 environment where buildpacks run. Installed packages <strong>will not</strong> be available
 at runtime, because the builder&rsquo;s <a href="https://buildpacks.io/docs/reference/config/builder-config/#stack-_required_">run image</a> will be
@@ -593,9 +587,6 @@ unaffected. For more control over build- and runtime packages, see the
 </h2><p>To create your own builder, follow the Cloud Native Buildpacks
 <a href="https://buildpacks.io/docs/operator-guide/create-a-builder/">documentation</a>.  You can still use Paketo <a href="https://github.com/paketo-buildpacks/github-config/tree/main/builder/.github/workflows">builder
 repository automation</a> to maintain your builder.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 
             </div>
             
@@ -608,7 +599,7 @@ repository automation</a> to maintain your builder.</p>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> December 6, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 20, 2025</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -668,7 +659,7 @@ repository automation</a> to maintain your builder.</p>
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.1a875076df82aad7fc2a5f837bedc0dafb768061414d083e7118498c5e5be59e.js"></script>
+</footer><script src="/js/main.a0a895f755b2748262c500fb70956c6e0acd36e63c3d2d72304f033f0d9242f0.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

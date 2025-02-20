@@ -591,13 +591,11 @@ curl -s http://localhost:8080/actuator/health | jq .
 <ul>
 <li><a href="https://gradle.org/">Gradle</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/gradle">Gradle Buildpack</a></li>
 </ul>
-<!-- raw HTML omitted -->
 <ul>
 <li><a href="https://leiningen.org/">Leiningen</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/leiningen">Leiningen Buildpack</a></li>
 <li><a href="https://maven.apache.org/">Maven</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/maven">Maven Buildpack</a></li>
 <li><a href="https://www.scala-sbt.org/index.html">SBT</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/sbt">SBT Buildpack</a></li>
 </ul>
-<!-- raw HTML omitted -->
 <p>The correct build tool to use will be detected based on the contents of the
 application directory.</p>
 <p>The build should produce one the of <a href="#build-from-a-compiled-artifact">supported artifact
@@ -774,13 +772,11 @@ Artifact</a>.</p>
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <p><strong>NOTE:</strong> It is important to properly quote values for <code>BP_INCLUDE_FILES</code> and <code>BP_EXCLUDE_FILES</code> as they may contain wild card characters like <code>*</code> which the shell may interpret. Proper quoting ensures the actual characters are passed through to the buildpack.</p>
-<!-- raw HTML omitted -->
 <h5 id="enable-maven-or-gradle-to-build-javascript-assets-with-nodeyarn" class="markup-heading">
     <a class="markup-heading__link" href="#enable-maven-or-gradle-to-build-javascript-assets-with-nodeyarn">
         Enable Maven or Gradle to build Javascript assets with Node/Yarn
     </a>
 </h5><p>Build tools such as Maven &amp; Gradle can configure plugins &amp; tasks that build Javascript assets for the frontend part of an app. The Java Buildpack can now install the <code>node</code> and <code>yarn</code> binaries for build tools to use in such tasks.</p>
-<!-- raw HTML omitted -->
 <p>When building from source with the Maven or Gradle buildpacks, you can enable installation of Node and/or Yarn using the following environment variable:</p>
 <ul>
 <li><code>BP_JAVA_INSTALL_NODE</code> - set to <code>true</code> to enable, defaults to <code>false</code>.</li>
@@ -832,14 +828,12 @@ Artifact</a>.</p>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/JAR_(file_format)#Executable_JAR_files">Executable JAR</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/executable-jar">Executable Jar Buildpack</a></li>
 </ul>
-<!-- raw HTML omitted -->
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/WAR_(file_format)">WAR</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/apache-tomcat">Apache Tomcat Buildpack</a></li>
 <li><a href="https://docs.gradle.org/current/userguide/distribution_plugin.html">Distribution ZIP</a> - Support provided by the <a href="https://github.com/paketo-buildpacks/dist-zip">DistZip Buildpack</a></li>
 </ul>
 <p>The Java Buildpack expects the application directory to contain the extracted contents of the archive (e.g. an exploded JAR). Most platforms will automatically extract any provided archives.</p>
 <p>If a WAR is detect the Java Buildpack will install <a href="https://tomcat.apache.org">Apache Tomcat</a>. For exact set of supported Tomcat versions can be found in the Java Buildpack <a href="https://github.com/paketo-buildpacks/java/releases">releases notes</a>. For tomcat configuration options see the <a href="https://github.com/paketo-buildpacks/apache-tomcat">Apache Tomcat Buildpack</a>.</p>
-<!-- raw HTML omitted -->
 <p>The component buildpack for the provided artifact format will contribute a start command to the image.</p>
 <p><em>Note</em>: All three of the <a href="https://github.com/paketo-buildpacks/apache-tomcat">Apache Tomcat Buildpack</a>,
 <a href="https://github.com/paketo-buildpacks/executable-jar">Executable Jar Buildpack</a>, and <a href="https://github.com/paketo-buildpacks/dist-zip">DistZip
@@ -949,7 +943,6 @@ pack build samples/java \
 </ol>
 <p>See the <a href="https://github.com/paketo-buildpacks/bellsoft-liberica">homepage</a> for the BellSoft Liberica Buildpack for a full set of configuration options.</p>
 <p>For example, you can add additional JVM flags to configure garbage collection, memory flags and other settings.</p>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">docker run --rm --tty \
   --env JAVA_TOOL_OPTIONS=&#39;-XX:&#43;UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40&#39; \
@@ -959,13 +952,11 @@ pack build samples/java \
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <h3 id="use-an-alternative-jvm" class="markup-heading">
     <a class="markup-heading__link" href="#use-an-alternative-jvm">
         Use an Alternative JVM
     </a>
 </h3><p>By default, the <a href="https://github.com/paketo-buildpacks/java">Paketo Java buildpack</a> will use the Liberica JVM. The following Paketo JVM buildpacks may be used to substitute alternate JVM implementations in place of Liberica&rsquo;s JVM.</p>
-<!-- raw HTML omitted -->
 <table>
   <thead>
       <tr>
@@ -1022,7 +1013,6 @@ pack build samples/java \
       </tr>
   </tbody>
 </table>
-<!-- raw HTML omitted -->
 <ol>
 <li><em><span class="sub">Only provides JDK releases</span>
 </em></li>
@@ -1169,14 +1159,12 @@ pack build samples/java-native \
 </table>
 <p>To use an alternative Java Native Image Toolkit, you will need to set two <code>--buildpack</code> arguments to <code>pack build</code>, one for the alternative Java Native Image Toolkit buildpack you&rsquo;d like to use and one for the Paketo Java Native Image buildpack (in that order). This works because while you end up with two Java Native Image Toolkit buildpacks, the first one, the one you&rsquo;re specifying will claim the build plan entries so the second one will end up being a no-op and doing nothing.</p>
 <p>This example will switch in the GraalVM Community Edition buildpack:</p>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack build samples/native-image --buildpack paketo-buildpacks/graalvm --buildpack paketo-buildpacks/java-native-image`
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <p>There is one drawback to this approach. When using the method above to specify an alternative Java Native Image Toolkit vendor buildpack, this alternate buildpack ends up running before the CA certs buildpack and therefore traffic from the alternate Java Native Image Toolkit vendor buildpack won’t trust any additional CA certs. This is not expected to impact many users because Java Native Image Toolkit buildpacks should reach out to URLs that have a cert signed by a known authority with a CA in the default system truststore.</p>
 <p>If you have customized your Java Native Image Toolkit buildpack to download the Java Native Image Toolkit from a URL that uses a certificate not signed by a well-known CA, you can workaround this by specifying the CA certs buildpack to run first. This works because while you will end up with the CA certificates buildpack specified twice, the lifecycle is smart enough to drop the second one.</p>
 <p>For example:</p>
@@ -1250,7 +1238,6 @@ pack build samples/java-native \
 <li><code>cd tilt-example-java/0-base</code></li>
 <li>Modify your <code>Tiltfile</code> to look like this:</li>
 </ol>
-<!-- raw HTML omitted -->
 <pre><code><div class="copyable">
     <pre class="copyable__code">    load(&#39;ext://pack&#39;, &#39;pack&#39;)
 
@@ -1268,7 +1255,6 @@ pack build samples/java-native \
     <div class="copyable__copied copied">Copied!</div>
 </div>
 </code></pre>
-<!-- raw HTML omitted -->
 <ol start="4">
 <li>
 <p>Execute <code>tilt up</code>.</p>
@@ -1360,14 +1346,12 @@ appear in build logs if the relevant buildpacks have debug log lines.
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <p>From inside the new bash session, you can run the following to view the NMT data:</p>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">jcmd 1 VM.native_memory summary
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <p>The first argument should be the JVM PID, in the case of the Paketo Java buildpack, this will be <code>1</code>.</p>
 <h3 id="java-nmt-and-java-8" class="markup-heading">
     <a class="markup-heading__link" href="#java-nmt-and-java-8">
@@ -1381,7 +1365,6 @@ appear in build logs if the relevant buildpacks have debug log lines.
     </a>
 </h3><p>Java NMT support does not work with <a href="#enable-process-reloading">Reloadable Processes</a>. This is because when using reloadable processes, the JVM PID is not 1 and not easily determinable by the buildpack Java NMT helper. Thus the helper cannot set the environment variables required by the JVM to enable Java NMT.</p>
 <p>If you attempt to enable Java NMT and are using Reloadable Processes, that&rsquo;s OK. The JVM will not enable Java NMT and it will output the following messages.</p>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">OpenJDK 64-Bit Server VM warning: Native Memory Tracking did not setup properly, using wrong launcher?
 OpenJDK 64-Bit Server VM warning: PrintNMTStatistics is disabled, because native memory tracking is not enabled
@@ -1389,7 +1372,6 @@ OpenJDK 64-Bit Server VM warning: PrintNMTStatistics is disabled, because native
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <p>Your application should continue to run, but with Java NMT disabled.</p>
 <h2 id="enable-java-flight-recorder-jfr" class="markup-heading">
     <a class="markup-heading__link" href="#enable-java-flight-recorder-jfr">
@@ -1460,13 +1442,6 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
 <p>Each argument provided to the launcher will be evaluated by the shell prior to execution and the original tokenization will be preserved. Note that, in the example above <code>'JAVA_TOOL_OPTIONS: $JAVA_TOOL_OPTIONS'</code> is single quoted so that <code>$JAVA_TOOL_OPTIONS</code> is evaluated in the container, rather than by the host shell.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 
             </div>
             
@@ -1479,7 +1454,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> December 6, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 20, 2025</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1582,7 +1557,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.1a875076df82aad7fc2a5f837bedc0dafb768061414d083e7118498c5e5be59e.js"></script>
+</footer><script src="/js/main.a0a895f755b2748262c500fb70956c6e0acd36e63c3d2d72304f033f0d9242f0.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

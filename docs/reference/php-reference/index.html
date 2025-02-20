@@ -497,11 +497,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
     <li><a href="#buildpack-configurations">Buildpack Configurations</a>
       <ul>
-        <li><a href="#php-distribution-buildpackbpphp-dist-configuration"><a href="https://github.com/paketo-buildpacks/php-dist">PHP Distribution Buildpack</a> Configuration</a></li>
-        <li><a href="#php-fpm-buildpackbpphp-fpm-configuration"><a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM Buildpack</a> Configuration</a></li>
-        <li><a href="#php-nginx-buildpackbpphp-nginx-configuration"><a href="https://github.com/paketo-buildpacks/php-nginx">PHP NGINX Buildpack</a> Configuration</a></li>
-        <li><a href="#php-httpd-buildpackbpphp-httpd-configuration"><a href="https://github.com/paketo-buildpacks/php-httpd">PHP HTTPD Buildpack</a> Configuration</a></li>
-        <li><a href="#composer-install-buildpackbpcomposer-install-configuration"><a href="https://github.com/paketo-buildpacks/composer-install">Composer Install Buildpack</a> Configuration</a></li>
+        <li><a href="#php-distribution-buildpack-configuration"><a href="https://github.com/paketo-buildpacks/php-dist">PHP Distribution Buildpack</a> Configuration</a></li>
+        <li><a href="#php-fpm-buildpack-configuration"><a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM Buildpack</a> Configuration</a></li>
+        <li><a href="#php-nginx-buildpack-configuration"><a href="https://github.com/paketo-buildpacks/php-nginx">PHP NGINX Buildpack</a> Configuration</a></li>
+        <li><a href="#php-httpd-buildpack-configuration"><a href="https://github.com/paketo-buildpacks/php-httpd">PHP HTTPD Buildpack</a> Configuration</a></li>
+        <li><a href="#composer-install-buildpack-configuration"><a href="https://github.com/paketo-buildpacks/composer-install">Composer Install Buildpack</a> Configuration</a></li>
       </ul>
     </li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
@@ -587,8 +587,8 @@ retrieve the SBOM for your app image.</p>
 as include configurations from user-provided sources. The sections below
 outline the various configurations the buildpacks provide during the build process, and
 the various locations that will also be considered as configuration sources.</p>
-<h3 id="php-distribution-buildpackbpphp-dist-configuration" class="markup-heading">
-    <a class="markup-heading__link" href="#php-distribution-buildpackbpphp-dist-configuration">
+<h3 id="php-distribution-buildpack-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#php-distribution-buildpack-configuration">
         <a href="https://github.com/paketo-buildpacks/php-dist">PHP Distribution Buildpack</a> Configuration
     </a>
 </h3><p>This section lists the various configuration sources for PHP <code>.ini</code> files that
@@ -605,8 +605,8 @@ path to the PHP library directory.</li>
 <li>User-provided configurations from the <code>&lt;APP-ROOT&gt;/.php.ini.d</code> directory.</li>
 </ol>
 <p>Check out the <a href="https://paketo.io/docs/reference/php-reference/#php_ini_scan_dir">PHP_INI_SCAN_DIR documentation section</a> for more information.</p>
-<h3 id="php-fpm-buildpackbpphp-fpm-configuration" class="markup-heading">
-    <a class="markup-heading__link" href="#php-fpm-buildpackbpphp-fpm-configuration">
+<h3 id="php-fpm-buildpack-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#php-fpm-buildpack-configuration">
         <a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM Buildpack</a> Configuration
     </a>
 </h3><p>Configuration for PHP FPM comes from a few sources, listed here in order of precedence from highest to lowest:</p>
@@ -622,8 +622,8 @@ to make FPM work well with web servers.</li>
 <li>The <a href="https://github.com/paketo-buildpacks/php-fpm/blob/e605c742b1fdde7d30d67fc21360227f40fecb93/config/php-fpm-base.conf">default PHP FPM configuration</a> that is distributed alongside the PHP
 Distribution itself. This is stored at <code>$PHPRC/php-fpm.d/www.conf.default</code> in the container.</li>
 </ol>
-<h3 id="php-nginx-buildpackbpphp-nginx-configuration" class="markup-heading">
-    <a class="markup-heading__link" href="#php-nginx-buildpackbpphp-nginx-configuration">
+<h3 id="php-nginx-buildpack-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#php-nginx-buildpack-configuration">
         <a href="https://github.com/paketo-buildpacks/php-nginx">PHP NGINX Buildpack</a> Configuration
     </a>
 </h3><p>The PHP NGINX Buildpack sets up two flavours of configuration itself, and
@@ -642,8 +642,8 @@ variables.</li>
 <li>NGINX-specific FPM settings (see FPM section above) is added to work with
 FPM.</li>
 </ol>
-<h3 id="php-httpd-buildpackbpphp-httpd-configuration" class="markup-heading">
-    <a class="markup-heading__link" href="#php-httpd-buildpackbpphp-httpd-configuration">
+<h3 id="php-httpd-buildpack-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#php-httpd-buildpack-configuration">
         <a href="https://github.com/paketo-buildpacks/php-httpd">PHP HTTPD Buildpack</a> Configuration
     </a>
 </h3><ol>
@@ -653,8 +653,8 @@ can be configured via environment variables.</li>
 <li>User-provided configuration files located in
 <code>&lt;APP-ROOT&gt;/.httpd.conf.d/*.conf</code>.</li>
 </ol>
-<h3 id="composer-install-buildpackbpcomposer-install-configuration" class="markup-heading">
-    <a class="markup-heading__link" href="#composer-install-buildpackbpcomposer-install-configuration">
+<h3 id="composer-install-buildpack-configuration" class="markup-heading">
+    <a class="markup-heading__link" href="#composer-install-buildpack-configuration">
         <a href="https://github.com/paketo-buildpacks/composer-install">Composer Install Buildpack</a> Configuration
     </a>
 </h3><p>The Composer Install Buildpack sets up configuration to be used for running
@@ -920,9 +920,6 @@ https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Bui
       </tr>
   </tbody>
 </table>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 
             </div>
             
@@ -935,7 +932,7 @@ https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Bui
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> December 6, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 20, 2025</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -951,11 +948,11 @@ https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Bui
     <li><a href="#software-bill-of-materials">Software Bill of Materials</a></li>
     <li><a href="#buildpack-configurations">Buildpack Configurations</a>
       <ul>
-        <li><a href="#php-distribution-buildpackbpphp-dist-configuration"><a href="https://github.com/paketo-buildpacks/php-dist">PHP Distribution Buildpack</a> Configuration</a></li>
-        <li><a href="#php-fpm-buildpackbpphp-fpm-configuration"><a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM Buildpack</a> Configuration</a></li>
-        <li><a href="#php-nginx-buildpackbpphp-nginx-configuration"><a href="https://github.com/paketo-buildpacks/php-nginx">PHP NGINX Buildpack</a> Configuration</a></li>
-        <li><a href="#php-httpd-buildpackbpphp-httpd-configuration"><a href="https://github.com/paketo-buildpacks/php-httpd">PHP HTTPD Buildpack</a> Configuration</a></li>
-        <li><a href="#composer-install-buildpackbpcomposer-install-configuration"><a href="https://github.com/paketo-buildpacks/composer-install">Composer Install Buildpack</a> Configuration</a></li>
+        <li><a href="#php-distribution-buildpack-configuration"><a href="https://github.com/paketo-buildpacks/php-dist">PHP Distribution Buildpack</a> Configuration</a></li>
+        <li><a href="#php-fpm-buildpack-configuration"><a href="https://github.com/paketo-buildpacks/php-fpm">PHP FPM Buildpack</a> Configuration</a></li>
+        <li><a href="#php-nginx-buildpack-configuration"><a href="https://github.com/paketo-buildpacks/php-nginx">PHP NGINX Buildpack</a> Configuration</a></li>
+        <li><a href="#php-httpd-buildpack-configuration"><a href="https://github.com/paketo-buildpacks/php-httpd">PHP HTTPD Buildpack</a> Configuration</a></li>
+        <li><a href="#composer-install-buildpack-configuration"><a href="https://github.com/paketo-buildpacks/composer-install">Composer Install Buildpack</a> Configuration</a></li>
       </ul>
     </li>
     <li><a href="#buildpack-set-environment-variables">Buildpack-Set Environment Variables</a>
@@ -1025,7 +1022,7 @@ https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Bui
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.1a875076df82aad7fc2a5f837bedc0dafb768061414d083e7118498c5e5be59e.js"></script>
+</footer><script src="/js/main.a0a895f755b2748262c500fb70956c6e0acd36e63c3d2d72304f033f0d9242f0.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

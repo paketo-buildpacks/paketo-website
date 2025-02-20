@@ -747,7 +747,6 @@ docker run --rm --tty --publish 8080:8080 \
 </div>
 </li>
 </ol>
-<!-- raw HTML omitted -->
 <p>The application should now be running and you can access it with <code>curl -s http://localhost:8080/actuator/health | jq .</code> or through your browser. In addition, the agent should be running now.</p>
 <p>If you&rsquo;re using a profiler, you may connect by following the instructions in the section above for your profiler. If using a reporting agent, it should be collecting and reporting data now. Allow time for data to be reported to your APM vendor and check the APM vendor&rsquo;s UI to confirm it&rsquo;s receiving data.</p>
 <h3 id="apm-buildpacks-with-paketo-builders" class="markup-heading">
@@ -756,23 +755,13 @@ docker run --rm --tty --publish 8080:8080 \
     </a>
 </h3><p>Not all of the Paketo Application Monitoring buildpacks are presently included in the Paketo builders. At the moment, the builders include Azure Application Insights, Google Stackdriver, and Datadog.</p>
 <p>We plan to add all of them in the future, but there are presently technical limitations around the maximum number of layers that can be added to the builder preventing more from being added to the builders. What you can do in the meantime is to manually include the APM buildpack that you would like to use at the end of the buildpack list.</p>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack build samples/java --volume &#34;$(pwd)/binding:/platform/bindings/skywalking&#34; -b urn:cnb:builder:paketo-buildpacks/java -b paketo-buildpacks/apache-skywalking
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <p><strong>Note</strong>: it is important to use the <code>urn:cnb:builder:</code> reference so that the build uses the composite buildpack that already exists on the builder. If you reference a composite buildpack image, like <code>gcr.io/paketo-buildpacks/java</code> or <code>paketo-buildpacks/java</code>, this will result in downloading and adding that image to the builder, despite it already being there, which increases the layer count and can make the build fail.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 
             </div>
             
@@ -785,7 +774,7 @@ docker run --rm --tty --publish 8080:8080 \
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> December 6, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 20, 2025</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -870,7 +859,7 @@ docker run --rm --tty --publish 8080:8080 \
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.1a875076df82aad7fc2a5f837bedc0dafb768061414d083e7118498c5e5be59e.js"></script>
+</footer><script src="/js/main.a0a895f755b2748262c500fb70956c6e0acd36e63c3d2d72304f033f0d9242f0.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

@@ -806,7 +806,6 @@ Github username and service account key, add the following to
 <code>/tmp/git-binding/credentials</code>:</p>
 </li>
 </ol>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">url=https://github.com
 username=&lt;USERNAME&gt;
@@ -815,7 +814,6 @@ password=&lt;SERVICE ACCOUNT KEY&gt;
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <ol>
 <li>Provide the service binding and <code>$GOPRIVATE</code> environment variable at build
 time:
@@ -966,7 +964,6 @@ schema-version = &#34;0.2&#34;
     </a>
 </h4><p>You can use the Paketo Go buildpack with <a href="https://tilt.dev/">Tilt</a>. This example
 uses the <a href="https://github.com/tilt-dev/tilt-extensions/tree/master/pack"><code>pack</code> extension</a> for Tilt, and shows how to configure watched files.</p>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack(&#39;my-app&#39;,
   buildpacks=[&#34;paketo-buildpacks/go&#34;],
@@ -989,7 +986,6 @@ local_resource(&#39;go-build&#39;,
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <h5 id="notes" class="markup-heading">
     <a class="markup-heading__link" href="#notes">
         Notes
@@ -1054,7 +1050,6 @@ build-time SBOM.</p>
 <li>When building with the pack CLI, use the flag <code>--sbom-output-dir</code> to extract
 SBOMs from the build:</li>
 </ol>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack build my-app --buildpack paketo-buildpacks/go \
                   --sbom-output-dir /tmp/sbom-output
@@ -1062,7 +1057,6 @@ SBOMs from the build:</li>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <ol start="2">
 <li>To view the Go modules used in the build, inspect one of the SBOMs generated
 by the Go Mod Vendor buildpack. For instance, to view the SBOM as
@@ -1082,14 +1076,12 @@ appear in build logs if the relevant buildpacks have debug log lines.
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">cat /tmp/sbom-output/build/paketo-buildpacks_go-mod-vendor/sbom.cdx.json
 </pre>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <h2 id="use-workspace-modules" class="markup-heading">
     <a class="markup-heading__link" href="#use-workspace-modules">
         Use workspace modules
@@ -1107,7 +1099,6 @@ In such case you may want to initialize and use workspace modules prior to build
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <p>It will run <code>go work init</code> before running <code>go work use (...)</code>.</p>
-<!-- raw HTML omitted -->
 
             </div>
             
@@ -1120,7 +1111,7 @@ In such case you may want to initialize and use workspace modules prior to build
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> December 6, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 20, 2025</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1217,7 +1208,7 @@ In such case you may want to initialize and use workspace modules prior to build
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.1a875076df82aad7fc2a5f837bedc0dafb768061414d083e7118498c5e5be59e.js"></script>
+</footer><script src="/js/main.a0a895f755b2748262c500fb70956c6e0acd36e63c3d2d72304f033f0d9242f0.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

@@ -545,11 +545,9 @@ cd samples
 <ul>
 <li><a href="#environment-variables">Environment Variables</a> - used for generic configuration at both <strong>build-time</strong> and <strong>runtime</strong>.</li>
 </ul>
-<!-- raw HTML omitted -->
 <ul>
 <li><a href="#buildpackyml">buildpack.yml</a> - used for generic configuration at <strong>build-time</strong>.</li>
 </ul>
-<!-- raw HTML omitted -->
 <ul>
 <li><a href="#bindings">Bindings</a> - used for <strong>secret</strong> configuration at both <strong>build-time</strong> and <strong>runtime</strong>.</li>
 <li><a href="#procfiles">Procfiles</a> - used to provide custom <strong>process types</strong> at <strong>build-time</strong>.</li>
@@ -573,7 +571,6 @@ cd samples
     <div class="copyable__copied copied">Copied!</div>
 </div>
 <p>During the build process, a buildpack may invoke other programs that accept configuration via the environment. Users may configure these tools as they would normally. For example, the command below configures the JVM memory settings for the JVM running Maven using <a href="https://maven.apache.org/configure.html#maven_opts-environment-variable"><code>MAVEN_OPTS</code></a>.</p>
-<!-- raw HTML omitted -->
 <div class="copyable">
     <pre class="copyable__code">pack build samples/java  \
   --path java/maven \
@@ -582,7 +579,6 @@ cd samples
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div>
-<!-- raw HTML omitted -->
 <h4 id="runtime-environment-variables" class="markup-heading">
     <a class="markup-heading__link" href="#runtime-environment-variables">
         Runtime Environment Variables
@@ -909,7 +905,7 @@ When using bindings to set hostname specific mirrors, their keys must match the 
 </span></span></code></pre></div><p>If a given <a href="https://paketo.io/docs/concepts/buildpacks/">language family buildpack</a> does not contain the Paketo CA Certificates Buildpack it can be explicitly prepended at runtime.</p>
 <p><strong>Example</strong>: Adding a CA Certificate at Runtime</p>
 <p>The samples repository contains a simple Golang application that will make a <code>HEAD</code> request to a provided URL.</p>
-<p>Given a file <code>&lt;your-ca.pem&gt;</code> containing a single PEM encoded CA certificate needed to verify a TLS connection to <!-- raw HTML omitted --> an https<!-- raw HTML omitted --> URL <code>&lt;url&gt;</code>, add the CA certificate to the binding.</p>
+<p>Given a file <code>&lt;your-ca.pem&gt;</code> containing a single PEM encoded CA certificate needed to verify a TLS connection to  an https URL <code>&lt;url&gt;</code>, add the CA certificate to the binding.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cp &lt;your-ca.pem&gt; ca-certificates/binding/
 </span></span></code></pre></div><p>The provided sample contains a simple Golang application that will make a <code>HEAD</code> request to a provided URL. Build the application using the CA Certificates buildpack</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">pack build samples/ca-certificates <span class="se">\
@@ -973,10 +969,6 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
 </span></span><span class="line"><span class="cl"><span class="nv">LC_ALL</span><span class="o">=</span>
 </span></span></code></pre></div><p>If you wish to set a locale, you may do so when you run the image by setting the corresponding environment variable. For example, with Docker one could execute <code>docker run -e LANG=en_US.utf8 ...</code> to change the locale.</p>
 <p>This isn&rsquo;t always necessary but can impact output from your application. For example if you have an application that writes unicode characters to STDOUT/STDERR and you go to view those, possibly with <code>docker logs</code>, they will not display correctly unless you have a locale set that supports unicode, like UTF-8 in the example above.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
 
             </div>
             
@@ -989,7 +981,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> December 6, 2024</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> February 20, 2025</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1065,7 +1057,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.1a875076df82aad7fc2a5f837bedc0dafb768061414d083e7118498c5e5be59e.js"></script>
+</footer><script src="/js/main.a0a895f755b2748262c500fb70956c6e0acd36e63c3d2d72304f033f0d9242f0.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
