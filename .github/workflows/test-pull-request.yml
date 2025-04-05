@@ -23,3 +23,34 @@ jobs:
 
     - name: Check Spelling in Content Dir
       run: scripts/check-spelling.sh
+
+  build-pr:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: false
+
+    - uses: actions/setup-node@v4.1.0
+      with:
+        node-version: 22
+        check-latest: true
+        cache: 'npm'
+
+    - name: Get Hugo Version
+      id: hugo-version
+      run: |
+        version=$(jq -r .hugo "scripts/.util/tools.json")
+        echo "version=${version#v}" >> "$GITHUB_OUTPUT"
+
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v3
+      with:
+        hugo-version: ${{ steps.hugo-version.outputs.version }}
+        extended: true
+
+    - name: Install node Modules
+      run: npm ci
+
+    - name: Build
+      run: hugo
