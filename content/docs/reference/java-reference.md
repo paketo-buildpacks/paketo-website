@@ -27,7 +27,7 @@ This section describes the algorithm that is responsible for providing this memo
 
 ### Heap
 
-The Heap memory value, ultimately supplied as the `-xmX` JVM flag, is calculated using the following formula:
+The Heap memory value, ultimately supplied as the `-Xmx` JVM flag, is calculated using the following formula:
 
 `Heap = Total Container Memory - Non-Heap - Headroom`
 
