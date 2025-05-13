@@ -127,6 +127,7 @@ Procfile
 Procfiles
 Profiler
 REPL
+RHEL
 Rackup
 Reloadable
 Repo
@@ -155,6 +156,7 @@ TLS
 TOML
 Tomee
 Trivy
+UBI8
 UI
 URI(s)?
 URI's
