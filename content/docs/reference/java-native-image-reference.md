@@ -55,6 +55,7 @@ The following component buildpacks compose the Paketo Java Native Image Buildpac
 [bp/sbt]:https://github.com/paketo-buildpacks/sbt
 [bp/spring-boot]:https://github.com/paketo-buildpacks/spring-boot
 [bp/native-image]:https://github.com/paketo-buildpacks/spring-boot-native-image
+[bp/java-native-image]:https://github.com/paketo-buildpacks/java-native-image
 
 [samples]:https://github.com/paketo-buildpacks/samples
 
