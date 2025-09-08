@@ -758,7 +758,7 @@ Each argument provided to the launcher will be evaluated by the shell prior to e
 
 For Apache software, the Paketo project pulls downloads from [the main Apache Downloads CDN](https://downloads.apache.org). This provides users with the fastest possible downloads. The drawback of this is that Apache only hosts the most recent versions of software on this CDN. This causes older versions of our buildpacks to fail, because those older versions will still be looking at the Apache CDN for their downloads, but Apache has moved them off to the [Archive Site](https://archive.apache.org/). Because of the nature of container images and the fact that those download links are in the container image, we cannot go back and update our images.
 
-If you need to use an older version of Apache Tomcat or Apache Tomee (or other Apache software) and you are hitting this issue, you can use the [Dependency Mirror](/docs/howto/configuration/#dependency-mirrors) feature to continue accessing older software. You just need to set the following envirionment variable at build time, typically with the `-e` argument to `pack build`.
+If you need to use an older version of Apache Tomcat or Apache Tomee (or other Apache software) and you are hitting this issue, you can use the [Dependency Mirror]({{< ref "/docs/howto/configuration/#dependency-mirrors" >}}) feature to continue accessing older software. You just need to set the following envirionment variable at build time, typically with the `-e` argument to `pack build`.
 
 Example:
 
