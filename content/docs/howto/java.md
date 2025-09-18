@@ -754,6 +754,26 @@ docker run --rm --entrypoint launcher samples/java echo 'JAVA_TOOL_OPTIONS: $JAV
 
 Each argument provided to the launcher will be evaluated by the shell prior to execution and the original tokenization will be preserved. Note that, in the example above `'JAVA_TOOL_OPTIONS: $JAVA_TOOL_OPTIONS'` is single quoted so that `$JAVA_TOOL_OPTIONS` is evaluated in the container, rather than by the host shell.
 
+## Apache & YourKit Dependency Mirroring
+
+For Apache software, the Paketo project pulls downloads from [the main Apache Downloads CDN](https://downloads.apache.org). This provides users with the fastest possible downloads. The drawback of this is that Apache only hosts the most recent versions of software on this CDN. This causes older versions of our buildpacks to fail, because those older versions will still be looking at the Apache CDN for their downloads, but Apache has moved them off to the [Archive Site](https://archive.apache.org/). Because of the nature of container images and the fact that those download links are in the container image, we cannot go back and update our images.
+
+If you need to use an older version of Apache Tomcat or Apache Tomee (or other Apache software) and you are hitting this issue, you can use the [Dependency Mirror]({{< ref "/docs/howto/configuration/#dependency-mirrors" >}}) feature to continue accessing older software. You just need to set the following environment variable at build time, typically with the `-e` argument to `pack build`.
+
+Example:
+
+```
+BP_DEPENDENCY_MIRROR_DOWNLOADS_APACHE_ORG=https://archive.apache.org/dist
+```
+
+When the build runs, you should see the buildpack swap in the `archive.apache.org` hostname and download from that location.
+
+The same is true for YourKit, you just need a different environment variable. The following will switch downloads to come from their archive mirror.
+
+```
+BP_DEPENDENCY_MIRROR_DOWNLOAD_YOURKIT_COM=https://archive.yourkit.com
+```
+
 <!-- spellchecker-disable -->
 <!-- buildpacks -->
 [bp/adoptium]:https://github.com/paketo-buildpacks/adoptium
