@@ -538,6 +538,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#execute-a-custom-command-in-the-buildpack-provided-environment">Execute a Custom Command in the Buildpack-Provided Environment</a></li>
       </ul>
     </li>
+    <li><a href="#apache--yourkit-dependency-mirroring">Apache &amp; YourKit Dependency Mirroring</a></li>
   </ul>
 </nav>
 </div>
@@ -1441,7 +1442,18 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
 <p>Each argument provided to the launcher will be evaluated by the shell prior to execution and the original tokenization will be preserved. Note that, in the example above <code>'JAVA_TOOL_OPTIONS: $JAVA_TOOL_OPTIONS'</code> is single quoted so that <code>$JAVA_TOOL_OPTIONS</code> is evaluated in the container, rather than by the host shell.</p>
-
+<h2 id="apache--yourkit-dependency-mirroring" class="markup-heading">
+    <a class="markup-heading__link" href="#apache--yourkit-dependency-mirroring">
+        Apache &amp; YourKit Dependency Mirroring
+    </a>
+</h2><p>For Apache software, the Paketo project pulls downloads from <a href="https://downloads.apache.org">the main Apache Downloads CDN</a>. This provides users with the fastest possible downloads. The drawback of this is that Apache only hosts the most recent versions of software on this CDN. This causes older versions of our buildpacks to fail, because those older versions will still be looking at the Apache CDN for their downloads, but Apache has moved them off to the <a href="https://archive.apache.org/">Archive Site</a>. Because of the nature of container images and the fact that those download links are in the container image, we cannot go back and update our images.</p>
+<p>If you need to use an older version of Apache Tomcat or Apache Tomee (or other Apache software) and you are hitting this issue, you can use the <a href="https://paketo.io/docs/howto/configuration/#dependency-mirrors">Dependency Mirror</a> feature to continue accessing older software. You just need to set the following environment variable at build time, typically with the <code>-e</code> argument to <code>pack build</code>.</p>
+<p>Example:</p>
+<pre tabindex="0"><code>BP_DEPENDENCY_MIRROR_DOWNLOADS_APACHE_ORG=https://archive.apache.org/dist
+</code></pre><p>When the build runs, you should see the buildpack swap in the <code>archive.apache.org</code> hostname and download from that location.</p>
+<p>The same is true for YourKit, you just need a different environment variable. The following will switch downloads to come from their archive mirror.</p>
+<pre tabindex="0"><code>BP_DEPENDENCY_MIRROR_DOWNLOAD_YOURKIT_COM=https://archive.yourkit.com
+</code></pre>
             </div>
             
   <a href="https://github.com/paketo-buildpacks/paketo-website/edit/main/content/docs/howto/java.md" target="_blank" class="github-edit" style="text-decoration:none">
@@ -1453,7 +1465,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> May 13, 2025</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> September 18, 2025</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1510,6 +1522,7 @@ The following command will print value of <code>$JAVA_TOOL_OPTIONS</code> set by
         <li><a href="#execute-a-custom-command-in-the-buildpack-provided-environment">Execute a Custom Command in the Buildpack-Provided Environment</a></li>
       </ul>
     </li>
+    <li><a href="#apache--yourkit-dependency-mirroring">Apache &amp; YourKit Dependency Mirroring</a></li>
   </ul>
 </nav>
 </div>
