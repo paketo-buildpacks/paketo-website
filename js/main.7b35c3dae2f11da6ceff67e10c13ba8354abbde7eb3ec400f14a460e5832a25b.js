@@ -50,12 +50,12 @@
       })(exports, function() {
         return (
           /******/
-          function() {
+          (function() {
             var __webpack_modules__ = {
               /***/
               686: (
                 /***/
-                function(__unused_webpack_module, __webpack_exports__, __webpack_require__2) {
+                (function(__unused_webpack_module, __webpack_exports__, __webpack_require__2) {
                   "use strict";
                   __webpack_require__2.d(__webpack_exports__, {
                     "default": function() {
@@ -268,7 +268,7 @@
                     }
                     return element.getAttribute(attribute);
                   }
-                  var Clipboard2 = /* @__PURE__ */ function(_Emitter) {
+                  var Clipboard2 = /* @__PURE__ */ (function(_Emitter) {
                     _inherits(Clipboard3, _Emitter);
                     var _super = _createSuper(Clipboard3);
                     function Clipboard3(trigger, options) {
@@ -407,14 +407,14 @@
                       }
                     }]);
                     return Clipboard3;
-                  }(tiny_emitter_default());
+                  })(tiny_emitter_default());
                   var clipboard = Clipboard2;
-                }
+                })
               ),
               /***/
               828: (
                 /***/
-                function(module2) {
+                (function(module2) {
                   var DOCUMENT_NODE_TYPE = 9;
                   if (typeof Element !== "undefined" && !Element.prototype.matches) {
                     var proto = Element.prototype;
@@ -429,12 +429,12 @@
                     }
                   }
                   module2.exports = closest;
-                }
+                })
               ),
               /***/
               438: (
                 /***/
-                function(module2, __unused_webpack_exports, __webpack_require__2) {
+                (function(module2, __unused_webpack_exports, __webpack_require__2) {
                   var closest = __webpack_require__2(828);
                   function _delegate(element, selector, type, callback, useCapture) {
                     var listenerFn = listener.apply(this, arguments);
@@ -468,12 +468,12 @@
                     };
                   }
                   module2.exports = delegate;
-                }
+                })
               ),
               /***/
               879: (
                 /***/
-                function(__unused_webpack_module, exports2) {
+                (function(__unused_webpack_module, exports2) {
                   exports2.node = function(value) {
                     return value !== void 0 && value instanceof HTMLElement && value.nodeType === 1;
                   };
@@ -488,12 +488,12 @@
                     var type = Object.prototype.toString.call(value);
                     return type === "[object Function]";
                   };
-                }
+                })
               ),
               /***/
               370: (
                 /***/
-                function(module2, __unused_webpack_exports, __webpack_require__2) {
+                (function(module2, __unused_webpack_exports, __webpack_require__2) {
                   var is = __webpack_require__2(879);
                   var delegate = __webpack_require__2(438);
                   function listen(target, type, callback) {
@@ -540,12 +540,12 @@
                     return delegate(document.body, selector, type, callback);
                   }
                   module2.exports = listen;
-                }
+                })
               ),
               /***/
               817: (
                 /***/
-                function(module2) {
+                (function(module2) {
                   function select(element) {
                     var selectedText;
                     if (element.nodeName === "SELECT") {
@@ -576,12 +576,12 @@
                     return selectedText;
                   }
                   module2.exports = select;
-                }
+                })
               ),
               /***/
               279: (
                 /***/
-                function(module2) {
+                (function(module2) {
                   function E2() {
                   }
                   E2.prototype = {
@@ -629,7 +629,7 @@
                   };
                   module2.exports = E2;
                   module2.exports.TinyEmitter = E2;
-                }
+                })
               )
               /******/
             };
@@ -650,7 +650,7 @@
               __webpack_modules__[moduleId](module2, module2.exports, __webpack_require__);
               return module2.exports;
             }
-            !function() {
+            !(function() {
               __webpack_require__.n = function(module2) {
                 var getter = module2 && module2.__esModule ? (
                   /******/
@@ -666,8 +666,8 @@
                 __webpack_require__.d(getter, { a: getter });
                 return getter;
               };
-            }();
-            !function() {
+            })();
+            !(function() {
               __webpack_require__.d = function(exports2, definition) {
                 for (var key in definition) {
                   if (__webpack_require__.o(definition, key) && !__webpack_require__.o(exports2, key)) {
@@ -675,14 +675,14 @@
                   }
                 }
               };
-            }();
-            !function() {
+            })();
+            !(function() {
               __webpack_require__.o = function(obj, prop) {
                 return Object.prototype.hasOwnProperty.call(obj, prop);
               };
-            }();
+            })();
             return __webpack_require__(686);
-          }().default
+          })().default
         );
       });
     }
@@ -893,9 +893,9 @@
     return t2;
   }
   function C(e2, t2) {
-    return t2 = t2 || [], null == e2 || "boolean" == typeof e2 || (d(e2) ? e2.some(function(e3) {
+    return t2 = t2 || [], null == e2 || "boolean" == typeof e2 || (d(e2) ? e2.some((function(e3) {
       C(e3, t2);
-    }) : t2.push(e2)), t2;
+    })) : t2.push(e2)), t2;
   }
   function x(e2, t2, n2, r2) {
     var o2 = e2.key, i2 = e2.type, a2 = n2 - 1, c2 = n2 + 1, u2 = t2[n2];
@@ -951,15 +951,15 @@
       if (b2 = t2.props, w2 = "prototype" in A2 && A2.prototype.render, E2 = (f2 = A2.contextType) && o2[f2.__c], j2 = f2 ? E2 ? E2.props.value : f2.__ : o2, n2.__c ? g2 = (p2 = t2.__c = n2.__c).__ = p2.__E : (w2 ? t2.__c = p2 = new A2(b2, j2) : (t2.__c = p2 = new O(b2, j2), p2.constructor = A2, p2.render = U), E2 && E2.sub(p2), p2.props = b2, p2.state || (p2.state = {}), p2.context = j2, p2.__n = o2, m2 = p2.__d = true, p2.__h = [], p2._sb = []), w2 && null == p2.__s && (p2.__s = p2.state), w2 && null != A2.getDerivedStateFromProps && (p2.__s == p2.state && (p2.__s = y({}, p2.__s)), y(p2.__s, A2.getDerivedStateFromProps(b2, p2.__s))), v2 = p2.props, h2 = p2.state, p2.__v = t2, m2) w2 && null == A2.getDerivedStateFromProps && null != p2.componentWillMount && p2.componentWillMount(), w2 && null != p2.componentDidMount && p2.__h.push(p2.componentDidMount);
       else {
         if (w2 && null == A2.getDerivedStateFromProps && b2 !== v2 && null != p2.componentWillReceiveProps && p2.componentWillReceiveProps(b2, j2), !p2.__e && (null != p2.shouldComponentUpdate && false === p2.shouldComponentUpdate(b2, p2.__s, j2) || t2.__v === n2.__v)) {
-          for (t2.__v !== n2.__v && (p2.props = b2, p2.state = p2.__s, p2.__d = false), t2.__e = n2.__e, t2.__k = n2.__k, t2.__k.some(function(e3) {
+          for (t2.__v !== n2.__v && (p2.props = b2, p2.state = p2.__s, p2.__d = false), t2.__e = n2.__e, t2.__k = n2.__k, t2.__k.some((function(e3) {
             e3 && (e3.__ = t2);
-          }), P2 = 0; P2 < p2._sb.length; P2++) p2.__h.push(p2._sb[P2]);
+          })), P2 = 0; P2 < p2._sb.length; P2++) p2.__h.push(p2._sb[P2]);
           p2._sb = [], p2.__h.length && c2.push(p2);
           break e;
         }
-        null != p2.componentWillUpdate && p2.componentWillUpdate(b2, p2.__s, j2), w2 && null != p2.componentDidUpdate && p2.__h.push(function() {
+        null != p2.componentWillUpdate && p2.componentWillUpdate(b2, p2.__s, j2), w2 && null != p2.componentDidUpdate && p2.__h.push((function() {
           p2.componentDidUpdate(v2, h2, _2);
-        });
+        }));
       }
       if (p2.context = j2, p2.props = b2, p2.__P = e2, p2.__e = false, k2 = r.__r, D2 = 0, w2) {
         for (p2.state = p2.__s, p2.__d = false, k2 && k2(t2), f2 = p2.render(p2.props, p2.state, p2.context), C2 = 0; C2 < p2._sb.length; C2++) p2.__h.push(p2._sb[C2]);
@@ -981,15 +981,15 @@
   function L(e2, t2, n2) {
     t2.__d = void 0;
     for (var o2 = 0; o2 < n2.length; o2++) M(n2[o2], n2[++o2], n2[++o2]);
-    r.__c && r.__c(t2, e2), e2.some(function(t3) {
+    r.__c && r.__c(t2, e2), e2.some((function(t3) {
       try {
-        e2 = t3.__h, t3.__h = [], e2.some(function(e3) {
+        e2 = t3.__h, t3.__h = [], e2.some((function(e3) {
           e3.call(t3);
-        });
+        }));
       } catch (e3) {
         r.__e(e3, t3.__v);
       }
-    });
+    }));
   }
   function q(e2, t2, o2, i2, a2, c2, u2, l2, s2) {
     var f2, p2, v2, h2, y2, g2, b2, S2 = o2.props, O2 = t2.props, E2 = t2.type;
@@ -1101,19 +1101,19 @@
     }], r2.__c = W, !W.u)) {
       var o2 = function(e3, t3, n3) {
         if (!r2.__c.__H) return true;
-        var o3 = r2.__c.__H.__.filter(function(e4) {
+        var o3 = r2.__c.__H.__.filter((function(e4) {
           return !!e4.__c;
-        });
-        if (o3.every(function(e4) {
+        }));
+        if (o3.every((function(e4) {
           return !e4.__N;
-        })) return !i2 || i2.call(this, e3, t3, n3);
+        }))) return !i2 || i2.call(this, e3, t3, n3);
         var a3 = false;
-        return o3.forEach(function(e4) {
+        return o3.forEach((function(e4) {
           if (e4.__N) {
             var t4 = e4.__[0];
             e4.__ = e4.__N, e4.__N = void 0, t4 !== e4.__[0] && (a3 = true);
           }
-        }), !(!a3 && r2.__c.props === e3) && (!i2 || i2.call(this, e3, t3, n3));
+        })), !(!a3 && r2.__c.props === e3) && (!i2 || i2.call(this, e3, t3, n3));
       };
       W.u = true;
       var i2 = W.shouldComponentUpdate, a2 = W.componentWillUpdate;
@@ -1136,27 +1136,27 @@
     !Z.__s && be(n2.__H, t2) && (n2.__ = e2, n2.i = t2, W.__h.push(n2));
   }
   function ue(e2) {
-    return Q = 5, se(function() {
+    return Q = 5, se((function() {
       return { current: e2 };
-    }, []);
+    }), []);
   }
   function le(e2, t2, n2) {
-    Q = 6, ce(function() {
+    Q = 6, ce((function() {
       return "function" == typeof e2 ? (e2(t2()), function() {
         return e2(null);
       }) : e2 ? (e2.current = t2(), function() {
         return e2.current = null;
       }) : void 0;
-    }, null == n2 ? n2 : n2.concat(e2));
+    }), null == n2 ? n2 : n2.concat(e2));
   }
   function se(e2, t2) {
     var n2 = re(K++, 7);
     return be(n2.__H, t2) && (n2.__ = e2(), n2.__H = t2, n2.__h = e2), n2.__;
   }
   function fe(e2, t2) {
-    return Q = 8, se(function() {
+    return Q = 8, se((function() {
       return e2;
-    }, t2);
+    }), t2);
   }
   function pe(e2) {
     var t2 = W.context[e2.__c], n2 = re(K++, 9);
@@ -1188,37 +1188,37 @@
   }, Z.__r = function(e2) {
     Y && Y(e2), K = 0;
     var t2 = (W = e2.__c).__H;
-    t2 && (z === W ? (t2.__h = [], W.__h = [], t2.__.forEach(function(e3) {
+    t2 && (z === W ? (t2.__h = [], W.__h = [], t2.__.forEach((function(e3) {
       e3.__N && (e3.__ = e3.__N), e3.i = e3.__N = void 0;
-    })) : (t2.__h.forEach(_e), t2.__h.forEach(ge), t2.__h = [], K = 0)), z = W;
+    }))) : (t2.__h.forEach(_e), t2.__h.forEach(ge), t2.__h = [], K = 0)), z = W;
   }, Z.diffed = function(e2) {
     X && X(e2);
     var t2 = e2.__c;
-    t2 && t2.__H && (t2.__H.__h.length && (1 !== $.push(t2) && J === Z.requestAnimationFrame || ((J = Z.requestAnimationFrame) || ye)(he)), t2.__H.__.forEach(function(e3) {
+    t2 && t2.__H && (t2.__H.__h.length && (1 !== $.push(t2) && J === Z.requestAnimationFrame || ((J = Z.requestAnimationFrame) || ye)(he)), t2.__H.__.forEach((function(e3) {
       e3.i && (e3.__H = e3.i), e3.i = void 0;
-    })), z = W = null;
+    }))), z = W = null;
   }, Z.__c = function(e2, t2) {
-    t2.some(function(e3) {
+    t2.some((function(e3) {
       try {
-        e3.__h.forEach(_e), e3.__h = e3.__h.filter(function(e4) {
+        e3.__h.forEach(_e), e3.__h = e3.__h.filter((function(e4) {
           return !e4.__ || ge(e4);
-        });
+        }));
       } catch (n2) {
-        t2.some(function(e4) {
+        t2.some((function(e4) {
           e4.__h && (e4.__h = []);
-        }), t2 = [], Z.__e(n2, e3.__v);
+        })), t2 = [], Z.__e(n2, e3.__v);
       }
-    }), ee && ee(e2, t2);
+    })), ee && ee(e2, t2);
   }, Z.unmount = function(e2) {
     te && te(e2);
     var t2, n2 = e2.__c;
-    n2 && n2.__H && (n2.__H.__.forEach(function(e3) {
+    n2 && n2.__H && (n2.__H.__.forEach((function(e3) {
       try {
         _e(e3);
       } catch (e4) {
         t2 = e4;
       }
-    }), n2.__H = void 0, t2 && Z.__e(t2, n2.__v));
+    })), n2.__H = void 0, t2 && Z.__e(t2, n2.__v));
   };
   var de = "function" == typeof requestAnimationFrame;
   function ye(e2) {
@@ -1236,9 +1236,9 @@
     e2.__c = e2.__(), W = t2;
   }
   function be(e2, t2) {
-    return !e2 || e2.length !== t2.length || t2.some(function(t3, n2) {
+    return !e2 || e2.length !== t2.length || t2.some((function(t3, n2) {
       return t3 !== e2[n2];
-    });
+    }));
   }
   function Se(e2, t2) {
     return "function" == typeof t2 ? t2(e2) : t2;
@@ -1278,19 +1278,19 @@
   };
   var De = r.unmount;
   function Ce(e2, t2, n2) {
-    return e2 && (e2.__c && e2.__c.__H && (e2.__c.__H.__.forEach(function(e3) {
+    return e2 && (e2.__c && e2.__c.__H && (e2.__c.__H.__.forEach((function(e3) {
       "function" == typeof e3.__c && e3.__c();
-    }), e2.__c.__H = null), null != (e2 = function(e3, t3) {
+    })), e2.__c.__H = null), null != (e2 = (function(e3, t3) {
       for (var n3 in t3) e3[n3] = t3[n3];
       return e3;
-    }({}, e2)).__c && (e2.__c.__P === n2 && (e2.__c.__P = t2), e2.__c = null), e2.__k = e2.__k && e2.__k.map(function(e3) {
+    })({}, e2)).__c && (e2.__c.__P === n2 && (e2.__c.__P = t2), e2.__c = null), e2.__k = e2.__k && e2.__k.map((function(e3) {
       return Ce(e3, t2, n2);
-    })), e2;
+    }))), e2;
   }
   function xe(e2, t2, n2) {
-    return e2 && n2 && (e2.__v = null, e2.__k = e2.__k && e2.__k.map(function(e3) {
+    return e2 && n2 && (e2.__v = null, e2.__k = e2.__k && e2.__k.map((function(e3) {
       return xe(e3, t2, n2);
-    }), e2.__c && e2.__c.__P === t2 && (e2.__e && n2.appendChild(e2.__e), e2.__c.__e = true, e2.__c.__P = n2)), e2;
+    })), e2.__c && e2.__c.__P === t2 && (e2.__e && n2.appendChild(e2.__e), e2.__c.__e = true, e2.__c.__P = n2)), e2;
   }
   function Ae() {
     this.__u = 0, this.t = null, this.__b = null;
@@ -1382,9 +1382,9 @@
     return e2.children;
   }, Te.prototype.componentDidUpdate = Te.prototype.componentDidMount = function() {
     var e2 = this;
-    this.o.forEach(function(t2, n2) {
+    this.o.forEach((function(t2, n2) {
       Re(e2, n2, t2);
-    });
+    }));
   };
   var He = "undefined" != typeof Symbol && Symbol.for && Symbol.for("react.element") || 60103;
   var Ue = /^(?:accent|alignment|arabic|baseline|cap|clip(?!PathU)|color|dominant|fill|flood|font|glyph(?!R)|horiz|image(!S)|letter|lighting|marker(?!H|W|U)|overline|paint|pointer|shape|stop|strikethrough|stroke|text(?!L)|transform|underline|unicode|units|v|vector|vert|word|writing|x(?!C))[A-Z]/;
@@ -1397,13 +1397,13 @@
   function We(e2, t2, n2) {
     return null == t2.__k && (t2.textContent = ""), F(e2, t2), "function" == typeof n2 && n2(), e2 ? e2.__c : null;
   }
-  O.prototype.isReactComponent = {}, ["componentWillMount", "componentWillReceiveProps", "componentWillUpdate"].forEach(function(e2) {
+  O.prototype.isReactComponent = {}, ["componentWillMount", "componentWillReceiveProps", "componentWillUpdate"].forEach((function(e2) {
     Object.defineProperty(O.prototype, e2, { configurable: true, get: function() {
       return this["UNSAFE_" + e2];
     }, set: function(t2) {
       Object.defineProperty(this, e2, { configurable: true, writable: true, value: t2 });
     } });
-  });
+  }));
   var ze = r.event;
   function Je() {
   }
@@ -1422,7 +1422,7 @@
   } };
   var Ye = r.vnode;
   r.vnode = function(e2) {
-    "string" == typeof e2.type && function(e3) {
+    "string" == typeof e2.type && (function(e3) {
       var t2 = e3.props, n2 = e3.type, r2 = {}, o2 = -1 === n2.indexOf("-");
       for (var i2 in t2) {
         var a2 = t2[i2];
@@ -1431,12 +1431,12 @@
           "defaultValue" === i2 && "value" in t2 && null == t2.value ? i2 = "value" : "download" === i2 && true === a2 ? a2 = "" : "translate" === c2 && "no" === a2 ? a2 = false : "o" === c2[0] && "n" === c2[1] ? "ondoubleclick" === c2 ? i2 = "ondblclick" : "onchange" !== c2 || "input" !== n2 && "textarea" !== n2 || Ke(t2.type) ? "onfocus" === c2 ? i2 = "onfocusin" : "onblur" === c2 ? i2 = "onfocusout" : Fe.test(i2) && (i2 = c2) : c2 = i2 = "oninput" : o2 && Ue.test(i2) ? i2 = i2.replace(Be, "-$&").toLowerCase() : null === a2 && (a2 = void 0), "oninput" === c2 && r2[i2 = c2] && (i2 = "oninputCapture"), r2[i2] = a2;
         }
       }
-      "select" == n2 && r2.multiple && Array.isArray(r2.value) && (r2.value = C(t2.children).forEach(function(e4) {
+      "select" == n2 && r2.multiple && Array.isArray(r2.value) && (r2.value = C(t2.children).forEach((function(e4) {
         e4.props.selected = -1 != r2.value.indexOf(e4.props.value);
-      })), "select" == n2 && null != r2.defaultValue && (r2.value = C(t2.children).forEach(function(e4) {
+      }))), "select" == n2 && null != r2.defaultValue && (r2.value = C(t2.children).forEach((function(e4) {
         e4.props.selected = r2.multiple ? -1 != r2.defaultValue.indexOf(e4.props.value) : r2.defaultValue == e4.props.value;
-      })), t2.class && !t2.className ? (r2.class = t2.class, Object.defineProperty(r2, "className", Ge)) : (t2.className && !t2.class || t2.class && t2.className) && (r2.class = r2.className = t2.className), e3.props = r2;
-    }(e2), e2.$$typeof = He, Ye && Ye(e2);
+      }))), t2.class && !t2.className ? (r2.class = t2.class, Object.defineProperty(r2, "className", Ge)) : (t2.className && !t2.class || t2.class && t2.className) && (r2.class = r2.className = t2.className), e3.props = r2;
+    })(e2), e2.$$typeof = He, Ye && Ye(e2);
   };
   var Xe = r.__r;
   r.__r = function(e2) {
@@ -1466,13 +1466,13 @@
   var at = ce;
   function ct(e2, t2) {
     var n2 = t2(), r2 = oe({ h: { __: n2, v: t2 } }), o2 = r2[0].h, i2 = r2[1];
-    return ce(function() {
+    return ce((function() {
       o2.__ = n2, o2.v = t2, ut(o2) && i2({ h: o2 });
-    }, [e2, n2, t2]), ae(function() {
-      return ut(o2) && i2({ h: o2 }), e2(function() {
+    }), [e2, n2, t2]), ae((function() {
+      return ut(o2) && i2({ h: o2 }), e2((function() {
         ut(o2) && i2({ h: o2 });
-      });
-    }, [e2]), n2;
+      }));
+    }), [e2]), n2;
   }
   function ut(e2) {
     var t2, n2, r2 = e2.v, o2 = e2.__;
@@ -1497,9 +1497,9 @@
       }, this.componentWillUnmount = function() {
         n3 = null;
       }, this.shouldComponentUpdate = function(e4) {
-        this.props.value !== e4.value && n3.forEach(function(e5) {
+        this.props.value !== e4.value && n3.forEach((function(e5) {
           e5.__e = true, j(e5);
-        });
+        }));
       }, this.sub = function(e4) {
         n3.add(e4);
         var t3 = e4.componentWillUnmount;
@@ -1546,11 +1546,11 @@
   }, StrictMode: S, Suspense: Ae, SuspenseList: Te, lazy: function(e2) {
     var t2, n2, r2;
     function o2(o3) {
-      if (t2 || (t2 = e2()).then(function(e3) {
+      if (t2 || (t2 = e2()).then((function(e3) {
         n2 = e3.default || e3;
-      }, function(e3) {
+      }), (function(e3) {
         r2 = e3;
-      }), r2) throw r2;
+      })), r2) throw r2;
       if (!n2) throw t2;
       return g(n2, o3);
     }
@@ -1572,7 +1572,7 @@
   function pt(e2) {
     return function() {
       var t2 = this, n2 = arguments;
-      return new Promise(function(r2, o2) {
+      return new Promise((function(r2, o2) {
         var i2 = e2.apply(t2, n2);
         function a2(e3) {
           ft(i2, r2, o2, a2, c2, "next", e3);
@@ -1581,18 +1581,18 @@
           ft(i2, r2, o2, a2, c2, "throw", e3);
         }
         a2(void 0);
-      });
+      }));
     };
   }
   function mt(e2, n2, r2) {
-    return n2 = gt(n2), function(e3, n3) {
+    return n2 = gt(n2), (function(e3, n3) {
       if (n3 && ("object" == t(n3) || "function" == typeof n3)) return n3;
       if (void 0 !== n3) throw new TypeError("Derived constructors may only return object or undefined");
-      return function(e4) {
+      return (function(e4) {
         if (void 0 === e4) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
         return e4;
-      }(e3);
-    }(e2, St() ? Reflect.construct(n2, r2 || [], gt(e2).constructor) : n2.apply(e2, r2));
+      })(e3);
+    })(e2, St() ? Reflect.construct(n2, r2 || [], gt(e2).constructor) : n2.apply(e2, r2));
   }
   function vt(e2, t2) {
     if (!(e2 instanceof t2)) throw new TypeError("Cannot call a class as a function");
@@ -1629,8 +1629,8 @@
   }
   function St() {
     try {
-      var e2 = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
-      }));
+      var e2 = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], (function() {
+      })));
     } catch (e3) {
     }
     return (St = function() {
@@ -1641,26 +1641,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function wt(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? Ot(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? Ot(Object(n2), true).forEach((function(t3) {
         yt(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Ot(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Ot(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function Et(e2, t2) {
     if (null == e2) return {};
-    var n2, r2, o2 = function(e3, t3) {
+    var n2, r2, o2 = (function(e3, t3) {
       if (null == e3) return {};
       var n3 = {};
       for (var r3 in e3) if ({}.hasOwnProperty.call(e3, r3)) {
@@ -1668,7 +1668,7 @@
         n3[r3] = e3[r3];
       }
       return n3;
-    }(e2, t2);
+    })(e2, t2);
     if (Object.getOwnPropertySymbols) {
       var i2 = Object.getOwnPropertySymbols(e2);
       for (r2 = 0; r2 < i2.length; r2++) n2 = i2[r2], t2.includes(n2) || {}.propertyIsEnumerable.call(e2, n2) && (o2[n2] = e2[n2]);
@@ -1712,42 +1712,42 @@
     function b2() {
     }
     var S2 = {};
-    s2(S2, c2, function() {
+    s2(S2, c2, (function() {
       return this;
-    });
+    }));
     var O2 = Object.getPrototypeOf, w2 = O2 && O2(O2(A2([])));
     w2 && w2 !== r2 && o2.call(w2, c2) && (S2 = w2);
     var E2 = b2.prototype = _2.prototype = Object.create(S2);
     function j2(e3) {
-      ["next", "throw", "return"].forEach(function(t2) {
-        s2(e3, t2, function(e4) {
+      ["next", "throw", "return"].forEach((function(t2) {
+        s2(e3, t2, (function(e4) {
           return this._invoke(t2, e4);
-        });
-      });
+        }));
+      }));
     }
     function P2(e3, n3) {
       function r3(i3, a4, c3, u3) {
         var l3 = p2(e3[i3], e3, a4);
         if ("throw" !== l3.type) {
           var s3 = l3.arg, f3 = s3.value;
-          return f3 && "object" == t(f3) && o2.call(f3, "__await") ? n3.resolve(f3.__await).then(function(e4) {
+          return f3 && "object" == t(f3) && o2.call(f3, "__await") ? n3.resolve(f3.__await).then((function(e4) {
             r3("next", e4, c3, u3);
-          }, function(e4) {
+          }), (function(e4) {
             r3("throw", e4, c3, u3);
-          }) : n3.resolve(f3).then(function(e4) {
+          })) : n3.resolve(f3).then((function(e4) {
             s3.value = e4, c3(s3);
-          }, function(e4) {
+          }), (function(e4) {
             return r3("throw", e4, c3, u3);
-          });
+          }));
         }
         u3(l3.arg);
       }
       var a3;
       i2(this, "_invoke", { value: function(e4, t2) {
         function o3() {
-          return new n3(function(n4, o4) {
+          return new n3((function(n4, o4) {
             r3(e4, t2, n4, o4);
-          });
+          }));
         }
         return a3 = a3 ? a3.then(o3, o3) : o3();
       } });
@@ -1825,19 +1825,19 @@
       return Object.setPrototypeOf ? Object.setPrototypeOf(e3, b2) : (e3.__proto__ = b2, s2(e3, l2, "GeneratorFunction")), e3.prototype = Object.create(E2), e3;
     }, n2.awrap = function(e3) {
       return { __await: e3 };
-    }, j2(P2.prototype), s2(P2.prototype, u2, function() {
+    }, j2(P2.prototype), s2(P2.prototype, u2, (function() {
       return this;
-    }), n2.AsyncIterator = P2, n2.async = function(e3, t2, r3, o3, i3) {
+    })), n2.AsyncIterator = P2, n2.async = function(e3, t2, r3, o3, i3) {
       void 0 === i3 && (i3 = Promise);
       var a3 = new P2(f2(e3, t2, r3, o3), i3);
-      return n2.isGeneratorFunction(t2) ? a3 : a3.next().then(function(e4) {
+      return n2.isGeneratorFunction(t2) ? a3 : a3.next().then((function(e4) {
         return e4.done ? e4.value : a3.next();
-      });
-    }, j2(E2), s2(E2, l2, "Generator"), s2(E2, c2, function() {
+      }));
+    }, j2(E2), s2(E2, l2, "Generator"), s2(E2, c2, (function() {
       return this;
-    }), s2(E2, "toString", function() {
+    })), s2(E2, "toString", (function() {
       return "[object Generator]";
-    }), n2.keys = function(e3) {
+    })), n2.keys = function(e3) {
       var t2 = Object(e3), n3 = [];
       for (var r3 in t2) n3.push(r3);
       return n3.reverse(), function e4() {
@@ -1918,9 +1918,9 @@
     }, Pt(e2, t2);
   }
   function It(e2, t2) {
-    return function(e3) {
+    return (function(e3) {
       if (Array.isArray(e3)) return e3;
-    }(e2) || function(e3, t3) {
+    })(e2) || (function(e3, t3) {
       var n2 = null == e3 ? null : "undefined" != typeof Symbol && e3[Symbol.iterator] || e3["@@iterator"];
       if (null != n2) {
         var r2, o2, i2, a2, c2 = [], u2 = true, l2 = false;
@@ -1940,21 +1940,21 @@
         }
         return c2;
       }
-    }(e2, t2) || Ct(e2, t2) || function() {
+    })(e2, t2) || Ct(e2, t2) || (function() {
       throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }();
+    })();
   }
   function kt(e2) {
-    return function(e3) {
+    return (function(e3) {
       if (Array.isArray(e3)) return st(e3);
-    }(e2) || function(e3) {
+    })(e2) || (function(e3) {
       if ("undefined" != typeof Symbol && null != e3[Symbol.iterator] || null != e3["@@iterator"]) return Array.from(e3);
-    }(e2) || Ct(e2) || function() {
+    })(e2) || Ct(e2) || (function() {
       throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }();
+    })();
   }
   function Dt(e2) {
-    var n2 = function(e3) {
+    var n2 = (function(e3) {
       if ("object" != t(e3) || !e3) return e3;
       var n3 = e3[Symbol.toPrimitive];
       if (void 0 !== n3) {
@@ -1963,7 +1963,7 @@
         throw new TypeError("@@toPrimitive must return a primitive value.");
       }
       return String(e3);
-    }(e2);
+    })(e2);
     return "symbol" == t(n2) ? n2 : n2 + "";
   }
   function Ct(e2, t2) {
@@ -1976,26 +1976,26 @@
   function xt(e2) {
     var t2 = "function" == typeof Map ? /* @__PURE__ */ new Map() : void 0;
     return xt = function(e3) {
-      if (null === e3 || !function(e4) {
+      if (null === e3 || !(function(e4) {
         try {
           return -1 !== Function.toString.call(e4).indexOf("[native code]");
         } catch (t3) {
           return "function" == typeof e4;
         }
-      }(e3)) return e3;
+      })(e3)) return e3;
       if ("function" != typeof e3) throw new TypeError("Super expression must either be null or a function");
       if (void 0 !== t2) {
         if (t2.has(e3)) return t2.get(e3);
         t2.set(e3, n2);
       }
       function n2() {
-        return function(e4, t3, n3) {
+        return (function(e4, t3, n3) {
           if (St()) return Reflect.construct.apply(null, arguments);
           var r2 = [null];
           r2.push.apply(r2, t3);
           var o2 = new (e4.bind.apply(e4, r2))();
           return n3 && Pt(o2, n3.prototype), o2;
-        }(e3, arguments, gt(this).constructor);
+        })(e3, arguments, gt(this).constructor);
       }
       return n2.prototype = Object.create(e3.prototype, { constructor: { value: n2, enumerable: false, writable: true, configurable: true } }), Pt(n2, e3);
     }, xt(e2);
@@ -2008,15 +2008,15 @@
   }
   var Tt = ["translations"];
   var Rt = "Ctrl";
-  var Lt = lt.forwardRef(function(e2, t2) {
+  var Lt = lt.forwardRef((function(e2, t2) {
     var n2 = e2.translations, r2 = void 0 === n2 ? {} : n2, o2 = Et(e2, Tt), i2 = r2.buttonText, a2 = void 0 === i2 ? "Search" : i2, c2 = r2.buttonAriaLabel, u2 = void 0 === c2 ? "Search" : c2, l2 = It(oe(null), 2), s2 = l2[0], f2 = l2[1];
-    return ae(function() {
+    return ae((function() {
       "undefined" != typeof navigator && (/(Mac|iPhone|iPod|iPad)/i.test(navigator.platform) ? f2("\u2318") : f2(Rt));
-    }, []), lt.createElement("button", _t({ type: "button", className: "DocSearch DocSearch-Button", "aria-label": u2 }, o2, { ref: t2 }), lt.createElement("span", { className: "DocSearch-Button-Container" }, lt.createElement(Nt, null), lt.createElement("span", { className: "DocSearch-Button-Placeholder" }, a2)), lt.createElement("span", { className: "DocSearch-Button-Keys" }, null !== s2 && lt.createElement(lt.Fragment, null, lt.createElement(qt, { reactsToKey: s2 === Rt ? Rt : "Meta" }, s2 === Rt ? lt.createElement(At, null) : s2), lt.createElement(qt, { reactsToKey: "k" }, "K"))));
-  });
+    }), []), lt.createElement("button", _t({ type: "button", className: "DocSearch DocSearch-Button", "aria-label": u2 }, o2, { ref: t2 }), lt.createElement("span", { className: "DocSearch-Button-Container" }, lt.createElement(Nt, null), lt.createElement("span", { className: "DocSearch-Button-Placeholder" }, a2)), lt.createElement("span", { className: "DocSearch-Button-Keys" }, null !== s2 && lt.createElement(lt.Fragment, null, lt.createElement(qt, { reactsToKey: s2 === Rt ? Rt : "Meta" }, s2 === Rt ? lt.createElement(At, null) : s2), lt.createElement(qt, { reactsToKey: "k" }, "K"))));
+  }));
   function qt(e2) {
     var t2 = e2.reactsToKey, n2 = e2.children, r2 = It(oe(false), 2), o2 = r2[0], i2 = r2[1];
-    return ae(function() {
+    return ae((function() {
       if (t2) return window.addEventListener("keydown", e3), window.addEventListener("keyup", n3), function() {
         window.removeEventListener("keydown", e3), window.removeEventListener("keyup", n3);
       };
@@ -2026,27 +2026,27 @@
       function n3(e4) {
         e4.key !== t2 && "Meta" !== e4.key || i2(false);
       }
-    }, [t2]), lt.createElement("kbd", { className: o2 ? "DocSearch-Button-Key DocSearch-Button-Key--pressed" : "DocSearch-Button-Key" }, n2);
+    }), [t2]), lt.createElement("kbd", { className: o2 ? "DocSearch-Button-Key DocSearch-Button-Key--pressed" : "DocSearch-Button-Key" }, n2);
   }
   function Mt(e2, t2) {
     var n2 = void 0;
     return function() {
       for (var r2 = arguments.length, o2 = new Array(r2), i2 = 0; i2 < r2; i2++) o2[i2] = arguments[i2];
-      n2 && clearTimeout(n2), n2 = setTimeout(function() {
+      n2 && clearTimeout(n2), n2 = setTimeout((function() {
         return e2.apply(void 0, o2);
-      }, t2);
+      }), t2);
     };
   }
   function Ht(e2) {
-    return e2.reduce(function(e3, t2) {
+    return e2.reduce((function(e3, t2) {
       return e3.concat(t2);
-    }, []);
+    }), []);
   }
   var Ut = 0;
   function Ft(e2) {
-    return 0 === e2.collections.length ? 0 : e2.collections.reduce(function(e3, t2) {
+    return 0 === e2.collections.length ? 0 : e2.collections.reduce((function(e3, t2) {
       return e3 + t2.items.length;
-    }, 0);
+    }), 0);
   }
   function Bt(e2) {
     return e2 !== Object(e2);
@@ -2067,9 +2067,9 @@
   var Wt = [{ segment: "autocomplete-core", version: "1.9.3" }];
   function zt(e2) {
     var t2 = e2.item, n2 = e2.items;
-    return { index: t2.__autocomplete_indexName, items: [t2], positions: [1 + n2.findIndex(function(e3) {
+    return { index: t2.__autocomplete_indexName, items: [t2], positions: [1 + n2.findIndex((function(e3) {
       return e3.objectID === t2.objectID;
-    })], queryID: t2.__autocomplete_queryID, algoliaSource: ["autocomplete"] };
+    }))], queryID: t2.__autocomplete_queryID, algoliaSource: ["autocomplete"] };
   }
   function Jt(e2, t2) {
     (null == t2 || t2 > e2.length) && (t2 = e2.length);
@@ -2086,19 +2086,19 @@
     }, Zt(e2);
   }
   function Gt(e2) {
-    return function(e3) {
+    return (function(e3) {
       if (Array.isArray(e3)) return Yt(e3);
-    }(e2) || function(e3) {
+    })(e2) || (function(e3) {
       if ("undefined" != typeof Symbol && null != e3[Symbol.iterator] || null != e3["@@iterator"]) return Array.from(e3);
-    }(e2) || function(e3, t2) {
+    })(e2) || (function(e3, t2) {
       if (e3) {
         if ("string" == typeof e3) return Yt(e3, t2);
         var n2 = Object.prototype.toString.call(e3).slice(8, -1);
         return "Object" === n2 && e3.constructor && (n2 = e3.constructor.name), "Map" === n2 || "Set" === n2 ? Array.from(e3) : "Arguments" === n2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2) ? Yt(e3, t2) : void 0;
       }
-    }(e2) || function() {
+    })(e2) || (function() {
       throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }();
+    })();
   }
   function Yt(e2, t2) {
     (null == t2 || t2 > e2.length) && (t2 = e2.length);
@@ -2107,12 +2107,12 @@
   }
   function Xt(e2, t2) {
     if (null == e2) return {};
-    var n2, r2, o2 = function(e3, t3) {
+    var n2, r2, o2 = (function(e3, t3) {
       if (null == e3) return {};
       var n3, r3, o3 = {}, i3 = Object.keys(e3);
       for (r3 = 0; r3 < i3.length; r3++) n3 = i3[r3], t3.indexOf(n3) >= 0 || (o3[n3] = e3[n3]);
       return o3;
-    }(e2, t2);
+    })(e2, t2);
     if (Object.getOwnPropertySymbols) {
       var i2 = Object.getOwnPropertySymbols(e2);
       for (r2 = 0; r2 < i2.length; r2++) n2 = i2[r2], t2.indexOf(n2) >= 0 || Object.prototype.propertyIsEnumerable.call(e2, n2) && (o2[n2] = e2[n2]);
@@ -2123,26 +2123,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function tn(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? en(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? en(Object(n2), true).forEach((function(t3) {
         nn(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : en(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : en(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function nn(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== Zt(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -2151,26 +2151,26 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === Zt(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   function rn(e2) {
-    return e2.map(function(e3) {
+    return e2.map((function(e3) {
       var t2 = e3.items, n2 = Xt(e3, Qt);
-      return tn(tn({}, n2), {}, { objectIDs: (null == t2 ? void 0 : t2.map(function(e4) {
+      return tn(tn({}, n2), {}, { objectIDs: (null == t2 ? void 0 : t2.map((function(e4) {
         return e4.objectID;
-      })) || n2.objectIDs });
-    });
+      }))) || n2.objectIDs });
+    }));
   }
   function on(e2) {
-    var t2 = e2.items.reduce(function(e3, t3) {
+    var t2 = e2.items.reduce((function(e3, t3) {
       var n2;
       return e3[t3.__autocomplete_indexName] = (null !== (n2 = e3[t3.__autocomplete_indexName]) && void 0 !== n2 ? n2 : []).concat(t3), e3;
-    }, {});
-    return Object.keys(t2).map(function(e3) {
+    }), {});
+    return Object.keys(t2).map((function(e3) {
       return { index: e3, items: t2[e3], algoliaSource: ["autocomplete"] };
-    });
+    }));
   }
   function an(e2) {
     return e2.objectID && e2.__autocomplete_indexName && e2.__autocomplete_queryID;
@@ -2183,19 +2183,19 @@
     }, cn(e2);
   }
   function un(e2) {
-    return function(e3) {
+    return (function(e3) {
       if (Array.isArray(e3)) return ln(e3);
-    }(e2) || function(e3) {
+    })(e2) || (function(e3) {
       if ("undefined" != typeof Symbol && null != e3[Symbol.iterator] || null != e3["@@iterator"]) return Array.from(e3);
-    }(e2) || function(e3, t2) {
+    })(e2) || (function(e3, t2) {
       if (e3) {
         if ("string" == typeof e3) return ln(e3, t2);
         var n2 = Object.prototype.toString.call(e3).slice(8, -1);
         return "Object" === n2 && e3.constructor && (n2 = e3.constructor.name), "Map" === n2 || "Set" === n2 ? Array.from(e3) : "Arguments" === n2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2) ? ln(e3, t2) : void 0;
       }
-    }(e2) || function() {
+    })(e2) || (function() {
       throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }();
+    })();
   }
   function ln(e2, t2) {
     (null == t2 || t2 > e2.length) && (t2 = e2.length);
@@ -2206,26 +2206,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function fn(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? sn(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? sn(Object(n2), true).forEach((function(t3) {
         pn(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : sn(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : sn(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function pn(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== cn(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -2234,39 +2234,39 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === cn(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   var mn = "2.6.0";
   var vn = "https://cdn.jsdelivr.net/npm/search-insights@".concat(mn, "/dist/search-insights.min.js");
-  var hn = Mt(function(e2) {
+  var hn = Mt((function(e2) {
     var t2 = e2.onItemsChange, n2 = e2.items, r2 = e2.insights, o2 = e2.state;
-    t2({ insights: r2, insightsEvents: on({ items: n2 }).map(function(e3) {
+    t2({ insights: r2, insightsEvents: on({ items: n2 }).map((function(e3) {
       return fn({ eventName: "Items Viewed" }, e3);
-    }), state: o2 });
-  }, 400);
+    })), state: o2 });
+  }), 400);
   function dn(e2) {
-    var t2 = function(e3) {
+    var t2 = (function(e3) {
       return fn({ onItemsChange: function(e4) {
         var t3 = e4.insights, n3 = e4.insightsEvents;
-        t3.viewedObjectIDs.apply(t3, un(n3.map(function(e5) {
+        t3.viewedObjectIDs.apply(t3, un(n3.map((function(e5) {
           return fn(fn({}, e5), {}, { algoliaSource: [].concat(un(e5.algoliaSource || []), ["autocomplete-internal"]) });
-        })));
+        }))));
       }, onSelect: function(e4) {
         var t3 = e4.insights, n3 = e4.insightsEvents;
-        t3.clickedObjectIDsAfterSearch.apply(t3, un(n3.map(function(e5) {
+        t3.clickedObjectIDsAfterSearch.apply(t3, un(n3.map((function(e5) {
           return fn(fn({}, e5), {}, { algoliaSource: [].concat(un(e5.algoliaSource || []), ["autocomplete-internal"]) });
-        })));
+        }))));
       }, onActive: Kt }, e3);
-    }(e2), n2 = t2.insightsClient, r2 = t2.onItemsChange, o2 = t2.onSelect, i2 = t2.onActive, a2 = n2;
-    n2 || "undefined" != typeof window && function() {
+    })(e2), n2 = t2.insightsClient, r2 = t2.onItemsChange, o2 = t2.onSelect, i2 = t2.onActive, a2 = n2;
+    n2 || "undefined" != typeof window && (function() {
       var e3 = { window }.window, t3 = e3.AlgoliaAnalyticsObject || "aa";
       "string" == typeof t3 && (a2 = e3[t3]), a2 || (e3.AlgoliaAnalyticsObject = t3, e3[t3] || (e3[t3] = function() {
         e3[t3].queue || (e3[t3].queue = []);
         for (var n3 = arguments.length, r3 = new Array(n3), o3 = 0; o3 < n3; o3++) r3[o3] = arguments[o3];
         e3[t3].queue.push(r3);
-      }), e3[t3].version = mn, a2 = e3[t3], function(e4) {
+      }), e3[t3].version = mn, a2 = e3[t3], (function(e4) {
         var t4 = "[Autocomplete]: Could not load search-insights.js. Please load it manually following https://alg.li/insights-autocomplete";
         try {
           var n3 = e4.document.createElement("script");
@@ -2276,13 +2276,13 @@
         } catch (e5) {
           console.error(t4);
         }
-      }(e3));
-    }();
-    var c2 = function(e3) {
-      var t3, n3, r3, o3 = (t3 = function(e4) {
-        return function(e5) {
+      })(e3));
+    })();
+    var c2 = (function(e3) {
+      var t3, n3, r3, o3 = (t3 = (function(e4) {
+        return (function(e5) {
           if (Array.isArray(e5)) return e5;
-        }(e4) || function(e5) {
+        })(e4) || (function(e5) {
           var t4 = null == e5 ? null : "undefined" != typeof Symbol && e5[Symbol.iterator] || e5["@@iterator"];
           if (null != t4) {
             var n4, r4, o4, i4, a3 = [], c3 = true, u3 = false;
@@ -2299,16 +2299,16 @@
             }
             return a3;
           }
-        }(e4) || function(e5) {
+        })(e4) || (function(e5) {
           if (e5) {
             if ("string" == typeof e5) return Jt(e5, 2);
             var t4 = Object.prototype.toString.call(e5).slice(8, -1);
             return "Object" === t4 && e5.constructor && (t4 = e5.constructor.name), "Map" === t4 || "Set" === t4 ? Array.from(e5) : "Arguments" === t4 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t4) ? Jt(e5, 2) : void 0;
           }
-        }(e4) || function() {
+        })(e4) || (function() {
           throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-        }();
-      }((e3.version || "").split(".").map(Number)), n3 = t3[0], r3 = t3[1], n3 >= 3 || 2 === n3 && r3 >= 4 || 1 === n3 && r3 >= 10);
+        })();
+      })((e3.version || "").split(".").map(Number)), n3 = t3[0], r3 = t3[1], n3 >= 3 || 2 === n3 && r3 >= 4 || 1 === n3 && r3 >= 10);
       function i3(t4, n4, r4) {
         if (o3 && void 0 !== r4) {
           var i4 = r4[0].__autocomplete_algoliaCredentials, a3 = { "X-Algolia-Application-Id": i4.appId, "X-Algolia-API-Key": i4.apiKey };
@@ -2339,46 +2339,46 @@
         n4.length > 0 && e3.apply(void 0, ["convertedFilters"].concat(n4));
       }, viewedObjectIDs: function() {
         for (var e4 = arguments.length, t4 = new Array(e4), n4 = 0; n4 < e4; n4++) t4[n4] = arguments[n4];
-        t4.length > 0 && t4.reduce(function(e5, t5) {
+        t4.length > 0 && t4.reduce((function(e5, t5) {
           var n5 = t5.items, r4 = Xt(t5, $t);
-          return [].concat(Gt(e5), Gt(function(e6) {
+          return [].concat(Gt(e5), Gt((function(e6) {
             for (var t6 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : 20, n6 = [], r5 = 0; r5 < e6.objectIDs.length; r5 += t6) n6.push(tn(tn({}, e6), {}, { objectIDs: e6.objectIDs.slice(r5, r5 + t6) }));
             return n6;
-          }(tn(tn({}, r4), {}, { objectIDs: (null == n5 ? void 0 : n5.map(function(e6) {
+          })(tn(tn({}, r4), {}, { objectIDs: (null == n5 ? void 0 : n5.map((function(e6) {
             return e6.objectID;
-          })) || r4.objectIDs })).map(function(e6) {
+          }))) || r4.objectIDs })).map((function(e6) {
             return { items: n5, payload: e6 };
-          })));
-        }, []).forEach(function(e5) {
+          }))));
+        }), []).forEach((function(e5) {
           var t5 = e5.items;
           return i3("viewedObjectIDs", [e5.payload], t5);
-        });
+        }));
       }, viewedFilters: function() {
         for (var t4 = arguments.length, n4 = new Array(t4), r4 = 0; r4 < t4; r4++) n4[r4] = arguments[r4];
         n4.length > 0 && e3.apply(void 0, ["viewedFilters"].concat(n4));
       } };
-    }(a2), u2 = { current: [] }, l2 = Mt(function(e3) {
+    })(a2), u2 = { current: [] }, l2 = Mt((function(e3) {
       var t3 = e3.state;
       if (t3.isOpen) {
-        var n3 = t3.collections.reduce(function(e4, t4) {
+        var n3 = t3.collections.reduce((function(e4, t4) {
           return [].concat(un(e4), un(t4.items));
-        }, []).filter(an);
-        Vt(u2.current.map(function(e4) {
+        }), []).filter(an);
+        Vt(u2.current.map((function(e4) {
           return e4.objectID;
-        }), n3.map(function(e4) {
+        })), n3.map((function(e4) {
           return e4.objectID;
-        })) || (u2.current = n3, n3.length > 0 && hn({ onItemsChange: r2, items: n3, insights: c2, state: t3 }));
+        }))) || (u2.current = n3, n3.length > 0 && hn({ onItemsChange: r2, items: n3, insights: c2, state: t3 }));
       }
-    }, 0);
+    }), 0);
     return { name: "aa.algoliaInsightsPlugin", subscribe: function(e3) {
       var t3 = e3.setContext, n3 = e3.onSelect, r3 = e3.onActive;
-      a2("addAlgoliaAgent", "insights-plugin"), t3({ algoliaInsightsPlugin: { __algoliaSearchParameters: { clickAnalytics: true }, insights: c2 } }), n3(function(e4) {
+      a2("addAlgoliaAgent", "insights-plugin"), t3({ algoliaInsightsPlugin: { __algoliaSearchParameters: { clickAnalytics: true }, insights: c2 } }), n3((function(e4) {
         var t4 = e4.item, n4 = e4.state, r4 = e4.event;
         an(t4) && o2({ state: n4, event: r4, insights: c2, item: t4, insightsEvents: [fn({ eventName: "Item Selected" }, zt({ item: t4, items: u2.current }))] });
-      }), r3(function(e4) {
+      })), r3((function(e4) {
         var t4 = e4.item, n4 = e4.state, r4 = e4.event;
         an(t4) && i2({ state: n4, event: r4, insights: c2, item: t4, insightsEvents: [fn({ eventName: "Item Active" }, zt({ item: t4, items: u2.current }))] });
-      });
+      }));
     }, onStateChange: function(e3) {
       var t3 = e3.state;
       l2({ state: t3 });
@@ -2397,9 +2397,9 @@
     }, cancel: function() {
       n2.isCanceled = true;
       var e3 = n2.onCancelList;
-      n2.onCancelList = [], e3.forEach(function(e4) {
+      n2.onCancelList = [], e3.forEach((function(e4) {
         e4();
-      });
+      }));
     }, isCanceled: function() {
       return true === n2.isCanceled;
     } };
@@ -2422,26 +2422,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function On(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? Sn(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? Sn(Object(n2), true).forEach((function(t3) {
         wn(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Sn(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Sn(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function wn(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== En(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -2450,9 +2450,9 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === En(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   function En(e2) {
     return En = "function" == typeof Symbol && "symbol" == t(Symbol.iterator) ? function(e3) {
@@ -2462,19 +2462,19 @@
     }, En(e2);
   }
   function jn(e2) {
-    var t2 = function(e3) {
-      var t3 = e3.collections.map(function(e4) {
+    var t2 = (function(e3) {
+      var t3 = e3.collections.map((function(e4) {
         return e4.items.length;
-      }).reduce(function(e4, t4, n3) {
+      })).reduce((function(e4, t4, n3) {
         var r3 = (e4[n3 - 1] || 0) + t4;
         return e4.push(r3), e4;
-      }, []).reduce(function(t4, n3) {
+      }), []).reduce((function(t4, n3) {
         return n3 <= e3.activeItemId ? t4 + 1 : t4;
-      }, 0);
+      }), 0);
       return e3.collections[t3];
-    }(e2);
+    })(e2);
     if (!t2) return null;
-    var n2 = t2.items[function(e3) {
+    var n2 = t2.items[(function(e3) {
       for (var t3 = e3.state, n3 = e3.collection, r3 = false, o2 = 0, i2 = 0; false === r3; ) {
         var a2 = t3.collections[o2];
         if (a2 === n3) {
@@ -2484,7 +2484,7 @@
         i2 += a2.items.length, o2++;
       }
       return t3.activeItemId - i2;
-    }({ state: e2, collection: t2 })], r2 = t2.source;
+    })({ state: e2, collection: t2 })], r2 = t2.source;
     return { item: n2, itemInputValue: r2.getItemInputValue({ item: n2, state: e2 }), itemUrl: r2.getItemUrl({ item: n2, state: e2 }), source: r2 };
   }
   var Pn = /((gt|sm)-|galaxy nexus)|samsung[- ]|samsungbrowser/i;
@@ -2499,15 +2499,15 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function Dn(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== In(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -2516,9 +2516,9 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === In(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   function Cn(e2) {
     return Cn = "function" == typeof Symbol && "symbol" == t(Symbol.iterator) ? function(e3) {
@@ -2531,26 +2531,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function An(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? xn(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? xn(Object(n2), true).forEach((function(t3) {
         Nn(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : xn(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : xn(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function Nn(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== Cn(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -2559,9 +2559,9 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === Cn(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   function Tn(e2) {
     return Tn = "function" == typeof Symbol && "symbol" == t(Symbol.iterator) ? function(e3) {
@@ -2579,26 +2579,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function qn(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? Ln(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? Ln(Object(n2), true).forEach((function(t3) {
         Mn(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Ln(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Ln(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function Mn(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== Tn(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -2607,9 +2607,9 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === Tn(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   function Hn(e2) {
     return Hn = "function" == typeof Symbol && "symbol" == t(Symbol.iterator) ? function(e3) {
@@ -2622,26 +2622,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function Fn(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? Un(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? Un(Object(n2), true).forEach((function(t3) {
         Bn(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Un(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Un(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function Bn(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== Hn(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -2650,9 +2650,9 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === Hn(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   function Vn(e2) {
     return Vn = "function" == typeof Symbol && "symbol" == t(Symbol.iterator) ? function(e3) {
@@ -2665,26 +2665,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function Wn(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? Kn(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? Kn(Object(n2), true).forEach((function(t3) {
         zn(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Kn(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Kn(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function zn(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== Vn(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -2693,24 +2693,24 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === Vn(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   function Jn(e2) {
-    return function(e3) {
+    return (function(e3) {
       if (Array.isArray(e3)) return Qn(e3);
-    }(e2) || function(e3) {
+    })(e2) || (function(e3) {
       if ("undefined" != typeof Symbol && null != e3[Symbol.iterator] || null != e3["@@iterator"]) return Array.from(e3);
-    }(e2) || function(e3, t2) {
+    })(e2) || (function(e3, t2) {
       if (e3) {
         if ("string" == typeof e3) return Qn(e3, t2);
         var n2 = Object.prototype.toString.call(e3).slice(8, -1);
         return "Object" === n2 && e3.constructor && (n2 = e3.constructor.name), "Map" === n2 || "Set" === n2 ? Array.from(e3) : "Arguments" === n2 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2) ? Qn(e3, t2) : void 0;
       }
-    }(e2) || function() {
+    })(e2) || (function() {
       throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-    }();
+    })();
   }
   function Qn(e2, t2) {
     (null == t2 || t2 > e2.length) && (t2 = e2.length);
@@ -2721,11 +2721,11 @@
     return Boolean(e2.execute);
   }
   function Zn(e2) {
-    var t2 = e2.reduce(function(e3, t3) {
+    var t2 = e2.reduce((function(e3, t3) {
       if (!$n(t3)) return e3.push(t3), e3;
-      var n2 = t3.searchClient, r2 = t3.execute, o2 = t3.requesterId, i2 = t3.requests, a2 = e3.find(function(e4) {
+      var n2 = t3.searchClient, r2 = t3.execute, o2 = t3.requesterId, i2 = t3.requests, a2 = e3.find((function(e4) {
         return $n(t3) && $n(e4) && e4.searchClient === n2 && Boolean(o2) && e4.requesterId === o2;
-      });
+      }));
       if (a2) {
         var c2;
         (c2 = a2.items).push.apply(c2, Jn(i2));
@@ -2734,14 +2734,14 @@
         e3.push(u2);
       }
       return e3;
-    }, []).map(function(e3) {
+    }), []).map((function(e3) {
       if (!$n(e3)) return Promise.resolve(e3);
       var t3 = e3, n2 = t3.execute, r2 = t3.items;
       return n2({ searchClient: t3.searchClient, requests: r2 });
-    });
-    return Promise.all(t2).then(function(e3) {
+    }));
+    return Promise.all(t2).then((function(e3) {
       return Ht(e3);
-    });
+    }));
   }
   function Gn(e2) {
     return Gn = "function" == typeof Symbol && "symbol" == t(Symbol.iterator) ? function(e3) {
@@ -2755,26 +2755,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function er(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? Xn(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? Xn(Object(n2), true).forEach((function(t3) {
         tr(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Xn(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Xn(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function tr(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== Gn(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -2783,9 +2783,9 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === Gn(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   var nr;
   var rr;
@@ -2793,90 +2793,90 @@
   var ir = null;
   var ar = (nr = -1, rr = -1, or = void 0, function(e2) {
     var t2 = ++nr;
-    return Promise.resolve(e2).then(function(e3) {
+    return Promise.resolve(e2).then((function(e3) {
       return or && t2 < rr ? or : (rr = t2, or = e3, e3);
-    });
+    }));
   });
   function cr(e2) {
-    var t2 = e2.event, n2 = e2.nextState, r2 = void 0 === n2 ? {} : n2, o2 = e2.props, i2 = e2.query, a2 = e2.refresh, c2 = e2.store, u2 = function(e3, t3) {
+    var t2 = e2.event, n2 = e2.nextState, r2 = void 0 === n2 ? {} : n2, o2 = e2.props, i2 = e2.query, a2 = e2.refresh, c2 = e2.store, u2 = (function(e3, t3) {
       if (null == e3) return {};
-      var n3, r3, o3 = function(e4, t4) {
+      var n3, r3, o3 = (function(e4, t4) {
         if (null == e4) return {};
         var n4, r4, o4 = {}, i4 = Object.keys(e4);
         for (r4 = 0; r4 < i4.length; r4++) n4 = i4[r4], t4.indexOf(n4) >= 0 || (o4[n4] = e4[n4]);
         return o4;
-      }(e3, t3);
+      })(e3, t3);
       if (Object.getOwnPropertySymbols) {
         var i3 = Object.getOwnPropertySymbols(e3);
         for (r3 = 0; r3 < i3.length; r3++) n3 = i3[r3], t3.indexOf(n3) >= 0 || Object.prototype.propertyIsEnumerable.call(e3, n3) && (o3[n3] = e3[n3]);
       }
       return o3;
-    }(e2, Yn);
+    })(e2, Yn);
     ir && o2.environment.clearTimeout(ir);
     var l2 = u2.setCollections, s2 = u2.setIsOpen, f2 = u2.setQuery, p2 = u2.setActiveItemId, m2 = u2.setStatus;
     if (f2(i2), p2(o2.defaultActiveItemId), !i2 && false === o2.openOnFocus) {
-      var v2, h2 = c2.getState().collections.map(function(e3) {
+      var v2, h2 = c2.getState().collections.map((function(e3) {
         return er(er({}, e3), {}, { items: [] });
-      });
-      m2("idle"), l2(h2), s2(null !== (v2 = r2.isOpen) && void 0 !== v2 ? v2 : o2.shouldPanelOpen({ state: c2.getState() }));
-      var d2 = _n(ar(h2).then(function() {
-        return Promise.resolve();
       }));
+      m2("idle"), l2(h2), s2(null !== (v2 = r2.isOpen) && void 0 !== v2 ? v2 : o2.shouldPanelOpen({ state: c2.getState() }));
+      var d2 = _n(ar(h2).then((function() {
+        return Promise.resolve();
+      })));
       return c2.pendingRequests.add(d2);
     }
-    m2("loading"), ir = o2.environment.setTimeout(function() {
+    m2("loading"), ir = o2.environment.setTimeout((function() {
       m2("stalled");
-    }, o2.stallThreshold);
-    var y2 = _n(ar(o2.getSources(er({ query: i2, refresh: a2, state: c2.getState() }, u2)).then(function(e3) {
-      return Promise.all(e3.map(function(e4) {
-        return Promise.resolve(e4.getItems(er({ query: i2, refresh: a2, state: c2.getState() }, u2))).then(function(t3) {
-          return function(e5, t4, n3) {
+    }), o2.stallThreshold);
+    var y2 = _n(ar(o2.getSources(er({ query: i2, refresh: a2, state: c2.getState() }, u2)).then((function(e3) {
+      return Promise.all(e3.map((function(e4) {
+        return Promise.resolve(e4.getItems(er({ query: i2, refresh: a2, state: c2.getState() }, u2))).then((function(t3) {
+          return (function(e5, t4, n3) {
             if (o3 = e5, Boolean(null == o3 ? void 0 : o3.execute)) {
-              var r3 = "algolia" === e5.requesterId ? Object.assign.apply(Object, [{}].concat(Jn(Object.keys(n3.context).map(function(e6) {
+              var r3 = "algolia" === e5.requesterId ? Object.assign.apply(Object, [{}].concat(Jn(Object.keys(n3.context).map((function(e6) {
                 var t5;
                 return null === (t5 = n3.context[e6]) || void 0 === t5 ? void 0 : t5.__algoliaSearchParameters;
-              })))) : {};
-              return Wn(Wn({}, e5), {}, { requests: e5.queries.map(function(n4) {
+              }))))) : {};
+              return Wn(Wn({}, e5), {}, { requests: e5.queries.map((function(n4) {
                 return { query: "algolia" === e5.requesterId ? Wn(Wn({}, n4), {}, { params: Wn(Wn({}, r3), n4.params) }) : n4, sourceId: t4, transformResponse: e5.transformResponse };
-              }) });
+              })) });
             }
             var o3;
             return { items: e5, sourceId: t4 };
-          }(t3, e4.sourceId, c2.getState());
-        });
-      })).then(Zn).then(function(t3) {
-        return function(e4, t4, n3) {
-          return t4.map(function(t5) {
-            var r3, o3 = e4.filter(function(e5) {
+          })(t3, e4.sourceId, c2.getState());
+        }));
+      }))).then(Zn).then((function(t3) {
+        return (function(e4, t4, n3) {
+          return t4.map((function(t5) {
+            var r3, o3 = e4.filter((function(e5) {
               return e5.sourceId === t5.sourceId;
-            }), i3 = o3.map(function(e5) {
+            })), i3 = o3.map((function(e5) {
               return e5.items;
-            }), a3 = o3[0].transformResponse, c3 = a3 ? a3({ results: r3 = i3, hits: r3.map(function(e5) {
+            })), a3 = o3[0].transformResponse, c3 = a3 ? a3({ results: r3 = i3, hits: r3.map((function(e5) {
               return e5.hits;
-            }).filter(Boolean), facetHits: r3.map(function(e5) {
+            })).filter(Boolean), facetHits: r3.map((function(e5) {
               var t6;
-              return null === (t6 = e5.facetHits) || void 0 === t6 ? void 0 : t6.map(function(e6) {
+              return null === (t6 = e5.facetHits) || void 0 === t6 ? void 0 : t6.map((function(e6) {
                 return { label: e6.value, count: e6.count, _highlightResult: { label: { value: e6.highlighted } } };
-              });
-            }).filter(Boolean) }) : i3;
+              }));
+            })).filter(Boolean) }) : i3;
             return t5.onResolve({ source: t5, results: i3, items: c3, state: n3.getState() }), c3.every(Boolean), 'The `getItems` function from source "'.concat(t5.sourceId, '" must return an array of items but returned ').concat(JSON.stringify(void 0), ".\n\nDid you forget to return items?\n\nSee: https://www.algolia.com/doc/ui-libraries/autocomplete/core-concepts/sources/#param-getitems"), { source: t5, items: c3 };
-          });
-        }(t3, e3, c2);
-      }).then(function(e4) {
-        return function(e5) {
-          var t3 = e5.props, n3 = e5.state, r3 = e5.collections.reduce(function(e6, t4) {
+          }));
+        })(t3, e3, c2);
+      })).then((function(e4) {
+        return (function(e5) {
+          var t3 = e5.props, n3 = e5.state, r3 = e5.collections.reduce((function(e6, t4) {
             return Fn(Fn({}, e6), {}, Bn({}, t4.source.sourceId, Fn(Fn({}, t4.source), {}, { getItems: function() {
               return Ht(t4.items);
             } })));
-          }, {}), o3 = t3.plugins.reduce(function(e6, t4) {
+          }), {}), o3 = t3.plugins.reduce((function(e6, t4) {
             return t4.reshape ? t4.reshape(e6) : e6;
-          }, { sourcesBySourceId: r3, state: n3 }).sourcesBySourceId;
-          return Ht(t3.reshape({ sourcesBySourceId: o3, sources: Object.values(o3), state: n3 })).filter(Boolean).map(function(e6) {
+          }), { sourcesBySourceId: r3, state: n3 }).sourcesBySourceId;
+          return Ht(t3.reshape({ sourcesBySourceId: o3, sources: Object.values(o3), state: n3 })).filter(Boolean).map((function(e6) {
             return { source: e6, items: e6.getItems() };
-          });
-        }({ collections: e4, props: o2, state: c2.getState() });
-      });
-    }))).then(function(e3) {
+          }));
+        })({ collections: e4, props: o2, state: c2.getState() });
+      }));
+    })))).then((function(e3) {
       var n3;
       m2("idle"), l2(e3);
       var f3 = o2.shouldPanelOpen({ state: c2.getState() });
@@ -2886,9 +2886,9 @@
         var v3 = p3.item, h3 = p3.itemInputValue, d3 = p3.itemUrl, y3 = p3.source;
         y3.onActive(er({ event: t2, item: v3, itemInputValue: h3, itemUrl: d3, refresh: a2, source: y3, state: c2.getState() }, u2));
       }
-    }).finally(function() {
+    })).finally((function() {
       m2("idle"), ir && o2.environment.clearTimeout(ir);
-    });
+    }));
     return c2.pendingRequests.add(y2);
   }
   function ur(e2) {
@@ -2903,26 +2903,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function fr(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? sr(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? sr(Object(n2), true).forEach((function(t3) {
         pr(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : sr(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : sr(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function pr(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== ur(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -2931,9 +2931,9 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === ur(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   function mr(e2) {
     return mr = "function" == typeof Symbol && "symbol" == t(Symbol.iterator) ? function(e3) {
@@ -2953,26 +2953,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function Or(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? Sr(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? Sr(Object(n2), true).forEach((function(t3) {
         wr(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Sr(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Sr(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function wr(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== mr(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -2981,18 +2981,18 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === mr(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   function Er(e2, t2) {
     if (null == e2) return {};
-    var n2, r2, o2 = function(e3, t3) {
+    var n2, r2, o2 = (function(e3, t3) {
       if (null == e3) return {};
       var n3, r3, o3 = {}, i3 = Object.keys(e3);
       for (r3 = 0; r3 < i3.length; r3++) n3 = i3[r3], t3.indexOf(n3) >= 0 || (o3[n3] = e3[n3]);
       return o3;
-    }(e2, t2);
+    })(e2, t2);
     if (Object.getOwnPropertySymbols) {
       var i2 = Object.getOwnPropertySymbols(e2);
       for (r2 = 0; r2 < i2.length; r2++) n2 = i2[r2], t2.indexOf(n2) >= 0 || Object.prototype.propertyIsEnumerable.call(e2, n2) && (o2[n2] = e2[n2]);
@@ -3010,26 +3010,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function Ir(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? Pr(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? Pr(Object(n2), true).forEach((function(t3) {
         kr(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Pr(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Pr(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function kr(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== jr(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -3038,15 +3038,15 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === jr(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   function Dr(e2) {
     var t2, n2, r2, o2, i2 = e2.plugins, a2 = e2.options, c2 = null === (t2 = ((null === (n2 = a2.__autocomplete_metadata) || void 0 === n2 ? void 0 : n2.userAgents) || [])[0]) || void 0 === t2 ? void 0 : t2.segment, u2 = c2 ? kr({}, c2, Object.keys((null === (r2 = a2.__autocomplete_metadata) || void 0 === r2 ? void 0 : r2.options) || {})) : {};
-    return { plugins: i2.map(function(e3) {
+    return { plugins: i2.map((function(e3) {
       return { name: e3.name, options: Object.keys(e3.__autocomplete_pluginOptions || []) };
-    }), options: Ir({ "autocomplete-core": Object.keys(a2) }, u2), ua: Wt.concat((null === (o2 = a2.__autocomplete_metadata) || void 0 === o2 ? void 0 : o2.userAgents) || []) };
+    })), options: Ir({ "autocomplete-core": Object.keys(a2) }, u2), ua: Wt.concat((null === (o2 = a2.__autocomplete_metadata) || void 0 === o2 ? void 0 : o2.userAgents) || []) };
   }
   function Cr(e2) {
     var t2, n2 = e2.state;
@@ -3063,26 +3063,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function Nr(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? Ar(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? Ar(Object(n2), true).forEach((function(t3) {
         Tr(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Ar(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : Ar(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function Tr(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== xr(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -3091,9 +3091,9 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === xr(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   var Rr = function(e2, t2) {
     switch (t2.type) {
@@ -3143,26 +3143,26 @@
     var n2 = Object.keys(e2);
     if (Object.getOwnPropertySymbols) {
       var r2 = Object.getOwnPropertySymbols(e2);
-      t2 && (r2 = r2.filter(function(t3) {
+      t2 && (r2 = r2.filter((function(t3) {
         return Object.getOwnPropertyDescriptor(e2, t3).enumerable;
-      })), n2.push.apply(n2, r2);
+      }))), n2.push.apply(n2, r2);
     }
     return n2;
   }
   function Mr(e2) {
     for (var t2 = 1; t2 < arguments.length; t2++) {
       var n2 = null != arguments[t2] ? arguments[t2] : {};
-      t2 % 2 ? qr(Object(n2), true).forEach(function(t3) {
+      t2 % 2 ? qr(Object(n2), true).forEach((function(t3) {
         Hr(e2, t3, n2[t3]);
-      }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : qr(Object(n2)).forEach(function(t3) {
+      })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(n2)) : qr(Object(n2)).forEach((function(t3) {
         Object.defineProperty(e2, t3, Object.getOwnPropertyDescriptor(n2, t3));
-      });
+      }));
     }
     return e2;
   }
   function Hr(e2, t2, n2) {
-    return (t2 = function(e3) {
-      var t3 = function(e4) {
+    return (t2 = (function(e3) {
+      var t3 = (function(e4) {
         if ("object" !== Lr(e4) || null === e4) return e4;
         var t4 = e4[Symbol.toPrimitive];
         if (void 0 !== t4) {
@@ -3171,12 +3171,12 @@
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
         return String(e4);
-      }(e3);
+      })(e3);
       return "symbol" === Lr(t3) ? t3 : String(t3);
-    }(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
+    })(t2)) in e2 ? Object.defineProperty(e2, t2, { value: n2, enumerable: true, configurable: true, writable: true }) : e2[t2] = n2, e2;
   }
   function Ur(e2) {
-    var t2 = [], n2 = function(e3, t3) {
+    var t2 = [], n2 = (function(e3, t3) {
       var n3, r3 = "undefined" != typeof window ? window : {}, o3 = e3.plugins || [];
       return qn(qn({ debug: false, openOnFocus: false, placeholder: "", autoFocus: false, defaultActiveItemId: null, stallThreshold: 300, insights: false, environment: r3, shouldPanelOpen: function(e4) {
         return Ft(e4.state) > 0;
@@ -3184,46 +3184,46 @@
         return e4.sources;
       } }, e3), {}, { id: null !== (n3 = e3.id) && void 0 !== n3 ? n3 : "autocomplete-".concat(Ut++), plugins: o3, initialState: qn({ activeItemId: null, query: "", completion: null, collections: [], isOpen: false, status: "idle", context: {} }, e3.initialState), onStateChange: function(t4) {
         var n4;
-        null === (n4 = e3.onStateChange) || void 0 === n4 || n4.call(e3, t4), o3.forEach(function(e4) {
+        null === (n4 = e3.onStateChange) || void 0 === n4 || n4.call(e3, t4), o3.forEach((function(e4) {
           var n5;
           return null === (n5 = e4.onStateChange) || void 0 === n5 ? void 0 : n5.call(e4, t4);
-        });
+        }));
       }, onSubmit: function(t4) {
         var n4;
-        null === (n4 = e3.onSubmit) || void 0 === n4 || n4.call(e3, t4), o3.forEach(function(e4) {
+        null === (n4 = e3.onSubmit) || void 0 === n4 || n4.call(e3, t4), o3.forEach((function(e4) {
           var n5;
           return null === (n5 = e4.onSubmit) || void 0 === n5 ? void 0 : n5.call(e4, t4);
-        });
+        }));
       }, onReset: function(t4) {
         var n4;
-        null === (n4 = e3.onReset) || void 0 === n4 || n4.call(e3, t4), o3.forEach(function(e4) {
+        null === (n4 = e3.onReset) || void 0 === n4 || n4.call(e3, t4), o3.forEach((function(e4) {
           var n5;
           return null === (n5 = e4.onReset) || void 0 === n5 ? void 0 : n5.call(e4, t4);
-        });
+        }));
       }, getSources: function(n4) {
-        return Promise.all([].concat(function(e4) {
-          return function(e5) {
+        return Promise.all([].concat((function(e4) {
+          return (function(e5) {
             if (Array.isArray(e5)) return Rn(e5);
-          }(e4) || function(e5) {
+          })(e4) || (function(e5) {
             if ("undefined" != typeof Symbol && null != e5[Symbol.iterator] || null != e5["@@iterator"]) return Array.from(e5);
-          }(e4) || function(e5, t4) {
+          })(e4) || (function(e5, t4) {
             if (e5) {
               if ("string" == typeof e5) return Rn(e5, t4);
               var n5 = Object.prototype.toString.call(e5).slice(8, -1);
               return "Object" === n5 && e5.constructor && (n5 = e5.constructor.name), "Map" === n5 || "Set" === n5 ? Array.from(e5) : "Arguments" === n5 || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n5) ? Rn(e5, t4) : void 0;
             }
-          }(e4) || function() {
+          })(e4) || (function() {
             throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-          }();
-        }(o3.map(function(e4) {
+          })();
+        })(o3.map((function(e4) {
           return e4.getSources;
-        })), [e3.getSources]).filter(Boolean).map(function(e4) {
-          return function(e5, t4) {
+        }))), [e3.getSources]).filter(Boolean).map((function(e4) {
+          return (function(e5, t4) {
             var n5 = [];
-            return Promise.resolve(e5(t4)).then(function(e6) {
-              return Promise.all(e6.filter(function(e7) {
+            return Promise.resolve(e5(t4)).then((function(e6) {
+              return Promise.all(e6.filter((function(e7) {
                 return Boolean(e7);
-              }).map(function(e7) {
+              })).map((function(e7) {
                 if (e7.sourceId, n5.includes(e7.sourceId)) throw new Error("[Autocomplete] The `sourceId` ".concat(JSON.stringify(e7.sourceId), " is not unique."));
                 n5.push(e7.sourceId);
                 var t5 = { getItemInputValue: function(e8) {
@@ -3232,36 +3232,36 @@
                 }, onSelect: function(e8) {
                   (0, e8.setIsOpen)(false);
                 }, onActive: Kt, onResolve: Kt };
-                Object.keys(t5).forEach(function(e8) {
+                Object.keys(t5).forEach((function(e8) {
                   t5[e8].__default = true;
-                });
+                }));
                 var r4 = On(On({}, t5), e7);
                 return Promise.resolve(r4);
-              }));
-            });
-          }(e4, n4);
-        })).then(function(e4) {
+              })));
+            }));
+          })(e4, n4);
+        }))).then((function(e4) {
           return Ht(e4);
-        }).then(function(e4) {
-          return e4.map(function(e5) {
+        })).then((function(e4) {
+          return e4.map((function(e5) {
             return qn(qn({}, e5), {}, { onSelect: function(n5) {
-              e5.onSelect(n5), t3.forEach(function(e6) {
+              e5.onSelect(n5), t3.forEach((function(e6) {
                 var t4;
                 return null === (t4 = e6.onSelect) || void 0 === t4 ? void 0 : t4.call(e6, n5);
-              });
+              }));
             }, onActive: function(n5) {
-              e5.onActive(n5), t3.forEach(function(e6) {
+              e5.onActive(n5), t3.forEach((function(e6) {
                 var t4;
                 return null === (t4 = e6.onActive) || void 0 === t4 ? void 0 : t4.call(e6, n5);
-              });
+              }));
             }, onResolve: function(n5) {
-              e5.onResolve(n5), t3.forEach(function(e6) {
+              e5.onResolve(n5), t3.forEach((function(e6) {
                 var t4;
                 return null === (t4 = e6.onResolve) || void 0 === t4 ? void 0 : t4.call(e6, n5);
-              });
+              }));
             } });
-          });
-        });
+          }));
+        }));
       }, navigator: qn({ navigate: function(e4) {
         var t4 = e4.itemUrl;
         r3.location.assign(t4);
@@ -3272,51 +3272,51 @@
         var t4 = e4.itemUrl;
         r3.open(t4, "_blank", "noopener");
       } }, e3.navigator) });
-    }(e2, t2), r2 = function(e3, t3, n3) {
+    })(e2, t2), r2 = (function(e3, t3, n3) {
       var r3, o3 = t3.initialState;
       return { getState: function() {
         return o3;
       }, dispatch: function(r4, i3) {
-        var a3 = function(e4) {
+        var a3 = (function(e4) {
           for (var t4 = 1; t4 < arguments.length; t4++) {
             var n4 = null != arguments[t4] ? arguments[t4] : {};
-            t4 % 2 ? kn(Object(n4), true).forEach(function(t5) {
+            t4 % 2 ? kn(Object(n4), true).forEach((function(t5) {
               Dn(e4, t5, n4[t5]);
-            }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e4, Object.getOwnPropertyDescriptors(n4)) : kn(Object(n4)).forEach(function(t5) {
+            })) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e4, Object.getOwnPropertyDescriptors(n4)) : kn(Object(n4)).forEach((function(t5) {
               Object.defineProperty(e4, t5, Object.getOwnPropertyDescriptor(n4, t5));
-            });
+            }));
           }
           return e4;
-        }({}, o3);
+        })({}, o3);
         o3 = e3(o3, { type: r4, props: t3, payload: i3 }), n3({ state: o3, prevState: a3 });
       }, pendingRequests: (r3 = [], { add: function(e4) {
-        return r3.push(e4), e4.finally(function() {
-          r3 = r3.filter(function(t4) {
+        return r3.push(e4), e4.finally((function() {
+          r3 = r3.filter((function(t4) {
             return t4 !== e4;
-          });
-        });
+          }));
+        }));
       }, cancelAll: function() {
-        r3.forEach(function(e4) {
+        r3.forEach((function(e4) {
           return e4.cancel();
-        });
+        }));
       }, isEmpty: function() {
         return 0 === r3.length;
       } }) };
-    }(Rr, n2, function(e3) {
+    })(Rr, n2, (function(e3) {
       var t3 = e3.prevState, r3 = e3.state;
       n2.onStateChange(Mr({ prevState: t3, state: r3, refresh: a2, navigator: n2.navigator }, o2));
-    }), o2 = function(e3) {
+    })), o2 = (function(e3) {
       var t3 = e3.store;
       return { setActiveItemId: function(e4) {
         t3.dispatch("setActiveItemId", e4);
       }, setQuery: function(e4) {
         t3.dispatch("setQuery", e4);
       }, setCollections: function(e4) {
-        var n3 = 0, r3 = e4.map(function(e5) {
-          return An(An({}, e5), {}, { items: Ht(e5.items).map(function(e6) {
+        var n3 = 0, r3 = e4.map((function(e5) {
+          return An(An({}, e5), {}, { items: Ht(e5.items).map((function(e6) {
             return An(An({}, e6), {}, { __autocomplete_id: n3++ });
-          }) });
-        });
+          })) });
+        }));
         t3.dispatch("setCollections", r3);
       }, setIsOpen: function(e4) {
         t3.dispatch("setIsOpen", e4);
@@ -3325,17 +3325,17 @@
       }, setContext: function(e4) {
         t3.dispatch("setContext", e4);
       } };
-    }({ store: r2 }), i2 = function(e3) {
+    })({ store: r2 }), i2 = (function(e3) {
       var t3 = e3.props, n3 = e3.refresh, r3 = e3.store, o3 = Er(e3, vr), i3 = function(e4, t4) {
         return void 0 !== t4 ? "".concat(e4, "-").concat(t4) : e4;
       };
       return { getEnvironmentProps: function(e4) {
         var n4 = e4.inputElement, o4 = e4.formElement, i4 = e4.panelElement;
         function a3(e5) {
-          !r3.getState().isOpen && r3.pendingRequests.isEmpty() || e5.target === n4 || false === [o4, i4].some(function(t4) {
+          !r3.getState().isOpen && r3.pendingRequests.isEmpty() || e5.target === n4 || false === [o4, i4].some((function(t4) {
             return (n5 = t4) === (r4 = e5.target) || n5.contains(r4);
             var n5, r4;
-          }) && (r3.dispatch("blur", null), t3.debug || r3.pendingRequests.cancelAll());
+          })) && (r3.dispatch("blur", null), t3.debug || r3.pendingRequests.cancelAll());
         }
         return Or({ onTouchStart: a3, onMouseDown: a3, onTouchMove: function(e5) {
           false !== r3.getState().isOpen && n4 === t3.environment.document.activeElement && e5.target !== n4 && n4.blur();
@@ -3358,27 +3358,27 @@
         function a3(e5) {
           (t3.openOnFocus || Boolean(r3.getState().query)) && cr(Or({ event: e5, props: t3, query: r3.getState().completion || r3.getState().query, refresh: n3, store: r3 }, o3)), r3.dispatch("focus", null);
         }
-        var c3 = e4 || {}, u2 = (c3.inputElement, c3.maxLength), l2 = void 0 === u2 ? 512 : u2, s2 = Er(c3, yr), f2 = jn(r3.getState()), p2 = function(e5) {
+        var c3 = e4 || {}, u2 = (c3.inputElement, c3.maxLength), l2 = void 0 === u2 ? 512 : u2, s2 = Er(c3, yr), f2 = jn(r3.getState()), p2 = (function(e5) {
           return Boolean(e5 && e5.match(Pn));
-        }((null === (i4 = t3.environment.navigator) || void 0 === i4 ? void 0 : i4.userAgent) || ""), m2 = null != f2 && f2.itemUrl && !p2 ? "go" : "search";
+        })((null === (i4 = t3.environment.navigator) || void 0 === i4 ? void 0 : i4.userAgent) || ""), m2 = null != f2 && f2.itemUrl && !p2 ? "go" : "search";
         return Or({ "aria-autocomplete": "both", "aria-activedescendant": r3.getState().isOpen && null !== r3.getState().activeItemId ? "".concat(t3.id, "-item-").concat(r3.getState().activeItemId) : void 0, "aria-controls": r3.getState().isOpen ? "".concat(t3.id, "-list") : void 0, "aria-labelledby": "".concat(t3.id, "-label"), value: r3.getState().completion || r3.getState().query, id: "".concat(t3.id, "-input"), autoComplete: "off", autoCorrect: "off", autoCapitalize: "off", enterKeyHint: m2, spellCheck: "false", autoFocus: t3.autoFocus, placeholder: t3.placeholder, maxLength: l2, type: "search", onChange: function(e5) {
           cr(Or({ event: e5, props: t3, query: e5.currentTarget.value.slice(0, l2), refresh: n3, store: r3 }, o3));
         }, onKeyDown: function(e5) {
-          !function(e6) {
-            var t4 = e6.event, n4 = e6.props, r4 = e6.refresh, o4 = e6.store, i5 = function(e7, t5) {
+          !(function(e6) {
+            var t4 = e6.event, n4 = e6.props, r4 = e6.refresh, o4 = e6.store, i5 = (function(e7, t5) {
               if (null == e7) return {};
-              var n5, r5, o5 = function(e8, t6) {
+              var n5, r5, o5 = (function(e8, t6) {
                 if (null == e8) return {};
                 var n6, r6, o6 = {}, i7 = Object.keys(e8);
                 for (r6 = 0; r6 < i7.length; r6++) n6 = i7[r6], t6.indexOf(n6) >= 0 || (o6[n6] = e8[n6]);
                 return o6;
-              }(e7, t5);
+              })(e7, t5);
               if (Object.getOwnPropertySymbols) {
                 var i6 = Object.getOwnPropertySymbols(e7);
                 for (r5 = 0; r5 < i6.length; r5++) n5 = i6[r5], t5.indexOf(n5) >= 0 || Object.prototype.propertyIsEnumerable.call(e7, n5) && (o5[n5] = e7[n5]);
               }
               return o5;
-            }(e6, lr);
+            })(e6, lr);
             if ("ArrowUp" === t4.key || "ArrowDown" === t4.key) {
               var a4 = function() {
                 var e7 = n4.environment.document.getElementById("".concat(n4.id, "-item-").concat(o4.getState().activeItemId));
@@ -3390,15 +3390,15 @@
                   u4.onActive(fr({ event: t4, item: n5, itemInputValue: a5, itemUrl: c5, refresh: r4, source: u4, state: o4.getState() }, i5));
                 }
               };
-              t4.preventDefault(), false === o4.getState().isOpen && (n4.openOnFocus || Boolean(o4.getState().query)) ? cr(fr({ event: t4, props: n4, query: o4.getState().query, refresh: r4, store: o4 }, i5)).then(function() {
+              t4.preventDefault(), false === o4.getState().isOpen && (n4.openOnFocus || Boolean(o4.getState().query)) ? cr(fr({ event: t4, props: n4, query: o4.getState().query, refresh: r4, store: o4 }, i5)).then((function() {
                 o4.dispatch(t4.key, { nextActiveItemId: n4.defaultActiveItemId }), c4(), setTimeout(a4, 0);
-              }) : (o4.dispatch(t4.key, {}), c4(), a4());
+              })) : (o4.dispatch(t4.key, {}), c4(), a4());
             } else if ("Escape" === t4.key) t4.preventDefault(), o4.dispatch(t4.key, null), o4.pendingRequests.cancelAll();
             else if ("Tab" === t4.key) o4.dispatch("blur", null), o4.pendingRequests.cancelAll();
             else if ("Enter" === t4.key) {
-              if (null === o4.getState().activeItemId || o4.getState().collections.every(function(e7) {
+              if (null === o4.getState().activeItemId || o4.getState().collections.every((function(e7) {
                 return 0 === e7.items.length;
-              })) return void (n4.debug || o4.pendingRequests.cancelAll());
+              }))) return void (n4.debug || o4.pendingRequests.cancelAll());
               t4.preventDefault();
               var u3 = jn(o4.getState()), l3 = u3.item, s3 = u3.itemInputValue, f3 = u3.itemUrl, p3 = u3.source;
               if (t4.metaKey || t4.ctrlKey) void 0 !== f3 && (p3.onSelect(fr({ event: t4, item: l3, itemInputValue: s3, itemUrl: f3, refresh: r4, source: p3, state: o4.getState() }, i5)), n4.navigator.navigateNewTab({ itemUrl: f3, item: l3, state: o4.getState() }));
@@ -3406,12 +3406,12 @@
               else if (t4.altKey) ;
               else {
                 if (void 0 !== f3) return p3.onSelect(fr({ event: t4, item: l3, itemInputValue: s3, itemUrl: f3, refresh: r4, source: p3, state: o4.getState() }, i5)), void n4.navigator.navigate({ itemUrl: f3, item: l3, state: o4.getState() });
-                cr(fr({ event: t4, nextState: { isOpen: false }, props: n4, query: s3, refresh: r4, store: o4 }, i5)).then(function() {
+                cr(fr({ event: t4, nextState: { isOpen: false }, props: n4, query: s3, refresh: r4, store: o4 }, i5)).then((function() {
                   p3.onSelect(fr({ event: t4, item: l3, itemInputValue: s3, itemUrl: f3, refresh: r4, source: p3, state: o4.getState() }, i5));
-                });
+                }));
               }
             }
-          }(Or({ event: e5, props: t3, refresh: n3, store: r3 }, o3));
+          })(Or({ event: e5, props: t3, refresh: n3, store: r3 }, o3));
         }, onFocus: a3, onBlur: Kt, onClick: function(n4) {
           e4.inputElement !== t3.environment.document.activeElement || r3.getState().isOpen || a3(n4);
         } }, s2);
@@ -3439,22 +3439,22 @@
           e5.preventDefault();
         }, onClick: function(e5) {
           var i4 = c3.getItemInputValue({ item: a3, state: r3.getState() }), u3 = c3.getItemUrl({ item: a3, state: r3.getState() });
-          (u3 ? Promise.resolve() : cr(Or({ event: e5, nextState: { isOpen: false }, props: t3, query: i4, refresh: n3, store: r3 }, o3))).then(function() {
+          (u3 ? Promise.resolve() : cr(Or({ event: e5, nextState: { isOpen: false }, props: t3, query: i4, refresh: n3, store: r3 }, o3))).then((function() {
             c3.onSelect(Or({ event: e5, item: a3, itemInputValue: i4, itemUrl: u3, refresh: n3, source: c3, state: r3.getState() }, o3));
-          });
+          }));
         } }, l2);
       } };
-    }(Mr({ props: n2, refresh: a2, store: r2, navigator: n2.navigator }, o2));
+    })(Mr({ props: n2, refresh: a2, store: r2, navigator: n2.navigator }, o2));
     function a2() {
       return cr(Mr({ event: new Event("input"), nextState: { isOpen: r2.getState().isOpen }, props: n2, navigator: n2.navigator, query: r2.getState().query, refresh: a2, store: r2 }, o2));
     }
-    if (e2.insights && !n2.plugins.some(function(e3) {
+    if (e2.insights && !n2.plugins.some((function(e3) {
       return "aa.algoliaInsightsPlugin" === e3.name;
-    })) {
+    }))) {
       var c2 = "boolean" == typeof e2.insights ? {} : e2.insights;
       n2.plugins.push(dn(c2));
     }
-    return n2.plugins.forEach(function(e3) {
+    return n2.plugins.forEach((function(e3) {
       var r3;
       return null === (r3 = e3.subscribe) || void 0 === r3 ? void 0 : r3.call(e3, Mr(Mr({}, o2), {}, { navigator: n2.navigator, refresh: a2, onSelect: function(e4) {
         t2.push({ onSelect: e4 });
@@ -3463,15 +3463,15 @@
       }, onResolve: function(e4) {
         t2.push({ onResolve: e4 });
       } }));
-    }), function(e3) {
+    })), (function(e3) {
       var t3, n3, r3 = e3.metadata, o3 = e3.environment;
       if (null === (t3 = o3.navigator) || void 0 === t3 || null === (n3 = t3.userAgent) || void 0 === n3 ? void 0 : n3.includes("Algolia Crawler")) {
         var i3 = o3.document.createElement("meta"), a3 = o3.document.querySelector("head");
-        i3.name = "algolia:metadata", setTimeout(function() {
+        i3.name = "algolia:metadata", setTimeout((function() {
           i3.content = JSON.stringify(r3), a3.appendChild(i3);
-        }, 0);
+        }), 0);
       }
-    }({ metadata: Dr({ plugins: n2.plugins, options: e2 }), environment: n2.environment }), Mr(Mr({ refresh: a2, navigator: n2.navigator }, i2), o2);
+    })({ metadata: Dr({ plugins: n2.plugins, options: e2 }), environment: n2.environment }), Mr(Mr({ refresh: a2, navigator: n2.navigator }, i2), o2);
   }
   function Fr(e2) {
     var t2 = e2.translations, n2 = (void 0 === t2 ? {} : t2).searchByText, r2 = void 0 === n2 ? "Search by" : n2;
@@ -3535,26 +3535,26 @@
   var ro = ["translations"];
   function oo(e2) {
     var t2 = e2.translations, n2 = void 0 === t2 ? {} : t2, r2 = Et(e2, ro), o2 = n2.noResultsText, i2 = void 0 === o2 ? "No results for" : o2, a2 = n2.suggestedQueryText, c2 = void 0 === a2 ? "Try searching for" : a2, u2 = n2.reportMissingResultsText, l2 = void 0 === u2 ? "Believe this query should return results?" : u2, s2 = n2.reportMissingResultsLinkText, f2 = void 0 === s2 ? "Let us know." : s2, p2 = r2.state.context.searchSuggestions;
-    return lt.createElement("div", { className: "DocSearch-NoResults" }, lt.createElement("div", { className: "DocSearch-Screen-Icon" }, lt.createElement(to, null)), lt.createElement("p", { className: "DocSearch-Title" }, i2, ' "', lt.createElement("strong", null, r2.state.query), '"'), p2 && p2.length > 0 && lt.createElement("div", { className: "DocSearch-NoResults-Prefill-List" }, lt.createElement("p", { className: "DocSearch-Help" }, c2, ":"), lt.createElement("ul", null, p2.slice(0, 3).reduce(function(e3, t3) {
+    return lt.createElement("div", { className: "DocSearch-NoResults" }, lt.createElement("div", { className: "DocSearch-Screen-Icon" }, lt.createElement(to, null)), lt.createElement("p", { className: "DocSearch-Title" }, i2, ' "', lt.createElement("strong", null, r2.state.query), '"'), p2 && p2.length > 0 && lt.createElement("div", { className: "DocSearch-NoResults-Prefill-List" }, lt.createElement("p", { className: "DocSearch-Help" }, c2, ":"), lt.createElement("ul", null, p2.slice(0, 3).reduce((function(e3, t3) {
       return [].concat(kt(e3), [lt.createElement("li", { key: t3 }, lt.createElement("button", { className: "DocSearch-Prefill", key: t3, type: "button", onClick: function() {
         r2.setQuery(t3.toLowerCase() + " "), r2.refresh(), r2.inputRef.current.focus();
       } }, t3))]);
-    }, []))), r2.getMissingResultsUrl && lt.createElement("p", { className: "DocSearch-Help" }, "".concat(l2, " "), lt.createElement("a", { href: r2.getMissingResultsUrl({ query: r2.state.query }), target: "_blank", rel: "noopener noreferrer" }, f2)));
+    }), []))), r2.getMissingResultsUrl && lt.createElement("p", { className: "DocSearch-Help" }, "".concat(l2, " "), lt.createElement("a", { href: r2.getMissingResultsUrl({ query: r2.state.query }), target: "_blank", rel: "noopener noreferrer" }, f2)));
   }
   var io = ["hit", "attribute", "tagName"];
   function ao(e2, t2) {
-    return t2.split(".").reduce(function(e3, t3) {
+    return t2.split(".").reduce((function(e3, t3) {
       return null != e3 && e3[t3] ? e3[t3] : null;
-    }, e2);
+    }), e2);
   }
   function co(e2) {
     var t2 = e2.hit, n2 = e2.attribute, r2 = e2.tagName;
     return g(void 0 === r2 ? "span" : r2, wt(wt({}, Et(e2, io)), {}, { dangerouslySetInnerHTML: { __html: ao(t2, "_snippetResult.".concat(n2, ".value")) || ao(t2, n2) } }));
   }
   function uo(e2) {
-    return e2.collection && 0 !== e2.collection.items.length ? lt.createElement("section", { className: "DocSearch-Hits" }, lt.createElement("div", { className: "DocSearch-Hit-source" }, e2.title), lt.createElement("ul", e2.getListProps(), e2.collection.items.map(function(t2, n2) {
+    return e2.collection && 0 !== e2.collection.items.length ? lt.createElement("section", { className: "DocSearch-Hits" }, lt.createElement("div", { className: "DocSearch-Hit-source" }, e2.title), lt.createElement("ul", e2.getListProps(), e2.collection.items.map((function(t2, n2) {
       return lt.createElement(lo, _t({ key: [e2.title, t2.objectID].join(":"), item: t2, index: n2 }, e2));
-    }))) : null;
+    })))) : null;
   }
   function lo(e2) {
     var t2 = e2.item, n2 = e2.index, r2 = e2.renderIcon, o2 = e2.renderAction, i2 = e2.getItemProps, a2 = e2.onItemClick, c2 = e2.collection, u2 = e2.hitComponent, l2 = It(lt.useState(false), 2), s2 = l2[0], f2 = l2[1], p2 = It(lt.useState(false), 2), m2 = p2[0], v2 = p2[1], h2 = lt.useRef(null), d2 = u2;
@@ -3569,10 +3569,10 @@
     } }))));
   }
   function so(e2, t2, n2) {
-    return e2.reduce(function(e3, r2) {
+    return e2.reduce((function(e3, r2) {
       var o2 = t2(r2);
       return e3.hasOwnProperty(o2) || (e3[o2] = []), e3[o2].length < (n2 || 5) && e3[o2].push(r2), e3;
-    }, {});
+    }), {});
   }
   function fo(e2) {
     return e2;
@@ -3591,7 +3591,7 @@
     return o2 ? o2.value && ho.test(o2.value) ? o2.value.replace(vo, "") : o2.value : e2.hierarchy.lvl0;
   }
   function _o(e2) {
-    return lt.createElement("div", { className: "DocSearch-Dropdown-Container" }, e2.state.collections.map(function(t2) {
+    return lt.createElement("div", { className: "DocSearch-Dropdown-Container" }, e2.state.collections.map((function(t2) {
       if (0 === t2.items.length) return null;
       var n2 = yo(t2.items[0]);
       return lt.createElement(uo, _t({}, e2, { key: t2.source.sourceId, title: n2, collection: t2, renderIcon: function(e3) {
@@ -3600,7 +3600,7 @@
       }, renderAction: function() {
         return lt.createElement("div", { className: "DocSearch-Hit-action" }, lt.createElement(Qr, null));
       } }));
-    }), e2.resultsFooterComponent && lt.createElement("section", { className: "DocSearch-HitsFooter" }, lt.createElement(e2.resultsFooterComponent, { state: e2.state })));
+    })), e2.resultsFooterComponent && lt.createElement("section", { className: "DocSearch-HitsFooter" }, lt.createElement(e2.resultsFooterComponent, { state: e2.state })));
   }
   var go = ["translations"];
   function bo(e2) {
@@ -3610,58 +3610,58 @@
     }, renderAction: function(e3) {
       var t3 = e3.item, n3 = e3.runFavoriteTransition, o3 = e3.runDeleteTransition;
       return lt.createElement(lt.Fragment, null, lt.createElement("div", { className: "DocSearch-Hit-action" }, lt.createElement("button", { className: "DocSearch-Hit-action-button", title: l2, type: "submit", onClick: function(e4) {
-        e4.preventDefault(), e4.stopPropagation(), n3(function() {
+        e4.preventDefault(), e4.stopPropagation(), n3((function() {
           r2.favoriteSearches.add(t3), r2.recentSearches.remove(t3), r2.refresh();
-        });
+        }));
       } }, lt.createElement(Xr, null))), lt.createElement("div", { className: "DocSearch-Hit-action" }, lt.createElement("button", { className: "DocSearch-Hit-action-button", title: f2, type: "submit", onClick: function(e4) {
-        e4.preventDefault(), e4.stopPropagation(), o3(function() {
+        e4.preventDefault(), e4.stopPropagation(), o3((function() {
           r2.recentSearches.remove(t3), r2.refresh();
-        });
+        }));
       } }, lt.createElement(Jr, null))));
     } })), lt.createElement(uo, _t({}, r2, { title: m2, collection: r2.state.collections[1], renderIcon: function() {
       return lt.createElement("div", { className: "DocSearch-Hit-icon" }, lt.createElement(Xr, null));
     }, renderAction: function(e3) {
       var t3 = e3.item, n3 = e3.runDeleteTransition;
       return lt.createElement("div", { className: "DocSearch-Hit-action" }, lt.createElement("button", { className: "DocSearch-Hit-action-button", title: h2, type: "submit", onClick: function(e4) {
-        e4.preventDefault(), e4.stopPropagation(), n3(function() {
+        e4.preventDefault(), e4.stopPropagation(), n3((function() {
           r2.favoriteSearches.remove(t3), r2.refresh();
-        });
+        }));
       } }, lt.createElement(Jr, null)));
     } })));
   }
   var So = ["translations"];
-  var Oo = lt.memo(function(e2) {
+  var Oo = lt.memo((function(e2) {
     var t2 = e2.translations, n2 = void 0 === t2 ? {} : t2, r2 = Et(e2, So);
     if ("error" === r2.state.status) return lt.createElement(no, { translations: null == n2 ? void 0 : n2.errorScreen });
-    var o2 = r2.state.collections.some(function(e3) {
+    var o2 = r2.state.collections.some((function(e3) {
       return e3.items.length > 0;
-    });
+    }));
     return r2.state.query ? false === o2 ? lt.createElement(oo, _t({}, r2, { translations: null == n2 ? void 0 : n2.noResultsScreen })) : lt.createElement(_o, r2) : lt.createElement(bo, _t({}, r2, { hasCollections: o2, translations: null == n2 ? void 0 : n2.startScreen }));
-  }, function(e2, t2) {
+  }), (function(e2, t2) {
     return "loading" === t2.state.status || "stalled" === t2.state.status;
-  });
+  }));
   var wo = ["translations"];
   function Eo(e2) {
     var t2 = e2.translations, n2 = void 0 === t2 ? {} : t2, r2 = Et(e2, wo), o2 = n2.resetButtonTitle, i2 = void 0 === o2 ? "Clear the query" : o2, a2 = n2.resetButtonAriaLabel, c2 = void 0 === a2 ? "Clear the query" : a2, u2 = n2.cancelButtonText, l2 = void 0 === u2 ? "Cancel" : u2, s2 = n2.cancelButtonAriaLabel, f2 = void 0 === s2 ? "Cancel" : s2, p2 = n2.searchInputLabel, m2 = void 0 === p2 ? "Search" : p2, v2 = r2.getFormProps({ inputElement: r2.inputRef.current }).onReset;
-    return lt.useEffect(function() {
+    return lt.useEffect((function() {
       r2.autoFocus && r2.inputRef.current && r2.inputRef.current.focus();
-    }, [r2.autoFocus, r2.inputRef]), lt.useEffect(function() {
+    }), [r2.autoFocus, r2.inputRef]), lt.useEffect((function() {
       r2.isFromSelection && r2.inputRef.current && r2.inputRef.current.select();
-    }, [r2.isFromSelection, r2.inputRef]), lt.createElement(lt.Fragment, null, lt.createElement("form", { className: "DocSearch-Form", onSubmit: function(e3) {
+    }), [r2.isFromSelection, r2.inputRef]), lt.createElement(lt.Fragment, null, lt.createElement("form", { className: "DocSearch-Form", onSubmit: function(e3) {
       e3.preventDefault();
     }, onReset: v2 }, lt.createElement("label", _t({ className: "DocSearch-MagnifierLabel" }, r2.getLabelProps()), lt.createElement(Nt, null), lt.createElement("span", { className: "DocSearch-VisuallyHiddenForAccessibility" }, m2)), lt.createElement("div", { className: "DocSearch-LoadingIndicator" }, lt.createElement(Wr, null)), lt.createElement("input", _t({ className: "DocSearch-Input", ref: r2.inputRef }, r2.getInputProps({ inputElement: r2.inputRef.current, autoFocus: r2.autoFocus, maxLength: 64 }))), lt.createElement("button", { type: "reset", title: i2, className: "DocSearch-Reset", "aria-label": c2, hidden: !r2.state.query }, lt.createElement(Jr, null))), lt.createElement("button", { className: "DocSearch-Cancel", type: "reset", "aria-label": f2, onClick: r2.onClose }, l2));
   }
   var jo = ["_highlightResult", "_snippetResult"];
   function Po(e2) {
-    var t2 = e2.key, n2 = e2.limit, r2 = void 0 === n2 ? 5 : n2, o2 = function(e3) {
-      return false === function() {
+    var t2 = e2.key, n2 = e2.limit, r2 = void 0 === n2 ? 5 : n2, o2 = (function(e3) {
+      return false === (function() {
         var e4 = "__TEST_KEY__";
         try {
           return localStorage.setItem(e4, ""), localStorage.removeItem(e4), true;
         } catch (e5) {
           return false;
         }
-      }() ? { setItem: function() {
+      })() ? { setItem: function() {
       }, getItem: function() {
         return [];
       } } : { setItem: function(t3) {
@@ -3670,16 +3670,16 @@
         var t3 = window.localStorage.getItem(e3);
         return t3 ? JSON.parse(t3) : [];
       } };
-    }(t2), i2 = o2.getItem().slice(0, r2);
+    })(t2), i2 = o2.getItem().slice(0, r2);
     return { add: function(e3) {
-      var t3 = e3, n3 = (t3._highlightResult, t3._snippetResult, Et(t3, jo)), a2 = i2.findIndex(function(e4) {
+      var t3 = e3, n3 = (t3._highlightResult, t3._snippetResult, Et(t3, jo)), a2 = i2.findIndex((function(e4) {
         return e4.objectID === n3.objectID;
-      });
+      }));
       a2 > -1 && i2.splice(a2, 1), i2.unshift(n3), i2 = i2.slice(0, r2), o2.setItem(i2);
     }, remove: function(e3) {
-      i2 = i2.filter(function(t3) {
+      i2 = i2.filter((function(t3) {
         return t3.objectID !== e3.objectID;
-      }), o2.setItem(i2);
+      })), o2.setItem(i2);
     }, getAll: function() {
       return i2;
     } };
@@ -3699,36 +3699,36 @@
       var r3 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : { miss: function() {
         return Promise.resolve();
       } };
-      return Promise.resolve().then(function() {
+      return Promise.resolve().then((function() {
         var n4, r4, a2;
-        return n4 = e2.timeToLive ? 1e3 * e2.timeToLive : null, r4 = o2(), i2(a2 = Object.fromEntries(Object.entries(r4).filter(function(e3) {
+        return n4 = e2.timeToLive ? 1e3 * e2.timeToLive : null, r4 = o2(), i2(a2 = Object.fromEntries(Object.entries(r4).filter((function(e3) {
           return void 0 !== It(e3, 2)[1].timestamp;
-        }))), n4 && i2(Object.fromEntries(Object.entries(a2).filter(function(e3) {
+        })))), n4 && i2(Object.fromEntries(Object.entries(a2).filter((function(e3) {
           var t4 = It(e3, 2)[1], r5 = (/* @__PURE__ */ new Date()).getTime();
           return !(t4.timestamp + n4 < r5);
-        }))), o2()[JSON.stringify(t3)];
-      }).then(function(e3) {
+        })))), o2()[JSON.stringify(t3)];
+      })).then((function(e3) {
         return Promise.all([e3 ? e3.value : n3(), void 0 !== e3]);
-      }).then(function(e3) {
+      })).then((function(e3) {
         var t4 = It(e3, 2), n4 = t4[0], o3 = t4[1];
         return Promise.all([n4, o3 || r3.miss(n4)]);
-      }).then(function(e3) {
+      })).then((function(e3) {
         return It(e3, 1)[0];
-      });
+      }));
     }, set: function(e3, t3) {
-      return Promise.resolve().then(function() {
+      return Promise.resolve().then((function() {
         var i3 = o2();
         return i3[JSON.stringify(e3)] = { timestamp: (/* @__PURE__ */ new Date()).getTime(), value: t3 }, r2().setItem(n2, JSON.stringify(i3)), t3;
-      });
+      }));
     }, delete: function(e3) {
-      return Promise.resolve().then(function() {
+      return Promise.resolve().then((function() {
         var t3 = o2();
         delete t3[JSON.stringify(e3)], r2().setItem(n2, JSON.stringify(t3));
-      });
+      }));
     }, clear: function() {
-      return Promise.resolve().then(function() {
+      return Promise.resolve().then((function() {
         r2().removeItem(n2);
-      });
+      }));
     } };
   }
   function ko(e2) {
@@ -3737,11 +3737,11 @@
       var n3 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : { miss: function() {
         return Promise.resolve();
       } };
-      return t3().then(function(e4) {
+      return t3().then((function(e4) {
         return Promise.all([e4, n3.miss(e4)]);
-      }).then(function(e4) {
+      })).then((function(e4) {
         return It(e4, 1)[0];
-      });
+      }));
     }, set: function(e3, t3) {
       return Promise.resolve(t3);
     }, delete: function(e3) {
@@ -3752,21 +3752,21 @@
       var o2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : { miss: function() {
         return Promise.resolve();
       } };
-      return n2.get(e3, r2, o2).catch(function() {
+      return n2.get(e3, r2, o2).catch((function() {
         return ko({ caches: t2 }).get(e3, r2, o2);
-      });
+      }));
     }, set: function(e3, r2) {
-      return n2.set(e3, r2).catch(function() {
+      return n2.set(e3, r2).catch((function() {
         return ko({ caches: t2 }).set(e3, r2);
-      });
+      }));
     }, delete: function(e3) {
-      return n2.delete(e3).catch(function() {
+      return n2.delete(e3).catch((function() {
         return ko({ caches: t2 }).delete(e3);
-      });
+      }));
     }, clear: function() {
-      return n2.clear().catch(function() {
+      return n2.clear().catch((function() {
         return ko({ caches: t2 }).clear();
-      });
+      }));
     } };
   }
   function Do() {
@@ -3777,11 +3777,11 @@
       } }, i2 = JSON.stringify(n2);
       if (i2 in t2) return Promise.resolve(e2.serializable ? JSON.parse(t2[i2]) : t2[i2]);
       var a2 = r2();
-      return a2.then(function(e3) {
+      return a2.then((function(e3) {
         return o2.miss(e3);
-      }).then(function() {
+      })).then((function() {
         return a2;
-      });
+      }));
     }, set: function(n2, r2) {
       return t2[JSON.stringify(n2)] = e2.serializable ? JSON.stringify(r2) : r2, Promise.resolve(r2);
     }, delete: function(e3) {
@@ -3791,16 +3791,16 @@
     } };
   }
   function Co(e2) {
-    var t2 = e2.algoliaAgents, n2 = e2.client, r2 = e2.version, o2 = function(e3) {
+    var t2 = e2.algoliaAgents, n2 = e2.client, r2 = e2.version, o2 = (function(e3) {
       var t3 = { value: "Algolia for JavaScript (".concat(e3, ")"), add: function(e4) {
         var n3 = "; ".concat(e4.segment).concat(void 0 !== e4.version ? " (".concat(e4.version, ")") : "");
         return -1 === t3.value.indexOf(n3) && (t3.value = "".concat(t3.value).concat(n3)), t3;
       } };
       return t3;
-    }(r2).add({ segment: n2, version: r2 });
-    return t2.forEach(function(e3) {
+    })(r2).add({ segment: n2, version: r2 });
+    return t2.forEach((function(e3) {
       return o2.add(e3);
-    }), o2;
+    })), o2;
   }
   var xo = 12e4;
   function Ao(e2) {
@@ -3811,53 +3811,53 @@
       return "timed out" === t2 && Date.now() - n2 <= xo;
     } });
   }
-  var No = function() {
+  var No = (function() {
     function e2(t2, n2) {
       var r2;
       return vt(this, e2), yt(r2 = mt(this, e2, [t2]), "name", "AlgoliaError"), n2 && (r2.name = n2), r2;
     }
     return bt(e2, xt(Error)), dt(e2);
-  }();
-  var To = function() {
+  })();
+  var To = (function() {
     function e2(t2, n2, r2) {
       var o2;
       return vt(this, e2), yt(o2 = mt(this, e2, [t2, r2]), "stackTrace", void 0), o2.stackTrace = n2, o2;
     }
     return bt(e2, No), dt(e2);
-  }();
-  var Ro = function() {
+  })();
+  var Ro = (function() {
     function e2(t2) {
       return vt(this, e2), mt(this, e2, ["Unreachable hosts - your application id may be incorrect. If the error persists, please reach out to the Algolia Support team: https://alg.li/support.", t2, "RetryError"]);
     }
     return bt(e2, To), dt(e2);
-  }();
-  var Lo = function() {
+  })();
+  var Lo = (function() {
     function e2(t2, n2, r2) {
       var o2, i2 = arguments.length > 3 && void 0 !== arguments[3] ? arguments[3] : "ApiError";
       return vt(this, e2), yt(o2 = mt(this, e2, [t2, r2, i2]), "status", void 0), o2.status = n2, o2;
     }
     return bt(e2, To), dt(e2);
-  }();
-  var qo = function() {
+  })();
+  var qo = (function() {
     function e2(t2, n2) {
       var r2;
       return vt(this, e2), yt(r2 = mt(this, e2, [t2, "DeserializationError"]), "response", void 0), r2.response = n2, r2;
     }
     return bt(e2, No), dt(e2);
-  }();
-  var Mo = function() {
+  })();
+  var Mo = (function() {
     function e2(t2, n2, r2, o2) {
       var i2;
       return vt(this, e2), yt(i2 = mt(this, e2, [t2, n2, o2, "DetailedApiError"]), "error", void 0), i2.error = r2, i2;
     }
     return bt(e2, Lo), dt(e2);
-  }();
+  })();
   function Ho(e2, t2, n2) {
-    var r2, o2 = (r2 = n2, Object.keys(r2).filter(function(e3) {
+    var r2, o2 = (r2 = n2, Object.keys(r2).filter((function(e3) {
       return void 0 !== r2[e3];
-    }).sort().map(function(e3) {
+    })).sort().map((function(e3) {
       return "".concat(e3, "=").concat(encodeURIComponent("[object Array]" === Object.prototype.toString.call(r2[e3]) ? r2[e3].join(",") : r2[e3]).replace(/\+/g, "%20"));
-    }).join("&")), i2 = "".concat(e2.protocol, "://").concat(e2.url).concat(e2.port ? ":".concat(e2.port) : "", "/").concat("/" === t2.charAt(0) ? t2.substring(1) : t2);
+    })).join("&")), i2 = "".concat(e2.protocol, "://").concat(e2.url).concat(e2.port ? ":".concat(e2.port) : "", "/").concat("/" === t2.charAt(0) ? t2.substring(1) : t2);
     return o2.length && (i2 += "?".concat(o2)), i2;
   }
   function Uo(e2, t2) {
@@ -3868,10 +3868,10 @@
   }
   function Fo(e2, t2, n2) {
     var r2 = wt(wt(wt({ Accept: "application/json" }, e2), t2), n2), o2 = {};
-    return Object.keys(r2).forEach(function(e3) {
+    return Object.keys(r2).forEach((function(e3) {
       var t3 = r2[e3];
       o2[e3.toLowerCase()] = t3;
-    }), o2;
+    })), o2;
   }
   function Bo(e2) {
     try {
@@ -3890,9 +3890,9 @@
     return new Lo(n2, r2, t2);
   }
   function Ko(e2) {
-    return e2.map(function(e3) {
+    return e2.map((function(e3) {
       return Wo(e3);
-    });
+    }));
   }
   function Wo(e2) {
     var t2 = e2.request.headers["x-algolia-api-key"] ? { "x-algolia-api-key": "*****" } : {};
@@ -3902,77 +3902,77 @@
   var Jo = ["params"];
   var Qo = "5.12.0";
   function $o(e2) {
-    return [{ url: "".concat(e2, "-dsn.algolia.net"), accept: "read", protocol: "https" }, { url: "".concat(e2, ".algolia.net"), accept: "write", protocol: "https" }].concat(function(e3) {
+    return [{ url: "".concat(e2, "-dsn.algolia.net"), accept: "read", protocol: "https" }, { url: "".concat(e2, ".algolia.net"), accept: "write", protocol: "https" }].concat((function(e3) {
       for (var t2 = e3, n2 = e3.length - 1; n2 > 0; n2--) {
         var r2 = Math.floor(Math.random() * (n2 + 1)), o2 = e3[n2];
         t2[n2] = e3[r2], t2[r2] = o2;
       }
       return t2;
-    }([{ url: "".concat(e2, "-1.algolianet.com"), accept: "readWrite", protocol: "https" }, { url: "".concat(e2, "-2.algolianet.com"), accept: "readWrite", protocol: "https" }, { url: "".concat(e2, "-3.algolianet.com"), accept: "readWrite", protocol: "https" }]));
+    })([{ url: "".concat(e2, "-1.algolianet.com"), accept: "readWrite", protocol: "https" }, { url: "".concat(e2, "-2.algolianet.com"), accept: "readWrite", protocol: "https" }, { url: "".concat(e2, "-3.algolianet.com"), accept: "readWrite", protocol: "https" }]));
   }
   var Zo = "3.6.3";
   var Go = ["footer", "searchBox"];
   function Yo(e2) {
     var t2 = e2.appId, n2 = e2.apiKey, r2 = e2.indexName, o2 = e2.placeholder, i2 = void 0 === o2 ? "Search docs" : o2, a2 = e2.searchParameters, c2 = e2.maxResultsPerGroup, u2 = e2.onClose, l2 = void 0 === u2 ? mo : u2, s2 = e2.transformItems, f2 = void 0 === s2 ? fo : s2, p2 = e2.hitComponent, m2 = void 0 === p2 ? Kr : p2, v2 = e2.resultsFooterComponent, h2 = void 0 === v2 ? function() {
       return null;
-    } : v2, d2 = e2.navigator, y2 = e2.initialScrollY, _2 = void 0 === y2 ? 0 : y2, g2 = e2.transformSearchClient, b2 = void 0 === g2 ? fo : g2, S2 = e2.disableUserPersonalization, O2 = void 0 !== S2 && S2, w2 = e2.initialQuery, E2 = void 0 === w2 ? "" : w2, j2 = e2.translations, P2 = void 0 === j2 ? {} : j2, I2 = e2.getMissingResultsUrl, k2 = e2.insights, D2 = void 0 !== k2 && k2, C2 = P2.footer, x2 = P2.searchBox, A2 = Et(P2, Go), N2 = It(lt.useState({ query: "", collections: [], completion: null, context: {}, isOpen: false, activeItemId: null, status: "idle" }), 2), T2 = N2[0], R2 = N2[1], L2 = lt.useRef(null), q2 = lt.useRef(null), M2 = lt.useRef(null), H2 = lt.useRef(null), U2 = lt.useRef(null), F2 = lt.useRef(10), B2 = lt.useRef("undefined" != typeof window ? window.getSelection().toString().slice(0, 64) : "").current, V2 = lt.useRef(E2 || B2).current, K2 = function(e3, t3, n3) {
-      return lt.useMemo(function() {
-        var r3 = function(e4, t4) {
+    } : v2, d2 = e2.navigator, y2 = e2.initialScrollY, _2 = void 0 === y2 ? 0 : y2, g2 = e2.transformSearchClient, b2 = void 0 === g2 ? fo : g2, S2 = e2.disableUserPersonalization, O2 = void 0 !== S2 && S2, w2 = e2.initialQuery, E2 = void 0 === w2 ? "" : w2, j2 = e2.translations, P2 = void 0 === j2 ? {} : j2, I2 = e2.getMissingResultsUrl, k2 = e2.insights, D2 = void 0 !== k2 && k2, C2 = P2.footer, x2 = P2.searchBox, A2 = Et(P2, Go), N2 = It(lt.useState({ query: "", collections: [], completion: null, context: {}, isOpen: false, activeItemId: null, status: "idle" }), 2), T2 = N2[0], R2 = N2[1], L2 = lt.useRef(null), q2 = lt.useRef(null), M2 = lt.useRef(null), H2 = lt.useRef(null), U2 = lt.useRef(null), F2 = lt.useRef(10), B2 = lt.useRef("undefined" != typeof window ? window.getSelection().toString().slice(0, 64) : "").current, V2 = lt.useRef(E2 || B2).current, K2 = (function(e3, t3, n3) {
+      return lt.useMemo((function() {
+        var r3 = (function(e4, t4) {
           if (!e4 || "string" != typeof e4) throw new Error("`appId` is missing.");
           if (!t4 || "string" != typeof t4) throw new Error("`apiKey` is missing.");
-          return function(e5) {
-            var t5 = e5.appId, n4 = e5.apiKey, r4 = e5.authMode, o3 = e5.algoliaAgents, i3 = Et(e5, zo), a3 = function(e6, t6) {
+          return (function(e5) {
+            var t5 = e5.appId, n4 = e5.apiKey, r4 = e5.authMode, o3 = e5.algoliaAgents, i3 = Et(e5, zo), a3 = (function(e6, t6) {
               var n5 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : "WithinHeaders", r5 = { "x-algolia-api-key": t6, "x-algolia-application-id": e6 };
               return { headers: function() {
                 return "WithinHeaders" === n5 ? r5 : {};
               }, queryParameters: function() {
                 return "WithinQueryParameters" === n5 ? r5 : {};
               } };
-            }(t5, n4, r4), c3 = function(e6) {
+            })(t5, n4, r4), c3 = (function(e6) {
               var t6 = e6.hosts, n5 = e6.hostsCache, r5 = e6.baseHeaders, o4 = e6.logger, i4 = e6.baseQueryParameters, a4 = e6.algoliaAgent, c4 = e6.timeouts, u3 = e6.requester, l3 = e6.requestsCache, s3 = e6.responsesCache;
               function f3(e7) {
                 return p3.apply(this, arguments);
               }
               function p3() {
-                return (p3 = pt(jt().mark(function e7(t7) {
+                return (p3 = pt(jt().mark((function e7(t7) {
                   var r6, o5, i5, a5, c5;
-                  return jt().wrap(function(e8) {
+                  return jt().wrap((function(e8) {
                     for (; ; ) switch (e8.prev = e8.next) {
                       case 0:
-                        return e8.next = 2, Promise.all(t7.map(function(e9) {
-                          return n5.get(e9, function() {
+                        return e8.next = 2, Promise.all(t7.map((function(e9) {
+                          return n5.get(e9, (function() {
                             return Promise.resolve(Ao(e9));
-                          });
-                        }));
+                          }));
+                        })));
                       case 2:
-                        return r6 = e8.sent, o5 = r6.filter(function(e9) {
+                        return r6 = e8.sent, o5 = r6.filter((function(e9) {
                           return e9.isUp();
-                        }), i5 = r6.filter(function(e9) {
+                        })), i5 = r6.filter((function(e9) {
                           return e9.isTimedOut();
-                        }), a5 = [].concat(kt(o5), kt(i5)), c5 = a5.length > 0 ? a5 : t7, e8.abrupt("return", { hosts: c5, getTimeout: function(e9, t8) {
+                        })), a5 = [].concat(kt(o5), kt(i5)), c5 = a5.length > 0 ? a5 : t7, e8.abrupt("return", { hosts: c5, getTimeout: function(e9, t8) {
                           return (0 === i5.length && 0 === e9 ? 1 : i5.length + 3 + e9) * t8;
                         } });
                       case 8:
                       case "end":
                         return e8.stop();
                     }
-                  }, e7);
-                }))).apply(this, arguments);
+                  }), e7);
+                })))).apply(this, arguments);
               }
               function m3(e7, t7) {
                 return v3.apply(this, arguments);
               }
               function v3() {
-                return v3 = pt(jt().mark(function e7(l4, s4) {
+                return v3 = pt(jt().mark((function e7(l4, s4) {
                   var p4, m4, v4, h3, d3, y3, _3, g3, b3, S3, O3, w3, E3, j3 = arguments;
-                  return jt().wrap(function(e8) {
+                  return jt().wrap((function(e8) {
                     for (; ; ) switch (e8.prev = e8.next) {
                       case 0:
                         if (p4 = !(j3.length > 2 && void 0 !== j3[2]) || j3[2], m4 = [], v4 = Uo(l4, s4), h3 = Fo(r5, l4.headers, s4.headers), d3 = "GET" === l4.method ? wt(wt({}, l4.data), s4.data) : {}, y3 = wt(wt(wt({}, i4), l4.queryParameters), d3), a4.value && (y3["x-algolia-agent"] = a4.value), s4 && s4.queryParameters) for (_3 = 0, g3 = Object.keys(s4.queryParameters); _3 < g3.length; _3++) b3 = g3[_3], s4.queryParameters[b3] && "[object Object]" !== Object.prototype.toString.call(s4.queryParameters[b3]) ? y3[b3] = s4.queryParameters[b3].toString() : y3[b3] = s4.queryParameters[b3];
-                        return S3 = 0, O3 = function() {
-                          var e9 = pt(jt().mark(function e10(t7, r6) {
+                        return S3 = 0, O3 = (function() {
+                          var e9 = pt(jt().mark((function e10(t7, r6) {
                             var i5, a5, f4, d4, _4, g4;
-                            return jt().wrap(function(e11) {
+                            return jt().wrap((function(e11) {
                               for (; ; ) switch (e11.prev = e11.next) {
                                 case 0:
                                   if (void 0 !== (i5 = t7.pop())) {
@@ -3986,9 +3986,9 @@
                                     return m4.push(n6), n6;
                                   }, e11.next = 8, u3.send(f4);
                                 case 8:
-                                  if (w4 = (b4 = _4 = e11.sent).isTimedOut, E4 = b4.status, !(w4 || function(e12) {
+                                  if (w4 = (b4 = _4 = e11.sent).isTimedOut, E4 = b4.status, !(w4 || (function(e12) {
                                     return !e12.isTimedOut && !~~e12.status;
-                                  }({ isTimedOut: w4, status: E4 }) || 2 != ~~(E4 / 100) && 4 != ~~(E4 / 100))) {
+                                  })({ isTimedOut: w4, status: E4 }) || 2 != ~~(E4 / 100) && 4 != ~~(E4 / 100))) {
                                     e11.next = 16;
                                     break;
                                   }
@@ -4008,22 +4008,22 @@
                                   return e11.stop();
                               }
                               var b4, w4, E4;
-                            }, e10);
-                          }));
+                            }), e10);
+                          })));
                           return function(t7, n6) {
                             return e9.apply(this, arguments);
                           };
-                        }(), w3 = t6.filter(function(e9) {
+                        })(), w3 = t6.filter((function(e9) {
                           return "readWrite" === e9.accept || (p4 ? "read" === e9.accept : "write" === e9.accept);
-                        }), e8.next = 13, f3(w3);
+                        })), e8.next = 13, f3(w3);
                       case 13:
                         return E3 = e8.sent, e8.abrupt("return", O3(kt(E3.hosts).reverse(), E3.getTimeout));
                       case 15:
                       case "end":
                         return e8.stop();
                     }
-                  }, e7);
-                })), v3.apply(this, arguments);
+                  }), e7);
+                }))), v3.apply(this, arguments);
               }
               return { hostsCache: n5, requester: u3, timeouts: c4, logger: o4, algoliaAgent: a4, baseHeaders: r5, baseQueryParameters: i4, hosts: t6, request: function(e7) {
                 var t7 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : {}, n6 = e7.useReadTransporter || "GET" === e7.method;
@@ -4033,25 +4033,25 @@
                 };
                 if (true !== (t7.cacheable || e7.cacheable)) return o5();
                 var a5 = { request: e7, requestOptions: t7, transporter: { queryParameters: i4, headers: r5 } };
-                return s3.get(a5, function() {
-                  return l3.get(a5, function() {
-                    return l3.set(a5, o5()).then(function(e8) {
+                return s3.get(a5, (function() {
+                  return l3.get(a5, (function() {
+                    return l3.set(a5, o5()).then((function(e8) {
                       return Promise.all([l3.delete(a5), e8]);
-                    }, function(e8) {
+                    }), (function(e8) {
                       return Promise.all([l3.delete(a5), Promise.reject(e8)]);
-                    }).then(function(e8) {
+                    })).then((function(e8) {
                       var t8 = It(e8, 2);
                       return t8[0], t8[1];
-                    });
-                  });
-                }, { miss: function(e8) {
+                    }));
+                  }));
+                }), { miss: function(e8) {
                   return s3.set(a5, e8);
                 } });
               }, requestsCache: l3, responsesCache: s3 };
-            }(wt(wt({ hosts: $o(t5) }, i3), {}, { algoliaAgent: Co({ algoliaAgents: o3, client: "Lite", version: Qo }), baseHeaders: wt(wt({ "content-type": "text/plain" }, a3.headers()), i3.baseHeaders), baseQueryParameters: wt(wt({}, a3.queryParameters()), i3.baseQueryParameters) }));
+            })(wt(wt({ hosts: $o(t5) }, i3), {}, { algoliaAgent: Co({ algoliaAgents: o3, client: "Lite", version: Qo }), baseHeaders: wt(wt({ "content-type": "text/plain" }, a3.headers()), i3.baseHeaders), baseQueryParameters: wt(wt({}, a3.queryParameters()), i3.baseQueryParameters) }));
             return { transporter: c3, appId: t5, clearCache: function() {
-              return Promise.all([c3.requestsCache.clear(), c3.responsesCache.clear()]).then(function() {
-              });
+              return Promise.all([c3.requestsCache.clear(), c3.responsesCache.clear()]).then((function() {
+              }));
             }, get _ua() {
               return c3.algoliaAgent.value;
             }, addAlgoliaAgent: function(e6, t6) {
@@ -4075,10 +4075,10 @@
               return c3.request(n5, t6);
             }, search: function(e6, t6) {
               if (e6 && Array.isArray(e6)) {
-                var n5 = { requests: e6.map(function(e7) {
+                var n5 = { requests: e6.map((function(e7) {
                   var t7 = e7.params, n6 = Et(e7, Jo);
                   return "facet" === n6.type ? wt(wt(wt({}, n6), t7), {}, { type: "facet" }) : wt(wt(wt({}, n6), t7), {}, { facet: void 0, maxFacetHits: void 0, facetQuery: void 0 });
-                }) };
+                })) };
                 e6 = n5;
               }
               if (!e6) throw new Error("Parameter `searchMethodParams` is required when calling `search`.");
@@ -4086,22 +4086,22 @@
               var r5 = { method: "POST", path: "/1/indexes/*/queries", queryParameters: {}, headers: {}, data: e6, useReadTransporter: true, cacheable: true };
               return c3.request(r5, t6);
             } };
-          }(wt({ appId: e4, apiKey: t4, timeouts: { connect: 1e3, read: 2e3, write: 3e4 }, logger: { debug: function(e5, t5) {
+          })(wt({ appId: e4, apiKey: t4, timeouts: { connect: 1e3, read: 2e3, write: 3e4 }, logger: { debug: function(e5, t5) {
             return Promise.resolve();
           }, info: function(e5, t5) {
             return Promise.resolve();
           }, error: function(e5, t5) {
             return Promise.resolve();
           } }, requester: { send: function(e5) {
-            return new Promise(function(t5) {
+            return new Promise((function(t5) {
               var n4 = new XMLHttpRequest();
-              n4.open(e5.method, e5.url, true), Object.keys(e5.headers).forEach(function(t6) {
+              n4.open(e5.method, e5.url, true), Object.keys(e5.headers).forEach((function(t6) {
                 return n4.setRequestHeader(t6, e5.headers[t6]);
-              });
+              }));
               var r4, o3 = function(e6, r5) {
-                return setTimeout(function() {
+                return setTimeout((function() {
                   n4.abort(), t5({ status: 0, content: r5, isTimedOut: true });
-                }, e6);
+                }), e6);
               }, i3 = o3(e5.connectTimeout, "Connection timeout");
               n4.onreadystatechange = function() {
                 n4.readyState > n4.OPENED && void 0 === r4 && (clearTimeout(i3), r4 = o3(e5.responseTimeout, "Socket timeout"));
@@ -4110,24 +4110,24 @@
               }, n4.onload = function() {
                 clearTimeout(i3), clearTimeout(r4), t5({ content: n4.responseText, status: n4.status, isTimedOut: false });
               }, n4.send(e5.data);
-            });
+            }));
           } }, algoliaAgents: [{ segment: "Browser" }], authMode: "WithinQueryParameters", responsesCache: Do(), requestsCache: Do({ serializable: false }), hostsCache: ko({ caches: [Io({ key: "".concat(Qo, "-").concat(e4) }), Do()] }) }, void 0));
-        }(e3, t3);
+        })(e3, t3);
         return r3.addAlgoliaAgent("docsearch", Zo), false === /docsearch.js \(.*\)/.test(r3.transporter.algoliaAgent.value) && r3.addAlgoliaAgent("docsearch-react", Zo), n3(r3);
-      }, [e3, t3, n3]);
-    }(t2, n2, b2), W2 = lt.useRef(Po({ key: "__DOCSEARCH_FAVORITE_SEARCHES__".concat(r2), limit: 10 })).current, z2 = lt.useRef(Po({ key: "__DOCSEARCH_RECENT_SEARCHES__".concat(r2), limit: 0 === W2.getAll().length ? 7 : 4 })).current, J2 = lt.useCallback(function(e3) {
+      }), [e3, t3, n3]);
+    })(t2, n2, b2), W2 = lt.useRef(Po({ key: "__DOCSEARCH_FAVORITE_SEARCHES__".concat(r2), limit: 10 })).current, z2 = lt.useRef(Po({ key: "__DOCSEARCH_RECENT_SEARCHES__".concat(r2), limit: 0 === W2.getAll().length ? 7 : 4 })).current, J2 = lt.useCallback((function(e3) {
       if (!O2) {
         var t3 = "content" === e3.type ? e3.__docsearch_parent : e3;
-        t3 && -1 === W2.getAll().findIndex(function(e4) {
+        t3 && -1 === W2.getAll().findIndex((function(e4) {
           return e4.objectID === t3.objectID;
-        }) && z2.add(t3);
+        })) && z2.add(t3);
       }
-    }, [W2, z2, O2]), Q2 = lt.useCallback(function(e3) {
+    }), [W2, z2, O2]), Q2 = lt.useCallback((function(e3) {
       if (T2.context.algoliaInsightsPlugin && e3.__autocomplete_id) {
         var t3 = e3, n3 = { eventName: "Item Selected", index: t3.__autocomplete_indexName, items: [t3], positions: [e3.__autocomplete_id], queryID: t3.__autocomplete_queryID };
         T2.context.algoliaInsightsPlugin.insights.clickedObjectIDsAfterSearch(n3);
       }
-    }, [T2.context.algoliaInsightsPlugin]), $2 = lt.useMemo(function() {
+    }), [T2.context.algoliaInsightsPlugin]), $2 = lt.useMemo((function() {
       return Ur({ id: "docsearch", defaultActiveItemId: 0, placeholder: i2, openOnFocus: true, initialState: { query: V2, context: { searchSuggestions: [] } }, insights: D2, navigator: d2, onStateChange: function(e3) {
         R2(e3.state);
       }, getSources: function(e3) {
@@ -4148,49 +4148,49 @@
           return W2.getAll();
         } }];
         var p3 = Boolean(D2);
-        return K2.search({ requests: [wt({ query: o3, indexName: r2, attributesToRetrieve: ["hierarchy.lvl0", "hierarchy.lvl1", "hierarchy.lvl2", "hierarchy.lvl3", "hierarchy.lvl4", "hierarchy.lvl5", "hierarchy.lvl6", "content", "type", "url"], attributesToSnippet: ["hierarchy.lvl1:".concat(F2.current), "hierarchy.lvl2:".concat(F2.current), "hierarchy.lvl3:".concat(F2.current), "hierarchy.lvl4:".concat(F2.current), "hierarchy.lvl5:".concat(F2.current), "hierarchy.lvl6:".concat(F2.current), "content:".concat(F2.current)], snippetEllipsisText: "\u2026", highlightPreTag: "<mark>", highlightPostTag: "</mark>", hitsPerPage: 20, clickAnalytics: p3 }, a2)] }).catch(function(e4) {
+        return K2.search({ requests: [wt({ query: o3, indexName: r2, attributesToRetrieve: ["hierarchy.lvl0", "hierarchy.lvl1", "hierarchy.lvl2", "hierarchy.lvl3", "hierarchy.lvl4", "hierarchy.lvl5", "hierarchy.lvl6", "content", "type", "url"], attributesToSnippet: ["hierarchy.lvl1:".concat(F2.current), "hierarchy.lvl2:".concat(F2.current), "hierarchy.lvl3:".concat(F2.current), "hierarchy.lvl4:".concat(F2.current), "hierarchy.lvl5:".concat(F2.current), "hierarchy.lvl6:".concat(F2.current), "content:".concat(F2.current)], snippetEllipsisText: "\u2026", highlightPreTag: "<mark>", highlightPostTag: "</mark>", hitsPerPage: 20, clickAnalytics: p3 }, a2)] }).catch((function(e4) {
           throw "RetryError" === e4.name && s3("error"), e4;
-        }).then(function(e4) {
-          var o4 = e4.results[0], a3 = o4.hits, s4 = o4.nbHits, m3 = so(a3, function(e5) {
+        })).then((function(e4) {
+          var o4 = e4.results[0], a3 = o4.hits, s4 = o4.nbHits, m3 = so(a3, (function(e5) {
             return yo(e5);
-          }, c2);
+          }), c2);
           i3.context.searchSuggestions.length < Object.keys(m3).length && u3({ searchSuggestions: Object.keys(m3) }), u3({ nbHits: s4 });
           var v3 = {};
-          return p3 && (v3 = { __autocomplete_indexName: r2, __autocomplete_queryID: o4.queryID, __autocomplete_algoliaCredentials: { appId: t2, apiKey: n2 } }), Object.values(m3).map(function(e5, t3) {
+          return p3 && (v3 = { __autocomplete_indexName: r2, __autocomplete_queryID: o4.queryID, __autocomplete_algoliaCredentials: { appId: t2, apiKey: n2 } }), Object.values(m3).map((function(e5, t3) {
             return { sourceId: "hits".concat(t3), onSelect: function(e6) {
               var t4 = e6.item, n3 = e6.event;
               J2(t4), po(n3) || l2();
             }, getItemUrl: function(e6) {
               return e6.item.url;
             }, getItems: function() {
-              return Object.values(so(e5, function(e6) {
+              return Object.values(so(e5, (function(e6) {
                 return e6.hierarchy.lvl1;
-              }, c2)).map(f2).map(function(e6) {
-                return e6.map(function(t4) {
-                  var n3 = null, r3 = e6.find(function(e7) {
+              }), c2)).map(f2).map((function(e6) {
+                return e6.map((function(t4) {
+                  var n3 = null, r3 = e6.find((function(e7) {
                     return "lvl1" === e7.type && e7.hierarchy.lvl1 === t4.hierarchy.lvl1;
-                  });
+                  }));
                   return "lvl1" !== t4.type && r3 && (n3 = r3), wt(wt({}, t4), {}, { __docsearch_parent: n3 }, v3);
-                });
-              }).flat();
+                }));
+              })).flat();
             } };
-          });
-        });
+          }));
+        }));
       } });
-    }, [r2, a2, c2, K2, l2, z2, W2, J2, V2, i2, d2, f2, O2, D2, t2, n2]), Z2 = $2.getEnvironmentProps, G2 = $2.getRootProps, Y2 = $2.refresh;
-    return function(e3) {
+    }), [r2, a2, c2, K2, l2, z2, W2, J2, V2, i2, d2, f2, O2, D2, t2, n2]), Z2 = $2.getEnvironmentProps, G2 = $2.getRootProps, Y2 = $2.refresh;
+    return (function(e3) {
       var t3 = e3.getEnvironmentProps, n3 = e3.panelElement, r3 = e3.formElement, o3 = e3.inputElement;
-      lt.useEffect(function() {
+      lt.useEffect((function() {
         if (n3 && r3 && o3) {
           var e4 = t3({ panelElement: n3, formElement: r3, inputElement: o3 }), i3 = e4.onTouchStart, a3 = e4.onTouchMove;
           return window.addEventListener("touchstart", i3), window.addEventListener("touchmove", a3), function() {
             window.removeEventListener("touchstart", i3), window.removeEventListener("touchmove", a3);
           };
         }
-      }, [t3, n3, r3, o3]);
-    }({ getEnvironmentProps: Z2, panelElement: H2.current, formElement: M2.current, inputElement: U2.current }), function(e3) {
+      }), [t3, n3, r3, o3]);
+    })({ getEnvironmentProps: Z2, panelElement: H2.current, formElement: M2.current, inputElement: U2.current }), (function(e3) {
       var t3 = e3.container;
-      lt.useEffect(function() {
+      lt.useEffect((function() {
         if (t3) {
           var e4 = t3.querySelectorAll("a[href]:not([disabled]), button:not([disabled]), input:not([disabled])"), n3 = e4[0], r3 = e4[e4.length - 1];
           return t3.addEventListener("keydown", o3), function() {
@@ -4200,19 +4200,19 @@
         function o3(e5) {
           "Tab" === e5.key && (e5.shiftKey ? document.activeElement === n3 && (e5.preventDefault(), r3.focus()) : document.activeElement === r3 && (e5.preventDefault(), n3.focus()));
         }
-      }, [t3]);
-    }({ container: L2.current }), lt.useEffect(function() {
+      }), [t3]);
+    })({ container: L2.current }), lt.useEffect((function() {
       return document.body.classList.add("DocSearch--active"), function() {
         var e3, t3;
         document.body.classList.remove("DocSearch--active"), null === (e3 = (t3 = window).scrollTo) || void 0 === e3 || e3.call(t3, 0, _2);
       };
-    }, []), lt.useEffect(function() {
+    }), []), lt.useEffect((function() {
       window.matchMedia("(max-width: 768px)").matches && (F2.current = 5);
-    }, []), lt.useEffect(function() {
+    }), []), lt.useEffect((function() {
       H2.current && (H2.current.scrollTop = 0);
-    }, [T2.query]), lt.useEffect(function() {
+    }), [T2.query]), lt.useEffect((function() {
       V2.length > 0 && (Y2(), U2.current && U2.current.focus());
-    }, [V2, Y2]), lt.useEffect(function() {
+    }), [V2, Y2]), lt.useEffect((function() {
       function e3() {
         if (q2.current) {
           var e4 = 0.01 * window.innerHeight;
@@ -4222,44 +4222,44 @@
       return e3(), window.addEventListener("resize", e3), function() {
         window.removeEventListener("resize", e3);
       };
-    }, []), lt.createElement("div", _t({ ref: L2 }, G2({ "aria-expanded": true }), { className: ["DocSearch", "DocSearch-Container", "stalled" === T2.status && "DocSearch-Container--Stalled", "error" === T2.status && "DocSearch-Container--Errored"].filter(Boolean).join(" "), role: "button", tabIndex: 0, onMouseDown: function(e3) {
+    }), []), lt.createElement("div", _t({ ref: L2 }, G2({ "aria-expanded": true }), { className: ["DocSearch", "DocSearch-Container", "stalled" === T2.status && "DocSearch-Container--Stalled", "error" === T2.status && "DocSearch-Container--Errored"].filter(Boolean).join(" "), role: "button", tabIndex: 0, onMouseDown: function(e3) {
       e3.target === e3.currentTarget && l2();
     } }), lt.createElement("div", { className: "DocSearch-Modal", ref: q2 }, lt.createElement("header", { className: "DocSearch-SearchBar", ref: M2 }, lt.createElement(Eo, _t({}, $2, { state: T2, autoFocus: 0 === V2.length, inputRef: U2, isFromSelection: Boolean(V2) && V2 === B2, translations: x2, onClose: l2 }))), lt.createElement("div", { className: "DocSearch-Dropdown", ref: H2 }, lt.createElement(Oo, _t({}, $2, { indexName: r2, state: T2, hitComponent: m2, resultsFooterComponent: h2, disableUserPersonalization: O2, recentSearches: z2, favoriteSearches: W2, inputRef: U2, translations: A2, getMissingResultsUrl: I2, onItemClick: function(e3, t3) {
       Q2(e3), J2(e3), po(t3) || l2();
     } }))), lt.createElement("footer", { className: "DocSearch-Footer" }, lt.createElement(Vr, { translations: C2 }))));
   }
   function Xo(e2) {
-    var t2, n2, r2 = lt.useRef(null), o2 = It(lt.useState(false), 2), i2 = o2[0], a2 = o2[1], c2 = It(lt.useState((null == e2 ? void 0 : e2.initialQuery) || void 0), 2), u2 = c2[0], l2 = c2[1], s2 = lt.useCallback(function() {
+    var t2, n2, r2 = lt.useRef(null), o2 = It(lt.useState(false), 2), i2 = o2[0], a2 = o2[1], c2 = It(lt.useState((null == e2 ? void 0 : e2.initialQuery) || void 0), 2), u2 = c2[0], l2 = c2[1], s2 = lt.useCallback((function() {
       a2(true);
-    }, [a2]), f2 = lt.useCallback(function() {
+    }), [a2]), f2 = lt.useCallback((function() {
       a2(false), l2(null == e2 ? void 0 : e2.initialQuery);
-    }, [a2, e2.initialQuery]);
-    return function(e3) {
+    }), [a2, e2.initialQuery]);
+    return (function(e3) {
       var t3 = e3.isOpen, n3 = e3.onOpen, r3 = e3.onClose, o3 = e3.onInput, i3 = e3.searchButtonRef;
-      lt.useEffect(function() {
+      lt.useEffect((function() {
         function e4(e5) {
           var a3;
-          if ("Escape" === e5.code && t3 || "k" === (null === (a3 = e5.key) || void 0 === a3 ? void 0 : a3.toLowerCase()) && (e5.metaKey || e5.ctrlKey) || !function(e6) {
+          if ("Escape" === e5.code && t3 || "k" === (null === (a3 = e5.key) || void 0 === a3 ? void 0 : a3.toLowerCase()) && (e5.metaKey || e5.ctrlKey) || !(function(e6) {
             var t4 = e6.target, n4 = t4.tagName;
             return t4.isContentEditable || "INPUT" === n4 || "SELECT" === n4 || "TEXTAREA" === n4;
-          }(e5) && "/" === e5.key && !t3) return e5.preventDefault(), void (t3 ? r3() : document.body.classList.contains("DocSearch--active") || n3());
+          })(e5) && "/" === e5.key && !t3) return e5.preventDefault(), void (t3 ? r3() : document.body.classList.contains("DocSearch--active") || n3());
           i3 && i3.current === document.activeElement && o3 && /[a-zA-Z0-9]/.test(String.fromCharCode(e5.keyCode)) && o3(e5);
         }
         return window.addEventListener("keydown", e4), function() {
           window.removeEventListener("keydown", e4);
         };
-      }, [t3, n3, r3, o3, i3]);
-    }({ isOpen: i2, onOpen: s2, onClose: f2, onInput: lt.useCallback(function(e3) {
+      }), [t3, n3, r3, o3, i3]);
+    })({ isOpen: i2, onOpen: s2, onClose: f2, onInput: lt.useCallback((function(e3) {
       a2(true), l2(e3.key);
-    }, [a2, l2]), searchButtonRef: r2 }), lt.createElement(lt.Fragment, null, lt.createElement(Lt, { ref: r2, translations: null == e2 || null === (t2 = e2.translations) || void 0 === t2 ? void 0 : t2.button, onClick: s2 }), i2 && Me(lt.createElement(Yo, _t({}, e2, { initialScrollY: window.scrollY, initialQuery: u2, translations: null == e2 || null === (n2 = e2.translations) || void 0 === n2 ? void 0 : n2.modal, onClose: f2 })), document.body));
+    }), [a2, l2]), searchButtonRef: r2 }), lt.createElement(lt.Fragment, null, lt.createElement(Lt, { ref: r2, translations: null == e2 || null === (t2 = e2.translations) || void 0 === t2 ? void 0 : t2.button, onClick: s2 }), i2 && Me(lt.createElement(Yo, _t({}, e2, { initialScrollY: window.scrollY, initialQuery: u2, translations: null == e2 || null === (n2 = e2.translations) || void 0 === n2 ? void 0 : n2.modal, onClose: f2 })), document.body));
   }
   function ei(t2) {
     We(lt.createElement(Xo, e({}, t2, { transformSearchClient: function(e2) {
       return e2.addAlgoliaAgent("docsearch.js", Zo), t2.transformSearchClient ? t2.transformSearchClient(e2) : e2;
-    } })), function(e2) {
+    } })), (function(e2) {
       var t3 = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : window;
       return "string" == typeof e2 ? t3.document.querySelector(e2) : e2;
-    }(t2.container, t2.environment));
+    })(t2.container, t2.environment));
   }
   var esm_default = ei;
 
