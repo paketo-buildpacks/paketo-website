@@ -81,13 +81,13 @@ Users may embed environment variables into the images created by using the [Envi
 
 The buildpack supports the following actions on environment variables:
 
-| Environment Variable Name | Description                                                  |
-| ------------------------- | ------------------------------------------------------------ |
-| `$BPE_<NAME>`             | set `$NAME` to value (same as override)                      |
-| `$BPE_APPEND_<NAME>`      | append value to `$NAME`                                      |
-| `$BPE_DEFAULT_<NAME>`     | set default value for `$NAME`                                |
-| `$BPE_OVERRIDE_<NAME>`    | set `$NAME` to value                                         |
-| `$BPE_PREPEND_<NAME>`     | prepend value to `$NAME`                                     |
+| Environment Variable Name | Description                             |
+| ------------------------- | --------------------------------------- |
+| `$BPE_<NAME>`             | set `$NAME` to value (same as override) |
+| `$BPE_APPEND_<NAME>`      | append value to `$NAME`                 |
+| `$BPE_DEFAULT_<NAME>`     | set default value for `$NAME`           |
+| `$BPE_OVERRIDE_<NAME>`    | set `$NAME` to value                    |
+| `$BPE_PREPEND_<NAME>`     | prepend value to `$NAME`                |
 
 For more details on actions, you can refer to the [environment variable modification rules from the buildpacks spec](https://github.com/buildpacks/spec/blob/main/buildpack.md#environment-variable-modification-rules).
 
@@ -440,6 +440,13 @@ LC_ALL=
 If you wish to set a locale, you may do so when you run the image by setting the corresponding environment variable. For example, with Docker one could execute `docker run -e LANG=en_US.utf8 ...` to change the locale.
 
 This isn't always necessary but can impact output from your application. For example if you have an application that writes unicode characters to STDOUT/STDERR and you go to view those, possibly with `docker logs`, they will not display correctly unless you have a locale set that supports unicode, like UTF-8 in the example above.
+
+### Locale Caveats
+
+There are two caveats with locales:
+
+1. The tiny & static images do **NOT** support locales. You may still set the options defined above, but they will be ignored on the tiny & static images. The required packages are not installed on these images as they would more than double the size. If you need locale support, then you must use either the base or full images which include the tooling for locale support.
+2. The base image only includes the `en_US.utf8` locale. This is generally sufficient if what you require is the ability to output non-ASCII characters though.
 
 <!-- buildpacks -->
 [bp/ca-certificates]:https://github.com/paketo-buildpacks/ca-certificates
