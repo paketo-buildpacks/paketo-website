@@ -510,7 +510,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </li>
     <li><a href="#ca-certificates">CA Certificates</a></li>
     <li><a href="#applying-custom-labels">Applying Custom Labels</a></li>
-    <li><a href="#configuring-locale">Configuring Locale</a></li>
+    <li><a href="#configuring-locale">Configuring Locale</a>
+      <ul>
+        <li><a href="#locale-caveats">Locale Caveats</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div>
@@ -969,6 +973,15 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
 </span></span><span class="line"><span class="cl"><span class="nv">LC_ALL</span><span class="o">=</span>
 </span></span></code></pre></div><p>If you wish to set a locale, you may do so when you run the image by setting the corresponding environment variable. For example, with Docker one could execute <code>docker run -e LANG=en_US.utf8 ...</code> to change the locale.</p>
 <p>This isn&rsquo;t always necessary but can impact output from your application. For example if you have an application that writes unicode characters to STDOUT/STDERR and you go to view those, possibly with <code>docker logs</code>, they will not display correctly unless you have a locale set that supports unicode, like UTF-8 in the example above.</p>
+<h3 id="locale-caveats" class="markup-heading">
+    <a class="markup-heading__link" href="#locale-caveats">
+        Locale Caveats
+    </a>
+</h3><p>There are two caveats with locales:</p>
+<ol>
+<li>The tiny &amp; static images do <strong>NOT</strong> support locales. You may still set the options defined above, but they will be ignored on the tiny &amp; static images. The required packages are not installed on these images as they would more than double the size. If you need locale support, then you must use either the base or full images which include the tooling for locale support.</li>
+<li>The base image only includes the <code>en_US.utf8</code> locale. This is generally sufficient if what you require is the ability to output non-ASCII characters though.</li>
+</ol>
 
             </div>
             
@@ -981,7 +994,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> September 18, 2025</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> September 19, 2025</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1010,7 +1023,11 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </li>
     <li><a href="#ca-certificates">CA Certificates</a></li>
     <li><a href="#applying-custom-labels">Applying Custom Labels</a></li>
-    <li><a href="#configuring-locale">Configuring Locale</a></li>
+    <li><a href="#configuring-locale">Configuring Locale</a>
+      <ul>
+        <li><a href="#locale-caveats">Locale Caveats</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 </div>
