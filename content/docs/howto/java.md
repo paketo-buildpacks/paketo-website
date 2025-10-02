@@ -378,7 +378,7 @@ By default, the [Paketo Java buildpack][bp/java] will use the Liberica JVM. The 
 | [GraalVM](https://www.graalvm.org/) {{< text/sup >}}1{{< /text/sup >}}                                                                  | [Paketo GraalVM Buildpack][bp/graalvm]                               |
 | [Oracle JDK](https://www.oracle.com/java/technologies/downloads/) {{< text/sup >}}1{{< /text/sup >}} {{< text/sup >}}2{{< /text/sup >}} | [Paketo Oracle Buildpack][bp/oracle]                                 |
 | [Microsoft OpenJDK](https://www.microsoft.com/openjdk) {{< text/sup >}}1{{< /text/sup >}}                                               | [Paketo Microsoft OpenJDK Buildpack][bp/microsoft]                   |
-| [SapMachine](https://sap.github.io/SapMachine/)                                                                                         | [Paketo SapMachine Buildpack][bp/sap-machine]                        |
+| [SapMachine](https://sapmachine.io/)                                                                                                    | [Paketo SapMachine Buildpack][bp/sap-machine]                        |
 <!-- spellchecker-enable -->
 
 1. *{{< text/sub >}}Only provides JDK releases{{< /text/sub >}}*
