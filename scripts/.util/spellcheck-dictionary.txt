@@ -237,6 +237,7 @@ dotnet
 dotnet-core
 dotnet-core-aspnet
 dotnet-core-aspnet:dotnet-core-aspnet
+dotnet-core-aspnet-runtime
 dotnet-core-reference
 dotnet-core-runtime
 dotnet-core-runtime:dotnet-core-runtime
@@ -263,6 +264,7 @@ frontend-app
 func
 github
 glibc
+global-json
 godocs
 graalvm
 gradle
@@ -351,6 +353,7 @@ prepend
 prepended
 prepending
 prepends
+pre-release
 procfile
 procfiles
 profiler
@@ -363,6 +366,8 @@ relref
 repo
 runnable
 runtimes
+runtime-rollforward
+runtime-config
 sbom
 sbom-output-dir
 sbt
