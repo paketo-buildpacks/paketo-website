@@ -22,7 +22,7 @@ jobs:
         ref: main
         path: build-environment
 
-    - uses: actions/setup-node@v6.1.0
+    - uses: actions/setup-node@v6.2.0
       with:
         node-version: 22
         check-latest: true
