@@ -392,6 +392,209 @@ environment variable can be set to `false` at build-time. This will disable the
 ability to set certificates at runtime. The CA Certificates Buildpack will then
 only detect if a certificate binding is provided at build-time.
 
+## Add Build or Runtime Packages
+
+For some applications, you may need to include additional packages. These may be additional build dependencies, like a database client, or they may be runtime dependencies like additional fonts. Regardless, you can install additional build and runtime packages using the Paketo Buildpack for Apt.
+
+The Paketo Buildpack for Apt is only tested with Paketo's Ubuntu-based base images, however, it is likely to work with any base image that include apt such as Debian. For a list of packages you can install, check out the [Ubuntu Packages page](https://packages.ubuntu.com/).
+
+### Basic Usage
+
+To install additional packages, create a file in the root of your workspace called `Aptfile`. Then in this file, put the packages you want installed; one on each line.
+
+For example:
+
+```bash
+mysql-client
+```
+
+Then use `pack build` to create an image of your application. You will see that the Apt buildpack runs, reads this file and installs the dependencies that you've specified.
+
+```bash
+> pack build apps/nginx --buildpack paketo-buildpacks/apt --buildpack paketo-buildpacks/nginx
+500a46ce47c1: Already exists
+...
+f5c5ce644ef6: Download complete
+===> ANALYZING
+[analyzer] Image with name "apps/nginx" not found
+===> DETECTING
+[detector] target distro name/version labels not found, reading /etc/os-release file
+[detector] paketo-buildpacks/apt   0.1.0
+[detector] paketo-buildpacks/nginx 1.0.11
+===> RESTORING
+===> BUILDING
+[builder] target distro name/version labels not found, reading /etc/os-release file
+[builder] -----> Detected Aptfile changes, flushing cache
+[builder] -----> Updating apt caches
+[builder]        Get:1 http://ports.ubuntu.com/ubuntu-ports jammy InRelease [270 kB]
+[builder]        Get:2 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease [128 kB]
+[builder]        Get:3 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease [129 kB]
+[builder]        Get:4 http://ports.ubuntu.com/ubuntu-ports jammy/universe arm64 Packages [17.2 MB]
+[builder]        Get:5 http://ports.ubuntu.com/ubuntu-ports jammy/multiverse arm64 Packages [224 kB]
+[builder]        Get:6 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 Packages [1758 kB]
+[builder]        Get:7 http://ports.ubuntu.com/ubuntu-ports jammy-updates/multiverse arm64 Packages [46.0 kB]
+[builder]        Get:8 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe arm64 Packages [1633 kB]
+[builder]        Get:9 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 Packages [3724 kB]
+[builder]        Get:10 http://ports.ubuntu.com/ubuntu-ports jammy-security/universe arm64 Packages [1330 kB]
+[builder]        Get:11 http://ports.ubuntu.com/ubuntu-ports jammy-security/main arm64 Packages [3407 kB]
+[builder]        Get:12 http://ports.ubuntu.com/ubuntu-ports jammy-security/multiverse arm64 Packages [40.2 kB]
+[builder]        Fetched 29.9 MB in 2s (12.2 MB/s)
+[builder]        Reading package lists...
+[builder] -----> Fetching .debs for mysql-client
+[builder]        Reading package lists...
+[builder]        Building dependency tree...
+[builder]        The following additional packages will be installed:
+[builder]          libbsd0 libedit2 libmd0 mysql-client-8.0 mysql-client-core-8.0 mysql-common
+[builder]        The following NEW packages will be installed:
+[builder]          libbsd0 libedit2 libmd0 mysql-client mysql-client-8.0 mysql-client-core-8.0
+[builder]          mysql-common
+[builder]        0 upgraded, 7 newly installed, 0 to remove and 6 not upgraded.
+[builder]        Need to get 3209 kB of archives.
+[builder]        After this operation, 62.1 MB of additional disk space will be used.
+[builder]        Get:1 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 libmd0 arm64 1.0.4-1build1 [23.8 kB]
+[builder]        Get:2 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 libbsd0 arm64 0.11.5-1 [43.7 kB]
+[builder]        Get:3 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 libedit2 arm64 3.1-20210910-1build1 [96.0 kB]
+[builder]        Get:4 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 mysql-client-core-8.0 arm64 8.0.44-0ubuntu0.22.04.2 [3006 kB]
+[builder]        Get:5 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 mysql-common all 5.8+1.0.8 [7212 B]
+[builder]        Get:6 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 mysql-client-8.0 arm64 8.0.44-0ubuntu0.22.04.2 [22.6 kB]
+[builder]        Get:7 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 mysql-client all 8.0.44-0ubuntu0.22.04.2 [9354 B]
+[builder]        Fetched 3209 kB in 0s (7823 kB/s)
+[builder]        Download complete and in download only mode
+[builder] -----> Installing apt packages with dpkg
+[builder]        libbsd0_0.11.5-1_arm64.deb
+[builder]        libedit2_3.1-20210910-1build1_arm64.deb
+[builder]        libmd0_1.0.4-1build1_arm64.deb
+[builder]        mysql-client-8.0_8.0.44-0ubuntu0.22.04.2_arm64.deb
+[builder]        mysql-client-core-8.0_8.0.44-0ubuntu0.22.04.2_arm64.deb
+[builder]        mysql-client_8.0.44-0ubuntu0.22.04.2_all.deb
+[builder]        mysql-common_5.8+1.0.8_all.deb
+[builder] -----> Writing environment variables
+[builder]        PATH=/layers/paketo-buildpacks_apt/apt/usr/bin
+[builder]        LD_LIBRARY_PATH=/layers/paketo-buildpacks_apt/apt/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib:/layers/paketo-buildpacks_apt/apt/usr/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib
+[builder]        LIBRARY_PATH=/layers/paketo-buildpacks_apt/apt/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib:/layers/paketo-buildpacks_apt/apt/usr/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib
+[builder]        INCLUDE_PATH=/layers/paketo-buildpacks_apt/apt/usr/include:/layers/paketo-buildpacks_apt/apt/usr/include/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/include/x86_64-linux-gnu
+[builder]        CPATH=$INCLUDE_PATH
+[builder]        CPPPATH=$INCLUDE_PATH
+[builder]        PKG_CONFIG_PATH=/layers/paketo-buildpacks_apt/apt/usr/lib/aarch64-linux-gnu/pkgconfig:/layers/paketo-buildpacks_apt/apt/usr/lib/x86_64-linux-gnu/pkgconfig:/layers/paketo-buildpacks_apt/apt/usr/lib/i386-linux-gnu/pkgconfig:/layers/paketo-buildpacks_apt/apt/usr/lib/pkgconfig
+[builder] -----> Rewrite package-config files
+[builder]        Elapsed time: 4124ms
+[builder] Paketo Buildpack for Nginx Server 1.0.11
+...
+===> EXPORTING
+[exporter] Adding layer 'paketo-buildpacks/apt:apt'
+[exporter] Adding layer 'paketo-buildpacks/nginx:nginx'
+[exporter] Adding layer 'buildpacksio/lifecycle:launch.sbom'
+[exporter] Added 1/1 app layer(s)
+[exporter] Adding layer 'buildpacksio/lifecycle:launcher'
+[exporter] Adding layer 'buildpacksio/lifecycle:config'
+[exporter] Adding layer 'buildpacksio/lifecycle:process-types'
+[exporter] Adding label 'io.buildpacks.lifecycle.metadata'
+[exporter] Adding label 'io.buildpacks.build.metadata'
+[exporter] Adding label 'io.buildpacks.project.metadata'
+[exporter] Setting default process type 'web'
+[exporter] Saving apps/nginx...
+[exporter] *** Images (019edaefaeb4):
+[exporter]       apps/nginx
+[exporter] Adding cache layer 'paketo-buildpacks/apt:apt'
+Successfully built image apps/nginx
+```
+
+### Installing a DEB file
+
+You may also install DEB files directly. To do this, simply put the URL to the DEB file on a line in your `Aptfile`.
+
+For example:
+
+```bash
+http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.1/wkhtmltox-0.12.1_linux-precise-amd64.deb
+```
+
+### Additional Repositories
+
+You may also add additional repositories and keys to verify those repositories. This is done through the `Aptfile` too. To add a new key file, prefix the entry with `:repo:key` and to add a new repo prefix the entry with `:repo:deb`.
+
+The `:repo:key` may be specified in a few different formats:
+
+- A GPG key like `https://example.com/repo-signing-key.gpg`
+- An ASC file like `https://example.com/repo-signing-key.asc`
+- A key id from `keyserver.ubuntu.com`, like `CADA0F77901522B3`
+- A local key file like `file://key.asc`.
+
+Please note that for local key files, the location must be a relative link to a key that's bundled with the application. You cannot reference arbitrary full paths, i.e. `file:///etc/keys/foo.asc` will not work.
+
+Here is an example of adding a repository & key. The order does not matter as keys will be set up before running any operations.
+
+```bash
+:repo:key https://dl.yarnpkg.com/debian/pubkey.gpg
+:repo:deb https://dl.yarnpkg.com/debian/ stable main
+
+yarn
+```
+
+And you'll see in the output:
+
+```bash
+[builder] -----> Detected Aptfile changes, flushing cache
+[builder] -----> Importing custom GPG keys
+[builder]        Fetching key from https://dl.yarnpkg.com/debian/pubkey.gpg
+[builder]        Reading key from file /tmp/tmp.EMiAzTogy4
+[builder]        Successfully imported key
+[builder] -----> Adding custom repositories
+[builder] -----> Updating apt caches
+[builder]        Get:1 https://dl.yarnpkg.com/debian stable InRelease
+[builder]        Get:2 https://dl.yarnpkg.com/debian stable/main arm64 Packages [11.8 kB]
+[builder]        Hit:3 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+[builder]        Get:4 https://dl.yarnpkg.com/debian stable/main all Packages [11.8 kB]
+[builder]        Hit:5 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+[builder]        Hit:6 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+[builder]        Fetched 40.6 kB in 0s (91.8 kB/s)
+[builder]        Reading package lists...
+[builder] -----> Fetching .debs for yarn
+[builder]        Reading package lists...
+[builder]        Building dependency tree...
+[builder]        The following additional packages will be installed:
+[builder]          javascript-common libc-ares2 libicu70 libjs-highlight.js libnode72 libuv1
+[builder]          nodejs nodejs-doc
+[builder]        Suggested packages:
+[builder]          apache2 | lighttpd | httpd npm
+[builder]        The following NEW packages will be installed:
+[builder]          javascript-common libc-ares2 libicu70 libjs-highlight.js libnode72 libuv1
+[builder]          nodejs nodejs-doc yarn
+[builder]        0 upgraded, 9 newly installed, 0 to remove and 6 not upgraded.
+[builder]        Need to get 24.7 MB of archives.
+[builder]        After this operation, 91.8 MB of additional disk space will be used.
+[builder]        Get:1 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 libicu70 arm64 70.1-2 [10.5 MB]
+[builder]        Get:2 https://dl.yarnpkg.com/debian stable/main arm64 yarn all 1.22.22-1 [896 kB]
+[builder]        Get:3 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 libuv1 arm64 1.43.0-1ubuntu0.1 [90.1 kB]
+[builder]        Get:4 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 javascript-common all 11+nmu1 [5936 B]
+[builder]        Get:5 http://ports.ubuntu.com/ubuntu-ports jammy/universe arm64 libjs-highlight.js all 9.18.5+dfsg1-1 [367 kB]
+[builder]        Get:6 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 libc-ares2 arm64 1.18.1-1ubuntu0.22.04.3 [44.6 kB]
+[builder]        Get:7 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe arm64 libnode72 arm64 12.22.9~dfsg-1ubuntu3.6 [10.3 MB]
+[builder]        Get:8 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe arm64 nodejs-doc all 12.22.9~dfsg-1ubuntu3.6 [2411 kB]
+[builder]        Get:9 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe arm64 nodejs arm64 12.22.9~dfsg-1ubuntu3.6 [122 kB]
+[builder]        Fetched 24.7 MB in 1s (17.9 MB/s)
+[builder]        Download complete and in download only mode
+[builder] -----> Installing apt packages with dpkg
+[builder]        javascript-common_11+nmu1_all.deb
+[builder]        libc-ares2_1.18.1-1ubuntu0.22.04.3_arm64.deb
+[builder]        libicu70_70.1-2_arm64.deb
+[builder]        libjs-highlight.js_9.18.5+dfsg1-1_all.deb
+[builder]        libnode72_12.22.9~dfsg-1ubuntu3.6_arm64.deb
+[builder]        libuv1_1.43.0-1ubuntu0.1_arm64.deb
+[builder]        nodejs-doc_12.22.9~dfsg-1ubuntu3.6_all.deb
+[builder]        nodejs_12.22.9~dfsg-1ubuntu3.6_arm64.deb
+[builder]        yarn_1.22.22-1_all.deb
+[builder] -----> Writing environment variables
+[builder]        PATH=/layers/paketo-buildpacks_apt/apt/usr/bin
+[builder]        LD_LIBRARY_PATH=/layers/paketo-buildpacks_apt/apt/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib:/layers/paketo-buildpacks_apt/apt/usr/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib
+[builder]        LIBRARY_PATH=/layers/paketo-buildpacks_apt/apt/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib:/layers/paketo-buildpacks_apt/apt/usr/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib
+[builder]        INCLUDE_PATH=/layers/paketo-buildpacks_apt/apt/usr/include:/layers/paketo-buildpacks_apt/apt/usr/include/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/include/x86_64-linux-gnu
+[builder]        CPATH=$INCLUDE_PATH
+[builder]        CPPPATH=$INCLUDE_PATH
+[builder]        PKG_CONFIG_PATH=/layers/paketo-buildpacks_apt/apt/usr/lib/aarch64-linux-gnu/pkgconfig:/layers/paketo-buildpacks_apt/apt/usr/lib/x86_64-linux-gnu/pkgconfig:/layers/paketo-buildpacks_apt/apt/usr/lib/i386-linux-gnu/pkgconfig:/layers/paketo-buildpacks_apt/apt/usr/lib/pkgconfig
+[builder] -----> Rewrite package-config files
+[builder]        Elapsed time: 3742ms
+```
 
 ## Applying Custom Labels
 
