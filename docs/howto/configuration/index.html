@@ -509,6 +509,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </ul>
     </li>
     <li><a href="#ca-certificates">CA Certificates</a></li>
+    <li><a href="#add-build-or-runtime-packages">Add Build or Runtime Packages</a>
+      <ul>
+        <li><a href="#basic-usage">Basic Usage</a></li>
+        <li><a href="#installing-a-deb-file">Installing a DEB file</a></li>
+        <li><a href="#additional-repositories">Additional Repositories</a></li>
+      </ul>
+    </li>
     <li><a href="#applying-custom-labels">Applying Custom Labels</a></li>
     <li><a href="#configuring-locale">Configuring Locale</a>
       <ul>
@@ -929,7 +936,193 @@ can be provided dynamically at runtime.</p>
 environment variable can be set to <code>false</code> at build-time. This will disable the
 ability to set certificates at runtime. The CA Certificates Buildpack will then
 only detect if a certificate binding is provided at build-time.</p>
-<h2 id="applying-custom-labels" class="markup-heading">
+<h2 id="add-build-or-runtime-packages" class="markup-heading">
+    <a class="markup-heading__link" href="#add-build-or-runtime-packages">
+        Add Build or Runtime Packages
+    </a>
+</h2><p>For some applications, you may need to include additional packages. These may be additional build dependencies, like a database client, or they may be runtime dependencies like additional fonts. Regardless, you can install additional build and runtime packages using the Paketo Buildpack for Apt.</p>
+<p>The Paketo Buildpack for Apt is only tested with the Paketo Ubuntu-based base images, however, it is likely to work with any base image that include apt such as Debian. For a list of packages you can install, check out the <a href="https://packages.ubuntu.com/">Ubuntu Packages page</a>.</p>
+<h3 id="basic-usage" class="markup-heading">
+    <a class="markup-heading__link" href="#basic-usage">
+        Basic Usage
+    </a>
+</h3><p>To install additional packages, create a file in the root of your workspace called <code>Aptfile</code>. Then in this file, put the packages you want installed; one on each line.</p>
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mysql-client
+</span></span></code></pre></div><p>Then use <code>pack build</code> to create an image of your application. You will see that the Apt buildpack runs, reads this file and installs the dependencies that you&rsquo;ve specified.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&gt; pack build apps/nginx --buildpack paketo-buildpacks/apt --buildpack paketo-buildpacks/nginx
+</span></span><span class="line"><span class="cl">500a46ce47c1: Already exists
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">f5c5ce644ef6: Download <span class="nb">complete</span>
+</span></span><span class="line"><span class="cl"><span class="o">===</span>&gt; ANALYZING
+</span></span><span class="line"><span class="cl"><span class="o">[</span>analyzer<span class="o">]</span> Image with name <span class="s2">&#34;apps/nginx&#34;</span> not <span class="nv">found</span>
+</span></span><span class="line"><span class="cl"><span class="o">===</span>&gt; DETECTING
+</span></span><span class="line"><span class="cl"><span class="o">[</span>detector<span class="o">]</span> target distro name/version labels not found, reading /etc/os-release file
+</span></span><span class="line"><span class="cl"><span class="o">[</span>detector<span class="o">]</span> paketo-buildpacks/apt   0.1.0
+</span></span><span class="line"><span class="cl"><span class="o">[</span>detector<span class="o">]</span> paketo-buildpacks/nginx 1.0.11
+</span></span><span class="line"><span class="cl"><span class="o">===</span>&gt; <span class="nv">RESTORING</span>
+</span></span><span class="line"><span class="cl"><span class="o">===</span>&gt; BUILDING
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> target distro name/version labels not found, reading /etc/os-release file
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Detected Aptfile changes, flushing cache
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Updating apt caches
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:1 http://ports.ubuntu.com/ubuntu-ports jammy InRelease <span class="o">[</span><span class="m">270</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:2 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease <span class="o">[</span><span class="m">128</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:3 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease <span class="o">[</span><span class="m">129</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:4 http://ports.ubuntu.com/ubuntu-ports jammy/universe arm64 Packages <span class="o">[</span>17.2 MB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:5 http://ports.ubuntu.com/ubuntu-ports jammy/multiverse arm64 Packages <span class="o">[</span><span class="m">224</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:6 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 Packages <span class="o">[</span><span class="m">1758</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:7 http://ports.ubuntu.com/ubuntu-ports jammy-updates/multiverse arm64 Packages <span class="o">[</span>46.0 kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:8 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe arm64 Packages <span class="o">[</span><span class="m">1633</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:9 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 Packages <span class="o">[</span><span class="m">3724</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:10 http://ports.ubuntu.com/ubuntu-ports jammy-security/universe arm64 Packages <span class="o">[</span><span class="m">1330</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:11 http://ports.ubuntu.com/ubuntu-ports jammy-security/main arm64 Packages <span class="o">[</span><span class="m">3407</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:12 http://ports.ubuntu.com/ubuntu-ports jammy-security/multiverse arm64 Packages <span class="o">[</span>40.2 kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Fetched 29.9 MB in 2s <span class="o">(</span>12.2 MB/s<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Reading package lists...
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Fetching .debs <span class="k">for</span> mysql-client
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Reading package lists...
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Building dependency tree...
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        The following additional packages will be installed:
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>          libbsd0 libedit2 libmd0 mysql-client-8.0 mysql-client-core-8.0 mysql-common
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        The following NEW packages will be installed:
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>          libbsd0 libedit2 libmd0 mysql-client mysql-client-8.0 mysql-client-core-8.0
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>          mysql-common
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="m">0</span> upgraded, <span class="m">7</span> newly installed, <span class="m">0</span> to remove and <span class="m">6</span> not upgraded.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Need to get <span class="m">3209</span> kB of archives.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        After this operation, 62.1 MB of additional disk space will be used.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:1 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 libmd0 arm64 1.0.4-1build1 <span class="o">[</span>23.8 kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:2 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 libbsd0 arm64 0.11.5-1 <span class="o">[</span>43.7 kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:3 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 libedit2 arm64 3.1-20210910-1build1 <span class="o">[</span>96.0 kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:4 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 mysql-client-core-8.0 arm64 8.0.44-0ubuntu0.22.04.2 <span class="o">[</span><span class="m">3006</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:5 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 mysql-common all 5.8+1.0.8 <span class="o">[</span><span class="m">7212</span> B<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:6 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 mysql-client-8.0 arm64 8.0.44-0ubuntu0.22.04.2 <span class="o">[</span>22.6 kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:7 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 mysql-client all 8.0.44-0ubuntu0.22.04.2 <span class="o">[</span><span class="m">9354</span> B<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Fetched <span class="m">3209</span> kB in 0s <span class="o">(</span><span class="m">7823</span> kB/s<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Download <span class="nb">complete</span> and in download only mode
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Installing apt packages with dpkg
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        libbsd0_0.11.5-1_arm64.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        libedit2_3.1-20210910-1build1_arm64.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        libmd0_1.0.4-1build1_arm64.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        mysql-client-8.0_8.0.44-0ubuntu0.22.04.2_arm64.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        mysql-client-core-8.0_8.0.44-0ubuntu0.22.04.2_arm64.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        mysql-client_8.0.44-0ubuntu0.22.04.2_all.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        mysql-common_5.8+1.0.8_all.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Writing environment variables
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">PATH</span><span class="o">=</span>/layers/paketo-buildpacks_apt/apt/usr/bin
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/layers/paketo-buildpacks_apt/apt/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib:/layers/paketo-buildpacks_apt/apt/usr/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">LIBRARY_PATH</span><span class="o">=</span>/layers/paketo-buildpacks_apt/apt/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib:/layers/paketo-buildpacks_apt/apt/usr/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">INCLUDE_PATH</span><span class="o">=</span>/layers/paketo-buildpacks_apt/apt/usr/include:/layers/paketo-buildpacks_apt/apt/usr/include/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/include/x86_64-linux-gnu
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">CPATH</span><span class="o">=</span><span class="nv">$INCLUDE_PATH</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">CPPPATH</span><span class="o">=</span><span class="nv">$INCLUDE_PATH</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span>/layers/paketo-buildpacks_apt/apt/usr/lib/aarch64-linux-gnu/pkgconfig:/layers/paketo-buildpacks_apt/apt/usr/lib/x86_64-linux-gnu/pkgconfig:/layers/paketo-buildpacks_apt/apt/usr/lib/i386-linux-gnu/pkgconfig:/layers/paketo-buildpacks_apt/apt/usr/lib/pkgconfig
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Rewrite package-config files
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Elapsed time: 4124ms
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> Paketo Buildpack <span class="k">for</span> Nginx Server 1.0.11
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl"><span class="o">===</span>&gt; EXPORTING
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> Adding layer <span class="s1">&#39;paketo-buildpacks/apt:apt&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> Adding layer <span class="s1">&#39;paketo-buildpacks/nginx:nginx&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> Adding layer <span class="s1">&#39;buildpacksio/lifecycle:launch.sbom&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> Added 1/1 app layer<span class="o">(</span>s<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> Adding layer <span class="s1">&#39;buildpacksio/lifecycle:launcher&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> Adding layer <span class="s1">&#39;buildpacksio/lifecycle:config&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> Adding layer <span class="s1">&#39;buildpacksio/lifecycle:process-types&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> Adding label <span class="s1">&#39;io.buildpacks.lifecycle.metadata&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> Adding label <span class="s1">&#39;io.buildpacks.build.metadata&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> Adding label <span class="s1">&#39;io.buildpacks.project.metadata&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> Setting default process <span class="nb">type</span> <span class="s1">&#39;web&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> Saving apps/nginx...
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> *** Images <span class="o">(</span>019edaefaeb4<span class="o">)</span>:
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span>       apps/nginx
+</span></span><span class="line"><span class="cl"><span class="o">[</span>exporter<span class="o">]</span> Adding cache layer <span class="s1">&#39;paketo-buildpacks/apt:apt&#39;</span>
+</span></span><span class="line"><span class="cl">Successfully built image apps/nginx
+</span></span></code></pre></div><h3 id="installing-a-deb-file" class="markup-heading">
+    <a class="markup-heading__link" href="#installing-a-deb-file">
+        Installing a DEB file
+    </a>
+</h3><p>You may also install DEB files directly. To do this, simply put the URL to the DEB file on a line in your <code>Aptfile</code>.</p>
+<p>For example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">http://downloads.sourceforge.net/project/wkhtmltopdf/0.12.1/wkhtmltox-0.12.1_linux-precise-amd64.deb
+</span></span></code></pre></div><h3 id="additional-repositories" class="markup-heading">
+    <a class="markup-heading__link" href="#additional-repositories">
+        Additional Repositories
+    </a>
+</h3><p>You may also add additional repositories and keys to verify those repositories. This is done through the <code>Aptfile</code> too. To add a new key file, prefix the entry with <code>:repo:key</code> and to add a new repo prefix the entry with <code>:repo:deb</code>.</p>
+<p>The <code>:repo:key</code> may be specified in a few different formats:</p>
+<ul>
+<li>A GPG key like <code>https://example.com/repo-signing-key.gpg</code></li>
+<li>An ASC file like <code>https://example.com/repo-signing-key.asc</code></li>
+<li>A key id from <code>keyserver.ubuntu.com</code>, like <code>CADA0F77901522B3</code></li>
+<li>A local key file like <code>file://key.asc</code>.</li>
+</ul>
+<p>Please note that for local key files, the location must be a relative link to a key that&rsquo;s bundled with the application. You cannot reference arbitrary full paths, i.e. <code>file:///etc/keys/foo.asc</code> will not work.</p>
+<p>Here is an example of adding a repository &amp; key. The order does not matter as keys will be set up before running any operations.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">:repo:key https://dl.yarnpkg.com/debian/pubkey.gpg
+</span></span><span class="line"><span class="cl">:repo:deb https://dl.yarnpkg.com/debian/ stable main
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">yarn
+</span></span></code></pre></div><p>And you&rsquo;ll see in the output:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Detected Aptfile changes, flushing cache
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Importing custom GPG keys
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Fetching key from https://dl.yarnpkg.com/debian/pubkey.gpg
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Reading key from file /tmp/tmp.EMiAzTogy4
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Successfully imported key
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Adding custom repositories
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Updating apt caches
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:1 https://dl.yarnpkg.com/debian stable InRelease
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:2 https://dl.yarnpkg.com/debian stable/main arm64 Packages <span class="o">[</span>11.8 kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Hit:3 http://ports.ubuntu.com/ubuntu-ports jammy InRelease
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:4 https://dl.yarnpkg.com/debian stable/main all Packages <span class="o">[</span>11.8 kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Hit:5 http://ports.ubuntu.com/ubuntu-ports jammy-updates InRelease
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Hit:6 http://ports.ubuntu.com/ubuntu-ports jammy-security InRelease
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Fetched 40.6 kB in 0s <span class="o">(</span>91.8 kB/s<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Reading package lists...
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Fetching .debs <span class="k">for</span> yarn
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Reading package lists...
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Building dependency tree...
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        The following additional packages will be installed:
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>          javascript-common libc-ares2 libicu70 libjs-highlight.js libnode72 libuv1
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>          nodejs nodejs-doc
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Suggested packages:
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>          apache2 <span class="p">|</span> lighttpd <span class="p">|</span> httpd npm
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        The following NEW packages will be installed:
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>          javascript-common libc-ares2 libicu70 libjs-highlight.js libnode72 libuv1
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>          nodejs nodejs-doc yarn
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="m">0</span> upgraded, <span class="m">9</span> newly installed, <span class="m">0</span> to remove and <span class="m">6</span> not upgraded.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Need to get 24.7 MB of archives.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        After this operation, 91.8 MB of additional disk space will be used.
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:1 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 libicu70 arm64 70.1-2 <span class="o">[</span>10.5 MB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:2 https://dl.yarnpkg.com/debian stable/main arm64 yarn all 1.22.22-1 <span class="o">[</span><span class="m">896</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:3 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 libuv1 arm64 1.43.0-1ubuntu0.1 <span class="o">[</span>90.1 kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:4 http://ports.ubuntu.com/ubuntu-ports jammy/main arm64 javascript-common all 11+nmu1 <span class="o">[</span><span class="m">5936</span> B<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:5 http://ports.ubuntu.com/ubuntu-ports jammy/universe arm64 libjs-highlight.js all 9.18.5+dfsg1-1 <span class="o">[</span><span class="m">367</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:6 http://ports.ubuntu.com/ubuntu-ports jammy-updates/main arm64 libc-ares2 arm64 1.18.1-1ubuntu0.22.04.3 <span class="o">[</span>44.6 kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:7 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe arm64 libnode72 arm64 12.22.9~dfsg-1ubuntu3.6 <span class="o">[</span>10.3 MB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:8 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe arm64 nodejs-doc all 12.22.9~dfsg-1ubuntu3.6 <span class="o">[</span><span class="m">2411</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Get:9 http://ports.ubuntu.com/ubuntu-ports jammy-updates/universe arm64 nodejs arm64 12.22.9~dfsg-1ubuntu3.6 <span class="o">[</span><span class="m">122</span> kB<span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Fetched 24.7 MB in 1s <span class="o">(</span>17.9 MB/s<span class="o">)</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Download <span class="nb">complete</span> and in download only mode
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Installing apt packages with dpkg
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        javascript-common_11+nmu1_all.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        libc-ares2_1.18.1-1ubuntu0.22.04.3_arm64.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        libicu70_70.1-2_arm64.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        libjs-highlight.js_9.18.5+dfsg1-1_all.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        libnode72_12.22.9~dfsg-1ubuntu3.6_arm64.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        libuv1_1.43.0-1ubuntu0.1_arm64.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        nodejs-doc_12.22.9~dfsg-1ubuntu3.6_all.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        nodejs_12.22.9~dfsg-1ubuntu3.6_arm64.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        yarn_1.22.22-1_all.deb
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Writing environment variables
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">PATH</span><span class="o">=</span>/layers/paketo-buildpacks_apt/apt/usr/bin
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/layers/paketo-buildpacks_apt/apt/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib:/layers/paketo-buildpacks_apt/apt/usr/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">LIBRARY_PATH</span><span class="o">=</span>/layers/paketo-buildpacks_apt/apt/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/lib:/layers/paketo-buildpacks_apt/apt/usr/lib/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/x86_64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib/i386-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/lib
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">INCLUDE_PATH</span><span class="o">=</span>/layers/paketo-buildpacks_apt/apt/usr/include:/layers/paketo-buildpacks_apt/apt/usr/include/aarch64-linux-gnu:/layers/paketo-buildpacks_apt/apt/usr/include/x86_64-linux-gnu
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">CPATH</span><span class="o">=</span><span class="nv">$INCLUDE_PATH</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">CPPPATH</span><span class="o">=</span><span class="nv">$INCLUDE_PATH</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        <span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span>/layers/paketo-buildpacks_apt/apt/usr/lib/aarch64-linux-gnu/pkgconfig:/layers/paketo-buildpacks_apt/apt/usr/lib/x86_64-linux-gnu/pkgconfig:/layers/paketo-buildpacks_apt/apt/usr/lib/i386-linux-gnu/pkgconfig:/layers/paketo-buildpacks_apt/apt/usr/lib/pkgconfig
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span> -----&gt; Rewrite package-config files
+</span></span><span class="line"><span class="cl"><span class="o">[</span>builder<span class="o">]</span>        Elapsed time: 3742ms
+</span></span></code></pre></div><h2 id="applying-custom-labels" class="markup-heading">
     <a class="markup-heading__link" href="#applying-custom-labels">
         Applying Custom Labels
     </a>
@@ -994,7 +1187,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> December 4, 2025</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> January 22, 2026</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1022,6 +1215,13 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
       </ul>
     </li>
     <li><a href="#ca-certificates">CA Certificates</a></li>
+    <li><a href="#add-build-or-runtime-packages">Add Build or Runtime Packages</a>
+      <ul>
+        <li><a href="#basic-usage">Basic Usage</a></li>
+        <li><a href="#installing-a-deb-file">Installing a DEB file</a></li>
+        <li><a href="#additional-repositories">Additional Repositories</a></li>
+      </ul>
+    </li>
     <li><a href="#applying-custom-labels">Applying Custom Labels</a></li>
     <li><a href="#configuring-locale">Configuring Locale</a>
       <ul>
