@@ -396,7 +396,7 @@ only detect if a certificate binding is provided at build-time.
 
 For some applications, you may need to include additional packages. These may be additional build dependencies, like a database client, or they may be runtime dependencies like additional fonts. Regardless, you can install additional build and runtime packages using the Paketo Buildpack for Apt.
 
-The Paketo Buildpack for Apt is only tested with Paketo's Ubuntu-based base images, however, it is likely to work with any base image that include apt such as Debian. For a list of packages you can install, check out the [Ubuntu Packages page](https://packages.ubuntu.com/).
+The Paketo Buildpack for Apt is only tested with the Paketo Ubuntu-based base images, however, it is likely to work with any base image that include apt such as Debian. For a list of packages you can install, check out the [Ubuntu Packages page](https://packages.ubuntu.com/).
 
 ### Basic Usage
 
