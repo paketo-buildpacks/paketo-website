@@ -160,6 +160,7 @@ Tomee
 Trivy
 UBI8
 UBI9
+UBI10
 UI
 URI(s)?
 URI's
