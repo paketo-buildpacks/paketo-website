@@ -225,6 +225,27 @@ pack build samples/nodejs \
   --env "BP_LOG_LEVEL=DEBUG" \
 {{< /code/copyable >}}
 
+## HTTP Client
+
+### Timeouts
+
+When downloading dependencies or communicating with external services during the build, the HTTP client used by buildpacks can be fine‑tuned with the following environment variables. These settings allow you to adjust timeouts to suit your network conditions or the responsiveness of remote servers.
+
+- `BP_DIALER_TIMEOUT` (default `6`) – limits the time spent establishing a TCP connection (if a new one is needed).
+- `BP_DIALER_KEEP_ALIVE` (default `60`) – specifies the interval between keep‑alive probes for an active TCP connection.
+- `BP_TLS_HANDSHAKE_TIMEOUT` (default `5`) – limits the time spent performing the TLS handshake.
+- `BP_RESPONSE_HEADER_TIMEOUT` (default `5`) – limits the time spent reading the headers of the response.
+- `BP_EXPECT_CONTINUE_TIMEOUT` (default `1`) – limits the time the client waits for a `100 Continue` response after sending the request headers when including an `Expect: 100-continue` header.
+
+**Example**: Increasing timeouts for a slow network
+
+{{< code/copyable >}}
+pack build my-app \
+  --env BP_TLS_HANDSHAKE_TIMEOUT=10 \
+  --env BP_RESPONSE_HEADER_TIMEOUT=10 \
+  --env BP_DIALER_TIMEOUT=10
+{{< /code/copyable >}}
+
 ## Building Behind a Firewall
 
 ### Proxy Configuration
