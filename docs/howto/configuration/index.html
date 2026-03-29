@@ -501,6 +501,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <li><a href="#environment-variable-configuration">Environment Variable Configuration</a></li>
       </ul>
     </li>
+    <li><a href="#http-client">HTTP Client</a>
+      <ul>
+        <li><a href="#timeouts">Timeouts</a></li>
+      </ul>
+    </li>
     <li><a href="#building-behind-a-firewall">Building Behind a Firewall</a>
       <ul>
         <li><a href="#proxy-configuration">Proxy Configuration</a></li>
@@ -791,6 +796,32 @@ debugging logs, will emit them when this environment variable is set.</p>
     <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
     <div class="copyable__copied copied">Copied!</div>
 </div></p>
+<h2 id="http-client" class="markup-heading">
+    <a class="markup-heading__link" href="#http-client">
+        HTTP Client
+    </a>
+</h2><h3 id="timeouts" class="markup-heading">
+    <a class="markup-heading__link" href="#timeouts">
+        Timeouts
+    </a>
+</h3><p>When downloading dependencies or communicating with external services during the build, the HTTP client used by buildpacks can be fine‑tuned with the following environment variables. These settings allow you to adjust timeouts to suit your network conditions or the responsiveness of remote servers.</p>
+<ul>
+<li><code>BP_DIALER_TIMEOUT</code> (default <code>6</code>) – limits the time spent establishing a TCP connection (if a new one is needed).</li>
+<li><code>BP_DIALER_KEEP_ALIVE</code> (default <code>60</code>) – specifies the interval between keep‑alive probes for an active TCP connection.</li>
+<li><code>BP_TLS_HANDSHAKE_TIMEOUT</code> (default <code>5</code>) – limits the time spent performing the TLS handshake.</li>
+<li><code>BP_RESPONSE_HEADER_TIMEOUT</code> (default <code>5</code>) – limits the time spent reading the headers of the response.</li>
+<li><code>BP_EXPECT_CONTINUE_TIMEOUT</code> (default <code>1</code>) – limits the time the client waits for a <code>100 Continue</code> response after sending the request headers when including an <code>Expect: 100-continue</code> header.</li>
+</ul>
+<p><strong>Example</strong>: Increasing timeouts for a slow network</p>
+<div class="copyable">
+    <pre class="copyable__code">pack build my-app \
+  --env BP_TLS_HANDSHAKE_TIMEOUT=10 \
+  --env BP_RESPONSE_HEADER_TIMEOUT=10 \
+  --env BP_DIALER_TIMEOUT=10
+</pre>
+    <img class="copyable__clipboard" src="/images/clipboard.svg" alt="copy to clipboard" />
+    <div class="copyable__copied copied">Copied!</div>
+</div>
 <h2 id="building-behind-a-firewall" class="markup-heading">
     <a class="markup-heading__link" href="#building-behind-a-firewall">
         Building Behind a Firewall
@@ -1187,7 +1218,7 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> February 16, 2026</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> March 29, 2026</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
@@ -1205,6 +1236,11 @@ docker inspect samples/nodejs | jq &#39;.[].Config.Labels[&#34;io.packeto.exampl
     <li><a href="#enabling-debug-logging">Enabling Debug Logging</a>
       <ul>
         <li><a href="#environment-variable-configuration">Environment Variable Configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#http-client">HTTP Client</a>
+      <ul>
+        <li><a href="#timeouts">Timeouts</a></li>
       </ul>
     </li>
     <li><a href="#building-behind-a-firewall">Building Behind a Firewall</a>
