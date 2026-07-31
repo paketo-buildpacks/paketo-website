@@ -22,7 +22,11 @@ documentation][reference/builders].
 
 ### With `pack`
 To build an app with the `pack` CLI and a specific Paketo builder, use the
-`--builder` flag at build time.
+`--builder` flag at build time. The example below uses the Jammy Base builder;
+you can substitute another builder from the [reference
+documentation][reference/builders], such as
+`paketobuildpacks/ubuntu-resolute-builder` or
+`paketobuildpacks/ubuntu-noble-builder`.
 <!-- spellchecker-disable -->
 {{< code/copyable >}}
 pack build my-nodejs-app --builder paketobuildpacks/builder-jammy-base:latest
