@@ -19,10 +19,22 @@ To learn more about the concept of `stacks`, see
 [buildpacks.io](https://buildpacks.io/docs/concepts/components/stack/).
 
 ## What Paketo stacks are available?
-The Paketo project releases several stacks. We currently officially support
-Ubuntu 22.04 (Jammy Jellyfish). Tiny, Base, and Full stack variants differ in
-the number of packages installed in the OS layer.
-The available stacks, _**from smallest to largest**_, are:
+The Paketo project releases several stacks and base images based on Ubuntu, including Ubuntu
+26.04 (Resolute Raccoon), Ubuntu 24.04 (Noble Numbat), and Ubuntu 22.04 (Jammy
+Jellyfish). Tiny, Base, and Full stack variants differ in the number of
+packages installed in the OS layer.
+
+The available Ubuntu stacks/base images include:
+- [Resolute Base](https://github.com/paketo-buildpacks/ubuntu-resolute-base-images)
+  - Based on Ubuntu 26.04 Resolute Raccoon
+  - Ideal for Java and .NET Core apps, Golang apps that require C libraries,
+    Node.js, Python, Ruby, and JavaScript front end apps without many native
+    extensions
+- [Noble Base](https://github.com/paketo-buildpacks/ubuntu-noble-base-images)
+  - Based on Ubuntu 24.04 Noble Numbat
+  - Ideal for Java and .NET Core apps, Golang apps that require C libraries,
+    Node.js, Python, Ruby, and JavaScript front end apps without many native
+    extensions
 - [Jammy Tiny](https://github.com/paketo-buildpacks/jammy-tiny-stack)
   - Build image based on Ubuntu 22.04 Jammy Jellyfish; run image comparable to [distroless](https://github.com/GoogleContainerTools/distroless)
   - Ideal for most Golang apps, Java
@@ -67,10 +79,10 @@ Stacks are backwards compatible. A stack can safely be upgraded to the most rece
 
 ## What security and hardening features do Paketo stacks offer?
 
-* By using Ubuntu 18.04 and 22.04 as the base images for our stacks, we benefit
-  from all of the security provided by Canonical and Ubuntu. For more
-  information, see the [Canonical web site](https://ubuntu.com/security) and
-  the [Ubuntu wiki](https://wiki.ubuntu.com/Security/Features).
+* By using Ubuntu as the base images for our stacks, we benefit from all of the
+  security provided by Canonical and Ubuntu. For more information, see the
+  [Canonical web site](https://ubuntu.com/security) and the
+  [Ubuntu wiki](https://wiki.ubuntu.com/Security/Features).
 * Our automatic monitoring and patching of CVEs means that our stacks are often
   updated within hours of Canonical's patches.
 * The stack images are run as a dedicated non-root user when building and
@@ -86,3 +98,4 @@ Stacks are backwards compatible. A stack can safely be upgraded to the most rece
 
 <!-- References -->
 [docs/builders]:{{< ref "docs/concepts/builders" >}}
+[docs/builders-reference]:{{< ref "/docs/reference/builders-reference" >}}
