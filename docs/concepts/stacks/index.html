@@ -513,11 +513,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a class="markup-heading__link" href="#what-paketo-stacks-are-available">
         What Paketo stacks are available?
     </a>
-</h2><p>The Paketo project releases several stacks. We currently officially support
-Ubuntu 22.04 (Jammy Jellyfish). Tiny, Base, and Full stack variants differ in
-the number of packages installed in the OS layer.
-The available stacks, <em><strong>from smallest to largest</strong></em>, are:</p>
+</h2><p>The Paketo project releases several stacks and base images based on Ubuntu, including Ubuntu
+26.04 (Resolute Raccoon), Ubuntu 24.04 (Noble Numbat), and Ubuntu 22.04 (Jammy
+Jellyfish). Tiny, Base, and Full stack variants differ in the number of
+packages installed in the OS layer.</p>
+<p>The available Ubuntu stacks/base images include:</p>
 <ul>
+<li><a href="https://github.com/paketo-buildpacks/ubuntu-resolute-base-images">Resolute Base</a>
+<ul>
+<li>Based on Ubuntu 26.04 Resolute Raccoon</li>
+<li>Ideal for Java and .NET Core apps, Golang apps that require C libraries,
+Node.js, Python, Ruby, and JavaScript front end apps without many native
+extensions</li>
+</ul>
+</li>
+<li><a href="https://github.com/paketo-buildpacks/ubuntu-noble-base-images">Noble Base</a>
+<ul>
+<li>Based on Ubuntu 24.04 Noble Numbat</li>
+<li>Ideal for Java and .NET Core apps, Golang apps that require C libraries,
+Node.js, Python, Ruby, and JavaScript front end apps without many native
+extensions</li>
+</ul>
+</li>
 <li><a href="https://github.com/paketo-buildpacks/jammy-tiny-stack">Jammy Tiny</a>
 <ul>
 <li>Build image based on Ubuntu 22.04 Jammy Jellyfish; run image comparable to <a href="https://github.com/GoogleContainerTools/distroless">distroless</a></li>
@@ -573,10 +590,10 @@ severe enough to fix.</p>
         What security and hardening features do Paketo stacks offer?
     </a>
 </h2><ul>
-<li>By using Ubuntu 18.04 and 22.04 as the base images for our stacks, we benefit
-from all of the security provided by Canonical and Ubuntu. For more
-information, see the <a href="https://ubuntu.com/security">Canonical web site</a> and
-the <a href="https://wiki.ubuntu.com/Security/Features">Ubuntu wiki</a>.</li>
+<li>By using Ubuntu as the base images for our stacks, we benefit from all of the
+security provided by Canonical and Ubuntu. For more information, see the
+<a href="https://ubuntu.com/security">Canonical web site</a> and the
+<a href="https://wiki.ubuntu.com/Security/Features">Ubuntu wiki</a>.</li>
 <li>Our automatic monitoring and patching of CVEs means that our stacks are often
 updated within hours of Canonical&rsquo;s patches.</li>
 <li>The stack images are run as a dedicated non-root user when building and
@@ -602,7 +619,7 @@ corrupted at run-time by malicious app code.</li>
     </div>
 </a>
 
-            <p class="docs-mod-time"><strong>Last modified:</strong> March 30, 2026</p>
+            <p class="docs-mod-time"><strong>Last modified:</strong> August 2, 2026</p>
         </div>
         
 <div class="docs-body__table-of-contents-container docs-body__table-of-contents-container--desktop">
