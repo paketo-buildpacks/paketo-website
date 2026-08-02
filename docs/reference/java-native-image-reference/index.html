@@ -518,75 +518,75 @@ the  Paketo Java Native Image Buildpack  How To <a href="/docs/howto/java/#build
     </a>
 </h2><p>The following component buildpacks compose the Paketo Java Native Image Buildpack.</p>
 <table>
-  <thead>
-      <tr>
-          <th>Buildpack</th>
-          <th>Required/Optional</th>
-          <th>Responsibility</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><a href="https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Buildpack</a></td>
-          <td>Optional</td>
-          <td>Adds CA certificates to the system truststore at build and runtime.</td>
-      </tr>
-      <tr>
-          <td><a href="https://github.com/paketo-buildpacks/graalvm">Paketo GraalVM Buildpack</a></td>
-          <td><strong>Required</strong></td>
-          <td>Provides the GraalVM JDK and Native Image <a href="https://www.graalvm.org/reference-manual/native-image/">Substrate VM</a>.</td>
-      </tr>
-      <tr>
-          <td><a href="https://github.com/paketo-buildpacks/gradle">Paketo Gradle Buildpack</a></td>
-          <td>Optional</td>
-          <td>Builds Gradle-based applications from source.</td>
-      </tr>
-      <tr>
-          <td><a href="https://github.com/paketo-buildpacks/leiningen">Paketo Leiningen Buildpack</a></td>
-          <td>Optional</td>
-          <td>Builds Leiningen-based applications from source.</td>
-      </tr>
-      <tr>
-          <td><a href="https://github.com/paketo-buildpacks/maven">Paketo Maven Buildpack</a></td>
-          <td>Optional</td>
-          <td>Builds Maven-based applications from source.</td>
-      </tr>
-      <tr>
-          <td><a href="https://github.com/paketo-buildpacks/sbt">Paketo SBT Buildpack</a></td>
-          <td>Optional</td>
-          <td>Builds SBT-based applications from source.</td>
-      </tr>
-      <tr>
-          <td><a href="https://github.com/paketo-buildpacks/executable-jar">Paketo Executable JAR Buildpack</a></td>
-          <td>Optional</td>
-          <td>Contributes a process Type that launches an executable JAR.</td>
-      </tr>
-      <tr>
-          <td><a href="https://github.com/paketo-buildpacks/spring-boot">Paketo Spring Boot Buildpack</a></td>
-          <td>Optional</td>
-          <td>Contributes configuration and metadata to Spring Boot applications.</td>
-      </tr>
-      <tr>
-          <td><a href="https://github.com/paketo-buildpacks/spring-boot-native-image">Paketo Native Image Buildpack</a></td>
-          <td><strong>Required</strong></td>
-          <td>Creates a native image from a JVM application.</td>
-      </tr>
-      <tr>
-          <td><a href="https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a></td>
-          <td>Optional</td>
-          <td>Allows the application to define or redefine process types with a <a href="https://paketo.io/docs/howto/configuration/#procfiles">Procfile</a></td>
-      </tr>
-      <tr>
-          <td><a href="https://github.com/paketo-buildpacks/environment-variables">Paketo Environment Variables Buildpack</a></td>
-          <td>Optional</td>
-          <td>Contributes arbitrary user-provided environment variables to the image.</td>
-      </tr>
-      <tr>
-          <td><a href="https://github.com/paketo-buildpacks/image-labels">Paketo Image Labels Buildpack</a></td>
-          <td>Optional</td>
-          <td>Contributes OCI-specific and arbitrary user-provided labels to the image.</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Buildpack</th>
+					<th>Required/Optional</th>
+					<th>Responsibility</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><a href="https://github.com/paketo-buildpacks/ca-certificates">Paketo CA Certificates Buildpack</a></td>
+					<td>Optional</td>
+					<td>Adds CA certificates to the system truststore at build and runtime.</td>
+			</tr>
+			<tr>
+					<td><a href="https://github.com/paketo-buildpacks/graalvm">Paketo GraalVM Buildpack</a></td>
+					<td><strong>Required</strong></td>
+					<td>Provides the GraalVM JDK and Native Image <a href="https://www.graalvm.org/reference-manual/native-image/">Substrate VM</a>.</td>
+			</tr>
+			<tr>
+					<td><a href="https://github.com/paketo-buildpacks/gradle">Paketo Gradle Buildpack</a></td>
+					<td>Optional</td>
+					<td>Builds Gradle-based applications from source.</td>
+			</tr>
+			<tr>
+					<td><a href="https://github.com/paketo-buildpacks/leiningen">Paketo Leiningen Buildpack</a></td>
+					<td>Optional</td>
+					<td>Builds Leiningen-based applications from source.</td>
+			</tr>
+			<tr>
+					<td><a href="https://github.com/paketo-buildpacks/maven">Paketo Maven Buildpack</a></td>
+					<td>Optional</td>
+					<td>Builds Maven-based applications from source.</td>
+			</tr>
+			<tr>
+					<td><a href="https://github.com/paketo-buildpacks/sbt">Paketo SBT Buildpack</a></td>
+					<td>Optional</td>
+					<td>Builds SBT-based applications from source.</td>
+			</tr>
+			<tr>
+					<td><a href="https://github.com/paketo-buildpacks/executable-jar">Paketo Executable JAR Buildpack</a></td>
+					<td>Optional</td>
+					<td>Contributes a process Type that launches an executable JAR.</td>
+			</tr>
+			<tr>
+					<td><a href="https://github.com/paketo-buildpacks/spring-boot">Paketo Spring Boot Buildpack</a></td>
+					<td>Optional</td>
+					<td>Contributes configuration and metadata to Spring Boot applications.</td>
+			</tr>
+			<tr>
+					<td><a href="https://github.com/paketo-buildpacks/spring-boot-native-image">Paketo Native Image Buildpack</a></td>
+					<td><strong>Required</strong></td>
+					<td>Creates a native image from a JVM application.</td>
+			</tr>
+			<tr>
+					<td><a href="https://github.com/paketo-buildpacks/procfile">Paketo Procfile Buildpack</a></td>
+					<td>Optional</td>
+					<td>Allows the application to define or redefine process types with a <a href="https://paketo.io/docs/howto/configuration/#procfiles">Procfile</a></td>
+			</tr>
+			<tr>
+					<td><a href="https://github.com/paketo-buildpacks/environment-variables">Paketo Environment Variables Buildpack</a></td>
+					<td>Optional</td>
+					<td>Contributes arbitrary user-provided environment variables to the image.</td>
+			</tr>
+			<tr>
+					<td><a href="https://github.com/paketo-buildpacks/image-labels">Paketo Image Labels Buildpack</a></td>
+					<td>Optional</td>
+					<td>Contributes OCI-specific and arbitrary user-provided labels to the image.</td>
+			</tr>
+	</tbody>
 </table>
 
             </div>
@@ -654,7 +654,7 @@ the  Paketo Java Native Image Buildpack  How To <a href="/docs/howto/java/#build
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.92f05c36a4e283fd067418239d07236499c359fb256fcb62ee4f9f17e1efb65d.js"></script>
+</footer><script src="/js/main.f1b871e938b6cdfcaa825b19af65549d8080c3b479394629e3d7b3ef8813020d.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>

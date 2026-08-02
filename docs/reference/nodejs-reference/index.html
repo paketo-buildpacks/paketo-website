@@ -550,25 +550,25 @@ notes</a>.</p>
         
     </a>
 </h4><table>
-  <thead>
-      <tr>
-          <th><code>type</code></th>
-          <th>Required Files</th>
-          <th># Bindings of This Type Accepted</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><a href="https://paketo.io/docs/howto/nodejs/#configure-npm-during-the-build"><code>npmrc</code></a></td>
-          <td><code>type</code>, <code>.npmrc</code></td>
-          <td>0 or 1</td>
-      </tr>
-      <tr>
-          <td><a href="https://paketo.io/docs/howto/nodejs/#configure-yarn-during-the-build"><code>yarnrc</code></a></td>
-          <td><code>type</code>, <code>.yarnrc</code></td>
-          <td>0 or 1</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th><code>type</code></th>
+					<th>Required Files</th>
+					<th># Bindings of This Type Accepted</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><a href="https://paketo.io/docs/howto/nodejs/#configure-npm-during-the-build"><code>npmrc</code></a></td>
+					<td><code>type</code>, <code>.npmrc</code></td>
+					<td>0 or 1</td>
+			</tr>
+			<tr>
+					<td><a href="https://paketo.io/docs/howto/nodejs/#configure-yarn-during-the-build"><code>yarnrc</code></a></td>
+					<td><code>type</code>, <code>.yarnrc</code></td>
+					<td>0 or 1</td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="buildpack-set-environment-variables" class="markup-heading">
     <a class="markup-heading__link" href="#buildpack-set-environment-variables">
@@ -679,64 +679,64 @@ directories listed in the table below are present in your app source code,
 the Node.js buildpack uses an installation process that ensures the
 correct third-party dependencies are installed during the build process.</p>
 <table>
-  <thead>
-      <tr>
-          <th><code>package-lock.json</code></th>
-          <th><code>node_modules</code></th>
-          <th><code>npm-cache</code></th>
-          <th>Command</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>X</td>
-          <td>X</td>
-          <td>X</td>
-          <td><code>npm install</code></td>
-      </tr>
-      <tr>
-          <td>X</td>
-          <td>X</td>
-          <td>✓</td>
-          <td><code>npm install</code></td>
-      </tr>
-      <tr>
-          <td>X</td>
-          <td>✓</td>
-          <td>X</td>
-          <td><code>npm rebuild</code></td>
-      </tr>
-      <tr>
-          <td>X</td>
-          <td>✓</td>
-          <td>✓</td>
-          <td><code>npm rebuild</code></td>
-      </tr>
-      <tr>
-          <td>✓</td>
-          <td>X</td>
-          <td>X</td>
-          <td><code>npm ci</code></td>
-      </tr>
-      <tr>
-          <td>✓</td>
-          <td>X</td>
-          <td>✓</td>
-          <td><code>npm ci</code></td>
-      </tr>
-      <tr>
-          <td>✓</td>
-          <td>✓</td>
-          <td>X</td>
-          <td><code>npm rebuild</code></td>
-      </tr>
-      <tr>
-          <td>✓</td>
-          <td>✓</td>
-          <td>✓</td>
-          <td><code>npm ci</code></td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th><code>package-lock.json</code></th>
+					<th><code>node_modules</code></th>
+					<th><code>npm-cache</code></th>
+					<th>Command</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>X</td>
+					<td>X</td>
+					<td>X</td>
+					<td><code>npm install</code></td>
+			</tr>
+			<tr>
+					<td>X</td>
+					<td>X</td>
+					<td>✓</td>
+					<td><code>npm install</code></td>
+			</tr>
+			<tr>
+					<td>X</td>
+					<td>✓</td>
+					<td>X</td>
+					<td><code>npm rebuild</code></td>
+			</tr>
+			<tr>
+					<td>X</td>
+					<td>✓</td>
+					<td>✓</td>
+					<td><code>npm rebuild</code></td>
+			</tr>
+			<tr>
+					<td>✓</td>
+					<td>X</td>
+					<td>X</td>
+					<td><code>npm ci</code></td>
+			</tr>
+			<tr>
+					<td>✓</td>
+					<td>X</td>
+					<td>✓</td>
+					<td><code>npm ci</code></td>
+			</tr>
+			<tr>
+					<td>✓</td>
+					<td>✓</td>
+					<td>X</td>
+					<td><code>npm rebuild</code></td>
+			</tr>
+			<tr>
+					<td>✓</td>
+					<td>✓</td>
+					<td>✓</td>
+					<td><code>npm ci</code></td>
+			</tr>
+	</tbody>
 </table>
 <p>The following sections give more information about the files listed in the
 table above, including how to generate them, if desired.</p>
@@ -956,7 +956,7 @@ the SBOM for your Node.js app image.</p>
         <img class="cloudfoundry-logo" src="/v2/images/logo-cloudfoundry-light.svg" alt="Cloud Foundry logo" />
         <a class="footer-text--small text--light" href="https://linuxfoundation.org/privacy-policy/">Privacy Policy</a>
     </div>
-</footer><script src="/js/main.92f05c36a4e283fd067418239d07236499c359fb256fcb62ee4f9f17e1efb65d.js"></script>
+</footer><script src="/js/main.f1b871e938b6cdfcaa825b19af65549d8080c3b479394629e3d7b3ef8813020d.js"></script>
 
     <div id="footer-skip-link" class="screenreader-container">
     <a href="#header-skip-link" class="screenreader-text">Skip to Header</a>
