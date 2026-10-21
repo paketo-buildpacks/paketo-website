@@ -12,12 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         ref: gh-pages
 
     - name: Checkout build environment
-      uses: actions/checkout@v6
+      uses: actions/checkout@v7
       with:
         ref: main
         path: build-environment
